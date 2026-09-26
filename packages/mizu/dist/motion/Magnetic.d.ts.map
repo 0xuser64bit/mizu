@@ -1,0 +1,1 @@
+{"version":3,"file":"Magnetic.d.ts","sourceRoot":"","sources":["../../src/motion/Magnetic.tsx"],"names":[],"mappings":"AAEA,OAAO,EAAU,KAAK,SAAS,EAAE,MAAM,OAAO,CAAC;AAG/C,wBAAgB,QAAQ,CAAC,EACvB,QAAQ,EACR,QAAe,EACf,SAAc,GACf,EAAE;IACD,QAAQ,EAAE,SAAS,CAAC;IACpB,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB,+BA0BA"}

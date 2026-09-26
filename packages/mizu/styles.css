@@ -196,3 +196,24 @@
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+.mizu-btn--solid:hover:not(:disabled) {
+  background: var(--mizu-accent);
+}
+
+.mizu-btn--ghost:hover:not(:disabled) {
+  border-color: rgba(244, 240, 232, 0.7);
+  background: var(--mizu-ink-2);
+}
+
+.mizu-btn--inverse:hover:not(:disabled) {
+  background: var(--mizu-accent);
+}
+
+.mizu-btn-arrow {
+  transition: transform 300ms var(--mizu-ease-expo);
+}
+
+.mizu-btn:hover .mizu-btn-arrow {
+  transform: translate(2px, -2px);
+}

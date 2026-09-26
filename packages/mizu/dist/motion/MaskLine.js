@@ -1,0 +1,8 @@
+"use client";
+import { jsx as _jsx } from "react/jsx-runtime";
+import { motion } from "motion/react";
+import { EASE_EXPO } from "./easings";
+export function MaskLine({ children, delay = 0, y = "112%", className = "", }) {
+    return (_jsx("span", { className: `mizu-maskline ${className}`, style: { display: "block", overflow: "hidden" }, children: _jsx(motion.span, { style: { display: "block", willChange: "transform" }, initial: { y }, animate: { y: "0%" }, transition: { duration: 1.15, delay, ease: EASE_EXPO }, children: children }) }));
+}
+//# sourceMappingURL=MaskLine.js.map
