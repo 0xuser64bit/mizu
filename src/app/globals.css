@@ -18,6 +18,7 @@
   --font-mono: var(--mizu-font-mono);
 
   --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
 
   @keyframes pulse-soft {
     0%,
@@ -26,6 +27,12 @@
     }
     50% {
       opacity: 1;
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
     }
   }
 }
