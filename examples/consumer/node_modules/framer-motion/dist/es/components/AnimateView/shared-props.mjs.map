@@ -1,0 +1,1 @@
+{"version":3,"file":"shared-props.mjs","sources":["../../../../src/components/AnimateView/shared-props.ts"],"sourcesContent":["import { AnimateViewProps } from \"./types\"\n\nexport const sharedProps = new Map<string, AnimateViewProps>()\n"],"names":[],"mappings":"AAEO,MAAM,WAAW,GAAG,IAAI,GAAG;;;;"}

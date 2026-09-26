@@ -10,6 +10,7 @@ export function SoftType({
   min = 100,
   max = 900,
   className = "",
+  style,
   label,
 }: {
   text?: string;
@@ -18,6 +19,7 @@ export function SoftType({
   min?: number;
   max?: number;
   className?: string;
+  style?: React.CSSProperties;
   label?: string;
 }) {
   const draw = useCallback(
@@ -49,6 +51,7 @@ export function SoftType({
     <canvas
       ref={ref}
       className={className}
+      style={style}
       role="img"
       aria-label={label ?? `Variable type specimen displaying "${text}"`}
     />

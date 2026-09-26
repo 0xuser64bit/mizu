@@ -7,18 +7,20 @@ export function Spinner({
   tone = "accent",
   label = "Loading",
   className = "",
+  style,
 }: {
   size?: number;
   tone?: "accent" | "paper" | "muted";
   label?: string;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const reduce = useReducedMotion();
   const color =
     tone === "accent" ? "var(--mizu-accent)" : tone === "paper" ? "var(--mizu-paper)" : "var(--mizu-muted)";
 
   return (
-    <span role="status" aria-label={label} className={className} style={{ display: "inline-flex" }}>
+    <span role="status" aria-label={label} className={className} style={{ ...style, display: "inline-flex" }}>
       <motion.span
         aria-hidden
         style={{ width: size, height: size, background: color, transform: "rotate(45deg)" }}

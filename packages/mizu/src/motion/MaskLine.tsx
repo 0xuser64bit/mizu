@@ -9,14 +9,19 @@ export function MaskLine({
   delay = 0,
   y = "112%",
   className = "",
+  style,
 }: {
   children: ReactNode;
   delay?: number;
   y?: string;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
-    <span className={`mizu-maskline ${className}`} style={{ display: "block", overflow: "hidden" }}>
+    <span
+      className={`mizu-maskline ${className}`}
+      style={{ ...style, display: "block", overflow: "hidden" }}
+    >
       <motion.span
         style={{ display: "block", willChange: "transform" }}
         initial={{ y }}

@@ -11,6 +11,7 @@ export function Marquee({
   separator = true,
   label,
   className = "",
+  style,
 }: {
   children: ReactNode;
   duration?: number;
@@ -18,6 +19,7 @@ export function Marquee({
   separator?: boolean;
   label?: string;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const reduce = useReducedMotion();
   const [hover, setHover] = useState(false);
@@ -38,7 +40,7 @@ export function Marquee({
       className={className}
       role="marquee"
       aria-label={label}
-      style={{ overflow: "hidden", display: "flex" }}
+      style={{ ...style, overflow: "hidden", display: "flex" }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >

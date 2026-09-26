@@ -8,16 +8,19 @@ export function SectionTag({
   tone = "muted",
   diamond = true,
   className = "",
+  style,
 }: {
   children: ReactNode;
   tone?: SectionTagTone;
   diamond?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <p
       className={className}
       style={{
+        ...style,
         display: "flex",
         alignItems: "center",
         gap: 10,

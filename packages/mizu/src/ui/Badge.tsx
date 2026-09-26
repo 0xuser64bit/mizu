@@ -15,17 +15,20 @@ export function Badge({
   tone = "muted",
   diamond = true,
   className = "",
+  style,
 }: {
   children: ReactNode;
   tone?: BadgeTone;
   diamond?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const t = TONES[tone];
   return (
     <span
       className={className}
       style={{
+        ...style,
         display: "inline-flex",
         alignItems: "center",
         gap: 8,

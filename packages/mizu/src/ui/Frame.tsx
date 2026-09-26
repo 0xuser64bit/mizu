@@ -20,17 +20,20 @@ export function Frame({
   label,
   children,
   className = "",
+  style,
   tone = "line",
 }: {
   label?: string;
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   tone?: "line" | "line-bright";
 }) {
   return (
     <figure
       className={className}
       style={{
+        ...style,
         position: "relative",
         margin: 0,
         border: `1px solid ${tone === "line-bright" ? "var(--mizu-line-bright)" : "var(--mizu-line)"}`,

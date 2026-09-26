@@ -10,12 +10,14 @@ export function Pinfield({
   speed = 3.4,
   autoPulse = true,
   className = "",
+  style,
   label = "Interactive pinfield. Click to send a pulse through the grid of dots.",
 }: {
   gap?: number;
   speed?: number;
   autoPulse?: boolean;
   className?: string;
+  style?: React.CSSProperties;
   label?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -120,6 +122,7 @@ export function Pinfield({
     <canvas
       ref={canvasRef}
       className={`mizu-canvas-pointer ${className}`}
+      style={style}
       role="img"
       aria-label={label}
       tabIndex={0}

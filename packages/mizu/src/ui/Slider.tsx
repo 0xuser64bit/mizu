@@ -8,6 +8,7 @@ export function Slider({
   disabled = false,
   format,
   className = "",
+  style,
 }: {
   label: string;
   value: number;
@@ -18,11 +19,13 @@ export function Slider({
   disabled?: boolean;
   format?: (value: number) => string;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <label
       className={className}
       style={{
+        ...style,
         display: "grid",
         gridTemplateColumns: "104px 1fr 52px",
         alignItems: "center",

@@ -1,0 +1,58 @@
+import { warnOnce } from 'motion-utils';
+import { axisKeys } from './info.mjs';
+import { resolveOffsets } from './offsets/index.mjs';
+import { calcInset } from './offsets/inset.mjs';
+
+function getTargetSize(target) {
+    return "getBBox" in target && target.tagName !== "svg"
+        ? target.getBBox()
+        : { width: target.clientWidth, height: target.clientHeight };
+}
+function createOnScrollHandler(container, onScroll, info, options = {}) {
+    const { target } = options;
+    /**
+     * In development mode ensure scroll containers aren't position: static as this makes
+     * it difficult to measure their relative positions. The document scrolling element
+     * is exempt: offsetParent measurements naturally resolve relative to the document.
+     */
+    if (process.env.NODE_ENV !== "production") {
+        if (target &&
+            target !== container &&
+            container !== document.documentElement &&
+            container !== document.scrollingElement &&
+            container !== document.body) {
+            warnOnce(getComputedStyle(container).position !== "static", "Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.");
+        }
+    }
+    /**
+     * Handlers without a target or offset are notified with the container's
+     * shared info object, so they measure nothing themselves.
+     */
+    const needsOwnInfo = target || options.offset;
+    return {
+        measure: (containerInfo) => {
+            if (!needsOwnInfo)
+                return;
+            info.time = containerInfo.time;
+            for (const key in axisKeys) {
+                const axis = key;
+                const { offset } = info[axis];
+                Object.assign(info[axis], containerInfo[axis]);
+                info[axis].offset = offset;
+            }
+            if (target && target !== container) {
+                const inset = calcInset(target, container);
+                const size = getTargetSize(target);
+                info.x.targetOffset = inset.x;
+                info.y.targetOffset = inset.y;
+                info.x.targetLength = size.width;
+                info.y.targetLength = size.height;
+            }
+            resolveOffsets(info, options);
+        },
+        notify: (containerInfo) => onScroll(needsOwnInfo ? info : containerInfo),
+    };
+}
+
+export { createOnScrollHandler };
+//# sourceMappingURL=on-scroll-handler.mjs.map

@@ -7,10 +7,12 @@ export function Magnetic({
   children,
   strength = 0.32,
   className = "",
+  style,
 }: {
   children: ReactNode;
   strength?: number;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -22,7 +24,7 @@ export function Magnetic({
     <motion.div
       ref={ref}
       className={className}
-      style={{ x: sx, y: sy, display: "inline-block" }}
+      style={{ ...style, x: sx, y: sy, display: "inline-block" }}
       onMouseMove={(e) => {
         const r = ref.current?.getBoundingClientRect();
         if (!r) return;

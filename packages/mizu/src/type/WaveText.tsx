@@ -34,6 +34,7 @@ export function WaveText({
   colorFrom = "#f4f0e8",
   colorTo = "#ff4d1c",
   className = "",
+  style,
   as: Tag = "span",
 }: {
   text: string;
@@ -41,6 +42,7 @@ export function WaveText({
   colorFrom?: string;
   colorTo?: string;
   className?: string;
+  style?: React.CSSProperties;
   as?: "span" | "h1" | "h2" | "p" | "div";
 }) {
   const reduce = useReducedMotion();
@@ -69,7 +71,7 @@ export function WaveText({
       className={className}
       aria-label={text}
       role="text"
-      style={{ display: "inline-flex", flexWrap: "wrap" }}
+      style={{ display: "inline-flex", flexWrap: "wrap", ...style }}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
     >

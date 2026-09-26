@@ -5,11 +5,13 @@ export function Rule({
   node = true,
   tone = "line",
   className = "",
+  style,
 }: {
   label?: string;
   node?: boolean;
   tone?: "line" | "line-bright" | "accent";
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const line = (
     <span
@@ -32,7 +34,7 @@ export function Rule({
       role="separator"
       aria-orientation="horizontal"
       className={className}
-      style={{ display: "flex", alignItems: "center", gap: 12, width: "100%" }}
+      style={{ ...style, display: "flex", alignItems: "center", gap: 12, width: "100%" }}
     >
       {line}
       {node && <Mark size={5} tone={tone === "accent" ? "accent" : "line"} />}

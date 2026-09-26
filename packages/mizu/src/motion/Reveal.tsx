@@ -12,6 +12,7 @@ export function Reveal({
   duration = 0.95,
   once = true,
   className = "",
+  style,
 }: {
   children: ReactNode;
   delay?: number;
@@ -20,10 +21,12 @@ export function Reveal({
   duration?: number;
   once?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <motion.div
       className={className}
+      style={style}
       initial={{ opacity: 0, y, x }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once, margin: "-70px" }}

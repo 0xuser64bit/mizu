@@ -8,9 +8,11 @@ type Ripple = { x: number; y: number; r: number; a: number };
 export function RippleSurface({
   auto = true,
   className = "",
+  style,
 }: {
   auto?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduce = useReducedMotion();
@@ -113,5 +115,5 @@ export function RippleSurface({
     };
   }, [reduce, auto]);
 
-  return <canvas ref={canvasRef} className={className} aria-hidden="true" />;
+  return <canvas ref={canvasRef} className={className} style={style} aria-hidden="true" />;
 }

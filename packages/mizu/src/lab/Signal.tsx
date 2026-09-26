@@ -7,11 +7,13 @@ export function Signal({
   density = 14,
   speed = 1,
   className = "",
+  style,
   label = "Interactive signal visualisation. Drag horizontally to scrub the phase of the waveform.",
 }: {
   density?: number;
   speed?: number;
   className?: string;
+  style?: React.CSSProperties;
   label?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -118,6 +120,7 @@ export function Signal({
     <canvas
       ref={canvasRef}
       className={`mizu-canvas-drag ${className}`}
+      style={style}
       role="img"
       aria-label={label}
     />
