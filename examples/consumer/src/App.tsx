@@ -25,7 +25,7 @@ import {
   WaveText,
   useToast,
   type ButtonVariant,
-} from "@mizu/ui";
+} from "mizu-ui";
 
 export function App() {
   const [open, setOpen] = useState(false);

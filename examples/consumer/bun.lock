@@ -5,7 +5,7 @@
     "": {
       "name": "mizu-consumer",
       "dependencies": {
-        "@mizu/ui": "file:../../packages/mizu",
+        "mizu-ui": "file:../../packages/mizu",
         "motion": "^13.4.4",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
@@ -126,8 +126,6 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@mizu/ui": ["@mizu/ui@file:../../packages/mizu", { "dependencies": { "@fontsource-variable/archivo": "^5.x", "@fontsource/instrument-serif": "^5.x", "@fontsource/jetbrains-mono": "^5.x" }, "devDependencies": { "typescript": "^5" }, "peerDependencies": { "motion": ">=11", "react": ">=18", "react-dom": ">=18" } }],
-
     "@napi-rs/lzma-linux-x64-gnu": ["@napi-rs/lzma-linux-x64-gnu@1.5.1", "", { "os": "linux", "cpu": "x64" }, "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ=="],
 
     "@rolldown/pluginutils": ["@rolldown/pluginutils@1.0.0-rc.3", "", {}, "sha512-eybk3TjzzzV97Dlj5c+XrBFW57eTNhzod66y9HrBlzJ6NsCrWCp/2kaPS3K9wJmurBC0Tdw4yPjXKZqlznim3Q=="],
@@ -231,6 +229,8 @@
     "json5": ["json5@2.2.3", "", { "bin": { "json5": "lib/cli.js" } }, "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg=="],
 
     "lru-cache": ["lru-cache@5.1.1", "", { "dependencies": { "yallist": "^3.0.2" } }, "sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w=="],
+
+    "mizu-ui": ["mizu-ui@file:../../packages/mizu", { "dependencies": { "@fontsource-variable/archivo": "^5.x", "@fontsource/instrument-serif": "^5.x", "@fontsource/jetbrains-mono": "^5.x" }, "devDependencies": { "typescript": "^5" }, "peerDependencies": { "motion": ">=11", "react": ">=18", "react-dom": ">=18" } }],
 
     "motion": ["motion@13.4.4", "", { "dependencies": { "framer-motion": "^13.4.4", "tslib": "^2.4.0" }, "peerDependencies": { "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["react", "react-dom"] }, "sha512-lyX5kpAum2MmigecKWrFdIj3Sjn7pHek2EUrXY0WGZbOjJ1f5NfX0g4KQAb2Bp2EqL0a6dUzse11s1n7OYr5jg=="],
 

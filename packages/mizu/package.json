@@ -1,5 +1,5 @@
 {
-  "name": "@mizu/ui",
+  "name": "mizu-ui",
   "version": "0.1.0",
   "description": "The first generation of the Mizu interface language — surfaces, motion and systems for React.",
   "type": "module",

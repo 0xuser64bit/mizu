@@ -8,7 +8,7 @@ something.
 ## The collection
 
 The component library lives in [`packages/mizu`](./packages/mizu) and is
-published-ready as `@mizu/ui`:
+published-ready as `mizu-ui`:
 
 - **Foundation** — Button, SectionTag, Rule, Badge, Mark, Frame, Slider, Tooltip
 - **Motion** — MaskLine, Reveal, Magnetic, Marquee, PageWipe
@@ -39,5 +39,5 @@ bun run lint
 ## Consumer check
 
 [`examples/consumer`](./examples/consumer) is a fresh Vite + React app that
-installs `@mizu/ui` from the package directory (via its `prepare` script)
+installs `mizu-ui` from the package directory (via its `prepare` script)
 and renders a dozen components — the closest thing to an external consumer.

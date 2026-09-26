@@ -1,4 +1,4 @@
-# @mizu/ui
+# mizu-ui
 
 The first generation of the Mizu interface language — surfaces, motion and systems for React.
 
@@ -7,9 +7,9 @@ Mizu is not a generic UI kit. It is a curated collection of components with a po
 ## Install
 
 ```bash
-npm install @mizu/ui
+npm install mizu-ui
 # or
-bun add @mizu/ui
+bun add mizu-ui
 ```
 
 Peer dependencies: `react` (>=18), `react-dom` (>=18), `motion` (>=11).
@@ -19,7 +19,7 @@ Peer dependencies: `react` (>=18), `react-dom` (>=18), `motion` (>=11).
 Import the stylesheet once, at the root of your app. It ships the design tokens and self-hosted fonts (Archivo Variable, Instrument Serif, JetBrains Mono).
 
 ```tsx
-import "@mizu/ui/styles.css";
+import "mizu-ui/styles.css";
 ```
 
 Wrap your app in the theme surface class:

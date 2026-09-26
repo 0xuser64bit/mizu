@@ -1,7 +1,7 @@
-# Publishing `@mizu/ui`
+# Publishing `mizu-ui`
 
 The package lives in [`packages/mizu`](./packages/mizu) and publishes to npm as
-`@mizu/ui` (scoped, public). It is an ESM-only package: `dist/` (JS +
+`mizu-ui` (scoped, public). It is an ESM-only package: `dist/` (JS +
 declarations + source maps) and `styles.css` are the only things that ship —
 everything else in the package directory is ignored via the `files` field.
 
@@ -34,14 +34,14 @@ paths can mask packaging bugs:
 ```bash
 mkdir mizu-verify && cd mizu-verify
 npm init -y
-npm install @mizu/ui
+npm install mizu-ui
 ```
 
 Then in any Vite/Next/plain React app:
 
 ```tsx
-import "@mizu/ui/styles.css";
-import { Button } from "@mizu/ui";
+import "mizu-ui/styles.css";
+import { Button } from "mizu-ui";
 
 export function App() {
   return <Button>Ship it</Button>;

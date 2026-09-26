@@ -41,7 +41,7 @@ export const COMPONENTS: ComponentMeta[] = [
     category: "Foundation",
     tagline: "The primary action surface — solid, ghost and inverse, with a loading state and an arrow that leans into the hover.",
     demo: ButtonDemo,
-    usage: `import { Button, ButtonLink } from "@mizu/ui";
+    usage: `import { Button, ButtonLink } from "mizu-ui";
 
 export function Actions() {
   return (
@@ -71,7 +71,7 @@ export function Actions() {
     category: "Foundation",
     tagline: "The shared atoms — Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider and Tooltip. Every other component is built from these.",
     demo: PrimitivesDemo,
-    usage: `import { Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip } from "@mizu/ui";
+    usage: `import { Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip } from "mizu-ui";
 
 export function Header() {
   return (
@@ -105,7 +105,7 @@ export function Header() {
     category: "Motion",
     tagline: "The Mizu headline reveal — text rises from inside its own mask, one line at a time.",
     demo: MaskLineDemo,
-    usage: `import { MaskLine } from "@mizu/ui";
+    usage: `import { MaskLine } from "mizu-ui";
 
 export function Headline() {
   return (
@@ -128,7 +128,7 @@ export function Headline() {
     category: "Motion",
     tagline: "Scroll-triggered entrance with direction, distance and delay control.",
     demo: RevealDemo,
-    usage: `import { Reveal } from "@mizu/ui";
+    usage: `import { Reveal } from "mizu-ui";
 
 export function Grid() {
   return (
@@ -152,7 +152,7 @@ export function Grid() {
     category: "Motion",
     tagline: "A spring-follow wrapper — the surface leans toward the cursor and settles back.",
     demo: MagneticDemo,
-    usage: `import { Magnetic } from "@mizu/ui";
+    usage: `import { Magnetic } from "mizu-ui";
 
 export function PullTab() {
   return (
@@ -173,7 +173,7 @@ export function PullTab() {
     category: "Motion",
     tagline: "A seamless infinite ticker that pauses on hover and stands still for reduced motion.",
     demo: MarqueeDemo,
-    usage: `import { Marquee } from "@mizu/ui";
+    usage: `import { Marquee } from "mizu-ui";
 
 export function Ticker() {
   return (
@@ -198,7 +198,7 @@ export function Ticker() {
     category: "Motion",
     tagline: "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
     demo: PageWipeDemo,
-    usage: `import { PageWipeProvider, usePageWipe } from "@mizu/ui";
+    usage: `import { PageWipeProvider, usePageWipe } from "mizu-ui";
 
 export function App({ children }) {
   return <PageWipeProvider>{children}</PageWipeProvider>;
@@ -227,7 +227,7 @@ export function NavLink() {
     category: "Type",
     tagline: "A live type tester — set text, size, weight, tracking and serif voice while the specimen redraws.",
     demo: SpecimenDemo,
-    usage: `import { Specimen } from "@mizu/ui";
+    usage: `import { Specimen } from "mizu-ui";
 
 export function Tester() {
   return <Specimen />;
@@ -256,7 +256,7 @@ export function Tester() {
     category: "Type",
     tagline: "A variable-font engine on canvas — weight and width oscillate through the Archivo axes.",
     demo: SoftTypeDemo,
-    usage: `import { SoftType } from "@mizu/ui";
+    usage: `import { SoftType } from "mizu-ui";
 
 export function Engine() {
   return <SoftType text="Aa" mode="both" speed={1} />;
@@ -276,7 +276,7 @@ export function Engine() {
     category: "Type",
     tagline: "Kinetic text that answers the cursor — each letter lifts, scales and warms as you pass over it.",
     demo: WaveTextDemo,
-    usage: `import { WaveText } from "@mizu/ui";
+    usage: `import { WaveText } from "mizu-ui";
 
 export function Title() {
   return (
@@ -304,7 +304,7 @@ export function Title() {
     category: "Type",
     tagline: "An oversized outlined word that fills with accent when hovered — built for footers and chapter markers.",
     demo: GhostWordDemo,
-    usage: `import { GhostWord } from "@mizu/ui";
+    usage: `import { GhostWord } from "mizu-ui";
 
 export function Footer() {
   return <GhostWord text="MIZU." />;
@@ -322,7 +322,7 @@ export function Footer() {
     category: "Instruments",
     tagline: "A grid of pins that carries pulses — click and a wavefront travels outward, lighting the field.",
     demo: PinfieldDemo,
-    usage: `import { Pinfield } from "@mizu/ui";
+    usage: `import { Pinfield } from "mizu-ui";
 
 export function Field() {
   return <Pinfield gap={26} />;
@@ -341,7 +341,7 @@ export function Field() {
     category: "Instruments",
     tagline: "A waveform you can scrub — drag horizontally to move the phase, hover to light the bars.",
     demo: SignalDemo,
-    usage: `import { Signal } from "@mizu/ui";
+    usage: `import { Signal } from "mizu-ui";
 
 export function Wave() {
   return <Signal density={14} />;
@@ -359,7 +359,7 @@ export function Wave() {
     category: "Instruments",
     tagline: "An ambient surface that ripples where you touch it — built for hero sections and invite panels.",
     demo: RippleDemo,
-    usage: `import { RippleSurface } from "@mizu/ui";
+    usage: `import { RippleSurface } from "mizu-ui";
 
 export function Hero() {
   return (
@@ -381,7 +381,7 @@ export function Hero() {
     category: "Feedback",
     tagline: "Numbers that count — eased value animation with tabular figures, prefixes and suffixes.",
     demo: CountUpDemo,
-    usage: `import { CountUp } from "@mizu/ui";
+    usage: `import { CountUp } from "mizu-ui";
 
 export function Stat() {
   return <CountUp value={1284} duration={1.4} suffix="+" />;
@@ -402,7 +402,7 @@ export function Stat() {
     category: "Feedback",
     tagline: "Copy to clipboard with a check-morph confirmation and a legacy fallback.",
     demo: CopyButtonDemo,
-    usage: `import { CopyButton } from "@mizu/ui";
+    usage: `import { CopyButton } from "mizu-ui";
 
 export function Swatch({ hex }) {
   return <CopyButton text={hex}>{hex}</CopyButton>;
@@ -420,7 +420,7 @@ export function Swatch({ hex }) {
     category: "Feedback",
     tagline: "A toast system — provider, imperative API, tones, and a live region for screen readers.",
     demo: ToastDemo,
-    usage: `import { ToastProvider, useToast } from "@mizu/ui";
+    usage: `import { ToastProvider, useToast } from "mizu-ui";
 
 export function App({ children }) {
   return <ToastProvider>{children}</ToastProvider>;
@@ -443,7 +443,7 @@ export function Saver() {
     category: "Composites",
     tagline: "Height-animated disclosure with a diamond marker that morphs between states.",
     demo: AccordionDemo,
-    usage: `import { Accordion, AccordionItem } from "@mizu/ui";
+    usage: `import { Accordion, AccordionItem } from "mizu-ui";
 
 export function Faq() {
   return (
@@ -468,7 +468,7 @@ export function Faq() {
     category: "Composites",
     tagline: "Controlled or uncontrolled tabs with a sliding underline that travels between triggers.",
     demo: TabsDemo,
-    usage: `import { Tabs, TabsList, TabsTrigger, TabsPanel } from "@mizu/ui";
+    usage: `import { Tabs, TabsList, TabsTrigger, TabsPanel } from "mizu-ui";
 
 export function Switcher() {
   return (
@@ -493,7 +493,7 @@ export function Switcher() {
     category: "Composites",
     tagline: "A modal with focus trap, Escape handling, scroll lock and an expo entrance.",
     demo: DialogDemo,
-    usage: `import { Dialog, DialogTitle, DialogBody, DialogFooter, DialogClose } from "@mizu/ui";
+    usage: `import { Dialog, DialogTitle, DialogBody, DialogFooter, DialogClose } from "mizu-ui";
 
 export function Modal() {
   const [open, setOpen] = useState(false);
@@ -519,7 +519,7 @@ export function Modal() {
     category: "Composites",
     tagline: "The thread header — scroll progress with a diamond node, chapter tracking, and a full-screen mobile menu.",
     demo: NavDemo,
-    usage: `import { Nav } from "@mizu/ui";
+    usage: `import { Nav } from "mizu-ui";
 
 export function Shell() {
   return (

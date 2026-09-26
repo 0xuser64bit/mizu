@@ -3,10 +3,10 @@ import { CopyButton, SectionTag } from "@/mizu";
 import { ComponentsShell } from "@/components/docs/ComponentsShell";
 import { CATEGORIES, COMPONENTS } from "@/components/docs/registry";
 
-const INSTALL = `npm install @mizu/ui
+const INSTALL = `npm install mizu-ui
 
 # in your root layout
-import "@mizu/ui/styles.css";
+import "mizu-ui/styles.css";
 
 # light surface anywhere
 <body data-theme="light">`;
