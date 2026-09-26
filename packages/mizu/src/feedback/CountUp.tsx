@@ -25,17 +25,10 @@ export function CountUp({
   const prev = useRef(0);
 
   useEffect(() => {
-    if (reduce) {
-      prev.current = value;
-      setDisplay(value);
-      return;
-    }
+    if (reduce) return;
     const from = prev.current;
     prev.current = value;
-    if (from === value) {
-      setDisplay(value);
-      return;
-    }
+    if (from === value) return;
     let raf = 0;
     const start = performance.now() + delay * 1000;
     const tick = (now: number) => {
@@ -48,7 +41,9 @@ export function CountUp({
     return () => cancelAnimationFrame(raf);
   }, [value, duration, delay, reduce]);
 
-  const formatted = display.toLocaleString("en-US", {
+  const shown = reduce ? value : display;
+
+  const formatted = shown.toLocaleString("en-US", {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   });

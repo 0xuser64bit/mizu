@@ -59,7 +59,12 @@ export function Nav({
   return (
     <>
       <header className={className} style={{ position: "fixed", insetInline: 0, top: 0, zIndex: 80 }}>
-        <div style={{ background: "rgba(15, 14, 12, 0.85)", backdropFilter: "blur(12px)" }}>
+        <div
+          style={{
+            background: "color-mix(in srgb, var(--mizu-ink) 85%, transparent)",
+            backdropFilter: "blur(12px)",
+          }}
+        >
           <div
             style={{
               position: "relative",
@@ -78,7 +83,6 @@ export function Nav({
                 position: "absolute",
                 left: "50%",
                 transform: "translateX(-50%)",
-                display: "none",
               }}
               className="mizu-nav-chapter"
             >
@@ -104,7 +108,7 @@ export function Nav({
               )}
             </div>
 
-            <nav aria-label="Primary" style={{ display: "none" }} className="mizu-nav-links">
+            <nav aria-label="Primary" className="mizu-nav-links">
               {links.map((l) => {
                 const active = path === l.href;
                 return (
@@ -114,7 +118,7 @@ export function Nav({
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
-                      gap: 10,
+                      columnGap: 10,
                       fontFamily: "var(--mizu-font-mono)",
                       fontSize: 11,
                       letterSpacing: "0.22em",
@@ -126,11 +130,15 @@ export function Nav({
                     <span
                       aria-hidden
                       style={{
-                        width: 4,
-                        height: 4,
+                        width: "4px",
+                        height: "4px",
                         transform: "rotate(45deg)",
                         background: active ? "var(--mizu-accent)" : "var(--mizu-line-bright)",
-                        transition: "background 300ms ease",
+                        transitionProperty: "background",
+                        transitionDuration: "300ms",
+                        transitionTimingFunction: "ease",
+                        transitionDelay: "0s",
+                        transitionBehavior: "normal",
                       }}
                     />
                     {l.label}
@@ -144,6 +152,7 @@ export function Nav({
               aria-label="Open menu"
               aria-expanded={open}
               className="mizu-nav-burger"
+              type="button"
               style={{
                 background: "transparent",
                 border: "none",

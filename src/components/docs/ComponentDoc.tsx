@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { CopyButton, Frame, SectionTag } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { DemoLabel } from "./demos/shared";
@@ -166,29 +167,29 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
           className="mt-16 flex items-center justify-between gap-4 border-t border-line pt-8"
         >
           {prev ? (
-            <a
+            <Link
               href={`/components/${prev.slug}`}
               className="group font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
             >
               ← {prev.name}
-            </a>
+            </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <a
+            <Link
               href={`/components/${next.slug}`}
               className="group font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
             >
               {next.name} →
-            </a>
+            </Link>
           ) : (
-            <a
+            <Link
               href="/components"
               className="group font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
             >
               All components →
-            </a>
+            </Link>
           )}
         </nav>
       </div>

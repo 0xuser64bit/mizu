@@ -14,13 +14,13 @@ const TabsContext = createContext<TabsContextValue | null>(null);
 export function Tabs({
   children,
   value,
-  defaultValue,
+  defaultValue = "",
   onChange,
   className = "",
 }: {
   children: ReactNode;
   value?: string;
-  defaultValue: string;
+  defaultValue?: string;
   onChange?: (v: string) => void;
   className?: string;
 }) {

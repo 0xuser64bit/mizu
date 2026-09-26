@@ -1,5 +1,5 @@
-import { SectionTag, Reveal, Magnetic, ButtonLink, Nav } from "@/mizu";
-import { Wordmark } from "@/components/ui/Wordmark";
+import { SectionTag, Reveal, Magnetic, ButtonLink } from "@/mizu";
+import { SiteNav } from "@/components/shell/SiteNav";
 
 const ARTICLES = [
   {
@@ -41,15 +41,7 @@ const NOTS = [
 export default function StudioPage() {
   return (
     <>
-      <Nav
-        brand={<Wordmark />}
-        links={[
-          { href: "/", label: "Home" },
-          { href: "/components", label: "Components" },
-          { href: "/lab", label: "Lab" },
-          { href: "/studio", label: "Standpoint" },
-        ]}
-      />
+      <SiteNav />
       <main id="main" className="pt-16">
       <header data-chapter="Standpoint" className="px-5 py-20 md:px-10 md:py-28">
         <SectionTag>The standpoint</SectionTag>

@@ -1,20 +1,12 @@
-import { SectionTag, Reveal, Magnetic, ButtonLink, Signal, Specimen, Pinfield, Nav } from "@/mizu";
+import { SectionTag, Reveal, Magnetic, ButtonLink, Signal, Specimen, Pinfield } from "@/mizu";
 import { Station } from "@/components/lab/Station";
 import { Spectrum } from "@/components/lab/Spectrum";
-import { Wordmark } from "@/components/ui/Wordmark";
+import { SiteNav } from "@/components/shell/SiteNav";
 
 export default function LabPage() {
   return (
     <>
-      <Nav
-        brand={<Wordmark />}
-        links={[
-          { href: "/", label: "Home" },
-          { href: "/components", label: "Components" },
-          { href: "/lab", label: "Lab" },
-          { href: "/studio", label: "Standpoint" },
-        ]}
-      />
+      <SiteNav />
       <main id="main" className="pt-16">
       <header data-chapter="Lab" className="px-5 py-20 md:px-10 md:py-28">
         <SectionTag>The lab</SectionTag>

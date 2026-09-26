@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CopyButton, SectionTag } from "@/mizu";
 import { ComponentsShell } from "@/components/docs/ComponentsShell";
 import { CATEGORIES, COMPONENTS } from "@/components/docs/registry";
@@ -80,10 +81,10 @@ export default function ComponentsIndex() {
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   {items.map((c) => (
-                    <a
+                    <Link
                       key={c.slug}
                       href={`/components/${c.slug}`}
-                      className="group border border-line bg-ink-2 p-6 transition-colors duration-300 hover:border-line-bright hover:bg-ink-3"
+                      className="group block border border-line bg-ink-2 p-6 transition-colors duration-300 hover:border-line-bright hover:bg-ink-3"
                     >
                       <div className="flex items-baseline justify-between gap-4">
                         <h3 className="font-display text-xl font-bold tracking-tight transition-transform duration-300 group-hover:translate-x-1.5">
@@ -105,7 +106,7 @@ export default function ComponentsIndex() {
                         </svg>
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-muted">{c.tagline}</p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </section>

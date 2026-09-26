@@ -4,21 +4,12 @@ import { Manifesto } from "@/components/home/Manifesto";
 import { Index } from "@/components/home/Index";
 import { Invite } from "@/components/home/Invite";
 import { Footer } from "@/components/home/Footer";
-import { Nav } from "@/mizu";
-import { Wordmark } from "@/components/ui/Wordmark";
+import { SiteNav } from "@/components/shell/SiteNav";
 
 export default function Home() {
   return (
     <>
-      <Nav
-        brand={<Wordmark />}
-        links={[
-          { href: "/", label: "Home" },
-          { href: "/components", label: "Components" },
-          { href: "/lab", label: "Lab" },
-          { href: "/studio", label: "Standpoint" },
-        ]}
-      />
+      <SiteNav />
       <main id="main">
         <Hero />
         <Ticker />

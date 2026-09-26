@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Accordion, AccordionItem, Button, Dialog, DialogBody, DialogClose, DialogFooter, DialogTitle, Nav, Tabs, TabsList, TabsPanel, TabsTrigger } from "@/mizu";
+import { Accordion, AccordionItem, Button, Dialog, DialogBody, DialogClose, DialogFooter, DialogTitle, Tabs, TabsList, TabsPanel, TabsTrigger } from "@/mizu";
+import { SiteNav } from "@/components/shell/SiteNav";
 import { Toggle } from "./shared";
 
 const FAQ = [
@@ -101,20 +102,7 @@ export function NavDemo() {
       <DemoNote />
       <div style={{ transform: "scale(0.55)", transformOrigin: "top left", width: "181.81%" }}>
         <div style={{ pointerEvents: "none" }}>
-          <Nav
-            brand={
-              <span className="font-display text-lg font-black font-wide tracking-tight">
-                MIZU<span className="text-accent">.</span>
-              </span>
-            }
-            links={[
-              { href: "/", label: "Home" },
-              { href: "/components", label: "Components" },
-              { href: "/lab", label: "Lab" },
-              { href: "/studio", label: "Standpoint" },
-            ]}
-            trackChapters={false}
-          />
+          <SiteNav trackChapters={false} />
         </div>
       </div>
       <p className="border-t border-line px-4 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
