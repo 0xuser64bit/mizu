@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mizu — An Archive of Interface Craft
 
-## Getting Started
+Mizu is an independent UI platform: a curated collection of React components
+built around a distinct visual language — ink-and-paper surfaces, hairline
+rules, mono microcopy, a signature diamond mark, and motion that means
+something.
 
-First, run the development server:
+## The collection
+
+The component library lives in [`packages/mizu`](./packages/mizu) and is
+published-ready as `@mizu/ui`:
+
+- **Foundation** — Button, SectionTag, Rule, Badge, Mark, Frame, Slider, Tooltip
+- **Motion** — MaskLine, Reveal, Magnetic, Marquee, PageWipe
+- **Type systems** — Specimen, SoftType, WaveText, GhostWord
+- **Instruments** — Pinfield, Signal, RippleSurface
+- **Feedback** — CountUp, CopyButton, Toast
+- **Composites** — Accordion, Tabs, Dialog, Nav
+
+## The site
+
+- `/` — the archive (manifesto, selected pieces, lab invite)
+- `/components` — live documentation with playgrounds, props tables and
+  per-component accessibility/motion notes
+- `/lab` — interactive instruments
+- `/studio` — the standpoint
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev        # http://localhost:3000
+bun run build      # production build
+bun run build:ui   # compile packages/mizu to dist
+bun test           # component behavior tests (vitest)
+bun run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Consumer check
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[`examples/consumer`](./examples/consumer) is a fresh Vite + React app that
+installs `@mizu/ui` from the package directory (via its `prepare` script)
+and renders a dozen components — the closest thing to an external consumer.
