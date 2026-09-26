@@ -1,7 +1,7 @@
 # Publishing `mizu-ui`
 
 The package lives in [`packages/mizu`](./packages/mizu) and publishes to npm as
-`mizu-ui` (scoped, public). It is an ESM-only package: `dist/` (JS +
+`mizu-ui` (unscoped, public). It is an ESM-only package: `dist/` (JS +
 declarations + source maps) and `styles.css` are the only things that ship —
 everything else in the package directory is ignored via the `files` field.
 
