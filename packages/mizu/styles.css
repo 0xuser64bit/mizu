@@ -217,3 +217,34 @@
 .mizu-btn:hover .mizu-btn-arrow {
   transform: translate(2px, -2px);
 }
+
+.mizu-ghost {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--mizu-line-bright);
+  transition:
+    color 500ms ease,
+    -webkit-text-stroke-color 500ms ease,
+    letter-spacing 500ms var(--mizu-ease-expo),
+    transform 500ms var(--mizu-ease-expo);
+  cursor: default;
+  user-select: none;
+}
+
+.mizu-ghost:hover {
+  color: var(--mizu-accent);
+  -webkit-text-stroke-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.mizu-ghost--paper:hover {
+  color: var(--mizu-paper);
+}
+
+.mizu-specimen-input:focus {
+  border-color: var(--mizu-accent) !important;
+}
+
+.mizu-specimen-toggle:hover {
+  border-color: var(--mizu-line-bright);
+  color: var(--mizu-paper);
+}

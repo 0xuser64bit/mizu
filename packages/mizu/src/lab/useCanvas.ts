@@ -1,0 +1,72 @@
+"use client";
+
+import { useEffect, useRef, type RefObject } from "react";
+import { useReducedMotion } from "motion/react";
+
+export function useCanvasLoop(
+  draw: (ctx: CanvasRenderingContext2D, w: number, h: number, t: number) => void
+): RefObject<HTMLCanvasElement | null> {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const drawRef = useRef(draw);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    drawRef.current = draw;
+  });
+
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let raf = 0;
+    let running = true;
+    let visible = true;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const resize = () => {
+      const r = canvas.getBoundingClientRect();
+      canvas.width = Math.max(1, Math.round(r.width * dpr));
+      canvas.height = Math.max(1, Math.round(r.height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const io = new IntersectionObserver(([e]) => {
+      if (e) visible = e.isIntersecting;
+    });
+    io.observe(canvas);
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    if (reduce) {
+      const r = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, r.width, r.height);
+      drawRef.current(ctx, r.width, r.height, 1400);
+      return () => {
+        io.disconnect();
+        window.removeEventListener("resize", resize);
+      };
+    }
+
+    const start = performance.now();
+    const frame = (now: number) => {
+      raf = requestAnimationFrame(frame);
+      if (!running || !visible || document.hidden) return;
+      const r = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, r.width, r.height);
+      drawRef.current(ctx, r.width, r.height, now - start);
+    };
+    raf = requestAnimationFrame(frame);
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(raf);
+      io.disconnect();
+      window.removeEventListener("resize", resize);
+    };
+  }, [reduce]);
+
+  return ref;
+}
