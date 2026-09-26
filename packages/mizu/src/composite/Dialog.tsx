@@ -82,10 +82,10 @@ export function Dialog({
         >
           <motion.div
             aria-hidden
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reduce ? 0 : 0.35 }}
+            exit={{ opacity: 1 }}
+            transition={{ duration: 0 }}
             onClick={() => onOpenChange(false)}
             style={{
               position: "absolute",
@@ -111,10 +111,10 @@ export function Dialog({
               aria-modal="true"
               aria-label={label}
               tabIndex={-1}
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 32, scale: 0.98 }}
-              animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-              exit={reduce ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
-              transition={{ duration: 0.45, ease: EASE_EXPO }}
+              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 32, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={reduce ? { opacity: 1 } : { opacity: 0, y: 16, scale: 0.98 }}
+              transition={{ duration: reduce ? 0 : 0.45, ease: EASE_EXPO }}
               style={{
                 pointerEvents: "auto",
                 width: "min(520px, 100%)",

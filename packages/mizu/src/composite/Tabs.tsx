@@ -1,12 +1,20 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import {
+  createContext,
+  useContext,
+  useId,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings";
 
 type TabsContextValue = {
   value: string;
   setValue: (v: string) => void;
+  layoutId: string;
 };
 
 const TabsContext = createContext<TabsContextValue | null>(null);
@@ -26,6 +34,7 @@ export function Tabs({
 }) {
   const [internal, setInternal] = useState(defaultValue);
   const current = value ?? internal;
+  const id = useId();
 
   const setValue = (v: string) => {
     if (value === undefined) setInternal(v);
@@ -33,7 +42,7 @@ export function Tabs({
   };
 
   return (
-    <TabsContext.Provider value={{ value: current, setValue }}>
+    <TabsContext.Provider value={{ value: current, setValue, layoutId: `mizu-tabs-${id}-underline` }}>
       <div className={className}>{children}</div>
     </TabsContext.Provider>
   );
@@ -48,11 +57,34 @@ export function TabsList({
   label: string;
   className?: string;
 }) {
+  const ctx = useContext(TabsContext);
+
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!ctx) return;
+    const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
+    if (!keys.includes(e.key)) return;
+    const triggers = Array.from(
+      e.currentTarget.querySelectorAll<HTMLButtonElement>("[role='tab']")
+    );
+    const idx = triggers.indexOf(document.activeElement as HTMLButtonElement);
+    if (idx === -1) return;
+    let next = idx;
+    if (e.key === "ArrowRight") next = (idx + 1) % triggers.length;
+    if (e.key === "ArrowLeft") next = (idx - 1 + triggers.length) % triggers.length;
+    if (e.key === "Home") next = 0;
+    if (e.key === "End") next = triggers.length - 1;
+    e.preventDefault();
+    const target = triggers[next]!;
+    target.focus();
+    ctx.setValue(target.dataset.value ?? "");
+  };
+
   return (
     <div
       role="tablist"
       aria-label={label}
       className={className}
+      onKeyDown={onKeyDown}
       style={{
         display: "flex",
         gap: 32,
@@ -77,6 +109,7 @@ export function TabsTrigger({
   const ctx = useContext(TabsContext);
   if (!ctx) throw new Error("TabsTrigger must be used within <Tabs>");
 
+  const reduce = useReducedMotion();
   const active = ctx.value === value;
 
   return (
@@ -84,6 +117,7 @@ export function TabsTrigger({
       role="tab"
       aria-selected={active}
       aria-controls={`mizu-tabs-panel-${value}`}
+      data-value={value}
       tabIndex={active ? 0 : -1}
       onClick={() => ctx.setValue(value)}
       className={className}
@@ -103,14 +137,20 @@ export function TabsTrigger({
       }}
     >
       {children}
-      {active && (
-        <motion.span
-          layoutId="mizu-tabs-underline"
-          aria-hidden
-          style={{ position: "absolute", bottom: -1, left: 0, right: 0, height: 1, background: "var(--mizu-accent)" }}
-          transition={{ duration: 0.35, ease: EASE_EXPO }}
-        />
-      )}
+      {active &&
+        (reduce ? (
+          <span
+            aria-hidden
+            style={{ position: "absolute", bottom: -1, left: 0, right: 0, height: 1, background: "var(--mizu-accent)" }}
+          />
+        ) : (
+          <motion.span
+            layoutId={ctx.layoutId}
+            aria-hidden
+            style={{ position: "absolute", bottom: -1, left: 0, right: 0, height: 1, background: "var(--mizu-accent)" }}
+            transition={{ duration: 0.35, ease: EASE_EXPO }}
+          />
+        ))}
     </button>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings";
 
 type AccordionContextValue = {
@@ -57,6 +57,7 @@ export function AccordionItem({
   const ctx = useContext(AccordionContext);
   if (!ctx) throw new Error("AccordionItem must be used within <Accordion>");
 
+  const reduce = useReducedMotion();
   const isOpen = ctx.open.has(value);
   const buttonId = `mizu-acc-${value}-btn`;
   const panelId = `mizu-acc-${value}-panel`;
@@ -84,7 +85,7 @@ export function AccordionItem({
           <motion.span
             aria-hidden
             animate={{ rotate: isOpen ? 0 : 45, scale: isOpen ? 1 : 0.72 }}
-            transition={{ duration: 0.35, ease: EASE_EXPO }}
+            transition={reduce ? { duration: 0 } : { duration: 0.35, ease: EASE_EXPO }}
             style={{
               width: 7,
               height: 7,
@@ -112,10 +113,10 @@ export function AccordionItem({
             id={panelId}
             role="region"
             aria-labelledby={buttonId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.45, ease: EASE_EXPO }}
+            initial={reduce ? { height: "auto" } : { height: 0, opacity: 0 }}
+            animate={reduce ? { height: "auto" } : { height: "auto", opacity: 1 }}
+            exit={reduce ? { height: "auto" } : { height: 0, opacity: 0 }}
+            transition={reduce ? { duration: 0 } : { duration: 0.45, ease: EASE_EXPO }}
             style={{ overflow: "hidden" }}
           >
             <div style={{ padding: "2px 4px 28px 27px", color: "var(--mizu-muted)", lineHeight: 1.7 }}>

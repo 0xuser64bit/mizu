@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings";
 import { Mark } from "../ui/Mark";
 
@@ -41,6 +41,7 @@ const TONE_MARK: Record<ToastTone, "paper" | "accent"> = {
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const idRef = useRef(0);
+  const reduce = useReducedMotion();
 
   const dismiss = useCallback((id: number) => {
     setToasts((ts) => ts.filter((t) => t.id !== id));
@@ -80,10 +81,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           {toasts.map((t) => (
             <motion.div
               key={t.id}
-              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 24, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 12, scale: 0.97 }}
-              transition={{ duration: 0.4, ease: EASE_EXPO }}
+              exit={reduce ? { opacity: 1 } : { opacity: 0, y: 12, scale: 0.97 }}
+              transition={reduce ? { duration: 0 } : { duration: 0.4, ease: EASE_EXPO }}
               style={{
                 display: "flex",
                 alignItems: "center",

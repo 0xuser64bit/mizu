@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "./easings";
 
 export function MaskLine({
@@ -17,16 +17,18 @@ export function MaskLine({
   className?: string;
   style?: React.CSSProperties;
 }) {
+  const reduce = useReducedMotion();
+
   return (
     <span
       className={`mizu-maskline ${className}`}
       style={{ ...style, display: "block", overflow: "hidden" }}
     >
       <motion.span
-        style={{ display: "block", willChange: "transform" }}
-        initial={{ y }}
+        style={{ display: "block", willChange: reduce ? "auto" : "transform" }}
+        initial={reduce ? { y: "0%" } : { y }}
         animate={{ y: "0%" }}
-        transition={{ duration: 1.15, delay, ease: EASE_EXPO }}
+        transition={reduce ? { duration: 0 } : { duration: 1.15, delay, ease: EASE_EXPO }}
       >
         {children}
       </motion.span>

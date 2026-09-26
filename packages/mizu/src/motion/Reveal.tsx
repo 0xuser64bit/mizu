@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "./easings";
 
 export function Reveal({
@@ -23,14 +23,16 @@ export function Reveal({
   className?: string;
   style?: React.CSSProperties;
 }) {
+  const reduce = useReducedMotion();
+
   return (
     <motion.div
       className={className}
       style={style}
-      initial={{ opacity: 0, y, x }}
-      whileInView={{ opacity: 1, y: 0, x: 0 }}
+      initial={reduce ? { opacity: 1 } : { opacity: 0, y, x }}
+      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, x: 0 }}
       viewport={{ once, margin: "-70px" }}
-      transition={{ duration, delay, ease: EASE_EXPO }}
+      transition={reduce ? { duration: 0 } : { duration, delay, ease: EASE_EXPO }}
     >
       {children}
     </motion.div>

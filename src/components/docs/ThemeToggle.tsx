@@ -1,16 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem("mizu-theme");
-    const next = saved === "light" || saved === "dark" ? saved : "dark";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-  }, []);
+  const [theme, setTheme] = useState<"dark" | "light">(() =>
+    typeof document !== "undefined" && document.documentElement.dataset.theme === "light" ? "light" : "dark"
+  );
 
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
@@ -45,6 +40,7 @@ export function ThemeToggle() {
     >
       <span
         aria-hidden
+        suppressHydrationWarning
         style={{
           width: 8,
           height: 8,
@@ -53,7 +49,7 @@ export function ThemeToggle() {
           transition: "background 250ms ease",
         }}
       />
-      {theme === "dark" ? "Dark" : "Light"}
+      <span suppressHydrationWarning>{theme === "dark" ? "Dark" : "Light"}</span>
     </button>
   );
 }

@@ -12,8 +12,5 @@ export default defineConfig({
     environment: "happy-dom",
     setupFiles: [path.resolve(__dirname, "src/test/setup.ts")],
     include: ["src/test/**/*.test.{ts,tsx}"],
-    // motion cancels in-flight rAF animations when components unmount
-    // mid-test; those AbortErrors are test-env artifacts, not real failures
-    dangerouslyIgnoreUnhandledErrors: true,
   },
 });
