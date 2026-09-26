@@ -18,7 +18,7 @@ export function Spectrum() {
     try {
       await navigator.clipboard.writeText(hex);
     } catch {
-      // clipboard unavailable — still show feedback
+      return;
     }
     setCopied(hex);
     window.setTimeout(() => setCopied((c) => (c === hex ? null : c)), 1400);

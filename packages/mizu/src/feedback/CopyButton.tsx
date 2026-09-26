@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useState, type ButtonHTMLAttributes } from "react";
+import { forwardRef, useEffect, useRef, useState, type ButtonHTMLAttributes } from "react";
 import { Mark } from "../ui/Mark";
 
 async function copyText(text: string): Promise<boolean> {
@@ -29,11 +29,15 @@ export const CopyButton = forwardRef<
   ButtonHTMLAttributes<HTMLButtonElement> & { text: string; feedback?: string }
 >(function CopyButton({ text, feedback = "Copied", className = "", children, ...props }, ref) {
   const [copied, setCopied] = useState(false);
+  const timer = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => window.clearTimeout(timer.current), []);
 
   const onCopy = async () => {
     const ok = await copyText(text);
+    window.clearTimeout(timer.current);
     setCopied(ok);
-    if (ok) window.setTimeout(() => setCopied((c) => (c ? false : c)), 1400);
+    if (ok) timer.current = window.setTimeout(() => setCopied(false), 1400);
   };
 
   return (

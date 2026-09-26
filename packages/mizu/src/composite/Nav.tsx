@@ -26,6 +26,7 @@ export function Nav({
   const [chapter, setChapter] = useState("");
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!trackChapters) return;
@@ -115,6 +116,7 @@ export function Nav({
                   <a
                     key={l.href}
                     href={l.href}
+                    aria-current={active ? "page" : undefined}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -148,6 +150,7 @@ export function Nav({
             </nav>
 
             <button
+              ref={burgerRef}
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
@@ -189,7 +192,7 @@ export function Nav({
         </div>
       </header>
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={() => burgerRef.current?.focus()}>
         {open && (
           <motion.div
             className="mizu-nav-overlay"
