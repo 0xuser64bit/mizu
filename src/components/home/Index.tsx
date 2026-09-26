@@ -2,10 +2,8 @@
 
 import { useState, type ComponentType } from "react";
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
-import { SectionTag } from "@/components/ui/SectionTag";
-import { Reveal } from "@/components/ui/Reveal";
+import { SectionTag, Reveal, EASE_EXPO } from "@/mizu";
 import { Bloom, SignalDrift, SoftType, TransitionStudy } from "./previews";
-import { EASE_EXPO } from "@/lib/motion";
 
 type Piece = {
   id: string;

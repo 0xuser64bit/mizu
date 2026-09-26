@@ -1,16 +1,21 @@
-import { SectionTag } from "@/components/ui/SectionTag";
-import { Reveal } from "@/components/ui/Reveal";
-import { Magnetic } from "@/components/ui/Magnetic";
-import { ButtonLink } from "@/components/ui/Button";
+import { SectionTag, Reveal, Magnetic, ButtonLink, Signal, Specimen, Pinfield, Nav } from "@/mizu";
 import { Station } from "@/components/lab/Station";
-import { Signal } from "@/components/lab/Signal";
-import { Specimen } from "@/components/lab/Specimen";
 import { Spectrum } from "@/components/lab/Spectrum";
-import { Pinfield } from "@/components/lab/Pinfield";
+import { Wordmark } from "@/components/ui/Wordmark";
 
 export default function LabPage() {
   return (
-    <main id="main" className="pt-16">
+    <>
+      <Nav
+        brand={<Wordmark />}
+        links={[
+          { href: "/", label: "Home" },
+          { href: "/components", label: "Components" },
+          { href: "/lab", label: "Lab" },
+          { href: "/studio", label: "Standpoint" },
+        ]}
+      />
+      <main id="main" className="pt-16">
       <header data-chapter="Lab" className="px-5 py-20 md:px-10 md:py-28">
         <SectionTag>The lab</SectionTag>
         <Reveal delay={0.1}>
@@ -58,6 +63,7 @@ export default function LabPage() {
           </Magnetic>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

@@ -1,5 +1,4 @@
-import { SectionTag } from "@/components/ui/SectionTag";
-import { Reveal } from "@/components/ui/Reveal";
+import { SectionTag, Reveal } from "@/mizu";
 
 const PRINCIPLES = [
   {

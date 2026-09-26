@@ -78,6 +78,7 @@ export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>
   variant?: ButtonVariant;
   size?: ButtonSize;
   arrow?: boolean;
+  label?: string;
   children: ReactNode;
 }
 
@@ -85,12 +86,14 @@ export function ButtonLink({
   variant = "solid",
   size = "md",
   arrow = true,
+  label,
   className = "",
   children,
   ...props
 }: ButtonLinkProps) {
   return (
     <a
+      aria-label={label}
       className={`mizu-btn mizu-btn--${variant} ${className}`}
       style={{
         display: "inline-flex",

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { NavigatorLink } from "@/components/shell/Navigator";
+import { GhostWord } from "@/mizu";
 
 export function Footer() {
   const [time, setTime] = useState("");
@@ -23,12 +24,11 @@ export function Footer() {
   return (
     <footer data-chapter="Colophon" className="relative overflow-hidden border-t border-line px-5 pb-10 pt-20 md:px-10 md:pt-28">
       <h2 className="sr-only">Mizu — Interface Archive</h2>
-      <p
-        aria-hidden
-        className="text-outline select-none text-center font-display text-[clamp(4rem,17.5vw,15rem)] font-black font-wide leading-none tracking-[-0.02em]"
+      <div
+        className="select-none text-center font-display text-[clamp(4rem,17.5vw,15rem)] font-black font-wide leading-none tracking-[-0.02em]"
       >
-        MIZU.
-      </p>
+        <GhostWord text="MIZU." />
+      </div>
 
       <div className="mt-16 grid gap-12 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-5">

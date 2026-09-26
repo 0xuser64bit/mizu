@@ -3,10 +3,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { HeroField } from "./HeroField";
-import { MaskLine } from "@/components/ui/MaskLine";
-import { Reveal } from "@/components/ui/Reveal";
-import { Magnetic } from "@/components/ui/Magnetic";
-import { ButtonLink } from "@/components/ui/Button";
+import { MaskLine, Reveal, Magnetic, ButtonLink } from "@/mizu";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);

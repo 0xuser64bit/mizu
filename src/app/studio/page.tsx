@@ -1,7 +1,5 @@
-import { SectionTag } from "@/components/ui/SectionTag";
-import { Reveal } from "@/components/ui/Reveal";
-import { Magnetic } from "@/components/ui/Magnetic";
-import { ButtonLink } from "@/components/ui/Button";
+import { SectionTag, Reveal, Magnetic, ButtonLink, Nav } from "@/mizu";
+import { Wordmark } from "@/components/ui/Wordmark";
 
 const ARTICLES = [
   {
@@ -42,7 +40,17 @@ const NOTS = [
 
 export default function StudioPage() {
   return (
-    <main id="main" className="pt-16">
+    <>
+      <Nav
+        brand={<Wordmark />}
+        links={[
+          { href: "/", label: "Home" },
+          { href: "/components", label: "Components" },
+          { href: "/lab", label: "Lab" },
+          { href: "/studio", label: "Standpoint" },
+        ]}
+      />
+      <main id="main" className="pt-16">
       <header data-chapter="Standpoint" className="px-5 py-20 md:px-10 md:py-28">
         <SectionTag>The standpoint</SectionTag>
         <Reveal delay={0.1}>
@@ -163,6 +171,7 @@ export default function StudioPage() {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

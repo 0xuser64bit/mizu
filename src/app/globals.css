@@ -1,35 +1,23 @@
 @import "tailwindcss";
+@import "../../packages/mizu/styles.css";
 
 @theme {
-  --color-ink: #0f0e0c;
-  --color-ink-2: #16130f;
-  --color-ink-3: #201b15;
-  --color-paper: #f4f0e8;
-  --color-muted: #a8a193;
-  --color-faint: #6f695e;
-  --color-accent: #ff4d1c;
-  --color-accent-fill: #d23e0e;
-  --color-line: #29241d;
-  --color-line-bright: rgba(244, 240, 232, 0.22);
+  --color-ink: var(--mizu-ink);
+  --color-ink-2: var(--mizu-ink-2);
+  --color-ink-3: var(--mizu-ink-3);
+  --color-paper: var(--mizu-paper);
+  --color-muted: var(--mizu-muted);
+  --color-faint: var(--mizu-faint);
+  --color-accent: var(--mizu-accent);
+  --color-accent-fill: var(--mizu-accent-fill);
+  --color-line: var(--mizu-line);
+  --color-line-bright: var(--mizu-line-bright);
 
-  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-display: var(--mizu-font-display);
+  --font-serif: var(--mizu-font-serif);
+  --font-mono: var(--mizu-font-mono);
 
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
-
-  --animate-marquee: marquee 42s linear infinite;
   --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
 
   @keyframes pulse-soft {
     0%,
@@ -50,16 +38,6 @@
   font-stretch: 88%;
 }
 
-@utility text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(244, 240, 232, 0.28);
-}
-
-@utility text-outline-accent {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--color-accent);
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -71,46 +49,5 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-paper);
-  font-family: var(--font-display);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   overflow-x: hidden;
-}
-
-::selection {
-  background: var(--color-accent);
-  color: var(--color-ink);
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-ink);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-ink-3);
-  border: 3px solid var(--color-ink);
-  border-radius: 8px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-faint);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }

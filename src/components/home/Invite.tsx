@@ -1,10 +1,6 @@
 "use client";
 
-import { RippleSurface } from "./RippleSurface";
-import { SectionTag } from "@/components/ui/SectionTag";
-import { Reveal } from "@/components/ui/Reveal";
-import { Magnetic } from "@/components/ui/Magnetic";
-import { ButtonLink } from "@/components/ui/Button";
+import { RippleSurface, SectionTag, Reveal, Magnetic, ButtonLink } from "@/mizu";
 
 export function Invite() {
   return (

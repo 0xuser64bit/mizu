@@ -1,6 +1,6 @@
 "use client";
 
-import { useCanvasLoop } from "@/lib/useCanvas";
+import { useCanvasLoop } from "@/mizu";
 
 export function SignalDrift() {
   const ref = useCanvasLoop((ctx, w, h, t) => {
