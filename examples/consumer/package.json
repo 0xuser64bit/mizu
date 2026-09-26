@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@mizu/ui": "file:../../packages/mizu/mizu-ui-0.1.0.tgz",
+    "@mizu/ui": "file:../../packages/mizu",
     "motion": "^13.4.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

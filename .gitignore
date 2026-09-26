@@ -42,3 +42,4 @@ next-env.d.ts
 
 # package build output
 packages/*/dist
+packages/*.tgz

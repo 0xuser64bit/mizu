@@ -5,7 +5,7 @@
     "": {
       "name": "mizu-consumer",
       "dependencies": {
-        "@mizu/ui": "file:../../packages/mizu/mizu-ui-0.1.0.tgz",
+        "@mizu/ui": "file:../../packages/mizu",
         "motion": "^13.4.4",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
@@ -126,7 +126,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@mizu/ui": ["@mizu/ui@../../packages/mizu/mizu-ui-0.1.0.tgz", { "dependencies": { "@fontsource-variable/archivo": "^5.x", "@fontsource/instrument-serif": "^5.x", "@fontsource/jetbrains-mono": "^5.x" }, "peerDependencies": { "motion": ">=11", "react": ">=18", "react-dom": ">=18" } }, "sha512-Mz7GDJY5j0aqm9EDl/5r7C7JxJ4iIKLeqZmWuCo5KcEDWuYKnHiYeGHv1T7Wn9V24BYdaqC8LxX/AQJqg84Rhw=="],
+    "@mizu/ui": ["@mizu/ui@file:../../packages/mizu", { "dependencies": { "@fontsource-variable/archivo": "^5.x", "@fontsource/instrument-serif": "^5.x", "@fontsource/jetbrains-mono": "^5.x" }, "devDependencies": { "typescript": "^5" }, "peerDependencies": { "motion": ">=11", "react": ">=18", "react-dom": ">=18" } }],
 
     "@napi-rs/lzma-linux-x64-gnu": ["@napi-rs/lzma-linux-x64-gnu@1.5.1", "", { "os": "linux", "cpu": "x64" }, "sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ=="],
 
