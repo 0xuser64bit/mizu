@@ -332,7 +332,7 @@ export function Field() {
       { name: "speed", type: "number", def: "3.4", desc: "Wavefront propagation speed." },
       { name: "autoPulse", type: "boolean", def: "true", desc: "Send an ambient pulse every 3s." },
     ],
-    a11y: "Canvas carries role=img with instructions. The canvas is focusable for future keyboard control.",
+    a11y: "Canvas carries role=img with instructions. Pointer-driven only — no dead tab stop.",
     motion: "60fps canvas with DPR scaling, IntersectionObserver pausing, and a static frame under reduced motion.",
   },
   {

@@ -8,6 +8,7 @@ import {
   Frame,
   Mark,
   Pinfield,
+  Rule,
   SectionTag,
   Slider,
   Spinner,
@@ -70,19 +71,9 @@ export function PrimitivesDemo() {
       <Cell label="Rule">
         <div className="w-full">
           <div className="mb-4">
-            <hr className="h-px border-0 bg-line" />
+            <Rule tone="line" node={false} />
           </div>
-          <div className="flex w-full items-center gap-3">
-            <span className="h-px flex-1 bg-line-bright" />
-            <Mark size={5} tone="accent" />
-            <span
-              className="font-mono text-[10px] uppercase tracking-[0.28em] text-faint"
-              style={{ whiteSpace: "nowrap" }}
-            >
-              Interlude
-            </span>
-            <span className="h-px flex-1 bg-line-bright" />
-          </div>
+          <Rule label="Interlude" />
         </div>
       </Cell>
       <Cell label="Badge">

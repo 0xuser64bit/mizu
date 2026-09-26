@@ -34,7 +34,7 @@ export function Slider({
         fontSize: 10,
         letterSpacing: "0.2em",
         textTransform: "uppercase",
-        color: disabled ? "var(--mizu-faint)" : "var(--mizu-faint)",
+        color: "var(--mizu-faint)",
         opacity: disabled ? 0.45 : 1,
         cursor: disabled ? "not-allowed" : "pointer",
       }}

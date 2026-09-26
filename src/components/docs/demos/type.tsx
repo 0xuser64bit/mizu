@@ -13,10 +13,7 @@ export function SoftTypeDemo() {
   const [text, setText] = useState("Aa");
   return (
     <div>
-      <div
-        className="mb-6 border border-line bg-ink-2"
-        style={{ height: 220 }}
-      >
+      <div className="mb-6 border border-line bg-ink-2" style={{ height: 220 }}>
         <SoftType text={text || "Aa"} mode={mode} className="h-full w-full" />
       </div>
       <div className="flex flex-wrap items-center gap-4">

@@ -114,6 +114,6 @@ export default function ComponentsIndex() {
           })}
         </div>
       </div>
-    </ComponentsShell>
+        </ComponentsShell>
   );
 }

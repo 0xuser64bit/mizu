@@ -125,7 +125,6 @@ export function Pinfield({
       style={style}
       role="img"
       aria-label={label}
-      tabIndex={0}
     />
   );
 }

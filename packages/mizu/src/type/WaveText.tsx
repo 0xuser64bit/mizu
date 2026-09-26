@@ -70,7 +70,6 @@ export function WaveText({
     <Tag
       className={className}
       aria-label={text}
-      role="text"
       style={{ display: "inline-flex", flexWrap: "wrap", ...style }}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
