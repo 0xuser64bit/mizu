@@ -1,18 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">(() => {
-    if (typeof window !== "undefined") {
-      const saved = window.localStorage.getItem("mizu-theme");
-      if (saved === "light" || saved === "dark") {
-        document.documentElement.dataset.theme = saved;
-        return saved;
-      }
-    }
-    return "dark";
-  });
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("mizu-theme");
+    const next = saved === "light" || saved === "dark" ? saved : "dark";
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+  }, []);
 
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";

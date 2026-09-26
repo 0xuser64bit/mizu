@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { MotionConfig } from "motion/react";
+import Script from "next/script";
 import "./globals.css";
 import { NavigatorProvider } from "@/components/shell/Navigator";
 import { Cursor } from "@/components/shell/Cursor";
 import { Noise } from "@/components/shell/Noise";
 import { PageWipeProvider } from "@/mizu";
+
+const themeBootstrap = `try{var t=localStorage.getItem("mizu-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export const metadata: Metadata = {
   title: "Mizu — An Archive of Interface Craft",
@@ -26,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="mizu-root flex min-h-full flex-col">
+        <Script id="mizu-theme" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-ink"
