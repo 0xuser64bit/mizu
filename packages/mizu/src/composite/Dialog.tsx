@@ -28,6 +28,11 @@ export function Dialog({
   const reduce = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreRef = useRef<HTMLElement | null>(null);
+  const onOpenChangeRef = useRef(onOpenChange);
+
+  useEffect(() => {
+    onOpenChangeRef.current = onOpenChange;
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -44,7 +49,7 @@ export function Dialog({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.stopPropagation();
-        onOpenChange(false);
+        onOpenChangeRef.current(false);
         return;
       }
       if (e.key !== "Tab" || !panel) return;
@@ -72,7 +77,7 @@ export function Dialog({
       document.removeEventListener("keydown", onKey, true);
       restoreRef.current?.focus();
     };
-  }, [open, onOpenChange]);
+  }, [open]);
 
   if (typeof document === "undefined") return null;
 
@@ -89,7 +94,7 @@ export function Dialog({
             animate={{ opacity: 1 }}
             exit={{ opacity: 1 }}
             transition={{ duration: 0 }}
-            onClick={() => onOpenChange(false)}
+            onClick={() => onOpenChangeRef.current(false)}
             style={{
               position: "absolute",
               inset: 0,

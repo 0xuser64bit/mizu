@@ -117,6 +117,40 @@ describe("Tabs", () => {
     expect(onChange).toHaveBeenCalledWith("b");
     expect(screen.getByText("Panel A")).toBeTruthy();
   });
+
+  it("moves between triggers with arrow keys", async () => {
+    const user = userEvent.setup();
+    render(
+      <Tabs defaultValue="a">
+        <TabsList label="Settings">
+          <TabsTrigger value="a">General</TabsTrigger>
+          <TabsTrigger value="b">Advanced</TabsTrigger>
+          <TabsTrigger value="c">Extras</TabsTrigger>
+        </TabsList>
+        <TabsPanel value="a">Panel A</TabsPanel>
+        <TabsPanel value="b">Panel B</TabsPanel>
+        <TabsPanel value="c">Panel C</TabsPanel>
+      </Tabs>
+    );
+    const general = screen.getByRole("tab", { name: /general/i });
+    const advanced = screen.getByRole("tab", { name: /advanced/i });
+    const extras = screen.getByRole("tab", { name: /extras/i });
+
+    general.focus();
+    await user.keyboard("{ArrowRight}");
+    expect(advanced).toHaveFocus();
+    expect(screen.getByText("Panel B")).toBeTruthy();
+
+    await user.keyboard("{ArrowLeft}");
+    expect(general).toHaveFocus();
+    expect(screen.getByText("Panel A")).toBeTruthy();
+
+    await user.keyboard("{End}");
+    expect(extras).toHaveFocus();
+
+    await user.keyboard("{Home}");
+    expect(general).toHaveFocus();
+  });
 });
 
 describe("Dialog", () => {
@@ -143,6 +177,21 @@ describe("Dialog", () => {
     );
     await user.keyboard("{Escape}");
     expect(onOpenChange).toHaveBeenCalledWith(false);
+  });
+
+  it("reclaims focus to the panel when focus lands outside", async () => {
+    const user = userEvent.setup();
+    render(
+      <Dialog open={true} onOpenChange={() => {}} label="Test dialog">
+        <DialogTitle>Title</DialogTitle>
+        <button>Inside</button>
+      </Dialog>
+    );
+    act(() => {
+      document.body.focus();
+    });
+    await user.keyboard("{Tab}");
+    expect(document.activeElement?.textContent).toBe("Inside");
   });
 });
 

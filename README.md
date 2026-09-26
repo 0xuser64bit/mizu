@@ -32,7 +32,7 @@ bun install
 bun run dev        # http://localhost:3000
 bun run build      # production build
 bun run build:ui   # compile packages/mizu to dist
-bun test           # component behavior tests (vitest)
+bun run test       # component behavior tests (vitest)
 bun run lint
 ```
 

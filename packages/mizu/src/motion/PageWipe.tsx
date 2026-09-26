@@ -35,7 +35,7 @@ export function PageWipeProvider({ children }: { children: ReactNode }) {
   const wipe = useCallback(
     (label = "") => {
       if (reduce) return Promise.resolve();
-      if (busy.current) return new Promise<void>(() => {});
+      if (busy.current) return Promise.resolve();
       busy.current = true;
       return new Promise<void>((resolve) => {
         resolver.current = () => {
