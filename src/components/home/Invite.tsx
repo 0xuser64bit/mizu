@@ -1,8 +1,11 @@
 "use client";
 
 import { RippleSurface, SectionTag, Reveal, Magnetic, ButtonLink } from "@/mizu";
+import { useNavigator } from "@/components/shell/Navigator";
 
 export function Invite() {
+  const { navigate } = useNavigator();
+
   return (
     <section id="lab" data-chapter="Lab" className="relative flex min-h-[92svh] items-center justify-center overflow-hidden">
       <div data-cursor="Play" className="absolute inset-0">
@@ -26,7 +29,14 @@ export function Invite() {
         <Reveal delay={0.36}>
           <div className="mt-10 flex justify-center">
             <Magnetic>
-              <ButtonLink href="/lab" label="The lab">
+              <ButtonLink
+                href="/lab"
+                label="The lab"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/lab", "The lab");
+                }}
+              >
                 Enter the lab
               </ButtonLink>
             </Magnetic>

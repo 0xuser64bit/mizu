@@ -31,7 +31,7 @@ export function NavigatorProvider({ children }: { children: ReactNode }) {
       void wipe(label).then(() => {
         router.push(href);
         window.scrollTo({ top: 0, behavior: "instant" });
-        document.title = TITLES[href] ?? TITLES["/"];
+        if (TITLES[href]) document.title = TITLES[href];
         window.setTimeout(() => {
           busy.current = false;
         }, 600);

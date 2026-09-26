@@ -4,10 +4,12 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { HeroField } from "./HeroField";
 import { MaskLine, Reveal, Magnetic, ButtonLink } from "@/mizu";
+import { useNavigator } from "@/components/shell/Navigator";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const { navigate } = useNavigator();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, -160]);
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
@@ -54,12 +56,27 @@ export function Hero() {
               </p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <Magnetic>
-                  <ButtonLink href="/lab" label="The lab">
+                  <ButtonLink
+                    href="/lab"
+                    label="The lab"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate("/lab", "The lab");
+                    }}
+                  >
                     Enter the lab
                   </ButtonLink>
                 </Magnetic>
                 <Magnetic>
-                  <ButtonLink href="/studio" label="The standpoint" variant="ghost">
+                  <ButtonLink
+                    href="/studio"
+                    label="The standpoint"
+                    variant="ghost"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate("/studio", "The standpoint");
+                    }}
+                  >
                     The standpoint
                   </ButtonLink>
                 </Magnetic>
