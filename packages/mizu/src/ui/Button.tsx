@@ -6,9 +6,9 @@ import { Spinner } from "./Spinner";
 export type ButtonVariant = "solid" | "ghost" | "inverse";
 export type ButtonSize = "md" | "sm";
 
-const SIZES: Record<ButtonSize, string> = {
-  md: "padding: 26px 28px; font-size: 11px;",
-  sm: "padding: 12px 18px; font-size: 10px;",
+const SIZES: Record<ButtonSize, React.CSSProperties> = {
+  md: { padding: "26px 28px", fontSize: 11 },
+  sm: { padding: "12px 18px", fontSize: 10 },
 };
 
 const VARIANTS: Record<ButtonVariant, React.CSSProperties> = {
