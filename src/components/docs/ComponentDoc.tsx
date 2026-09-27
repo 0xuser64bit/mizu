@@ -1,6 +1,6 @@
 import Link from "next/link";
 import usage from "./usage.json";
-import { CopyButton } from "@/mizu";
+import { CopyButton, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
@@ -138,10 +138,18 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
   const idx = COMPONENTS.findIndex((c) => c.slug === meta.slug);
   const prev = idx > 0 ? COMPONENTS[idx - 1] : undefined;
   const next = idx < COMPONENTS.length - 1 ? COMPONENTS[idx + 1] : undefined;
+  const signature = meta.category === "Signature";
+  const number =
+    COMPONENTS.filter((c) => c.category === "Signature").indexOf(meta) + 1;
 
   return (
     <div className="px-5 py-16 md:px-10 md:py-24">
-      <div className="mx-auto max-w-4xl">
+      <div className={`mx-auto ${signature ? "max-w-6xl" : "max-w-4xl"}`}>
+        {signature && (
+          <p className="mizu-signature-number">
+            SIG—{String(number).padStart(2, "0")} <span>Signature system</span>
+          </p>
+        )}
         <h1 className="font-display text-[clamp(2rem,6vw,4rem)] font-black font-wide tracking-tight [overflow-wrap:anywhere]">
           {meta.name}
         </h1>
@@ -161,7 +169,41 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
           <div className="mt-4">
             <CodeBlock code={usage[meta.slug as keyof typeof usage]} />
           </div>
+          {signature && (
+            <div className="mt-4">
+              <DemoLabel>
+                This code, running — no configuration beyond the data
+              </DemoLabel>
+              <div className="mt-3">
+                <PreviewStage slug={meta.slug} usage />
+              </div>
+            </div>
+          )}
         </section>
+
+        {meta.keys && (
+          <section className="mt-14">
+            <DemoLabel as="h2">Keyboard</DemoLabel>
+            <dl className="mizu-keymap mt-4">
+              {meta.keys.map((k) => (
+                <div key={k.keys + k.action}>
+                  <dt>
+                    {k.keys
+                      .split(" ")
+                      .map((key, i) =>
+                        key === "·" || key === "+" ? (
+                          <span key={i}>{key}</span>
+                        ) : (
+                          <Kbd key={i}>{key}</Kbd>
+                        ),
+                      )}
+                  </dt>
+                  <dd>{k.action}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
 
         <section className="mt-14">
           <DemoLabel as="h2">Source & setup</DemoLabel>

@@ -1,6 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
 export const GENERATED_DEMOS = {
+  chronicle: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.ChronicleDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

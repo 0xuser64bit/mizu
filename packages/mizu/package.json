@@ -85,6 +85,10 @@
     "./motion": {
       "types": "./dist/motion/index.d.ts",
       "import": "./dist/motion/index.js"
+    },
+    "./signature": {
+      "types": "./dist/signature/index.d.ts",
+      "import": "./dist/signature/index.js"
     }
   },
   "scripts": {

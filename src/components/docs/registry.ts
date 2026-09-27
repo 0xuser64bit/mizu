@@ -11,6 +11,7 @@ export type ComponentMeta = {
   slug: string;
   name: string;
   category:
+    | "Signature"
     | "Foundation"
     | "Motion"
     | "Type"
@@ -27,6 +28,8 @@ export type ComponentMeta = {
   tagline: string;
   source: string;
   kind?: "overview";
+  /** Keyboard map for systems with more than native control behavior. */
+  keys?: { keys: string; action: string }[];
   usage: string;
   props: PropDoc[];
   a11y: string;
@@ -34,6 +37,7 @@ export type ComponentMeta = {
 };
 
 export const CATEGORIES: ComponentMeta["category"][] = [
+  "Signature",
   "Foundation",
   "Motion",
   "Type",
@@ -865,7 +869,13 @@ export function Shell() {
   },
 ];
 
-export const COMPONENTS: ComponentMeta[] = [...ORIGINAL_COMPONENTS, ...CATALOG];
+// Family order drives navigation, previous / next links and the inventory.
+export const COMPONENTS: ComponentMeta[] = [
+  ...ORIGINAL_COMPONENTS,
+  ...CATALOG,
+].sort(
+  (a, b) => CATEGORIES.indexOf(a.category) - CATEGORIES.indexOf(b.category),
+);
 export const SYSTEMS = COMPONENTS.filter((c) => c.kind !== "overview");
 
 export function getComponent(slug: string): ComponentMeta | undefined {

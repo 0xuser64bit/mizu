@@ -7,7 +7,9 @@ import { CONTENT } from "./content";
 import { LAYOUT } from "./layout";
 import { INTERACTION } from "./interaction";
 import { MOTION } from "./motion";
+import { SIGNATURE } from "./signature";
 export const CATALOG = [
+  ...SIGNATURE,
   ...FOUNDATION,
   ...FORMS,
   ...STATUS,

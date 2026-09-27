@@ -3,7 +3,8 @@
 import dynamic from "next/dynamic";
 import { GENERATED_DEMOS } from "./GeneratedDemos";
 
-const ORIGINAL_DEMOS = {
+// Hand-built showcases take precedence; the compiled usage demo remains available beside them.
+const SHOWCASES = {
   button: dynamic(() => import("./demos/foundation").then((m) => m.ButtonDemo)),
   primitives: dynamic(() =>
     import("./demos/foundation").then((m) => m.PrimitivesDemo),
@@ -31,9 +32,19 @@ const ORIGINAL_DEMOS = {
   tabs: dynamic(() => import("./demos/composite").then((m) => m.TabsDemo)),
   dialog: dynamic(() => import("./demos/composite").then((m) => m.DialogDemo)),
   nav: dynamic(() => import("./demos/composite").then((m) => m.NavDemo)),
+  chronicle: dynamic(() =>
+    import("./demos/signature/chronicle").then((m) => m.ChronicleShowcase),
+  ),
 };
-export function DemoSlot({ slug }: { slug: string }) {
-  const demos = { ...ORIGINAL_DEMOS, ...GENERATED_DEMOS };
-  const Demo = demos[slug as keyof typeof demos];
+export function DemoSlot({
+  slug,
+  usage = false,
+}: {
+  slug: string;
+  usage?: boolean;
+}) {
+  const Demo =
+    (!usage && SHOWCASES[slug as keyof typeof SHOWCASES]) ||
+    GENERATED_DEMOS[slug as keyof typeof GENERATED_DEMOS];
   return Demo ? <Demo /> : null;
 }

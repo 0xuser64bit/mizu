@@ -3,7 +3,13 @@
 import { useState } from "react";
 import { MotionPreferences } from "@/mizu";
 import { DemoSlot } from "./DemoSlot";
-export function PreviewStage({ slug }: { slug: string }) {
+export function PreviewStage({
+  slug,
+  usage = false,
+}: {
+  slug: string;
+  usage?: boolean;
+}) {
   const [reduced, setReduced] = useState(false);
   const [narrow, setNarrow] = useState(false),
     [theme, setTheme] = useState<"inherit" | "light" | "dark">("inherit"),
@@ -47,7 +53,7 @@ export function PreviewStage({ slug }: { slug: string }) {
         style={{ maxWidth: narrow ? 320 : undefined }}
       >
         <MotionPreferences reduced={reduced ? true : undefined}>
-          <DemoSlot key={replay} slug={slug} />
+          <DemoSlot key={replay} slug={slug} usage={usage} />
         </MotionPreferences>
       </div>
     </div>

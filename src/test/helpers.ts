@@ -58,3 +58,41 @@ export function installClipboardMock() {
     value: { writeText: vi.fn().mockResolvedValue(undefined) },
   });
 }
+
+/** Gives every element a measured box and a ResizeObserver that reports it. */
+export function mockLayout(width = 800, height = 400) {
+  const rect = vi
+    .spyOn(Element.prototype, "getBoundingClientRect")
+    .mockImplementation(
+      () =>
+        ({
+          x: 0,
+          y: 0,
+          left: 0,
+          top: 0,
+          width,
+          height,
+          right: width,
+          bottom: height,
+          toJSON: () => ({}),
+        }) as DOMRect,
+    );
+  const original = globalThis.ResizeObserver;
+  globalThis.ResizeObserver = class {
+    constructor(private callback: ResizeObserverCallback) {}
+    observe(target: Element) {
+      queueMicrotask(() =>
+        this.callback(
+          [{ target } as ResizeObserverEntry],
+          this as unknown as ResizeObserver,
+        ),
+      );
+    }
+    unobserve() {}
+    disconnect() {}
+  } as unknown as typeof ResizeObserver;
+  return () => {
+    rect.mockRestore();
+    globalThis.ResizeObserver = original;
+  };
+}

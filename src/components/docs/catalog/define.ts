@@ -29,3 +29,31 @@ export const prop = (
   desc: string,
   def?: string,
 ): PropDoc => ({ name, type, desc, def });
+
+/** Signature systems: object form, a keyboard map and the same compiled usage. */
+export function signature(entry: {
+  name: string;
+  source: string;
+  tagline: string;
+  example: string;
+  props: PropDoc[];
+  a11y: string;
+  motion: string;
+  keys?: ComponentMeta["keys"];
+  imports?: string;
+}): ComponentMeta {
+  return {
+    ...define(
+      entry.name,
+      "Signature",
+      `signature/${entry.source}`,
+      entry.tagline,
+      entry.example,
+      entry.props,
+      entry.a11y,
+      entry.motion,
+      entry.imports,
+    ),
+    keys: entry.keys,
+  };
+}

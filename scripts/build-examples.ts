@@ -51,7 +51,7 @@ for (const [family, entries] of families) {
   });
   await typescript(
     `src/components/docs/demos/generated/${family.toLowerCase()}.tsx`,
-    `"use client";\n// Generated from catalog usage by bun run examples:sync.\nimport { useState } from "react";\nimport { ${[...imports].join(", ")} } from "@/mizu";\n\n${bodies.join("\n\n")}\n`,
+    `"use client";\n// Generated from catalog usage by bun run examples:sync.\n${bodies.some((b) => b.includes("useState")) ? 'import { useState } from "react";\n' : ""}import { ${[...imports].join(", ")} } from "@/mizu";\n\n${bodies.join("\n\n")}\n`,
   );
 }
 await typescript(
