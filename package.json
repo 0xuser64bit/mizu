@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "build:ui": "tsc -p packages/mizu/tsconfig.build.json",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "bun run typecheck && bun run lint && bun run test && bun run build:ui",
+    "test:consumer": "node scripts/check-consumer.mjs"
   },
   "dependencies": {
     "motion": "^13.4.4",

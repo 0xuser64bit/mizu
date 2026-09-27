@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useEffect, useRef, useState, type ButtonHTMLAttributes } from "react";
-import { Mark } from "../ui/Mark";
+import { Mark } from "../ui/Mark.js";
 
 async function copyText(text: string): Promise<boolean> {
   try {

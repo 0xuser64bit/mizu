@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { EASE_WIPE } from "./easings";
+import { EASE_WIPE } from "./easings.js";
 
 const WIPE_MS = 1050;
 const MIDPOINT_MS = 500;

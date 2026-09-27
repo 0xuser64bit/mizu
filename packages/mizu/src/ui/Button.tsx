@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type ReactNode } from "react";
-import { Spinner } from "./Spinner";
+import { Spinner } from "./Spinner.js";
 
 export type ButtonVariant = "solid" | "ghost" | "inverse";
 export type ButtonSize = "md" | "sm";

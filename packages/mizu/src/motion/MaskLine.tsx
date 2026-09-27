@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { EASE_EXPO } from "./easings";
+import { EASE_EXPO } from "./easings.js";
 
 export function MaskLine({
   children,

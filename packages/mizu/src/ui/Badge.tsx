@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Mark } from "./Mark";
+import { Mark } from "./Mark.js";
 
 export type BadgeTone = "paper" | "muted" | "accent" | "line";
 

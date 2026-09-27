@@ -1,4 +1,4 @@
-import { Mark } from "./Mark";
+import { Mark } from "./Mark.js";
 
 export function Rule({
   label,

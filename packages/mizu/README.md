@@ -1,6 +1,6 @@
 # mizu-ui
 
-The first generation of the Mizu interface language — surfaces, motion and systems for React.
+The Mizu interface language — surfaces, motion and systems for React.
 
 Mizu is not a generic UI kit. It is a curated collection of components with a point of view: warm ink-and-paper surfaces, hairline rules, mono microcopy, a signature diamond mark, and motion that means something.
 
@@ -12,14 +12,15 @@ npm install mizu-ui
 bun add mizu-ui
 ```
 
-Peer dependencies: `react` (>=18), `react-dom` (>=18), `motion` (>=11).
+Peer dependencies: `react` (>=18.3 <20), `react-dom` (>=18.3 <20), `motion` (>=12 <14).
 
 ## Setup
 
-Import the stylesheet once, at the root of your app. It ships the design tokens and self-hosted fonts (Archivo Variable, Instrument Serif, JetBrains Mono).
+Import the stylesheet once, at the root of your app. It ships design tokens and component styles. Self-hosted fonts are optional.
 
 ```tsx
 import "mizu-ui/styles.css";
+import "mizu-ui/fonts.css"; // optional: Archivo Variable, Instrument Serif, JetBrains Mono
 ```
 
 Wrap your app in the theme surface class:
@@ -95,7 +96,7 @@ All components read from CSS custom properties (`--mizu-ink`, `--mizu-accent`, �
 
 ## Reduced motion
 
-Every component respects `prefers-reduced-motion`. Canvas instruments render a single static frame; springs and wipes resolve instantly. You can also force it with `reducedMotion="user"` on `MotionConfig` from `motion`.
+Every component respects `prefers-reduced-motion`. Canvas instruments stop their loops and render a static frame; springs and wipes resolve instantly. You can also force it with `reducedMotion="user"` on `MotionConfig` from `motion`.
 
 ## License
 

@@ -10,8 +10,8 @@ import {
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { EASE_EXPO } from "../motion/easings";
-import { Mark } from "../ui/Mark";
+import { EASE_EXPO } from "../motion/easings.js";
+import { Mark } from "../ui/Mark.js";
 
 export type ToastTone = "default" | "success" | "error";
 

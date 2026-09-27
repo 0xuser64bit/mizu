@@ -2,7 +2,7 @@
 
 import { useRef, useState, type CSSProperties } from "react";
 import { useReducedMotion } from "motion/react";
-import { useCanvasLoop } from "./useCanvas";
+import { useCanvasLoop } from "./useCanvas.js";
 
 export function Signal({ density = 14, speed = 1, className = "", style, label = "Signal phase" }: {
   density?: number; speed?: number; className?: string; style?: CSSProperties; label?: string;

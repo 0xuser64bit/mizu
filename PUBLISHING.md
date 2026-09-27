@@ -2,7 +2,8 @@
 
 The package lives in [`packages/mizu`](./packages/mizu) and publishes to npm as
 `mizu-ui` (unscoped, public). It is an ESM-only package: `dist/` (JS +
-declarations + source maps) and `styles.css` are the only things that ship —
+declarations + source maps), inspectable `src/`, styles, optional fonts, README
+and LICENSE ship —
 everything else in the package directory is ignored via the `files` field.
 
 ## Before you publish
@@ -11,18 +12,16 @@ everything else in the package directory is ignored via the `files` field.
    components/features → minor, fixes/docs → patch. Bump `version` in
    `packages/mizu/package.json`.
 2. **Make sure `dist/` is current.** The build is `npm run build:ui` from the
-   repo root (or `tsc -p packages/mizu/tsconfig.build.json`). A `prepare`
-   script also builds automatically when the package is installed from a
-   directory or git URL, so `file:` and git dependencies always get fresh
-   output.
-3. **Run the checks:** `bun run lint`, `bun test`, `bun run build`.
+   repo root (or `tsc -p packages/mizu/tsconfig.build.json`). The `prepack` script builds before packing or publishing.
+   Consumers of a tarball install already compiled output without lifecycle scripts.
+3. **Run the checks:** `bun run check`, `bun run build`, `bun run test:consumer`.
 
 ## Publish
 
 ```bash
 npm login            # one-time; enable 2FA on the npm account
 cd packages/mizu
-npm pack --dry-run   # verify exactly what will ship (dist/ + styles.css + README)
+npm pack --dry-run   # verify exactly what will ship (dist/ + src/ + CSS + README + LICENSE)
 npm publish --access public
 ```
 
@@ -51,7 +50,7 @@ export function App() {
 Check that:
 
 - imports resolve (types included)
-- fonts and tokens load from the stylesheet
+- tokens load from styles.css; fonts load only when fonts.css is imported
 - a production build succeeds
 
 ## Notes for consumers

@@ -3,7 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 
-import { Dialog } from "./Dialog";
+import { Dialog } from "./Dialog.js";
 
 export type NavLink = { href: string; label: string };
 

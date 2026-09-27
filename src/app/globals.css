@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../../packages/mizu/styles.css";
+@import "../../packages/mizu/fonts.css";
 
 @theme {
   --color-ink: var(--mizu-ink);

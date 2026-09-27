@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode, type CSSProperties } from "react";
-import { Mark } from "../ui/Mark";
+import { Mark } from "../ui/Mark.js";
 
 export function Marquee({ children, duration = 42, pauseOnHover = true, separator = true, label, className = "", style }: {
   children: ReactNode; duration?: number; pauseOnHover?: boolean; separator?: boolean; label?: string; className?: string; style?: CSSProperties;
