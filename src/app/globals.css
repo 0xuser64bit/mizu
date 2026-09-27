@@ -48,6 +48,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -57,7 +58,7 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .mizu-docs-shell { display: grid; grid-template-columns: 230px minmax(0,1fr); padding-top: 64px; min-height: 100vh; }
