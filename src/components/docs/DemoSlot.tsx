@@ -38,6 +38,9 @@ const SHOWCASES = {
   "trend-chart": dynamic(() =>
     import("./demos/signature/trend").then((m) => m.TrendChartShowcase),
   ),
+  waveform: dynamic(() =>
+    import("./demos/signature/waveform").then((m) => m.WaveformShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

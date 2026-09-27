@@ -1,0 +1,307 @@
+/* Waveform — a scrubber you can see, over a native audio element. */
+.mizu-waveform {
+  container-type: inline-size;
+  display: grid;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--mizu-line);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+}
+.mizu-waveform audio {
+  display: none;
+}
+.mizu-waveform-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 16px 4px;
+}
+.mizu-waveform-play {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  background: var(--mizu-accent-fill);
+  color: #fffaf4;
+  cursor: pointer;
+  transition:
+    background var(--mizu-duration-fast),
+    transform var(--mizu-duration-fast) var(--mizu-ease-expo);
+}
+.mizu-waveform-play:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--mizu-accent-fill), #000 12%);
+}
+.mizu-waveform-play:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.mizu-waveform-play svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+.mizu-waveform figcaption {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.mizu-waveform-title,
+.mizu-waveform-chapter {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mizu-waveform-title {
+  font: 500 10px var(--mizu-font-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+}
+.mizu-waveform-chapter {
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  min-height: 1.2em;
+}
+.mizu-waveform-clock {
+  margin: 0;
+  font: 12px var(--mizu-font-mono);
+  color: var(--mizu-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.mizu-waveform-clock span:first-child {
+  color: var(--mizu-paper);
+}
+.mizu-waveform-stage {
+  position: relative;
+  padding: 18px 16px 16px;
+}
+.mizu-waveform-markers {
+  position: absolute;
+  top: 4px;
+  left: 16px;
+  right: 16px;
+  height: 12px;
+}
+.mizu-waveform-markers span {
+  position: absolute;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  background: var(--mizu-muted);
+  transform: rotate(45deg);
+  cursor: pointer;
+  transition:
+    background var(--mizu-duration-fast),
+    transform var(--mizu-duration-fast) var(--mizu-ease-expo);
+}
+.mizu-waveform-markers span:hover {
+  transform: rotate(45deg) scale(1.3);
+}
+.mizu-waveform-markers span[data-current] {
+  background: var(--mizu-accent);
+}
+.mizu-waveform-track {
+  position: relative;
+  cursor: pointer;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.mizu-waveform-track:focus-visible {
+  outline-offset: 6px;
+}
+.mizu-waveform-track svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: mizu-waveform-print 1s var(--mizu-ease-expo) both;
+}
+.mizu-waveform-bars {
+  fill: var(--mizu-line-bright);
+}
+.mizu-waveform-played {
+  fill: var(--mizu-accent);
+}
+.mizu-waveform-hovered {
+  fill: color-mix(in srgb, var(--mizu-accent) 42%, var(--mizu-line-bright));
+}
+.mizu-waveform-head-line,
+.mizu-waveform-ghost {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 1px;
+  pointer-events: none;
+}
+.mizu-waveform-head-line {
+  background: var(--mizu-paper);
+}
+.mizu-waveform[data-playing] .mizu-waveform-head-line {
+  background: var(--mizu-accent);
+}
+.mizu-waveform-ghost {
+  background: var(--mizu-line-bright);
+}
+.mizu-waveform-ghost output {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+  padding: 2px 6px;
+  background: var(--mizu-ink-3);
+  color: var(--mizu-paper);
+  font: 10px var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.mizu-waveform-measuring {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+  overflow: hidden;
+}
+.mizu-waveform-measuring span {
+  flex: 1;
+  height: 28%;
+  background: var(--mizu-line-bright);
+  animation: mizu-waveform-measure 1.4s ease-in-out infinite;
+  animation-delay: calc(var(--mizu-i) * 45ms);
+}
+.mizu-waveform-flat {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--mizu-line-bright);
+}
+.mizu-waveform-error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 16px;
+  margin: 0;
+  background: var(--mizu-ink);
+  color: var(--mizu-danger);
+  font-size: 13px;
+}
+.mizu-waveform-tools {
+  display: flex;
+  border-top: 1px solid var(--mizu-line);
+}
+.mizu-waveform-tools button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-right: 1px solid var(--mizu-line);
+  background: transparent;
+  color: var(--mizu-muted);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition:
+    color var(--mizu-duration-fast),
+    background var(--mizu-duration-fast);
+}
+.mizu-waveform-tools button:hover:not(:disabled) {
+  color: var(--mizu-paper);
+  background: var(--mizu-ink-2);
+}
+.mizu-waveform-tools button:last-child {
+  margin-left: auto;
+  border-right: 0;
+  border-left: 1px solid var(--mizu-line);
+  min-width: 64px;
+  justify-content: center;
+}
+.mizu-waveform-tools svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+.mizu-waveform-chapters {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--mizu-line);
+}
+.mizu-waveform-chapters button {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--mizu-line);
+  background: transparent;
+  color: var(--mizu-muted);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color var(--mizu-duration-fast),
+    background var(--mizu-duration-fast),
+    box-shadow var(--mizu-duration-fast);
+}
+.mizu-waveform-chapters li:last-child button {
+  border-bottom: 0;
+}
+.mizu-waveform-chapters button:hover {
+  color: var(--mizu-paper);
+}
+.mizu-waveform-chapters button[aria-current] {
+  color: var(--mizu-paper);
+  background: var(--mizu-ink-2);
+  box-shadow: inset 2px 0 var(--mizu-accent);
+}
+.mizu-waveform-chapters time,
+.mizu-waveform-chapters small {
+  font: 11px var(--mizu-font-mono);
+  color: var(--mizu-faint);
+  font-variant-numeric: tabular-nums;
+}
+@keyframes mizu-waveform-measure {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1.7);
+  }
+}
+@keyframes mizu-waveform-print {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@container (max-width: 420px) {
+  .mizu-waveform-head {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .mizu-waveform-clock {
+    grid-column: 2;
+  }
+  .mizu-waveform-tools button {
+    padding: 0 12px;
+  }
+}

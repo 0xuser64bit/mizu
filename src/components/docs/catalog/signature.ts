@@ -119,4 +119,56 @@ export const SIGNATURE = [
       { keys: "Ctrl + scroll", action: "Zoom at the pointer" },
     ],
   }),
+  s({
+    name: "Waveform",
+    source: "Waveform.tsx",
+    tagline:
+      "Audio you can see and scrub: a waveform over a native audio element, with chapters, speed, skips and an imperative handle.",
+    example:
+      '  return <Waveform src="/audio/calibration.wav" label="Calibration tone, 440 Hz" />;',
+    props: [
+      p("src / label", "string", "Playable source and accessible name."),
+      p(
+        "peaks",
+        "number[]",
+        "Normalised 0–1 amplitudes. Omit to decode from the source (same-origin or CORS-enabled).",
+      ),
+      p(
+        "markers",
+        "WaveformMarker[]",
+        "Chapters or comments: id, time in seconds and label. Listed beneath with durations.",
+      ),
+      p(
+        "duration",
+        "number",
+        "Seconds to show before the media reports its own.",
+      ),
+      p(
+        "rates / height",
+        "number[] / number",
+        "Speed cycle and waveform height.",
+        "[1, 1.25, 1.5, 2] / 72",
+      ),
+      p(
+        "onTimeUpdate / onPlayingChange",
+        "function",
+        "Follow playback, e.g. to highlight a transcript.",
+      ),
+      p(
+        "ref",
+        "WaveformHandle",
+        "play(), pause() and seek(seconds) for external controls.",
+      ),
+    ],
+    a11y: "The waveform is a slider with readable time (“1:14 of 42:10”); arrows seek five seconds, Shift thirty. Play, skip and speed are labelled buttons, chapters are a real list with the current one marked. A failed source is announced with a retry. Letter shortcuts only apply while focus is inside the player.",
+    motion:
+      "The waveform prints left to right once measured; while decoding, bars breathe in a travelling wave. The play glyph morphs into pause. Reduced motion keeps every state and removes the travel.",
+    keys: [
+      { keys: "Space K", action: "Play or pause (on the waveform)" },
+      { keys: "← →", action: "Seek five seconds (Shift: thirty)" },
+      { keys: "J L", action: "Back or forward ten seconds" },
+      { keys: "[ ]", action: "Previous or next chapter" },
+      { keys: "Home End", action: "Start or end" },
+    ],
+  }),
 ];

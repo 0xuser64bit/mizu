@@ -7,6 +7,9 @@ export const GENERATED_DEMOS = {
   "trend-chart": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.TrendChartDemo),
   ),
+  waveform: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.WaveformDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

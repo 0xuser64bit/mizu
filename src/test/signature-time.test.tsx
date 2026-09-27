@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import {
   Chronicle,
   TrendChart,
+  Waveform,
   type ChronicleEvent,
   type TrendSeries,
 } from "@/mizu";
@@ -330,5 +331,99 @@ describe("TrendChart", () => {
       />,
     );
     expect(await screen.findByText("Quiet.")).toBeInTheDocument();
+  });
+});
+
+describe("Waveform", () => {
+  let restore: () => void;
+  beforeEach(() => {
+    restore = mockLayout(400, 72);
+  });
+  afterEach(() => restore());
+  const markers = [
+    { id: "a", time: 0, label: "Opening" },
+    { id: "b", time: 90, label: "Interview" },
+    { id: "c", time: 300, label: "Credits" },
+  ];
+
+  it("draws supplied peaks and seeks by slider keys", async () => {
+    const time = vi.fn();
+    const { container } = render(
+      <Waveform
+        src="/episode.mp3"
+        label="Episode"
+        duration={600}
+        peaks={[0.2, 0.9, 0.4, 1]}
+        onTimeUpdate={time}
+      />,
+    );
+    const slider = screen.getByRole("slider", { name: "Seek Episode" });
+    expect(slider).toHaveAttribute("aria-valuetext", "0:00 of 10:00");
+    await act(async () => {});
+    expect(
+      container.querySelector(".mizu-waveform-bars")?.getAttribute("d"),
+    ).toMatch(/^M0 /);
+    fireEvent.keyDown(slider, { key: "ArrowRight" });
+    expect(slider).toHaveAttribute("aria-valuetext", "0:05 of 10:00");
+    fireEvent.keyDown(slider, { key: "ArrowRight", shiftKey: true });
+    expect(time).toHaveBeenLastCalledWith(35);
+    fireEvent.keyDown(slider, { key: "End" });
+    expect(slider).toHaveAttribute("aria-valuenow", "600");
+  });
+
+  it("lists chapters with durations, jumps between them and marks the current one", async () => {
+    const user = userEvent.setup();
+    render(
+      <Waveform
+        src="/episode.mp3"
+        label="Episode"
+        duration={600}
+        peaks={[0.5]}
+        markers={markers}
+      />,
+    );
+    const list = screen.getByRole("list", { name: "Episode chapters" });
+    expect(
+      within(list).getByRole("button", { name: /Interview/ }),
+    ).toHaveTextContent("3:30");
+    await user.click(within(list).getByRole("button", { name: /Interview/ }));
+    expect(
+      within(list).getByRole("button", { name: /Interview/ }),
+    ).toHaveAttribute("aria-current", "true");
+    fireEvent.keyDown(screen.getByRole("slider"), { key: "]" });
+    expect(
+      within(list).getByRole("button", { name: /Credits/ }),
+    ).toHaveAttribute("aria-current", "true");
+    fireEvent.keyDown(screen.getByRole("slider"), { key: "[" });
+    expect(
+      within(list).getByRole("button", { name: /Interview/ }),
+    ).toHaveAttribute("aria-current", "true");
+  });
+
+  it("cycles playback speed and explains a source that fails", async () => {
+    const fetch = vi
+      .spyOn(globalThis, "fetch")
+      .mockRejectedValue(new Error("offline"));
+    const user = userEvent.setup();
+    const { container } = render(
+      <Waveform
+        src="/missing.mp3"
+        label="Missing"
+        duration={60}
+        rates={[1, 1.5]}
+      />,
+    );
+    await act(async () => {});
+    expect(screen.getByRole("slider")).toHaveAttribute("data-state", "flat");
+    await user.click(screen.getByRole("button", { name: /Playback speed 1×/ }));
+    expect(
+      screen.getByRole("button", { name: /Playback speed 1.5×/ }),
+    ).toBeInTheDocument();
+    fireEvent.error(container.querySelector("audio")!);
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "This audio could not be loaded.",
+    );
+    expect(screen.getByRole("button", { name: "Play" })).toBeDisabled();
+    fetch.mockRestore();
   });
 });

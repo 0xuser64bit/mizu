@@ -1,6 +1,6 @@
 "use client";
 // Generated from catalog usage by bun run examples:sync.
-import { Chronicle, TrendChart } from "@/mizu";
+import { Chronicle, TrendChart, Waveform } from "@/mizu";
 
 export function ChronicleDemo() {
   const at = (h: number, m: number) => Date.UTC(2026, 8, 27, h, m);
@@ -72,5 +72,11 @@ export function TrendChartDemo() {
         },
       ]}
     />
+  );
+}
+
+export function WaveformDemo() {
+  return (
+    <Waveform src="/audio/calibration.wav" label="Calibration tone, 440 Hz" />
   );
 }
