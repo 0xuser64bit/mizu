@@ -37,9 +37,17 @@ compatibility; pre-1.0 minor releases may change behavior and need migration
 notes. Once checks and review pass, from packages/mizu:
 
 ```sh
-npm login
-npm publish --access public
+npm login --auth-type=web --registry=https://registry.npmjs.org/
+npm whoami --registry=https://registry.npmjs.org/
+npm owner ls mizu-ui --registry=https://registry.npmjs.org/
+npm publish --access public --registry=https://registry.npmjs.org/
 ```
+
+Complete the browser sign-in and two-factor authentication prompts. Before
+publishing, confirm `npm whoami` succeeds and its username is a package owner
+listed by `npm owner ls`. An E404 on the publish PUT can be an authentication or
+authorization rejection even when the package's public GET succeeds. If
+`npm whoami` returns E401, refresh the login before retrying publication.
 
 Use your registry's required authentication. After publication, install the
 exact released version in a fresh app, run its production build and browser
