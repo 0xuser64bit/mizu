@@ -4,3 +4,4 @@ export * from "./TrendChart.tsx";
 export * from "./Waveform.tsx";
 export * from "./Plane.tsx";
 export * from "./FlowGraph.tsx";
+export * from "./Treemap.tsx";

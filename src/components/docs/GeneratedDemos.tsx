@@ -16,6 +16,9 @@ export const GENERATED_DEMOS = {
   "flow-graph": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.FlowGraphDemo),
   ),
+  treemap: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.TreemapDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

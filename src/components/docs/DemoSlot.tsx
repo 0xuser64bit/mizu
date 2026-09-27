@@ -47,6 +47,9 @@ const SHOWCASES = {
   "flow-graph": dynamic(() =>
     import("./demos/signature/flow").then((m) => m.FlowGraphShowcase),
   ),
+  treemap: dynamic(() =>
+    import("./demos/signature/treemap").then((m) => m.TreemapShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

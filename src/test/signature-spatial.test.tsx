@@ -6,10 +6,13 @@ import {
   FlowGraph,
   Plane,
   PlaneItem,
+  Treemap,
+  squarify,
   tidyFlow,
   type FlowEdge,
   type FlowNode,
   type PlaneHandle,
+  type TreemapNode,
 } from "@/mizu";
 import { mockLayout } from "./helpers";
 
@@ -213,5 +216,84 @@ describe("FlowGraph", () => {
     expect(at.b!.x).toBeLessThan(at.c!.x);
     expect(at.c!.x).toBe(at.d!.x);
     expect(at.c!.y).not.toBe(at.d!.y);
+  });
+});
+
+describe("Treemap", () => {
+  const DATA: TreemapNode = {
+    id: "root",
+    label: "All",
+    children: [
+      {
+        id: "media",
+        label: "Media",
+        children: [
+          { id: "video", label: "Video", value: 400 },
+          { id: "photos", label: "Photos", value: 200 },
+        ],
+      },
+      { id: "backups", label: "Backups", value: 300 },
+      { id: "docs", label: "Documents", value: 100 },
+    ],
+  };
+
+  it("squarifies areas in proportion to value and inside the box", () => {
+    const boxes = squarify(
+      [30, 20, 10, 40].map((value) => ({ item: value, value })),
+      { x: 0, y: 0, w: 400, h: 200 },
+    );
+    const area = (v: number) => boxes.get(v)!.w * boxes.get(v)!.h;
+    expect(area(40) / area(10)).toBeCloseTo(4);
+    expect([...boxes.values()].reduce((s, b) => s + b.w * b.h, 0)).toBeCloseTo(
+      80000,
+    );
+    for (const b of boxes.values()) {
+      expect(b.x + b.w).toBeLessThanOrEqual(400.0001);
+      expect(b.y + b.h).toBeLessThanOrEqual(200.0001);
+      expect(Math.max(b.w / b.h, b.h / b.w)).toBeLessThan(3);
+    }
+  });
+
+  it("names blocks by value and share, opens branches and returns with Backspace", async () => {
+    const user = userEvent.setup(),
+      path = vi.fn(),
+      select = vi.fn();
+    render(
+      <Treemap
+        label="Storage"
+        data={DATA}
+        format={(v) => `${v} GB`}
+        onPathChange={path}
+        onSelect={select}
+      />,
+    );
+    const media = await screen.findByRole("button", {
+      name: "Media, 600 GB, 60% of All, 2 inside. Press Enter to open",
+    });
+    await user.click(media);
+    expect(path).toHaveBeenLastCalledWith(["media"]);
+    expect(
+      screen.getByRole("button", { name: /^Video, 400 GB, 67% of Media/ }),
+    ).toHaveFocus();
+    await user.click(screen.getByRole("button", { name: /^Photos/ }));
+    expect(select).toHaveBeenLastCalledWith(
+      expect.objectContaining({ id: "photos" }),
+      expect.any(Array),
+    );
+    await user.keyboard("{Backspace}");
+    expect(path).toHaveBeenLastCalledWith([]);
+    expect(screen.getByRole("button", { name: /^Media/ })).toHaveFocus();
+  });
+
+  it("moves focus to the neighbouring block with arrow keys", async () => {
+    const user = userEvent.setup();
+    render(<Treemap label="Storage" data={DATA} />);
+    const media = await screen.findByRole("button", { name: /^Media/ });
+    media.focus();
+    await user.keyboard("{ArrowRight}");
+    expect(document.activeElement).not.toBe(media);
+    expect(document.activeElement?.getAttribute("aria-label")).toMatch(
+      /^(Backups|Documents)/,
+    );
   });
 });

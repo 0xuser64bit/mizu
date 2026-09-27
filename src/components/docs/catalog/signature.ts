@@ -285,4 +285,49 @@ export const SIGNATURE = [
       { keys: "← → ↑ ↓", action: "Nudge the focused node" },
     ],
   }),
+  s({
+    name: "Treemap",
+    source: "Treemap.tsx",
+    tagline:
+      "A hierarchy by size that you enter like a place: squarified blocks, a camera that moves inside, nested previews, heat and a path back out.",
+    example:
+      '  return <Treemap label="Storage" format={v=>`${v} GB`} data={{id:"all",label:"All",children:[{id:"media",label:"Media",children:[{id:"video",label:"Video",value:420},{id:"photos",label:"Photos",value:180}]},{id:"backups",label:"Backups",value:240},{id:"docs",label:"Documents",value:96}]}} />;',
+    props: [
+      p(
+        "label / data",
+        "string / TreemapNode",
+        "Accessible name and root. Nodes have id, label, value (leaves), children, tone and detail.",
+      ),
+      p(
+        "format",
+        "(value: number) => string",
+        "Value formatting for blocks, path and readout.",
+      ),
+      p(
+        "path / defaultPath / onPathChange",
+        "string[]",
+        "Ids from the root's child to the opened node.",
+      ),
+      p("onSelect", "(node, path) => void", "A leaf was chosen."),
+      p(
+        "heat",
+        "(node) => number | undefined",
+        "0–1 intensity mixed into a block, e.g. growth or error rate.",
+      ),
+      p("height", "number", "Stage height in pixels.", "440"),
+      p(
+        "squarify(items, box)",
+        "function",
+        "The layout itself, for custom renderers.",
+      ),
+    ],
+    a11y: "Blocks are buttons named with their value, share of the level and contents. Arrow keys move to the nearest block in that direction; Enter opens a branch or chooses a leaf, Backspace returns. The path is a navigation list with the current level marked; openings are announced and focus lands on the largest block inside.",
+    motion:
+      "Opening a block is a camera move: it grows to fill the stage while its neighbours fly outward and the next level resolves inside it. Returning plays the same path in reverse. Only geometry animates, so text never distorts. Reduced motion changes level instantly.",
+    keys: [
+      { keys: "← → ↑ ↓", action: "Move to the neighbouring block" },
+      { keys: "Enter", action: "Open a block, or choose a leaf" },
+      { keys: "Backspace Esc", action: "Return to the level above" },
+    ],
+  }),
 ];

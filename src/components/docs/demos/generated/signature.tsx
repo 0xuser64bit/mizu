@@ -10,6 +10,7 @@ import {
   FlowGraph,
   type FlowNode,
   type FlowEdge,
+  Treemap,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -159,6 +160,31 @@ export function FlowGraphDemo() {
       edges={edges}
       onNodesChange={setNodes}
       onEdgesChange={setEdges}
+    />
+  );
+}
+
+export function TreemapDemo() {
+  return (
+    <Treemap
+      label="Storage"
+      format={(v) => `${v} GB`}
+      data={{
+        id: "all",
+        label: "All",
+        children: [
+          {
+            id: "media",
+            label: "Media",
+            children: [
+              { id: "video", label: "Video", value: 420 },
+              { id: "photos", label: "Photos", value: 180 },
+            ],
+          },
+          { id: "backups", label: "Backups", value: 240 },
+          { id: "docs", label: "Documents", value: 96 },
+        ],
+      }}
     />
   );
 }
