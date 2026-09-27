@@ -112,8 +112,8 @@ export const Waveform = forwardRef<
   } | null>(null);
   const [scrub, setScrub] = useState<number | null>(null);
   const [hover, setHover] = useState<number | null>(null);
-  const timeUpdate = useLatest(onTimeUpdate);
-  const playingChange = useLatest(onPlayingChange);
+  const timeUpdateRef = useLatest(onTimeUpdate);
+  const playingChangeRef = useLatest(onPlayingChange);
 
   useEffect(() => {
     if (peaks) return;
@@ -149,7 +149,7 @@ export const Waveform = forwardRef<
     );
     if (media) media.currentTime = next;
     setTime(next);
-    timeUpdate.current?.(next);
+    timeUpdateRef.current?.(next);
   };
   const toggle = () => {
     const media = audio.current;
@@ -257,15 +257,15 @@ export const Waveform = forwardRef<
         }}
         onTimeUpdate={(e) => {
           if (!playing) setTime(e.currentTarget.currentTime);
-          timeUpdate.current?.(e.currentTarget.currentTime);
+          timeUpdateRef.current?.(e.currentTarget.currentTime);
         }}
         onPlay={() => {
           setPlaying(true);
-          playingChange.current?.(true);
+          playingChangeRef.current?.(true);
         }}
         onPause={() => {
           setPlaying(false);
-          playingChange.current?.(false);
+          playingChangeRef.current?.(false);
           if (audio.current) setTime(audio.current.currentTime);
         }}
         onError={() => setFailed(true)}

@@ -1,0 +1,177 @@
+/* Plane — an infinite, zoomable surface. */
+.mizu-plane {
+  container-type: inline-size;
+  position: relative;
+  min-width: 0;
+  height: 520px;
+  border: 1px solid var(--mizu-line);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+  overflow: hidden;
+}
+.mizu-plane-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background-position: var(--mizu-plane-offset);
+  background-size: var(--mizu-plane-step) var(--mizu-plane-step);
+}
+.mizu-plane-viewport[data-panning] {
+  cursor: grabbing;
+}
+.mizu-plane-viewport:focus-visible {
+  outline-offset: -3px;
+}
+.mizu-plane-viewport[data-grid="dots"] {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--mizu-line-bright) 1px,
+    transparent 1.2px
+  );
+}
+.mizu-plane-viewport[data-grid="lines"] {
+  background-image:
+    linear-gradient(var(--mizu-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mizu-line) 1px, transparent 1px);
+}
+.mizu-plane-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+}
+.mizu-plane-origin {
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--mizu-accent), var(--mizu-accent)) center / 1px 100%
+      no-repeat,
+    linear-gradient(var(--mizu-accent), var(--mizu-accent)) center / 100% 1px
+      no-repeat;
+  opacity: 0.6;
+}
+.mizu-plane-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+}
+.mizu-plane-item[data-draggable] {
+  cursor: grab;
+  touch-action: none;
+}
+.mizu-plane-item[data-dragging] {
+  cursor: grabbing;
+  z-index: 2;
+}
+.mizu-plane-item:focus-visible {
+  outline-offset: 4px;
+}
+.mizu-plane-tools {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  background: color-mix(in srgb, var(--mizu-ink-2) 92%, transparent);
+  border: 1px solid var(--mizu-line-bright);
+}
+.mizu-plane-tools button {
+  display: grid;
+  place-items: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-right: 1px solid var(--mizu-line);
+  background: transparent;
+  color: var(--mizu-muted);
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color var(--mizu-duration-fast),
+    background var(--mizu-duration-fast);
+}
+.mizu-plane-tools button:last-child {
+  border-right: 0;
+}
+.mizu-plane-tools button:hover:not(:disabled) {
+  color: var(--mizu-paper);
+  background: var(--mizu-ink-3);
+}
+.mizu-plane-tools svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+.mizu-plane-tools .mizu-plane-zoom {
+  min-width: 58px;
+  color: var(--mizu-paper);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.mizu-plane-coords {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.08em;
+  color: var(--mizu-faint);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+.mizu-plane-minimap {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: color-mix(in srgb, var(--mizu-ink-2) 92%, transparent);
+  border: 1px solid var(--mizu-line-bright);
+  cursor: pointer;
+  touch-action: none;
+}
+.mizu-plane-minimap rect {
+  fill: var(--mizu-line-bright);
+}
+.mizu-plane-minimap .mizu-plane-minimap-view {
+  fill: color-mix(in srgb, var(--mizu-accent) 8%, transparent);
+  stroke: var(--mizu-accent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.mizu-plane-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  padding: 10px 14px;
+  transform: translate(-50%, -50%);
+  background: var(--mizu-paper);
+  color: var(--mizu-ink);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: mizu-sig-fade 180ms ease both;
+}
+@container (max-width: 560px) {
+  .mizu-plane-minimap {
+    display: none;
+  }
+}

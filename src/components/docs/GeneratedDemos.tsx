@@ -10,6 +10,12 @@ export const GENERATED_DEMOS = {
   waveform: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.WaveformDemo),
   ),
+  plane: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.PlaneDemo),
+  ),
+  "flow-graph": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.FlowGraphDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

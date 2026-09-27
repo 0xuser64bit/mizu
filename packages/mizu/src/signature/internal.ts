@@ -39,25 +39,25 @@ export function useControllable<T>(
   const [inner, setInner] = useState(initial);
   const controlled = value !== undefined;
   const current = controlled ? value : inner;
-  const latest = useRef(current);
-  const owner = useRef(controlled);
-  const change = useLatest(onChange);
+  const latestRef = useRef(current);
+  const ownerRef = useRef(controlled);
+  const changeRef = useLatest(onChange);
   useIsoLayoutEffect(() => {
-    latest.current = current;
-    owner.current = controlled;
+    latestRef.current = current;
+    ownerRef.current = controlled;
   });
   const set = useCallback(
     (next: SetStateAction<T>) => {
       const resolved =
         typeof next === "function"
-          ? (next as (previous: T) => T)(latest.current)
+          ? (next as (previous: T) => T)(latestRef.current)
           : next;
-      if (Object.is(resolved, latest.current)) return;
-      latest.current = resolved;
-      if (!owner.current) setInner(resolved);
-      change.current?.(resolved);
+      if (Object.is(resolved, latestRef.current)) return;
+      latestRef.current = resolved;
+      if (!ownerRef.current) setInner(resolved);
+      changeRef.current?.(resolved);
     },
-    [change],
+    [changeRef],
   );
   return [current, set] as const;
 }

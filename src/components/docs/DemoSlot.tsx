@@ -41,6 +41,12 @@ const SHOWCASES = {
   waveform: dynamic(() =>
     import("./demos/signature/waveform").then((m) => m.WaveformShowcase),
   ),
+  plane: dynamic(() =>
+    import("./demos/signature/plane").then((m) => m.PlaneShowcase),
+  ),
+  "flow-graph": dynamic(() =>
+    import("./demos/signature/flow").then((m) => m.FlowGraphShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

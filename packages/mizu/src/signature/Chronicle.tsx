@@ -199,9 +199,9 @@ export function Chronicle({
       : extent;
   const [a, b] = view;
   const span = b - a;
-  const latestView = useLatest(view);
-  const bounds = useLatest({ extent, minSpan });
-  const rangeChange = useLatest(onRangeChange);
+  const viewRef = useLatest(view);
+  const boundsRef = useLatest({ extent, minSpan });
+  const rangeChangeRef = useLatest(onRangeChange);
 
   const hasPlayhead = cursor !== undefined || defaultCursor !== undefined;
   const [time, setTime] = useControllable<number>(
@@ -224,7 +224,7 @@ export function Chronicle({
     const {
       extent: [e0, e1],
       minSpan: least,
-    } = bounds.current;
+    } = boundsRef.current;
     const full = e1 - e0;
     let s = clamp(next[1] - next[0], least, full * 3);
     const mid = (next[0] + next[1]) / 2;
@@ -232,11 +232,11 @@ export function Chronicle({
     s = Math.max(s, least);
     const r: Interval = [lo, lo + s];
     setRangeState(r);
-    rangeChange.current?.(r);
+    rangeChangeRef.current?.(r);
   };
   const glide = (target: Interval) => {
     cancelAnimationFrame(inertia.current);
-    const [s0, e0] = latestView.current;
+    const [s0, e0] = viewRef.current;
     const c0 = (s0 + e0) / 2,
       c1 = (target[0] + target[1]) / 2;
     const l0 = Math.log(e0 - s0),
@@ -248,7 +248,7 @@ export function Chronicle({
     });
   };
   const zoom = (factor: number, anchor?: number) => {
-    const [s0, e0] = latestView.current;
+    const [s0, e0] = viewRef.current;
     const at =
       anchor ??
       (hasPlayhead && time >= s0 && time <= e0 ? time : (s0 + e0) / 2);
@@ -265,7 +265,7 @@ export function Chronicle({
     const track = trackRef.current;
     if (!track) return;
     const wheel = (e: WheelEvent) => {
-      const [s0, e0] = latestView.current;
+      const [s0, e0] = viewRef.current;
       const r = track.getBoundingClientRect();
       if (!r.width) return;
       if (e.ctrlKey || e.metaKey) {
@@ -323,7 +323,7 @@ export function Chronicle({
     const r = e.currentTarget.getBoundingClientRect();
     if (!g || !r.width) return;
     pointers.current.set(e.pointerId, e.clientX);
-    const [s0, e0] = latestView.current;
+    const [s0, e0] = viewRef.current;
     const xs = [...pointers.current.values()];
     if (xs.length === 2 && g.pinch) {
       const d = Math.max(8, Math.abs(xs[0]! - xs[1]!));
@@ -358,7 +358,7 @@ export function Chronicle({
       const dt = stamp - last;
       last = stamp;
       v *= Math.exp(-dt / 280);
-      const [s0, e0] = latestView.current;
+      const [s0, e0] = viewRef.current;
       if (Math.abs(v * 16) < (e0 - s0) / 4000) return;
       commit([s0 + v * dt, e0 + v * dt]);
       inertia.current = requestAnimationFrame(drift);
@@ -410,7 +410,7 @@ export function Chronicle({
     }
   };
   const reveal = (p: Placed) => {
-    const [s0, e0] = latestView.current;
+    const [s0, e0] = viewRef.current;
     const s = e0 - s0;
     if (p.t0 >= s0 + s * 0.04 && p.t1 <= e0 - s * 0.04) return;
     const fits = p.t1 - p.t0 < s * 0.8;
@@ -462,7 +462,7 @@ export function Chronicle({
   });
 
   const zoomTo = (p: Placed) => {
-    const d = Math.max(p.t1 - p.t0, bounds.current.minSpan * 20);
+    const d = Math.max(p.t1 - p.t0, boundsRef.current.minSpan * 20);
     glide([p.t0 - d * 0.4, p.t1 + d * 0.4]);
   };
 

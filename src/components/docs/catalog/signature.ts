@@ -171,4 +171,118 @@ export const SIGNATURE = [
       { keys: "Home End", action: "Start or end" },
     ],
   }),
+  s({
+    name: "Plane",
+    source: "Plane.tsx",
+    tagline:
+      "An infinite, zoomable surface for boards, maps and diagrams — inertia, pinch, a minimap and a camera that follows keyboard focus.",
+    example:
+      '  const [notes,setNotes]=useState([{id:"a",x:0,y:0,text:"Research"},{id:"b",x:260,y:90,text:"Prototype"},{id:"c",x:90,y:260,text:"Ship it"}]);\n  return <Plane label="Planning board">{notes.map(n=><PlaneItem key={n.id} id={n.id} x={n.x} y={n.y} width={200} label={n.text} onMove={(x,y)=>setNotes(all=>all.map(a=>a.id===n.id?{...a,x,y}:a))}><p style={{margin:0,padding:18,background:"var(--mizu-ink-2)",border:"1px solid var(--mizu-line-bright)"}}>{n.text}</p></PlaneItem>)}</Plane>;',
+    imports: "Plane, PlaneItem",
+    props: [
+      p(
+        "label / children",
+        "string / ReactNode",
+        "Accessible name and world content (usually PlaneItems).",
+      ),
+      p(
+        "view / defaultView / onViewChange",
+        "{ x, y, zoom }",
+        "Camera: the world point at the centre and the zoom. Frames the content by default.",
+      ),
+      p("minZoom / maxZoom", "number", "Zoom limits.", "0.15 / 4"),
+      p(
+        "grid / minimap / coordinates",
+        '"dots" | "lines" | "none" / boolean / boolean',
+        "Surface texture and instruments.",
+        '"dots" / true / true',
+      ),
+      p("tools", "ReactNode", "Extra toolbar controls beside zoom and Fit."),
+      p(
+        "ref",
+        "PlaneHandle",
+        "fit(), zoomBy(factor), flyTo(box | point) and toWorld(clientX, clientY).",
+      ),
+      p(
+        "PlaneItem: id / x / y / width / height / label",
+        "string / number",
+        "World position and size; measured when width or height is omitted.",
+      ),
+      p(
+        "PlaneItem: onMove / onMoveEnd",
+        "(x, y) => void",
+        "Makes the item draggable and nudgeable.",
+      ),
+    ],
+    a11y: "The viewport is a focusable canvas group with keyboard travel and zoom. Items are named groups in reading order; tabbing to one flies the camera to it. Draggable items nudge with arrow keys. Plain scrolling only pans once the canvas is active, so the page never traps the wheel; a hint explains Ctrl-scroll.",
+    motion:
+      "The camera glides in log space and pulls back on long flights before settling in; drags coast to rest with inertia. The zoom-adaptive dot grid re-densifies as you scale. Reduced motion jumps directly and removes coasting.",
+    keys: [
+      { keys: "← → ↑ ↓", action: "Travel (Shift for larger steps)" },
+      { keys: "+ −", action: "Zoom" },
+      { keys: "0 · 1", action: "Fit everything · 100%" },
+      { keys: "Tab", action: "Next item — the view follows" },
+      {
+        keys: "← → ↑ ↓",
+        action: "On a draggable item: nudge it (Shift: 48px)",
+      },
+      {
+        keys: "Ctrl + scroll",
+        action: "Zoom at the pointer; double-click zooms in",
+      },
+    ],
+  }),
+  s({
+    name: "FlowGraph",
+    source: "FlowGraph.tsx",
+    tagline:
+      "A node-and-wire editor: drag, wire with magnetic ports or the keyboard, refuse bad connections, watch runs flow and tidy into layers.",
+    example:
+      '  const [nodes,setNodes]=useState<FlowNode[]>([{id:"a",x:0,y:0,kind:"Trigger",label:"Form submitted",inputs:[]},{id:"b",x:320,y:0,kind:"Action",label:"Create ticket"},{id:"c",x:640,y:0,kind:"Email",label:"Confirm receipt",outputs:[]}]);\n  const [edges,setEdges]=useState<FlowEdge[]>([{id:"ab",source:"a",target:"b"}]);\n  return <FlowGraph label="Support intake" nodes={nodes} edges={edges} onNodesChange={setNodes} onEdgesChange={setEdges} />;',
+    imports: "FlowGraph, type FlowNode, type FlowEdge",
+    props: [
+      p("label", "string", "Accessible name of the canvas."),
+      p(
+        "nodes / onNodesChange",
+        "FlowNode[] / function",
+        "id, x, y, label, kind, description, inputs, outputs and status. Omit the callback for a fixed layout.",
+      ),
+      p(
+        "edges / onEdgesChange",
+        "FlowEdge[] / function",
+        "source, target, optional ports and label. Omit the callback to prevent wiring.",
+      ),
+      p(
+        "selected / defaultSelected / onSelectedChange",
+        "string | null",
+        "Selected node or connection id.",
+      ),
+      p(
+        "validateConnection",
+        "(edge) => boolean | string",
+        "Refuse a wire; a string explains why.",
+      ),
+      p(
+        "renderNode / nodeWidth",
+        "(node) => ReactNode / number",
+        "Custom node heading and width.",
+        "— / 232",
+      ),
+      p(
+        "tidyFlow(nodes, edges)",
+        "function",
+        "The layered layout behind Tidy, for positioning stored graphs.",
+      ),
+    ],
+    a11y: "Nodes are named groups whose description lists what they receive from and send to. Output ports start a connection with Enter; input ports then become tabbable targets and Enter connects. Connections are focusable buttons. Refusals are alerts; connections and removals are announced.",
+    motion:
+      "Selection brackets snap in around a node, running nodes scan, and their outgoing wires carry flowing dashes. Wiring snaps magnetically to the nearest input. Tidy animates every node and wire together into layers, then frames the result.",
+    keys: [
+      { keys: "Enter", action: "On an output: start a connection" },
+      { keys: "Tab · Enter", action: "Reach an input · connect" },
+      { keys: "Esc", action: "Cancel a connection" },
+      { keys: "Delete", action: "Remove the selected node or connection" },
+      { keys: "← → ↑ ↓", action: "Nudge the focused node" },
+    ],
+  }),
 ];

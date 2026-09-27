@@ -221,8 +221,8 @@ export function TrendChart({
       ? rangeState
       : extent;
   const [x0, x1] = view;
-  const latestView = useLatest(view);
-  const rangeChange = useLatest(onRangeChange);
+  const viewRef = useLatest(view);
+  const rangeChangeRef = useLatest(onRangeChange);
   const commit = (next: Interval) => {
     const [e0, e1] = extent;
     const full = e1 - e0;
@@ -230,10 +230,10 @@ export function TrendChart({
     const lo = clamp(next[0], e0, e1 - s);
     const d: Interval = [lo, lo + s];
     setRangeState(d);
-    rangeChange.current?.(d);
+    rangeChangeRef.current?.(d);
   };
   const glide = (target: Interval) => {
-    const [a0, b0] = latestView.current;
+    const [a0, b0] = viewRef.current;
     tweenX(reduce ? 0 : 520, (t) =>
       commit([a0 + (target[0] - a0) * t, b0 + (target[1] - b0) * t]),
     );
@@ -389,7 +389,7 @@ export function TrendChart({
     const plot = plotRef.current;
     if (!plot) return;
     const wheel = (e: WheelEvent) => {
-      const [a, b] = latestView.current;
+      const [a, b] = viewRef.current;
       const r = plot.getBoundingClientRect();
       if (!r.width) return;
       if (e.ctrlKey || e.metaKey) {
