@@ -30,3 +30,5 @@ export { Marquee } from "./motion/Marquee.tsx";
 export { PageWipeProvider, usePageWipe } from "./motion/PageWipe.tsx";
 export * from "./forms/index.ts";
 export * from "./status/index.ts";
+export * from "./data/index.ts";
+export * from "./navigation/index.ts";

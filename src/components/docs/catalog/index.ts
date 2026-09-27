@@ -1,4 +1,6 @@
 import { FORMS } from "./forms";
 import { STATUS } from "./status";
 import { FOUNDATION } from "./foundation";
-export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS];
+import { DATA } from "./data";
+import { NAVIGATION } from "./navigation";
+export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS, ...DATA, ...NAVIGATION];

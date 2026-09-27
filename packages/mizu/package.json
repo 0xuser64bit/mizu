@@ -41,6 +41,14 @@
     "./status": {
       "types": "./dist/status/index.d.ts",
       "import": "./dist/status/index.js"
+    },
+    "./data": {
+      "types": "./dist/data/index.d.ts",
+      "import": "./dist/data/index.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
+      "import": "./dist/navigation/index.js"
     }
   },
   "scripts": {
