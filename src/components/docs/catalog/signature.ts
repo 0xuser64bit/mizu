@@ -376,4 +376,54 @@ export const SIGNATURE = [
       { keys: "Enter", action: "Open the card" },
     ],
   }),
+  s({
+    name: "Outliner",
+    source: "Outliner.tsx",
+    tagline:
+      "A keyboard-first outline: Enter splits, Tab restructures, whole branches move and fold, and any item can be zoomed into until it becomes the title.",
+    example:
+      '  const [items,setItems]=useState<OutlineItem[]>([{id:"a",text:"Plan the launch",children:[{id:"b",text:"Name an owner",done:true},{id:"c",text:"Rehearse the rollback"}]},{id:"d",text:"Write the announcement"}]);\n  return <Outliner label="Launch" items={items} onItemsChange={setItems} />;',
+    imports: "Outliner, type OutlineItem",
+    props: [
+      p(
+        "label",
+        "string",
+        "Accessible name and the root of the location trail.",
+      ),
+      p(
+        "items / defaultItems / onItemsChange",
+        "OutlineItem[]",
+        "A tree of id, text, done, collapsed and children. Every edit returns a fresh tree.",
+      ),
+      p(
+        "placeholder",
+        "string",
+        "Prompt for the first line.",
+        '"Write a line…"',
+      ),
+      p(
+        "createId",
+        "() => string",
+        "Id factory for new lines; defaults to a random id.",
+      ),
+    ],
+    a11y: "Each line is a labelled text field that states its level and position; done and folded states are described. Every structural command is a key chord with an announcement. The location trail is a navigation landmark; focusing into an item moves focus to its first line.",
+    motion:
+      "Lines slide to their new level or place, open and close in height, and a focused item's text grows into the page title through a shared layout transition; stepping out reverses it. The active thread is traced in accent. Reduced motion changes structure instantly.",
+    keys: [
+      {
+        keys: "Enter · Shift + Enter",
+        action: "New line (splits at the caret) · line break",
+      },
+      {
+        keys: "Tab · Shift + Tab",
+        action: "Indent · outdent with descendants",
+      },
+      { keys: "Alt + ↑ ↓", action: "Move the branch among its siblings" },
+      { keys: "⌘/Ctrl + Enter", action: "Mark done" },
+      { keys: "⌘/Ctrl + ↑ ↓", action: "Fold or unfold" },
+      { keys: "Alt + → ←", action: "Focus on the item · step back out" },
+      { keys: "Backspace", action: "At the start: merge with the line above" },
+    ],
+  }),
 ];

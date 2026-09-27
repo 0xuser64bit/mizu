@@ -22,6 +22,9 @@ export const GENERATED_DEMOS = {
   board: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.BoardDemo),
   ),
+  outliner: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.OutlinerDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

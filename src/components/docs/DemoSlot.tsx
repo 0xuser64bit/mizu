@@ -53,6 +53,9 @@ const SHOWCASES = {
   board: dynamic(() =>
     import("./demos/signature/board").then((m) => m.BoardShowcase),
   ),
+  outliner: dynamic(() =>
+    import("./demos/signature/outliner").then((m) => m.OutlinerShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

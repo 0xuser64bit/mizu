@@ -13,6 +13,8 @@ import {
   Treemap,
   Board,
   type BoardCard,
+  Outliner,
+  type OutlineItem,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -214,4 +216,19 @@ export function BoardDemo() {
       onCardsChange={setCards}
     />
   );
+}
+
+export function OutlinerDemo() {
+  const [items, setItems] = useState<OutlineItem[]>([
+    {
+      id: "a",
+      text: "Plan the launch",
+      children: [
+        { id: "b", text: "Name an owner", done: true },
+        { id: "c", text: "Rehearse the rollback" },
+      ],
+    },
+    { id: "d", text: "Write the announcement" },
+  ]);
+  return <Outliner label="Launch" items={items} onItemsChange={setItems} />;
 }
