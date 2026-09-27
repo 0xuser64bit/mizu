@@ -5,4 +5,5 @@ import { DATA } from "./data";
 import { NAVIGATION } from "./navigation";
 import { CONTENT } from "./content";
 import { LAYOUT } from "./layout";
-export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS, ...DATA, ...NAVIGATION, ...CONTENT, ...LAYOUT];
+import { INTERACTION } from "./interaction";
+export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS, ...DATA, ...NAVIGATION, ...CONTENT, ...LAYOUT, ...INTERACTION];

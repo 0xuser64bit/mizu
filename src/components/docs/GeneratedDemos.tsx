@@ -73,4 +73,12 @@ export const GENERATED_DEMOS = {
   "aspect-ratio": dynamic(() => import("./demos/generated/layout").then(m => m.AspectRatioDemo)),
   "scroll-area": dynamic(() => import("./demos/generated/layout").then(m => m.ScrollAreaDemo)),
   "app-shell": dynamic(() => import("./demos/generated/layout").then(m => m.AppShellDemo)),
+  "combobox": dynamic(() => import("./demos/generated/interaction").then(m => m.ComboboxDemo)),
+  "multi-select": dynamic(() => import("./demos/generated/interaction").then(m => m.MultiSelectDemo)),
+  "inline-edit": dynamic(() => import("./demos/generated/interaction").then(m => m.InlineEditDemo)),
+  "range-selector": dynamic(() => import("./demos/generated/interaction").then(m => m.RangeSelectorDemo)),
+  "reorder-list": dynamic(() => import("./demos/generated/interaction").then(m => m.ReorderListDemo)),
+  "image-compare": dynamic(() => import("./demos/generated/interaction").then(m => m.ImageCompareDemo)),
+  "history-controls": dynamic(() => import("./demos/generated/interaction").then(m => m.HistoryControlsDemo)),
+  "confirm-action": dynamic(() => import("./demos/generated/interaction").then(m => m.ConfirmActionDemo)),
 };
