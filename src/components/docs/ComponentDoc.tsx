@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { CopyButton, Frame, SectionTag } from "@/mizu";
+import { CopyButton, SectionTag } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
+import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
 
 function CodeBlock({ code }: { code: string }) {
@@ -10,6 +9,7 @@ function CodeBlock({ code }: { code: string }) {
     <div style={{ position: "relative" }}>
       <CopyButton
         text={code}
+        aria-label="Copy usage example"
         feedback="Copied"
         style={{
           position: "absolute",
@@ -114,7 +114,6 @@ function PropsTable({ props }: { props: ComponentMeta["props"] }) {
 }
 
 export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
-  const Demo = meta.demo;
   const idx = COMPONENTS.findIndex((c) => c.slug === meta.slug);
   const prev = idx > 0 ? COMPONENTS[idx - 1] : undefined;
   const next = idx < COMPONENTS.length - 1 ? COMPONENTS[idx + 1] : undefined;
@@ -131,9 +130,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <section className="mt-14">
           <DemoLabel>Live — this one is real</DemoLabel>
           <div className="mt-4">
-            <Frame label={`${meta.name} · live`} className="mt-0 p-5 md:p-8">
-              <Demo />
-            </Frame>
+            <PreviewStage slug={meta.slug} />
           </div>
         </section>
 
@@ -142,6 +139,16 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
           <div className="mt-4">
             <CodeBlock code={meta.usage} />
           </div>
+        </section>
+
+        <section className="mt-14">
+          <DemoLabel>Source & setup</DemoLabel>
+          <p className="mt-4 text-sm leading-relaxed text-muted">Import <code>mizu-ui/styles.css</code> once. Fonts are optional via <code>mizu-ui/fonts.css</code>. Override <code>--mizu-*</code> tokens or use <code>className</code> for local styling. {meta.dependencies?.includes("Motion") ? "Requires React and Motion." : "Requires React."}</p>
+          <details className="mt-5 border border-line p-4">
+            <summary className="cursor-pointer text-sm text-paper">Inspect {meta.source}</summary>
+            <p className="mt-3 text-sm text-muted">Source is included in the npm package under <code>src/{meta.source}</code>.</p>
+            <a className="mt-3 inline-block text-sm text-accent underline underline-offset-4" href={`/api/source/${meta.slug}`} target="_blank" rel="noreferrer">Open full source ↗</a>
+          </details>
         </section>
 
         <section className="mt-14">
@@ -162,6 +169,10 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
           </div>
         </section>
 
+        <section className="mt-14">
+          <DemoLabel>Works alongside</DemoLabel>
+          <div className="mt-4 flex flex-wrap gap-3">{COMPONENTS.filter(c => c.category === meta.category && c.slug !== meta.slug).slice(0, 4).map(c => <Link key={c.slug} href={`/components/${c.slug}`} className="border border-line px-4 py-3 text-sm text-muted hover:text-paper">{c.name}</Link>)}</div>
+        </section>
         <nav
           aria-label="More components"
           className="mt-16 flex items-center justify-between gap-4 border-t border-line pt-8"

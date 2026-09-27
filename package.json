@@ -11,7 +11,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "check": "bun run typecheck && bun run lint && bun run test && bun run build:ui",
-    "test:consumer": "node scripts/check-consumer.mjs"
+    "test:consumer": "node scripts/check-consumer.mjs",
+    "examples:sync": "bun scripts/build-examples.ts"
   },
   "dependencies": {
     "motion": "^13.4.4",

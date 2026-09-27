@@ -1,10 +1,4 @@
-import type { ComponentType } from "react";
-import { ButtonDemo, PrimitivesDemo } from "./demos/foundation";
-import { MagneticDemo, MarqueeDemo, MaskLineDemo, PageWipeDemo, RevealDemo } from "./demos/motion";
-import { GhostWordDemo, SoftTypeDemo, SpecimenDemo, WaveTextDemo } from "./demos/type";
-import { PinfieldDemo, RippleDemo, SignalDemo } from "./demos/lab";
-import { CopyButtonDemo, CountUpDemo, ToastDemo } from "./demos/feedback";
-import { AccordionDemo, DialogDemo, NavDemo, TabsDemo } from "./demos/composite";
+import { CATALOG } from "./catalog";
 
 export type PropDoc = {
   name: string;
@@ -16,9 +10,11 @@ export type PropDoc = {
 export type ComponentMeta = {
   slug: string;
   name: string;
-  category: "Foundation" | "Motion" | "Type" | "Instruments" | "Feedback" | "Composites";
+  category: "Foundation" | "Motion" | "Type" | "Instruments" | "Feedback" | "Composites" | "Forms" | "Status" | "Data" | "Navigation" | "Content" | "Layout" | "Interaction";
   tagline: string;
-  demo: ComponentType;
+  source: string;
+  dependencies?: string[];
+  kind?: "overview";
   usage: string;
   props: PropDoc[];
   a11y: string;
@@ -32,15 +28,16 @@ export const CATEGORIES: ComponentMeta["category"][] = [
   "Instruments",
   "Feedback",
   "Composites",
+  "Forms", "Status", "Data", "Navigation", "Content", "Layout", "Interaction",
 ];
 
-export const COMPONENTS: ComponentMeta[] = [
+const ORIGINAL_COMPONENTS: ComponentMeta[] = [
   {
     slug: "button",
+    source: "ui/Button.tsx",
     name: "Button",
     category: "Foundation",
     tagline: "The primary action surface — solid, ghost and inverse, with a loading state and an arrow that leans into the hover.",
-    demo: ButtonDemo,
     usage: `import { Button, ButtonLink } from "mizu-ui";
 
 export function Actions() {
@@ -58,7 +55,7 @@ export function Actions() {
     props: [
       { name: "variant", type: '"solid" | "ghost" | "inverse"', def: '"solid"', desc: "Surface treatment. Inverse is for use on accent fills." },
       { name: "size", type: '"md" | "sm"', def: '"md"', desc: "Padding and type scale." },
-      { name: "loading", type: "boolean", def: "false", desc: "Replaces the arrow with a diamond spinner and disables the button." },
+      { name: "loading", type: "boolean", def: "false", desc: "Preserves the action label, adds a diamond spinner and disables the button." },
       { name: "arrow", type: "boolean", def: "true", desc: "Show the corner arrow that translates on hover." },
       { name: "label", type: "string", desc: "ButtonLink only — sets aria-label for icon-only links." },
     ],
@@ -67,10 +64,11 @@ export function Actions() {
   },
   {
     slug: "primitives",
+    source: "ui/Mark.tsx",
+    kind: "overview",
     name: "Primitives",
     category: "Foundation",
     tagline: "The shared atoms — Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider and Tooltip. Every other component is built from these.",
-    demo: PrimitivesDemo,
     usage: `import { Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip } from "mizu-ui";
 
 export function Header() {
@@ -82,7 +80,7 @@ export function Header() {
       <Spinner size={12} />
       <Frame label="Fig. 01">{media}</Frame>
       <Slider label="Density" value={v} min={0} max={100} onChange={setV} />
-      <Tooltip label="Copied">Hover me</Tooltip>
+      <Tooltip label="Help"><button>Focus me</button></Tooltip>
     </>
   );
 }`,
@@ -94,17 +92,17 @@ export function Header() {
       { name: "Spinner", type: "size, tone, label", desc: "Rotating diamond loader with role=status." },
       { name: "Frame", type: "label, tone", desc: "Crop-mark frame for media with optional caption plate." },
       { name: "Slider", type: "label, value, min, max, step, onChange", desc: "Diamond-thumb range control." },
-      { name: "Tooltip", type: "label, side", desc: "CSS-only mono tooltip on hover and focus." },
+      { name: "Tooltip", type: "label, side", desc: "Linked tooltip on hover/focus, dismissible with Escape." },
     ],
     a11y: "Mark is aria-hidden (decorative). Spinner exposes role=status with a label. Tooltip appears on :focus-within as well as hover. Slider is a labelled native input.",
     motion: "Spinner rotates on a 900ms linear loop. Tooltip fades and rises on hover/focus.",
   },
   {
     slug: "maskline",
+    source: "motion/MaskLine.tsx",
     name: "MaskLine",
     category: "Motion",
     tagline: "The Mizu headline reveal — text rises from inside its own mask, one line at a time.",
-    demo: MaskLineDemo,
     usage: `import { MaskLine } from "mizu-ui";
 
 export function Headline() {
@@ -124,10 +122,10 @@ export function Headline() {
   },
   {
     slug: "reveal",
+    source: "motion/Reveal.tsx",
     name: "Reveal",
     category: "Motion",
     tagline: "Scroll-triggered entrance with direction, distance and delay control.",
-    demo: RevealDemo,
     usage: `import { Reveal } from "mizu-ui";
 
 export function Grid() {
@@ -148,10 +146,10 @@ export function Grid() {
   },
   {
     slug: "magnetic",
+    source: "motion/Magnetic.tsx",
     name: "Magnetic",
     category: "Motion",
     tagline: "A spring-follow wrapper — the surface leans toward the cursor and settles back.",
-    demo: MagneticDemo,
     usage: `import { Magnetic } from "mizu-ui";
 
 export function PullTab() {
@@ -169,10 +167,10 @@ export function PullTab() {
   },
   {
     slug: "marquee",
+    source: "motion/Marquee.tsx",
     name: "Marquee",
     category: "Motion",
     tagline: "A seamless infinite ticker that pauses on hover and stands still for reduced motion.",
-    demo: MarqueeDemo,
     usage: `import { Marquee } from "mizu-ui";
 
 export function Ticker() {
@@ -194,10 +192,10 @@ export function Ticker() {
   },
   {
     slug: "pagewipe",
+    source: "motion/PageWipe.tsx",
     name: "PageWipe",
     category: "Motion",
     tagline: "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
-    demo: PageWipeDemo,
     usage: `import { PageWipeProvider, usePageWipe } from "mizu-ui";
 
 export function App({ children }) {
@@ -223,10 +221,10 @@ export function NavLink() {
   },
   {
     slug: "specimen",
+    source: "type/Specimen.tsx",
     name: "Specimen",
     category: "Type",
     tagline: "A live type tester — set text, size, weight, tracking and serif voice while the specimen redraws.",
-    demo: SpecimenDemo,
     usage: `import { Specimen } from "mizu-ui";
 
 export function Tester() {
@@ -252,10 +250,10 @@ export function Tester() {
   },
   {
     slug: "softtype",
+    source: "type/SoftType.tsx",
     name: "SoftType",
     category: "Type",
-    tagline: "A variable-font engine on canvas — weight and width oscillate through the Archivo axes.",
-    demo: SoftTypeDemo,
+    tagline: "A variable-font engine in CSS — weight and width oscillate through the Archivo axes.",
     usage: `import { SoftType } from "mizu-ui";
 
 export function Engine() {
@@ -267,15 +265,15 @@ export function Engine() {
       { name: "speed", type: "number", def: "1", desc: "Oscillation rate multiplier." },
       { name: "min / max", type: "number", def: "100 / 900", desc: "Weight range." },
     ],
-    a11y: "Canvas carries role=img and a descriptive label.",
-    motion: "Sine-driven font-variation-settings. Reduced motion renders a single static frame.",
+    a11y: "The type specimen carries role=img and a descriptive label.",
+    motion: "Sine-driven font-variation-settings. Reduced motion holds the actual font axes still.",
   },
   {
     slug: "wavetext",
+    source: "type/WaveText.tsx",
     name: "WaveText",
     category: "Type",
     tagline: "Kinetic text that answers the cursor — each letter lifts, scales and warms as you pass over it.",
-    demo: WaveTextDemo,
     usage: `import { WaveText } from "mizu-ui";
 
 export function Title() {
@@ -300,10 +298,10 @@ export function Title() {
   },
   {
     slug: "ghostword",
+    source: "type/GhostWord.tsx",
     name: "GhostWord",
     category: "Type",
     tagline: "An oversized outlined word that fills with accent when hovered — built for footers and chapter markers.",
-    demo: GhostWordDemo,
     usage: `import { GhostWord } from "mizu-ui";
 
 export function Footer() {
@@ -318,10 +316,10 @@ export function Footer() {
   },
   {
     slug: "pinfield",
+    source: "lab/Pinfield.tsx",
     name: "Pinfield",
     category: "Instruments",
     tagline: "A grid of pins that carries pulses — click and a wavefront travels outward, lighting the field.",
-    demo: PinfieldDemo,
     usage: `import { Pinfield } from "mizu-ui";
 
 export function Field() {
@@ -332,15 +330,15 @@ export function Field() {
       { name: "speed", type: "number", def: "3.4", desc: "Wavefront propagation speed." },
       { name: "autoPulse", type: "boolean", def: "true", desc: "Send an ambient pulse every 3s." },
     ],
-    a11y: "Canvas carries role=img with instructions. Pointer-driven only — no dead tab stop.",
+    a11y: "Canvas carries role=img with instructions. Focus the field and press Enter or Space to send a pulse.",
     motion: "60fps canvas with DPR scaling, IntersectionObserver pausing, and a static frame under reduced motion.",
   },
   {
     slug: "signal",
+    source: "lab/Signal.tsx",
     name: "Signal",
     category: "Instruments",
     tagline: "A waveform you can scrub — drag horizontally to move the phase, hover to light the bars.",
-    demo: SignalDemo,
     usage: `import { Signal } from "mizu-ui";
 
 export function Wave() {
@@ -350,15 +348,15 @@ export function Wave() {
       { name: "density", type: "number", def: "14", desc: "Bar width divisor — lower is denser." },
       { name: "speed", type: "number", def: "1", desc: "Auto-advance rate when not dragging." },
     ],
-    a11y: "Canvas carries role=img with drag instructions.",
+    a11y: "A labelled native range input provides keyboard scrubbing alongside pointer dragging.",
     motion: "Pointer capture for drag; phase eases back to auto-advance on release.",
   },
   {
     slug: "ripplesurface",
+    source: "lab/RippleSurface.tsx",
     name: "RippleSurface",
     category: "Instruments",
     tagline: "An ambient surface that ripples where you touch it — built for hero sections and invite panels.",
-    demo: RippleDemo,
     usage: `import { RippleSurface } from "mizu-ui";
 
 export function Hero() {
@@ -377,10 +375,10 @@ export function Hero() {
   },
   {
     slug: "countup",
+    source: "feedback/CountUp.tsx",
     name: "CountUp",
     category: "Feedback",
     tagline: "Numbers that count — eased value animation with tabular figures, prefixes and suffixes.",
-    demo: CountUpDemo,
     usage: `import { CountUp } from "mizu-ui";
 
 export function Stat() {
@@ -398,10 +396,10 @@ export function Stat() {
   },
   {
     slug: "copybutton",
+    source: "feedback/CopyButton.tsx",
     name: "CopyButton",
     category: "Feedback",
     tagline: "Copy to clipboard with a check-morph confirmation and a legacy fallback.",
-    demo: CopyButtonDemo,
     usage: `import { CopyButton } from "mizu-ui";
 
 export function Swatch({ hex }) {
@@ -411,15 +409,15 @@ export function Swatch({ hex }) {
       { name: "text", type: "string", desc: "The string to copy." },
       { name: "feedback", type: "string", def: '"Copied"', desc: "Confirmation label shown for 1.4s." },
     ],
-    a11y: "aria-label announces the copied state. Clipboard failure still shows feedback but copies nothing.",
+    a11y: "aria-label announces the copied state. Clipboard failure is reported explicitly and never claims success.",
     motion: "Diamond morphs to a check over 250ms.",
   },
   {
     slug: "toast",
+    source: "feedback/Toast.tsx",
     name: "Toast",
     category: "Feedback",
     tagline: "A toast system — provider, imperative API, tones, and a live region for screen readers.",
-    demo: ToastDemo,
     usage: `import { ToastProvider, useToast } from "mizu-ui";
 
 export function App({ children }) {
@@ -439,10 +437,10 @@ export function Saver() {
   },
   {
     slug: "accordion",
+    source: "composite/Accordion.tsx",
     name: "Accordion",
     category: "Composites",
     tagline: "Height-animated disclosure with a diamond marker that morphs between states.",
-    demo: AccordionDemo,
     usage: `import { Accordion, AccordionItem } from "mizu-ui";
 
 export function Faq() {
@@ -464,10 +462,10 @@ export function Faq() {
   },
   {
     slug: "tabs",
+    source: "composite/Tabs.tsx",
     name: "Tabs",
     category: "Composites",
     tagline: "Controlled or uncontrolled tabs with a sliding underline that travels between triggers.",
-    demo: TabsDemo,
     usage: `import { Tabs, TabsList, TabsTrigger, TabsPanel } from "mizu-ui";
 
 export function Switcher() {
@@ -489,10 +487,10 @@ export function Switcher() {
   },
   {
     slug: "dialog",
+    source: "composite/Dialog.tsx",
     name: "Dialog",
     category: "Composites",
     tagline: "A modal with focus trap, Escape handling, scroll lock and an expo entrance.",
-    demo: DialogDemo,
     usage: `import { Dialog, DialogTitle, DialogBody, DialogFooter, DialogClose } from "mizu-ui";
 
 export function Modal() {
@@ -510,15 +508,15 @@ export function Modal() {
       { name: "open / onOpenChange", type: "boolean / fn", desc: "Controlled open state." },
       { name: "label", type: "string", desc: "Accessible name for the dialog." },
     ],
-    a11y: "role=dialog, aria-modal, focus trap with Tab cycling, Escape to close, focus restored on exit, body scroll locked.",
-    motion: "450ms expo rise and scale on enter; overlay fades. Reduced motion collapses to a fade.",
+    a11y: "Native showModal supplies background inertness and focus containment. Escape requests close, focus returns to the trigger and body scroll is locked. Local themes are preserved.",
+    motion: "A CSS expo entrance communicates opening. Reduced motion removes the entrance.",
   },
   {
     slug: "nav",
+    source: "composite/Nav.tsx",
     name: "Nav",
     category: "Composites",
     tagline: "The thread header — scroll progress with a diamond node, chapter tracking, and a full-screen mobile menu.",
-    demo: NavDemo,
     usage: `import { Nav } from "mizu-ui";
 
 export function Shell() {
@@ -536,10 +534,13 @@ export function Shell() {
       { name: "currentPath", type: "string", desc: "Current path for active state. Defaults to window.location.pathname." },
       { name: "trackChapters", type: "boolean", def: "true", desc: "Observe [data-chapter] sections and show the current chapter." },
     ],
-    a11y: "Semantic header/nav; mobile menu traps initial focus on the close button, locks scroll, and closes on Escape.",
+    a11y: "Semantic header/nav; mobile menu uses native modal focus containment, locks scroll, and closes on Escape.",
     motion: "Progress line is a spring-smoothed scroll link; the chapter label crossfades; the mobile menu is a full-screen fade.",
   },
 ];
+
+export const COMPONENTS: ComponentMeta[] = [...ORIGINAL_COMPONENTS, ...CATALOG];
+export const SYSTEMS = COMPONENTS.filter((c) => c.kind !== "overview");
 
 export function getComponent(slug: string): ComponentMeta | undefined {
   return COMPONENTS.find((c) => c.slug === slug);
