@@ -1,6 +1,6 @@
 import { it, expect } from "vitest";
 import { readFileSync } from "node:fs";
-const css = readFileSync("packages/mizu/styles.css", "utf8");
+const css = readFileSync("packages/mizu/src/core.css", "utf8");
 function luminance(hex: string) {
   const channels = [0, 2, 4]
     .map((i) => parseInt(hex.slice(i + 1, i + 3), 16) / 255)

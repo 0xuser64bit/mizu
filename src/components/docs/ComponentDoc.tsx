@@ -4,6 +4,7 @@ import { CopyButton } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
+import { usesMotion } from "./source";
 
 function CodeBlock({ code }: { code: string }) {
   return (
@@ -168,7 +169,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
             Import <code>mizu-ui/styles.css</code> once. Fonts are optional via{" "}
             <code>mizu-ui/fonts.css</code>. Override <code>--mizu-*</code>{" "}
             tokens or use <code>className</code> for local styling.{" "}
-            {meta.dependencies?.includes("Motion")
+            {usesMotion(meta.source)
               ? "Requires React and Motion."
               : "Uses native React and CSS; install the package peers for root imports."}
           </p>

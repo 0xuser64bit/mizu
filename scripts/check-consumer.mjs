@@ -124,6 +124,14 @@ assert(Object.keys(installed).length >= 110);
       ),
       "Optional fonts leaked into the styles-only build",
     );
+    const css = readdirSync(join(scratch, "small-dist/assets"))
+      .filter((f) => f.endsWith(".css"))
+      .map((f) => readFileSync(join(scratch, "small-dist/assets", f), "utf8"))
+      .join("");
+    assert(
+      css.includes("--mizu-ink") && css.includes(".mizu-btn--solid"),
+      "styles.css did not resolve its imported stylesheets",
+    );
     sizes.push(
       `${entry}: ${(Buffer.byteLength(js) / 1024).toFixed(1)} KiB JS / ${(gzipSync(js).length / 1024).toFixed(1)} KiB gzip including React`,
     );

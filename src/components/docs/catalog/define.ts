@@ -21,10 +21,6 @@ export function define(
     props,
     a11y,
     motion,
-    dependencies:
-      category === "Motion" || name === "ReorderList"
-        ? ["React", "Motion"]
-        : ["React"],
   };
 }
 export const prop = (

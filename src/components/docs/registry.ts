@@ -26,7 +26,6 @@ export type ComponentMeta = {
     | "Interaction";
   tagline: string;
   source: string;
-  dependencies?: string[];
   kind?: "overview";
   usage: string;
   props: PropDoc[];
