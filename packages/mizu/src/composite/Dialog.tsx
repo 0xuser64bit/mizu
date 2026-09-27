@@ -124,6 +124,7 @@ export function Dialog({
               exit={reduce ? { opacity: 1 } : { opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: reduce ? 0 : 0.45, ease: EASE_EXPO }}
               style={{
+                position: "relative",
                 pointerEvents: "auto",
                 width: "min(520px, 100%)",
                 maxHeight: "min(84vh, 720px)",
