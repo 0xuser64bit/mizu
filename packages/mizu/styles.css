@@ -2056,10 +2056,10 @@
   padding: 12px;
   background: var(--mizu-paper);
   color: var(--mizu-ink);
-  transform: translateY(-200%);
+  clip-path: inset(50%);
 }
 .mizu-skip-link:focus {
-  transform: none;
+  clip-path: none;
 }
 .mizu-split-pane {
   display: grid;
