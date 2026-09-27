@@ -45,3 +45,6 @@ packages/*/dist
 packages/*.tgz
 node_modules
 examples/*/dist
+
+# Local visual review captures
+.impeccable/review/

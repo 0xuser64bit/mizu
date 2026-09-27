@@ -1,103 +1,135 @@
 # mizu-ui
 
-The Mizu interface language — surfaces, motion and systems for React.
+Mizu's interface language for React: **104 systems across 13 families**, from
+labelled forms and asynchronous actions to data inspection, bounded history,
+variable type and interactive instruments. Warm ink and paper, hairline rules,
+diamond markers and purposeful motion connect the collection.
 
-Mizu is not a generic UI kit. It is a curated collection of components with a point of view: warm ink-and-paper surfaces, hairline rules, mono microcopy, a signature diamond mark, and motion that means something.
+## Install and render
 
-## Install
+This checkout prepares an unpublished 0.2.0 candidate. Run
+`npm pack ./packages/mizu` from the repository root, copy the tarball into your
+app, then:
 
-```bash
-npm install mizu-ui
-# or
-bun add mizu-ui
+```sh
+npm install ./mizu-ui-0.2.0.tgz motion
 ```
 
-Peer dependencies: `react` (>=18.3 <20), `react-dom` (>=18.3 <20), `motion` (>=12 <14).
+After publication: `npm install mizu-ui@0.2.0 motion`.
 
-## Setup
-
-Import the stylesheet once, at the root of your app. It ships design tokens and component styles. Self-hosted fonts are optional.
+Peers: React and React DOM >=18.3 <20; Motion >=12 <14. The package is ESM only,
+with TypeScript declarations and source maps. Next.js and Tailwind are not
+required.
 
 ```tsx
+import { useState } from "react";
 import "mizu-ui/styles.css";
-import "mizu-ui/fonts.css"; // optional: Archivo Variable, Instrument Serif, JetBrains Mono
-```
+import "mizu-ui/fonts.css"; // optional Archivo, Instrument Serif, JetBrains Mono
+import { Button, TextField } from "mizu-ui";
 
-Wrap your app in the theme surface class:
-
-```tsx
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className="mizu-root">{children}</body>
-    </html>
-  );
+export function App() {
+  const [name, setName] = useState("");
+  const [submitted, setSubmitted] = useState("");
+  return <div className="mizu-root" style={{ padding: 24 }}>
+    <form onSubmit={e => { e.preventDefault(); setSubmitted(name); }}>
+      <TextField label="Project name" required value={name}
+        onChange={e => setName(e.target.value)} />
+      <Button type="submit">Create project</Button>
+    </form>
+    <p role="status">{submitted ? `Created ${submitted}` : ""}</p>
+  </div>;
 }
 ```
 
-## Theming
+Import CSS in your app entry or root layout, set the document language and
+remove the default body margin. For Next.js, put interactive usage behind a
+`"use client"` boundary. Package client directives are preserved. Optional font
+CSS keeps font files out of a styles-only build; SoftType's width animation
+needs a compatible variable font such as the included Archivo.
 
-Dark is the default. For a light surface, set `data-theme="light"` on any ancestor:
+## Focused imports
+
+The root exports everything; each family has a focused ESM entry point.
+
+| Path | Systems |
+| --- | --- |
+| `mizu-ui/ui` | Button / ButtonLink, Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip |
+| `mizu-ui/motion` | MaskLine, Reveal, Magnetic, Marquee, PageWipe, Presence, Tilt, Parallax, ScrollProgress; MotionPreferences |
+| `mizu-ui/type` | Specimen, SoftType, WaveText, GhostWord |
+| `mizu-ui/lab` | Pinfield, Signal, RippleSurface |
+| `mizu-ui/feedback` | CountUp, CopyButton, Toast |
+| `mizu-ui/composite` | Accordion, Tabs, Dialog, Nav and compound parts |
+| `mizu-ui/forms` | FormField, TextField, TextArea, SelectField, Checkbox, Switch, SearchField, PasswordField, RadioGroup, SegmentedControl, NumberField, Rating, ColorPicker, TagInput, FileDropzone, AsyncForm |
+| `mizu-ui/status` | Status, Alert, Progress, Meter, Skeleton, EmptyState, ErrorState, ConnectionStatus, SaveIndicator, AsyncBoundary, TaskProgress, AsyncButton |
+| `mizu-ui/data` | DataTable, DescriptionList, Stat, BarChart, Sparkline, Heatmap, Timeline, ActivityFeed, DiffView, DataInspector, TreeView, ComparisonTable |
+| `mizu-ui/navigation` | Breadcrumbs, Pagination, Stepper, AnchorNav, SideNav, BottomNav, ActionMenu, CommandPalette |
+| `mizu-ui/content` | Avatar, Kbd, CodeBlock, Quote, Prose, ImageFigure, MediaPlayer, LinkCard, FileCard, Checklist |
+| `mizu-ui/layout` | Stack, Grid, SplitPane, AspectRatio, ScrollArea, AppShell |
+| `mizu-ui/interaction` | Combobox, MultiSelect, InlineEdit, RangeSelector, ReorderList, ImageCompare, HistoryControls / useHistory, ConfirmAction |
+
+Compound parts count with their system; providers and hooks are supporting APIs.
+
+## Theme, style and motion
 
 ```tsx
-<body className="mizu-root" data-theme="light">
+<div className="mizu-root" data-theme="light">…</div>
 ```
 
-All components read from CSS custom properties (`--mizu-ink`, `--mizu-accent`, …), so you can re-theme any component by overriding tokens on your own selector:
+Dark is the default. Local theme ancestors are preserved inside native dialogs.
+All systems share `--mizu-*` custom properties. Pass `className` / `style` where
+exposed, or override tokens on an ancestor. `--mizu-accent` is foreground signal;
+`--mizu-accent-fill` is the filled action background. Check contrast after any
+color override; status colors have separate success / warning / danger tokens.
 
-```css
-.my-surface {
-  --mizu-ink: #101418;
-  --mizu-paper: #eef2f5;
-  --mizu-accent: #2f6bff;
-}
+Components honor `prefers-reduced-motion`. For an explicit preference including
+CSS and canvas animation, use:
+
+```tsx
+import { MotionPreferences } from "mizu-ui/motion";
+<MotionPreferences reduced={true}><YourInterface /></MotionPreferences>
 ```
 
-## Components
+Omit `reduced` to follow the operating system. Continuous marquees include
+pause controls. Canvas instruments stop their loops off screen, when hidden or
+with reduced motion, and render a static useful frame.
 
-### Foundation
-- `Button` / `ButtonLink` — solid / ghost / inverse, loading state, arrow micro-motion
-- `SectionTag` — mono label with diamond marker
-- `Rule` — hairline divider with optional node and label
-- `Badge` — mono status chip
-- `Mark` — the Mizu diamond glyph
-- `Frame` — crop-mark frame for media
-- `Slider` — diamond-thumb range control
-- `Tooltip` — mono tooltip
+## Real state and composition
 
-### Motion
-- `MaskLine` — masked line-wipe text reveal
-- `Reveal` — scroll-triggered entrance
-- `Magnetic` — spring-follow pointer wrapper
-- `Marquee` — seamless ticker
-- `PageWipeProvider` / `usePageWipe` — full-screen page transition
+Native fields accept standard form props, controlled values or default values.
+Specialized selectors use explicit values and callbacks; stable IDs identify
+rows, options and reorderable items. Disabled entries are excluded from command
+and keyboard selection. Supply a meaningful accessible label for each control.
 
-### Type systems
-- `Specimen` — live type tester
-- `SoftType` — variable-font canvas engine
-- `WaveText` — pointer-reactive kinetic text
-- `GhostWord` — outlined display word that fills on hover
+AsyncButton / AsyncForm follow your actual promise and pass AbortSignal for
+unmount cancellation; your service must honor the signal. ConfirmAction keeps a
+failed operation open for retry. FileDropzone validates and returns File objects
+but does not upload. Charts render supplied finite values; tables sort locally.
+History is bounded and local. ConnectionStatus reports browser connectivity,
+not your API's health. Native MediaPlayer needs a real playable source.
 
-### Instruments
-- `Pinfield` — pulse-propagating dot grid
-- `Signal` — draggable waveform scrubber
-- `RippleSurface` — ambient ripple field
+DataTable does not virtualize large datasets. DiffView aligns lines, without
+semantic diffing. TreeView uses native disclosure rather than a full ARIA tree
+widget. JSON inspection is bounded and copy is disabled if serialization fails.
+These limits are intentional; use the relevant documented source/API when
+composing more demanding workflows.
 
-### Feedback
-- `CountUp` — eased number animation
-- `CopyButton` — clipboard with confirmation morph
-- `ToastProvider` / `useToast` — toast system
+## Inspect, copy and validate
 
-### Composites
-- `Accordion` / `AccordionItem`
-- `Tabs` / `TabsList` / `TabsTrigger` / `TabsPanel`
-- `Dialog` / `DialogTitle` / `DialogBody` / `DialogFooter` / `DialogClose`
-- `Nav` — thread header with scroll progress and chapter tracking
+The [repository](https://github.com/0xuser64bit/mizu) includes the searchable
+showcase: run it and visit `/components`. Every page has working usage,
+properties, accessibility / motion notes and a source link. The
+[complete inventory](https://github.com/0xuser64bit/mizu/blob/main/docs/COMPONENTS.md)
+links to implementation files.
 
-## Reduced motion
+Source ships in `node_modules/mizu-ui/src` and via `mizu-ui/source/*`. Copy the
+relative dependencies, shared CSS and MIT license too. Source uses .tsx/.ts
+imports; TypeScript 5.7+ supports rewriting these extensions, or adapt them to
+your bundler. The installed ESM output already uses resolvable .js imports.
 
-Every component respects `prefers-reduced-motion`. Canvas instruments stop their loops and render a static frame; springs and wipes resolve instantly. You can also force it with `reducedMotion="user"` on `MotionConfig` from `motion`.
+The repository's tarball check installs outside the workspace with lifecycle
+scripts disabled, checks all family exports and declarations, renders via Node
+SSR, builds a production Vite composition and verifies small-import tree
+shaking on React 18 and 19. See the repository's verification report for the
+actual browser coverage and remaining compatibility checks.
 
-## License
-
-MIT
+MIT.

@@ -1,0 +1,31 @@
+# Changelog
+
+## 0.2.0 — prepared, not published
+
+- Grow from 28 systems to 104 across 13 families, with working examples and
+  inspectable typed source. Native forms, promise-driven feedback, data,
+  navigation, content, responsive layout, selection, editing, comparison,
+  history and motion now compose alongside the original instruments.
+- Replace custom modality with native dialog behavior, preserve local themes,
+  coordinate nested scroll locks and restore trigger focus. Fix ARIA ID
+  collisions, loading action names, clipboard failures and timer cleanup.
+- Render SoftType's real variable-font axis in the DOM. Share canvas lifecycle,
+  visibility and resize logic; cap pixel density; stop loops for reduced motion.
+  MotionPreferences handles explicit CSS / canvas / Motion preferences too.
+- Improve light/dark contrast, long-title reflow, keyboard alternatives,
+  source readability, missing states and chart SSR hydration.
+- Ship native ESM with rewritten imports, declarations/maps, all family
+  entrypoints, inspectable source, optional font CSS and an MIT license.
+- Replace eager documentation demos with lazy modules, searchable family
+  navigation, generated/compiled usage, API/source routes and stage controls.
+- Add an isolated tarball consumer on React 18/19, tree-shaking budgets,
+  composition browser checks, CI and the release verification report.
+
+### Migration considerations
+
+Button defaults to type="button"; use type="submit" for a form action. Modal
+background inertness is now native, so render Dialog where its local theme
+belongs. SoftType uses DOM text, not a canvas. Non-finite CountUp values settle
+to zero. Package output is ESM only; CommonJS require is not supported. Fonts
+are an optional separate CSS import. Existing documented component names are
+retained; supporting providers and hooks are not extra inventory systems.

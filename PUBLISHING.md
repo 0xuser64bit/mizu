@@ -1,63 +1,56 @@
-# Publishing `mizu-ui`
+# Release `mizu-ui`
 
-The package lives in [`packages/mizu`](./packages/mizu) and publishes to npm as
-`mizu-ui` (unscoped, public). It is an ESM-only package: `dist/` (JS +
-declarations + source maps), inspectable `src/`, styles, optional fonts, README
-and LICENSE ship —
-everything else in the package directory is ignored via the `files` field.
+Version 0.2.0 is prepared in packages/mizu/package.json. No publication, push,
+remote CI run or hosted deployment is implied by local verification. Publishing
+is a separate maintainer action, after reviewing the artifact and npm access.
 
-## Before you publish
+## Candidate checks
 
-1. **Decide the version.** Semver: breaking API changes → major, new
-   components/features → minor, fixes/docs → patch. Bump `version` in
-   `packages/mizu/package.json`.
-2. **Make sure `dist/` is current.** The build is `npm run build:ui` from the
-   repo root (or `tsc -p packages/mizu/tsconfig.build.json`). The `prepack` script builds before packing or publishing.
-   Consumers of a tarball install already compiled output without lifecycle scripts.
-3. **Run the checks:** `bun run check`, `bun run build`, `bun run test:consumer`.
+```sh
+bun install --frozen-lockfile
+bun run check
+bun run build
+bun run test:consumer
+bun run test:consumer --react18
+npm pack ./packages/mizu --dry-run
+```
 
-## Publish
+The actual tarball test installs outside the workspace with scripts disabled,
+checks types, Node SSR, all exports, peer resolution, CSS/fonts, Vite production
+bundling and small-import budgets. It cleans its temporary directory.
 
-```bash
-npm login            # one-time; enable 2FA on the npm account
-cd packages/mizu
-npm pack --dry-run   # verify exactly what will ship (dist/ + src/ + CSS + README + LICENSE)
+Review docs/VERIFICATION.md, the inventory and changelog. Review the npm dry-run
+file list: compiled ESM, declarations/maps, source, styles, optional fonts CSS,
+README, LICENSE and package metadata only. No website or node_modules.
+`prepack` builds before packing; no consumer prepare/install script is required.
+
+Run the packed app with `bun run test:consumer --serve`. Use the documented
+browser assertions and manual checks for focus, Escape, arrows, touch-sized
+controls, local light/dark themes and reduced motion. Before public release,
+complete the Chrome / Firefox / Safari and screen-reader matrix listed in the
+verification report; a DOM suite alone is not that matrix.
+
+## Publish (maintainer action)
+
+Confirm the package name and registry permissions. Use semver appropriate to
+compatibility; pre-1.0 minor releases may change behavior and need migration
+notes. Once checks and review pass, from packages/mizu:
+
+```sh
+npm login
 npm publish --access public
 ```
 
-## Verify the published package
+Use your registry's required authentication. After publication, install the
+exact released version in a fresh app, run its production build and browser
+smoke checks, then tag the reviewed commit. Update the candidate status and installation copy
+in the showcase and READMEs once the registry version is available. Do not validate publication using
+repository source aliases or a file-linked install.
 
-Do this from a scratch directory — never from inside this repo, where local
-paths can mask packaging bugs:
+## Supported distribution
 
-```bash
-mkdir mizu-verify && cd mizu-verify
-npm init -y
-npm install mizu-ui
-```
-
-Then in any Vite/Next/plain React app:
-
-```tsx
-import "mizu-ui/styles.css";
-import { Button } from "mizu-ui";
-
-export function App() {
-  return <Button>Ship it</Button>;
-}
-```
-
-Check that:
-
-- imports resolve (types included)
-- tokens load from styles.css; fonts load only when fonts.css is imported
-- a production build succeeds
-
-## Notes for consumers
-
-- Peer dependencies: `react`, `react-dom`, `motion` — install them in the
-  consumer app; Mizu never bundles its own copy.
-- Theming: dark is the default; set `data-theme="light"` on any ancestor for
-  the light surface. Tokens are plain CSS custom properties (`--mizu-*`), so
-  any component can be re-themed by overriding them locally.
-- Everything respects `prefers-reduced-motion`.
+React / React DOM >=18.3 <20; Motion >=12 <14. Native ESM only, no CommonJS
+require entry. CSS is explicitly imported and marked as a side effect; JavaScript
+can be tree-shaken. Optional self-hosted font packages are dependencies, but
+font assets are bundled only when fonts.css is imported. Inspectable source
+uses .tsx/.ts extensions; emitted JS uses .js.

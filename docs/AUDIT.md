@@ -38,7 +38,7 @@ package compilation and the production site build all pass.
   imports every demo. Add family navigation, search, source inspection and useful
   usage examples. The index's claim that everything is live there is inaccurate.
 - Package ESM imports omit extensions; Node cannot resolve the emitted barrel.
-  Add explicit .js specifiers, focused subpaths, included source, a real license,
+  Use explicit .tsx/.ts source specifiers rewritten to .js on emit, focused subpaths, included source, a real license,
   optional font CSS, and correct peer/version metadata.
 - A file-linked consumer is not an isolated packed-package test. Test a tarball
   in a temporary external app, including SSR, declarations and production bundling.
@@ -51,3 +51,39 @@ Unit tests protect behavior; browser checks protect native modality, focus,
 themes, overflow and motion. No claim of exhaustive assistive-technology or
 cross-device validation is implied by passing a DOM test. Publishing requires a
 separate release action. New components need live demos, API notes and source.
+
+## Implemented resolutions
+
+All repair items above were addressed before or alongside expansion. The native
+modal owns focus containment and inertness; a small shared counter preserves
+body overflow across nested dialogs. useId separates repeated compound widgets.
+Buttons retain their accessible action while busy; copying reports actual API
+success and cleans fallback nodes. Provider timers and pending wipe promises
+are released on unmount.
+
+The package now contains 104 systems in 13 family barrels. The source has no
+Next.js dependency or website imports. Ordinary controls use native HTML/CSS;
+Motion remains the existing expressive dependency. Charts use supplied values,
+not a new chart dependency. Forms and confirmation follow caller promises;
+file selection validates actual files without pretending to upload.
+
+Canvas loops share one lifecycle with visibility, theme, resize and reduced
+motion support. Unchanged backing stores are not reset, and ancestor animation
+transforms do not cause token repaints. Density is capped at 2. CSS handles the
+spinner and variable width. CountUp clamps numeric boundaries and separates
+visual frames from its screen-reader value. Small text/status tokens meet 4.5:1
+against each built-in surface; custom theme overrides remain the consumer's
+responsibility.
+
+Documentation metadata is serializable; dynamic demo imports are separate.
+Generated, formatted usage compiles against the implementation, including the
+original examples. The generator also creates the inventory. Search works on
+names and family terms; mobile navigation uses native disclosure. Source paths
+are catalog-whitelisted and responses are plain text with nosniff. The Nav
+example runs in its own real document instead of a noninteractive scaled mock.
+
+Package tests now use the actual tarball outside the workspace, without install
+scripts, for React 18 and 19. CI runs the same type/lint/behavior/build/consumer
+checks. Baseline formatting was committed separately from functional repairs.
+[Verification](VERIFICATION.md) records measured artifacts, browser evidence and
+honest remaining release checks.
