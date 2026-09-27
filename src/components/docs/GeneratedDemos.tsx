@@ -239,4 +239,16 @@ export const GENERATED_DEMOS = {
   "confirm-action": dynamic(() =>
     import("./demos/generated/interaction").then((m) => m.ConfirmActionDemo),
   ),
+  presence: dynamic(() =>
+    import("./demos/generated/motion").then((m) => m.PresenceDemo),
+  ),
+  tilt: dynamic(() =>
+    import("./demos/generated/motion").then((m) => m.TiltDemo),
+  ),
+  parallax: dynamic(() =>
+    import("./demos/generated/motion").then((m) => m.ParallaxDemo),
+  ),
+  "scroll-progress": dynamic(() =>
+    import("./demos/generated/motion").then((m) => m.ScrollProgressDemo),
+  ),
 };

@@ -100,9 +100,9 @@ export function BottomNavDemo() {
     <BottomNav
       currentPath="/components"
       items={[
-        { label: "Collection", href: "/components", icon: "◇" },
-        { label: "Lab", href: "/lab", icon: "∿" },
-        { label: "Studio", href: "/studio", icon: "□" },
+        { label: "Collection", href: "/components" },
+        { label: "Lab", href: "/lab" },
+        { label: "Studio", href: "/studio" },
       ]}
     />
   );

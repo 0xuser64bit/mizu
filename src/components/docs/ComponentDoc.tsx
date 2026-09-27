@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CopyButton, SectionTag } from "@/mizu";
+import usage from "./usage.json";
+import { CopyButton } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
@@ -23,6 +24,9 @@ function CodeBlock({ code }: { code: string }) {
         Copy
       </CopyButton>
       <pre
+        tabIndex={0}
+        role="region"
+        aria-label="Usage example"
         style={{
           margin: 0,
           overflowX: "auto",
@@ -44,7 +48,12 @@ function CodeBlock({ code }: { code: string }) {
 
 function PropsTable({ props }: { props: ComponentMeta["props"] }) {
   return (
-    <div style={{ overflowX: "auto" }}>
+    <div
+      tabIndex={0}
+      role="region"
+      aria-label="Component properties"
+      style={{ overflowX: "auto" }}
+    >
       <table
         style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}
       >
@@ -132,8 +141,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
   return (
     <div className="px-5 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-4xl">
-        <SectionTag tone="accent">{meta.category}</SectionTag>
-        <h1 className="mt-5 font-display text-5xl font-black font-wide tracking-tight md:text-6xl">
+        <h1 className="font-display text-[clamp(2rem,6vw,4rem)] font-black font-wide tracking-tight [overflow-wrap:anywhere]">
           {meta.name}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
@@ -150,7 +158,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <section className="mt-14">
           <DemoLabel>Usage</DemoLabel>
           <div className="mt-4">
-            <CodeBlock code={meta.usage} />
+            <CodeBlock code={usage[meta.slug as keyof typeof usage]} />
           </div>
         </section>
 
@@ -162,7 +170,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
             tokens or use <code>className</code> for local styling.{" "}
             {meta.dependencies?.includes("Motion")
               ? "Requires React and Motion."
-              : "Requires React."}
+              : "Uses native React and CSS; install the package peers for root imports."}
           </p>
           <details className="mt-5 border border-line p-4">
             <summary className="cursor-pointer text-sm text-paper">

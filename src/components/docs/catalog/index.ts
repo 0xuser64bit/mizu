@@ -6,6 +6,7 @@ import { NAVIGATION } from "./navigation";
 import { CONTENT } from "./content";
 import { LAYOUT } from "./layout";
 import { INTERACTION } from "./interaction";
+import { MOTION } from "./motion";
 export const CATALOG = [
   ...FOUNDATION,
   ...FORMS,
@@ -15,4 +16,5 @@ export const CATALOG = [
   ...CONTENT,
   ...LAYOUT,
   ...INTERACTION,
+  ...MOTION,
 ];

@@ -105,7 +105,7 @@ export function Actions() {
     ],
     a11y: "Renders a real <button> / <a>. Disabled states use the disabled attribute; loading is conveyed through role=status on the spinner.",
     motion:
-      "Arrow translates 2px on hover with expo easing. Loading swaps content without layout shift.",
+      "Arrow translates 2px on hover with expo easing. Loading retains the label and replaces the arrow.",
   },
   {
     slug: "primitives",
@@ -115,16 +115,18 @@ export function Actions() {
     category: "Foundation",
     tagline:
       "The shared atoms — Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider and Tooltip. Every other component is built from these.",
-    usage: `import { Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip } from "mizu-ui";
+    usage: `import { useState } from "react";
+import { SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip } from "mizu-ui";
 
 export function Header() {
+  const [v, setV] = useState(40);
   return (
     <>
       <SectionTag tone="muted">01 — Foundation</SectionTag>
       <Rule label="Interlude" />
       <Badge tone="accent">Live</Badge>
       <Spinner size={12} />
-      <Frame label="Fig. 01">{media}</Frame>
+      <Frame label="Fig. 01"><p>Framed content</p></Frame>
       <Slider label="Density" value={v} min={0} max={100} onChange={setV} />
       <Tooltip label="Help"><button>Focus me</button></Tooltip>
     </>
@@ -223,7 +225,7 @@ export function Headline() {
 export function Grid() {
   return (
     <Reveal delay={0.1} y={24}>
-      <Card />
+      <p>Your content arrives here.</p>
     </Reveal>
   );
 }`,
@@ -282,7 +284,7 @@ export function PullTab() {
     ],
     a11y: "Purely presentational — the wrapped control keeps its own keyboard and screen-reader behavior.",
     motion:
-      "Spring (stiffness 160, damping 14) on both axes. Disabled automatically under reduced motion via the global CSS collapse.",
+      "Spring (stiffness 160, damping 14) on both axes. Travel is disabled by the reduced-motion hook.",
   },
   {
     slug: "marquee",
@@ -326,7 +328,7 @@ export function Ticker() {
         desc: "Accessible name for the marquee region.",
       },
     ],
-    a11y: "The second copy is aria-hidden; the region carries role=marquee and a label.",
+    a11y: "The second copy is aria-hidden and inert. Hover/focus pauses, and a visible Pause/Play button gives explicit control.",
     motion: "Linear transform loop — GPU-friendly, no layout thrash.",
   },
   {
@@ -336,19 +338,19 @@ export function Ticker() {
     category: "Motion",
     tagline:
       "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
-    usage: `import { PageWipeProvider, usePageWipe } from "mizu-ui";
+    usage: `import type { ReactNode } from "react";
+import { PageWipeProvider, usePageWipe } from "mizu-ui";
 
-export function App({ children }) {
+export function App({ children }: { children: ReactNode }) {
   return <PageWipeProvider>{children}</PageWipeProvider>;
 }
 
 export function NavLink() {
   const { wipe } = usePageWipe();
-  const router = useRouter();
 
   const go = async () => {
     await wipe("The lab");   // resolves at the sweep midpoint
-    router.push("/lab");     // navigate while the screen is covered
+    window.location.assign("/lab"); // or call your router here
   };
 
   return <button onClick={go}>Enter</button>;
@@ -375,14 +377,6 @@ export function NavLink() {
 
 export function Tester() {
   return <Specimen />;
-
-  // or controlled:
-  return (
-    <Specimen
-      text={text} onTextChange={setText}
-      weight={weight} onWeightChange={setWeight}
-    />
-  );
 }`,
     props: [
       {
@@ -459,7 +453,7 @@ export function Engine() {
     ],
     a11y: "The type specimen carries role=img and a descriptive label.",
     motion:
-      "Sine-driven font-variation-settings. Reduced motion holds the actual font axes still.",
+      "CSS keyframes interpolate font-variation-settings. Reduced motion holds the actual font axes still.",
   },
   {
     slug: "wavetext",
@@ -492,7 +486,7 @@ export function Title() {
       {
         name: "colorFrom / colorTo",
         type: "string",
-        def: '"#f4f0e8" / "#ff4d1c"',
+        def: '"var(--mizu-paper)" / "var(--mizu-accent)"',
         desc: "Resting and active letter colors.",
       },
       {
@@ -504,7 +498,7 @@ export function Title() {
     ],
     a11y: "Letters are aria-hidden; the container carries the full text as its accessible name.",
     motion:
-      "Per-letter springs with smoothstep falloff. No pointer listeners under reduced motion.",
+      "Direct motion values with smoothstep falloff. Reduced motion removes pointer listeners and keeps letters at rest.",
   },
   {
     slug: "ghostword",
@@ -558,9 +552,9 @@ export function Field() {
         desc: "Send an ambient pulse every 3s.",
       },
     ],
-    a11y: "Canvas carries role=img with instructions. Focus the field and press Enter or Space to send a pulse.",
+    a11y: "Canvas carries button semantics with instructions. Focus the field and press Enter or Space to send a pulse.",
     motion:
-      "60fps canvas with DPR scaling, IntersectionObserver pausing, and a static frame under reduced motion.",
+      "DPR-scaled canvas with IntersectionObserver pausing, and a static frame under reduced motion.",
   },
   {
     slug: "signal",
@@ -619,7 +613,7 @@ export function Hero() {
     ],
     a11y: "aria-hidden — the surface is decorative.",
     motion:
-      "Ripples expand and fade on a 1px stroke. Reduced motion renders nothing.",
+      "Ripples expand and fade on a 1px stroke. Reduced motion paints a static frame.",
   },
   {
     slug: "countup",
@@ -651,7 +645,12 @@ export function Stat() {
         def: "0",
         desc: "Start delay in seconds.",
       },
-      { name: "decimals", type: "number", def: "0", desc: "Fraction digits." },
+      {
+        name: "decimals",
+        type: "number",
+        def: "0",
+        desc: "Fraction digits, clamped to 0–20.",
+      },
       {
         name: "prefix / suffix",
         type: "string",
@@ -659,7 +658,7 @@ export function Stat() {
         desc: "Affixes rendered outside the animation.",
       },
     ],
-    a11y: "The final value is real text — readable without waiting for the animation.",
+    a11y: "The final value is separate screen-reader text; the changing visual figures are aria-hidden. Reduced motion renders the final number directly.",
     motion:
       "Quartic ease-out on a rAF loop. Reduced motion sets the value instantly.",
   },
@@ -672,7 +671,7 @@ export function Stat() {
       "Copy to clipboard with a check-morph confirmation and a legacy fallback.",
     usage: `import { CopyButton } from "mizu-ui";
 
-export function Swatch({ hex }) {
+export function Swatch({ hex }: { hex: string }) {
   return <CopyButton text={hex}>{hex}</CopyButton>;
 }`,
     props: [
@@ -685,7 +684,8 @@ export function Swatch({ hex }) {
       },
     ],
     a11y: "aria-label announces the copied state. Clipboard failure is reported explicitly and never claims success.",
-    motion: "Diamond morphs to a check over 250ms.",
+    motion:
+      "The diamond is replaced by a check; feedback stays visible for 1.4 seconds.",
   },
   {
     slug: "toast",
@@ -694,16 +694,17 @@ export function Swatch({ hex }) {
     category: "Feedback",
     tagline:
       "A toast system — provider, imperative API, tones, and a live region for screen readers.",
-    usage: `import { ToastProvider, useToast } from "mizu-ui";
+    usage: `import type { ReactNode } from "react";
+import { ToastProvider, useToast } from "mizu-ui";
 
-export function App({ children }) {
+export function App({ children }: { children: ReactNode }) {
   return <ToastProvider>{children}</ToastProvider>;
 }
 
 export function Saver() {
   const { toast } = useToast();
-  const save = () => toast("Surface saved", { tone: "success" });
-  return <button onClick={save}>Save</button>;
+  const notify = () => toast("Notification received", { tone: "success" });
+  return <button onClick={notify}>Notify</button>;
 }`,
     props: [
       {
@@ -789,17 +790,21 @@ export function Switcher() {
     category: "Composites",
     tagline:
       "A modal with focus trap, Escape handling, scroll lock and an expo entrance.",
-    usage: `import { Dialog, DialogTitle, DialogBody, DialogFooter, DialogClose } from "mizu-ui";
+    usage: `import { useState } from "react";
+import { Button, Dialog, DialogTitle, DialogBody, DialogFooter, DialogClose } from "mizu-ui";
 
 export function Modal() {
   const [open, setOpen] = useState(false);
   return (
+    <>
+    <Button onClick={() => setOpen(true)}>Open dialog</Button>
     <Dialog open={open} onOpenChange={setOpen} label="Archive notice">
       <DialogClose />
       <DialogTitle>Release when ready</DialogTitle>
       <DialogBody>…</DialogBody>
-      <DialogFooter>…</DialogFooter>
+      <DialogFooter><Button onClick={() => setOpen(false)}>Close</Button></DialogFooter>
     </Dialog>
+    </>
   );
 }`,
     props: [
@@ -830,7 +835,7 @@ export function Modal() {
 export function Shell() {
   return (
     <Nav
-      brand={<Wordmark />}
+      brand={<strong>MIZU.</strong>}
       links={[{ href: "/", label: "Home" }]}
       currentPath="/"
     />

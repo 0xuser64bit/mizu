@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { MotionPreferences } from "@/mizu";
 import { DemoSlot } from "./DemoSlot";
 export function PreviewStage({ slug }: { slug: string }) {
+  const [reduced, setReduced] = useState(false);
   const [narrow, setNarrow] = useState(false),
     [theme, setTheme] = useState<"inherit" | "light" | "dark">("inherit"),
     [replay, setReplay] = useState(0);
@@ -28,6 +30,13 @@ export function PreviewStage({ slug }: { slug: string }) {
             <option value="dark">Dark</option>
           </select>
         </label>
+        <button
+          type="button"
+          aria-pressed={reduced}
+          onClick={() => setReduced(!reduced)}
+        >
+          Reduce motion
+        </button>
         <button type="button" onClick={() => setReplay((v) => v + 1)}>
           Reset demo
         </button>
@@ -37,7 +46,9 @@ export function PreviewStage({ slug }: { slug: string }) {
         className="mizu-preview-stage mizu-root"
         style={{ maxWidth: narrow ? 320 : undefined }}
       >
-        <DemoSlot key={replay} slug={slug} />
+        <MotionPreferences reduced={reduced ? true : undefined}>
+          <DemoSlot key={replay} slug={slug} />
+        </MotionPreferences>
       </div>
     </div>
   );

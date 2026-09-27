@@ -35,10 +35,12 @@ export function Segmented<T extends string>({
       {options.map((o) => (
         <button
           key={o}
+          type="button"
           onClick={() => onChange(o)}
           aria-pressed={value === o}
           style={{
             padding: "8px 14px",
+            minHeight: 44,
             background: value === o ? "var(--mizu-accent)" : "transparent",
             border: "none",
             fontFamily: "var(--mizu-font-mono)",
@@ -68,6 +70,7 @@ export function Toggle({
 }) {
   return (
     <button
+      type="button"
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
@@ -78,6 +81,7 @@ export function Toggle({
         background: "transparent",
         border: "none",
         padding: 0,
+        minHeight: 44,
         fontFamily: "var(--mizu-font-mono)",
         fontSize: 10,
         letterSpacing: "0.18em",

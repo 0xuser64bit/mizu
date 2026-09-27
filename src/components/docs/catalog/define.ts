@@ -17,11 +17,14 @@ export function define(
     category,
     source,
     tagline,
-    usage: `import { useState } from "react";\nimport { ${imports} } from "mizu-ui";\n\nexport function Example() {\n${example}\n}`,
+    usage: `${example.includes("useState") ? 'import { useState } from "react";\n' : ""}import { ${imports} } from "mizu-ui";\n\nexport function Example() {\n${example}\n}`,
     props,
     a11y,
     motion,
-    dependencies: ["React"],
+    dependencies:
+      category === "Motion" || name === "ReorderList"
+        ? ["React", "Motion"]
+        : ["React"],
   };
 }
 export const prop = (

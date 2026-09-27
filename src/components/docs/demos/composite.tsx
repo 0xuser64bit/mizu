@@ -15,7 +15,6 @@ import {
   TabsPanel,
   TabsTrigger,
 } from "@/mizu";
-import { SiteNav } from "@/components/shell/SiteNav";
 import { Toggle } from "./shared";
 
 const FAQ = [
@@ -115,30 +114,20 @@ export function DialogDemo() {
 
 export function NavDemo() {
   return (
-    <div className="overflow-hidden border border-line">
-      <DemoNote />
-      <div
+    <div>
+      <iframe
+        src="/examples/nav"
+        title="Interactive Mizu navigation demonstration"
         style={{
-          transform: "scale(0.55)",
-          transformOrigin: "top left",
-          width: "181.81%",
+          width: "100%",
+          height: 460,
+          border: "1px solid var(--mizu-line)",
         }}
-      >
-        <div style={{ pointerEvents: "none" }}>
-          <SiteNav trackChapters={false} />
-        </div>
-      </div>
-      <p className="border-t border-line px-4 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-        The live Nav, scaled — the real one is holding this page together
+      />
+      <p className="mizu-field-hint">
+        This frame has its own scroll and modal context. Narrow the preview to
+        try the mobile menu.
       </p>
     </div>
-  );
-}
-
-function DemoNote() {
-  return (
-    <p className="border-b border-line bg-ink-2 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-      Scroll progress · chapter tracking · mobile overlay
-    </p>
   );
 }

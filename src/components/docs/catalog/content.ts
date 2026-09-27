@@ -123,7 +123,7 @@ export const CONTENT = [
     "Content",
     "content/Typography.tsx",
     "A destination with enough context to decide whether to follow it.",
-    '  return <LinkCard href="/components/getting-started" eyebrow="START HERE" title="Build with Mizu" description="Install the package, bring the styles and compose your first interface." />;',
+    '  return <LinkCard href="/components/getting-started" title="Build with Mizu" description="Install the package, bring the styles and compose your first interface." />;',
     [
       p("href / title", "string", "Real destination and visible link title."),
       p("description / eyebrow", "string", "Supporting context."),

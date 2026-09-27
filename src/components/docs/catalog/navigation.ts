@@ -89,7 +89,7 @@ export const NAVIGATION = [
     "Navigation",
     "navigation/Navigation.tsx",
     "Touch-friendly destinations that fit the phone's safe area.",
-    '  return <BottomNav currentPath="/components" items={[{label:"Collection",href:"/components",icon:"◇"},{label:"Lab",href:"/lab",icon:"∿"},{label:"Studio",href:"/studio",icon:"□"}]} />;',
+    '  return <BottomNav currentPath="/components" items={[{label:"Collection",href:"/components"},{label:"Lab",href:"/lab"},{label:"Studio",href:"/studio"}]} />;',
     [
       p("items", "NavigationItem[]", "Visible label, href and optional icon."),
       p("currentPath", "string", "Current destination."),

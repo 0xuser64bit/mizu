@@ -99,7 +99,6 @@ export function LinkCardDemo() {
   return (
     <LinkCard
       href="/components/getting-started"
-      eyebrow="START HERE"
       title="Build with Mizu"
       description="Install the package, bring the styles and compose your first interface."
     />

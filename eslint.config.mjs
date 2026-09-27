@@ -8,7 +8,7 @@ const eslintConfig = defineConfig([
   {
     files: ["packages/mizu/src/**", "src/components/docs/demos/generated/**"],
     // These examples and package modules also run outside Next.
-    rules: { "@next/next/no-img-element": "off", "@next/next/no-html-link-for-pages": "off" },
+    rules: { "@next/next/no-img-element": "off", "@next/next/no-html-link-for-pages": "off", "@next/next/no-location-assign-relative-destination": "off" },
   },
   // Override default ignores of eslint-config-next.
   globalIgnores([
