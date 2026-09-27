@@ -1,0 +1,674 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T13:32:16.515Z",
+  "title": "Design System: Mizu",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm ink",
+        "tonalRamp": [
+          "oklch(from #0f0e0c 15% c h)",
+          "oklch(from #0f0e0c 26% c h)",
+          "oklch(from #0f0e0c 38% c h)",
+          "oklch(from #0f0e0c 49% c h)",
+          "oklch(from #0f0e0c 61% c h)",
+          "oklch(from #0f0e0c 72% c h)",
+          "oklch(from #0f0e0c 84% c h)",
+          "oklch(from #0f0e0c 95% c h)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Raised warm ink",
+        "tonalRamp": [
+          "oklch(from #16130f 15% c h)",
+          "oklch(from #16130f 26% c h)",
+          "oklch(from #16130f 38% c h)",
+          "oklch(from #16130f 49% c h)",
+          "oklch(from #16130f 61% c h)",
+          "oklch(from #16130f 72% c h)",
+          "oklch(from #16130f 84% c h)",
+          "oklch(from #16130f 95% c h)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Selected warm ink",
+        "tonalRamp": [
+          "oklch(from #201b15 15% c h)",
+          "oklch(from #201b15 26% c h)",
+          "oklch(from #201b15 38% c h)",
+          "oklch(from #201b15 49% c h)",
+          "oklch(from #201b15 61% c h)",
+          "oklch(from #201b15 72% c h)",
+          "oklch(from #201b15 84% c h)",
+          "oklch(from #201b15 95% c h)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(from #f4f0e8 15% c h)",
+          "oklch(from #f4f0e8 26% c h)",
+          "oklch(from #f4f0e8 38% c h)",
+          "oklch(from #f4f0e8 49% c h)",
+          "oklch(from #f4f0e8 61% c h)",
+          "oklch(from #f4f0e8 72% c h)",
+          "oklch(from #f4f0e8 84% c h)",
+          "oklch(from #f4f0e8 95% c h)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted text",
+        "tonalRamp": [
+          "oklch(from #a8a193 15% c h)",
+          "oklch(from #a8a193 26% c h)",
+          "oklch(from #a8a193 38% c h)",
+          "oklch(from #a8a193 49% c h)",
+          "oklch(from #a8a193 61% c h)",
+          "oklch(from #a8a193 72% c h)",
+          "oklch(from #a8a193 84% c h)",
+          "oklch(from #a8a193 95% c h)"
+        ]
+      },
+      "faint": {
+        "role": "neutral",
+        "displayName": "Structural text",
+        "tonalRamp": [
+          "oklch(from #958d7e 15% c h)",
+          "oklch(from #958d7e 26% c h)",
+          "oklch(from #958d7e 38% c h)",
+          "oklch(from #958d7e 49% c h)",
+          "oklch(from #958d7e 61% c h)",
+          "oklch(from #958d7e 72% c h)",
+          "oklch(from #958d7e 84% c h)",
+          "oklch(from #958d7e 95% c h)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Vermilion signal",
+        "tonalRamp": [
+          "oklch(from #ff4d1c 15% c h)",
+          "oklch(from #ff4d1c 26% c h)",
+          "oklch(from #ff4d1c 38% c h)",
+          "oklch(from #ff4d1c 49% c h)",
+          "oklch(from #ff4d1c 61% c h)",
+          "oklch(from #ff4d1c 72% c h)",
+          "oklch(from #ff4d1c 84% c h)",
+          "oklch(from #ff4d1c 95% c h)"
+        ]
+      },
+      "accent-fill": {
+        "role": "primary",
+        "displayName": "Vermilion action",
+        "tonalRamp": [
+          "oklch(from #d23e0e 15% c h)",
+          "oklch(from #d23e0e 26% c h)",
+          "oklch(from #d23e0e 38% c h)",
+          "oklch(from #d23e0e 49% c h)",
+          "oklch(from #d23e0e 61% c h)",
+          "oklch(from #d23e0e 72% c h)",
+          "oklch(from #d23e0e 84% c h)",
+          "oklch(from #d23e0e 95% c h)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline rule",
+        "tonalRamp": [
+          "oklch(from #29241d 15% c h)",
+          "oklch(from #29241d 26% c h)",
+          "oklch(from #29241d 38% c h)",
+          "oklch(from #29241d 49% c h)",
+          "oklch(from #29241d 61% c h)",
+          "oklch(from #29241d 72% c h)",
+          "oklch(from #29241d 84% c h)",
+          "oklch(from #29241d 95% c h)"
+        ]
+      },
+      "line-bright": {
+        "role": "neutral",
+        "displayName": "Control boundary",
+        "tonalRamp": [
+          "oklch(from rgba(244, 240, 232, 0.22) 15% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 26% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 38% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 49% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 61% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 72% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 84% c h)",
+          "oklch(from rgba(244, 240, 232, 0.22) 95% c h)"
+        ]
+      },
+      "success": {
+        "role": "secondary",
+        "displayName": "Success",
+        "tonalRamp": [
+          "oklch(from #70bc96 15% c h)",
+          "oklch(from #70bc96 26% c h)",
+          "oklch(from #70bc96 38% c h)",
+          "oklch(from #70bc96 49% c h)",
+          "oklch(from #70bc96 61% c h)",
+          "oklch(from #70bc96 72% c h)",
+          "oklch(from #70bc96 84% c h)",
+          "oklch(from #70bc96 95% c h)"
+        ]
+      },
+      "warning": {
+        "role": "secondary",
+        "displayName": "Warning",
+        "tonalRamp": [
+          "oklch(from #dbb66a 15% c h)",
+          "oklch(from #dbb66a 26% c h)",
+          "oklch(from #dbb66a 38% c h)",
+          "oklch(from #dbb66a 49% c h)",
+          "oklch(from #dbb66a 61% c h)",
+          "oklch(from #dbb66a 72% c h)",
+          "oklch(from #dbb66a 84% c h)",
+          "oklch(from #dbb66a 95% c h)"
+        ]
+      },
+      "danger": {
+        "role": "secondary",
+        "displayName": "Danger",
+        "tonalRamp": [
+          "oklch(from #ef9b8e 15% c h)",
+          "oklch(from #ef9b8e 26% c h)",
+          "oklch(from #ef9b8e 38% c h)",
+          "oklch(from #ef9b8e 49% c h)",
+          "oklch(from #ef9b8e 61% c h)",
+          "oklch(from #ef9b8e 72% c h)",
+          "oklch(from #ef9b8e 84% c h)",
+          "oklch(from #ef9b8e 95% c h)"
+        ]
+      },
+      "solid-text": {
+        "role": "neutral",
+        "displayName": "Warm white action text",
+        "tonalRamp": [
+          "oklch(from #fffaf4 15% c h)",
+          "oklch(from #fffaf4 26% c h)",
+          "oklch(from #fffaf4 38% c h)",
+          "oklch(from #fffaf4 49% c h)",
+          "oklch(from #fffaf4 61% c h)",
+          "oklch(from #fffaf4 72% c h)",
+          "oklch(from #fffaf4 84% c h)",
+          "oklch(from #fffaf4 95% c h)"
+        ]
+      },
+      "light-ink": {
+        "role": "neutral",
+        "displayName": "Light theme: Warm ink",
+        "tonalRamp": [
+          "oklch(from #f4f0e8 15% c h)",
+          "oklch(from #f4f0e8 26% c h)",
+          "oklch(from #f4f0e8 38% c h)",
+          "oklch(from #f4f0e8 49% c h)",
+          "oklch(from #f4f0e8 61% c h)",
+          "oklch(from #f4f0e8 72% c h)",
+          "oklch(from #f4f0e8 84% c h)",
+          "oklch(from #f4f0e8 95% c h)"
+        ]
+      },
+      "light-ink-2": {
+        "role": "neutral",
+        "displayName": "Light theme: Raised warm ink",
+        "tonalRamp": [
+          "oklch(from #e9e3d5 15% c h)",
+          "oklch(from #e9e3d5 26% c h)",
+          "oklch(from #e9e3d5 38% c h)",
+          "oklch(from #e9e3d5 49% c h)",
+          "oklch(from #e9e3d5 61% c h)",
+          "oklch(from #e9e3d5 72% c h)",
+          "oklch(from #e9e3d5 84% c h)",
+          "oklch(from #e9e3d5 95% c h)"
+        ]
+      },
+      "light-ink-3": {
+        "role": "neutral",
+        "displayName": "Light theme: Selected warm ink",
+        "tonalRamp": [
+          "oklch(from #dcd4c1 15% c h)",
+          "oklch(from #dcd4c1 26% c h)",
+          "oklch(from #dcd4c1 38% c h)",
+          "oklch(from #dcd4c1 49% c h)",
+          "oklch(from #dcd4c1 61% c h)",
+          "oklch(from #dcd4c1 72% c h)",
+          "oklch(from #dcd4c1 84% c h)",
+          "oklch(from #dcd4c1 95% c h)"
+        ]
+      },
+      "light-paper": {
+        "role": "neutral",
+        "displayName": "Light theme: Paper",
+        "tonalRamp": [
+          "oklch(from #16130f 15% c h)",
+          "oklch(from #16130f 26% c h)",
+          "oklch(from #16130f 38% c h)",
+          "oklch(from #16130f 49% c h)",
+          "oklch(from #16130f 61% c h)",
+          "oklch(from #16130f 72% c h)",
+          "oklch(from #16130f 84% c h)",
+          "oklch(from #16130f 95% c h)"
+        ]
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "Light theme: Muted text",
+        "tonalRamp": [
+          "oklch(from #585348 15% c h)",
+          "oklch(from #585348 26% c h)",
+          "oklch(from #585348 38% c h)",
+          "oklch(from #585348 49% c h)",
+          "oklch(from #585348 61% c h)",
+          "oklch(from #585348 72% c h)",
+          "oklch(from #585348 84% c h)",
+          "oklch(from #585348 95% c h)"
+        ]
+      },
+      "light-faint": {
+        "role": "neutral",
+        "displayName": "Light theme: Structural text",
+        "tonalRamp": [
+          "oklch(from #605a50 15% c h)",
+          "oklch(from #605a50 26% c h)",
+          "oklch(from #605a50 38% c h)",
+          "oklch(from #605a50 49% c h)",
+          "oklch(from #605a50 61% c h)",
+          "oklch(from #605a50 72% c h)",
+          "oklch(from #605a50 84% c h)",
+          "oklch(from #605a50 95% c h)"
+        ]
+      },
+      "light-accent": {
+        "role": "primary",
+        "displayName": "Light theme: Vermilion signal",
+        "tonalRamp": [
+          "oklch(from #a72c0a 15% c h)",
+          "oklch(from #a72c0a 26% c h)",
+          "oklch(from #a72c0a 38% c h)",
+          "oklch(from #a72c0a 49% c h)",
+          "oklch(from #a72c0a 61% c h)",
+          "oklch(from #a72c0a 72% c h)",
+          "oklch(from #a72c0a 84% c h)",
+          "oklch(from #a72c0a 95% c h)"
+        ]
+      },
+      "light-accent-fill": {
+        "role": "primary",
+        "displayName": "Light theme: Vermilion action",
+        "tonalRamp": [
+          "oklch(from #a72c0a 15% c h)",
+          "oklch(from #a72c0a 26% c h)",
+          "oklch(from #a72c0a 38% c h)",
+          "oklch(from #a72c0a 49% c h)",
+          "oklch(from #a72c0a 61% c h)",
+          "oklch(from #a72c0a 72% c h)",
+          "oklch(from #a72c0a 84% c h)",
+          "oklch(from #a72c0a 95% c h)"
+        ]
+      },
+      "light-line": {
+        "role": "neutral",
+        "displayName": "Light theme: Hairline rule",
+        "tonalRamp": [
+          "oklch(from #d9d2c2 15% c h)",
+          "oklch(from #d9d2c2 26% c h)",
+          "oklch(from #d9d2c2 38% c h)",
+          "oklch(from #d9d2c2 49% c h)",
+          "oklch(from #d9d2c2 61% c h)",
+          "oklch(from #d9d2c2 72% c h)",
+          "oklch(from #d9d2c2 84% c h)",
+          "oklch(from #d9d2c2 95% c h)"
+        ]
+      },
+      "light-line-bright": {
+        "role": "neutral",
+        "displayName": "Light theme: Control boundary",
+        "tonalRamp": [
+          "oklch(from rgba(22, 19, 15, 0.22) 15% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 26% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 38% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 49% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 61% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 72% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 84% c h)",
+          "oklch(from rgba(22, 19, 15, 0.22) 95% c h)"
+        ]
+      },
+      "light-success": {
+        "role": "secondary",
+        "displayName": "Light theme: Success",
+        "tonalRamp": [
+          "oklch(from #206442 15% c h)",
+          "oklch(from #206442 26% c h)",
+          "oklch(from #206442 38% c h)",
+          "oklch(from #206442 49% c h)",
+          "oklch(from #206442 61% c h)",
+          "oklch(from #206442 72% c h)",
+          "oklch(from #206442 84% c h)",
+          "oklch(from #206442 95% c h)"
+        ]
+      },
+      "light-warning": {
+        "role": "secondary",
+        "displayName": "Light theme: Warning",
+        "tonalRamp": [
+          "oklch(from #775100 15% c h)",
+          "oklch(from #775100 26% c h)",
+          "oklch(from #775100 38% c h)",
+          "oklch(from #775100 49% c h)",
+          "oklch(from #775100 61% c h)",
+          "oklch(from #775100 72% c h)",
+          "oklch(from #775100 84% c h)",
+          "oklch(from #775100 95% c h)"
+        ]
+      },
+      "light-danger": {
+        "role": "secondary",
+        "displayName": "Light theme: Danger",
+        "tonalRamp": [
+          "oklch(from #a12716 15% c h)",
+          "oklch(from #a12716 26% c h)",
+          "oklch(from #a12716 38% c h)",
+          "oklch(from #a12716 49% c h)",
+          "oklch(from #a12716 61% c h)",
+          "oklch(from #a12716 72% c h)",
+          "oklch(from #a12716 84% c h)",
+          "oklch(from #a12716 95% c h)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Collection display",
+        "purpose": "Collection heading; font-stretch: 112%."
+      },
+      "headline": {
+        "displayName": "Reading headline",
+        "purpose": "Prose h2; heading weight follows the inherited/browser context."
+      },
+      "title": {
+        "displayName": "Dialog title",
+        "purpose": "Native modal title."
+      },
+      "body": {
+        "displayName": "Reading body",
+        "purpose": "Prose body; max-width: 65ch; overflow-wrap: anywhere."
+      },
+      "label": {
+        "displayName": "Structural label",
+        "purpose": "Uppercase documentation labels. H2 semantics for section headings; p for ordinary specimen labels."
+      },
+      "button-md": {
+        "displayName": "Medium action label",
+        "purpose": "Uppercase medium Button caption."
+      },
+      "button-sm": {
+        "displayName": "Small action label",
+        "purpose": "Uppercase small Button caption."
+      },
+      "quote": {
+        "displayName": "Expressive serif",
+        "purpose": "Quote/specimen text rather than general interface copy."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Scrollable package code surface."
+      }
+    },
+    "shadows": [
+      {
+        "name": "action-menu",
+        "value": "0 12px 32px rgb(0 0 0 / 0.15)",
+        "purpose": "Floating menu at --mizu-z-overlay: 60."
+      },
+      {
+        "name": "current-marker",
+        "value": "inset 1px 0 var(--mizu-accent)",
+        "purpose": "Current documentation page and selected command option."
+      },
+      {
+        "name": "modal-backdrop",
+        "value": "rgb(15 14 12 / 0.72)",
+        "purpose": "Native dialog backdrop color; not a box-shadow. Native top layer governs modality."
+      }
+    ],
+    "motion": [
+      {
+        "name": "mizu-ease-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "CSS expo and Motion EASE_EXPO share this curve."
+      },
+      {
+        "name": "mizu-ease-wipe",
+        "value": "cubic-bezier(0.76, 0, 0.24, 1)",
+        "purpose": "CSS wipe and Motion EASE_WIPE share this curve."
+      },
+      {
+        "name": "mizu-ease-spring",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "CSS spring token; distinct from the Motion constant."
+      },
+      {
+        "name": "motion-ease-spring",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "EASE_SPRING in motion/easings.ts; preserve the source distinction."
+      },
+      {
+        "name": "mizu-duration-fast",
+        "value": "180ms",
+        "purpose": "Field, tooltip and selection feedback."
+      },
+      {
+        "name": "mizu-duration-med",
+        "value": "420ms",
+        "purpose": "Dialog entrance from opacity .6 and translateY(16px)."
+      },
+      {
+        "name": "mizu-duration-slow",
+        "value": "900ms",
+        "purpose": "Declared slow CSS duration token."
+      },
+      {
+        "name": "button-feedback",
+        "value": "300ms",
+        "purpose": "Button background/color/border/opacity and arrow travel (2px, -2px)."
+      },
+      {
+        "name": "reveal-default",
+        "value": "950ms",
+        "purpose": "Reveal default with y: 32px, x: 0, once: true; reduced mode is opacity 1 and duration 0."
+      },
+      {
+        "name": "mask-line",
+        "value": "1150ms",
+        "purpose": "MaskLine expo reveal; reduced mode removes travel and timing."
+      },
+      {
+        "name": "presence",
+        "value": "180ms",
+        "purpose": "Presence enter y: 8px and exit y: -8px; reduced mode keeps opacity 1 and duration 0."
+      },
+      {
+        "name": "page-wipe",
+        "value": "1050ms",
+        "purpose": "Page wipe from -101% to 101%; promise resolves at 500ms; reduced mode resolves immediately. Layer token: --mizu-z-wipe: 90."
+      },
+      {
+        "name": "magnetic-spring",
+        "value": "stiffness: 160; damping: 14; mass: 0.4",
+        "purpose": "Pointer-following Magnetic springs; reduced motion disables travel."
+      },
+      {
+        "name": "tilt-spring",
+        "value": "stiffness: 220; damping: 28",
+        "purpose": "Tilt rotation springs; reduced motion retains a resting surface."
+      },
+      {
+        "name": "marquee-default",
+        "value": "42s linear infinite",
+        "purpose": "Package Marquee, with pause control; not the separate site 28s utility. OS reduction stops motion, wraps content and hides duplicate row/control."
+      },
+      {
+        "name": "soft-type",
+        "value": "4s ease-in-out infinite alternate",
+        "purpose": "Variable-type specimen; OS reduced motion fixes wght 600 and wdth 100."
+      },
+      {
+        "name": "spinner",
+        "value": "900ms linear infinite",
+        "purpose": "Diamond rotates from 45deg to 405deg; OS reduced motion removes the animation."
+      },
+      {
+        "name": "os-reduced-motion",
+        "value": "animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;",
+        "purpose": "Shared CSS media-query fallback. Dedicated marquee, soft-type and spinner rules establish static states; html scroll-behavior becomes auto."
+      },
+      {
+        "name": "local-reduced-motion",
+        "value": "animation: none !important; transition-duration: 0s !important; scroll-behavior: auto !important;",
+        "purpose": "[data-motion=\"reduced\"] descendants and pseudo-elements. MotionPreferences reduced={true} sets the scope and MotionConfig always; default follows OS. Marquee clears travel, allows horizontal scroll and hides the duplicate row."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "package-data-max",
+        "value": "480px"
+      },
+      {
+        "name": "docs-rows-max",
+        "value": "540px"
+      },
+      {
+        "name": "app-shell-max",
+        "value": "600px"
+      },
+      {
+        "name": "nav-links-min",
+        "value": "768px"
+      },
+      {
+        "name": "docs-index-max",
+        "value": "900px"
+      },
+      {
+        "name": "nav-chapter-min",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Button.tsx medium variant; loading behavior remains in the React implementation.",
+      "html": "<button type=\"button\" class=\"ds-button ds-solid\">Explore <svg class=\"ds-arrow\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></button>",
+      "css": ".ds-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 26px 28px; border: 0; font: 11px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); letter-spacing: .22em; text-transform: uppercase; cursor: pointer; transition: background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease; } .ds-button:disabled { opacity: .4; cursor: default; } .ds-arrow { flex-shrink: 0; transition: transform 300ms var(--mizu-ease-expo, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-button:hover .ds-arrow { transform: translate(2px, -2px); } .ds-button:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); } @media (prefers-reduced-motion: reduce) { .ds-button, .ds-arrow { transition-duration: .01ms !important; } } .ds-solid { background: var(--mizu-accent-fill, #d23e0e); color: #fffaf4; } .ds-solid:hover:not(:disabled) { background: color-mix(in srgb, var(--mizu-accent-fill, #d23e0e), #000 12%); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Button.tsx medium variant; loading behavior remains in the React implementation.",
+      "html": "<button type=\"button\" class=\"ds-button ds-ghost\">Explore <svg class=\"ds-arrow\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></button>",
+      "css": ".ds-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 26px 28px; border: 0; font: 11px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); letter-spacing: .22em; text-transform: uppercase; cursor: pointer; transition: background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease; } .ds-button:disabled { opacity: .4; cursor: default; } .ds-arrow { flex-shrink: 0; transition: transform 300ms var(--mizu-ease-expo, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-button:hover .ds-arrow { transform: translate(2px, -2px); } .ds-button:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); } @media (prefers-reduced-motion: reduce) { .ds-button, .ds-arrow { transition-duration: .01ms !important; } } .ds-ghost { background: transparent; color: var(--mizu-paper, #f4f0e8); border: 1px solid var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); } .ds-ghost:hover:not(:disabled) { border-color: var(--mizu-muted, #a8a193); background: var(--mizu-ink-2, #16130f); }"
+    },
+    {
+      "name": "Inverse Button",
+      "kind": "button",
+      "refersTo": "button-inverse",
+      "description": "Button.tsx medium variant; loading behavior remains in the React implementation.",
+      "html": "<button type=\"button\" class=\"ds-button ds-inverse\">Explore <svg class=\"ds-arrow\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></button>",
+      "css": ".ds-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 26px 28px; border: 0; font: 11px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); letter-spacing: .22em; text-transform: uppercase; cursor: pointer; transition: background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease; } .ds-button:disabled { opacity: .4; cursor: default; } .ds-arrow { flex-shrink: 0; transition: transform 300ms var(--mizu-ease-expo, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-button:hover .ds-arrow { transform: translate(2px, -2px); } .ds-button:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); } @media (prefers-reduced-motion: reduce) { .ds-button, .ds-arrow { transition-duration: .01ms !important; } } .ds-inverse { background: var(--mizu-paper, #f4f0e8); color: var(--mizu-ink, #0f0e0c); } .ds-inverse:hover:not(:disabled) { background: var(--mizu-accent-fill, #d23e0e); color: #fffaf4; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "Native labelled input with help text and source hover, focus, invalid and disabled states.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-name\">Project name</label><input id=\"ds-name\" class=\"ds-input\" aria-describedby=\"ds-help\" placeholder=\"Untitled project\"><p id=\"ds-help\">A name for your interface.</p></div>",
+      "css": ".ds-field { display: grid; gap: 8px; min-width: 0; font-family: var(--mizu-font-display, \"Archivo Variable\", ui-sans-serif, system-ui, sans-serif); } .ds-field label { font-size: 13px; font-weight: 600; color: var(--mizu-paper, #f4f0e8); margin-bottom: 4px; } .ds-input { width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); border-radius: var(--mizu-radius, 2px); background: var(--mizu-ink, #0f0e0c); color: var(--mizu-paper, #f4f0e8); font: 14px var(--mizu-font-display, \"Archivo Variable\", ui-sans-serif, system-ui, sans-serif); caret-color: var(--mizu-accent, #ff4d1c); transition: border-color var(--mizu-duration-fast, 180ms) ease; } .ds-input::placeholder { color: var(--mizu-faint, #958d7e); opacity: 1; } .ds-input:hover { border-color: var(--mizu-muted, #a8a193); } .ds-input:focus { border-color: var(--mizu-accent, #ff4d1c); } .ds-input[aria-invalid=\"true\"] { border-color: var(--mizu-danger, #ef9b8e); } .ds-input:disabled { opacity: .5; cursor: not-allowed; } .ds-field p { margin: 0; color: var(--mizu-muted, #a8a193); font-size: 12px; line-height: 1.6; } .ds-input:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); } @media (prefers-reduced-motion: reduce) { .ds-input { transition-duration: .01ms !important; } }"
+    },
+    {
+      "name": "Documentation Navigation",
+      "kind": "nav",
+      "refersTo": "side-nav-link",
+      "description": "Current-page ink layer and inset signal from the documentation family index.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Component families\"><h2>Foundation</h2><a href=\"#button\" aria-current=\"page\">Button</a><a href=\"#field\">Text field</a></nav>",
+      "css": ".ds-nav { font-family: var(--mizu-font-display, \"Archivo Variable\", ui-sans-serif, system-ui, sans-serif); } .ds-nav h2 { font: 10px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); text-transform: uppercase; letter-spacing: .12em; color: var(--mizu-faint, #958d7e); margin: 0 0 8px; } .ds-nav a { display: block; padding: 8px 10px; font-size: 12px; color: var(--mizu-muted, #a8a193); border-radius: var(--mizu-radius, 2px); text-decoration: none; } .ds-nav a:hover { color: var(--mizu-paper, #f4f0e8); background: var(--mizu-ink-2, #16130f); } .ds-nav a[aria-current=\"page\"] { color: var(--mizu-paper, #f4f0e8); background: var(--mizu-ink-3, #201b15); box-shadow: inset 1px 0 var(--mizu-accent, #ff4d1c); } .ds-nav a:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); } @media (max-width: 900px) { .ds-nav a { padding-block: 14px; } }"
+    },
+    {
+      "name": "Muted Badge",
+      "kind": "chip",
+      "refersTo": "badge-muted",
+      "description": "Informational badge, not an interactive filter; its diamond is a source Mark.",
+      "html": "<span class=\"ds-badge\"><span class=\"ds-mark\" aria-hidden=\"true\"></span>Interface</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; border: 1px solid var(--mizu-line, #29241d); font: 10px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); letter-spacing: .2em; text-transform: uppercase; color: var(--mizu-muted, #a8a193); white-space: nowrap; } .ds-mark { width: 4px; height: 4px; display: inline-block; background: var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); transform: rotate(45deg); flex-shrink: 0; }"
+    },
+    {
+      "name": "Link Card",
+      "kind": "card",
+      "refersTo": "link-card",
+      "description": "Editorial row with block-edge rules rather than a raised card.",
+      "html": "<a class=\"ds-link-card\" href=\"#source\"><small>Source</small><strong>Inspect the interface <svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\" style=\"flex-shrink:0;transform:rotate(-45deg)\"><path d=\"M2 8h11M8 3l5 5-5 5\"/></svg></strong><p>Readable code and purposeful states.</p></a>",
+      "css": ".ds-link-card { display: block; padding: 24px 0; border-block: 1px solid var(--mizu-line, #29241d); color: var(--mizu-paper, #f4f0e8); text-decoration: none; font-family: var(--mizu-font-display, \"Archivo Variable\", ui-sans-serif, system-ui, sans-serif); transition: border-color var(--mizu-duration-fast, 180ms); } .ds-link-card:hover { border-color: var(--mizu-accent, #ff4d1c); } .ds-link-card small { display: block; margin-bottom: 12px; color: var(--mizu-faint, #958d7e); font: 10px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); letter-spacing: .1em; } .ds-link-card strong { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; font-size: 23px; font-weight: 600; letter-spacing: -.02em; } .ds-link-card svg { color: var(--mizu-accent, #ff4d1c); } .ds-link-card p { margin: 10px 0 0; max-width: 50ch; color: var(--mizu-muted, #a8a193); font-size: 14px; line-height: 1.6; } .ds-link-card:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); } @media (prefers-reduced-motion: reduce) { .ds-link-card { transition-duration: .01ms !important; } }"
+    },
+    {
+      "name": "Code Surface",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Package code surface; the React CodeBlock supplies its live copy action.",
+      "html": "<figure class=\"ds-code\"><figcaption>Example.tsx</figcaption><pre tabindex=\"0\" aria-label=\"Example.tsx\"><code>import { Button } from \"mizu-ui\";</code></pre></figure>",
+      "css": ".ds-code { margin: 0; border: 1px solid var(--mizu-line, #29241d); min-width: 0; } .ds-code figcaption { padding: 8px 16px; border-bottom: 1px solid var(--mizu-line, #29241d); color: var(--mizu-muted, #a8a193); font: 11px var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); } .ds-code pre { margin: 0; padding: 20px; overflow: auto; font: 12px/1.8 var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); color: var(--mizu-paper, #f4f0e8); background: var(--mizu-ink-2, #16130f); } .ds-code pre:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 3px; border-radius: var(--mizu-radius, 2px); }"
+    },
+    {
+      "name": "Diamond Range",
+      "kind": "input",
+      "description": "Native range style from the package Slider; captures its distinct 4px focus offset.",
+      "html": "<label class=\"ds-range-label\"><span>Position</span><input class=\"ds-range\" type=\"range\" min=\"0\" max=\"100\" value=\"40\" aria-label=\"Position\"><span class=\"ds-range-value\">40</span></label>",
+      "css": ".ds-range-label { display: grid; grid-template-columns: minmax(60px,104px) minmax(0,1fr) 44px; align-items: center; gap: 16px; font-family: var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--mizu-faint, #958d7e); } .ds-range-value { text-align: right; font-variant-numeric: tabular-nums; color: var(--mizu-muted, #a8a193); } .ds-range { width: 100%; min-width: 0; min-height: 44px; margin: 0; appearance: none; height: 16px; background: transparent; } .ds-range::-webkit-slider-runnable-track { height: 1px; background: var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); } .ds-range::-webkit-slider-thumb { appearance: none; width: 10px; height: 10px; margin-top: -5px; background: var(--mizu-accent, #ff4d1c); transform: rotate(45deg); transition: background var(--mizu-duration-fast, 180ms) ease; } .ds-range:hover::-webkit-slider-thumb { background: var(--mizu-paper, #f4f0e8); } .ds-range::-moz-range-track { height: 1px; background: var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); } .ds-range::-moz-range-thumb { width: 10px; height: 10px; border: none; border-radius: 0; background: var(--mizu-accent, #ff4d1c); transform: rotate(45deg); } .ds-range:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-range::-webkit-slider-thumb { transition-duration: .01ms !important; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Interface Archive",
+    "overview": "Mizu preserves the incumbent warm material and editorial world: dark ink,\nraised ink surfaces, paper text and a vermilion signal. Its reversed light\nsurface uses the same roles. Compact structural labels and dense, aligned data\nsit beside broad headings and generous separation. The atmosphere is precise,\ntactile and readable.\n\nMotion follows cause: selection travels, disclosure unfolds, a changed value\nsettles and drag tracks the hand. CSS handles transient feedback; Motion handles\ninterruption and layout. Content remains useful at rest. Signature experiences\nretain material continuity: comparisons reveal two versions, reordered sequences\nretain identity, transactional actions communicate actual promise state and\nhistory retains the information changed.",
+    "keyCharacteristics": [
+      "Warm ink and paper, with vermilion reserved for signal and action.",
+      "Broad Archivo headings, quiet mono structure and expressive serif specimens.",
+      "Hairline rules, precise surfaces and state-bearing diamonds.",
+      "Purposeful motion with useful reduced-motion states.",
+      "Readable, inspectable demonstrations of real tasks and states."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Rule",
+        "body": "Use the accent to express action, selection or position;\nthe diamond is not repeated merely to fill space.",
+        "section": "colors"
+      },
+      {
+        "name": "The Material Rule",
+        "body": "Establish hierarchy with ink layers and rules; reserve\nthe floating shadow for the action-menu surface that already uses it.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use the semantic `--mizu-*` palette so nested light and dark scopes retain their roles.",
+      "**Do** pair compact typography with readable secondary text and visible focus.",
+      "**Do** keep motion tied to a state change and preserve useful resting and reduced-motion states.",
+      "**Do** retain labels, native semantics, keyboard paths and explicit overflow handling.",
+      "**Do** qualify synthetic demonstration data and retain navigable documentation headings."
+    ],
+    "donts": [
+      "**Don't** replace the incumbent warm material and editorial world with unrelated visual conventions.",
+      "**Don't** use diamonds or animation solely to occupy space.",
+      "**Don't** turn every container into the same shadowed, rounded card.",
+      "**Don't** treat source-backed documentation or the scoped ship verdict as certification of every API."
+    ]
+  }
+}

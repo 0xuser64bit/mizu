@@ -74,4 +74,5 @@ meaningful behavior. Existing installed Next.js guides and AGENTS.md govern site
 changes.
 
 [Audit and repairs](docs/AUDIT.md) · [Verification and limitations](docs/VERIFICATION.md)
-· [Release procedure](PUBLISHING.md) · [Changelog](CHANGELOG.md) · [MIT](packages/mizu/LICENSE).
+· [Design and motion guidance](DESIGN.md) · [Release procedure](PUBLISHING.md)
+· [Changelog](CHANGELOG.md) · [MIT](packages/mizu/LICENSE).
