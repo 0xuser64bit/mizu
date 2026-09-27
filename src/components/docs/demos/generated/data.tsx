@@ -24,7 +24,7 @@ export function DataTableDemo() {
   ];
   return (
     <DataTable
-      label="Package modules"
+      label="Illustrative module records"
       rows={rows}
       getRowId={(r) => r.id}
       columns={[
@@ -36,7 +36,7 @@ export function DataTableDemo() {
         },
         {
           id: "size",
-          header: "Size (KiB)",
+          header: "Example KiB",
           render: (r) => r.size,
           sortValue: (r) => r.size,
           align: "right",
@@ -61,10 +61,14 @@ export function DescriptionListDemo() {
 export function StatDemo() {
   return (
     <Stat
-      label="Build duration"
+      label="Illustrative build duration"
       value="1.2s"
-      change={{ value: "18% faster", direction: "down", favorable: true }}
-      detail="Compared with the previous local run."
+      change={{
+        value: "18% example decrease",
+        direction: "down",
+        favorable: true,
+      }}
+      detail="Synthetic readings, not a Mizu performance measurement."
     />
   );
 }
@@ -72,11 +76,11 @@ export function StatDemo() {
 export function BarChartDemo() {
   return (
     <BarChart
-      label="Components by family"
+      label="Example counts by family"
       data={[
         { label: "Forms", value: 16 },
         { label: "Status", value: 12 },
-        { label: "Motion", value: 5 },
+        { label: "Motion", value: 9 },
       ]}
     />
   );
@@ -85,7 +89,7 @@ export function BarChartDemo() {
 export function SparklineDemo() {
   return (
     <Sparkline
-      label="Weekly build duration in seconds"
+      label="Illustrative build duration in seconds"
       values={[4, 3, 3.6, 2.2, 2.8, 1.5, 1.2]}
     />
   );
@@ -96,12 +100,13 @@ export function HeatmapDemo() {
     date: `2026-${String(Math.floor(i / 28) + 7).padStart(2, "0")}-${String((i % 28) + 1).padStart(2, "0")}`,
     value: (i * 7) % 11,
   }));
-  return <Heatmap label="Workshop activity" data={data} />;
+  return <Heatmap label="Illustrative workshop activity" data={data} />;
 }
 
 export function TimelineDemo() {
   return (
     <Timeline
+      label="Illustrative release timeline"
       items={[
         {
           id: "a",
@@ -131,6 +136,7 @@ export function TimelineDemo() {
 export function ActivityFeedDemo() {
   return (
     <ActivityFeed
+      label="Illustrative event stream"
       items={[
         {
           id: "a",
@@ -170,7 +176,7 @@ export function DiffViewDemo() {
 export function DataInspectorDemo() {
   return (
     <DataInspector
-      label="Release payload"
+      label="Example release payload"
       value={{
         name: "mizu-ui",
         version: "0.2.0",

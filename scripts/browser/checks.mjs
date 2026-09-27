@@ -6,6 +6,21 @@ export async function checkDocumentation(tab, baseUrl) {
   const page = tab.playwright;
   await tab.goto(`${baseUrl}/components/command-palette`);
   assert((await page.domSnapshot()).includes("Open commands"));
+  for (const name of [
+    "Usage",
+    "Source & setup",
+    "Props",
+    "Accessibility",
+    "Motion",
+    "Works alongside",
+  ])
+    assert.equal(
+      await page
+        .locator(".mizu-docs-content")
+        .getByRole("heading", { name, exact: true })
+        .count(),
+      1,
+    );
   await page
     .getByRole("button", { name: "Open commands", exact: true })
     .click();
@@ -84,6 +99,7 @@ export async function checkDocumentation(tab, baseUrl) {
     "none",
   );
   return {
+    documentHeadings: true,
     commandExecution: true,
     escapeRestoresFocus: true,
     undo: true,

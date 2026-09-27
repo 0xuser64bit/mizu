@@ -19,14 +19,17 @@ export default function GettingStarted() {
           configuration and no provider for ordinary components.
         </p>
         <h2>Install</h2>
-        <Code>npm install mizu-ui motion</Code>
+        <Code>{`npm pack ./packages/mizu
+# Copy the resulting tarball into your app, then:
+npm install ./mizu-ui-0.2.0.tgz motion`}</Code>
         <p>
           This repository prepares version 0.2.0. Until that version is
           published, pack this checkout and install its tarball:{" "}
           <code>npm pack ./packages/mizu</code>, then{" "}
           <code>npm install /absolute/path/mizu-ui-0.2.0.tgz motion</code> in
           your app. React and React DOM are peers; use the versions your app
-          already supplies.
+          already supplies. After publication, install this version with{" "}
+          <code>npm install mizu-ui@0.2.0 motion</code>.
         </p>
         <h2>Render a working interaction</h2>
         <Code>{`"use client"; // required at an interactive Next.js boundary

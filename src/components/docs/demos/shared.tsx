@@ -2,11 +2,18 @@
 
 import type { ReactNode } from "react";
 
-export function DemoLabel({ children }: { children: ReactNode }) {
+export function DemoLabel({
+  children,
+  as: Tag = "p",
+}: {
+  children: ReactNode;
+  as?: "p" | "h2";
+}) {
   return (
-    <p
+    <Tag
       style={{
         margin: 0,
+        fontWeight: 400,
         fontFamily: "var(--mizu-font-mono)",
         fontSize: 10,
         letterSpacing: "0.28em",
@@ -15,7 +22,7 @@ export function DemoLabel({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </p>
+    </Tag>
   );
 }
 

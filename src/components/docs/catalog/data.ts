@@ -5,7 +5,7 @@ export const DATA = [
     "Data",
     "data/DataTable.tsx",
     "A sortable, typed table that keeps native table semantics and nulls in their place.",
-    '  const rows = [{id:"a",name:"WaveText",size:4.2},{id:"b",name:"Button",size:1.8},{id:"c",name:"Signal",size:3.1}];\n  return <DataTable label="Package modules" rows={rows} getRowId={r => r.id} columns={[{id:"name",header:"Name",render:r => r.name,sortValue:r => r.name},{id:"size",header:"Size (KiB)",render:r => r.size,sortValue:r => r.size,align:"right"}]} />;',
+    '  const rows = [{id:"a",name:"WaveText",size:4.2},{id:"b",name:"Button",size:1.8},{id:"c",name:"Signal",size:3.1}];\n  return <DataTable label="Illustrative module records" rows={rows} getRowId={r => r.id} columns={[{id:"name",header:"Name",render:r => r.name,sortValue:r => r.name},{id:"size",header:"Example KiB",render:r => r.size,sortValue:r => r.size,align:"right"}]} />;',
     [
       p("rows", "T[]", "Your rows; pagination and fetching remain outside."),
       p(
@@ -43,7 +43,7 @@ export const DATA = [
     "Data",
     "data/Records.tsx",
     "A metric with context: direction and favorability are separate decisions.",
-    '  return <Stat label="Build duration" value="1.2s" change={{value:"18% faster",direction:"down",favorable:true}} detail="Compared with the previous local run." />;',
+    '  return <Stat label="Illustrative build duration" value="1.2s" change={{value:"18% example decrease",direction:"down",favorable:true}} detail="Synthetic readings, not a Mizu performance measurement." />;',
     [
       p("label / value", "string / ReactNode", "Metric name and reading."),
       p(
@@ -61,7 +61,7 @@ export const DATA = [
     "Data",
     "data/Charts.tsx",
     "Readable, labelled comparisons without a charting dependency.",
-    '  return <BarChart label="Components by family" data={[{label:"Forms",value:16},{label:"Status",value:12},{label:"Motion",value:5}]} />;',
+    '  return <BarChart label="Example counts by family" data={[{label:"Forms",value:16},{label:"Status",value:12},{label:"Motion",value:9}]} />;',
     [
       p("data", "ChartPoint[]", "Labels and numeric readings."),
       p("format", "(value: number) => string", "Visible units."),
@@ -74,7 +74,7 @@ export const DATA = [
     "Data",
     "data/Charts.tsx",
     "A compact history trace with the underlying readings in its accessible name.",
-    '  return <Sparkline label="Weekly build duration in seconds" values={[4,3,3.6,2.2,2.8,1.5,1.2]} />;',
+    '  return <Sparkline label="Illustrative build duration in seconds" values={[4,3,3.6,2.2,2.8,1.5,1.2]} />;',
     [
       p(
         "values",
@@ -91,7 +91,7 @@ export const DATA = [
     "Data",
     "data/Charts.tsx",
     "A daily activity field with every date and reading available as text.",
-    '  const data = Array.from({length:70}, (_,i) => ({date:`2026-${String(Math.floor(i/28)+7).padStart(2,"0")}-${String(i%28+1).padStart(2,"0")}`,value:(i*7)%11}));\n  return <Heatmap label="Workshop activity" data={data} />;',
+    '  const data = Array.from({length:70}, (_,i) => ({date:`2026-${String(Math.floor(i/28)+7).padStart(2,"0")}-${String(i%28+1).padStart(2,"0")}`,value:(i*7)%11}));\n  return <Heatmap label="Illustrative workshop activity" data={data} />;',
     [
       p(
         "data",
@@ -108,7 +108,7 @@ export const DATA = [
     "Data",
     "data/Records.tsx",
     "Events connected by a fine thread, with the present kept distinct.",
-    '  return <Timeline items={[{id:"a",title:"Foundations repaired",time:"Monday",state:"complete",body:"Keyboard and motion contracts checked."},{id:"b",title:"Package validated",time:"Tuesday",state:"current",body:"Fresh tarball installation passed."},{id:"c",title:"Release review",time:"Wednesday",state:"upcoming"}]} />;',
+    '  return <Timeline label="Illustrative release timeline" items={[{id:"a",title:"Foundations repaired",time:"Monday",state:"complete",body:"Keyboard and motion contracts checked."},{id:"b",title:"Package validated",time:"Tuesday",state:"current",body:"Fresh tarball installation passed."},{id:"c",title:"Release review",time:"Wednesday",state:"upcoming"}]} />;',
     [
       p(
         "items",
@@ -125,7 +125,7 @@ export const DATA = [
     "Data",
     "data/Inspection.tsx",
     "Filter a real event stream by its event type without losing chronological context.",
-    '  return <ActivityFeed items={[{id:"a",actor:"You",action:"created WaveText",time:"10:24",type:"Created"},{id:"b",actor:"Mizu",action:"validated the package",time:"10:31",type:"Validated"},{id:"c",actor:"You",action:"created Signal",time:"11:02",type:"Created"}]} />;',
+    '  return <ActivityFeed label="Illustrative event stream" items={[{id:"a",actor:"You",action:"created WaveText",time:"10:24",type:"Created"},{id:"b",actor:"Mizu",action:"validated the package",time:"10:31",type:"Validated"},{id:"c",actor:"You",action:"created Signal",time:"11:02",type:"Created"}]} />;',
     [
       p(
         "items",
@@ -154,7 +154,7 @@ export const DATA = [
     "Data",
     "data/Inspection.tsx",
     "Open a payload, follow its structure and copy the JSON without a developer-tools panel.",
-    '  return <DataInspector label="Release payload" value={{name:"mizu-ui",version:"0.2.0",checks:{types:true,lint:true},files:["styles.css","fonts.css"]}} />;',
+    '  return <DataInspector label="Example release payload" value={{name:"mizu-ui",version:"0.2.0",checks:{types:true,lint:true},files:["styles.css","fonts.css"]}} />;',
     [
       p("value", "unknown", "A JSON-like object, array or scalar."),
       p("label", "string", "Section name.", '"Data"'),

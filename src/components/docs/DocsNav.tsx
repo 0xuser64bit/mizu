@@ -33,6 +33,9 @@ export function DocsNav({
           onChange={(e) => setQuery(e.target.value)}
         />
       </label>
+      <Link className="mizu-docs-guide" href="/components/getting-started">
+        Getting started ↗
+      </Link>
       <nav aria-label="Component families">
         {categories.map((cat) => {
           const items = matches.filter((c) => c.category === cat);
@@ -57,9 +60,6 @@ export function DocsNav({
           <p className="mizu-field-hint">No matching pieces.</p>
         )}
       </nav>
-      <Link className="mizu-docs-guide" href="/components/getting-started">
-        Getting started ↗
-      </Link>
     </>
   );
   return (

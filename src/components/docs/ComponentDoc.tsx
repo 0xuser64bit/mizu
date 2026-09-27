@@ -149,21 +149,21 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         </p>
 
         <section className="mt-14">
-          <DemoLabel>Live — this one is real</DemoLabel>
+          <DemoLabel as="h2">Live — this one is real</DemoLabel>
           <div className="mt-4">
             <PreviewStage slug={meta.slug} />
           </div>
         </section>
 
         <section className="mt-14">
-          <DemoLabel>Usage</DemoLabel>
+          <DemoLabel as="h2">Usage</DemoLabel>
           <div className="mt-4">
             <CodeBlock code={usage[meta.slug as keyof typeof usage]} />
           </div>
         </section>
 
         <section className="mt-14">
-          <DemoLabel>Source & setup</DemoLabel>
+          <DemoLabel as="h2">Source & setup</DemoLabel>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             Import <code>mizu-ui/styles.css</code> once. Fonts are optional via{" "}
             <code>mizu-ui/fonts.css</code>. Override <code>--mizu-*</code>{" "}
@@ -192,7 +192,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         </section>
 
         <section className="mt-14">
-          <DemoLabel>Props</DemoLabel>
+          <DemoLabel as="h2">Props</DemoLabel>
           <div className="mt-4">
             <PropsTable props={meta.props} />
           </div>
@@ -200,13 +200,13 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
 
         <section className="mt-14 grid gap-4 md:grid-cols-2">
           <div className="border border-line bg-ink-2 p-6">
-            <DemoLabel>Accessibility</DemoLabel>
+            <DemoLabel as="h2">Accessibility</DemoLabel>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               {meta.a11y}
             </p>
           </div>
           <div className="border border-line bg-ink-2 p-6">
-            <DemoLabel>Motion</DemoLabel>
+            <DemoLabel as="h2">Motion</DemoLabel>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               {meta.motion}
             </p>
@@ -214,7 +214,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         </section>
 
         <section className="mt-14">
-          <DemoLabel>Works alongside</DemoLabel>
+          <DemoLabel as="h2">Works alongside</DemoLabel>
           <div className="mt-4 flex flex-wrap gap-3">
             {COMPONENTS.filter(
               (c) => c.category === meta.category && c.slug !== meta.slug,
