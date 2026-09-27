@@ -61,6 +61,30 @@
     "./interaction": {
       "types": "./dist/interaction/index.d.ts",
       "import": "./dist/interaction/index.js"
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.js"
+    },
+    "./composite": {
+      "types": "./dist/composite/index.d.ts",
+      "import": "./dist/composite/index.js"
+    },
+    "./feedback": {
+      "types": "./dist/feedback/index.d.ts",
+      "import": "./dist/feedback/index.js"
+    },
+    "./type": {
+      "types": "./dist/type/index.d.ts",
+      "import": "./dist/type/index.js"
+    },
+    "./lab": {
+      "types": "./dist/lab/index.d.ts",
+      "import": "./dist/lab/index.js"
+    },
+    "./motion": {
+      "types": "./dist/motion/index.d.ts",
+      "import": "./dist/motion/index.js"
     }
   },
   "scripts": {

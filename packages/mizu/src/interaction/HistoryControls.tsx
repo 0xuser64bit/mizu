@@ -1,4 +1,5 @@
 "use client";
+import { ArrowIcon } from "../ui/icons.tsx";
 import { useState, useCallback } from "react";
 export function useHistory<T>(initial: T, limit = 50) {
   const [state, setState] = useState<{ past: T[]; present: T; future: T[] }>({
@@ -80,10 +81,10 @@ export function HistoryControls({
       aria-label="Edit history"
     >
       <button type="button" disabled={!canUndo} onClick={onUndo}>
-        ← Undo
+        <ArrowIcon direction="left" /> Undo
       </button>
       <button type="button" disabled={!canRedo} onClick={onRedo}>
-        Redo →
+        Redo <ArrowIcon />
       </button>
     </div>
   );

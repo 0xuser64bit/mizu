@@ -9,6 +9,8 @@ import {
   type CSSProperties,
 } from "react";
 
+let scrollLocks = 0,
+  previousOverflow = "";
 const DialogContext = createContext<(() => void) | null>(null);
 
 /** Native modality supplies inert background, focus containment and nested-dialog order. */
@@ -37,16 +39,21 @@ export function Dialog({
     if (!dialog || !open) return;
     const restore = document.activeElement as HTMLElement | null;
     dialog.showModal();
-    (
-      dialog.querySelector<HTMLElement>(
-        "[autofocus], button:not([disabled]), input:not([disabled]), [tabindex='0']",
-      ) ?? dialog
-    ).focus();
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    if (!dialog.contains(document.activeElement))
+      (
+        dialog.querySelector<HTMLElement>("[autofocus]") ??
+        dialog.querySelector<HTMLElement>(
+          "button:enabled, input:enabled, select:enabled, textarea:enabled, a[href], [tabindex='0']",
+        ) ??
+        dialog
+      ).focus();
+    if (scrollLocks++ === 0) {
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+    }
     return () => {
       dialog.close();
-      document.body.style.overflow = overflow;
+      if (--scrollLocks === 0) document.body.style.overflow = previousOverflow;
       if (restore?.isConnected) restore.focus();
     };
   }, [open]);

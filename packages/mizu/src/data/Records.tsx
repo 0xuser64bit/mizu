@@ -1,3 +1,4 @@
+import { ArrowIcon } from "../ui/icons.tsx";
 import type { ReactNode, HTMLAttributes } from "react";
 export function DescriptionList({
   items,
@@ -45,11 +46,11 @@ export function Stat({
           aria-label={`${change.direction}: ${change.value}`}
         >
           <span aria-hidden="true">
-            {change.direction === "up"
-              ? "↑"
-              : change.direction === "down"
-                ? "↓"
-                : "→"}
+            <ArrowIcon
+              direction={
+                change.direction === "flat" ? "right" : change.direction
+              }
+            />
           </span>{" "}
           {change.value}
         </p>

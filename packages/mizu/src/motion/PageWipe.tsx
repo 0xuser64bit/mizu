@@ -1,4 +1,5 @@
 "use client";
+import { useReducedMotion } from "./Preferences.tsx";
 
 import {
   createContext,
@@ -9,7 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { EASE_WIPE } from "./easings.ts";
 
 const WIPE_MS = 1050;

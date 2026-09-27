@@ -1,4 +1,5 @@
 "use client";
+import { CompareIcon } from "../ui/icons.tsx";
 import { useId, useRef, useState } from "react";
 export function ImageCompare({
   before,
@@ -72,7 +73,9 @@ export function ImageCompare({
               style={{ left: `${current}%` }}
               aria-hidden="true"
             >
-              <span>↔</span>
+              <span>
+                <CompareIcon />
+              </span>
             </span>
             <span className="mizu-image-compare-before" aria-hidden="true">
               {beforeLabel}

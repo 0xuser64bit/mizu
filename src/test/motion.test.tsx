@@ -136,3 +136,23 @@ describe("PageWipe", () => {
     expect(resolved).toBe(true);
   });
 });
+
+describe("local motion preferences", () => {
+  it("removes travel without replacing content", async () => {
+    const { MotionPreferences, Presence, Tilt } = await import("@/mizu");
+    const { container } = render(
+      <MotionPreferences reduced>
+        <Presence presenceKey="a">
+          <Tilt>
+            <p>Still readable</p>
+          </Tilt>
+        </Presence>
+      </MotionPreferences>,
+    );
+    expect(container.querySelector('[data-motion="reduced"]')).toBeTruthy();
+    expect(screen.getByText("Still readable")).toBeTruthy();
+    expect(
+      container.querySelector(".mizu-tilt")?.getAttribute("style"),
+    ).not.toContain("rotateX(");
+  });
+});

@@ -81,7 +81,7 @@ export function Specimen({
         <label
           style={{
             display: "grid",
-            gridTemplateColumns: "104px 1fr 52px",
+            gridTemplateColumns: "minmax(60px,104px) minmax(0,1fr) 44px",
             alignItems: "center",
             gap: 16,
             fontFamily: "var(--mizu-font-mono)",
@@ -102,6 +102,8 @@ export function Specimen({
             aria-label="Specimen text"
             style={{
               width: "100%",
+              minWidth: 0,
+              minHeight: 44,
               border: "1px solid var(--mizu-line)",
               background: "var(--mizu-ink-2)",
               padding: "10px 12px",

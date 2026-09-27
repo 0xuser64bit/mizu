@@ -1,7 +1,4 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
-
+import type { CSSProperties } from "react";
 export function Spinner({
   size = 14,
   tone = "accent",
@@ -13,37 +10,18 @@ export function Spinner({
   tone?: "accent" | "paper" | "muted";
   label?: string;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }) {
-  const reduce = useReducedMotion();
-  const color =
-    tone === "accent"
-      ? "var(--mizu-accent)"
-      : tone === "paper"
-        ? "var(--mizu-paper)"
-        : "var(--mizu-muted)";
-
   return (
     <span
       role="status"
       aria-label={label}
-      className={className}
-      style={{ ...style, display: "inline-flex" }}
+      className={`mizu-spinner ${className}`}
+      style={{ display: "inline-flex", ...style }}
     >
-      <motion.span
-        aria-hidden
-        style={{
-          width: size,
-          height: size,
-          background: color,
-          transform: "rotate(45deg)",
-        }}
-        animate={reduce ? { rotate: 45 } : { rotate: 405 }}
-        transition={
-          reduce
-            ? { duration: 0 }
-            : { duration: 0.9, repeat: Infinity, ease: "linear" }
-        }
+      <span
+        aria-hidden="true"
+        style={{ width: size, height: size, background: `var(--mizu-${tone})` }}
       />
     </span>
   );

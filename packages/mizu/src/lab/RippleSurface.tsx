@@ -1,7 +1,8 @@
 "use client";
+import { useReducedMotion } from "../motion/Preferences.tsx";
 
 import { useRef, type CSSProperties } from "react";
-import { useReducedMotion } from "motion/react";
+
 import { useCanvasLoop } from "./useCanvas.ts";
 
 type Ripple = { x: number; y: number; born: number };

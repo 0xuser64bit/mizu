@@ -1,4 +1,5 @@
 "use client";
+import { ArrowIcon } from "../ui/icons.tsx";
 
 import { useMemo, useState, type ReactNode } from "react";
 export type DataColumn<T> = {
@@ -84,11 +85,17 @@ export function DataTable<T>({
                   >
                     {c.header}
                     <span aria-hidden="true">
-                      {sort?.id === c.id
-                        ? sort.direction === 1
-                          ? " ↑"
-                          : " ↓"
-                        : " ↕"}
+                      <ArrowIcon
+                        direction={
+                          sort?.id === c.id && sort.direction === -1
+                            ? "down"
+                            : "up"
+                        }
+                        style={{
+                          opacity: sort?.id === c.id ? 1 : 0.4,
+                          marginLeft: 8,
+                        }}
+                      />
                     </span>
                   </button>
                 ) : (

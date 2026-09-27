@@ -14,7 +14,7 @@ export function BarChart({
   className?: string;
 }) {
   data = data.filter((d) => Number.isFinite(d.value));
-  const max = Math.max(1, ...data.map((d) => Math.abs(d.value)));
+  const max = data.reduce((max, d) => Math.max(max, Math.abs(d.value)), 1);
   return (
     <figure className={`mizu-bar-chart ${className}`}>
       <figcaption>{label}</figcaption>
@@ -24,7 +24,7 @@ export function BarChart({
             <span>{d.label}</span>
             <div className="mizu-bar-track">
               <span
-                style={{ width: `${(Math.abs(d.value) / max) * 100}%` }}
+                style={{ transform: `scaleX(${Math.abs(d.value) / max})` }}
                 data-negative={d.value < 0}
               />
             </div>
@@ -49,8 +49,8 @@ export function Sparkline({
 }) {
   const id = useId(),
     finite = values.filter(Number.isFinite);
-  const min = Math.min(0, ...finite),
-    max = Math.max(1, ...finite),
+  const min = finite.reduce((min, value) => Math.min(min, value), 0),
+    max = finite.reduce((max, value) => Math.max(max, value), 1),
     span = max - min;
   const points = finite
     .map(
@@ -66,10 +66,9 @@ export function Sparkline({
       role="img"
       aria-labelledby={id}
     >
-      <title id={id}>
-        {label}
-        {finite.length ? `: ${finite.join(", ")}` : ": no data"}
-      </title>
+      <title
+        id={id}
+      >{`${label}${finite.length ? `: ${finite.join(", ")}` : ": no data"}`}</title>
       <path d="M0 56H240" stroke="var(--mizu-line)" fill="none" />
       <polyline
         points={points}
@@ -91,7 +90,7 @@ export function Heatmap({
   className?: string;
 }) {
   data = data.filter((d) => Number.isFinite(d.value));
-  const max = Math.max(1, ...data.map((d) => d.value));
+  const max = data.reduce((max, d) => Math.max(max, d.value), 1);
   return (
     <figure className={`mizu-heatmap ${className}`}>
       <figcaption>{label}</figcaption>

@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, type ReactNode, type CSSProperties } from "react";
+import {
+  useState,
+  version,
+  type HTMLAttributes,
+  type ReactNode,
+  type CSSProperties,
+} from "react";
 import { Mark } from "../ui/Mark.tsx";
 
 export function Marquee({
@@ -26,7 +32,13 @@ export function Marquee({
   const row = (hidden: boolean) => (
     <div
       aria-hidden={hidden}
-      inert={hidden || undefined}
+      {...({
+        inert: hidden
+          ? Number(version.split(".")[0]) >= 19
+            ? true
+            : ""
+          : undefined,
+      } as HTMLAttributes<HTMLDivElement>)}
       className="mizu-marquee-row"
     >
       {children}

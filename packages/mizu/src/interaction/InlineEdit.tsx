@@ -1,5 +1,6 @@
 "use client";
-import { useState, useRef, useId, useLayoutEffect } from "react";
+import { ArrowIcon } from "../ui/icons.tsx";
+import { useState, useRef, useId, useEffect } from "react";
 export function InlineEdit({
   value,
   onValueChange,
@@ -19,7 +20,7 @@ export function InlineEdit({
     trigger = useRef<HTMLButtonElement>(null),
     id = useId(),
     restore = useRef(false);
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!editing && restore.current) {
       restore.current = false;
       trigger.current?.focus();
@@ -94,7 +95,7 @@ export function InlineEdit({
           }}
         >
           <span>{value || "Add a value"}</span>
-          <span aria-hidden="true">↗</span>
+          <ArrowIcon direction="diagonal" />
         </button>
       )}
     </div>

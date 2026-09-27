@@ -158,3 +158,10 @@ describe("data and navigation contracts", () => {
     expect(summary.parentElement).not.toHaveAttribute("open");
   });
 });
+
+it("renders SVG titles as one text node so server markup hydrates without split-node mismatches", async () => {
+  const { renderToString } = await import("react-dom/server"),
+    { Sparkline } = await import("@/mizu");
+  const html = renderToString(<Sparkline label="Readings" values={[2, 3]} />);
+  expect(html.match(/<title[^>]*>(.*?)<\/title>/)?.[1]).toBe("Readings: 2, 3");
+});

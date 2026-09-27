@@ -1,3 +1,4 @@
+import { ArrowIcon } from "../ui/icons.tsx";
 import type { HTMLAttributes, ReactNode } from "react";
 import { CopyButton } from "../feedback/CopyButton.tsx";
 export function Kbd({
@@ -84,7 +85,7 @@ export function LinkCard({
       {eyebrow && <small>{eyebrow}</small>}
       <strong>
         {title}
-        <span aria-hidden="true">↗</span>
+        <ArrowIcon direction="diagonal" />
       </strong>
       {description && <p>{description}</p>}
     </a>
@@ -123,9 +124,7 @@ export function FileCard({
       href={href}
       download={download ? name : undefined}
     >
-      <span className="mizu-file-icon" aria-hidden="true">
-        ↓
-      </span>
+      <ArrowIcon direction="down" className="mizu-file-icon" />
       <span>
         <strong>{name}</strong>
         <small>

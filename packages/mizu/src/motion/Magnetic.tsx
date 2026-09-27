@@ -1,12 +1,8 @@
 "use client";
+import { useReducedMotion } from "./Preferences.tsx";
 
 import { useRef, type ReactNode } from "react";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useSpring,
-} from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 
 export function Magnetic({
   children,

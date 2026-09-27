@@ -1,10 +1,10 @@
 "use client";
+import { useReducedMotion } from "../motion/Preferences.tsx";
 
 import { useMemo, useRef, type PointerEvent } from "react";
 import {
   motion,
   motionValue,
-  useReducedMotion,
   useTransform,
   type MotionValue,
 } from "motion/react";
@@ -14,23 +14,28 @@ function Letter({
   char,
   colorFrom,
   colorTo,
+  reduced,
 }: {
   mv: MotionValue<number>;
   char: string;
   colorFrom: string;
   colorTo: string;
+  reduced: boolean | null;
 }) {
   const y = useTransform(mv, (v) => v * -10);
   const scale = useTransform(mv, (v) => 1 + v * 0.08);
-  const color = useTransform(mv, [0, 1], [colorFrom, colorTo]);
+  const color = useTransform(
+    mv,
+    (v) => `color-mix(in srgb, ${colorTo} ${v * 100}%, ${colorFrom})`,
+  );
 
   return (
     <motion.span
       aria-hidden
       style={{
-        y,
-        scale,
-        color,
+        y: reduced ? 0 : y,
+        scale: reduced ? 1 : scale,
+        color: reduced ? colorFrom : color,
         display: "inline-block",
         willChange: "transform",
       }}
@@ -43,8 +48,8 @@ function Letter({
 export function WaveText({
   text,
   radius = 120,
-  colorFrom = "#f4f0e8",
-  colorTo = "#ff4d1c",
+  colorFrom = "var(--mizu-paper)",
+  colorTo = "var(--mizu-accent)",
   className = "",
   style,
   as: Tag = "span",
@@ -72,7 +77,10 @@ export function WaveText({
         e.clientX - (r.left + r.width / 2),
         e.clientY - (r.top + r.height / 2),
       );
-      const f = Math.max(0, 1 - d / radius);
+      const f = Math.max(
+        0,
+        1 - d / (Number.isFinite(radius) ? Math.max(1, radius) : 120),
+      );
       values[i]?.set(f * f * (3 - 2 * f));
     }
   };
@@ -86,8 +94,8 @@ export function WaveText({
       className={className}
       aria-label={text}
       style={{ display: "inline-flex", flexWrap: "wrap", ...style }}
-      onPointerMove={onMove}
-      onPointerLeave={onLeave}
+      onPointerMove={reduce ? undefined : onMove}
+      onPointerLeave={reduce ? undefined : onLeave}
     >
       {chars.map((c, i) => (
         <span
@@ -98,6 +106,7 @@ export function WaveText({
           style={{ display: "inline-flex" }}
         >
           <Letter
+            reduced={!!reduce}
             mv={values[i] ?? motionValue(0)}
             char={c}
             colorFrom={colorFrom}

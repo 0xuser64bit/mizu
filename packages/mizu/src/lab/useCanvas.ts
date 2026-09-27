@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type RefObject } from "react";
-import { useReducedMotion } from "motion/react";
+import { useReducedMotion } from "../motion/Preferences.tsx";
 
 export type CanvasColors = { paper: string; accent: string; line: string };
 
@@ -30,6 +30,7 @@ export function useCanvasLoop(
     let raf = 0,
       w = 0,
       h = 0,
+      pixelRatio = 0,
       visible = true;
     let colors: CanvasColors = {
       paper: "#f4f0e8",
@@ -54,11 +55,14 @@ export function useCanvasLoop(
     const resize = () => {
       const r = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = r.width;
-      h = r.height;
-      canvas.width = Math.max(1, Math.round(w * dpr));
-      canvas.height = Math.max(1, Math.round(h * dpr));
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (w !== r.width || h !== r.height || pixelRatio !== dpr) {
+        w = r.width;
+        h = r.height;
+        pixelRatio = dpr;
+        canvas.width = Math.max(1, Math.round(w * dpr));
+        canvas.height = Math.max(1, Math.round(h * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
       const css = getComputedStyle(canvas);
       colors = {
         paper: css.getPropertyValue("--mizu-paper").trim() || colors.paper,
@@ -72,7 +76,19 @@ export function useCanvasLoop(
       visible = entry?.isIntersecting ?? false;
       resume();
     });
-    const mo = new MutationObserver(resize);
+    const tokens = (style: string | null) =>
+      (style?.match(/--mizu-[^;]+/g) ?? []).join(";");
+    const mo = new MutationObserver((records) => {
+      if (
+        records.some(
+          (r) =>
+            r.attributeName !== "style" ||
+            tokens(r.oldValue) !==
+              tokens((r.target as HTMLElement).getAttribute("style")),
+        )
+      )
+        resize();
+    });
     ro.observe(canvas);
     io.observe(canvas);
     for (
@@ -83,6 +99,7 @@ export function useCanvasLoop(
       mo.observe(parent, {
         attributes: true,
         attributeFilter: ["data-theme", "class", "style"],
+        attributeOldValue: true,
       });
     document.addEventListener("visibilitychange", resume);
     redraw.current = () => paint(performance.now());

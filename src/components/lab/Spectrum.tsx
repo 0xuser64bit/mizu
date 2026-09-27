@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { CopyButton } from "@/mizu";
 
 const SWATCHES = [
   { name: "Ink", hex: "#0F0E0C", role: "Ground" },
@@ -12,24 +12,23 @@ const SWATCHES = [
 ];
 
 export function Spectrum() {
-  const [copied, setCopied] = useState<string | null>(null);
-
-  const copy = async (hex: string) => {
-    try {
-      await navigator.clipboard.writeText(hex);
-    } catch {
-      return;
-    }
-    setCopied(hex);
-    window.setTimeout(() => setCopied((c) => (c === hex ? null : c)), 1400);
-  };
-
   return (
     <div className="border border-line">
       {SWATCHES.map((s) => (
-        <button
+        <CopyButton
           key={s.hex}
-          onClick={() => copy(s.hex)}
+          text={s.hex}
+          style={{
+            display: "flex",
+            width: "100%",
+            minHeight: 56,
+            justifyContent: "space-between",
+            gap: 16,
+            background: "transparent",
+            border: 0,
+            color: "var(--mizu-paper)",
+            cursor: "pointer",
+          }}
           className="group flex w-full items-center justify-between gap-4 border-b border-line px-4 py-3.5 text-left transition-colors last:border-b-0 hover:bg-ink-2"
           aria-label={`Copy ${s.name} ${s.hex}`}
         >
@@ -43,10 +42,8 @@ export function Spectrum() {
               {s.role}
             </span>
           </span>
-          <span className={`font-mono text-[11px] ${copied === s.hex ? "text-accent" : "text-muted"}`}>
-            {copied === s.hex ? "Copied" : s.hex}
-          </span>
-        </button>
+          <span className="font-mono text-[11px] text-muted">{s.hex}</span>
+        </CopyButton>
       ))}
     </div>
   );

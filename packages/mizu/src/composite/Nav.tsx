@@ -1,10 +1,10 @@
 "use client";
+import { useReducedMotion } from "../motion/Preferences.tsx";
 
 import { useEffect, useState, type ReactNode } from "react";
 import {
   AnimatePresence,
   motion,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -37,8 +37,9 @@ export function Nav({
     damping: 28,
     mass: 0.4,
   });
+  const progress = reduce ? scrollYProgress : scaleX;
   const nodeLeft = useTransform(
-    scaleX,
+    progress,
     (v) => `calc(${(v * 100).toFixed(3)}% - 3px)`,
   );
   const [chapter, setChapter] = useState("");
@@ -97,7 +98,7 @@ export function Nav({
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={chapter}
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={reduce ? false : { opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: reduce ? 0 : 0.3 }}
@@ -194,7 +195,7 @@ export function Nav({
               inset: 0,
               originX: 0,
               background: "var(--mizu-accent)",
-              scaleX,
+              scaleX: progress,
             }}
           />
           <motion.div

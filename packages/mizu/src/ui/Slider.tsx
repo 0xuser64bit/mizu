@@ -23,11 +23,10 @@ export function Slider({
 }) {
   return (
     <label
-      className={className}
+      className={`mizu-slider ${className}`}
       style={{
-        ...style,
         display: "grid",
-        gridTemplateColumns: "104px 1fr 52px",
+        gridTemplateColumns: "minmax(60px,104px) minmax(0,1fr) 44px",
         alignItems: "center",
         gap: 16,
         fontFamily: "var(--mizu-font-mono)",
@@ -37,6 +36,7 @@ export function Slider({
         color: "var(--mizu-faint)",
         opacity: disabled ? 0.45 : 1,
         cursor: disabled ? "not-allowed" : "pointer",
+        ...style,
       }}
     >
       <span>{label}</span>
@@ -49,7 +49,7 @@ export function Slider({
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value))}
         aria-label={label}
-        style={{ width: "100%", margin: 0 }}
+        style={{ width: "100%", minWidth: 0, minHeight: 44, margin: 0 }}
         className="mizu-slider-input"
       />
       <span

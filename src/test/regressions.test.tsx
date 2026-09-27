@@ -145,3 +145,16 @@ describe("foundation regression gates", () => {
     );
   });
 });
+
+it("releases the body lock when an outer dialog and its nested dialog unmount together", () => {
+  const { unmount } = render(
+    <Dialog open onOpenChange={() => {}} label="Outer">
+      <Dialog open onOpenChange={() => {}} label="Inner">
+        Content
+      </Dialog>
+    </Dialog>,
+  );
+  expect(document.body.style.overflow).toBe("hidden");
+  unmount();
+  expect(document.body.style.overflow).not.toBe("hidden");
+});

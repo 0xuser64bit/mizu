@@ -1,5 +1,7 @@
 "use client";
-import { Reorder, useDragControls, useReducedMotion } from "motion/react";
+import { ArrowIcon, GripIcon } from "../ui/icons.tsx";
+import { useReducedMotion } from "../motion/Preferences.tsx";
+import { Reorder, useDragControls } from "motion/react";
 export type ReorderEntry = { id: string; label: string; description?: string };
 function Entry({
   item,
@@ -35,7 +37,7 @@ function Entry({
           }
         }}
       >
-        <span aria-hidden="true">⠿</span>
+        <GripIcon />
       </button>
       <div>
         <strong>{item.label}</strong>
@@ -48,7 +50,7 @@ function Entry({
           aria-label={`Move ${item.label} up`}
           onClick={() => move(index, index - 1)}
         >
-          ↑
+          <ArrowIcon direction="up" />
         </button>
         <button
           type="button"
@@ -56,7 +58,7 @@ function Entry({
           aria-label={`Move ${item.label} down`}
           onClick={() => move(index, index + 1)}
         >
-          ↓
+          <ArrowIcon direction="down" />
         </button>
       </div>
     </Reorder.Item>

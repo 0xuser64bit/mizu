@@ -238,7 +238,9 @@ describe("CountUp", () => {
       await act(async () => {
         vi.advanceTimersByTime(700);
       });
-      expect(screen.getByText("200")).toBeTruthy();
+      expect(
+        screen.getByText("200", { selector: "span[aria-hidden=true]" }),
+      ).toBeTruthy();
     } finally {
       vi.useRealTimers();
     }
@@ -320,4 +322,9 @@ describe("type systems", () => {
     render(<GhostWord text="MIZU." />);
     expect(screen.getByText("MIZU.")).toBeTruthy();
   });
+});
+
+it("keeps invalid counters readable without locale-formatting exceptions", () => {
+  const { container } = render(<CountUp value={NaN} decimals={Infinity} />);
+  expect(container).toHaveTextContent("—");
 });

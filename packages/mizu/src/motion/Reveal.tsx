@@ -1,7 +1,8 @@
 "use client";
+import { useReducedMotion } from "./Preferences.tsx";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { EASE_EXPO } from "./easings.ts";
 
 export function Reveal({

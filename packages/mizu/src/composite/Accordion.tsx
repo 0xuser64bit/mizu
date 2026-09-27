@@ -1,4 +1,5 @@
 "use client";
+import { useReducedMotion } from "../motion/Preferences.tsx";
 
 import {
   createContext,
@@ -7,7 +8,7 @@ import {
   useId,
   type ReactNode,
 } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings.ts";
 
 type AccordionContextValue = {

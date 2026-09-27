@@ -1,46 +1,9 @@
-export { Mark, type MarkTone } from "./ui/Mark.tsx";
-export { SectionTag, type SectionTagTone } from "./ui/SectionTag.tsx";
-export { Rule } from "./ui/Rule.tsx";
-export { Badge, type BadgeTone } from "./ui/Badge.tsx";
-export { Spinner } from "./ui/Spinner.tsx";
-export { Frame } from "./ui/Frame.tsx";
-export { Slider } from "./ui/Slider.tsx";
-export { Tooltip } from "./ui/Tooltip.tsx";
-export {
-  Button,
-  ButtonLink,
-  type ButtonProps,
-  type ButtonLinkProps,
-  type ButtonVariant,
-  type ButtonSize,
-} from "./ui/Button.tsx";
-export { Accordion, AccordionItem } from "./composite/Accordion.tsx";
-export { Tabs, TabsList, TabsTrigger, TabsPanel } from "./composite/Tabs.tsx";
-export {
-  Dialog,
-  DialogTitle,
-  DialogBody,
-  DialogFooter,
-  DialogClose,
-} from "./composite/Dialog.tsx";
-export { Nav, type NavLink } from "./composite/Nav.tsx";
-export { CountUp } from "./feedback/CountUp.tsx";
-export { CopyButton } from "./feedback/CopyButton.tsx";
-export { ToastProvider, useToast } from "./feedback/Toast.tsx";
-export { Specimen } from "./type/Specimen.tsx";
-export { SoftType } from "./type/SoftType.tsx";
-export { WaveText } from "./type/WaveText.tsx";
-export { GhostWord } from "./type/GhostWord.tsx";
-export { useCanvasLoop } from "./lab/useCanvas.ts";
-export { Pinfield } from "./lab/Pinfield.tsx";
-export { Signal } from "./lab/Signal.tsx";
-export { RippleSurface } from "./lab/RippleSurface.tsx";
-export { EASE_EXPO, EASE_WIPE, EASE_SPRING } from "./motion/easings.ts";
-export { MaskLine } from "./motion/MaskLine.tsx";
-export { Reveal } from "./motion/Reveal.tsx";
-export { Magnetic } from "./motion/Magnetic.tsx";
-export { Marquee } from "./motion/Marquee.tsx";
-export { PageWipeProvider, usePageWipe } from "./motion/PageWipe.tsx";
+export * from "./ui/index.ts";
+export * from "./composite/index.ts";
+export * from "./feedback/index.ts";
+export * from "./type/index.ts";
+export * from "./lab/index.ts";
+export * from "./motion/index.ts";
 export * from "./forms/index.ts";
 export * from "./status/index.ts";
 export * from "./data/index.ts";
