@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.4.0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -15,3 +15,4 @@ jobs:
       - run: bun run check
       - run: bun run build
       - run: bun run test:consumer
+      - run: bun run test:consumer --react18
