@@ -3,4 +3,6 @@ import { STATUS } from "./status";
 import { FOUNDATION } from "./foundation";
 import { DATA } from "./data";
 import { NAVIGATION } from "./navigation";
-export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS, ...DATA, ...NAVIGATION];
+import { CONTENT } from "./content";
+import { LAYOUT } from "./layout";
+export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS, ...DATA, ...NAVIGATION, ...CONTENT, ...LAYOUT];
