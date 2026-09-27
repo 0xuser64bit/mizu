@@ -273,14 +273,14 @@ describe("TrendChart", () => {
   });
 
   it("measures a period with Shift and zooms to it with Enter", async () => {
-    const domain = vi.fn();
+    const range = vi.fn();
     render(
       <TrendChart
         label="Latency"
         utc
         series={SERIES}
         format={(v) => `${v}ms`}
-        onDomainChange={domain}
+        onRangeChange={range}
       />,
     );
     const plot = await screen.findByRole("group", { name: /Latency\./ });
@@ -293,7 +293,7 @@ describe("TrendChart", () => {
     expect(p95).toHaveTextContent("+900ms · +300.0%");
     expect(p95).toHaveTextContent("Peak 1200ms");
     fireEvent.keyDown(plot, { key: "Enter" });
-    expect(domain).toHaveBeenLastCalledWith([minute(0), minute(3)]);
+    expect(range).toHaveBeenLastCalledWith([minute(0), minute(3)]);
   });
 
   it("offers the visible readings as a table", async () => {

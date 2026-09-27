@@ -92,7 +92,7 @@ export const SIGNATURE = [
         "UTC time, plot height and a zero baseline (on for areas).",
       ),
       p(
-        "domain / defaultDomain / onDomainChange",
+        "range / defaultRange / onRangeChange",
         "[number, number]",
         "Visible x range. Share it between charts to zoom them together.",
       ),

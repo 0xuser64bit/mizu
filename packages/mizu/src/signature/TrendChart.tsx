@@ -15,6 +15,8 @@ import { useReducedMotion } from "../motion/Preferences.tsx";
 import {
   clamp,
   toTime,
+  type Interval,
+  type SignatureTone,
   useAnnouncer,
   useControllable,
   useElementSize,
@@ -23,14 +25,12 @@ import {
 } from "./internal.ts";
 import { formatDuration, formatStamp, numberTicks, timeTicks } from "./time.ts";
 
-export type TrendTone =
-  "accent" | "paper" | "muted" | "success" | "warning" | "danger";
 export type TrendPoint = { x: number | Date; y: number | null };
 export type TrendSeries = {
   id: string;
   label: string;
   data: readonly TrendPoint[];
-  tone?: TrendTone;
+  tone?: SignatureTone;
   /** Fill beneath the line. */
   area?: boolean;
   /** A dashed stroke, e.g. for a previous period or forecast. */
@@ -42,13 +42,12 @@ export type TrendAnnotation = {
   label: string;
   detail?: ReactNode;
 };
-export type TrendThreshold = { y: number; label: string; tone?: TrendTone };
-export type TrendDomain = readonly [number, number];
+export type TrendThreshold = { y: number; label: string; tone?: SignatureTone };
 
 type Pt = { x: number; y: number | null };
-type Prepared = TrendSeries & { tone: TrendTone; points: Pt[] };
+type Prepared = TrendSeries & { tone: SignatureTone; points: Pt[] };
 
-const TONES: TrendTone[] = [
+const TONES: SignatureTone[] = [
   "accent",
   "paper",
   "muted",
@@ -137,9 +136,9 @@ export function TrendChart({
   utc = false,
   height = 300,
   zero,
-  domain,
-  defaultDomain,
-  onDomainChange,
+  range,
+  defaultRange,
+  onRangeChange,
   cursor,
   onCursorChange,
   loading = false,
@@ -159,9 +158,9 @@ export function TrendChart({
   height?: number;
   /** Keep zero on the value axis. Defaults to true when any series fills an area. */
   zero?: boolean;
-  domain?: TrendDomain;
-  defaultDomain?: TrendDomain;
-  onDomainChange?: (domain: TrendDomain) => void;
+  range?: Interval;
+  defaultRange?: Interval;
+  onRangeChange?: (range: Interval) => void;
   /** x of the crosshair, or null. Control it to synchronise several views. */
   cursor?: number | null;
   onCursorChange?: (x: number | null) => void;
@@ -198,7 +197,7 @@ export function TrendChart({
     () => prepared.filter((s) => !hidden.has(s.id)),
     [prepared, hidden],
   );
-  const extent = useMemo<TrendDomain>(() => {
+  const extent = useMemo<Interval>(() => {
     let lo = Infinity,
       hi = -Infinity;
     for (const s of prepared)
@@ -209,31 +208,31 @@ export function TrendChart({
     return lo < hi ? [lo, hi] : lo === hi ? [lo - 1, hi + 1] : [0, 1];
   }, [prepared]);
 
-  const [domainState, setDomainState] = useControllable<TrendDomain | null>(
-    domain,
-    defaultDomain ?? null,
+  const [rangeState, setRangeState] = useControllable<Interval | null>(
+    range,
+    defaultRange ?? null,
   );
-  // A stored domain from other data falls back to the full extent.
+  // A stored range from other data falls back to the full extent.
   const view =
-    domainState &&
-    domainState[1] > domainState[0] &&
-    domainState[0] >= extent[0] - 1e-6 &&
-    domainState[1] <= extent[1] + 1e-6
-      ? domainState
+    rangeState &&
+    rangeState[1] > rangeState[0] &&
+    rangeState[0] >= extent[0] - 1e-6 &&
+    rangeState[1] <= extent[1] + 1e-6
+      ? rangeState
       : extent;
   const [x0, x1] = view;
   const latestView = useLatest(view);
-  const domainChange = useLatest(onDomainChange);
-  const commit = (next: TrendDomain) => {
+  const rangeChange = useLatest(onRangeChange);
+  const commit = (next: Interval) => {
     const [e0, e1] = extent;
     const full = e1 - e0;
     const s = clamp(next[1] - next[0], full / 2000, full);
     const lo = clamp(next[0], e0, e1 - s);
-    const d: TrendDomain = [lo, lo + s];
-    setDomainState(d);
-    domainChange.current?.(d);
+    const d: Interval = [lo, lo + s];
+    setRangeState(d);
+    rangeChange.current?.(d);
   };
-  const glide = (target: TrendDomain) => {
+  const glide = (target: Interval) => {
     const [a0, b0] = latestView.current;
     tweenX(reduce ? 0 : 520, (t) =>
       commit([a0 + (target[0] - a0) * t, b0 + (target[1] - b0) * t]),

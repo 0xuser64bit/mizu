@@ -121,7 +121,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  animation: mizu-waveform-print 1s var(--mizu-ease-expo) both;
+  transform-origin: center;
+  animation: mizu-waveform-rise 900ms var(--mizu-ease-expo) both;
 }
 .mizu-waveform-bars {
   fill: var(--mizu-line-bright);
@@ -286,12 +287,10 @@
     transform: scaleY(1.7);
   }
 }
-@keyframes mizu-waveform-print {
+@keyframes mizu-waveform-rise {
   from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
+    transform: scaleY(0.05);
+    opacity: 0.4;
   }
 }
 @container (max-width: 420px) {

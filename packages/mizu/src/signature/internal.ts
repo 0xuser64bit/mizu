@@ -9,6 +9,12 @@ import {
   type SetStateAction,
 } from "react";
 
+/** A visible interval on a numeric or time axis: [start, end]. */
+export type Interval = readonly [number, number];
+/** Colour roles shared by the signature systems. */
+export type SignatureTone =
+  "neutral" | "accent" | "paper" | "muted" | "success" | "warning" | "danger";
+
 export const clamp = (n: number, low: number, high: number) =>
   Math.min(high, Math.max(low, n));
 

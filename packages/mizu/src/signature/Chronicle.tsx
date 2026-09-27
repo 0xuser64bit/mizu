@@ -17,6 +17,8 @@ import { EASE_EXPO } from "../motion/easings.ts";
 import {
   clamp,
   toTime,
+  type Interval,
+  type SignatureTone,
   useAnnouncer,
   useControllable,
   useElementSize,
@@ -25,8 +27,6 @@ import {
 } from "./internal.ts";
 import { formatDuration, formatStamp, timeTicks } from "./time.ts";
 
-export type ChronicleTone =
-  "neutral" | "accent" | "success" | "warning" | "danger";
 export type ChronicleLane = { id: string; label: string };
 export type ChronicleEvent = {
   id: string;
@@ -36,11 +36,10 @@ export type ChronicleEvent = {
   /** Omit for an instant. */
   end?: number | Date;
   label: string;
-  tone?: ChronicleTone;
+  tone?: SignatureTone;
   /** Shown in the detail panel when the event is selected. */
   detail?: ReactNode;
 };
-export type ChronicleRange = readonly [number, number];
 
 type Placed = {
   event: ChronicleEvent;
@@ -129,9 +128,9 @@ export function Chronicle({
   label: string;
   events: readonly ChronicleEvent[];
   lanes?: readonly ChronicleLane[];
-  range?: ChronicleRange;
-  defaultRange?: ChronicleRange;
-  onRangeChange?: (range: ChronicleRange) => void;
+  range?: Interval;
+  defaultRange?: Interval;
+  onRangeChange?: (range: Interval) => void;
   /** Playhead time in ms. Supply either prop to show the playhead. */
   cursor?: number;
   defaultCursor?: number;
@@ -162,7 +161,7 @@ export function Chronicle({
     return ids.map((lane) => ({ id: lane, label: lane }));
   }, [lanes, events]);
   const laneIds = useMemo(() => laneList.map((l) => l.id), [laneList]);
-  const extent = useMemo<ChronicleRange>(() => {
+  const extent = useMemo<Interval>(() => {
     let lo = Infinity,
       hi = -Infinity;
     for (const e of events) {
@@ -186,7 +185,7 @@ export function Chronicle({
   );
   const flat = useMemo(() => placed.flat(), [placed]);
 
-  const [rangeState, setRangeState] = useControllable<ChronicleRange | null>(
+  const [rangeState, setRangeState] = useControllable<Interval | null>(
     range,
     defaultRange ?? null,
   );
@@ -221,7 +220,7 @@ export function Chronicle({
   const nodes = useRef(new Map<string, HTMLDivElement>());
   const pendingFocus = useRef<string | null>(null);
 
-  const commit = (next: ChronicleRange) => {
+  const commit = (next: Interval) => {
     const {
       extent: [e0, e1],
       minSpan: least,
@@ -231,11 +230,11 @@ export function Chronicle({
     const mid = (next[0] + next[1]) / 2;
     const lo = clamp(mid - s / 2, e0 - full, e1 + full - s);
     s = Math.max(s, least);
-    const r: ChronicleRange = [lo, lo + s];
+    const r: Interval = [lo, lo + s];
     setRangeState(r);
     rangeChange.current?.(r);
   };
-  const glide = (target: ChronicleRange) => {
+  const glide = (target: Interval) => {
     cancelAnimationFrame(inertia.current);
     const [s0, e0] = latestView.current;
     const c0 = (s0 + e0) / 2,
@@ -415,7 +414,7 @@ export function Chronicle({
     const s = e0 - s0;
     if (p.t0 >= s0 + s * 0.04 && p.t1 <= e0 - s * 0.04) return;
     const fits = p.t1 - p.t0 < s * 0.8;
-    const target: ChronicleRange = fits
+    const target: Interval = fits
       ? [(p.t0 + p.t1) / 2 - s / 2, (p.t0 + p.t1) / 2 + s / 2]
       : [p.t0 - (p.t1 - p.t0) * 0.25, p.t1 + (p.t1 - p.t0) * 0.25];
     glide(target);
@@ -918,16 +917,16 @@ function Overview({
   onGlide,
 }: {
   histogram: number[];
-  extent: ChronicleRange;
-  view: ChronicleRange;
-  onPan: (range: ChronicleRange) => void;
-  onGlide: (range: ChronicleRange) => void;
+  extent: Interval;
+  view: Interval;
+  onPan: (range: Interval) => void;
+  onGlide: (range: Interval) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const drag = useRef<{
     mode: "move" | "start" | "end";
     x: number;
-    view: ChronicleRange;
+    view: Interval;
   } | null>(null);
   const full = extent[1] - extent[0];
   const left = clamp(((view[0] - extent[0]) / full) * 100, 0, 100);

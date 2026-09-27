@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TrendChart, type TrendDomain, type TrendSeries } from "@/mizu";
+import { TrendChart, type Interval, type TrendSeries } from "@/mizu";
 import { Scenarios, seeded } from "./shared";
 
 const MIN = 6e4;
@@ -111,7 +111,7 @@ type Scenario = "incident" | "traffic" | "dense" | "loading" | "empty";
 export function TrendChartShowcase() {
   const [scenario, setScenario] = useState<Scenario>("incident");
   const [cursor, setCursor] = useState<number | null>(null);
-  const [domain, setDomain] = useState<TrendDomain | undefined>(undefined);
+  const [range, setRange] = useState<Interval | undefined>(undefined);
   return (
     <div className="mizu-showcase">
       <Scenarios
@@ -120,7 +120,7 @@ export function TrendChartShowcase() {
         onChange={(v) => {
           setScenario(v);
           setCursor(null);
-          setDomain(undefined);
+          setRange(undefined);
         }}
         options={[
           { value: "incident", label: "Linked incident" },
@@ -158,8 +158,8 @@ export function TrendChartShowcase() {
             ]}
             cursor={cursor}
             onCursorChange={setCursor}
-            domain={domain}
-            onDomainChange={setDomain}
+            range={range}
+            onRangeChange={setRange}
           />
           <TrendChart
             label="Error rate"
@@ -169,8 +169,8 @@ export function TrendChartShowcase() {
             format={(v) => `${v.toFixed(1)}%`}
             cursor={cursor}
             onCursorChange={setCursor}
-            domain={domain}
-            onDomainChange={setDomain}
+            range={range}
+            onRangeChange={setRange}
           />
         </>
       ) : scenario === "traffic" ? (
