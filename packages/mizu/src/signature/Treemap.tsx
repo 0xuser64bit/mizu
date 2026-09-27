@@ -30,7 +30,6 @@ export type TreemapNode = {
   detail?: ReactNode;
 };
 type Box = { x: number; y: number; w: number; h: number };
-type Sized = { node: TreemapNode; total: number };
 
 const compact = new Intl.NumberFormat("en", {
   notation: "compact",
@@ -92,6 +91,16 @@ export function squarify<T>(
   if (row.length) place();
   return out;
 }
+
+const arrange = (
+  node: TreemapNode,
+  box: Box,
+  totals: Map<TreemapNode, number>,
+) =>
+  squarify(
+    (node.children ?? []).map((c) => ({ item: c, value: totals.get(c) ?? 0 })),
+    box,
+  );
 
 const sum = (node: TreemapNode, cache: Map<TreemapNode, number>): number => {
   if (cache.has(node)) return cache.get(node)!;
@@ -165,18 +174,11 @@ export function Treemap({
   }, [data, trail]);
   const focus = chain[chain.length - 1]!;
   const full: Box = { x: 0, y: 0, w: width, h: height };
-  const layout = (node: TreemapNode, box: Box) =>
-    squarify(
-      (node.children ?? []).map((c) => ({
-        item: c,
-        value: totals.get(c) ?? 0,
-      })),
-      box,
-    );
+  const layout = (node: TreemapNode, box: Box) => arrange(node, box, totals);
   const current = useMemo(
-    () => layout(focus, full),
+    () => arrange(focus, { x: 0, y: 0, w: width, h: height }, totals),
     [focus, width, height, totals],
-  ); // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   // A move between levels is a camera move: the opened block's box fills the stage.
   const [motion, setMotion] = useState<{
