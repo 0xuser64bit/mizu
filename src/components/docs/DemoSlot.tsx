@@ -50,6 +50,9 @@ const SHOWCASES = {
   treemap: dynamic(() =>
     import("./demos/signature/treemap").then((m) => m.TreemapShowcase),
   ),
+  board: dynamic(() =>
+    import("./demos/signature/board").then((m) => m.BoardShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

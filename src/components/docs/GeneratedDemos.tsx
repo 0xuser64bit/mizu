@@ -19,6 +19,9 @@ export const GENERATED_DEMOS = {
   treemap: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.TreemapDemo),
   ),
+  board: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.BoardDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

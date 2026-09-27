@@ -11,6 +11,8 @@ import {
   type FlowNode,
   type FlowEdge,
   Treemap,
+  Board,
+  type BoardCard,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -185,6 +187,31 @@ export function TreemapDemo() {
           { id: "docs", label: "Documents", value: 96 },
         ],
       }}
+    />
+  );
+}
+
+export function BoardDemo() {
+  const [cards, setCards] = useState<BoardCard[]>([
+    { id: "a", column: "todo", title: "Draft the announcement", meta: "2d" },
+    { id: "b", column: "todo", title: "Record the demo" },
+    {
+      id: "c",
+      column: "done",
+      title: "Pick a launch date",
+      assignee: "Rin Sato",
+    },
+  ]);
+  return (
+    <Board
+      label="Launch"
+      columns={[
+        { id: "todo", title: "To do" },
+        { id: "doing", title: "Doing", limit: 2 },
+        { id: "done", title: "Done" },
+      ]}
+      cards={cards}
+      onCardsChange={setCards}
     />
   );
 }

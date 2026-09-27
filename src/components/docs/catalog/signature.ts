@@ -330,4 +330,50 @@ export const SIGNATURE = [
       { keys: "Backspace Esc", action: "Return to the level above" },
     ],
   }),
+  s({
+    name: "Board",
+    source: "Board.tsx",
+    tagline:
+      "A kanban board with lift-and-carry dragging, cards that part and fly into place, advisory limits, collapsible columns and a full keyboard path.",
+    example:
+      '  const [cards,setCards]=useState<BoardCard[]>([{id:"a",column:"todo",title:"Draft the announcement",meta:"2d"},{id:"b",column:"todo",title:"Record the demo"},{id:"c",column:"done",title:"Pick a launch date",assignee:"Rin Sato"}]);\n  return <Board label="Launch" columns={[{id:"todo",title:"To do"},{id:"doing",title:"Doing",limit:2},{id:"done",title:"Done"}]} cards={cards} onCardsChange={setCards} />;',
+    imports: "Board, type BoardCard",
+    props: [
+      p(
+        "label / columns",
+        "string / BoardColumn[]",
+        "Region name; columns have id, title and an optional advisory limit.",
+      ),
+      p(
+        "cards / onCardsChange",
+        "BoardCard[] / function",
+        "id, column, title, meta, tags, assignee and tone. Order within a column follows array order. Omit the callback for a fixed board.",
+      ),
+      p(
+        "renderCard",
+        "(card) => ReactNode",
+        "Replace the default card body; dragging and keyboard behaviour stay.",
+      ),
+      p(
+        "onCardOpen / onAddCard",
+        "(card) => void / (column) => void",
+        "Enter or double-click opens; an add button per column.",
+      ),
+      p(
+        "moveCard(cards, id, column, index)",
+        "function",
+        "The same reorder used internally, for your own commands.",
+      ),
+    ],
+    a11y: "Cards are buttons described as draggable. Space picks one up and announces its column and position; arrows move it between positions and columns, Space drops, Escape restores it. Each column states its count and limit; being over a limit is written, not only coloured. Touch drags start from a grip so the page still scrolls.",
+    motion:
+      "A picked-up card lifts and tilts while its neighbours part to open a slot; carried near an edge, the board scrolls itself. On drop the card flies from your hand into its new place through a shared layout transition. Reduced motion moves cards without travel.",
+    keys: [
+      { keys: "Space", action: "Pick up or drop the focused card" },
+      { keys: "↑ ↓", action: "While holding: move within the column" },
+      { keys: "← →", action: "While holding: move to the next column" },
+      { keys: "Esc", action: "Put the card back" },
+      { keys: "Enter", action: "Open the card" },
+    ],
+  }),
 ];
