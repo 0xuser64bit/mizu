@@ -2,7 +2,7 @@
 
 import { useRef, useState, type CSSProperties } from "react";
 import { useReducedMotion } from "motion/react";
-import { useCanvasLoop } from "./useCanvas.js";
+import { useCanvasLoop } from "./useCanvas.ts";
 
 type Pulse = { x: number; y: number; born: number };
 export function Pinfield({ gap = 26, speed = 3.4, autoPulse = true, className = "", style, label = "Pinfield. Click or press Enter to send a pulse." }: {

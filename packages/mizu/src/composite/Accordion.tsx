@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useId, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { EASE_EXPO } from "../motion/easings.js";
+import { EASE_EXPO } from "../motion/easings.ts";
 
 type AccordionContextValue = {
   open: Set<string>;

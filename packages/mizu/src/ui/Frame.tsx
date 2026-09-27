@@ -46,7 +46,6 @@ export function Frame({
       {children}
       {label && (
         <figcaption
-          aria-hidden
           style={{
             position: "absolute",
             top: -7,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Slider } from "../ui/Slider.js";
+import { Slider } from "../ui/Slider.tsx";
 
 export function Specimen({
   text,

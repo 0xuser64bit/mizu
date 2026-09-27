@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Mark } from "./Mark.js";
+import { Mark } from "./Mark.tsx";
 
 export type SectionTagTone = "muted" | "faint" | "paper" | "accent";
 

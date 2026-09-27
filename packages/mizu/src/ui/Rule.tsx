@@ -1,4 +1,4 @@
-import { Mark } from "./Mark.js";
+import { Mark } from "./Mark.tsx";
 
 export function Rule({
   label,
@@ -32,6 +32,7 @@ export function Rule({
   return (
     <div
       role="separator"
+      aria-label={label}
       aria-orientation="horizontal"
       className={className}
       style={{ ...style, display: "flex", alignItems: "center", gap: 12, width: "100%" }}

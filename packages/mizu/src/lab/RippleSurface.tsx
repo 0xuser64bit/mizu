@@ -2,7 +2,7 @@
 
 import { useRef, type CSSProperties } from "react";
 import { useReducedMotion } from "motion/react";
-import { useCanvasLoop } from "./useCanvas.js";
+import { useCanvasLoop } from "./useCanvas.ts";
 
 type Ripple = { x: number; y: number; born: number };
 export function RippleSurface({ auto = true, className = "", style }: { auto?: boolean; className?: string; style?: CSSProperties }) {
