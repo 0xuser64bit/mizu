@@ -1,0 +1,52 @@
+/* Signature — tone roles and motifs shared by the signature systems. */
+[data-tone="accent"] {
+  --mizu-tone: var(--mizu-accent);
+}
+[data-tone="paper"] {
+  --mizu-tone: var(--mizu-paper);
+}
+[data-tone="muted"],
+[data-tone="neutral"] {
+  --mizu-tone: var(--mizu-muted);
+}
+[data-tone="success"] {
+  --mizu-tone: var(--mizu-success);
+}
+[data-tone="warning"] {
+  --mizu-tone: var(--mizu-warning);
+}
+[data-tone="danger"] {
+  --mizu-tone: var(--mizu-danger);
+}
+/* Loading instruments scan: a single accent hairline travels the empty frame. */
+.mizu-sig-scan {
+  position: absolute;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 57px,
+    var(--mizu-line) 57px 58px
+  );
+}
+.mizu-sig-scan::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--mizu-accent);
+  animation: mizu-sig-sweep 1.8s var(--mizu-ease-wipe) infinite;
+}
+@keyframes mizu-sig-sweep {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes mizu-sig-fade {
+  from {
+    opacity: 0;
+  }
+}

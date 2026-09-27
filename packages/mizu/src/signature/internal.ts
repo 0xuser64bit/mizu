@@ -31,11 +31,14 @@ export function useControllable<T>(
   onChange?: (value: T) => void,
 ) {
   const [inner, setInner] = useState(initial);
-  const current = value === undefined ? inner : value;
+  const controlled = value !== undefined;
+  const current = controlled ? value : inner;
   const latest = useRef(current);
+  const owner = useRef(controlled);
   const change = useLatest(onChange);
   useIsoLayoutEffect(() => {
     latest.current = current;
+    owner.current = controlled;
   });
   const set = useCallback(
     (next: SetStateAction<T>) => {
@@ -45,7 +48,7 @@ export function useControllable<T>(
           : next;
       if (Object.is(resolved, latest.current)) return;
       latest.current = resolved;
-      setInner(resolved);
+      if (!owner.current) setInner(resolved);
       change.current?.(resolved);
     },
     [change],

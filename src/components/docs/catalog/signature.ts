@@ -56,4 +56,67 @@ export const SIGNATURE = [
       { keys: "Enter · Esc", action: "Select an event · clear selection" },
     ],
   }),
+  s({
+    name: "TrendChart",
+    source: "TrendChart.tsx",
+    tagline:
+      "Values over time as an instrument: a live legend that reads the crosshair, drag-to-measure deltas, annotations, thresholds and linked views.",
+    example:
+      '  const day = (d: number) => Date.UTC(2026, 8, d);\n  return <TrendChart label="Weekly active teams" utc series={[{id:"teams",label:"Teams",area:true,data:[{x:day(1),y:412},{x:day(2),y:436},{x:day(3),y:431},{x:day(4),y:478},{x:day(5),y:502},{x:day(6),y:497},{x:day(7),y:540}]}]} />;',
+    props: [
+      p("label", "string", "Accessible name and visible title."),
+      p(
+        "series",
+        "TrendSeries[]",
+        "id, label, data of { x, y } (null y leaves a gap), tone, area and dashed.",
+      ),
+      p(
+        "annotations / thresholds",
+        "TrendAnnotation[] / TrendThreshold[]",
+        "Numbered moments with detail; labelled reference values such as an SLO.",
+      ),
+      p(
+        "format / formatX",
+        "(value: number) => string",
+        "Value and x formatting. Values default to compact numbers; x to time stamps.",
+      ),
+      p(
+        "xType",
+        '"time" | "number"',
+        "How x is scaled and labelled.",
+        '"time"',
+      ),
+      p(
+        "utc / height / zero",
+        "boolean / number / boolean",
+        "UTC time, plot height and a zero baseline (on for areas).",
+      ),
+      p(
+        "domain / defaultDomain / onDomainChange",
+        "[number, number]",
+        "Visible x range. Share it between charts to zoom them together.",
+      ),
+      p(
+        "cursor / onCursorChange",
+        "number | null",
+        "Crosshair position. Share it to read several charts at once.",
+      ),
+      p("loading / empty", "boolean / ReactNode", "Loading and empty states."),
+    ],
+    a11y: "The plot is a focusable chart group: arrow keys step through readings and each reading is announced with every series. Shift extends a measured period. The legend is a set of toggle buttons that always keeps one series visible. A table view presents the visible readings as a real table.",
+    motion:
+      "Lines draw from left to right on first view and areas fade in after them. Zooms glide; the value axis eases to the visible data. Reduced motion shows the finished chart and changes instantly.",
+    keys: [
+      {
+        keys: "← →",
+        action: "Read the previous or next value (Alt: ten at a time)",
+      },
+      { keys: "Shift + ← →", action: "Extend a measured period" },
+      { keys: "Enter", action: "Zoom to the measured period" },
+      { keys: "+ −", action: "Zoom around the crosshair" },
+      { keys: "0", action: "Show the whole range (or double-click)" },
+      { keys: "Esc", action: "Clear the crosshair and measurement" },
+      { keys: "Ctrl + scroll", action: "Zoom at the pointer" },
+    ],
+  }),
 ];

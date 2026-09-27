@@ -190,7 +190,14 @@ export function Chronicle({
     range,
     defaultRange ?? null,
   );
-  const view = rangeState ?? extent;
+  // A stored range that no longer overlaps the events falls back to fitting them.
+  const view =
+    rangeState &&
+    rangeState[1] > rangeState[0] &&
+    rangeState[1] > extent[0] &&
+    rangeState[0] < extent[1]
+      ? rangeState
+      : extent;
   const [a, b] = view;
   const span = b - a;
   const latestView = useLatest(view);
@@ -786,7 +793,7 @@ export function Chronicle({
           )}
           {loading && (
             <div
-              className="mizu-chronicle-loading"
+              className="mizu-chronicle-loading mizu-sig-scan"
               role="status"
               aria-label="Loading events"
             >

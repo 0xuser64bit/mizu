@@ -1,0 +1,301 @@
+/* TrendChart — values over time with a live legend and period measurement. */
+.mizu-trend {
+  container-type: inline-size;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--mizu-line);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+}
+.mizu-trend-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px 28px;
+  padding: 14px 16px 6px;
+}
+.mizu-trend-title {
+  padding-top: 13px;
+  font: 500 11px var(--mizu-font-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.mizu-trend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.mizu-trend-legend button {
+  display: grid;
+  grid-template-columns: 16px auto;
+  column-gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 14px 6px 12px;
+  border: 0;
+  border-left: 1px solid var(--mizu-line);
+  background: transparent;
+  color: var(--mizu-muted);
+  text-align: left;
+  cursor: pointer;
+  transition: opacity var(--mizu-duration-fast);
+}
+.mizu-trend-legend button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.mizu-trend-legend i {
+  width: 16px;
+  height: 2px;
+  background: var(--mizu-tone);
+}
+.mizu-trend-legend [data-dashed] i {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mizu-tone) 0 4px,
+    transparent 4px 7px
+  );
+}
+.mizu-trend-legend span {
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mizu-trend-legend b {
+  grid-column: 2;
+  margin-top: 3px;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  color: var(--mizu-paper);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.mizu-trend-legend small {
+  grid-column: 2;
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.08em;
+  color: var(--mizu-faint);
+  text-transform: uppercase;
+}
+.mizu-trend-legend button[aria-pressed="false"] {
+  opacity: 0.4;
+}
+.mizu-trend-legend button[aria-pressed="false"] b {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.mizu-trend-plot {
+  position: relative;
+  cursor: crosshair;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.mizu-trend-plot:focus-visible {
+  outline-offset: -2px;
+}
+.mizu-trend-plot svg {
+  display: block;
+  overflow: visible;
+}
+.mizu-trend-grid line {
+  stroke: var(--mizu-line);
+}
+.mizu-trend-grid text,
+.mizu-trend-axis text,
+.mizu-trend-threshold text {
+  paint-order: stroke;
+  stroke: var(--mizu-ink);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.mizu-trend-grid text,
+.mizu-trend-axis text {
+  fill: var(--mizu-faint);
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+.mizu-trend-axis text {
+  text-transform: uppercase;
+}
+.mizu-trend-axis line {
+  stroke: var(--mizu-line-bright);
+}
+.mizu-trend-series {
+  transition: opacity 260ms ease;
+}
+.mizu-trend-series[data-hidden] {
+  opacity: 0;
+}
+.mizu-trend-line {
+  fill: none;
+  stroke: var(--mizu-tone);
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.mizu-trend-line[data-dashed] {
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+}
+.mizu-trend-area {
+  fill: color-mix(in srgb, var(--mizu-tone) 11%, transparent);
+}
+.mizu-trend:not([data-drawn]) .mizu-trend-line:not([data-dashed]) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: mizu-trend-draw 1.4s var(--mizu-ease-expo) forwards;
+}
+.mizu-trend:not([data-drawn]) .mizu-trend-area,
+.mizu-trend:not([data-drawn]) .mizu-trend-line[data-dashed] {
+  animation: mizu-sig-fade 900ms 450ms ease both;
+}
+.mizu-trend-measure rect {
+  fill: color-mix(in srgb, var(--mizu-accent) 9%, transparent);
+}
+.mizu-trend-measure line {
+  stroke: var(--mizu-accent);
+}
+.mizu-trend-threshold line {
+  stroke: var(--mizu-tone);
+  stroke-dasharray: 2 4;
+}
+.mizu-trend-threshold text {
+  fill: var(--mizu-tone);
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mizu-trend-note line {
+  stroke: var(--mizu-line-bright);
+  stroke-dasharray: 1 3;
+}
+.mizu-trend-note rect {
+  fill: var(--mizu-paper);
+  transition: fill var(--mizu-duration-fast);
+}
+.mizu-trend-note text {
+  fill: var(--mizu-muted);
+  font: 9px var(--mizu-font-mono);
+  letter-spacing: 0.1em;
+}
+.mizu-trend-note[data-active] rect {
+  fill: var(--mizu-accent);
+}
+.mizu-trend-note[data-active] line {
+  stroke: var(--mizu-accent);
+  stroke-dasharray: none;
+}
+.mizu-trend-note-hit {
+  position: absolute;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.mizu-trend-cursor line {
+  stroke: var(--mizu-paper);
+  stroke-opacity: 0.45;
+}
+.mizu-trend-cursor rect {
+  fill: var(--mizu-tone);
+  stroke: var(--mizu-ink);
+  stroke-width: 2;
+}
+.mizu-trend-stamp {
+  position: absolute;
+  left: 0;
+  padding: 3px 7px;
+  background: var(--mizu-paper);
+  color: var(--mizu-ink);
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+.mizu-trend-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--mizu-muted);
+  font-size: 13px;
+}
+.mizu-trend-loading {
+  inset: 30px 12px 30px 0;
+}
+.mizu-trend-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 20px;
+  min-height: 52px;
+  padding: 4px 16px;
+  border-top: 1px solid var(--mizu-line);
+}
+.mizu-trend-foot p {
+  flex: 1 1 240px;
+  margin: 0;
+  padding: 8px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mizu-paper);
+}
+.mizu-trend-foot p > span {
+  margin-right: 8px;
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mizu-accent);
+}
+.mizu-trend-foot small {
+  display: block;
+  margin-top: 4px;
+  color: var(--mizu-muted);
+  font-size: 12px;
+}
+.mizu-trend-foot .mizu-trend-hint {
+  color: var(--mizu-faint);
+  font-size: 12px;
+}
+.mizu-trend-toggle {
+  margin-left: auto;
+}
+.mizu-trend-table {
+  max-height: 360px;
+  padding: 0 16px;
+}
+@keyframes mizu-trend-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@container (max-width: 520px) {
+  .mizu-trend-head {
+    padding-inline: 12px;
+  }
+  .mizu-trend-title {
+    flex-basis: 100%;
+    padding-top: 4px;
+  }
+  .mizu-trend-legend {
+    width: 100%;
+  }
+  .mizu-trend-legend button {
+    flex: 1 1 40%;
+    padding-inline: 10px;
+  }
+  .mizu-trend-legend b {
+    font-size: 16px;
+  }
+}

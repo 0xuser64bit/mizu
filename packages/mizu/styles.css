@@ -1,3 +1,5 @@
 /* Mizu — import once. Core tokens and the base families first, then each signature system. */
 @import "./src/core.css";
+@import "./src/signature/signature.css";
 @import "./src/signature/chronicle.css";
+@import "./src/signature/trend.css";

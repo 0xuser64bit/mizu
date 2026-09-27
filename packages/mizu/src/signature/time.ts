@@ -141,8 +141,17 @@ export function timeTicks(
   const span = end - start;
   if (!(span > 0) || !(width > 0)) return { ticks: [], context: "" };
   const need = (spacing / width) * span;
-  const index = STEPS.findIndex((s) => s.ms >= need);
-  const step = STEPS[index === -1 ? STEPS.length - 1 : index]!;
+  let index = STEPS.findIndex((s) => s.ms >= need);
+  if (index === -1) index = STEPS.length - 1;
+  // Prefer a slightly tighter step over leaving the axis with one or two labels.
+  const finer = STEPS[index - 1];
+  if (
+    finer &&
+    span / STEPS[index]!.ms < 2.5 &&
+    (finer.ms / span) * width >= spacing * 0.6
+  )
+    index--;
+  const step = STEPS[index]!;
   const minor = STEPS.slice(0, Math.max(0, STEPS.indexOf(step)))
     .reverse()
     .find(

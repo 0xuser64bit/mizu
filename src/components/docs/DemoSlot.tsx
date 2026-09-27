@@ -35,6 +35,9 @@ const SHOWCASES = {
   chronicle: dynamic(() =>
     import("./demos/signature/chronicle").then((m) => m.ChronicleShowcase),
   ),
+  "trend-chart": dynamic(() =>
+    import("./demos/signature/trend").then((m) => m.TrendChartShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

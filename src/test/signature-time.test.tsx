@@ -1,7 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Chronicle, type ChronicleEvent } from "@/mizu";
+import {
+  Chronicle,
+  TrendChart,
+  type ChronicleEvent,
+  type TrendSeries,
+} from "@/mizu";
 import {
   formatClock,
   formatDuration,
@@ -34,10 +39,10 @@ describe("time scales", () => {
   });
   it("keeps multi-week ticks on the same Mondays however far the view pans", () => {
     const day = 864e5;
-    const first = timeTicks(Date.UTC(2026, 7, 1), Date.UTC(2026, 8, 1), 300, {
+    const first = timeTicks(Date.UTC(2026, 7, 1), Date.UTC(2026, 8, 15), 300, {
       utc: true,
     });
-    const panned = timeTicks(Date.UTC(2026, 7, 4), Date.UTC(2026, 8, 4), 300, {
+    const panned = timeTicks(Date.UTC(2026, 7, 4), Date.UTC(2026, 8, 18), 300, {
       utc: true,
     });
     const mondays = (ticks: typeof first.ticks) =>
@@ -45,7 +50,7 @@ describe("time scales", () => {
     for (const t of mondays(first.ticks))
       expect(new Date(t).getUTCDay()).toBe(1);
     const shared = mondays(panned.ticks).filter(
-      (t) => t < Date.UTC(2026, 8, 1),
+      (t) => t < Date.UTC(2026, 8, 15),
     );
     for (const t of shared) expect(mondays(first.ticks)).toContain(t);
     expect(mondays(first.ticks)[1]! - mondays(first.ticks)[0]!).toBe(14 * day);
@@ -192,5 +197,138 @@ describe("Chronicle", () => {
       screen.getByRole("status", { name: "Loading events" }),
     ).toBeInTheDocument();
     await act(async () => {});
+  });
+});
+
+const minute = (m: number) => at(14, m);
+const SERIES: TrendSeries[] = [
+  {
+    id: "p95",
+    label: "p95",
+    data: [0, 1, 2, 3, 4].map((m) => ({
+      x: minute(m),
+      y: [300, 320, 900, 1200, 400][m]!,
+    })),
+  },
+  {
+    id: "p50",
+    label: "p50",
+    data: [0, 1, 2, 3, 4].map((m) => ({
+      x: minute(m),
+      y: m === 2 ? null : 100 + m * 10,
+    })),
+  },
+];
+
+describe("TrendChart", () => {
+  let restore: () => void;
+  beforeEach(() => {
+    restore = mockLayout(800, 300);
+  });
+  afterEach(() => restore());
+
+  it("reads the latest values in the legend and keeps one series visible", async () => {
+    const user = userEvent.setup();
+    render(
+      <TrendChart
+        label="Latency"
+        utc
+        series={SERIES}
+        format={(v) => `${v}ms`}
+      />,
+    );
+    const p95 = await screen.findByRole("button", { name: /p95/ });
+    const p50 = screen.getByRole("button", { name: /p50/ });
+    expect(p95).toHaveTextContent("400ms");
+    expect(p50).toHaveTextContent("140ms");
+    await user.click(p50);
+    expect(p50).toHaveAttribute("aria-pressed", "false");
+    expect(p95).toBeDisabled();
+  });
+
+  it("steps through readings from the keyboard and announces every series", async () => {
+    const cursor = vi.fn();
+    render(
+      <TrendChart
+        label="Latency"
+        utc
+        series={SERIES}
+        format={(v) => `${v}ms`}
+        onCursorChange={cursor}
+      />,
+    );
+    const plot = await screen.findByRole("group", { name: /Latency\./ });
+    fireEvent.keyDown(plot, { key: "ArrowRight" });
+    fireEvent.keyDown(plot, { key: "ArrowRight" });
+    fireEvent.keyDown(plot, { key: "ArrowRight" });
+    expect(cursor).toHaveBeenLastCalledWith(minute(2));
+    await act(
+      () => new Promise((r) => requestAnimationFrame(() => r(undefined))),
+    );
+    expect(
+      screen.getByText("14:02 — p95 900ms, p50 no reading"),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /p50/ })).toHaveTextContent("—");
+  });
+
+  it("measures a period with Shift and zooms to it with Enter", async () => {
+    const domain = vi.fn();
+    render(
+      <TrendChart
+        label="Latency"
+        utc
+        series={SERIES}
+        format={(v) => `${v}ms`}
+        onDomainChange={domain}
+      />,
+    );
+    const plot = await screen.findByRole("group", { name: /Latency\./ });
+    fireEvent.keyDown(plot, { key: "ArrowRight" });
+    fireEvent.keyDown(plot, { key: "ArrowRight", shiftKey: true });
+    fireEvent.keyDown(plot, { key: "ArrowRight", shiftKey: true });
+    fireEvent.keyDown(plot, { key: "ArrowRight", shiftKey: true });
+    expect(screen.getByText("Measured")).toBeInTheDocument();
+    const p95 = screen.getByRole("button", { name: /p95/ });
+    expect(p95).toHaveTextContent("+900ms · +300.0%");
+    expect(p95).toHaveTextContent("Peak 1200ms");
+    fireEvent.keyDown(plot, { key: "Enter" });
+    expect(domain).toHaveBeenLastCalledWith([minute(0), minute(3)]);
+  });
+
+  it("offers the visible readings as a table", async () => {
+    const user = userEvent.setup();
+    render(
+      <TrendChart
+        label="Latency"
+        utc
+        series={SERIES}
+        format={(v) => `${v}ms`}
+      />,
+    );
+    await user.click(
+      await screen.findByRole("button", { name: "View as table" }),
+    );
+    const table = screen.getByRole("region", { name: "Latency readings" });
+    expect(within(table).getAllByRole("row")).toHaveLength(6);
+    expect(
+      within(table).getByRole("rowheader", { name: "14:02" }).parentElement,
+    ).toHaveTextContent("—");
+  });
+
+  it("explains loading and empty charts", async () => {
+    const { rerender } = render(
+      <TrendChart label="Depth" series={[]} loading />,
+    );
+    expect(
+      screen.getByRole("status", { name: "Loading readings" }),
+    ).toBeInTheDocument();
+    rerender(
+      <TrendChart
+        label="Depth"
+        series={[{ id: "d", label: "Depth", data: [] }]}
+        empty="Quiet."
+      />,
+    );
+    expect(await screen.findByText("Quiet.")).toBeInTheDocument();
   });
 });

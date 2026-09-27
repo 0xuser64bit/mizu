@@ -10,19 +10,6 @@
   color: var(--mizu-paper);
   font-family: var(--mizu-font-display);
 }
-.mizu-chronicle [data-tone="accent"],
-.mizu-chronicle[data-tone="accent"] {
-  --mizu-tone: var(--mizu-accent);
-}
-.mizu-chronicle [data-tone="success"] {
-  --mizu-tone: var(--mizu-success);
-}
-.mizu-chronicle [data-tone="warning"] {
-  --mizu-tone: var(--mizu-warning);
-}
-.mizu-chronicle [data-tone="danger"] {
-  --mizu-tone: var(--mizu-danger);
-}
 .mizu-chronicle-bar {
   display: flex;
   flex-wrap: wrap;
@@ -162,7 +149,7 @@
   text-transform: uppercase;
   color: var(--mizu-muted);
   white-space: nowrap;
-  animation: mizu-chronicle-tick 260ms ease both;
+  animation: mizu-sig-fade 260ms ease both;
 }
 .mizu-chronicle-extent {
   position: absolute;
@@ -366,15 +353,12 @@
   min-height: calc(var(--mizu-chronicle-axis) + 120px);
 }
 .mizu-chronicle-loading {
-  position: absolute;
   inset: var(--mizu-chronicle-axis) 0 0;
-  overflow: hidden;
-  background: var(--mizu-ink);
+  background-color: var(--mizu-ink);
 }
 .mizu-chronicle-loading > span {
   display: block;
   height: 58px;
-  border-bottom: 1px solid var(--mizu-line);
   background:
     linear-gradient(var(--mizu-ink-3), var(--mizu-ink-3))
       calc(12% + var(--mizu-row) * 17%) 18px / 22% 18px no-repeat,
@@ -382,15 +366,6 @@
       calc(58% - var(--mizu-row) * 9%) 18px / 14% 18px no-repeat;
   animation: mizu-skeleton-pulse 1.8s ease-in-out infinite;
   animation-delay: calc(var(--mizu-row) * 140ms);
-}
-.mizu-chronicle-loading::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--mizu-accent);
-  animation: mizu-chronicle-sweep 1.8s var(--mizu-ease-wipe) infinite;
 }
 .mizu-chronicle-track:has(.mizu-chronicle-loading) {
   min-height: calc(var(--mizu-chronicle-axis) + 174px);
@@ -501,19 +476,6 @@
   to {
     opacity: 1;
     clip-path: inset(-4px -400px -4px -8px);
-  }
-}
-@keyframes mizu-chronicle-tick {
-  from {
-    opacity: 0;
-  }
-}
-@keyframes mizu-chronicle-sweep {
-  from {
-    left: 0;
-  }
-  to {
-    left: 100%;
   }
 }
 @container (max-width: 560px) {
