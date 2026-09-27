@@ -25,16 +25,17 @@ export function CountUp({
   const prev = useRef(0);
 
   useEffect(() => {
-    if (reduce) return;
+    if (reduce) { prev.current = value; return; }
     const from = prev.current;
-    prev.current = value;
     if (from === value) return;
     let raf = 0;
     const start = performance.now() + delay * 1000;
     const tick = (now: number) => {
-      const t = Math.min(1, Math.max(0, (now - start) / (duration * 1000)));
+      const t = Math.min(1, Math.max(0, (now - start) / (Math.max(1, duration * 1000))));
       const e = 1 - Math.pow(1 - t, 4);
-      setDisplay(from + (value - from) * e);
+      const next = from + (value - from) * e;
+      prev.current = next;
+      setDisplay(next);
       if (t < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -49,7 +50,7 @@ export function CountUp({
   });
 
   return (
-    <span className={className} style={{ fontVariantNumeric: "tabular-nums" }}>
+    <span aria-label={`${prefix}${value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`} className={className} style={{ fontVariantNumeric: "tabular-nums" }}>
       {prefix}
       {formatted}
       {suffix}

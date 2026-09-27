@@ -9,7 +9,7 @@
   --mizu-ink-3: #201b15;
   --mizu-paper: #f4f0e8;
   --mizu-muted: #a8a193;
-  --mizu-faint: #6f695e;
+  --mizu-faint: #958d7e;
   --mizu-accent: #ff4d1c;
   --mizu-accent-fill: #d23e0e;
   --mizu-line: #29241d;
@@ -51,9 +51,9 @@
   --mizu-ink-3: #dcd4c1;
   --mizu-paper: #16130f;
   --mizu-muted: #6f695e;
-  --mizu-faint: #a8a193;
-  --mizu-accent: #ff4d1c;
-  --mizu-accent-fill: #c23a0c;
+  --mizu-faint: #736b5c;
+  --mizu-accent: #b7310c;
+  --mizu-accent-fill: #b7310c;
   --mizu-line: #d9d2c2;
   --mizu-line-bright: rgba(22, 19, 15, 0.22);
 }
@@ -71,7 +71,8 @@
   color: var(--mizu-ink);
 }
 
-.mizu-root :focus-visible {
+:where(.mizu-root, [class*="mizu-"]) :focus-visible,
+[class*="mizu-"]:focus-visible {
   outline: 2px solid var(--mizu-accent);
   outline-offset: 3px;
   border-radius: var(--mizu-radius);
@@ -98,7 +99,8 @@
 @media (prefers-reduced-motion: reduce) {
   .mizu-root *,
   .mizu-root *::before,
-  .mizu-root *::after {
+  .mizu-root *::after,
+  [class*="mizu-"] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -168,7 +170,7 @@
   border: 1px solid var(--mizu-line-bright);
   font-family: var(--mizu-font-mono);
   font-size: 10px;
-  letter-spacing: "0.2em";
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--mizu-paper);
   white-space: nowrap;
@@ -277,4 +279,43 @@
 .mizu-specimen-toggle:hover {
   border-color: var(--mizu-line-bright);
   color: var(--mizu-paper);
+}
+
+/* A modal remains in its theme scope while the browser promotes it to the top layer. */
+.mizu-dialog { color: var(--mizu-paper); background: var(--mizu-ink-2); border: 1px solid var(--mizu-line-bright); padding: 36px 32px 32px; width: min(520px, calc(100vw - 32px)); max-height: 84dvh; box-sizing: border-box; overflow: auto; font-family: var(--mizu-font-display); }
+.mizu-dialog[open] { animation: mizu-dialog-enter var(--mizu-duration-med) var(--mizu-ease-expo); }
+.mizu-dialog::backdrop { background: rgb(15 14 12 / .72); }
+.mizu-dialog-title { margin: 0; padding-right: 36px; font-size: 28px; font-weight: 800; letter-spacing: -.01em; }
+.mizu-dialog-body { margin-top: 18px; color: var(--mizu-muted); line-height: 1.7; }
+.mizu-dialog-footer { margin-top: 30px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+.mizu-dialog-close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; display: grid; place-items: center; background: transparent; border: 1px solid var(--mizu-line-bright); color: var(--mizu-muted); cursor: pointer; }
+.mizu-btn { border: 0; box-sizing: border-box; min-height: 44px; justify-content: center; }
+.mizu-btn--solid { background: var(--mizu-accent-fill); color: #fffaf4; }
+.mizu-btn--ghost { background: transparent; color: var(--mizu-paper); border: 1px solid var(--mizu-line-bright); }
+.mizu-btn--inverse { background: var(--mizu-paper); color: var(--mizu-ink); }
+.mizu-btn--solid:hover:not(:disabled) { background: color-mix(in srgb, var(--mizu-accent-fill), #000 12%); }
+.mizu-btn--ghost:hover:not(:disabled) { border-color: var(--mizu-muted); }
+.mizu-btn--inverse:hover:not(:disabled) { color: #fffaf4; background: var(--mizu-accent-fill); }
+.mizu-tooltip[data-dismissed] .mizu-tooltip-bubble { opacity: 0; }
+.mizu-toast-dismiss { width: 32px; min-height: 44px; background: transparent; border: 0; color: inherit; cursor: pointer; font-size: 20px; }
+.mizu-canvas-pointer, .mizu-canvas-drag { width: 100%; height: 280px; display: block; }
+.mizu-canvas-drag { touch-action: pan-y; }
+@keyframes mizu-dialog-enter { from { opacity: .6; transform: translateY(16px); } }
+.mizu-softtype { width: 100%; min-height: 160px; display: grid; place-items: center; font-family: var(--mizu-font-display); font-size: clamp(48px, 12vw, 120px); color: var(--mizu-paper); animation: mizu-type-weight 4s ease-in-out infinite alternate; }
+.mizu-softtype--width { animation-name: mizu-type-width; }
+.mizu-softtype--both { animation-name: mizu-type-both; }
+@keyframes mizu-type-weight { from { font-variation-settings: "wght" var(--mizu-weight-min), "wdth" 100; } to { font-variation-settings: "wght" var(--mizu-weight-max), "wdth" 100; } }
+@keyframes mizu-type-width { from { font-variation-settings: "wght" 500, "wdth" 62; } to { font-variation-settings: "wght" 500, "wdth" 125; } }
+@keyframes mizu-type-both { from { font-variation-settings: "wght" var(--mizu-weight-min), "wdth" 62; } to { font-variation-settings: "wght" var(--mizu-weight-max), "wdth" 125; } }
+.mizu-marquee { display: flex; align-items: center; gap: 12px; }
+.mizu-marquee-window { flex: 1; min-width: 0; overflow: hidden; }
+.mizu-marquee-track { display: flex; width: max-content; animation: mizu-marquee-scroll 42s linear infinite; }
+.mizu-marquee-row { display: flex; flex-shrink: 0; align-items: center; }
+.mizu-marquee-control { min-height: 44px; background: transparent; color: var(--mizu-muted); font: 11px var(--mizu-font-mono); border: 1px solid var(--mizu-line); padding: 0 12px; cursor: pointer; }
+@keyframes mizu-marquee-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mizu-marquee-track { animation: none; width: auto; }
+  .mizu-marquee-row { flex-wrap: wrap; }
+  .mizu-marquee-row[aria-hidden="true"], .mizu-marquee-control { display: none; }
+  .mizu-softtype { animation: none; font-variation-settings: "wght" 600, "wdth" 100; }
 }

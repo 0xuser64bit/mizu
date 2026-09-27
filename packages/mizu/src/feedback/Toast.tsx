@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
@@ -41,9 +42,13 @@ const TONE_MARK: Record<ToastTone, "paper" | "accent"> = {
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const idRef = useRef(0);
+  const timers = useRef(new Map<number, number>());
+  useEffect(() => () => { timers.current.forEach(window.clearTimeout); timers.current.clear(); }, []);
   const reduce = useReducedMotion();
 
   const dismiss = useCallback((id: number) => {
+    window.clearTimeout(timers.current.get(id));
+    timers.current.delete(id);
     setToasts((ts) => ts.filter((t) => t.id !== id));
   }, []);
 
@@ -53,7 +58,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       const item: ToastItem = { id, message, tone: options?.tone ?? "default" };
       setToasts((ts) => [...ts.slice(-3), item]);
       const duration = options?.duration ?? 3500;
-      window.setTimeout(() => dismiss(id), duration);
+      if (duration > 0) timers.current.set(id, window.setTimeout(() => dismiss(id), duration));
     },
     [dismiss]
   );
@@ -108,6 +113,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               >
                 {t.message}
               </span>
+              <button type="button" aria-label={`Dismiss ${t.message}`} onClick={() => dismiss(t.id)} className="mizu-toast-dismiss">×</button>
               {t.tone === "success" && (
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
                   <path d="M2 6.5L4.8 9L10 3.5" stroke="var(--mizu-accent)" strokeWidth="1.5" />

@@ -15,9 +15,11 @@ async function copyText(text: string): Promise<boolean> {
       ta.style.opacity = "0";
       document.body.appendChild(ta);
       ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-      return true;
+      try {
+        return document.execCommand("copy");
+      } finally {
+        ta.remove();
+      }
     } catch {
       return false;
     }
@@ -27,8 +29,9 @@ async function copyText(text: string): Promise<boolean> {
 export const CopyButton = forwardRef<
   HTMLButtonElement,
   ButtonHTMLAttributes<HTMLButtonElement> & { text: string; feedback?: string }
->(function CopyButton({ text, feedback = "Copied", className = "", children, ...props }, ref) {
+>(function CopyButton({ text, feedback = "Copied", className = "", children, onClick, ...props }, ref) {
   const [copied, setCopied] = useState(false);
+  const [failed, setFailed] = useState(false);
   const timer = useRef<number | undefined>(undefined);
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
@@ -37,14 +40,16 @@ export const CopyButton = forwardRef<
     const ok = await copyText(text);
     window.clearTimeout(timer.current);
     setCopied(ok);
+    setFailed(!ok);
     if (ok) timer.current = window.setTimeout(() => setCopied(false), 1400);
   };
 
   return (
     <button
       ref={ref}
-      onClick={onCopy}
-      aria-label={copied ? feedback : `Copy ${text}`}
+      type="button"
+      onClick={(e) => { onClick?.(e); if (!e.defaultPrevented) void onCopy(); }}
+      aria-label={copied ? feedback : failed ? "Copy failed. Try again." : `Copy ${text}`}
       className={className}
       style={{
         display: "inline-flex",
@@ -69,7 +74,7 @@ export const CopyButton = forwardRef<
       ) : (
         <Mark size={5} tone={copied ? "accent" : "line"} />
       )}
-      {copied ? feedback : children}
+      <span aria-live="polite">{copied ? feedback : failed ? "Copy failed. Try again." : children}</span>
     </button>
   );
 });

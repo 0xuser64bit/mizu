@@ -1,128 +1,34 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import { useReducedMotion } from "motion/react";
+import { useCanvasLoop } from "./useCanvas";
 
-export function Signal({
-  density = 14,
-  speed = 1,
-  className = "",
-  style,
-  label = "Interactive signal visualisation. Drag horizontally to scrub the phase of the waveform.",
-}: {
-  density?: number;
-  speed?: number;
-  className?: string;
-  style?: React.CSSProperties;
-  label?: string;
+export function Signal({ density = 14, speed = 1, className = "", style, label = "Signal phase" }: {
+  density?: number; speed?: number; className?: string; style?: CSSProperties; label?: string;
 }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [phase, setPhase] = useState(0);
+  const drag = useRef<number | null>(null);
   const reduce = useReducedMotion();
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let raf = 0;
-    let running = true;
-    let visible = true;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let w = 0;
-    let h = 0;
-    let phase = 0;
-    let dragging = false;
-    let lastX = 0;
-    const mouseX = { v: -9999 };
-
-    const resize = () => {
-      const r = canvas.getBoundingClientRect();
-      w = r.width;
-      h = r.height;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-
-    const io = new IntersectionObserver(([e]) => {
-      if (e) visible = e.isIntersecting;
-    });
-    io.observe(canvas);
-
-    const down = (e: PointerEvent) => {
-      dragging = true;
-      lastX = e.clientX;
-      canvas.setPointerCapture(e.pointerId);
-    };
-    const move = (e: PointerEvent) => {
-      const r = canvas.getBoundingClientRect();
-      mouseX.v = e.clientX - r.left;
-      if (dragging) {
-        phase += (e.clientX - lastX) * 0.012;
-        lastX = e.clientX;
-      }
-    };
-    const up = () => {
-      dragging = false;
-    };
-
-    const frame = () => {
-      raf = requestAnimationFrame(frame);
-      if (!running || !visible || document.hidden) return;
-      if (!reduce && !dragging) phase += 0.0035 * speed;
-
-      ctx.clearRect(0, 0, w, h);
-      const n = Math.max(24, Math.floor(w / density));
-      const bw = w / n;
-      const mid = h * 0.55;
-
-      ctx.strokeStyle = "rgba(244, 240, 232, 0.14)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(0, mid);
-      ctx.lineTo(w, mid);
-      ctx.stroke();
-
-      for (let i = 0; i < n; i++) {
-        const x = i * bw + bw / 2;
-        const v = Math.sin(i * 0.22 + phase) * 0.6 + Math.sin(i * 0.07 - phase * 0.6) * 0.4;
-        const bh = Math.abs(v) * h * 0.32 + 2;
-        const y = v > 0 ? mid - bh : mid;
-        const near = mouseX.v > 0 ? Math.max(0, 1 - Math.abs(mouseX.v - x) / 90) : 0;
-        ctx.fillStyle =
-          near > 0.04 ? `rgba(255,77,28,${0.35 + near * 0.65})` : "rgba(244, 240, 232, 0.3)";
-        ctx.fillRect(x - bw * 0.28, y, bw * 0.56, bh);
-      }
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-    canvas.addEventListener("pointerdown", down);
-    canvas.addEventListener("pointermove", move);
-    canvas.addEventListener("pointerup", up);
-    canvas.addEventListener("pointerleave", up);
-    raf = requestAnimationFrame(frame);
-
-    return () => {
-      running = false;
-      cancelAnimationFrame(raf);
-      io.disconnect();
-      window.removeEventListener("resize", resize);
-      canvas.removeEventListener("pointerdown", down);
-      canvas.removeEventListener("pointermove", move);
-      canvas.removeEventListener("pointerup", up);
-      canvas.removeEventListener("pointerleave", up);
-    };
-  }, [reduce, density, speed]);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className={`mizu-canvas-drag ${className}`}
-      style={style}
-      role="img"
-      aria-label={label}
-    />
-  );
+  const ref = useCanvasLoop((ctx, w, h, t, colors) => {
+    const p = phase + (reduce || drag.current !== null ? 0 : t * .00021 * speed);
+    const n = Math.max(24, Math.floor(w / Math.max(4, density))), bw = w / n, mid = h * .55;
+    ctx.strokeStyle = colors.line; ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
+    for (let i = 0; i < n; i++) {
+      const v = Math.sin(i * .22 + p) * .6 + Math.sin(i * .07 - p * .6) * .4;
+      const bh = Math.abs(v) * h * .32 + 2;
+      ctx.fillStyle = i % 7 === 0 ? colors.accent : colors.paper;
+      ctx.globalAlpha = i % 7 === 0 ? .9 : .35;
+      ctx.fillRect(i * bw + bw * .22, v > 0 ? mid - bh : mid, bw * .56, bh);
+    }
+    ctx.globalAlpha = 1;
+  });
+  return <div>
+    <canvas ref={ref} className={`mizu-canvas-drag ${className}`} style={style} aria-hidden="true"
+      onPointerDown={(e) => { drag.current = e.clientX; e.currentTarget.setPointerCapture(e.pointerId); }}
+      onPointerMove={(e) => { if (drag.current !== null) { const dx = e.clientX - drag.current; drag.current = e.clientX; setPhase((p) => p + dx * .012); } }}
+      onPointerUp={() => { drag.current = null; }} onPointerCancel={() => { drag.current = null; }} />
+    <input className="mizu-slider-input" style={{ width: "100%" }} type="range" aria-label={label} min={-6.28} max={6.28} step={.01} value={phase}
+      onChange={(e) => setPhase(Number(e.target.value))} />
+  </div>;
 }

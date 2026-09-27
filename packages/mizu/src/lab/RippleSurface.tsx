@@ -1,119 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { useReducedMotion } from "motion/react";
+import { useCanvasLoop } from "./useCanvas";
 
-type Ripple = { x: number; y: number; r: number; a: number };
-
-export function RippleSurface({
-  auto = true,
-  className = "",
-  style,
-}: {
-  auto?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+type Ripple = { x: number; y: number; born: number };
+export function RippleSurface({ auto = true, className = "", style }: { auto?: boolean; className?: string; style?: CSSProperties }) {
+  const ripples = useRef<Ripple[]>([]);
+  const lastAuto = useRef(0), clock = useRef(0);
   const reduce = useReducedMotion();
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let raf = 0;
-    let running = true;
-    let visible = true;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let w = 0;
-    let h = 0;
-    const ripples: Ripple[] = [];
-    const mouse = { x: -9999 };
-    let lastAuto = 0;
-
-    const resize = () => {
-      const r = canvas.getBoundingClientRect();
-      w = r.width;
-      h = r.height;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-
-    const io = new IntersectionObserver(([e]) => {
-      if (e) visible = e.isIntersecting;
-    });
-    io.observe(canvas);
-
-    const drop = (x: number, y: number) => {
-      ripples.push({ x, y, r: 4, a: 0.9 });
-      if (ripples.length > 24) ripples.shift();
-    };
-
-    const onPointer = (e: PointerEvent) => {
-      const r = canvas.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      mouse.x = x;
-      if (e.type === "pointerdown") drop(x, y);
-    };
-
-    const frame = (now: number) => {
-      raf = requestAnimationFrame(frame);
-      if (!running || !visible || document.hidden) return;
-      if (!reduce && auto && now - lastAuto > 2600) {
-        lastAuto = now;
-        drop(Math.random() * w, Math.random() * h);
-      }
-
-      ctx.clearRect(0, 0, w, h);
-
-      if (mouse.x > 0) {
-        const grad = ctx.createLinearGradient(mouse.x - 70, 0, mouse.x + 70, 0);
-        grad.addColorStop(0, "rgba(244, 240, 232, 0)");
-        grad.addColorStop(0.5, "rgba(244, 240, 232, 0.05)");
-        grad.addColorStop(1, "rgba(244, 240, 232, 0)");
-        ctx.fillStyle = grad;
-        ctx.fillRect(mouse.x - 70, 0, 140, h);
-      }
-
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        const rp = ripples[i]!;
-        rp.r += 2.4;
-        rp.a -= 0.0075;
-        if (rp.a <= 0) {
-          ripples.splice(i, 1);
-          continue;
-        }
-        ctx.strokeStyle = `rgba(255,77,28,${rp.a})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.strokeStyle = `rgba(255,77,28,${rp.a * 0.35})`;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, rp.r * 0.6, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-    canvas.addEventListener("pointermove", onPointer);
-    canvas.addEventListener("pointerdown", onPointer);
-    raf = requestAnimationFrame(frame);
-
-    return () => {
-      running = false;
-      cancelAnimationFrame(raf);
-      io.disconnect();
-      window.removeEventListener("resize", resize);
-      canvas.removeEventListener("pointermove", onPointer);
-      canvas.removeEventListener("pointerdown", onPointer);
-    };
-  }, [reduce, auto]);
-
-  return <canvas ref={canvasRef} className={className} style={style} aria-hidden="true" />;
+  const ref = useCanvasLoop((ctx, w, h, t, colors) => {
+    if (reduce) return;
+    clock.current = t;
+    if (auto && t - lastAuto.current > 2600) { lastAuto.current = t; ripples.current.push({ x: w * .5, y: h * .5, born: t }); }
+    ripples.current = ripples.current.filter((p) => t - p.born < 2000).slice(-24);
+    ctx.strokeStyle = colors.accent;
+    for (const p of ripples.current) {
+      const age = t - p.born;
+      ctx.globalAlpha = (1 - age / 2000) * .9;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4 + age * .144, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  });
+  return <canvas ref={ref} className={`mizu-canvas-pointer ${className}`} style={style} aria-hidden="true"
+    onPointerDown={(e) => { const r = e.currentTarget.getBoundingClientRect(); ripples.current.push({ x: e.clientX - r.left, y: e.clientY - r.top, born: clock.current }); }} />;
 }

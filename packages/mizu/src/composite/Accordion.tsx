@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, useId, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings";
 
@@ -54,18 +54,20 @@ export function AccordionItem({
   children: ReactNode;
   className?: string;
 }) {
+  const id = useId();
+  const reduce = useReducedMotion();
   const ctx = useContext(AccordionContext);
   if (!ctx) throw new Error("AccordionItem must be used within <Accordion>");
 
-  const reduce = useReducedMotion();
   const isOpen = ctx.open.has(value);
-  const buttonId = `mizu-acc-${value}-btn`;
-  const panelId = `mizu-acc-${value}-panel`;
+  const buttonId = `mizu-acc-${id}-btn`;
+  const panelId = `mizu-acc-${id}-panel`;
 
   return (
     <div className={className} style={{ borderBottom: "1px solid var(--mizu-line)" }}>
       <h3 style={{ margin: 0 }}>
         <button
+          type="button"
           id={buttonId}
           aria-expanded={isOpen}
           aria-controls={panelId}

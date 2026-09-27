@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, act, waitFor } from "@testing-library/react";
+import { render, screen, act, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { installClipboardMock, reduceMotionQuery } from "./helpers";
 import {
@@ -168,31 +168,30 @@ describe("Dialog", () => {
   });
 
   it("closes on Escape", async () => {
-    const user = userEvent.setup();
     const onOpenChange = vi.fn();
     render(
       <Dialog open={true} onOpenChange={onOpenChange} label="Test dialog">
         <DialogTitle>Title</DialogTitle>
       </Dialog>
     );
-    await user.keyboard("{Escape}");
+    fireEvent(screen.getByRole("dialog"), new Event("cancel", { cancelable: true }));
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
-  it("reclaims focus to the panel when focus lands outside", async () => {
-    const user = userEvent.setup();
-    render(
-      <Dialog open={true} onOpenChange={() => {}} label="Test dialog">
-        <DialogTitle>Title</DialogTitle>
-        <button>Inside</button>
-      </Dialog>
-    );
-    act(() => {
-      document.body.focus();
-    });
-    await user.keyboard("{Tab}");
-    expect(document.activeElement?.textContent).toBe("Inside");
+  it("restores focus and scroll state after close", () => {
+    const trigger = document.createElement("button");
+    document.body.append(trigger);
+    trigger.focus();
+    document.body.style.overflow = "auto";
+    const { rerender } = render(<Dialog open onOpenChange={() => {}} label="Test"><button>Inside</button></Dialog>);
+    expect(document.body.style.overflow).toBe("hidden");
+    rerender(<Dialog open={false} onOpenChange={() => {}} label="Test"><button>Inside</button></Dialog>);
+    expect(trigger).toHaveFocus();
+    expect(document.body.style.overflow).toBe("auto");
+    trigger.remove();
+    document.body.style.overflow = "";
   });
+
 });
 
 describe("CountUp", () => {

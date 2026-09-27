@@ -15,6 +15,7 @@ type TabsContextValue = {
   value: string;
   setValue: (v: string) => void;
   layoutId: string;
+  id: string;
 };
 
 const TabsContext = createContext<TabsContextValue | null>(null);
@@ -42,7 +43,7 @@ export function Tabs({
   };
 
   return (
-    <TabsContext.Provider value={{ value: current, setValue, layoutId: `mizu-tabs-${id}-underline` }}>
+    <TabsContext.Provider value={{ value: current, setValue, id, layoutId: `mizu-tabs-${id}-underline` }}>
       <div className={className}>{children}</div>
     </TabsContext.Provider>
   );
@@ -64,7 +65,7 @@ export function TabsList({
     const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
     if (!keys.includes(e.key)) return;
     const triggers = Array.from(
-      e.currentTarget.querySelectorAll<HTMLButtonElement>("[role='tab']")
+      e.currentTarget.querySelectorAll<HTMLButtonElement>("[role='tab']:not([disabled])")
     );
     const idx = triggers.indexOf(document.activeElement as HTMLButtonElement);
     if (idx === -1) return;
@@ -101,22 +102,27 @@ export function TabsTrigger({
   value,
   children,
   className = "",
+  disabled = false,
 }: {
   value: string;
   children: ReactNode;
   className?: string;
+  disabled?: boolean;
 }) {
+  const reduce = useReducedMotion();
   const ctx = useContext(TabsContext);
   if (!ctx) throw new Error("TabsTrigger must be used within <Tabs>");
 
-  const reduce = useReducedMotion();
   const active = ctx.value === value;
 
   return (
     <button
+      type="button"
+      disabled={disabled}
+      id={`${ctx.id}-tab-${value}`}
       role="tab"
       aria-selected={active}
-      aria-controls={`mizu-tabs-panel-${value}`}
+      aria-controls={`${ctx.id}-panel-${value}`}
       data-value={value}
       tabIndex={active ? 0 : -1}
       onClick={() => ctx.setValue(value)}
@@ -164,6 +170,7 @@ export function TabsPanel({
   children: ReactNode;
   className?: string;
 }) {
+  const reduce = useReducedMotion();
   const ctx = useContext(TabsContext);
   if (!ctx) throw new Error("TabsPanel must be used within <Tabs>");
 
@@ -171,18 +178,20 @@ export function TabsPanel({
 
   return (
     <div
-      id={`mizu-tabs-panel-${value}`}
+      id={`${ctx.id}-panel-${value}`}
       role="tabpanel"
+      aria-labelledby={`${ctx.id}-tab-${value}`}
+      tabIndex={0}
       className={className}
       style={{ paddingTop: 28 }}
     >
       <AnimatePresence mode="wait">
         <motion.div
           key={value}
-          initial={{ opacity: 0, y: 10 }}
+          initial={reduce ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.3, ease: EASE_EXPO }}
+          transition={{ duration: reduce ? 0 : 0.3, ease: EASE_EXPO }}
         >
           {children}
         </motion.div>

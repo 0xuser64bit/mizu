@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
   type ReactNode,
@@ -30,30 +31,32 @@ export function PageWipeProvider({ children }: { children: ReactNode }) {
   const reduce = useReducedMotion();
   const [active, setActive] = useState<{ label: string; id: number } | null>(null);
   const resolver = useRef<(() => void) | null>(null);
-  const busy = useRef(false);
+  const pending = useRef<Promise<void> | null>(null);
+  const timers = useRef<number[]>([]);
+  useEffect(() => () => { timers.current.forEach(window.clearTimeout); resolver.current?.(); }, []);
 
   const wipe = useCallback(
     (label = "") => {
       if (reduce) return Promise.resolve();
-      if (busy.current) return Promise.resolve();
-      busy.current = true;
-      return new Promise<void>((resolve) => {
+      if (pending.current) return pending.current;
+      pending.current = new Promise<void>((resolve) => {
         resolver.current = () => {
           resolve();
           resolver.current = null;
         };
         setActive({ label, id: Date.now() });
-        window.setTimeout(() => resolver.current?.(), MIDPOINT_MS);
+        timers.current.push(window.setTimeout(() => resolver.current?.(), MIDPOINT_MS));
       });
+      return pending.current;
     },
     [reduce]
   );
 
   const finish = useCallback(() => {
-    window.setTimeout(() => {
+    timers.current.push(window.setTimeout(() => {
       setActive(null);
-      busy.current = false;
-    }, 60);
+      pending.current = null;
+    }, 60));
   }, []);
 
   return (

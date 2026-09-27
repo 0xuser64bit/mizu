@@ -1,61 +1,24 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useState, type ReactNode, type CSSProperties } from "react";
 import { Mark } from "../ui/Mark";
 
-export function Marquee({
-  children,
-  duration = 42,
-  pauseOnHover = true,
-  separator = true,
-  label,
-  className = "",
-  style,
-}: {
-  children: ReactNode;
-  duration?: number;
-  pauseOnHover?: boolean;
-  separator?: boolean;
-  label?: string;
-  className?: string;
-  style?: React.CSSProperties;
+export function Marquee({ children, duration = 42, pauseOnHover = true, separator = true, label, className = "", style }: {
+  children: ReactNode; duration?: number; pauseOnHover?: boolean; separator?: boolean; label?: string; className?: string; style?: CSSProperties;
 }) {
-  const reduce = useReducedMotion();
+  const [paused, setPaused] = useState(false);
   const [hover, setHover] = useState(false);
-
-  const row = (hidden: boolean) => (
-    <div aria-hidden={hidden} style={{ display: "flex", flexShrink: 0, alignItems: "center" }}>
-      {children}
-      {separator && (
-        <span style={{ display: "inline-flex", padding: "0 28px" }}>
-          <Mark size={6} />
-        </span>
-      )}
+  const [focused, setFocused] = useState(false);
+  const row = (hidden: boolean) => <div aria-hidden={hidden} inert={hidden || undefined} className="mizu-marquee-row">
+    {children}{separator && <span style={{ display: "inline-flex", padding: "0 28px" }}><Mark size={6} /></span>}
+  </div>;
+  return <div className={`mizu-marquee ${className}`} role="marquee" aria-label={label} style={style}>
+    <div className="mizu-marquee-window" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      onFocus={() => setFocused(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false); }}>
+      <div className="mizu-marquee-track" style={{ animationDuration: `${Math.max(1, duration)}s`, animationPlayState: paused || focused || (pauseOnHover && hover) ? "paused" : "running" }}>
+        {row(false)}{row(true)}
+      </div>
     </div>
-  );
-
-  return (
-    <div
-      className={className}
-      role="marquee"
-      aria-label={label}
-      style={{ ...style, overflow: "hidden", display: "flex" }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <motion.div
-        style={{ display: "flex", width: "max-content", willChange: "transform" }}
-        animate={
-          reduce
-            ? { x: "0%" }
-            : { x: ["0%", "-50%"], animationPlayState: pauseOnHover && hover ? "paused" : "running" }
-        }
-        transition={reduce ? { duration: 0 } : { duration, repeat: Infinity, ease: "linear" }}
-      >
-        {row(false)}
-        {row(true)}
-      </motion.div>
-    </div>
-  );
+    <button type="button" className="mizu-marquee-control" aria-label={paused ? "Play ticker" : "Pause ticker"} aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? "Play" : "Pause"}</button>
+  </div>;
 }

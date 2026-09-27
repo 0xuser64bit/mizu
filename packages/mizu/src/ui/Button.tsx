@@ -11,12 +11,6 @@ const SIZES: Record<ButtonSize, React.CSSProperties> = {
   sm: { padding: "12px 18px", fontSize: 10 },
 };
 
-const VARIANTS: Record<ButtonVariant, React.CSSProperties> = {
-  solid: { background: "var(--mizu-accent-fill)", color: "var(--mizu-paper)" },
-  ghost: { background: "transparent", color: "var(--mizu-paper)", border: "1px solid var(--mizu-line-bright)" },
-  inverse: { background: "var(--mizu-paper)", color: "var(--mizu-ink)" },
-};
-
 function Arrow() {
   return (
     <svg
@@ -41,12 +35,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "solid", size = "md", loading = false, arrow = true, className = "", children, disabled, ...props },
+  { variant = "solid", size = "md", loading = false, arrow = true, className = "", children, disabled, style, type = "button", ...props },
   ref
 ) {
   return (
     <button
       ref={ref}
+      type={type}
+      aria-busy={loading || undefined}
       disabled={disabled || loading}
       className={`mizu-btn mizu-btn--${variant} ${className}`}
       style={{
@@ -59,17 +55,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         cursor: loading || disabled ? "default" : "pointer",
         transition: "background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease",
         ...SIZES[size],
-        ...VARIANTS[variant],
         opacity: disabled ? 0.4 : 1,
+        ...style,
       }}
       {...props}
     >
-      {loading ? <Spinner size={10} /> : (
-        <>
-          {children}
-          {arrow && <Arrow />}
-        </>
-      )}
+      {children}
+      {loading ? <Spinner size={10} /> : arrow && <Arrow />}
     </button>
   );
 });
@@ -89,6 +81,7 @@ export function ButtonLink({
   label,
   className = "",
   children,
+  style,
   ...props
 }: ButtonLinkProps) {
   return (
@@ -106,7 +99,7 @@ export function ButtonLink({
         cursor: "pointer",
         transition: "background 300ms ease, color 300ms ease, border-color 300ms ease",
         ...SIZES[size],
-        ...VARIANTS[variant],
+        ...style,
       }}
       {...props}
     >

@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useEffect, useState, type ReactNode } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+
+import { Dialog } from "./Dialog";
 
 export type NavLink = { href: string; label: string };
 
@@ -18,6 +20,7 @@ export function Nav({
   trackChapters?: boolean;
   className?: string;
 }) {
+  const reduce = useReducedMotion();
   const path =
     currentPath ?? (typeof window !== "undefined" ? window.location.pathname : "");
   const { scrollYProgress } = useScroll();
@@ -25,9 +28,6 @@ export function Nav({
   const nodeLeft = useTransform(scaleX, (v) => `calc(${(v * 100).toFixed(3)}% - 3px)`);
   const [chapter, setChapter] = useState("");
   const [open, setOpen] = useState(false);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const burgerRef = useRef<HTMLButtonElement>(null);
-
   useEffect(() => {
     if (!trackChapters) return;
     const sections = Array.from(document.querySelectorAll("[data-chapter]"));
@@ -43,19 +43,6 @@ export function Nav({
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
   }, [trackChapters]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    if (open) closeRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
 
   return (
     <>
@@ -94,7 +81,7 @@ export function Nav({
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: reduce ? 0 : 0.3 }}
                     style={{
                       fontFamily: "var(--mizu-font-mono)",
                       fontSize: 10,
@@ -150,7 +137,6 @@ export function Nav({
             </nav>
 
             <button
-              ref={burgerRef}
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
@@ -192,14 +178,10 @@ export function Nav({
         </div>
       </header>
 
-      <AnimatePresence onExitComplete={() => burgerRef.current?.focus()}>
-        {open && (
-          <motion.div
+      <Dialog open={open} onOpenChange={setOpen} label="Navigation menu"
+        style={{ width: "100%", maxWidth: "none", height: "100dvh", maxHeight: "none", margin: 0, padding: 0, border: 0 }}>
+          <div
             className="mizu-nav-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
             style={{
               position: "fixed",
               inset: 0,
@@ -213,7 +195,6 @@ export function Nav({
             <div style={{ display: "flex", height: 64, alignItems: "center", justifyContent: "space-between" }}>
               {brand}
               <button
-                ref={closeRef}
                 onClick={() => setOpen(false)}
                 style={{
                   background: "transparent",
@@ -275,9 +256,8 @@ export function Nav({
             >
               Mizu — Interface Archive
             </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+      </Dialog>
     </>
   );
 }

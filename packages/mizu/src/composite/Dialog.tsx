@@ -1,209 +1,63 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, type ReactNode } from "react";
-import { createPortal } from "react-dom";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { EASE_EXPO } from "../motion/easings";
+import { createContext, useContext, useEffect, useRef, type ReactNode, type CSSProperties } from "react";
 
-type DialogContextValue = {
-  onClose: () => void;
-};
+const DialogContext = createContext<(() => void) | null>(null);
 
-const DialogContext = createContext<DialogContextValue | null>(null);
-
-const FOCUSABLE =
-  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
-
-export function Dialog({
-  open,
-  onOpenChange,
-  children,
-  label,
-}: {
+/** Native modality supplies inert background, focus containment and nested-dialog order. */
+export function Dialog({ open, onOpenChange, children, label, className = "", style }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   children: ReactNode;
   label: string;
+  className?: string;
+  style?: CSSProperties;
 }) {
-  const reduce = useReducedMotion();
-  const panelRef = useRef<HTMLDivElement>(null);
-  const restoreRef = useRef<HTMLElement | null>(null);
-  const onOpenChangeRef = useRef(onOpenChange);
-
+  const ref = useRef<HTMLDialogElement>(null);
+  const change = useRef(onOpenChange);
+  useEffect(() => { change.current = onOpenChange; });
   useEffect(() => {
-    onOpenChangeRef.current = onOpenChange;
-  });
-
-  useEffect(() => {
-    if (!open) return;
-    restoreRef.current = document.activeElement as HTMLElement | null;
-    const prevOverflow = document.body.style.overflow;
+    const dialog = ref.current;
+    if (!dialog || !open) return;
+    const restore = document.activeElement as HTMLElement | null;
+    dialog.showModal();
+    (dialog.querySelector<HTMLElement>("[autofocus], button:not([disabled]), input:not([disabled]), [tabindex='0']") ?? dialog).focus();
+    const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    const panel = panelRef.current;
-    if (panel) {
-      const first = panel.querySelector<HTMLElement>(FOCUSABLE);
-      (first ?? panel).focus();
-    }
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.stopPropagation();
-        onOpenChangeRef.current(false);
-        return;
-      }
-      if (e.key !== "Tab" || !panel) return;
-      const items = Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
-        (el) => el.offsetParent !== null
-      );
-      if (items.length === 0) return;
-      const first = items[0]!;
-      const last = items[items.length - 1]!;
-      if (!panel.contains(document.activeElement)) {
-        e.preventDefault();
-        first.focus();
-      } else if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener("keydown", onKey, true);
     return () => {
-      document.body.style.overflow = prevOverflow;
-      document.removeEventListener("keydown", onKey, true);
-      restoreRef.current?.focus();
+      dialog.close();
+      document.body.style.overflow = overflow;
+      if (restore?.isConnected) restore.focus();
     };
   }, [open]);
-
-  if (typeof document === "undefined") return null;
-
-  return createPortal(
-    <AnimatePresence>
-      {open && (
-        <div
-          style={{ position: "fixed", inset: 0, zIndex: "var(--mizu-z-overlay)" }}
-          role="presentation"
-        >
-          <motion.div
-            aria-hidden
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            transition={{ duration: 0 }}
-            onClick={() => onOpenChangeRef.current(false)}
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "rgba(15, 14, 12, 0.72)",
-              backdropFilter: reduce ? "none" : "blur(2px)",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 20,
-              pointerEvents: "none",
-            }}
-          >
-            <motion.div
-              ref={panelRef}
-              role="dialog"
-              aria-modal="true"
-              aria-label={label}
-              tabIndex={-1}
-              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 32, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={reduce ? { opacity: 1 } : { opacity: 0, y: 16, scale: 0.98 }}
-              transition={{ duration: reduce ? 0 : 0.45, ease: EASE_EXPO }}
-              style={{
-                position: "relative",
-                pointerEvents: "auto",
-                width: "min(520px, 100%)",
-                maxHeight: "min(84vh, 720px)",
-                overflowY: "auto",
-                background: "var(--mizu-ink-2)",
-                border: "1px solid var(--mizu-line-bright)",
-                padding: "36px 32px 32px",
-                outline: "none",
-              }}
-            >
-              <DialogContext.Provider value={{ onClose: () => onOpenChange(false) }}>
-                {children}
-              </DialogContext.Provider>
-            </motion.div>
-          </div>
-        </div>
-      )}
-    </AnimatePresence>,
-    document.body
+  return (
+    <dialog ref={ref} aria-label={label} tabIndex={-1} style={style}
+      className={`mizu-dialog ${className}`}
+      onCancel={(e) => { e.preventDefault(); change.current(false); }}
+      onClick={(e) => {
+        if (e.target !== e.currentTarget) return;
+        const r = e.currentTarget.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) change.current(false);
+      }}>
+      {open && <DialogContext.Provider value={() => change.current(false)}>{children}</DialogContext.Provider>}
+    </dialog>
   );
 }
 
 export function DialogTitle({ children }: { children: ReactNode }) {
-  return (
-    <h2
-      style={{
-        margin: 0,
-        fontFamily: "var(--mizu-font-display)",
-        fontSize: 28,
-        fontWeight: 800,
-        letterSpacing: "-0.01em",
-        color: "var(--mizu-paper)",
-      }}
-    >
-      {children}
-    </h2>
-  );
+  return <h2 className="mizu-dialog-title">{children}</h2>;
 }
-
 export function DialogBody({ children }: { children: ReactNode }) {
-  return (
-    <div style={{ marginTop: 18, color: "var(--mizu-muted)", lineHeight: 1.7 }}>{children}</div>
-  );
+  return <div className="mizu-dialog-body">{children}</div>;
 }
-
 export function DialogFooter({ children }: { children: ReactNode }) {
-  return (
-    <div style={{ marginTop: 30, display: "flex", justifyContent: "flex-end", gap: 12 }}>
-      {children}
-    </div>
-  );
+  return <div className="mizu-dialog-footer">{children}</div>;
 }
-
 export function DialogClose() {
-  const ctx = useContext(DialogContext);
-  return (
-    <button
-      onClick={() => ctx?.onClose()}
-      aria-label="Close dialog"
-      style={{
-        position: "absolute",
-        top: 14,
-        right: 14,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: 34,
-        height: 34,
-        background: "transparent",
-        border: "1px solid var(--mizu-line-bright)",
-        color: "var(--mizu-muted)",
-        cursor: "pointer",
-        transition: "color 250ms ease, border-color 250ms ease",
-      }}
-      className="mizu-dialog-close"
-    >
-      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden>
-        <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-    </button>
-  );
+  const close = useContext(DialogContext);
+  return <button type="button" onClick={() => close?.()} aria-label="Close dialog" className="mizu-dialog-close">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  </button>;
 }
