@@ -1,6 +1,12 @@
 "use client";
 
-import { forwardRef, useEffect, useRef, useState, type ButtonHTMLAttributes } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+  type ButtonHTMLAttributes,
+} from "react";
 import { Mark } from "../ui/Mark.tsx";
 
 async function copyText(text: string): Promise<boolean> {
@@ -29,7 +35,10 @@ async function copyText(text: string): Promise<boolean> {
 export const CopyButton = forwardRef<
   HTMLButtonElement,
   ButtonHTMLAttributes<HTMLButtonElement> & { text: string; feedback?: string }
->(function CopyButton({ text, feedback = "Copied", className = "", children, onClick, ...props }, ref) {
+>(function CopyButton(
+  { text, feedback = "Copied", className = "", children, onClick, ...props },
+  ref,
+) {
   const [copied, setCopied] = useState(false);
   const [failed, setFailed] = useState(false);
   const timer = useRef<number | undefined>(undefined);
@@ -48,8 +57,13 @@ export const CopyButton = forwardRef<
     <button
       ref={ref}
       type="button"
-      onClick={(e) => { onClick?.(e); if (!e.defaultPrevented) void onCopy(); }}
-      aria-label={copied ? feedback : failed ? "Copy failed. Try again." : `Copy ${text}`}
+      onClick={(e) => {
+        onClick?.(e);
+        if (!e.defaultPrevented) void onCopy();
+      }}
+      aria-label={
+        copied ? feedback : failed ? "Copy failed. Try again." : `Copy ${text}`
+      }
       className={className}
       style={{
         display: "inline-flex",
@@ -69,12 +83,18 @@ export const CopyButton = forwardRef<
     >
       {copied ? (
         <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
-          <path d="M2 6.5L4.8 9L10 3.5" stroke="currentColor" strokeWidth="1.5" />
+          <path
+            d="M2 6.5L4.8 9L10 3.5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
         </svg>
       ) : (
         <Mark size={5} tone={copied ? "accent" : "line"} />
       )}
-      <span aria-live="polite">{copied ? feedback : failed ? "Copy failed. Try again." : children}</span>
+      <span aria-live="polite">
+        {copied ? feedback : failed ? "Copy failed. Try again." : children}
+      </span>
     </button>
   );
 });

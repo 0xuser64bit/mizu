@@ -29,7 +29,9 @@ export function Segmented<T extends string>({
   onChange: (v: T) => void;
 }) {
   return (
-    <div style={{ display: "inline-flex", border: "1px solid var(--mizu-line)" }}>
+    <div
+      style={{ display: "inline-flex", border: "1px solid var(--mizu-line)" }}
+    >
       {options.map((o) => (
         <button
           key={o}

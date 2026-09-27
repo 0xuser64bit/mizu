@@ -35,7 +35,13 @@ export function Rule({
       aria-label={label}
       aria-orientation="horizontal"
       className={className}
-      style={{ ...style, display: "flex", alignItems: "center", gap: 12, width: "100%" }}
+      style={{
+        ...style,
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        width: "100%",
+      }}
     >
       {line}
       {node && <Mark size={5} tone={tone === "accent" ? "accent" : "line"} />}

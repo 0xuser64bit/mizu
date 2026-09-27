@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "check": "bun run typecheck && bun run lint && bun run test && bun run build:ui",
     "test:consumer": "node scripts/check-consumer.mjs",
-    "examples:sync": "bun scripts/build-examples.ts"
+    "examples:sync": "bun scripts/build-examples.ts",
+    "format": "prettier --write packages/mizu/src src/components/docs scripts src/test"
   },
   "dependencies": {
     "motion": "^13.4.4",
@@ -36,6 +37,7 @@
     "happy-dom": "^20.14.5",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^5.0.2"
+    "vitest": "^5.0.2",
+    "prettier": "^3.9.9"
   }
 }

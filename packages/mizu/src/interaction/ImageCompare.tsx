@@ -1,7 +1,108 @@
 "use client";
-import { useId,useRef,useState } from "react";
-export function ImageCompare({before,after,value,onValueChange,label="Image comparison",beforeLabel="Before",afterLabel="After",className=""}:{before:{src:string;alt:string};after:{src:string;alt:string};value:number;onValueChange:(value:number)=>void;label?:string;beforeLabel?:string;afterLabel?:string;className?:string}){
- const ref=useRef<HTMLDivElement>(null),id=useId(),[failed,setFailed]=useState<string>(),current=Math.max(0,Math.min(100,Number.isFinite(value)?value:50)),broken=failed===before.src||failed===after.src;
- const update=(x:number)=>{const r=ref.current!.getBoundingClientRect();if(r.width)onValueChange(Math.round(Math.max(0,Math.min(100,(x-r.left)/r.width*100))));};
- return <figure className={`mizu-image-compare ${className}`}><figcaption>{label}</figcaption><div ref={ref} className="mizu-image-compare-stage" onPointerDown={e=>{if(e.button===0&&!broken){e.currentTarget.setPointerCapture(e.pointerId);update(e.clientX);}}} onPointerMove={e=>{if(e.currentTarget.hasPointerCapture(e.pointerId))update(e.clientX);}} onPointerUp={e=>{if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);}}>{broken?<p role="status">Comparison image unavailable.</p>:<><img src={before.src} alt={before.alt} onError={()=>setFailed(before.src)}/><img className="mizu-image-compare-after" src={after.src} alt={after.alt} style={{clipPath:`inset(0 ${100-current}% 0 0)`}} onError={()=>setFailed(after.src)}/><span className="mizu-image-compare-line" style={{left:`${current}%`}} aria-hidden="true"><span>↔</span></span><span className="mizu-image-compare-before" aria-hidden="true">{beforeLabel}</span><span className="mizu-image-compare-label-after" aria-hidden="true">{afterLabel}</span></>}</div><label htmlFor={id} className="mizu-sr-only">{label} reveal</label><input id={id} type="range" min={0} max={100} value={current} disabled={broken} aria-valuetext={`${current}% ${afterLabel.toLowerCase()}`} onChange={e=>onValueChange(Number(e.target.value))}/><div className="mizu-compare-legend"><span>{beforeLabel}</span><output>{current}% {afterLabel.toLowerCase()}</output><span>{afterLabel}</span></div></figure>;
+import { useId, useRef, useState } from "react";
+export function ImageCompare({
+  before,
+  after,
+  value,
+  onValueChange,
+  label = "Image comparison",
+  beforeLabel = "Before",
+  afterLabel = "After",
+  className = "",
+}: {
+  before: { src: string; alt: string };
+  after: { src: string; alt: string };
+  value: number;
+  onValueChange: (value: number) => void;
+  label?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null),
+    id = useId(),
+    [failed, setFailed] = useState<string>(),
+    current = Math.max(0, Math.min(100, Number.isFinite(value) ? value : 50)),
+    broken = failed === before.src || failed === after.src;
+  const update = (x: number) => {
+    const r = ref.current!.getBoundingClientRect();
+    if (r.width)
+      onValueChange(
+        Math.round(Math.max(0, Math.min(100, ((x - r.left) / r.width) * 100))),
+      );
+  };
+  return (
+    <figure className={`mizu-image-compare ${className}`}>
+      <figcaption>{label}</figcaption>
+      <div
+        ref={ref}
+        className="mizu-image-compare-stage"
+        onPointerDown={(e) => {
+          if (e.button === 0 && !broken) {
+            e.currentTarget.setPointerCapture(e.pointerId);
+            update(e.clientX);
+          }
+        }}
+        onPointerMove={(e) => {
+          if (e.currentTarget.hasPointerCapture(e.pointerId)) update(e.clientX);
+        }}
+        onPointerUp={(e) => {
+          if (e.currentTarget.hasPointerCapture(e.pointerId))
+            e.currentTarget.releasePointerCapture(e.pointerId);
+        }}
+      >
+        {broken ? (
+          <p role="status">Comparison image unavailable.</p>
+        ) : (
+          <>
+            <img
+              src={before.src}
+              alt={before.alt}
+              onError={() => setFailed(before.src)}
+            />
+            <img
+              className="mizu-image-compare-after"
+              src={after.src}
+              alt={after.alt}
+              style={{ clipPath: `inset(0 ${100 - current}% 0 0)` }}
+              onError={() => setFailed(after.src)}
+            />
+            <span
+              className="mizu-image-compare-line"
+              style={{ left: `${current}%` }}
+              aria-hidden="true"
+            >
+              <span>↔</span>
+            </span>
+            <span className="mizu-image-compare-before" aria-hidden="true">
+              {beforeLabel}
+            </span>
+            <span className="mizu-image-compare-label-after" aria-hidden="true">
+              {afterLabel}
+            </span>
+          </>
+        )}
+      </div>
+      <label htmlFor={id} className="mizu-sr-only">
+        {label} reveal
+      </label>
+      <input
+        id={id}
+        type="range"
+        min={0}
+        max={100}
+        value={current}
+        disabled={broken}
+        aria-valuetext={`${current}% ${afterLabel.toLowerCase()}`}
+        onChange={(e) => onValueChange(Number(e.target.value))}
+      />
+      <div className="mizu-compare-legend">
+        <span>{beforeLabel}</span>
+        <output>
+          {current}% {afterLabel.toLowerCase()}
+        </output>
+        <span>{afterLabel}</span>
+      </div>
+    </figure>
+  );
 }

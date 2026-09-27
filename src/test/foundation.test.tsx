@@ -1,7 +1,17 @@
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Badge, Button, Frame, Mark, Rule, SectionTag, Slider, Spinner, Tooltip } from "@/mizu";
+import {
+  Badge,
+  Button,
+  Frame,
+  Mark,
+  Rule,
+  SectionTag,
+  Slider,
+  Spinner,
+  Tooltip,
+} from "@/mizu";
 
 describe("Button", () => {
   it("renders children and fires onClick", async () => {
@@ -46,7 +56,9 @@ describe("primitives", () => {
 
   it("Badge applies tone", () => {
     const { container } = render(<Badge tone="accent">Live</Badge>);
-    expect(container.querySelector("span")!.style.color).toContain("--mizu-accent");
+    expect(container.querySelector("span")!.style.color).toContain(
+      "--mizu-accent",
+    );
     expect(screen.getByText("Live")).toBeTruthy();
   });
 
@@ -65,7 +77,7 @@ describe("primitives", () => {
     render(
       <Frame label="Fig. 01">
         <p>content</p>
-      </Frame>
+      </Frame>,
     );
     expect(screen.getByText("Fig. 01")).toBeTruthy();
     expect(screen.getByText("content")).toBeTruthy();
@@ -73,7 +85,9 @@ describe("primitives", () => {
 
   it("Slider reports changes through onChange", () => {
     const onChange = vi.fn();
-    render(<Slider label="Size" value={50} min={0} max={100} onChange={onChange} />);
+    render(
+      <Slider label="Size" value={50} min={0} max={100} onChange={onChange} />,
+    );
     const input = screen.getByLabelText("Size");
     fireEvent.change(input, { target: { value: "75" } });
     expect(onChange).toHaveBeenCalledWith(75);
@@ -83,7 +97,7 @@ describe("primitives", () => {
     render(
       <Tooltip label="More info">
         <button>Hover</button>
-      </Tooltip>
+      </Tooltip>,
     );
     const tip = screen.getByRole("tooltip");
     expect(tip).toHaveTextContent("More info");

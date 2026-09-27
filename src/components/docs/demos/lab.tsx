@@ -47,7 +47,9 @@ export function RippleDemo() {
         <p className="font-display text-3xl font-black font-wide tracking-tight md:text-4xl">
           The surface
           <br />
-          <span className="font-serif font-normal italic text-accent">answers.</span>
+          <span className="font-serif font-normal italic text-accent">
+            answers.
+          </span>
         </p>
         <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
           Click anywhere — ripples propagate outward

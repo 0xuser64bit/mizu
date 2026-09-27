@@ -32,7 +32,9 @@ export function Reveal({
       initial={reduce ? { opacity: 1 } : { opacity: 0, y, x }}
       whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, x: 0 }}
       viewport={{ once, margin: "-70px" }}
-      transition={reduce ? { duration: 0 } : { duration, delay, ease: EASE_EXPO }}
+      transition={
+        reduce ? { duration: 0 } : { duration, delay, ease: EASE_EXPO }
+      }
     >
       {children}
     </motion.div>

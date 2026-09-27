@@ -23,17 +23,26 @@ const PageWipeContext = createContext<WipeContextValue | null>(null);
 
 export function usePageWipe(): WipeContextValue {
   const ctx = useContext(PageWipeContext);
-  if (!ctx) throw new Error("usePageWipe must be used within <PageWipeProvider>");
+  if (!ctx)
+    throw new Error("usePageWipe must be used within <PageWipeProvider>");
   return ctx;
 }
 
 export function PageWipeProvider({ children }: { children: ReactNode }) {
   const reduce = useReducedMotion();
-  const [active, setActive] = useState<{ label: string; id: number } | null>(null);
+  const [active, setActive] = useState<{ label: string; id: number } | null>(
+    null,
+  );
   const resolver = useRef<(() => void) | null>(null);
   const pending = useRef<Promise<void> | null>(null);
   const timers = useRef<number[]>([]);
-  useEffect(() => () => { timers.current.forEach(window.clearTimeout); resolver.current?.(); }, []);
+  useEffect(
+    () => () => {
+      timers.current.forEach(window.clearTimeout);
+      resolver.current?.();
+    },
+    [],
+  );
 
   const wipe = useCallback(
     (label = "") => {
@@ -45,18 +54,22 @@ export function PageWipeProvider({ children }: { children: ReactNode }) {
           resolver.current = null;
         };
         setActive({ label, id: Date.now() });
-        timers.current.push(window.setTimeout(() => resolver.current?.(), MIDPOINT_MS));
+        timers.current.push(
+          window.setTimeout(() => resolver.current?.(), MIDPOINT_MS),
+        );
       });
       return pending.current;
     },
-    [reduce]
+    [reduce],
   );
 
   const finish = useCallback(() => {
-    timers.current.push(window.setTimeout(() => {
-      setActive(null);
-      pending.current = null;
-    }, 60));
+    timers.current.push(
+      window.setTimeout(() => {
+        setActive(null);
+        pending.current = null;
+      }, 60),
+    );
   }, []);
 
   return (
@@ -97,7 +110,11 @@ export function PageWipeProvider({ children }: { children: ReactNode }) {
                 }}
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: [0, 1, 1, 0], y: 0 }}
-                transition={{ duration: WIPE_MS / 1000, times: [0, 0.22, 0.72, 1], ease: "linear" }}
+                transition={{
+                  duration: WIPE_MS / 1000,
+                  times: [0, 0.22, 0.72, 1],
+                  ease: "linear",
+                }}
               >
                 {active.label}
               </motion.span>

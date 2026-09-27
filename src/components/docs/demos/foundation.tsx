@@ -31,13 +31,26 @@ export function ButtonDemo() {
         <Button variant={variant} size={size} disabled>
           Disabled
         </Button>
-        <ButtonLink href="#button" variant={variant} size={size} label="Anchor button">
+        <ButtonLink
+          href="#button"
+          variant={variant}
+          size={size}
+          label="Anchor button"
+        >
           Anchor
         </ButtonLink>
       </div>
       <div className="mt-7 flex flex-wrap items-center gap-6">
-        <Segmented options={["solid", "ghost", "inverse"] as const} value={variant} onChange={setVariant} />
-        <Segmented options={["md", "sm"] as const} value={size} onChange={setSize} />
+        <Segmented
+          options={["solid", "ghost", "inverse"] as const}
+          value={variant}
+          onChange={setVariant}
+        />
+        <Segmented
+          options={["md", "sm"] as const}
+          value={size}
+          onChange={setSize}
+        />
         <Toggle label="Loading" checked={loading} onChange={setLoading} />
       </div>
     </div>
@@ -101,7 +114,13 @@ export function PrimitivesDemo() {
       </Cell>
       <Cell label="Slider">
         <div className="w-full">
-          <Slider label="Density" value={slider} min={0} max={100} onChange={setSlider} />
+          <Slider
+            label="Density"
+            value={slider}
+            min={0}
+            max={100}
+            onChange={setSlider}
+          />
         </div>
       </Cell>
       <Cell label="Tooltip">

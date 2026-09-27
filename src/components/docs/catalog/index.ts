@@ -6,4 +6,13 @@ import { NAVIGATION } from "./navigation";
 import { CONTENT } from "./content";
 import { LAYOUT } from "./layout";
 import { INTERACTION } from "./interaction";
-export const CATALOG = [...FOUNDATION, ...FORMS, ...STATUS, ...DATA, ...NAVIGATION, ...CONTENT, ...LAYOUT, ...INTERACTION];
+export const CATALOG = [
+  ...FOUNDATION,
+  ...FORMS,
+  ...STATUS,
+  ...DATA,
+  ...NAVIGATION,
+  ...CONTENT,
+  ...LAYOUT,
+  ...INTERACTION,
+];

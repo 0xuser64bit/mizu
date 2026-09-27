@@ -1,5 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, act, waitFor, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+  act,
+  waitFor,
+  fireEvent,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { installClipboardMock, reduceMotionQuery } from "./helpers";
 import {
@@ -31,7 +37,7 @@ describe("Accordion", () => {
         <AccordionItem value="b" title="Second">
           Body B
         </AccordionItem>
-      </Accordion>
+      </Accordion>,
     );
 
     const first = screen.getByRole("button", { name: /first/i });
@@ -54,12 +60,18 @@ describe("Accordion", () => {
         <AccordionItem value="b" title="Second">
           Body B
         </AccordionItem>
-      </Accordion>
+      </Accordion>,
     );
     await user.click(screen.getByRole("button", { name: /first/i }));
     await user.click(screen.getByRole("button", { name: /second/i }));
-    expect(screen.getByRole("button", { name: /first/i })).toHaveAttribute("aria-expanded", "false");
-    expect(screen.getByRole("button", { name: /second/i })).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("button", { name: /first/i })).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
+    expect(screen.getByRole("button", { name: /second/i })).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
   });
 
   it("allows multiple when allowMultiple is set", async () => {
@@ -72,12 +84,18 @@ describe("Accordion", () => {
         <AccordionItem value="b" title="Second">
           Body B
         </AccordionItem>
-      </Accordion>
+      </Accordion>,
     );
     await user.click(screen.getByRole("button", { name: /first/i }));
     await user.click(screen.getByRole("button", { name: /second/i }));
-    expect(screen.getByRole("button", { name: /first/i })).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getByRole("button", { name: /second/i })).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("button", { name: /first/i })).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
+    expect(screen.getByRole("button", { name: /second/i })).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
   });
 });
 
@@ -92,7 +110,7 @@ describe("Tabs", () => {
         </TabsList>
         <TabsPanel value="a">Panel A</TabsPanel>
         <TabsPanel value="b">Panel B</TabsPanel>
-      </Tabs>
+      </Tabs>,
     );
     expect(screen.getByText("Panel A")).toBeTruthy();
     await user.click(screen.getByRole("tab", { name: /advanced/i }));
@@ -111,7 +129,7 @@ describe("Tabs", () => {
         </TabsList>
         <TabsPanel value="a">Panel A</TabsPanel>
         <TabsPanel value="b">Panel B</TabsPanel>
-      </Tabs>
+      </Tabs>,
     );
     await user.click(screen.getByRole("tab", { name: /advanced/i }));
     expect(onChange).toHaveBeenCalledWith("b");
@@ -130,7 +148,7 @@ describe("Tabs", () => {
         <TabsPanel value="a">Panel A</TabsPanel>
         <TabsPanel value="b">Panel B</TabsPanel>
         <TabsPanel value="c">Panel C</TabsPanel>
-      </Tabs>
+      </Tabs>,
     );
     const general = screen.getByRole("tab", { name: /general/i });
     const advanced = screen.getByRole("tab", { name: /advanced/i });
@@ -159,7 +177,7 @@ describe("Dialog", () => {
       <Dialog open={true} onOpenChange={() => {}} label="Test dialog">
         <DialogTitle>Title</DialogTitle>
         <button>Inside</button>
-      </Dialog>
+      </Dialog>,
     );
     const dialog = screen.getByRole("dialog", { name: "Test dialog" });
     expect(dialog).toBeTruthy();
@@ -172,9 +190,12 @@ describe("Dialog", () => {
     render(
       <Dialog open={true} onOpenChange={onOpenChange} label="Test dialog">
         <DialogTitle>Title</DialogTitle>
-      </Dialog>
+      </Dialog>,
     );
-    fireEvent(screen.getByRole("dialog"), new Event("cancel", { cancelable: true }));
+    fireEvent(
+      screen.getByRole("dialog"),
+      new Event("cancel", { cancelable: true }),
+    );
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
@@ -183,15 +204,22 @@ describe("Dialog", () => {
     document.body.append(trigger);
     trigger.focus();
     document.body.style.overflow = "auto";
-    const { rerender } = render(<Dialog open onOpenChange={() => {}} label="Test"><button>Inside</button></Dialog>);
+    const { rerender } = render(
+      <Dialog open onOpenChange={() => {}} label="Test">
+        <button>Inside</button>
+      </Dialog>,
+    );
     expect(document.body.style.overflow).toBe("hidden");
-    rerender(<Dialog open={false} onOpenChange={() => {}} label="Test"><button>Inside</button></Dialog>);
+    rerender(
+      <Dialog open={false} onOpenChange={() => {}} label="Test">
+        <button>Inside</button>
+      </Dialog>,
+    );
     expect(trigger).toHaveFocus();
     expect(document.body.style.overflow).toBe("auto");
     trigger.remove();
     document.body.style.overflow = "";
   });
-
 });
 
 describe("CountUp", () => {
@@ -244,20 +272,26 @@ describe("Toast", () => {
     function Probe() {
       const { toast } = useToast();
       return (
-        <button onClick={() => toast("Saved", { tone: "success", duration: 300 })}>save</button>
+        <button
+          onClick={() => toast("Saved", { tone: "success", duration: 300 })}
+        >
+          save
+        </button>
       );
     }
     render(
       <ToastProvider>
         <Probe />
-      </ToastProvider>
+      </ToastProvider>,
     );
     act(() => {
       screen.getByRole("button", { name: "save" }).click();
     });
     expect(screen.getByText("Saved")).toBeTruthy();
 
-    await waitFor(() => expect(screen.queryByText("Saved")).toBeNull(), { timeout: 3000 });
+    await waitFor(() => expect(screen.queryByText("Saved")).toBeNull(), {
+      timeout: 3000,
+    });
     expect(screen.queryByText("Saved")).toBeNull();
   });
 });

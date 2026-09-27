@@ -43,7 +43,14 @@ export function Tabs({
   };
 
   return (
-    <TabsContext.Provider value={{ value: current, setValue, id, layoutId: `mizu-tabs-${id}-underline` }}>
+    <TabsContext.Provider
+      value={{
+        value: current,
+        setValue,
+        id,
+        layoutId: `mizu-tabs-${id}-underline`,
+      }}
+    >
       <div className={className}>{children}</div>
     </TabsContext.Provider>
   );
@@ -65,13 +72,16 @@ export function TabsList({
     const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
     if (!keys.includes(e.key)) return;
     const triggers = Array.from(
-      e.currentTarget.querySelectorAll<HTMLButtonElement>("[role='tab']:not([disabled])")
+      e.currentTarget.querySelectorAll<HTMLButtonElement>(
+        "[role='tab']:not([disabled])",
+      ),
     );
     const idx = triggers.indexOf(document.activeElement as HTMLButtonElement);
     if (idx === -1) return;
     let next = idx;
     if (e.key === "ArrowRight") next = (idx + 1) % triggers.length;
-    if (e.key === "ArrowLeft") next = (idx - 1 + triggers.length) % triggers.length;
+    if (e.key === "ArrowLeft")
+      next = (idx - 1 + triggers.length) % triggers.length;
     if (e.key === "Home") next = 0;
     if (e.key === "End") next = triggers.length - 1;
     e.preventDefault();
@@ -147,13 +157,27 @@ export function TabsTrigger({
         (reduce ? (
           <span
             aria-hidden
-            style={{ position: "absolute", bottom: -1, left: 0, right: 0, height: 1, background: "var(--mizu-accent)" }}
+            style={{
+              position: "absolute",
+              bottom: -1,
+              left: 0,
+              right: 0,
+              height: 1,
+              background: "var(--mizu-accent)",
+            }}
           />
         ) : (
           <motion.span
             layoutId={ctx.layoutId}
             aria-hidden
-            style={{ position: "absolute", bottom: -1, left: 0, right: 0, height: 1, background: "var(--mizu-accent)" }}
+            style={{
+              position: "absolute",
+              bottom: -1,
+              left: 0,
+              right: 0,
+              height: 1,
+              background: "var(--mizu-accent)",
+            }}
             transition={{ duration: 0.35, ease: EASE_EXPO }}
           />
         ))}

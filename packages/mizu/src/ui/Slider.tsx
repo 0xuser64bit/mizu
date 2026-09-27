@@ -52,7 +52,13 @@ export function Slider({
         style={{ width: "100%", margin: 0 }}
         className="mizu-slider-input"
       />
-      <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums", color: "var(--mizu-muted)" }}>
+      <span
+        style={{
+          textAlign: "right",
+          fontVariantNumeric: "tabular-nums",
+          color: "var(--mizu-muted)",
+        }}
+      >
         {format ? format(value) : value}
       </span>
     </label>

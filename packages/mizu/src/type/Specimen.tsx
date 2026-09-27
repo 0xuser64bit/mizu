@@ -63,7 +63,9 @@ export function Specimen({
             overflowWrap: "break-word",
             lineHeight: 0.95,
             transition: "font-size 150ms ease, letter-spacing 150ms ease",
-            fontFamily: serifV ? "var(--mizu-font-serif)" : "var(--mizu-font-display)",
+            fontFamily: serifV
+              ? "var(--mizu-font-serif)"
+              : "var(--mizu-font-display)",
             fontStyle: serifV ? "italic" : "normal",
             fontSize: sizeV,
             fontWeight: serifV ? 400 : weightV,
@@ -92,7 +94,9 @@ export function Specimen({
           Text
           <input
             value={textV}
-            onChange={(e) => onTextChange ? onTextChange(e.target.value) : setT(e.target.value)}
+            onChange={(e) =>
+              onTextChange ? onTextChange(e.target.value) : setT(e.target.value)
+            }
             maxLength={14}
             placeholder="Type something"
             aria-label="Specimen text"
@@ -117,7 +121,7 @@ export function Specimen({
           value={sizeV}
           min={24}
           max={140}
-          onChange={(v) => onSizeChange ? onSizeChange(v) : setS(v)}
+          onChange={(v) => (onSizeChange ? onSizeChange(v) : setS(v))}
         />
         <Slider
           label="Weight"
@@ -126,18 +130,20 @@ export function Specimen({
           max={900}
           step={25}
           disabled={serifV}
-          onChange={(v) => onWeightChange ? onWeightChange(v) : setW(v)}
+          onChange={(v) => (onWeightChange ? onWeightChange(v) : setW(v))}
         />
         <Slider
           label="Tracking"
           value={trackingV}
           min={-8}
           max={24}
-          onChange={(v) => onTrackingChange ? onTrackingChange(v) : setTr(v)}
+          onChange={(v) => (onTrackingChange ? onTrackingChange(v) : setTr(v))}
         />
         <button
           type="button"
-          onClick={() => onSerifChange ? onSerifChange(!serifV) : setSe(!serifV)}
+          onClick={() =>
+            onSerifChange ? onSerifChange(!serifV) : setSe(!serifV)
+          }
           aria-pressed={serifV}
           style={{
             display: "flex",
@@ -156,7 +162,11 @@ export function Specimen({
           className="mizu-specimen-toggle"
         >
           Serif italic
-          <span style={{ color: serifV ? "var(--mizu-accent)" : "var(--mizu-faint)" }}>
+          <span
+            style={{
+              color: serifV ? "var(--mizu-accent)" : "var(--mizu-faint)",
+            }}
+          >
             {serifV ? "On" : "Off"}
           </span>
         </button>
@@ -173,8 +183,8 @@ export function Specimen({
         }}
       >
         font: {serifV ? "italic 400" : `${weightV} ${sizeV}px/0.95`}{" "}
-        {serifV ? "Instrument Serif" : "Archivo Variable"}; · letter-spacing: {trackingV}px; · stretch:{" "}
-        {serifV ? "normal" : "100%"}
+        {serifV ? "Instrument Serif" : "Archivo Variable"}; · letter-spacing:{" "}
+        {trackingV}px; · stretch: {serifV ? "normal" : "100%"}
       </p>
     </div>
   );

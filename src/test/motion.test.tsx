@@ -1,6 +1,13 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, act } from "@testing-library/react";
-import { Marquee, MaskLine, PageWipeProvider, usePageWipe, Reveal, Magnetic } from "@/mizu";
+import {
+  Marquee,
+  MaskLine,
+  PageWipeProvider,
+  usePageWipe,
+  Reveal,
+  Magnetic,
+} from "@/mizu";
 import { reduceMotionQuery } from "./helpers";
 
 describe("MaskLine", () => {
@@ -8,7 +15,7 @@ describe("MaskLine", () => {
     render(
       <MaskLine>
         <span>Headline</span>
-      </MaskLine>
+      </MaskLine>,
     );
     expect(screen.getByText("Headline")).toBeTruthy();
   });
@@ -19,7 +26,7 @@ describe("Reveal", () => {
     render(
       <Reveal>
         <p>Content</p>
-      </Reveal>
+      </Reveal>,
     );
     expect(screen.getByText("Content")).toBeTruthy();
   });
@@ -30,7 +37,7 @@ describe("Magnetic", () => {
     render(
       <Magnetic>
         <span>Pull</span>
-      </Magnetic>
+      </Magnetic>,
     );
     expect(screen.getByText("Pull")).toBeTruthy();
   });
@@ -41,7 +48,7 @@ describe("Marquee", () => {
     render(
       <Marquee label="Items">
         <span>Alpha</span>
-      </Marquee>
+      </Marquee>,
     );
     expect(screen.getAllByText("Alpha").length).toBeGreaterThanOrEqual(2);
   });
@@ -50,7 +57,7 @@ describe("Marquee", () => {
     render(
       <Marquee label="Disciplines">
         <span>Beta</span>
-      </Marquee>
+      </Marquee>,
     );
     expect(screen.getByRole("marquee")).toHaveAccessibleName("Disciplines");
   });
@@ -80,7 +87,7 @@ describe("PageWipe", () => {
       render(
         <PageWipeProvider>
           <Probe />
-        </PageWipeProvider>
+        </PageWipeProvider>,
       );
 
       await act(async () => {
@@ -120,7 +127,7 @@ describe("PageWipe", () => {
     render(
       <PageWipeProvider>
         <Probe />
-      </PageWipeProvider>
+      </PageWipeProvider>,
     );
     await act(async () => {
       screen.getByRole("button", { name: "go" }).click();

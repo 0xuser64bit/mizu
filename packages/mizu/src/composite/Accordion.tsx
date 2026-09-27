@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, useId, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useId,
+  type ReactNode,
+} from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings.ts";
 
@@ -36,7 +42,10 @@ export function Accordion({
 
   return (
     <AccordionContext.Provider value={{ open, toggle }}>
-      <div className={className} style={{ borderTop: "1px solid var(--mizu-line)" }}>
+      <div
+        className={className}
+        style={{ borderTop: "1px solid var(--mizu-line)" }}
+      >
         {children}
       </div>
     </AccordionContext.Provider>
@@ -64,7 +73,10 @@ export function AccordionItem({
   const panelId = `mizu-acc-${id}-panel`;
 
   return (
-    <div className={className} style={{ borderBottom: "1px solid var(--mizu-line)" }}>
+    <div
+      className={className}
+      style={{ borderBottom: "1px solid var(--mizu-line)" }}
+    >
       <h3 style={{ margin: 0 }}>
         <button
           type="button"
@@ -87,7 +99,9 @@ export function AccordionItem({
           <motion.span
             aria-hidden
             animate={{ rotate: isOpen ? 0 : 45, scale: isOpen ? 1 : 0.72 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.35, ease: EASE_EXPO }}
+            transition={
+              reduce ? { duration: 0 } : { duration: 0.35, ease: EASE_EXPO }
+            }
             style={{
               width: 7,
               height: 7,
@@ -116,12 +130,22 @@ export function AccordionItem({
             role="region"
             aria-labelledby={buttonId}
             initial={reduce ? { height: "auto" } : { height: 0, opacity: 0 }}
-            animate={reduce ? { height: "auto" } : { height: "auto", opacity: 1 }}
+            animate={
+              reduce ? { height: "auto" } : { height: "auto", opacity: 1 }
+            }
             exit={reduce ? { height: "auto" } : { height: 0, opacity: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.45, ease: EASE_EXPO }}
+            transition={
+              reduce ? { duration: 0 } : { duration: 0.45, ease: EASE_EXPO }
+            }
             style={{ overflow: "hidden" }}
           >
-            <div style={{ padding: "2px 4px 28px 27px", color: "var(--mizu-muted)", lineHeight: 1.7 }}>
+            <div
+              style={{
+                padding: "2px 4px 28px 27px",
+                color: "var(--mizu-muted)",
+                lineHeight: 1.7,
+              }}
+            >
               {children}
             </div>
           </motion.div>

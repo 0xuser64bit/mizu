@@ -45,7 +45,9 @@ function CodeBlock({ code }: { code: string }) {
 function PropsTable({ props }: { props: ComponentMeta["props"] }) {
   return (
     <div style={{ overflowX: "auto" }}>
-      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+      <table
+        style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}
+      >
         <thead>
           <tr>
             {["Prop", "Type", "Default", "Description"].map((h) => (
@@ -70,7 +72,10 @@ function PropsTable({ props }: { props: ComponentMeta["props"] }) {
         </thead>
         <tbody>
           {props.map((p) => (
-            <tr key={p.name} style={{ borderBottom: "1px solid var(--mizu-line)" }}>
+            <tr
+              key={p.name}
+              style={{ borderBottom: "1px solid var(--mizu-line)" }}
+            >
               <td
                 style={{
                   padding: "12px 16px 12px 0",
@@ -102,7 +107,13 @@ function PropsTable({ props }: { props: ComponentMeta["props"] }) {
               >
                 {p.def ?? "—"}
               </td>
-              <td style={{ padding: "12px 0", color: "var(--mizu-muted)", lineHeight: 1.6 }}>
+              <td
+                style={{
+                  padding: "12px 0",
+                  color: "var(--mizu-muted)",
+                  lineHeight: 1.6,
+                }}
+              >
                 {p.desc}
               </td>
             </tr>
@@ -125,7 +136,9 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <h1 className="mt-5 font-display text-5xl font-black font-wide tracking-tight md:text-6xl">
           {meta.name}
         </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{meta.tagline}</p>
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+          {meta.tagline}
+        </p>
 
         <section className="mt-14">
           <DemoLabel>Live — this one is real</DemoLabel>
@@ -143,11 +156,30 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
 
         <section className="mt-14">
           <DemoLabel>Source & setup</DemoLabel>
-          <p className="mt-4 text-sm leading-relaxed text-muted">Import <code>mizu-ui/styles.css</code> once. Fonts are optional via <code>mizu-ui/fonts.css</code>. Override <code>--mizu-*</code> tokens or use <code>className</code> for local styling. {meta.dependencies?.includes("Motion") ? "Requires React and Motion." : "Requires React."}</p>
+          <p className="mt-4 text-sm leading-relaxed text-muted">
+            Import <code>mizu-ui/styles.css</code> once. Fonts are optional via{" "}
+            <code>mizu-ui/fonts.css</code>. Override <code>--mizu-*</code>{" "}
+            tokens or use <code>className</code> for local styling.{" "}
+            {meta.dependencies?.includes("Motion")
+              ? "Requires React and Motion."
+              : "Requires React."}
+          </p>
           <details className="mt-5 border border-line p-4">
-            <summary className="cursor-pointer text-sm text-paper">Inspect {meta.source}</summary>
-            <p className="mt-3 text-sm text-muted">Source is included in the npm package under <code>src/{meta.source}</code>.</p>
-            <a className="mt-3 inline-block text-sm text-accent underline underline-offset-4" href={`/api/source/${meta.slug}`} target="_blank" rel="noreferrer">Open full source ↗</a>
+            <summary className="cursor-pointer text-sm text-paper">
+              Inspect {meta.source}
+            </summary>
+            <p className="mt-3 text-sm text-muted">
+              Source is included in the npm package under{" "}
+              <code>src/{meta.source}</code>.
+            </p>
+            <a
+              className="mt-3 inline-block text-sm text-accent underline underline-offset-4"
+              href={`/api/source/${meta.slug}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open full source ↗
+            </a>
           </details>
         </section>
 
@@ -161,17 +193,35 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <section className="mt-14 grid gap-4 md:grid-cols-2">
           <div className="border border-line bg-ink-2 p-6">
             <DemoLabel>Accessibility</DemoLabel>
-            <p className="mt-4 text-sm leading-relaxed text-muted">{meta.a11y}</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              {meta.a11y}
+            </p>
           </div>
           <div className="border border-line bg-ink-2 p-6">
             <DemoLabel>Motion</DemoLabel>
-            <p className="mt-4 text-sm leading-relaxed text-muted">{meta.motion}</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              {meta.motion}
+            </p>
           </div>
         </section>
 
         <section className="mt-14">
           <DemoLabel>Works alongside</DemoLabel>
-          <div className="mt-4 flex flex-wrap gap-3">{COMPONENTS.filter(c => c.category === meta.category && c.slug !== meta.slug).slice(0, 4).map(c => <Link key={c.slug} href={`/components/${c.slug}`} className="border border-line px-4 py-3 text-sm text-muted hover:text-paper">{c.name}</Link>)}</div>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {COMPONENTS.filter(
+              (c) => c.category === meta.category && c.slug !== meta.slug,
+            )
+              .slice(0, 4)
+              .map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/components/${c.slug}`}
+                  className="border border-line px-4 py-3 text-sm text-muted hover:text-paper"
+                >
+                  {c.name}
+                </Link>
+              ))}
+          </div>
         </section>
         <nav
           aria-label="More components"

@@ -1,7 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Accordion, AccordionItem, Button, Dialog, DialogBody, DialogClose, DialogFooter, DialogTitle, Tabs, TabsList, TabsPanel, TabsTrigger } from "@/mizu";
+import {
+  Accordion,
+  AccordionItem,
+  Button,
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogFooter,
+  DialogTitle,
+  Tabs,
+  TabsList,
+  TabsPanel,
+  TabsTrigger,
+} from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
 import { Toggle } from "./shared";
 
@@ -19,7 +32,7 @@ const FAQ = [
   {
     value: "tokens",
     title: "Can I re-theme components?",
-    body: "Every component reads CSS custom properties. Override --mizu-accent, --mizu-ink or any token on your own selector, or flip the whole surface with data-theme=\"light\".",
+    body: 'Every component reads CSS custom properties. Override --mizu-accent, --mizu-ink or any token on your own selector, or flip the whole surface with data-theme="light".',
   },
 ];
 
@@ -51,20 +64,23 @@ export function TabsDemo() {
       </TabsList>
       <TabsPanel value="tokens">
         <p className="max-w-xl leading-relaxed text-muted">
-          Tokens are CSS custom properties scoped to --mizu-* namespaces. One stylesheet defines the
-          surface; every component inherits it. Re-theming is an override, not a fork.
+          Tokens are CSS custom properties scoped to --mizu-* namespaces. One
+          stylesheet defines the surface; every component inherits it.
+          Re-theming is an override, not a fork.
         </p>
       </TabsPanel>
       <TabsPanel value="motion">
         <p className="max-w-xl leading-relaxed text-muted">
-          Two easings carry the library: expo for entrances and wipes for transitions. Springs handle
-          pointer-follow. Reduced motion collapses all of it to instant state changes.
+          Two easings carry the library: expo for entrances and wipes for
+          transitions. Springs handle pointer-follow. Reduced motion collapses
+          all of it to instant state changes.
         </p>
       </TabsPanel>
       <TabsPanel value="type">
         <p className="max-w-xl leading-relaxed text-muted">
-          Archivo Variable spans width 62–125 and weight 100–900, Instrument Serif carries the
-          italic voice, and JetBrains Mono sets every label at 0.22em tracking.
+          Archivo Variable spans width 62–125 and weight 100–900, Instrument
+          Serif carries the italic voice, and JetBrains Mono sets every label at
+          0.22em tracking.
         </p>
       </TabsPanel>
     </Tabs>
@@ -80,8 +96,9 @@ export function DialogDemo() {
         <DialogClose />
         <DialogTitle>Release when ready</DialogTitle>
         <DialogBody>
-          Pieces enter the archive when they are finished — not before. This dialog demonstrates the
-          focus trap, Escape handling and scroll lock built into every Mizu overlay.
+          Pieces enter the archive when they are finished — not before. This
+          dialog demonstrates the focus trap, Escape handling and scroll lock
+          built into every Mizu overlay.
         </DialogBody>
         <DialogFooter>
           <Button variant="ghost" size="sm" onClick={() => setOpen(false)}>
@@ -100,7 +117,13 @@ export function NavDemo() {
   return (
     <div className="overflow-hidden border border-line">
       <DemoNote />
-      <div style={{ transform: "scale(0.55)", transformOrigin: "top left", width: "181.81%" }}>
+      <div
+        style={{
+          transform: "scale(0.55)",
+          transformOrigin: "top left",
+          width: "181.81%",
+        }}
+      >
         <div style={{ pointerEvents: "none" }}>
           <SiteNav trackChapters={false} />
         </div>

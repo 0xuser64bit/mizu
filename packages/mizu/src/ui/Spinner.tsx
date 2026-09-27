@@ -17,15 +17,33 @@ export function Spinner({
 }) {
   const reduce = useReducedMotion();
   const color =
-    tone === "accent" ? "var(--mizu-accent)" : tone === "paper" ? "var(--mizu-paper)" : "var(--mizu-muted)";
+    tone === "accent"
+      ? "var(--mizu-accent)"
+      : tone === "paper"
+        ? "var(--mizu-paper)"
+        : "var(--mizu-muted)";
 
   return (
-    <span role="status" aria-label={label} className={className} style={{ ...style, display: "inline-flex" }}>
+    <span
+      role="status"
+      aria-label={label}
+      className={className}
+      style={{ ...style, display: "inline-flex" }}
+    >
       <motion.span
         aria-hidden
-        style={{ width: size, height: size, background: color, transform: "rotate(45deg)" }}
+        style={{
+          width: size,
+          height: size,
+          background: color,
+          transform: "rotate(45deg)",
+        }}
         animate={reduce ? { rotate: 45 } : { rotate: 405 }}
-        transition={reduce ? { duration: 0 } : { duration: 0.9, repeat: Infinity, ease: "linear" }}
+        transition={
+          reduce
+            ? { duration: 0 }
+            : { duration: 0.9, repeat: Infinity, ease: "linear" }
+        }
       />
     </span>
   );

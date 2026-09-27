@@ -32,7 +32,9 @@ export function SectionTag({
         color: `var(--mizu-${tone})`,
       }}
     >
-      {diamond && <Mark size={5} tone={tone === "accent" ? "accent" : "line"} />}
+      {diamond && (
+        <Mark size={5} tone={tone === "accent" ? "accent" : "line"} />
+      )}
       {children}
     </p>
   );

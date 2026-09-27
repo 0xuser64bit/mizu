@@ -19,7 +19,12 @@ export function CountUpDemo() {
         {stats.map((s) => (
           <div key={s.label} className="border border-line bg-ink-2 p-6">
             <p className="font-display text-5xl font-black font-wide tracking-tight text-paper">
-              <CountUp key={`${s.label}-${seed}`} value={s.value} duration={1.4} suffix={s.suffix} />
+              <CountUp
+                key={`${s.label}-${seed}`}
+                value={s.value}
+                duration={1.4}
+                suffix={s.suffix}
+              />
             </p>
             <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
               {s.label}
@@ -96,7 +101,9 @@ function ToastTriggers() {
         Success toast
       </button>
       <button
-        onClick={() => toast("The field could not be reached", { tone: "error" })}
+        onClick={() =>
+          toast("The field could not be reached", { tone: "error" })
+        }
         className="border border-line-bright px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.22em] text-paper transition-colors hover:border-paper/70"
       >
         Error toast

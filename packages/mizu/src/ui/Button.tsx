@@ -1,6 +1,11 @@
 "use client";
 
-import { forwardRef, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type ReactNode } from "react";
+import {
+  forwardRef,
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+} from "react";
 import { Spinner } from "./Spinner.tsx";
 
 export type ButtonVariant = "solid" | "ghost" | "inverse";
@@ -22,7 +27,11 @@ function Arrow() {
       className="mizu-btn-arrow"
       style={{ flexShrink: 0 }}
     >
-      <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
@@ -34,37 +43,51 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   arrow?: boolean;
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "solid", size = "md", loading = false, arrow = true, className = "", children, disabled, style, type = "button", ...props },
-  ref
-) {
-  return (
-    <button
-      ref={ref}
-      type={type}
-      aria-busy={loading || undefined}
-      disabled={disabled || loading}
-      className={`mizu-btn mizu-btn--${variant} ${className}`}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 12,
-        fontFamily: "var(--mizu-font-mono)",
-        letterSpacing: "0.22em",
-        textTransform: "uppercase",
-        cursor: loading || disabled ? "default" : "pointer",
-        transition: "background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease",
-        ...SIZES[size],
-        opacity: disabled ? 0.4 : 1,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-      {loading ? <Spinner size={10} /> : arrow && <Arrow />}
-    </button>
-  );
-});
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    {
+      variant = "solid",
+      size = "md",
+      loading = false,
+      arrow = true,
+      className = "",
+      children,
+      disabled,
+      style,
+      type = "button",
+      ...props
+    },
+    ref,
+  ) {
+    return (
+      <button
+        ref={ref}
+        type={type}
+        aria-busy={loading || undefined}
+        disabled={disabled || loading}
+        className={`mizu-btn mizu-btn--${variant} ${className}`}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 12,
+          fontFamily: "var(--mizu-font-mono)",
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          cursor: loading || disabled ? "default" : "pointer",
+          transition:
+            "background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease",
+          ...SIZES[size],
+          opacity: disabled ? 0.4 : 1,
+          ...style,
+        }}
+        {...props}
+      >
+        {children}
+        {loading ? <Spinner size={10} /> : arrow && <Arrow />}
+      </button>
+    );
+  },
+);
 
 export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: ButtonVariant;
@@ -97,7 +120,8 @@ export function ButtonLink({
         textTransform: "uppercase",
         textDecoration: "none",
         cursor: "pointer",
-        transition: "background 300ms ease, color 300ms ease, border-color 300ms ease",
+        transition:
+          "background 300ms ease, color 300ms ease, border-color 300ms ease",
         ...SIZES[size],
         ...style,
       }}

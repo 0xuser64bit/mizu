@@ -42,7 +42,9 @@ export function Badge({
         whiteSpace: "nowrap",
       }}
     >
-      {diamond && <Mark size={4} tone={tone === "accent" ? "accent" : "line"} />}
+      {diamond && (
+        <Mark size={4} tone={tone === "accent" ? "accent" : "line"} />
+      )}
       {children}
     </span>
   );

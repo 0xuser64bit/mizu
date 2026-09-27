@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Magnetic, MaskLine, Marquee, Reveal, Slider, usePageWipe } from "@/mizu";
+import {
+  Magnetic,
+  MaskLine,
+  Marquee,
+  Reveal,
+  Slider,
+  usePageWipe,
+} from "@/mizu";
 import { DemoLabel } from "./shared";
 
 export function MaskLineDemo() {
@@ -36,15 +43,26 @@ export function RevealDemo() {
       <div className="mb-8 flex items-center gap-6">
         <DemoLabel>Delay — {delay}ms</DemoLabel>
         <div className="w-48">
-          <Slider label="" value={delay} min={0} max={800} step={50} onChange={setDelay} />
+          <Slider
+            label=""
+            value={delay}
+            min={0}
+            max={800}
+            step={50}
+            onChange={setDelay}
+          />
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         {["Surfaces", "Motion", "Systems"].map((t, i) => (
           <Reveal key={t} delay={delay / 1000 + i * 0.12} y={24}>
             <div className="border border-line bg-ink-2 p-6">
-              <p className="font-mono text-[10px] tracking-[0.25em] text-faint">0{i + 1}</p>
-              <p className="mt-3 font-display text-xl font-bold tracking-tight">{t}</p>
+              <p className="font-mono text-[10px] tracking-[0.25em] text-faint">
+                0{i + 1}
+              </p>
+              <p className="mt-3 font-display text-xl font-bold tracking-tight">
+                {t}
+              </p>
             </div>
           </Reveal>
         ))}
@@ -82,11 +100,24 @@ export function MarqueeDemo() {
       <div className="mb-8 flex items-center gap-6">
         <DemoLabel>Cycle — {duration}s</DemoLabel>
         <div className="w-48">
-          <Slider label="" value={duration} min={4} max={40} onChange={setDuration} />
+          <Slider
+            label=""
+            value={duration}
+            min={4}
+            max={40}
+            onChange={setDuration}
+          />
         </div>
       </div>
       <Marquee duration={duration} label="Mizu disciplines">
-        {["Surfaces", "Motion", "Typography", "Systems", "Themes", "Patterns"].map((item) => (
+        {[
+          "Surfaces",
+          "Motion",
+          "Typography",
+          "Systems",
+          "Themes",
+          "Patterns",
+        ].map((item) => (
           <span
             key={item}
             className="px-7 font-mono text-[11px] uppercase tracking-[0.35em] text-muted"

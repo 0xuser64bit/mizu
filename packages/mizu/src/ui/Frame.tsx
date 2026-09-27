@@ -9,9 +9,24 @@ function Corner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
   };
   const posStyle: Record<string, React.CSSProperties> = {
     tl: { top: -1, left: -1, borderTop: "1px solid", borderLeft: "1px solid" },
-    tr: { top: -1, right: -1, borderTop: "1px solid", borderRight: "1px solid" },
-    bl: { bottom: -1, left: -1, borderBottom: "1px solid", borderLeft: "1px solid" },
-    br: { bottom: -1, right: -1, borderBottom: "1px solid", borderRight: "1px solid" },
+    tr: {
+      top: -1,
+      right: -1,
+      borderTop: "1px solid",
+      borderRight: "1px solid",
+    },
+    bl: {
+      bottom: -1,
+      left: -1,
+      borderBottom: "1px solid",
+      borderLeft: "1px solid",
+    },
+    br: {
+      bottom: -1,
+      right: -1,
+      borderBottom: "1px solid",
+      borderRight: "1px solid",
+    },
   };
   return <span aria-hidden style={{ ...base, ...posStyle[pos] }} />;
 }

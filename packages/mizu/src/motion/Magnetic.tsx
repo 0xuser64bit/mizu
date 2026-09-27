@@ -1,7 +1,12 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "motion/react";
 
 export function Magnetic({
   children,
@@ -25,7 +30,12 @@ export function Magnetic({
     <motion.div
       ref={ref}
       className={className}
-      style={{ ...style, x: reduce ? 0 : sx, y: reduce ? 0 : sy, display: "inline-block" }}
+      style={{
+        ...style,
+        x: reduce ? 0 : sx,
+        y: reduce ? 0 : sy,
+        display: "inline-block",
+      }}
       onMouseMove={
         reduce
           ? undefined
@@ -36,10 +46,14 @@ export function Magnetic({
               y.set((e.clientY - (r.top + r.height / 2)) * strength);
             }
       }
-      onMouseLeave={reduce ? undefined : () => {
-        x.set(0);
-        y.set(0);
-      }}
+      onMouseLeave={
+        reduce
+          ? undefined
+          : () => {
+              x.set(0);
+              y.set(0);
+            }
+      }
     >
       {children}
     </motion.div>

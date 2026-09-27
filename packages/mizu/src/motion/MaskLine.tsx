@@ -28,7 +28,9 @@ export function MaskLine({
         style={{ display: "block", willChange: reduce ? "auto" : "transform" }}
         initial={reduce ? { y: "0%" } : { y }}
         animate={{ y: "0%" }}
-        transition={reduce ? { duration: 0 } : { duration: 1.15, delay, ease: EASE_EXPO }}
+        transition={
+          reduce ? { duration: 0 } : { duration: 1.15, delay, ease: EASE_EXPO }
+        }
       >
         {children}
       </motion.span>

@@ -17,7 +17,11 @@ export function SoftTypeDemo() {
         <SoftType text={text || "Aa"} mode={mode} className="h-full w-full" />
       </div>
       <div className="flex flex-wrap items-center gap-4">
-        <Segmented options={["weight", "width", "both"] as const} value={mode} onChange={setMode} />
+        <Segmented
+          options={["weight", "width", "both"] as const}
+          value={mode}
+          onChange={setMode}
+        />
         <input
           value={text}
           onChange={(e) => setText(e.target.value.slice(0, 2))}
@@ -42,7 +46,9 @@ export function WaveTextDemo() {
         />
       </div>
       <div className="mt-6 flex items-center gap-4">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">Text</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
+          Text
+        </span>
         <input
           value={text}
           onChange={(e) => setText(e.target.value.slice(0, 12))}

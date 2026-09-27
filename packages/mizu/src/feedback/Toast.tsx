@@ -22,7 +22,10 @@ type ToastItem = {
 };
 
 type ToastContextValue = {
-  toast: (message: string, options?: { tone?: ToastTone; duration?: number }) => void;
+  toast: (
+    message: string,
+    options?: { tone?: ToastTone; duration?: number },
+  ) => void;
 };
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -43,7 +46,13 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const idRef = useRef(0);
   const timers = useRef(new Map<number, number>());
-  useEffect(() => () => { timers.current.forEach(window.clearTimeout); timers.current.clear(); }, []);
+  useEffect(
+    () => () => {
+      timers.current.forEach(window.clearTimeout);
+      timers.current.clear();
+    },
+    [],
+  );
   const reduce = useReducedMotion();
 
   const dismiss = useCallback((id: number) => {
@@ -58,9 +67,13 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       const item: ToastItem = { id, message, tone: options?.tone ?? "default" };
       setToasts((ts) => [...ts.slice(-3), item]);
       const duration = options?.duration ?? 3500;
-      if (duration > 0) timers.current.set(id, window.setTimeout(() => dismiss(id), duration));
+      if (duration > 0)
+        timers.current.set(
+          id,
+          window.setTimeout(() => dismiss(id), duration),
+        );
     },
-    [dismiss]
+    [dismiss],
   );
 
   return (
@@ -86,10 +99,16 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           {toasts.map((t) => (
             <motion.div
               key={t.id}
-              initial={reduce ? { opacity: 1 } : { opacity: 0, y: 24, scale: 0.96 }}
+              initial={
+                reduce ? { opacity: 1 } : { opacity: 0, y: 24, scale: 0.96 }
+              }
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={reduce ? { opacity: 1 } : { opacity: 0, y: 12, scale: 0.97 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.4, ease: EASE_EXPO }}
+              exit={
+                reduce ? { opacity: 1 } : { opacity: 0, y: 12, scale: 0.97 }
+              }
+              transition={
+                reduce ? { duration: 0 } : { duration: 0.4, ease: EASE_EXPO }
+              }
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -113,15 +132,42 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               >
                 {t.message}
               </span>
-              <button type="button" aria-label={`Dismiss ${t.message}`} onClick={() => dismiss(t.id)} className="mizu-toast-dismiss">×</button>
+              <button
+                type="button"
+                aria-label={`Dismiss ${t.message}`}
+                onClick={() => dismiss(t.id)}
+                className="mizu-toast-dismiss"
+              >
+                ×
+              </button>
               {t.tone === "success" && (
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-                  <path d="M2 6.5L4.8 9L10 3.5" stroke="var(--mizu-accent)" strokeWidth="1.5" />
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M2 6.5L4.8 9L10 3.5"
+                    stroke="var(--mizu-accent)"
+                    strokeWidth="1.5"
+                  />
                 </svg>
               )}
               {t.tone === "error" && (
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
-                  <path d="M2 2L10 10M10 2L2 10" stroke="var(--mizu-accent)" strokeWidth="1.5" />
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M2 2L10 10M10 2L2 10"
+                    stroke="var(--mizu-accent)"
+                    strokeWidth="1.5"
+                  />
                 </svg>
               )}
             </motion.div>

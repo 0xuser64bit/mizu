@@ -1,7 +1,13 @@
 "use client";
 
 import { useMemo, useRef, type PointerEvent } from "react";
-import { motion, motionValue, useReducedMotion, useTransform, type MotionValue } from "motion/react";
+import {
+  motion,
+  motionValue,
+  useReducedMotion,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 
 function Letter({
   mv,
@@ -21,7 +27,13 @@ function Letter({
   return (
     <motion.span
       aria-hidden
-      style={{ y, scale, color, display: "inline-block", willChange: "transform" }}
+      style={{
+        y,
+        scale,
+        color,
+        display: "inline-block",
+        willChange: "transform",
+      }}
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>
@@ -56,7 +68,10 @@ export function WaveText({
       const el = refs.current[i];
       if (!el) continue;
       const r = el.getBoundingClientRect();
-      const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+      const d = Math.hypot(
+        e.clientX - (r.left + r.width / 2),
+        e.clientY - (r.top + r.height / 2),
+      );
       const f = Math.max(0, 1 - d / radius);
       values[i]?.set(f * f * (3 - 2 * f));
     }
@@ -82,7 +97,12 @@ export function WaveText({
           }}
           style={{ display: "inline-flex" }}
         >
-          <Letter mv={values[i] ?? motionValue(0)} char={c} colorFrom={colorFrom} colorTo={colorTo} />
+          <Letter
+            mv={values[i] ?? motionValue(0)}
+            char={c}
+            colorFrom={colorFrom}
+            colorTo={colorTo}
+          />
         </span>
       ))}
     </Tag>
