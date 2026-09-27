@@ -101,7 +101,7 @@ for (const family of CATEGORIES) {
   );
   for (const e of entries)
     inventory.push(
-      `| [${e.name}](http://localhost:3000/components/${e.slug}) | ${e.tagline.replace(/\|/g, "\\|")} | [${e.source}](../packages/mizu/src/${e.source}) |`,
+      `| **${e.name}** | ${e.tagline.replace(/\|/g, "\\|")} | [${e.source}](../packages/mizu/src/${e.source}) |`,
     );
   inventory.push("");
 }

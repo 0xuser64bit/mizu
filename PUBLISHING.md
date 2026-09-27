@@ -19,7 +19,7 @@ The actual tarball test installs outside the workspace with scripts disabled,
 checks types, Node SSR, all exports, peer resolution, CSS/fonts, Vite production
 bundling and small-import budgets. It cleans its temporary directory.
 
-Review docs/VERIFICATION.md, the inventory and changelog. Review the npm dry-run
+Review the inventory and changelog. Review the npm dry-run
 file list: compiled ESM, declarations/maps, source, styles, optional fonts CSS,
 README, LICENSE and package metadata only. No website or node_modules.
 `prepack` builds before packing; no consumer prepare/install script is required.
@@ -27,8 +27,11 @@ README, LICENSE and package metadata only. No website or node_modules.
 Run the packed app with `bun run test:consumer --serve`. Use the documented
 browser assertions and manual checks for focus, Escape, arrows, touch-sized
 controls, local light/dark themes and reduced motion. Before public release,
-complete the Chrome / Firefox / Safari and screen-reader matrix listed in the
-verification report; a DOM suite alone is not that matrix.
+complete native Chrome, Firefox and Safari checks on both a desktop and a touch
+device, plus VoiceOver / NVDA checks for forms, command navigation, disclosure,
+modality, reading order and dynamic feedback. Include 200% zoom, long translated
+labels, safe-area behavior and pointer/touch drag. A DOM suite alone is not that
+matrix.
 
 ## Publish (maintainer action)
 

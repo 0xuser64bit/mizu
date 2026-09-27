@@ -125,7 +125,10 @@ your bundler. The installed ESM output already uses resolvable .js imports.
 The repository's tarball check installs outside the workspace with lifecycle
 scripts disabled, checks all family exports and declarations, renders via Node
 SSR, builds a production Vite composition and verifies small-import tree
-shaking on React 18 and 19. See the repository's verification report for the
-actual browser coverage and remaining compatibility checks.
+shaking on React 18 and 19. Browser coverage is spot-checked per release; the
+repository's release procedure lists the required cross-browser and
+assistive-technology matrix before publication. Expects modern browsers with
+native dialog, observers, CSS custom properties and current pointer/input
+semantics; there is no legacy-dialog polyfill or CommonJS entry.
 
 MIT.

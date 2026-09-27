@@ -32,7 +32,7 @@ run `npm install` / `npm run dev` in this folder. The checked-in file dependency
 is convenient for development; it is not the release verification path. There
 is no prepare script, and tarball consumers need no TypeScript compiler.
 
-Reusable browser assertions live in `scripts/browser/checks.mjs`. Pass the
-native Codex tab as the adapter to check documentation and this app; the sweep
-checks every catalog route for rendered content and horizontal overflow. They
-were run with the browser tools, not as unattended CI browser tests.
+Reusable browser assertions live in `scripts/browser/checks.mjs`. Run them
+against the documentation site and this app; the sweep checks every catalog
+route for rendered content and horizontal overflow. They are assisted browser
+checks, not unattended CI browser tests.
