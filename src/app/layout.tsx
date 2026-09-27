@@ -6,6 +6,9 @@ import { NavigatorProvider } from "@/components/shell/Navigator";
 import { Cursor } from "@/components/shell/Cursor";
 import { Noise } from "@/components/shell/Noise";
 import { PageWipeProvider } from "@/mizu";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-Q3K0S22ZXL";
 
 const themeBootstrap = `try{var t=localStorage.getItem("mizu-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
@@ -45,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </PageWipeProvider>
         </MotionConfig>
         <Noise />
+        <GoogleAnalytics gaId={gaId} />
       </body>
     </html>
   );

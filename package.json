@@ -17,6 +17,7 @@
     "format": "prettier --write packages/mizu/src src/components/docs scripts src/test"
   },
   "dependencies": {
+    "@next/third-parties": "^16.3.6",
     "motion": "^13.4.4",
     "next": "16.3.6",
     "react": "19.2.8",
