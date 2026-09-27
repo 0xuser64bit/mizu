@@ -28,3 +28,5 @@ export { Reveal } from "./motion/Reveal.tsx";
 export { Magnetic } from "./motion/Magnetic.tsx";
 export { Marquee } from "./motion/Marquee.tsx";
 export { PageWipeProvider, usePageWipe } from "./motion/PageWipe.tsx";
+export * from "./forms/index.ts";
+export * from "./status/index.ts";

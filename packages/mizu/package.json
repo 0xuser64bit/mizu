@@ -33,7 +33,15 @@
     "./styles.css": "./styles.css",
     "./package.json": "./package.json",
     "./fonts.css": "./fonts.css",
-    "./source/*": "./src/*"
+    "./source/*": "./src/*",
+    "./forms": {
+      "types": "./dist/forms/index.d.ts",
+      "import": "./dist/forms/index.js"
+    },
+    "./status": {
+      "types": "./dist/status/index.d.ts",
+      "import": "./dist/status/index.js"
+    }
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
