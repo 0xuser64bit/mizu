@@ -6,6 +6,10 @@ workspace, archive drafts and recover the archive. Theme and motion controls
 operate on the whole composition. The records are synthetic and persistence
 uses this browser's localStorage; there is no service or account.
 
+For your own application, install with `npm install mizu-ui`, import
+`mizu-ui/styles.css`, and use the components shown here. The commands below
+verify the repository's package artifact before release.
+
 Run from the repository root:
 
 ```sh

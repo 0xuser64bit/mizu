@@ -19,17 +19,12 @@ export default function GettingStarted() {
           configuration and no provider for ordinary components.
         </p>
         <h2>Install</h2>
-        <Code>{`npm pack ./packages/mizu
-# Copy the resulting tarball into your app, then:
-npm install ./mizu-ui-0.2.0.tgz motion`}</Code>
+        <Code>npm install mizu-ui</Code>
         <p>
-          This repository prepares version 0.2.0. Until that version is
-          published, pack this checkout and install its tarball:{" "}
-          <code>npm pack ./packages/mizu</code>, then{" "}
-          <code>npm install /absolute/path/mizu-ui-0.2.0.tgz motion</code> in
-          your app. React and React DOM are peers; use the versions your app
-          already supplies. After publication, install this version with{" "}
-          <code>npm install mizu-ui@0.2.0 motion</code>.
+          Run this command in your React application. Mizu supports React and
+          React DOM 18.3 or 19, with Motion 12 or 13 as a peer dependency. Use
+          the React versions your application already supplies. Then import the
+          stylesheet and the components you need.
         </p>
         <h2>Render a working interaction</h2>
         <Code>{`"use client"; // required at an interactive Next.js boundary

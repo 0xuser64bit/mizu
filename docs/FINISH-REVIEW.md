@@ -1,5 +1,10 @@
 # Independent finish review
 
+Historical review of the initial local candidate. Consumer setup was subsequently
+updated at the user's direction to `npm install mizu-ui` throughout the showcase
+and READMEs. The candidate/tarball instructions discussed below belong to that
+earlier review, not the current public installation flow.
+
 The final scoped disposition is **ship**. All three material corrections below
 were resolved and committed. This review covered supplied true-scale desktop,
 755px and phone viewport sections, component/consumer captures and relevant

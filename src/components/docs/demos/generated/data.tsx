@@ -120,7 +120,7 @@ export function TimelineDemo() {
           title: "Package validated",
           time: "Tuesday",
           state: "current",
-          body: "Fresh tarball installation passed.",
+          body: "Installed mizu-ui in a fresh app.",
         },
         {
           id: "c",

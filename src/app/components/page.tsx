@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { version } from "../../../packages/mizu/package.json";
 import { CopyButton } from "@/mizu";
 import { ComponentsShell } from "@/components/docs/ComponentsShell";
 import { ComponentBrowser } from "@/components/docs/ComponentBrowser";
@@ -32,16 +31,16 @@ export default function ComponentsIndex() {
           className="mizu-field-hint"
           style={{ margin: "0 0 16px", lineHeight: 1.7 }}
         >
-          {version} is a local release candidate. Pack this checkout, copy the
-          tarball into your app, then install.{" "}
+          Install Mizu in your React app, import the stylesheet, and make it
+          yours.{" "}
           <Link href="/components/getting-started" className="mizu-text-button">
             Getting started ↗
           </Link>
         </p>
         <div className="mizu-install-strip">
-          <code>{`npm install ./mizu-ui-${version}.tgz motion`}</code>
+          <code>npm install mizu-ui</code>
           <CopyButton
-            text={`npm install ./mizu-ui-${version}.tgz motion`}
+            text="npm install mizu-ui"
             aria-label="Copy installation command"
           >
             Copy install

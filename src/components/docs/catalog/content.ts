@@ -155,7 +155,7 @@ export const CONTENT = [
     "Content",
     "content/Checklist.tsx",
     "Complete a set of real tasks and see how much remains.",
-    '  const [items,setItems] = useState([{id:"types",label:"Check types",checked:true},{id:"browser",label:"Review in the browser",description:"Include a narrow screen and keyboard navigation.",checked:false},{id:"package",label:"Install the tarball",checked:false}]);\n  return <Checklist label="Release checks" items={items} onChange={(id,checked)=>setItems(items.map(i=>i.id===id ? {...i,checked} : i))} />;',
+    '  const [items,setItems] = useState([{id:"types",label:"Check types",checked:true},{id:"browser",label:"Review in the browser",description:"Include a narrow screen and keyboard navigation.",checked:false},{id:"package",label:"Install mizu-ui",checked:false}]);\n  return <Checklist label="Release checks" items={items} onChange={(id,checked)=>setItems(items.map(i=>i.id===id ? {...i,checked} : i))} />;',
     [
       p(
         "items",

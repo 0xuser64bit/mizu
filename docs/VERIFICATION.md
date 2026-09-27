@@ -6,6 +6,11 @@ certification. The audit started with 28 systems and 36 behavior checks. The
 result contains 104 systems, counted from the catalog rather than file count.
 See [the inventory](COMPONENTS.md) and [audit resolutions](AUDIT.md).
 
+This records verification of the initial candidate at commit `88d31cb`. Public
+setup instructions now use `npm install mizu-ui`; the tarball checks below are
+maintainer validation of the package artifact. That documentation update does not
+constitute an npm publication or change the measurements recorded here.
+
 ## Engineering and distribution
 
 | Gate | Result / scope |

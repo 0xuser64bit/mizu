@@ -7,15 +7,11 @@ diamond markers and purposeful motion connect the collection.
 
 ## Install and render
 
-This checkout prepares an unpublished 0.2.0 candidate. Run
-`npm pack ./packages/mizu` from the repository root, copy the tarball into your
-app, then:
+Run this command in your React application:
 
 ```sh
-npm install ./mizu-ui-0.2.0.tgz motion
+npm install mizu-ui
 ```
-
-After publication: `npm install mizu-ui@0.2.0 motion`.
 
 Peers: React and React DOM >=18.3 <20; Motion >=12 <14. The package is ESM only,
 with TypeScript declarations and source maps. Next.js and Tailwind are not

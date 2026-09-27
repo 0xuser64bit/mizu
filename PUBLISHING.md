@@ -43,9 +43,9 @@ npm publish --access public
 
 Use your registry's required authentication. After publication, install the
 exact released version in a fresh app, run its production build and browser
-smoke checks, then tag the reviewed commit. Update the candidate status and installation copy
-in the showcase and READMEs once the registry version is available. Do not validate publication using
-repository source aliases or a file-linked install.
+smoke checks, then tag the reviewed commit. Public documentation uses
+`npm install mizu-ui`; tarballs are for the repository's pre-release verification.
+Do not validate publication using repository source aliases or a file-linked install.
 
 ## Supported distribution
 

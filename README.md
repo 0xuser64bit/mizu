@@ -5,20 +5,18 @@ hairline rules, diamond markers and motion that follows an action.
 
 The React package lives in [packages/mizu](packages/mizu). The Next.js site is
 its working documentation, archive and instrument lab. Consumers need neither
-Next.js nor Tailwind. Version **0.2.0 is prepared locally; this work does not
-publish it to npm**.
+Next.js nor Tailwind.
 
 ## Use Mizu
 
-For this unpublished checkout, run `npm pack ./packages/mizu` at the repository
-root, copy the resulting tarball into your application, then:
+Install in your React application:
 
 ```sh
-npm install ./mizu-ui-0.2.0.tgz motion
+npm install mizu-ui
 ```
 
-After publication, the registry equivalent is `npm install mizu-ui@0.2.0 motion`. Supported peers:
-React / React DOM >=18.3 <20 and Motion >=12 <14. ESM only.
+Supported peers: React / React DOM >=18.3 <20 and Motion >=12 <14. ESM only.
+Import the stylesheet once, then use the components you need:
 
 ```tsx
 import "mizu-ui/styles.css";

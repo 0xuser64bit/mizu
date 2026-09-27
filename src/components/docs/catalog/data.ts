@@ -108,7 +108,7 @@ export const DATA = [
     "Data",
     "data/Records.tsx",
     "Events connected by a fine thread, with the present kept distinct.",
-    '  return <Timeline label="Illustrative release timeline" items={[{id:"a",title:"Foundations repaired",time:"Monday",state:"complete",body:"Keyboard and motion contracts checked."},{id:"b",title:"Package validated",time:"Tuesday",state:"current",body:"Fresh tarball installation passed."},{id:"c",title:"Release review",time:"Wednesday",state:"upcoming"}]} />;',
+    '  return <Timeline label="Illustrative release timeline" items={[{id:"a",title:"Foundations repaired",time:"Monday",state:"complete",body:"Keyboard and motion contracts checked."},{id:"b",title:"Package validated",time:"Tuesday",state:"current",body:"Installed mizu-ui in a fresh app."},{id:"c",title:"Release review",time:"Wednesday",state:"upcoming"}]} />;',
     [
       p(
         "items",

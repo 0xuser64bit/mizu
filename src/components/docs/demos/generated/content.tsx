@@ -124,7 +124,7 @@ export function ChecklistDemo() {
       description: "Include a narrow screen and keyboard navigation.",
       checked: false,
     },
-    { id: "package", label: "Install the tarball", checked: false },
+    { id: "package", label: "Install mizu-ui", checked: false },
   ]);
   return (
     <Checklist
