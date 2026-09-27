@@ -15,6 +15,8 @@ import {
   type BoardCard,
   Outliner,
   type OutlineItem,
+  QueryBuilder,
+  type QueryGroup,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -231,4 +233,32 @@ export function OutlinerDemo() {
     { id: "d", text: "Write the announcement" },
   ]);
   return <Outliner label="Launch" items={items} onItemsChange={setItems} />;
+}
+
+export function QueryBuilderDemo() {
+  const [query, setQuery] = useState<QueryGroup>({
+    id: "root",
+    combinator: "and",
+    rules: [{ id: "a", field: "plan", operator: "is", value: "pro" }],
+  });
+  return (
+    <QueryBuilder
+      label="Audience"
+      value={query}
+      onValueChange={setQuery}
+      fields={[
+        {
+          id: "plan",
+          label: "Plan",
+          type: "select",
+          options: [
+            { value: "free", label: "Free" },
+            { value: "pro", label: "Pro" },
+          ],
+        },
+        { id: "seats", label: "Seats", type: "number" },
+        { id: "joined", label: "Joined", type: "date" },
+      ]}
+    />
+  );
 }

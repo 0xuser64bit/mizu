@@ -4,9 +4,14 @@ import userEvent from "@testing-library/user-event";
 import {
   Board,
   Outliner,
+  QueryBuilder,
+  describeQuery,
+  matchesQuery,
   moveCard,
   type BoardCard,
   type OutlineItem,
+  type QueryField,
+  type QueryGroup,
 } from "@/mizu";
 import {
   build as buildOutline,
@@ -252,5 +257,150 @@ describe("Outliner", () => {
     second.setSelectionRange(0, 0);
     await user.keyboard("{Backspace}");
     expect(change).toHaveBeenLastCalledWith([{ id: "a", text: "Draft notes" }]);
+  });
+});
+
+const QFIELDS: QueryField[] = [
+  {
+    id: "plan",
+    label: "Plan",
+    type: "select",
+    options: [
+      { value: "free", label: "Free" },
+      { value: "pro", label: "Pro" },
+    ],
+  },
+  { id: "seats", label: "Seats", type: "number", unit: "seats" },
+  { id: "joined", label: "Joined", type: "date" },
+  { id: "name", label: "Name", type: "text" },
+];
+
+describe("query evaluation", () => {
+  const now = Date.UTC(2026, 8, 28);
+  const query: QueryGroup = {
+    id: "root",
+    combinator: "and",
+    rules: [
+      { id: "a", field: "plan", operator: "is", value: "pro" },
+      {
+        id: "g",
+        combinator: "or",
+        rules: [
+          { id: "b", field: "seats", operator: "between", value: [10, 20] },
+          { id: "c", field: "joined", operator: "last", value: 30 },
+        ],
+      },
+      { id: "draft", field: "name", operator: "contains" },
+    ],
+  };
+  it("evaluates nested any/all groups and ignores incomplete rules", () => {
+    expect(
+      matchesQuery(
+        query,
+        { plan: "pro", seats: 12, joined: "2026-01-01" },
+        QFIELDS,
+        now,
+      ),
+    ).toBe(true);
+    expect(
+      matchesQuery(
+        query,
+        { plan: "pro", seats: 40, joined: "2026-09-20" },
+        QFIELDS,
+        now,
+      ),
+    ).toBe(true);
+    expect(
+      matchesQuery(
+        query,
+        { plan: "pro", seats: 40, joined: "2026-01-01" },
+        QFIELDS,
+        now,
+      ),
+    ).toBe(false);
+    expect(matchesQuery(query, { plan: "free", seats: 12 }, QFIELDS, now)).toBe(
+      false,
+    );
+  });
+  it("reads the query as a sentence", () => {
+    expect(describeQuery(query, QFIELDS)).toBe(
+      "Plan is Pro, and (Seats is between 10 seats and 20 seats, or Joined is in the last 30 days)",
+    );
+    expect(
+      describeQuery({ id: "r", combinator: "and", rules: [] }, QFIELDS),
+    ).toBe("Everything");
+  });
+});
+
+describe("QueryBuilder", () => {
+  it("adds, edits and removes conditions with specific labels and a live reading", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    render(
+      <QueryBuilder
+        label="Audience"
+        fields={QFIELDS}
+        onValueChange={change}
+        createId={() => "n1"}
+      />,
+    );
+    expect(
+      screen.getByText("No conditions — everything matches."),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "+ Condition" }));
+    expect(
+      screen.getByRole("combobox", { name: "Field for condition 1" }),
+    ).toHaveFocus();
+    expect(
+      screen.getByRole("group", { name: "Condition 1" }),
+    ).toHaveAccessibleDescription("Needs a value — ignored until complete");
+    await user.selectOptions(
+      screen.getByRole("combobox", { name: "Value for condition 1" }),
+      "pro",
+    );
+    expect(change).toHaveBeenLastCalledWith({
+      id: "root",
+      combinator: "and",
+      rules: [{ id: "n1", field: "plan", operator: "is", value: "pro" }],
+    });
+    expect(screen.getByText("Plan is Pro")).toBeInTheDocument();
+    await user.selectOptions(
+      screen.getByRole("combobox", { name: "Field for condition 1" }),
+      "seats",
+    );
+    expect(change.mock.lastCall![0].rules[0]).toEqual({
+      id: "n1",
+      field: "seats",
+      operator: "eq",
+    });
+    await user.click(
+      screen.getByRole("button", { name: "Remove condition 1" }),
+    );
+    expect(change.mock.lastCall![0].rules).toEqual([]);
+  });
+
+  it("switches a group between all and any and toggles chip values", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    render(
+      <QueryBuilder
+        label="Audience"
+        fields={QFIELDS}
+        defaultValue={{
+          id: "root",
+          combinator: "and",
+          rules: [{ id: "a", field: "plan", operator: "any", value: [] }],
+        }}
+        onValueChange={change}
+      />,
+    );
+    await user.click(screen.getByRole("radio", { name: "Any" }));
+    expect(change.mock.lastCall![0].combinator).toBe("or");
+    await user.click(screen.getByRole("button", { name: "Free" }));
+    expect(screen.getByRole("button", { name: "Free" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(change.mock.lastCall![0].rules[0].value).toEqual(["free"]);
   });
 });

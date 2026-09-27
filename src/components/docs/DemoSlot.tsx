@@ -56,6 +56,9 @@ const SHOWCASES = {
   outliner: dynamic(() =>
     import("./demos/signature/outliner").then((m) => m.OutlinerShowcase),
   ),
+  "query-builder": dynamic(() =>
+    import("./demos/signature/query").then((m) => m.QueryBuilderShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

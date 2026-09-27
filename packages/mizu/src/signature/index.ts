@@ -7,3 +7,4 @@ export * from "./FlowGraph.tsx";
 export * from "./Treemap.tsx";
 export * from "./Board.tsx";
 export * from "./Outliner.tsx";
+export * from "./QueryBuilder.tsx";

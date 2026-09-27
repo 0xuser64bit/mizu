@@ -426,4 +426,40 @@ export const SIGNATURE = [
       { keys: "Backspace", action: "At the start: merge with the line above" },
     ],
   }),
+  s({
+    name: "QueryBuilder",
+    source: "QueryBuilder.tsx",
+    tagline:
+      "Conditions that read as a sentence: typed operators per field, nested any/all groups, a plain-language reading and an evaluator for local filtering.",
+    example:
+      '  const [query,setQuery]=useState<QueryGroup>({id:"root",combinator:"and",rules:[{id:"a",field:"plan",operator:"is",value:"pro"}]});\n  return <QueryBuilder label="Audience" value={query} onValueChange={setQuery} fields={[{id:"plan",label:"Plan",type:"select",options:[{value:"free",label:"Free"},{value:"pro",label:"Pro"}]},{id:"seats",label:"Seats",type:"number"},{id:"joined",label:"Joined",type:"date"}]} />;',
+    imports: "QueryBuilder, type QueryGroup",
+    props: [
+      p(
+        "label / fields",
+        "string / QueryField[]",
+        "Region name; fields have id, label, type (text, number, date, select, boolean), options and unit.",
+      ),
+      p(
+        "value / defaultValue / onValueChange",
+        "QueryGroup",
+        "The query: a combinator and rules or nested groups.",
+      ),
+      p("maxDepth", "number", "Group nesting limit.", "3"),
+      p("footer", "ReactNode", "Beside the reading, e.g. a live match count."),
+      p(
+        "describeQuery(query, fields)",
+        "function",
+        "The plain-language reading, for saved segments.",
+      ),
+      p(
+        "matchesQuery(query, record, fields, now?)",
+        "function",
+        "Evaluate a record locally; incomplete rules are ignored.",
+      ),
+    ],
+    a11y: "Each group is a fieldset; the all/any choice is a real radio group. Every condition is a named group of native selects and inputs with specific labels, and an incomplete condition is described in words. Additions and removals are announced, and a new condition receives focus.",
+    motion:
+      "New conditions unfold from the left, removed ones close, and the and/or joins roll over like a counter when a group's logic changes. Reduced motion shows each change immediately.",
+  }),
 ];

@@ -25,6 +25,9 @@ export const GENERATED_DEMOS = {
   outliner: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.OutlinerDemo),
   ),
+  "query-builder": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.QueryBuilderDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),
