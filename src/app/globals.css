@@ -184,3 +184,9 @@ body {
 .mizu-demo-board .mizu-flap { --mizu-flap-size: clamp(14px, 2.2vw, 22px); }
 .mizu-demo-flap-message, .mizu-demo-flap-clock { display: grid; gap: 22px; justify-items: start; }
 .mizu-demo-flap-message form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+.mizu-demo-preview { display: grid; align-content: start; justify-items: start; gap: 14px; padding: 22px; }
+.mizu-demo-preview > p { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.mizu-demo-preview img { display: block; width: 100%; max-height: 180px; object-fit: cover; }
+.mizu-demo-preview pre { width: 100%; margin: 0; padding: 14px; overflow: auto; background: var(--mizu-ink-2); border: 1px solid var(--mizu-line); font: 11.5px/1.7 var(--mizu-font-mono); color: var(--mizu-muted); white-space: pre; }
+.mizu-demo-preview .mizu-description-list { width: 100%; }
+.mizu-demo-preview .mizu-image-figure { width: 100%; margin: 0; }

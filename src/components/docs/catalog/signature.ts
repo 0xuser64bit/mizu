@@ -800,4 +800,49 @@ export const SIGNATURE = [
     motion:
       "Each cell falls forward through the drum like the real mechanism: the top leaf folds down and darkens while the next character lands with a small overshoot, and neighbouring cells start a beat apart so a change ripples along the line. Long journeys skip ahead to the last dozen flaps. Reduced motion shows the new value at once.",
   }),
+  s({
+    name: "ColumnBrowser",
+    source: "ColumnBrowser.tsx",
+    tagline:
+      "Miller columns: choose an item and its contents open alongside, loading on demand, until a leaf opens in a preview — a stack you push and pop on narrow screens.",
+    example:
+      '  return <ColumnBrowser label="Library" items={[{id:"books",label:"Books",children:[{id:"dune",label:"Dune",meta:"1965"},{id:"piranesi",label:"Piranesi",meta:"2020"}]},{id:"films",label:"Films",children:[]}]} defaultPath={["books"]} />;',
+    props: [
+      p(
+        "label / items",
+        "string / BrowserItem[]",
+        "The hierarchy's name and top level: id, label, children or hasChildren, with an optional icon, meta and disabled.",
+      ),
+      p(
+        "loadChildren",
+        "(item) => Promise<BrowserItem[]>",
+        "Fetches the children of items marked hasChildren on first visit; results are kept, and failures offer a retry.",
+      ),
+      p(
+        "path / defaultPath / onPathChange",
+        "string[]",
+        "The selected ids from the top level down.",
+      ),
+      p(
+        "renderPreview / onOpen",
+        "(item, trail) => ReactNode / (item) => void",
+        "The last pane for an item without children, and what Enter or a double-click does with it.",
+      ),
+      p(
+        "columnWidth / empty",
+        "number / ReactNode",
+        "Column width (240) and what an empty column says. Height comes from --mizu-columns-height (420px).",
+      ),
+    ],
+    a11y: "Each column is a listbox named after its parent, with one tab stop for the whole browser. Arrow keys walk up and down a column and into or out of the next, Home and End jump, and typing finds an item by name. Entering a column announces its size or that it is loading; failures are alerts with a retry. A labelled breadcrumb marks the current location, and on narrow screens a back button names where it returns to.",
+    motion:
+      "New columns slide in from the one that opened them while the track glides to keep the newest in view; the selection bar grows in the focused column and the chevron of an open folder steps forward. On narrow screens panes push in from the right and pop back from the left. Loading columns sweep a hairline over skeleton rows. Reduced motion keeps every state and drops the travel.",
+    keys: [
+      { keys: "↑ ↓", action: "Move within a column" },
+      { keys: "→ Enter", action: "Open the chosen folder; Enter opens a file" },
+      { keys: "←", action: "Back to the parent column" },
+      { keys: "Home End", action: "First or last item" },
+      { keys: "a–z", action: "Jump to a name" },
+    ],
+  }),
 ];

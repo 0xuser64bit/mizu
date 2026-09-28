@@ -16,3 +16,4 @@ export * from "./TriageDeck.tsx";
 export * from "./Gallery.tsx";
 export * from "./Folio.tsx";
 export * from "./SplitFlap.tsx";
+export * from "./ColumnBrowser.tsx";

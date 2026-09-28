@@ -81,6 +81,9 @@ const SHOWCASES = {
   "split-flap": dynamic(() =>
     import("./demos/signature/flap").then((m) => m.SplitFlapShowcase),
   ),
+  "column-browser": dynamic(() =>
+    import("./demos/signature/columns").then((m) => m.ColumnBrowserShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

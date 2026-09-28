@@ -1,0 +1,285 @@
+/* ColumnBrowser — a hierarchy walked column by column. */
+.mizu-columns {
+  --mizu-columns-height: 420px;
+  container: mizu-columns / inline-size;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  height: var(--mizu-columns-height);
+  border: 1px solid var(--mizu-line);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+}
+.mizu-columns-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 8px 0 4px;
+  border-bottom: 1px solid var(--mizu-line);
+}
+.mizu-columns-back {
+  display: none;
+}
+.mizu-columns-crumbs {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mizu-columns-crumbs li {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.mizu-columns-crumbs li + li::before {
+  content: "/";
+  padding: 0 2px;
+  color: var(--mizu-faint);
+}
+.mizu-columns-crumbs button {
+  min-height: 36px;
+  padding: 0 8px;
+  overflow: hidden;
+  border: 0;
+  background: none;
+  color: var(--mizu-muted);
+  font: inherit;
+  letter-spacing: inherit;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.mizu-columns-crumbs button:hover,
+.mizu-columns-crumbs li:last-child button {
+  color: var(--mizu-paper);
+}
+.mizu-columns-count {
+  flex: none;
+  color: var(--mizu-faint);
+  font: 11px var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.mizu-columns-track {
+  display: flex;
+  min-height: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+.mizu-columns-pane {
+  position: relative;
+  flex: none;
+  width: var(--mizu-columns-width, 240px);
+  overflow-y: auto;
+  border-right: 1px solid var(--mizu-line);
+  animation: mizu-columns-arrive 360ms var(--mizu-ease-expo) both;
+}
+.mizu-columns-pane:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: -2px;
+}
+.mizu-columns-preview {
+  flex: 1 0 280px;
+  width: auto;
+  border-right: 0;
+}
+.mizu-columns-option {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 12px 0 14px;
+  color: var(--mizu-muted);
+  font-size: 14px;
+  cursor: default;
+  user-select: none;
+  outline: none;
+}
+.mizu-columns-option:hover {
+  color: var(--mizu-paper);
+}
+.mizu-columns-option::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 2px;
+  background: var(--mizu-accent);
+  transform: scaleY(0);
+  transition: transform 300ms var(--mizu-ease-expo);
+}
+.mizu-columns-option[aria-selected="true"] {
+  background: var(--mizu-ink-2);
+  color: var(--mizu-paper);
+}
+.mizu-columns-pane[data-current] .mizu-columns-option[aria-selected="true"] {
+  background: var(--mizu-ink-3);
+}
+.mizu-columns-pane[data-current]
+  .mizu-columns-option[aria-selected="true"]::before {
+  transform: scaleY(1);
+}
+.mizu-columns-option:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--mizu-accent);
+}
+.mizu-columns-option[aria-disabled="true"] {
+  opacity: 0.4;
+}
+.mizu-columns-option > span:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mizu-columns-icon {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--mizu-faint);
+}
+.mizu-columns-meta {
+  color: var(--mizu-faint);
+  font: 11px var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.mizu-columns-chevron {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  opacity: 0.5;
+  transition: translate 300ms var(--mizu-ease-expo);
+}
+.mizu-columns-option[aria-selected="true"] .mizu-columns-chevron {
+  color: var(--mizu-accent);
+  opacity: 1;
+  translate: 2px 0;
+}
+.mizu-columns-note {
+  margin: 0;
+  padding: 16px 14px;
+  color: var(--mizu-faint);
+  font-size: 13px;
+}
+.mizu-columns-pane .mizu-error-state {
+  padding: 16px 14px;
+}
+.mizu-columns-loading {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  overflow: hidden;
+}
+.mizu-columns-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 30%;
+  height: 1px;
+  background: var(--mizu-accent);
+  animation: mizu-sig-sweep 1.4s var(--mizu-ease-wipe) infinite;
+}
+.mizu-columns-skeleton {
+  display: grid;
+  gap: 14px;
+  padding: 16px 14px;
+}
+.mizu-columns-skeleton span {
+  height: 8px;
+  background: var(--mizu-ink-2);
+}
+.mizu-columns-summary {
+  display: grid;
+  align-content: end;
+  gap: 8px;
+  min-height: 100%;
+  padding: 24px;
+}
+.mizu-columns-summary p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.mizu-columns-summary span {
+  color: var(--mizu-muted);
+  font: 12px var(--mizu-font-mono);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mizu-columns-track {
+    scroll-behavior: auto;
+  }
+}
+@keyframes mizu-columns-arrive {
+  from {
+    opacity: 0;
+    translate: -12px 0;
+  }
+}
+
+/* Narrow: one pane at a time, pushed and popped like a stack. */
+@container mizu-columns (max-width: 519px) {
+  .mizu-columns-back {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: none;
+    color: var(--mizu-paper);
+    cursor: pointer;
+  }
+  .mizu-columns-back:disabled {
+    opacity: 0.25;
+  }
+  .mizu-columns-back svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+  .mizu-columns-track {
+    overflow: hidden;
+  }
+  .mizu-columns-pane {
+    display: none;
+    width: 100%;
+    border-right: 0;
+  }
+  .mizu-columns-pane[data-current] {
+    display: block;
+    animation: mizu-columns-push 380ms var(--mizu-ease-expo) both;
+  }
+  .mizu-columns-pane[data-current][data-from="back"] {
+    animation-name: mizu-columns-pop;
+  }
+}
+@keyframes mizu-columns-push {
+  from {
+    opacity: 0;
+    translate: 32px 0;
+  }
+}
+@keyframes mizu-columns-pop {
+  from {
+    opacity: 0;
+    translate: -32px 0;
+  }
+}

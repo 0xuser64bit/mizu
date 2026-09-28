@@ -8,6 +8,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
+  ColumnBrowser,
   Folio,
   Gallery,
   Sidenote,
@@ -15,6 +16,7 @@ import {
   FLAP_CHARACTERS,
   flapPath,
   justifyRows,
+  type BrowserItem,
   type GalleryItem,
 } from "@/mizu";
 import { mockLayout } from "./helpers";
@@ -291,5 +293,117 @@ describe("SplitFlap", () => {
     expect(padded.querySelectorAll(".mizu-flap-cell")[2]).toHaveTextContent(
       "7777",
     );
+  });
+});
+
+const TREE: BrowserItem[] = [
+  {
+    id: "fruit",
+    label: "Fruit",
+    children: [
+      { id: "apple", label: "Apple", meta: "red" },
+      { id: "banana", label: "Banana" },
+      { id: "blueberry", label: "Blueberry" },
+      { id: "cherry", label: "Cherry", disabled: true },
+    ],
+  },
+  { id: "veg", label: "Vegetables", hasChildren: true },
+  { id: "nuts", label: "Nuts", children: [] },
+];
+
+describe("ColumnBrowser", () => {
+  let restore: () => void;
+  afterEach(() => restore());
+
+  it("walks columns with the keyboard and opens leaves", async () => {
+    restore = mockLayout(900, 400);
+    const user = userEvent.setup(),
+      change = vi.fn(),
+      open = vi.fn();
+    render(
+      <ColumnBrowser
+        label="Pantry"
+        items={TREE}
+        onPathChange={change}
+        onOpen={open}
+        renderPreview={(item, trail) => (
+          <p>
+            Preview of {item.label} in {trail[0]!.label}
+          </p>
+        )}
+      />,
+    );
+    const top = screen.getByRole("listbox", { name: "Pantry" });
+    await user.click(within(top).getByRole("option", { name: /Fruit/ }));
+    expect(change).toHaveBeenLastCalledWith(["fruit"]);
+    expect(screen.getByRole("listbox", { name: "Fruit" })).toBeInTheDocument();
+
+    await user.keyboard("{ArrowRight}");
+    expect(change).toHaveBeenLastCalledWith(["fruit", "apple"]);
+    expect(screen.getByRole("option", { name: /Apple/ })).toHaveFocus();
+    expect(screen.getByText("Preview of Apple in Fruit")).toBeInTheDocument();
+
+    await user.keyboard("{ArrowDown}");
+    expect(screen.getByRole("option", { name: "Banana" })).toHaveFocus();
+    await user.keyboard("bl");
+    expect(screen.getByRole("option", { name: "Blueberry" })).toHaveFocus();
+    // Disabled items are skipped.
+    await user.keyboard("{End}");
+    expect(screen.getByRole("option", { name: "Blueberry" })).toHaveFocus();
+    await user.keyboard("{Enter}");
+    expect(open).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "blueberry" }),
+    );
+
+    await user.keyboard("{ArrowLeft}");
+    expect(change).toHaveBeenLastCalledWith(["fruit"]);
+    expect(within(top).getByRole("option", { name: /Fruit/ })).toHaveFocus();
+    expect(
+      screen.getByRole("navigation", { name: "Location" }),
+    ).toHaveTextContent("PantryFruit");
+  });
+
+  it("loads on demand, reports failures and retries", async () => {
+    restore = mockLayout(900, 400);
+    const user = userEvent.setup();
+    let fail: (e: Error) => void = () => {};
+    const load = vi
+      .fn<(item: BrowserItem) => Promise<readonly BrowserItem[]>>()
+      .mockReturnValueOnce(new Promise((_, reject) => (fail = reject)))
+      .mockResolvedValueOnce([{ id: "leek", label: "Leek" }]);
+    render(<ColumnBrowser label="Pantry" items={TREE} loadChildren={load} />);
+    await user.click(screen.getByRole("option", { name: /Vegetables/ }));
+    expect(screen.getByRole("listbox", { name: "Vegetables" })).toHaveAttribute(
+      "aria-busy",
+      "true",
+    );
+    fail(new Error("Shelf unreachable."));
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "Shelf unreachable.",
+    );
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+    expect(
+      await screen.findByRole("option", { name: "Leek" }),
+    ).toBeInTheDocument();
+    expect(load).toHaveBeenCalledTimes(2);
+    await user.click(screen.getByRole("option", { name: /Nuts/ }));
+    expect(screen.getByText("Nothing here.")).toBeInTheDocument();
+  });
+
+  it("pushes and pops one pane at a time when narrow", async () => {
+    restore = mockLayout(400, 400);
+    const user = userEvent.setup();
+    const { container } = render(<ColumnBrowser label="Pantry" items={TREE} />);
+    const current = () =>
+      container
+        .querySelector("[data-pane][data-current]")!
+        .getAttribute("aria-label");
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: /Back/ })).toBeDisabled(),
+    );
+    await user.click(screen.getByRole("option", { name: /Fruit/ }));
+    expect(current()).toBe("Fruit");
+    await user.click(screen.getByRole("button", { name: "Back to Pantry" }));
+    expect(current()).toBe("Pantry");
   });
 });

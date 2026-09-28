@@ -52,6 +52,9 @@ export const GENERATED_DEMOS = {
   "split-flap": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.SplitFlapDemo),
   ),
+  "column-browser": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.ColumnBrowserDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

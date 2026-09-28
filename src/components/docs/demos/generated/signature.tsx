@@ -25,6 +25,7 @@ import {
   Sidenote,
   SplitFlap,
   Button,
+  ColumnBrowser,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -438,5 +439,25 @@ export function SplitFlapDemo() {
         Advance
       </Button>
     </div>
+  );
+}
+
+export function ColumnBrowserDemo() {
+  return (
+    <ColumnBrowser
+      label="Library"
+      items={[
+        {
+          id: "books",
+          label: "Books",
+          children: [
+            { id: "dune", label: "Dune", meta: "1965" },
+            { id: "piranesi", label: "Piranesi", meta: "2020" },
+          ],
+        },
+        { id: "films", label: "Films", children: [] },
+      ]}
+      defaultPath={["books"]}
+    />
   );
 }
