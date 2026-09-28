@@ -63,6 +63,9 @@ const SHOWCASES = {
     import("./demos/signature/annotator").then((m) => m.AnnotatorShowcase),
   ),
   tour: dynamic(() => import("./demos/signature/tour").then((m) => m.TourShowcase)),
+  interview: dynamic(() =>
+    import("./demos/signature/interview").then((m) => m.InterviewShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

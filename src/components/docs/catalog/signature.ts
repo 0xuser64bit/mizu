@@ -550,4 +550,49 @@ export const SIGNATURE = [
       { keys: "Esc", action: "Leave the tour" },
     ],
   }),
+  s({
+    name: "Interview",
+    source: "Interview.tsx",
+    tagline:
+      "A conversation instead of a form: one question at a time, letter keys for choices, branching, a review before sending and an honest submit.",
+    example:
+      '  return <Interview label="Feedback" onSubmit={(answers) => localStorage.setItem("mizu-feedback", JSON.stringify(answers))} questions={[{id:"role",title:"What do you do most days?",type:"choice",required:true,options:[{value:"design",label:"Design"},{value:"code",label:"Engineering"}]},{id:"score",title:"How was your week?",type:"scale",min:1,max:5},{id:"note",title:"Anything else?",type:"long"}]} />;',
+    props: [
+      p(
+        "label / questions",
+        "string / InterviewQuestion[]",
+        "id, title, description, type (text, long, email, number, choice, multi, scale, yesno), options, required, min, max, validate and next.",
+      ),
+      p(
+        "answers / defaultAnswers / onAnswersChange",
+        "Record<string, InterviewAnswer>",
+        "Answers by question id.",
+      ),
+      p(
+        "onSubmit",
+        "(answers) => void | Promise",
+        "Resolve to finish; throw to keep everything and offer a retry.",
+      ),
+      p(
+        "intro / done",
+        "{ title, body, start } / ReactNode",
+        "Optional welcome screen and the completion message.",
+      ),
+      p(
+        "submitLabel",
+        "string",
+        "The review screen's action.",
+        '"Send answers"',
+      ),
+    ],
+    a11y: "Each question is a labelled form; focus moves to its first field. Choices are real radio or checkbox groups with letter shortcuts as an enhancement; the scale is a radio group. Errors are alerts linked to the field. Progress is a progressbar, and each new question, the review and the result are announced.",
+    motion:
+      "Questions rise in going forward and settle downward going back. A single choice blinks twice to confirm and moves on by itself; a rejected answer shakes once. The progress hairline stretches and a diamond seal turns into place when it is sent. Reduced motion keeps every state without travel or blinking.",
+    keys: [
+      { keys: "Enter", action: "Continue (Ctrl + Enter in long answers)" },
+      { keys: "A B C …", action: "Choose an option; multiple choice toggles" },
+      { keys: "Y N", action: "Answer a yes-or-no question" },
+      { keys: "1 … 9 0", action: "Pick a score (0 is ten)" },
+    ],
+  }),
 ];

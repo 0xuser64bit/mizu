@@ -17,6 +17,7 @@ import {
   Annotator,
   type Annotation,
   Tour,
+  Interview,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -306,5 +307,36 @@ export function TourDemo() {
         ]}
       />
     </>
+  );
+}
+
+export function InterviewDemo() {
+  return (
+    <Interview
+      label="Feedback"
+      onSubmit={(answers) =>
+        localStorage.setItem("mizu-feedback", JSON.stringify(answers))
+      }
+      questions={[
+        {
+          id: "role",
+          title: "What do you do most days?",
+          type: "choice",
+          required: true,
+          options: [
+            { value: "design", label: "Design" },
+            { value: "code", label: "Engineering" },
+          ],
+        },
+        {
+          id: "score",
+          title: "How was your week?",
+          type: "scale",
+          min: 1,
+          max: 5,
+        },
+        { id: "note", title: "Anything else?", type: "long" },
+      ]}
+    />
   );
 }

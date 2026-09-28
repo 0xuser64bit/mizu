@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useState } from "react";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Tour, type TourStep } from "@/mizu";
+import { Interview, Tour, type InterviewQuestion, type TourStep } from "@/mizu";
 import { mockLayout } from "./helpers";
 
 const STEPS: TourStep[] = [
@@ -89,5 +89,110 @@ describe("Tour", () => {
     );
     closed();
     expect(finish).not.toHaveBeenCalled();
+  });
+});
+
+const QS: InterviewQuestion[] = [
+  { id: "name", title: "Your name?", type: "text", required: true },
+  {
+    id: "role",
+    title: "Your role?",
+    type: "choice",
+    required: true,
+    options: [
+      { value: "design", label: "Design" },
+      { value: "code", label: "Engineering" },
+    ],
+  },
+  {
+    id: "system",
+    title: "Keep a system?",
+    type: "yesno",
+    next: (a) => (a.system ? "which" : "score"),
+  },
+  { id: "which", title: "Which system?", type: "text" },
+  { id: "score", title: "Score?", type: "scale", min: 1, max: 5 },
+];
+
+describe("Interview", () => {
+  it("asks one question at a time, refuses empty required answers and branches", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    render(
+      <Interview
+        label="Onboarding"
+        questions={QS}
+        onAnswersChange={change}
+        onSubmit={() => {}}
+      />,
+    );
+    await user.keyboard("{Enter}");
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "This one needs an answer to continue.",
+    );
+    await user.type(
+      screen.getByRole("textbox", { name: /Your name/ }),
+      "Rin{Enter}",
+    );
+    expect(
+      await screen.findByRole("radiogroup", { name: /Your role/ }),
+    ).toBeInTheDocument();
+    await user.keyboard("b");
+    expect(
+      await screen.findByRole("heading", { name: "Keep a system?" }),
+    ).toBeInTheDocument();
+    await user.keyboard("n");
+    expect(
+      await screen.findByRole("heading", { name: "Score?" }),
+    ).toBeInTheDocument();
+    expect(change).toHaveBeenLastCalledWith({
+      name: "Rin",
+      role: "code",
+      system: false,
+    });
+  });
+
+  it("reviews, edits, and retries a failed send without losing answers", async () => {
+    const user = userEvent.setup();
+    const submit = vi
+      .fn()
+      .mockRejectedValueOnce(new Error("offline"))
+      .mockResolvedValueOnce(undefined);
+    render(
+      <Interview
+        label="Onboarding"
+        questions={QS}
+        defaultAnswers={{
+          name: "Rin",
+          role: "design",
+          system: true,
+          which: "Mizu",
+          score: 4,
+        }}
+        onSubmit={submit}
+        done="All set."
+      />,
+    );
+    for (let i = 0; i < 5; i++)
+      await user.click(screen.getByRole("button", { name: /Next|Review/ }));
+    expect(
+      screen.getByRole("heading", { name: "Before you send" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Mizu")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Edit: Your role?" }));
+    expect(await screen.findByRole("radio", { name: /Design/ })).toBeChecked();
+    for (let i = 0; i < 4; i++)
+      await user.click(screen.getByRole("button", { name: /Next|Review/ }));
+    await user.click(screen.getByRole("button", { name: /Send answers/ }));
+    expect(await screen.findByText(/Sending didn’t work/)).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /Try again/ }));
+    expect(await screen.findByText("All set.")).toBeInTheDocument();
+    expect(submit).toHaveBeenLastCalledWith({
+      name: "Rin",
+      role: "design",
+      system: true,
+      which: "Mizu",
+      score: 4,
+    });
   });
 });

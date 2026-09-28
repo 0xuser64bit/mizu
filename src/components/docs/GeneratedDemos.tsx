@@ -34,6 +34,9 @@ export const GENERATED_DEMOS = {
   tour: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.TourDemo),
   ),
+  interview: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.InterviewDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),
