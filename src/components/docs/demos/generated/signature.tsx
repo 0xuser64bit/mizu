@@ -18,6 +18,7 @@ import {
   type Annotation,
   Tour,
   Interview,
+  TransferQueue,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -337,6 +338,28 @@ export function InterviewDemo() {
         },
         { id: "note", title: "Anything else?", type: "long" },
       ]}
+    />
+  );
+}
+
+export function TransferQueueDemo() {
+  return (
+    <TransferQueue
+      label="Local reads"
+      transfer={async (file, { signal, onProgress }) => {
+        const reader = file.stream().getReader();
+        let loaded = 0;
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) return;
+          if (signal.aborted) {
+            await reader.cancel();
+            throw new DOMException("Stopped", "AbortError");
+          }
+          loaded += value.byteLength;
+          onProgress(loaded);
+        }
+      }}
     />
   );
 }

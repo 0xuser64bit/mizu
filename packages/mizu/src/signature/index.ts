@@ -11,3 +11,4 @@ export * from "./QueryBuilder.tsx";
 export * from "./Annotator.tsx";
 export * from "./Tour.tsx";
 export * from "./Interview.tsx";
+export * from "./TransferQueue.tsx";

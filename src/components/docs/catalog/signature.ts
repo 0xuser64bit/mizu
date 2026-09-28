@@ -595,4 +595,39 @@ export const SIGNATURE = [
       { keys: "1 … 9 0", action: "Pick a score (0 is ten)" },
     ],
   }),
+  s({
+    name: "TransferQueue",
+    source: "TransferQueue.tsx",
+    tagline:
+      "Uploads you can watch and steer: a concurrency-limited queue around your own transfer function, with live speed, time left, pause, retry and cancel.",
+    example:
+      '  return <TransferQueue label="Local reads" transfer={async (file, { signal, onProgress }) => { const reader = file.stream().getReader(); let loaded = 0; for (;;) { const { done, value } = await reader.read(); if (done) return; if (signal.aborted) { await reader.cancel(); throw new DOMException("Stopped", "AbortError"); } loaded += value.byteLength; onProgress(loaded); } }} />;',
+    props: [
+      p("label", "string", "Region name; also names the drop zone."),
+      p(
+        "transfer",
+        "(file, { signal, onProgress }) => Promise",
+        "Your upload or per-file task. Honour the signal for pause and cancel; report loaded bytes. For upload progress use XMLHttpRequest's upload.onprogress — fetch cannot report it.",
+      ),
+      p("concurrency", "number", "Transfers running at once.", "2"),
+      p(
+        "accept / maxSize",
+        "string / number",
+        "Validation applied by the drop zone before anything is queued.",
+      ),
+      p(
+        "onComplete / onItemsChange",
+        "function",
+        "One finished file; the whole queue after any change.",
+      ),
+      p(
+        "ref",
+        "TransferQueueHandle",
+        "add(files) — queue files from paste handlers or other sources.",
+      ),
+    ],
+    a11y: "Files arrive through the existing FileDropzone (a real button and file input, with validation errors as alerts). Each transfer is a progressbar whose value text reads its percentage, speed and time left; failures are alerts; every action names its file. Queueing, finishing, failing and cancelling are announced.",
+    motion:
+      "Rows slide in as files are queued and close when cleared. Progress moves continuously, batched to one update per frame; the colour changes with state and a check diamond pops on completion. The overall bar and throughput trace keep pace. Reduced motion removes the travel.",
+  }),
 ];

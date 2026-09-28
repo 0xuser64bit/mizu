@@ -66,6 +66,9 @@ const SHOWCASES = {
   interview: dynamic(() =>
     import("./demos/signature/interview").then((m) => m.InterviewShowcase),
   ),
+  "transfer-queue": dynamic(() =>
+    import("./demos/signature/transfer").then((m) => m.TransferQueueShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

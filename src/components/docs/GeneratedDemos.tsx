@@ -37,6 +37,9 @@ export const GENERATED_DEMOS = {
   interview: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.InterviewDemo),
   ),
+  "transfer-queue": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.TransferQueueDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

@@ -1,8 +1,16 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { useState } from "react";
+import { createRef, useState } from "react";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Interview, Tour, type InterviewQuestion, type TourStep } from "@/mizu";
+import {
+  Interview,
+  Tour,
+  TransferQueue,
+  type InterviewQuestion,
+  type TourStep,
+  type TransferFunction,
+  type TransferQueueHandle,
+} from "@/mizu";
 import { mockLayout } from "./helpers";
 
 const STEPS: TourStep[] = [
@@ -194,5 +202,83 @@ describe("Interview", () => {
       which: "Mizu",
       score: 4,
     });
+  });
+});
+
+describe("TransferQueue", () => {
+  type Pending = {
+    file: File;
+    signal: AbortSignal;
+    progress: (n: number) => void;
+    resolve: () => void;
+    reject: (e: Error) => void;
+  };
+  const setup = () => {
+    const calls: Pending[] = [];
+    const transfer: TransferFunction = (file, { signal, onProgress }) =>
+      new Promise<void>((resolve, reject) =>
+        calls.push({ file, signal, progress: onProgress, resolve, reject }),
+      );
+    const handle = createRef<TransferQueueHandle>();
+    const complete = vi.fn();
+    render(
+      <TransferQueue
+        ref={handle}
+        label="Uploads"
+        transfer={transfer}
+        concurrency={2}
+        onComplete={complete}
+      />,
+    );
+    const files = ["a.png", "b.zip", "c.pdf"].map(
+      (n) => new File(["x".repeat(100)], n),
+    );
+    return { calls, handle, complete, files };
+  };
+  const frame = () => act(() => new Promise((r) => setTimeout(r, 40)));
+
+  it("runs at most `concurrency` transfers and reports progress and completion", async () => {
+    const { calls, handle, complete, files } = setup();
+    act(() => handle.current!.add(files));
+    await frame();
+    expect(calls).toHaveLength(2);
+    expect(screen.getByText("Waiting")).toBeInTheDocument();
+    act(() => calls[0]!.progress(50));
+    await frame();
+    expect(screen.getByRole("progressbar", { name: "a.png" })).toHaveAttribute(
+      "aria-valuenow",
+      "50",
+    );
+    await act(async () => calls[0]!.resolve());
+    await frame();
+    expect(complete).toHaveBeenCalledWith(
+      expect.objectContaining({ status: "done" }),
+    );
+    expect(calls).toHaveLength(3);
+    expect(
+      screen.getByRole("button", { name: "Clear a.png" }),
+    ).toBeInTheDocument();
+  });
+
+  it("pauses by aborting, resumes by restarting, retries failures and cancels", async () => {
+    const user = userEvent.setup();
+    const { calls, handle, files } = setup();
+    act(() => handle.current!.add(files.slice(0, 2)));
+    await frame();
+    await user.click(screen.getByRole("button", { name: "Pause a.png" }));
+    expect(calls[0]!.signal.aborted).toBe(true);
+    expect(screen.getByText("Paused at 0%")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Resume a.png" }));
+    await frame();
+    expect(calls).toHaveLength(3);
+    await act(async () => calls[1]!.reject(new Error("Server said no")));
+    await frame();
+    expect(screen.getByRole("alert")).toHaveTextContent("Server said no");
+    await user.click(screen.getByRole("button", { name: "Retry b.zip" }));
+    await frame();
+    expect(calls).toHaveLength(4);
+    await user.click(screen.getByRole("button", { name: "Cancel b.zip" }));
+    expect(calls[3]!.signal.aborted).toBe(true);
+    expect(screen.queryByText("b.zip")).not.toBeInTheDocument();
   });
 });
