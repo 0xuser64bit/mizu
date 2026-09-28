@@ -309,6 +309,7 @@ function Synth() {
             options={Object.keys(NOTES).map((n) => ({ value: n, label: n }))}
           />
           <Button
+            arrow={false}
             onPointerDown={start}
             onPointerUp={stop}
             onPointerLeave={stop}
@@ -483,6 +484,7 @@ function Grade() {
         <Button
           type="button"
           variant="ghost"
+          arrow={false}
           onPointerDown={() => setCompare(true)}
           onPointerUp={() => setCompare(false)}
           onPointerLeave={() => setCompare(false)}
