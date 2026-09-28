@@ -266,7 +266,7 @@ textarea.mizu-interview-input {
   height: 26px;
   background: var(--mizu-accent);
   transform: rotate(45deg);
-  animation: mizu-interview-seal 700ms var(--mizu-ease-expo) both;
+  animation: mizu-sig-seal 700ms var(--mizu-ease-expo) both;
 }
 @keyframes mizu-interview-blink {
   0%,
@@ -276,11 +276,6 @@ textarea.mizu-interview-input {
   25%,
   75% {
     background: var(--mizu-ink-2);
-  }
-}
-@keyframes mizu-interview-seal {
-  from {
-    transform: rotate(-135deg) scale(0);
   }
 }
 @container (max-width: 520px) {

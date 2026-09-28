@@ -630,4 +630,43 @@ export const SIGNATURE = [
     motion:
       "Rows slide in as files are queued and close when cleared. Progress moves continuously, batched to one update per frame; the colour changes with state and a check diamond pops on completion. The overall bar and throughput trace keep pace. Reduced motion removes the travel.",
   }),
+  s({
+    name: "TriageDeck",
+    source: "TriageDeck.tsx",
+    tagline:
+      "Decisions at the speed of a gesture: fling the top card toward a decision, or use arrows and buttons — with tallies and an undo that flies the card back.",
+    example:
+      '  return <TriageDeck label="Inbox" items={[{id:"a",title:"Invoice from Northworks"},{id:"b",title:"Team offsite dates"}]} itemLabel={m=>m.title} decisions={[{id:"archive",label:"Archive",direction:"left"},{id:"keep",label:"Keep",direction:"right",tone:"success"}]} renderItem={m=><h3 style={{margin:0,fontSize:24}}>{m.title}</h3>} />;',
+    props: [
+      p(
+        "label / items / renderItem",
+        "string / T[] / (item) => ReactNode",
+        "Region name, the queue (each with an id) and a card body.",
+      ),
+      p(
+        "itemLabel",
+        "(item) => string",
+        "A short name used in announcements and the deck's label.",
+      ),
+      p(
+        "decisions",
+        "TriageDecision[]",
+        "id, label, direction (left, right or up — one each) and tone.",
+      ),
+      p(
+        "onDecide / onUndo",
+        "(item, decision) => void",
+        "Record or reverse a decision.",
+      ),
+      p("empty", "ReactNode", "Shown when every item has been decided."),
+    ],
+    a11y: "The deck is a focusable group named after the current item and its position. Arrow keys make the decisions a fling would; every decision also has a labelled button with its key, and Backspace undoes. Each decision announces what happened and what comes next. Tallies are a labelled list.",
+    motion:
+      "The top card follows your hand and tilts with it; decision stamps fade in as you cross a threshold, and release velocity carries it off. The next card steps forward in depth, and an undone card flies back from the side it left by. Reduced motion decides without flight or tilt.",
+    keys: [
+      { keys: "← →", action: "Decide left or right" },
+      { keys: "↑", action: "Decide up, when offered" },
+      { keys: "Backspace Z", action: "Undo the last decision" },
+    ],
+  }),
 ];

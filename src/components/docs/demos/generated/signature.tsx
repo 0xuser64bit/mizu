@@ -19,6 +19,7 @@ import {
   Tour,
   Interview,
   TransferQueue,
+  TriageDeck,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -360,6 +361,24 @@ export function TransferQueueDemo() {
           onProgress(loaded);
         }
       }}
+    />
+  );
+}
+
+export function TriageDeckDemo() {
+  return (
+    <TriageDeck
+      label="Inbox"
+      items={[
+        { id: "a", title: "Invoice from Northworks" },
+        { id: "b", title: "Team offsite dates" },
+      ]}
+      itemLabel={(m) => m.title}
+      decisions={[
+        { id: "archive", label: "Archive", direction: "left" },
+        { id: "keep", label: "Keep", direction: "right", tone: "success" },
+      ]}
+      renderItem={(m) => <h3 style={{ margin: 0, fontSize: 24 }}>{m.title}</h3>}
     />
   );
 }

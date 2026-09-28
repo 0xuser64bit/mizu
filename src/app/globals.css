@@ -169,3 +169,12 @@ body {
 .mizu-demo-app-stats .mizu-stat-value { font-size: 32px; margin: 6px 0; }
 .mizu-demo-app > [data-tour="table"] { padding: 16px; }
 @media (max-width: 600px) { .mizu-demo-app > header { grid-template-columns: 1fr; align-items: stretch; } }
+.mizu-demo-post { display: grid; align-content: space-between; height: 100%; gap: 18px; }
+.mizu-demo-post-flag { margin: 0; font: 10px var(--mizu-font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mizu-warning); }
+.mizu-demo-post-body { margin: 0; font: 26px/1.3 var(--mizu-font-serif); }
+.mizu-demo-post-meta { margin: 0; font: 11px var(--mizu-font-mono); color: var(--mizu-faint); }
+.mizu-demo-word { display: grid; place-content: center; justify-items: center; height: 100%; gap: 10px; text-align: center; }
+.mizu-demo-word p:first-child { margin: 0; font-size: 120px; line-height: 1; }
+.mizu-demo-word p:nth-child(2) { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+.mizu-demo-word span { color: var(--mizu-muted); font-weight: 400; }
+.mizu-demo-word small { max-width: 30ch; color: var(--mizu-muted); font-size: 13px; line-height: 1.6; }

@@ -69,6 +69,9 @@ const SHOWCASES = {
   "transfer-queue": dynamic(() =>
     import("./demos/signature/transfer").then((m) => m.TransferQueueShowcase),
   ),
+  "triage-deck": dynamic(() =>
+    import("./demos/signature/triage").then((m) => m.TriageDeckShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

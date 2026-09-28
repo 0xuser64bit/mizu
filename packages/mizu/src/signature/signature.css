@@ -50,3 +50,9 @@
     opacity: 0;
   }
 }
+/* Completion: a diamond turns into place. */
+@keyframes mizu-sig-seal {
+  from {
+    transform: rotate(-135deg) scale(0);
+  }
+}

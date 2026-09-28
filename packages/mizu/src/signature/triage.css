@@ -1,0 +1,167 @@
+/* TriageDeck — decisions at the speed of a gesture. */
+.mizu-triage {
+  container-type: inline-size;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  min-width: 0;
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+}
+.mizu-triage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 20px;
+  width: min(100%, 420px);
+}
+.mizu-triage-count {
+  margin: 0;
+  font: 12px var(--mizu-font-mono);
+  color: var(--mizu-faint);
+}
+.mizu-triage-count strong {
+  font: 700 28px var(--mizu-font-display);
+  letter-spacing: -0.02em;
+  color: var(--mizu-paper);
+  font-variant-numeric: tabular-nums;
+}
+.mizu-triage-tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 11px var(--mizu-font-mono);
+  color: var(--mizu-muted);
+}
+.mizu-triage-tally li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.mizu-triage-tally i {
+  width: 6px;
+  height: 6px;
+  background: var(--mizu-tone, var(--mizu-muted));
+  transform: rotate(45deg);
+}
+.mizu-triage-tally b {
+  color: var(--mizu-paper);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.mizu-triage-stage {
+  position: relative;
+  width: min(100%, 420px);
+  height: 460px;
+  outline-offset: 8px;
+}
+.mizu-triage-card {
+  position: absolute;
+  inset: 0 0 28px;
+  padding: 22px;
+  overflow: hidden;
+  background: var(--mizu-ink-2);
+  border: 1px solid var(--mizu-line-bright);
+  transform-origin: 50% 100%;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.mizu-triage-card[data-top] {
+  cursor: grab;
+  box-shadow: 0 20px 44px rgb(0 0 0 / 0.28);
+}
+.mizu-triage-card[data-top]:active {
+  cursor: grabbing;
+}
+.mizu-triage-stamp {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  padding: 6px 10px;
+  border: 2px solid var(--mizu-tone, var(--mizu-paper));
+  background: color-mix(in srgb, var(--mizu-ink-2) 82%, transparent);
+  color: var(--mizu-tone, var(--mizu-paper));
+  font: 700 13px var(--mizu-font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.mizu-triage-stamp[data-side="left"] {
+  right: 22px;
+  transform: rotate(12deg);
+}
+.mizu-triage-stamp[data-side="right"] {
+  left: 22px;
+  transform: rotate(-12deg);
+}
+.mizu-triage-stamp[data-side="up"] {
+  top: auto;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mizu-triage-empty {
+  position: absolute;
+  inset: 0 0 28px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  padding: 24px;
+  border: 1px dashed var(--mizu-line-bright);
+  color: var(--mizu-muted);
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.mizu-triage-empty > span {
+  width: 14px;
+  height: 14px;
+  background: var(--mizu-accent);
+  transform: rotate(45deg);
+  animation: mizu-sig-seal 700ms var(--mizu-ease-expo) both;
+}
+.mizu-triage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.mizu-triage-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--mizu-tone, var(--mizu-line-bright));
+  background: transparent;
+  color: var(--mizu-tone, var(--mizu-paper));
+  font: 12px var(--mizu-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--mizu-duration-fast);
+}
+.mizu-triage-actions button:hover:not(:disabled) {
+  background: color-mix(
+    in srgb,
+    var(--mizu-tone, var(--mizu-paper)) 12%,
+    transparent
+  );
+}
+.mizu-triage-actions kbd {
+  font: inherit;
+  opacity: 0.7;
+}
+.mizu-triage-actions .mizu-triage-undo {
+  --mizu-tone: var(--mizu-muted);
+}
+@container (max-width: 420px) {
+  .mizu-triage-stage {
+    height: 400px;
+  }
+}

@@ -6,10 +6,12 @@ import {
   Interview,
   Tour,
   TransferQueue,
+  TriageDeck,
   type InterviewQuestion,
   type TourStep,
   type TransferFunction,
   type TransferQueueHandle,
+  type TriageDecision,
 } from "@/mizu";
 import { mockLayout } from "./helpers";
 
@@ -280,5 +282,56 @@ describe("TransferQueue", () => {
     await user.click(screen.getByRole("button", { name: "Cancel b.zip" }));
     expect(calls[3]!.signal.aborted).toBe(true);
     expect(screen.queryByText("b.zip")).not.toBeInTheDocument();
+  });
+});
+
+describe("TriageDeck", () => {
+  const ITEMS = [
+    { id: "a", title: "Invoice" },
+    { id: "b", title: "Offsite" },
+  ];
+  const DECISIONS: TriageDecision[] = [
+    { id: "archive", label: "Archive", direction: "left" },
+    { id: "keep", label: "Keep", direction: "right", tone: "success" },
+  ];
+  it("decides with keys and buttons, keeps tallies and undoes", async () => {
+    const user = userEvent.setup(),
+      decide = vi.fn(),
+      undo = vi.fn();
+    render(
+      <TriageDeck
+        label="Inbox"
+        items={ITEMS}
+        itemLabel={(i) => i.title}
+        decisions={DECISIONS}
+        onDecide={decide}
+        onUndo={undo}
+        renderItem={(i) => <p>{i.title}</p>}
+        empty="All clear."
+      />,
+    );
+    const deck = screen.getByRole("group", { name: "Invoice, item 1 of 2" });
+    deck.focus();
+    await user.keyboard("{ArrowRight}");
+    expect(decide).toHaveBeenLastCalledWith(ITEMS[0], DECISIONS[1]);
+    expect(
+      screen.getByRole("group", { name: "Offsite, item 2 of 2" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("list", { name: "Decisions so far" }),
+    ).toHaveTextContent("Keep 1");
+    await user.click(screen.getByRole("button", { name: /Archive/ }));
+    expect(decide).toHaveBeenLastCalledWith(ITEMS[1], DECISIONS[0]);
+    expect(screen.getByText("All clear.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Archive/ })).toBeDisabled();
+    await user.click(screen.getByRole("button", { name: "Undo" }));
+    expect(undo).toHaveBeenLastCalledWith(ITEMS[1], DECISIONS[0]);
+    expect(
+      screen.getByRole("group", { name: "Offsite, item 2 of 2" }),
+    ).toBeInTheDocument();
+    await act(
+      () => new Promise((r) => requestAnimationFrame(() => r(undefined))),
+    );
+    expect(screen.getByText("Undid Archive on Offsite.")).toBeInTheDocument();
   });
 });

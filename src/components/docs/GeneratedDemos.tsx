@@ -40,6 +40,9 @@ export const GENERATED_DEMOS = {
   "transfer-queue": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.TransferQueueDemo),
   ),
+  "triage-deck": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.TriageDeckDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),
