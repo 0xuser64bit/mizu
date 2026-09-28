@@ -59,7 +59,7 @@ export const FORMS = [
     "SelectField",
     "Forms",
     "forms/Fields.tsx",
-    "Native selection that retains the platform's keyboard and touch behavior.",
+    "Native selection with a Mizu-styled option menu where supported.",
     '  return <SelectField label="Visibility" defaultValue="private"><option value="private">Private</option><option value="public">Public</option></SelectField>;',
     [
       p("label", "string", "Accessible select label."),
@@ -70,7 +70,7 @@ export const FORMS = [
         "Native value, multiple, events and ref.",
       ),
     ],
-    "Uses the platform select menu. Arrow keys, type-ahead and mobile selection are native.",
+    "Keeps native keyboard, form and touch behavior. Browsers without customizable selects use their platform picker.",
   ),
   d(
     "Checkbox",

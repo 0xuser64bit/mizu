@@ -100,7 +100,7 @@ Every entry has a preview, compiled usage, property notes, accessibility and mot
 | **FormField** | A label, hint and error linked to a single control without manual IDs. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
 | **TextField** | A precise, labelled input with native validation and clear error feedback. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
 | **TextArea** | Long-form input with resizable room for thoughts, labels and validation. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
-| **SelectField** | Native selection that retains the platform's keyboard and touch behavior. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
+| **SelectField** | Native selection with a Mizu-styled option menu where supported. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
 | **Checkbox** | A generous check target with a secondary description and native form submission. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
 | **Switch** | A tactile binary setting whose thumb tracks the state. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
 | **SearchField** | Search with a clear action that belongs to the input. | [forms/Fields.tsx](../packages/mizu/src/forms/Fields.tsx) |
