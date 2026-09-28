@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "mizu",
+  "homepage": "https://github.com/0xuser64bit/mizu",
+  "items": [
+    {
+      "name": "select-field",
+      "type": "registry:ui",
+      "title": "SelectField",
+      "description": "A labeled native select with Mizu styling and validation states.",
+      "files": [
+        {
+          "path": "registry/select-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/select-field.tsx"
+        },
+        {
+          "path": "packages/mizu/src/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/forms/Fields.tsx"
+        },
+        {
+          "path": "packages/mizu/src/core.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/core.css"
+        }
+      ]
+    }
+  ]
+}
