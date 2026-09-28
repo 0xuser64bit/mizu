@@ -7,7 +7,13 @@ import {
   within,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Gallery, justifyRows, type GalleryItem } from "@/mizu";
+import {
+  Folio,
+  Gallery,
+  Sidenote,
+  justifyRows,
+  type GalleryItem,
+} from "@/mizu";
 import { mockLayout } from "./helpers";
 
 const PHOTOS: GalleryItem[] = Array.from({ length: 10 }, (_, i) => ({
@@ -154,5 +160,76 @@ describe("Gallery", () => {
     expect(
       await screen.findByText("This photo could not be loaded."),
     ).toBeInTheDocument();
+  });
+});
+
+function Article() {
+  return (
+    <Folio label="Essay">
+      <h2 id="t-first">First</h2>
+      <p>
+        One line<Sidenote>A first aside.</Sidenote> and another.
+      </p>
+      <h3 id="t-second">Second</h3>
+      <p>
+        Two lines<Sidenote>A second aside.</Sidenote> at last.
+      </p>
+    </Folio>
+  );
+}
+
+describe("Folio", () => {
+  let restore: () => void;
+  afterEach(() => restore());
+
+  it("unfolds notes in place when there is no margin", async () => {
+    restore = mockLayout(600, 400);
+    const user = userEvent.setup();
+    render(<Article />);
+    const [first, second] = screen.getAllByRole("button", { name: "Note" });
+    expect(first).toHaveAttribute("aria-expanded", "false");
+    await user.click(first!);
+    expect(first).toHaveAttribute("aria-expanded", "true");
+    expect(second).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getAllByRole("note")[0]).toHaveTextContent("A first aside.");
+    expect(first).toHaveAttribute(
+      "aria-controls",
+      screen.getAllByRole("note")[0]!.id,
+    );
+    await user.click(first!);
+    expect(first).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("keeps notes in the margin when wide, and points to them", async () => {
+    restore = mockLayout(1200, 400);
+    const user = userEvent.setup();
+    render(<Article />);
+    const [first] = screen.getAllByRole("button", { name: "Note" });
+    await waitFor(() => expect(first).not.toHaveAttribute("aria-expanded"));
+    await user.click(first!);
+    expect(screen.getAllByRole("note")[0]).toHaveAttribute("data-flash");
+  });
+
+  it("builds contents from the headings and moves focus to a section", async () => {
+    restore = mockLayout(1200, 400);
+    const user = userEvent.setup();
+    render(<Article />);
+    const contents = await screen.findByRole("navigation", {
+      name: "Contents: Essay",
+    });
+    expect(contents).toHaveTextContent("1 min");
+    await user.click(screen.getByRole("link", { name: "Second" }));
+    expect(screen.getByRole("heading", { name: "Second" })).toHaveFocus();
+  });
+
+  it("can leave the contents out", () => {
+    restore = mockLayout(1200, 400);
+    render(
+      <Folio label="Plain" contents={false}>
+        <h2 id="t-only">Only</h2>
+      </Folio>,
+    );
+    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+    expect(screen.getByRole("article", { name: "Plain" })).toBeInTheDocument();
   });
 });

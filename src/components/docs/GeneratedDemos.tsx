@@ -46,6 +46,9 @@ export const GENERATED_DEMOS = {
   gallery: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.GalleryDemo),
   ),
+  folio: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.FolioDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

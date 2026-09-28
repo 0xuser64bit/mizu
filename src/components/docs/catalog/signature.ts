@@ -714,4 +714,46 @@ export const SIGNATURE = [
       { keys: "Esc", action: "Put the photo back" },
     ],
   }),
+  s({
+    name: "Folio",
+    source: "Folio.tsx",
+    imports: "Folio, Sidenote",
+    tagline:
+      "A long-form reading surface: sidenotes sit in the margin beside their marks and fold into the text on narrow screens, while a contents rail keeps your place.",
+    example:
+      '  return <Folio label="Field notes"><h2 id="usage-rivers">Rivers</h2><p>Water finds the lowest path through any landscape<Sidenote>Unless it freezes first.</Sidenote> and keeps to it until something moves it.</p></Folio>;',
+    props: [
+      p(
+        "label / children",
+        "string / ReactNode",
+        "The article's name and its prose: paragraphs, h2 and h3 headings, blockquotes, with Sidenotes inside the text.",
+      ),
+      p(
+        "contents",
+        "boolean",
+        "A contents rail from the headings that have an id, shown from 1040px wide.",
+        "true",
+      ),
+      p(
+        "Sidenote children",
+        "ReactNode",
+        "The note: phrasing content, numbered automatically in reading order.",
+      ),
+      p(
+        "--mizu-folio-offset / --mizu-folio-note",
+        "CSS length",
+        "Clearance for a sticky header (24px) and the margin note width (232px).",
+      ),
+    ],
+    a11y: "Folio is a labelled article; its contents rail is a named navigation whose current section is marked with aria-current, and choosing one moves focus to that heading. Each mark is a button named with its number; on narrow screens it reports whether its note is expanded. Notes keep their place in the reading order right after their mark, with the note role.",
+    motion:
+      "Notes that would collide step down beside each other and glide when the text reflows; on narrow screens a note unfolds beneath its line. The contents marker springs to the section in view, the progress line fills as you read, and choosing a mark whose note is already in the margin makes the note glow. Reduced motion keeps the layout and drops the travel.",
+    keys: [
+      { keys: "Tab", action: "Move between note marks and contents" },
+      {
+        keys: "Enter Space",
+        action: "Unfold a note, or point to it in the margin",
+      },
+    ],
+  }),
 ];

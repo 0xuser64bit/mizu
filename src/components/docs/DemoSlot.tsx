@@ -75,6 +75,9 @@ const SHOWCASES = {
   gallery: dynamic(() =>
     import("./demos/signature/gallery").then((m) => m.GalleryShowcase),
   ),
+  folio: dynamic(() =>
+    import("./demos/signature/folio").then((m) => m.FolioShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

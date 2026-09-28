@@ -21,6 +21,8 @@ import {
   TransferQueue,
   TriageDeck,
   Gallery,
+  Folio,
+  Sidenote,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -408,5 +410,18 @@ export function GalleryDemo() {
         },
       ]}
     />
+  );
+}
+
+export function FolioDemo() {
+  return (
+    <Folio label="Field notes">
+      <h2 id="usage-rivers">Rivers</h2>
+      <p>
+        Water finds the lowest path through any landscape
+        <Sidenote>Unless it freezes first.</Sidenote> and keeps to it until
+        something moves it.
+      </p>
+    </Folio>
   );
 }

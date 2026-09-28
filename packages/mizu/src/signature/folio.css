@@ -1,0 +1,284 @@
+/* Folio — long-form reading with its notes in the margin. */
+.mizu-folio {
+  --mizu-folio-offset: 24px;
+  --mizu-folio-note: 232px;
+  container: mizu-folio / inline-size;
+  position: relative;
+  min-width: 0;
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+}
+.mizu-folio-progress {
+  position: sticky;
+  z-index: 2;
+  top: var(--mizu-folio-offset);
+  height: 2px;
+  margin-bottom: 32px;
+  background: var(--mizu-line);
+}
+.mizu-folio-progress > span,
+.mizu-folio-rail-fill {
+  display: block;
+  background: var(--mizu-accent);
+}
+.mizu-folio-progress > span {
+  height: 100%;
+  transform-origin: left;
+}
+.mizu-folio-rail {
+  display: none;
+}
+.mizu-folio-body {
+  position: relative;
+  max-width: 68ch;
+  counter-reset: mizu-sidenote;
+}
+
+/* Prose defaults: generous measure, an ink drop cap, serif pull quotes. */
+.mizu-folio-body > p {
+  margin: 0 0 1.3em;
+  font-size: 17px;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--mizu-paper) 90%, transparent);
+}
+.mizu-folio-body > p:first-of-type::first-letter {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  color: var(--mizu-accent);
+  font: 4.2em/0.8 var(--mizu-font-serif);
+}
+.mizu-folio-body > :is(h2, h3) {
+  scroll-margin-top: calc(var(--mizu-folio-offset) + 20px);
+}
+.mizu-folio-body > h2 {
+  margin: 2.2em 0 0.7em;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.mizu-folio-body > h3 {
+  margin: 2em 0 0.6em;
+  color: var(--mizu-accent);
+  font: 12px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.mizu-folio-body > blockquote {
+  margin: 1.6em 0;
+  padding-left: 22px;
+  border-left: 1px solid var(--mizu-accent);
+  font: 26px/1.3 var(--mizu-font-serif);
+  text-wrap: balance;
+}
+
+/* Marks and notes — inline by default, folded until asked for. */
+.mizu-sidenote {
+  counter-increment: mizu-sidenote;
+}
+.mizu-sidenote-mark {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  margin: 0 2px 0 1px;
+  padding: 0 4px;
+  vertical-align: 0.4em;
+  border: 1px solid var(--mizu-line-bright);
+  background: transparent;
+  color: var(--mizu-accent);
+  font: 10px/1 var(--mizu-font-mono);
+  cursor: pointer;
+  transition:
+    background var(--mizu-duration-fast),
+    border-color var(--mizu-duration-fast),
+    color var(--mizu-duration-fast);
+}
+.mizu-sidenote-mark::before {
+  content: "";
+  position: absolute;
+  inset: -13px -8px;
+}
+.mizu-sidenote-mark::after {
+  content: counter(mizu-sidenote);
+}
+.mizu-sidenote:is(:hover, :focus-within, [data-open]) .mizu-sidenote-mark {
+  border-color: var(--mizu-accent-fill);
+  background: var(--mizu-accent-fill);
+  color: #fffaf4;
+}
+/* Folded notes take no room; an opened one unfolds beneath its line. */
+.mizu-sidenote-note {
+  display: none;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 420ms var(--mizu-ease-expo),
+    display 420ms allow-discrete;
+}
+.mizu-sidenote-note > span {
+  min-height: 0;
+  overflow: hidden;
+}
+.mizu-sidenote[data-open] .mizu-sidenote-note {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+@starting-style {
+  .mizu-sidenote[data-open] .mizu-sidenote-note {
+    grid-template-rows: 0fr;
+  }
+}
+.mizu-sidenote-body {
+  display: block;
+  margin: 10px 0 16px;
+  padding: 2px 0 2px 14px;
+  border-left: 1px solid var(--mizu-accent);
+  color: var(--mizu-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.mizu-sidenote-body::before {
+  content: counter(mizu-sidenote);
+  margin-right: 10px;
+  color: var(--mizu-accent);
+  font: 10px var(--mizu-font-mono);
+  vertical-align: 0.15em;
+}
+.mizu-sidenote-note[data-flash] .mizu-sidenote-body {
+  animation: mizu-folio-flash 1.4s var(--mizu-ease-expo);
+}
+@keyframes mizu-folio-flash {
+  from {
+    background: color-mix(in srgb, var(--mizu-accent) 22%, transparent);
+    color: var(--mizu-paper);
+  }
+}
+
+/* From 880px the notes move into the margin beside their marks. Mirrored in Folio.tsx. */
+@container mizu-folio (min-width: 880px) {
+  .mizu-folio-body {
+    max-width: calc(68ch + var(--mizu-folio-note) + 48px);
+    padding-right: calc(var(--mizu-folio-note) + 48px);
+  }
+  /* Inline, so its static position is the top of its mark's line. */
+  .mizu-sidenote-note {
+    position: absolute;
+    right: 0;
+    display: inline;
+    width: var(--mizu-folio-note);
+    transition: translate 520ms var(--mizu-ease-expo);
+  }
+  .mizu-sidenote-note > span {
+    overflow: visible;
+  }
+  .mizu-sidenote-body {
+    margin: 0;
+    padding: 1px 0 1px 12px;
+    border-left-color: var(--mizu-line-bright);
+    font-size: 13px;
+    transition:
+      border-color var(--mizu-duration-fast),
+      color var(--mizu-duration-fast);
+  }
+  .mizu-sidenote:is(:hover, :focus-within) .mizu-sidenote-body {
+    border-left-color: var(--mizu-accent);
+    color: var(--mizu-paper);
+  }
+}
+
+/* From 1040px a contents rail follows the reader down the page. */
+@container mizu-folio (min-width: 1040px) {
+  .mizu-folio:not([data-contents="none"]) > .mizu-folio-frame {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 48px;
+  }
+  .mizu-folio:not([data-contents="none"]) .mizu-folio-progress {
+    display: none;
+  }
+  .mizu-folio-rail {
+    position: sticky;
+    top: var(--mizu-folio-offset);
+    display: block;
+    grid-row: 1;
+    grid-column: 1;
+    max-height: calc(100vh - 2 * var(--mizu-folio-offset));
+    overflow: auto;
+  }
+  .mizu-folio-body {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+.mizu-folio-rail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--mizu-faint);
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.mizu-folio-rail-head output {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--mizu-muted);
+  font-variant-numeric: tabular-nums;
+}
+.mizu-folio-rail-head i {
+  width: 7px;
+  height: 7px;
+  background: var(--mizu-accent);
+  rotate: 45deg;
+  animation: mizu-sig-seal 700ms var(--mizu-ease-expo) both;
+}
+.mizu-folio-rail ol {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 18px;
+  border-left: 1px solid var(--mizu-line);
+  list-style: none;
+}
+.mizu-folio-rail-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  width: 1px;
+  transform-origin: top;
+}
+.mizu-folio-rail li {
+  position: relative;
+}
+.mizu-folio-rail a {
+  display: block;
+  padding: 6px 0;
+  color: var(--mizu-muted);
+  font-size: 13px;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color var(--mizu-duration-fast);
+}
+.mizu-folio-rail a:hover,
+.mizu-folio-rail a[aria-current] {
+  color: var(--mizu-paper);
+}
+.mizu-folio-rail li[data-level="3"] a {
+  padding-left: 12px;
+  font-size: 12px;
+}
+.mizu-folio-rail-here {
+  position: absolute;
+  top: 11px;
+  left: -22.5px;
+  width: 8px;
+  height: 8px;
+  background: var(--mizu-accent);
+  rotate: 45deg;
+}

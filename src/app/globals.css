@@ -101,7 +101,7 @@ body {
 .mizu-preview-tools button, .mizu-preview-tools select { border: 0; background: transparent; color: var(--mizu-muted); min-height: 44px; padding: 8px; font: 11px var(--mizu-font-mono); cursor: pointer; }
 .mizu-preview-tools select option { color: var(--mizu-paper); background: var(--mizu-ink); }
 .mizu-preview-tools button[aria-pressed="true"] { color: var(--mizu-accent); }
-.mizu-preview-stage { margin-inline: auto; padding: 32px; min-height: 180px; overflow: auto; }
+.mizu-preview-stage { margin-inline: auto; padding: 32px; min-height: 180px; overflow-x: clip; }
 .mizu-guide { max-width: 780px; padding: 64px 40px 96px; margin: auto; }
 .mizu-guide h1 { font-size: clamp(36px,5vw,60px); font-weight: 900; letter-spacing: -.03em; }
 .mizu-guide h2 { font-size: 24px; font-weight: 700; margin: 48px 0 12px; }
