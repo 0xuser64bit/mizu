@@ -27,6 +27,9 @@ import {
   Button,
   ColumnBrowser,
   LogStream,
+  Knob,
+  Fader,
+  XYPad,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -493,6 +496,47 @@ export function LogStreamDemo() {
           fields: { step: "migrate", exit: 1 },
         },
       ]}
+    />
+  );
+}
+
+export function KnobDemo() {
+  const [cutoff, setCutoff] = useState(1200);
+  return (
+    <Knob
+      label="Cutoff"
+      min={40}
+      max={16000}
+      taper="log"
+      value={cutoff}
+      onValueChange={setCutoff}
+      format={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1)} kHz` : `${v} Hz`)}
+    />
+  );
+}
+
+export function FaderDemo() {
+  return (
+    <Fader
+      label="Master"
+      min={0}
+      max={1}
+      step={0.01}
+      defaultValue={0.8}
+      marks={[1, 0.5, 0]}
+      level={0.62}
+      format={(v) => `${Math.round(v * 100)}%`}
+    />
+  );
+}
+
+export function XYPadDemo() {
+  return (
+    <XYPad
+      label="Balance"
+      x={{ label: "Temp", min: -100, max: 100 }}
+      y={{ label: "Tint", min: -100, max: 100 }}
+      defaultValue={{ x: 0, y: 0 }}
     />
   );
 }

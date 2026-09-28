@@ -190,3 +190,11 @@ body {
 .mizu-demo-preview pre { width: 100%; margin: 0; padding: 14px; overflow: auto; background: var(--mizu-ink-2); border: 1px solid var(--mizu-line); font: 11.5px/1.7 var(--mizu-font-mono); color: var(--mizu-muted); white-space: pre; }
 .mizu-demo-preview .mizu-description-list { width: 100%; }
 .mizu-demo-preview .mizu-image-figure { width: 100%; margin: 0; }
+.mizu-demo-synth, .mizu-demo-grade { display: grid; gap: 26px; }
+.mizu-demo-rack { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 22px 30px; }
+.mizu-demo-play { display: grid; gap: 12px; justify-items: start; min-width: 220px; }
+.mizu-demo-scope { width: 100%; height: 72px; border: 1px solid var(--mizu-line); background: var(--mizu-ink-2); }
+.mizu-demo-scope polyline { fill: none; stroke: var(--mizu-accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.mizu-demo-grade-view { position: relative; max-width: 560px; }
+.mizu-demo-grade-view .mizu-image-figure { margin: 0; }
+.mizu-demo-grade-view > span { position: absolute; inset: 0; pointer-events: none; }

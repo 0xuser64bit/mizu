@@ -58,6 +58,15 @@ export const GENERATED_DEMOS = {
   "log-stream": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.LogStreamDemo),
   ),
+  knob: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.KnobDemo),
+  ),
+  fader: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.FaderDemo),
+  ),
+  xypad: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.XYPadDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

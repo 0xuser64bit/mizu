@@ -891,4 +891,136 @@ export const SIGNATURE = [
       },
     ],
   }),
+  s({
+    name: "Knob",
+    source: "Controls.tsx",
+    tagline:
+      "A rotary control for instruments rather than forms: drag up or down, Shift for fine, arrows to step, double-click to return home — with log tapers for frequencies and times.",
+    example:
+      '  const [cutoff, setCutoff] = useState(1200);\n  return <Knob label="Cutoff" min={40} max={16000} taper="log" value={cutoff} onValueChange={setCutoff} format={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1)} kHz` : `${v} Hz`)} />;',
+    props: [
+      p(
+        "label / value / defaultValue / onValueChange",
+        "string / number",
+        "The control's name and value.",
+      ),
+      p(
+        "onValueCommit",
+        "(value) => void",
+        "When a drag, key press or reset finishes: the moment to save or send.",
+      ),
+      p(
+        "min / max / step / taper",
+        "number / linear | log",
+        "Range (0–100) and step (1); a log taper spreads ratios evenly and needs a positive min.",
+      ),
+      p(
+        "format / resetValue",
+        "(value) => string / number",
+        "Readout text, and where a reset returns (defaultValue).",
+      ),
+      p(
+        "bipolar / size",
+        "boolean / number",
+        "Fill from the centre, for pans and offsets; diameter (64).",
+      ),
+      p(
+        "name / disabled",
+        "string / boolean",
+        "Submit with a form; switch off.",
+      ),
+    ],
+    a11y: "Behind the drawing is a native range input: it takes focus, answers the arrow, Page, Home and End keys, reads its value as formatted text, and submits with a form when named. Shift steps by a tenth of the range, Backspace or Delete returns home, and focus shows in the accent.",
+    motion:
+      "The value arc and pointer spring to changes from keys, resets and code, and follow the hand directly while dragging; bipolar knobs fill from the centre. Reduced motion jumps instead of springing.",
+    keys: [
+      { keys: "↑ → ↓ ←", action: "Step up or down" },
+      { keys: "Shift+arrows PageUp PageDown", action: "A tenth of the range" },
+      { keys: "Home End", action: "Minimum or maximum" },
+      { keys: "Backspace Delete", action: "Return home" },
+    ],
+  }),
+  s({
+    name: "Fader",
+    source: "Controls.tsx",
+    tagline:
+      "A console fader with a live meter: drag the cap, click the track to jump, and watch the level fall away beside it with a held peak.",
+    example:
+      '  return <Fader label="Master" min={0} max={1} step={0.01} defaultValue={0.8} marks={[1, 0.5, 0]} level={0.62} format={(v) => `${Math.round(v * 100)}%`} />;',
+    props: [
+      p(
+        "label / value / defaultValue / onValueChange / onValueCommit",
+        "string / number",
+        "As for Knob.",
+      ),
+      p(
+        "level",
+        "number | MotionValue<number>",
+        "A live signal from 0 to 1 for the meter; pass a motion value to update it without re-rendering.",
+      ),
+      p(
+        "marks / height",
+        "number[] / number",
+        "Values labelled beside the track; track height (176).",
+      ),
+      p(
+        "min / max / step / taper / format / resetValue",
+        "number / linear | log / (value) => string",
+        "As for Knob.",
+      ),
+      p(
+        "name / disabled",
+        "string / boolean",
+        "Submit with a form; switch off.",
+      ),
+    ],
+    a11y: "Behind the drawing is a native range input: it takes focus, answers the arrow, Page, Home and End keys, reads its value as formatted text, and submits with a form when named. Shift steps by a tenth of the range, Backspace or Delete returns home, and focus shows in the accent.",
+    motion:
+      "The cap glides to track clicks and resets and follows the hand while dragged. The meter attacks instantly and releases steadily; its peak holds for a moment, then falls. Reduced motion jumps the cap.",
+    keys: [
+      { keys: "↑ ↓", action: "Step up or down" },
+      { keys: "Shift+arrows PageUp PageDown", action: "A tenth of the range" },
+      { keys: "Home End", action: "Minimum or maximum" },
+      { keys: "Backspace Delete", action: "Return home" },
+    ],
+  }),
+  s({
+    name: "XYPad",
+    source: "Controls.tsx",
+    tagline:
+      "Two parameters under one finger: press anywhere and the puck springs there, then sweep both at once with a trail behind it.",
+    example:
+      '  return <XYPad label="Balance" x={{ label: "Temp", min: -100, max: 100 }} y={{ label: "Tint", min: -100, max: 100 }} defaultValue={{ x: 0, y: 0 }} />;',
+    props: [
+      p(
+        "label / value / defaultValue / onValueChange / onValueCommit",
+        "string / { x, y }",
+        "The pad's name and point.",
+      ),
+      p(
+        "x / y",
+        "{ label, min, max, step, taper, format }",
+        "Each axis's name, range and readout.",
+      ),
+      p(
+        "size / resetValue",
+        "number / { x, y }",
+        "Side length (200); where a reset returns.",
+      ),
+      p(
+        "name / disabled",
+        "string / boolean",
+        "Submits name-x and name-y with a form; switch off.",
+      ),
+    ],
+    a11y: "Each axis is its own native slider, named after the pad and the axis, so assistive technology reads and sets them separately. From either one, left and right move X and up and down move Y; Shift steps a tenth, Backspace returns home, and the focused axis's crosshair lights in the accent.",
+    motion:
+      "The puck springs to where you press and then follows your finger exactly, drawing a short comet trail that fades when you let go. Keys and resets glide. Reduced motion jumps and skips the trail.",
+    keys: [
+      { keys: "← →", action: "Move along X" },
+      { keys: "↑ ↓", action: "Move along Y" },
+      { keys: "Shift+arrows PageUp PageDown", action: "A tenth of the range" },
+      { keys: "Backspace Delete", action: "Return home" },
+    ],
+  }),
 ];

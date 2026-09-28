@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useState } from "react";
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { LogStream, type LogLine } from "@/mizu";
+import { Fader, Knob, LogStream, XYPad, type LogLine } from "@/mizu";
 import { mockLayout } from "./helpers";
 
 const T = Date.UTC(2026, 0, 12, 9, 30);
@@ -134,5 +134,105 @@ describe("LogStream", () => {
     expect(screen.getByRole("listbox")).toHaveAttribute("aria-busy", "true");
     rerender(<LogStream label="api" lines={[]} empty="Quiet so far." />);
     expect(screen.getByText("Quiet so far.")).toBeInTheDocument();
+  });
+});
+
+describe("Knob and Fader", () => {
+  it("steps, jumps a tenth with Shift, reaches the ends and returns home", async () => {
+    const user = userEvent.setup(),
+      commit = vi.fn();
+    render(
+      <Knob
+        label="Mix"
+        defaultValue={40}
+        format={(v) => `${v}%`}
+        onValueCommit={commit}
+      />,
+    );
+    const knob = screen.getByRole("slider", { name: "Mix" });
+    expect(knob).toHaveAttribute("aria-valuetext", "40%");
+    knob.focus();
+    await user.keyboard("{ArrowUp}");
+    expect(knob).toHaveAttribute("aria-valuetext", "41%");
+    await user.keyboard("{Shift>}{ArrowUp}{/Shift}");
+    expect(knob).toHaveAttribute("aria-valuetext", "51%");
+    await user.keyboard("{End}");
+    expect(knob).toHaveAttribute("aria-valuetext", "100%");
+    await user.keyboard("{Backspace}");
+    expect(knob).toHaveAttribute("aria-valuetext", "40%");
+    expect(commit.mock.calls.map((c) => c[0])).toEqual([41, 51, 100, 40]);
+  });
+
+  it("steps a log taper by travel, not by value", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    render(
+      <Knob
+        label="Cutoff"
+        min={20}
+        max={20000}
+        taper="log"
+        defaultValue={200}
+        onValueChange={change}
+      />,
+    );
+    screen.getByRole("slider", { name: "Cutoff" }).focus();
+    await user.keyboard("{PageUp}");
+    // A tenth of three decades is 10^0.3: about double.
+    expect(change).toHaveBeenLastCalledWith(399);
+  });
+
+  it("submits with a form and meters a level", () => {
+    const { container } = render(
+      <form>
+        <Fader
+          label="Master"
+          name="master"
+          min={0}
+          max={1}
+          step={0.01}
+          defaultValue={0.8}
+          level={0.5}
+          marks={[1, 0]}
+        />
+      </form>,
+    );
+    const data = new FormData(container.querySelector("form")!);
+    expect(data.get("master")).toBe("0.8");
+    expect(container.querySelector(".mizu-fader-meter")).toBeInTheDocument();
+    expect(screen.getByRole("slider", { name: "Master" })).toHaveValue("0.8");
+  });
+});
+
+describe("XYPad", () => {
+  it("moves both axes from either slider and resets", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    const { container } = render(
+      <form>
+        <XYPad
+          label="Balance"
+          name="balance"
+          x={{ label: "Temp", min: -100, max: 100 }}
+          y={{ label: "Tint", min: -100, max: 100 }}
+          defaultValue={{ x: 0, y: 0 }}
+          onValueChange={change}
+        />
+      </form>,
+    );
+    const x = screen.getByRole("slider", { name: "Balance: Temp" });
+    screen.getByRole("slider", { name: "Balance: Tint" });
+    x.focus();
+    await user.keyboard("{ArrowRight}{ArrowUp}{ArrowUp}");
+    expect(change).toHaveBeenLastCalledWith({ x: 1, y: 2 });
+    await user.keyboard("{Shift>}{ArrowLeft}{/Shift}");
+    expect(change).toHaveBeenLastCalledWith({ x: -19, y: 2 });
+    const data = new FormData(container.querySelector("form")!);
+    expect([data.get("balance-x"), data.get("balance-y")]).toEqual([
+      "-19",
+      "2",
+    ]);
+    await user.keyboard("{Delete}");
+    expect(change).toHaveBeenLastCalledWith({ x: 0, y: 0 });
   });
 });

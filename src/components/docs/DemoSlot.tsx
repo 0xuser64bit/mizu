@@ -87,6 +87,15 @@ const SHOWCASES = {
   "log-stream": dynamic(() =>
     import("./demos/signature/log").then((m) => m.LogStreamShowcase),
   ),
+  knob: dynamic(() =>
+    import("./demos/signature/controls").then((m) => m.KnobShowcase),
+  ),
+  fader: dynamic(() =>
+    import("./demos/signature/controls").then((m) => m.FaderShowcase),
+  ),
+  "xy-pad": dynamic(() =>
+    import("./demos/signature/controls").then((m) => m.XYPadShowcase),
+  ),
 };
 export function DemoSlot({
   slug,
