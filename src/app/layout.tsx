@@ -11,8 +11,20 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-Q3K0S22ZXL";
 
 const themeBootstrap = `try{var t=localStorage.getItem("mizu-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+const previewImage = {
+  url: "/images/mizu-preview.png",
+  width: 1734,
+  height: 907,
+  alt: "MIZU. An archive of interface craft, with flowing paper-colored lines converging around a vermilion diamond on warm black.",
+};
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.SITE_URL ??
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : "http://localhost:3000"),
+  ),
   title: "Mizu — An Archive of Interface Craft",
   description:
     "Mizu is a living archive of interface craft: surfaces, motion, typography and systems, made slowly.",
@@ -21,7 +33,9 @@ export const metadata: Metadata = {
     description:
       "Mizu is a living archive of interface craft: surfaces, motion, typography and systems, made slowly.",
     type: "website",
+    images: [previewImage],
   },
+  twitter: { card: "summary_large_image", images: [previewImage] },
 };
 
 export const viewport: Viewport = {
