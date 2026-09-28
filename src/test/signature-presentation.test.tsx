@@ -11,6 +11,9 @@ import {
   Folio,
   Gallery,
   Sidenote,
+  SplitFlap,
+  FLAP_CHARACTERS,
+  flapPath,
   justifyRows,
   type GalleryItem,
 } from "@/mizu";
@@ -231,5 +234,62 @@ describe("Folio", () => {
     );
     expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
     expect(screen.getByRole("article", { name: "Plain" })).toBeInTheDocument();
+  });
+});
+
+describe("SplitFlap", () => {
+  it("falls forward through the drum, wrapping, and skips ahead on long journeys", () => {
+    expect(flapPath("A", "D", FLAP_CHARACTERS)).toEqual(["B", "C", "D"]);
+    expect(flapPath("?", "B", FLAP_CHARACTERS)).toEqual([" ", "A", "B"]);
+    const long = flapPath("A", "Z", FLAP_CHARACTERS);
+    expect(long).toHaveLength(12);
+    expect(long.at(-1)).toBe("Z");
+    expect(flapPath("A", "€", FLAP_CHARACTERS)).toEqual(["€"]);
+    expect(flapPath("A", "A", FLAP_CHARACTERS)).toEqual([]);
+  });
+
+  it("reads as text, pads to its cells, and settles on new values", () => {
+    const settle = vi.fn();
+    const { container, rerender } = render(
+      <SplitFlap
+        value="Gate 4"
+        length={8}
+        label="Boarding"
+        live
+        onSettle={settle}
+      />,
+    );
+    expect(screen.getByRole("status")).toHaveTextContent("Boarding: Gate 4");
+    const cells = container.querySelectorAll(".mizu-flap-cell");
+    expect(cells).toHaveLength(8);
+    expect(cells[0]).toHaveTextContent("GGGG");
+    rerender(
+      <SplitFlap
+        value="Gate 12"
+        length={8}
+        label="Boarding"
+        live
+        onSettle={settle}
+      />,
+    );
+    expect(screen.getByRole("status")).toHaveTextContent("Boarding: Gate 12");
+    expect(cells[6]).toHaveTextContent("2222");
+    expect(settle).toHaveBeenLastCalledWith("Gate 12");
+  });
+
+  it("right-aligns and trims to its length", () => {
+    const { container } = render(
+      <SplitFlap value="12345" length={3} align="right" />,
+    );
+    const glyphs = [...container.querySelectorAll(".mizu-flap-cell")].map(
+      (c) => c.textContent![0],
+    );
+    expect(glyphs).toEqual(["1", "2", "3"]);
+    const { container: padded } = render(
+      <SplitFlap value="7" length={3} align="right" />,
+    );
+    expect(padded.querySelectorAll(".mizu-flap-cell")[2]).toHaveTextContent(
+      "7777",
+    );
   });
 });

@@ -15,3 +15,4 @@ export * from "./TransferQueue.tsx";
 export * from "./TriageDeck.tsx";
 export * from "./Gallery.tsx";
 export * from "./Folio.tsx";
+export * from "./SplitFlap.tsx";

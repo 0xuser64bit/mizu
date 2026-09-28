@@ -1,0 +1,56 @@
+/* SplitFlap — a mechanical display: every character falls into place. */
+.mizu-flap {
+  --mizu-flap-size: 28px;
+  display: inline-block;
+  max-width: 100%;
+  color: var(--mizu-tone, var(--mizu-paper));
+  font: 700 var(--mizu-flap-size) / 1 var(--mizu-font-mono);
+  vertical-align: middle;
+}
+.mizu-flap-cells {
+  display: inline-flex;
+  gap: 0.1em;
+}
+.mizu-flap-cell {
+  position: relative;
+  flex: none;
+  width: 0.86em;
+  height: 1.32em;
+  perspective: 5em;
+}
+.mizu-flap-half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  background: var(--mizu-ink-2);
+  backface-visibility: hidden;
+}
+.mizu-flap-half[data-half="top"] {
+  top: 0;
+  border-bottom: 1px solid var(--mizu-ink);
+  background: color-mix(in srgb, var(--mizu-ink-3) 55%, var(--mizu-ink-2));
+  transform-origin: 50% 100%;
+}
+.mizu-flap-half[data-half="bottom"] {
+  bottom: 0;
+  transform-origin: 50% 0;
+}
+.mizu-flap-glyph {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  height: 200%;
+}
+.mizu-flap-half[data-half="top"] .mizu-flap-glyph {
+  top: 0;
+}
+.mizu-flap-half[data-half="bottom"] .mizu-flap-glyph {
+  bottom: 0;
+}
+.mizu-flap-leaf {
+  z-index: 1;
+}

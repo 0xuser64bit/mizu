@@ -178,3 +178,9 @@ body {
 .mizu-demo-word p:nth-child(2) { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
 .mizu-demo-word span { color: var(--mizu-muted); font-weight: 400; }
 .mizu-demo-word small { max-width: 30ch; color: var(--mizu-muted); font-size: 13px; line-height: 1.6; }
+.mizu-demo-board { border-collapse: collapse; width: max-content; max-width: 100%; }
+.mizu-demo-board th { padding: 0 18px 10px 0; text-align: left; font: 10px var(--mizu-font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mizu-faint); font-weight: 400; }
+.mizu-demo-board td { padding: 0 18px 8px 0; }
+.mizu-demo-board .mizu-flap { --mizu-flap-size: clamp(14px, 2.2vw, 22px); }
+.mizu-demo-flap-message, .mizu-demo-flap-clock { display: grid; gap: 22px; justify-items: start; }
+.mizu-demo-flap-message form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }

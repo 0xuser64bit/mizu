@@ -23,6 +23,8 @@ import {
   Gallery,
   Folio,
   Sidenote,
+  SplitFlap,
+  Button,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -423,5 +425,18 @@ export function FolioDemo() {
         something moves it.
       </p>
     </Folio>
+  );
+}
+
+export function SplitFlapDemo() {
+  const [n, setN] = useState(0);
+  const states = ["ON TIME", "BOARDING", "DEPARTED"];
+  return (
+    <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+      <SplitFlap value={states[n % 3]!} length={8} label="Status" live />
+      <Button variant="ghost" onClick={() => setN(n + 1)}>
+        Advance
+      </Button>
+    </div>
   );
 }

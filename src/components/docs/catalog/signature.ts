@@ -756,4 +756,48 @@ export const SIGNATURE = [
       },
     ],
   }),
+  s({
+    name: "SplitFlap",
+    source: "SplitFlap.tsx",
+    imports: "SplitFlap, Button",
+    tagline:
+      "A mechanical flip display: every character falls forward through the drum to its new value, cell after cell, and lands with a slap.",
+    example:
+      '  const [n, setN] = useState(0);\n  const states = ["ON TIME", "BOARDING", "DEPARTED"];\n  return <div style={{ display: "flex", gap: 16, alignItems: "center" }}><SplitFlap value={states[n % 3]!} length={8} label="Status" live /><Button variant="ghost" onClick={() => setN(n + 1)}>Advance</Button></div>;',
+    props: [
+      p(
+        "value / length / align",
+        "string / number / left | right",
+        "The text, padded or trimmed to `length` cells (its own length by default).",
+      ),
+      p(
+        "characters",
+        "string",
+        "The drum in falling order — FLAP_CHARACTERS by default. Characters outside it arrive in one flip.",
+      ),
+      p(
+        "flip / stagger",
+        "number",
+        "Milliseconds for one flap to fall (70) and between neighbouring cells starting (35).",
+      ),
+      p(
+        "label / live",
+        "string / boolean",
+        "Read before the value; live displays announce each new value politely.",
+      ),
+      p(
+        "tone / onSettle",
+        "SignatureTone / (value) => void",
+        "Glyph colour, and a call when every cell has arrived.",
+      ),
+      p(
+        "flapPath()",
+        "(from, to, characters, most?) => string[]",
+        "The flaps a cell passes on its way, for displays of your own.",
+      ),
+    ],
+    a11y: "The cells are hidden from assistive technology; the value and its label sit beside them as plain text, so a display reads as words rather than letters, inside a table cell or a button alike. A live display announces each new value once, not every flap.",
+    motion:
+      "Each cell falls forward through the drum like the real mechanism: the top leaf folds down and darkens while the next character lands with a small overshoot, and neighbouring cells start a beat apart so a change ripples along the line. Long journeys skip ahead to the last dozen flaps. Reduced motion shows the new value at once.",
+  }),
 ];

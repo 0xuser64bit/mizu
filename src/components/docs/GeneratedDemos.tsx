@@ -49,6 +49,9 @@ export const GENERATED_DEMOS = {
   folio: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.FolioDemo),
   ),
+  "split-flap": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.SplitFlapDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

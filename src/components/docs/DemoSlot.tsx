@@ -78,6 +78,9 @@ const SHOWCASES = {
   folio: dynamic(() =>
     import("./demos/signature/folio").then((m) => m.FolioShowcase),
   ),
+  "split-flap": dynamic(() =>
+    import("./demos/signature/flap").then((m) => m.SplitFlapShowcase),
+  ),
 };
 export function DemoSlot({
   slug,
