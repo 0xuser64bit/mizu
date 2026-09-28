@@ -14,7 +14,7 @@ export function Invite() {
 
       <div className="relative z-10 px-5 py-32 text-center">
         <Reveal>
-          <SectionTag className="justify-center">03 — The lab</SectionTag>
+          <SectionTag className="justify-center">04 — The lab</SectionTag>
         </Reveal>
         <Reveal delay={0.12}>
           <h2 className="mt-8 font-display text-[clamp(3rem,9vw,7.5rem)] font-black font-wide leading-[0.9] tracking-[-0.02em]">
