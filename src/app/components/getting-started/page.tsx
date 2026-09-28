@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ComponentsShell } from "@/components/docs/ComponentsShell";
 export const metadata = { title: "Getting started — Mizu" };
 function Code({ children }: { children: string }) {
   return (
@@ -10,7 +9,7 @@ function Code({ children }: { children: string }) {
 }
 export default function GettingStarted() {
   return (
-    <ComponentsShell>
+    <>
       <article className="mizu-guide">
         <h1>Make a surface.</h1>
         <p>
@@ -116,6 +115,6 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           Explore the collection →
         </Link>
       </article>
-    </ComponentsShell>
+    </>
   );
 }

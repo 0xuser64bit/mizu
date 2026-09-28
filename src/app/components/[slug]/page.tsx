@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ComponentsShell } from "@/components/docs/ComponentsShell";
 import { ComponentDoc } from "@/components/docs/ComponentDoc";
 import { COMPONENTS, getComponent } from "@/components/docs/registry";
 
@@ -28,8 +27,8 @@ export default async function ComponentPage({ params }: { params: Promise<{ slug
   if (!meta) notFound();
 
   return (
-    <ComponentsShell>
+    <>
       <ComponentDoc meta={meta} />
-    </ComponentsShell>
+    </>
   );
 }

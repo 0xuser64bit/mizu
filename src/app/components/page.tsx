@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CopyButton } from "@/mizu";
-import { ComponentsShell } from "@/components/docs/ComponentsShell";
 import { ComponentBrowser } from "@/components/docs/ComponentBrowser";
 import { CATEGORIES, SYSTEMS } from "@/components/docs/registry";
 
@@ -16,7 +15,7 @@ export default function ComponentsIndex() {
     tagline,
   }));
   return (
-    <ComponentsShell>
+    <>
       <div className="mizu-collection">
         <header className="mizu-collection-header">
           <h1>
@@ -48,6 +47,6 @@ export default function ComponentsIndex() {
         </div>
         <ComponentBrowser components={summaries} categories={CATEGORIES} />
       </div>
-    </ComponentsShell>
+    </>
   );
 }
