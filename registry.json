@@ -9,7 +9,7 @@
       "title": "Chronicle",
       "description": "A zoomable, multi-lane timeline for incidents, releases and audit trails — spans, instants, a playhead and an overview brush.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -51,16 +51,6 @@
           "path": "registry/styles/chronicle.css",
           "type": "registry:file",
           "target": "@ui/mizu/chronicle.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/chronicle.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/chronicle.css"
         }
       ]
     },
@@ -70,7 +60,7 @@
       "title": "TrendChart",
       "description": "Values over time as an instrument: a live legend that reads the crosshair, drag-to-measure deltas, annotations, thresholds and linked views.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -107,16 +97,6 @@
           "path": "registry/styles/trend-chart.css",
           "type": "registry:file",
           "target": "@ui/mizu/trend-chart.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/trend.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/trend.css"
         }
       ]
     },
@@ -126,7 +106,7 @@
       "title": "Waveform",
       "description": "Audio you can see and scrub: a waveform over a native audio element, with chapters, speed, skips and an imperative handle.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -168,16 +148,6 @@
           "path": "registry/styles/waveform.css",
           "type": "registry:file",
           "target": "@ui/mizu/waveform.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/waveform.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/waveform.css"
         }
       ]
     },
@@ -187,7 +157,7 @@
       "title": "Plane",
       "description": "An infinite, zoomable surface for boards, maps and diagrams — inertia, pinch, a minimap and a camera that follows keyboard focus.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -219,16 +189,6 @@
           "path": "registry/styles/plane.css",
           "type": "registry:file",
           "target": "@ui/mizu/plane.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/plane.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/plane.css"
         }
       ]
     },
@@ -238,7 +198,7 @@
       "title": "FlowGraph",
       "description": "A node-and-wire editor: drag, wire with magnetic ports or the keyboard, refuse bad connections, watch runs flow and tidy into layers.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -275,16 +235,6 @@
           "path": "registry/styles/flow-graph.css",
           "type": "registry:file",
           "target": "@ui/mizu/flow-graph.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/flow.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/flow.css"
         }
       ]
     },
@@ -294,7 +244,7 @@
       "title": "Treemap",
       "description": "A hierarchy by size that you enter like a place: squarified blocks, a camera that moves inside, nested previews, heat and a path back out.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -326,16 +276,6 @@
           "path": "registry/styles/treemap.css",
           "type": "registry:file",
           "target": "@ui/mizu/treemap.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/treemap.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/treemap.css"
         }
       ]
     },
@@ -345,7 +285,7 @@
       "title": "Board",
       "description": "A kanban board with lift-and-carry dragging, cards that part and fly into place, advisory limits, collapsible columns and a full keyboard path.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -387,16 +327,6 @@
           "path": "registry/styles/board.css",
           "type": "registry:file",
           "target": "@ui/mizu/board.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/board.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/board.css"
         }
       ]
     },
@@ -406,7 +336,7 @@
       "title": "Outliner",
       "description": "A keyboard-first outline: Enter splits, Tab restructures, whole branches move and fold, and any item can be zoomed into until it becomes the title.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -448,16 +378,6 @@
           "path": "registry/styles/outliner.css",
           "type": "registry:file",
           "target": "@ui/mizu/outliner.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/outline.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/outline.css"
         }
       ]
     },
@@ -467,7 +387,7 @@
       "title": "QueryBuilder",
       "description": "Conditions that read as a sentence: typed operators per field, nested any/all groups, a plain-language reading and an evaluator for local filtering.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -519,16 +439,6 @@
           "path": "registry/styles/query-builder.css",
           "type": "registry:file",
           "target": "@ui/mizu/query-builder.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/query.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/query.css"
         }
       ]
     },
@@ -538,7 +448,7 @@
       "title": "Annotator",
       "description": "Review pins on anything: drop numbered pins, discuss in threads, resolve and reopen, and find every conversation in the list beside the work.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -590,16 +500,6 @@
           "path": "registry/styles/annotator.css",
           "type": "registry:file",
           "target": "@ui/mizu/annotator.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/annotator.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/annotator.css"
         }
       ]
     },
@@ -609,7 +509,7 @@
       "title": "Tour",
       "description": "A guided tour whose spotlight travels between real elements, follows them through scrolling and reflow, and explains each one beside it.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -651,16 +551,6 @@
           "path": "registry/styles/tour.css",
           "type": "registry:file",
           "target": "@ui/mizu/tour.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/tour.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/tour.css"
         }
       ]
     },
@@ -670,7 +560,7 @@
       "title": "Interview",
       "description": "A conversation instead of a form: one question at a time, letter keys for choices, branching, a review before sending and an honest submit.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -717,16 +607,6 @@
           "path": "registry/styles/interview.css",
           "type": "registry:file",
           "target": "@ui/mizu/interview.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/interview.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/interview.css"
         }
       ]
     },
@@ -736,7 +616,7 @@
       "title": "TransferQueue",
       "description": "Uploads you can watch and steer: a concurrency-limited queue around your own transfer function, with live speed, time left, pause, retry and cancel.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -788,16 +668,6 @@
           "path": "registry/styles/transfer-queue.css",
           "type": "registry:file",
           "target": "@ui/mizu/transfer-queue.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/transfer.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/transfer.css"
         }
       ]
     },
@@ -807,7 +677,7 @@
       "title": "TriageDeck",
       "description": "Decisions at the speed of a gesture: fling the top card toward a decision, or use arrows and buttons — with tallies and an undo that flies the card back.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -844,16 +714,6 @@
           "path": "registry/styles/triage-deck.css",
           "type": "registry:file",
           "target": "@ui/mizu/triage-deck.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/triage.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/triage.css"
         }
       ]
     },
@@ -863,7 +723,7 @@
       "title": "Gallery",
       "description": "A justified photo grid whose photos open from exactly where they sit: swipe to travel, pull down to put one back, pinch or double-tap to look closer.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -905,16 +765,6 @@
           "path": "registry/styles/gallery.css",
           "type": "registry:file",
           "target": "@ui/mizu/gallery.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/gallery.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/gallery.css"
         }
       ]
     },
@@ -924,7 +774,7 @@
       "title": "Folio",
       "description": "A long-form reading surface: sidenotes sit in the margin beside their marks and fold into the text on narrow screens, while a contents rail keeps your place.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -956,16 +806,6 @@
           "path": "registry/styles/folio.css",
           "type": "registry:file",
           "target": "@ui/mizu/folio.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/folio.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/folio.css"
         }
       ]
     },
@@ -975,7 +815,7 @@
       "title": "SplitFlap",
       "description": "A mechanical flip display: every character falls forward through the drum to its new value, cell after cell, and lands with a slap.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1007,16 +847,6 @@
           "path": "registry/styles/split-flap.css",
           "type": "registry:file",
           "target": "@ui/mizu/split-flap.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/flap.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/flap.css"
         }
       ]
     },
@@ -1055,16 +885,6 @@
           "path": "registry/styles/column-browser.css",
           "type": "registry:file",
           "target": "@ui/mizu/column-browser.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/columns.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/columns.css"
         }
       ]
     },
@@ -1074,7 +894,7 @@
       "title": "LogStream",
       "description": "A live log tail that renders only what is in view: it follows new lines until you scroll away, counts what you missed, and searches, filters and opens any line whole.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1116,16 +936,6 @@
           "path": "registry/styles/log-stream.css",
           "type": "registry:file",
           "target": "@ui/mizu/log-stream.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/log.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/log.css"
         }
       ]
     },
@@ -1135,7 +945,7 @@
       "title": "Knob",
       "description": "A rotary control for instruments rather than forms: drag up or down, Shift for fine, arrows to step, double-click to return home — with log tapers for frequencies and times.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1167,16 +977,6 @@
           "path": "registry/styles/knob.css",
           "type": "registry:file",
           "target": "@ui/mizu/knob.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/controls.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/controls.css"
         }
       ]
     },
@@ -1186,7 +986,7 @@
       "title": "Fader",
       "description": "A console fader with a live meter: drag the cap, click the track to jump, and watch the level fall away beside it with a held peak.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1218,16 +1018,6 @@
           "path": "registry/styles/fader.css",
           "type": "registry:file",
           "target": "@ui/mizu/fader.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/controls.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/controls.css"
         }
       ]
     },
@@ -1237,7 +1027,7 @@
       "title": "XYPad",
       "description": "Two parameters under one finger: press anywhere and the puck springs there, then sweep both at once with a trail behind it.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1269,16 +1059,6 @@
           "path": "registry/styles/xypad.css",
           "type": "registry:file",
           "target": "@ui/mizu/xypad.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/signature.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/signature.css"
-        },
-        {
-          "path": "packages/mizu/src/signature/controls.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/signature/controls.css"
         }
       ]
     },
@@ -1335,11 +1115,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/mark.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/mark.css"
         }
       ]
     },
@@ -1368,11 +1143,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/section-tag.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/section-tag.css"
         }
       ]
     },
@@ -1401,11 +1171,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/rule.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/rule.css"
         }
       ]
     },
@@ -1434,11 +1199,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/badge.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/badge.css"
         }
       ]
     },
@@ -1490,11 +1250,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/frame.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/frame.css"
         }
       ]
     },
@@ -1560,7 +1315,7 @@
       "title": "MaskLine",
       "description": "The Mizu headline reveal — text rises from inside its own mask, one line at a time.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1587,11 +1342,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/maskline.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/maskline.css"
         }
       ]
     },
@@ -1601,7 +1351,7 @@
       "title": "Reveal",
       "description": "Scroll-triggered entrance with direction, distance and delay control.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1628,11 +1378,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/reveal.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/reveal.css"
         }
       ]
     },
@@ -1642,7 +1387,7 @@
       "title": "Magnetic",
       "description": "A spring-follow wrapper — the surface leans toward the cursor and settles back.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1664,11 +1409,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/magnetic.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/magnetic.css"
         }
       ]
     },
@@ -1711,7 +1451,7 @@
       "title": "PageWipe",
       "description": "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1738,11 +1478,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/pagewipe.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/pagewipe.css"
         }
       ]
     },
@@ -1752,7 +1487,7 @@
       "title": "Presence",
       "description": "A keyed state enters after the previous state has made room.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1774,11 +1509,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/presence.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/presence.css"
         }
       ]
     },
@@ -1788,7 +1518,7 @@
       "title": "Tilt",
       "description": "A restrained depth response to the pointer, returning cleanly to rest.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1824,7 +1554,7 @@
       "title": "Parallax",
       "description": "A bounded depth cue linked to the surface's actual position in the viewport.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1860,7 +1590,7 @@
       "title": "ScrollProgress",
       "description": "A thin reading indicator driven by real document scroll progress.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1957,7 +1687,7 @@
       "title": "WaveText",
       "description": "Kinetic text that answers the cursor — each letter lifts, scales and warms as you pass over it.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -1979,11 +1709,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/wavetext.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/wavetext.css"
         }
       ]
     },
@@ -2021,7 +1746,7 @@
       "title": "Pinfield",
       "description": "A grid of pins that carries pulses — click and a wavefront travels outward, lighting the field.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2062,7 +1787,7 @@
       "title": "Signal",
       "description": "A waveform you can scrub — drag horizontally to move the phase, hover to light the bars.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2103,7 +1828,7 @@
       "title": "RippleSurface",
       "description": "An ambient surface that ripples where you touch it — built for hero sections and invite panels.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2144,7 +1869,7 @@
       "title": "CountUp",
       "description": "Numbers that count — eased value animation with tabular figures, prefixes and suffixes.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2199,11 +1924,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/copybutton.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/copybutton.css"
         }
       ]
     },
@@ -2213,7 +1933,7 @@
       "title": "Toast",
       "description": "A toast system — provider, imperative API, tones, and a live region for screen readers.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2259,7 +1979,7 @@
       "title": "Accordion",
       "description": "Height-animated disclosure with a diamond marker that morphs between states.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2286,11 +2006,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/accordion.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/accordion.css"
         }
       ]
     },
@@ -2300,7 +2015,7 @@
       "title": "Tabs",
       "description": "Controlled or uncontrolled tabs with a sliding underline that travels between triggers.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -2327,11 +2042,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/styles/tabs.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/tabs.css"
         }
       ]
     },
@@ -2369,7 +2079,7 @@
       "title": "Nav",
       "description": "The thread header — scroll progress with a diamond node, chapter tracking, and a full-screen mobile menu.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -4499,7 +4209,7 @@
       "title": "ReorderList",
       "description": "Rearrange a sequence while each item keeps its identity.",
       "dependencies": [
-        "motion@^13.4.4"
+        "motion"
       ],
       "files": [
         {
@@ -4645,6 +4355,32 @@
           "path": "registry/styles/confirm-action.css",
           "type": "registry:file",
           "target": "@ui/mizu/confirm-action.css"
+        }
+      ]
+    },
+    {
+      "name": "motion-preferences",
+      "type": "registry:ui",
+      "title": "MotionPreferences",
+      "description": "An explicit motion preference for everything inside it — Motion, CSS and canvas — or the operating system’s when omitted.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/motion-preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/motion-preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
         }
       ]
     }

@@ -1,55 +1,9 @@
 
-@keyframes mizu-dialog-enter {
-  from {
-    opacity: 0.6;
-    transform: translateY(16px);
-  }
-}
-@keyframes mizu-type-weight {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 100;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 100;
-  }
-}
-@keyframes mizu-type-width {
-  from {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 125;
-  }
-}
-@keyframes mizu-type-both {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 125;
-  }
-}
-@keyframes mizu-marquee-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
-@keyframes mizu-skeleton-pulse {
-  50% {
-    opacity: 0.35;
-  }
+.mizu-field-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--mizu-muted);
+  line-height: 1.6;
 }
 .mizu-split-pane {
   display: grid;
@@ -77,9 +31,4 @@
 .mizu-split-handle:hover span,
 .mizu-split-handle:focus span {
   background: var(--mizu-accent);
-}
-@keyframes mizu-spin {
-  to {
-    transform: rotate(405deg);
-  }
 }

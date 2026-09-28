@@ -48,8 +48,8 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field
 Import it from your configured UI directory, for example
 `@/components/ui/mizu/select-field`. The registry includes each component's
 source dependencies and styles, without installing `mizu-ui`. See each catalog
-page for its command. Registry entries are generated from the catalog with
-`bun run registry:sync`.
+page for its command; `motion-preferences` adds the MotionPreferences provider.
+Registry entries are generated from the catalog with `bun run registry:sync`.
 
 ## Explore the showcase
 

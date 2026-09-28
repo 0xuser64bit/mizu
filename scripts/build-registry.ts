@@ -1,4 +1,12 @@
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, extname, join, normalize, relative } from "node:path";
 import postcss from "postcss";
 import ts from "typescript";
@@ -6,38 +14,30 @@ import { SYSTEMS } from "../src/components/docs/registry";
 
 const check = process.argv.includes("--check");
 const sourceRoot = "packages/mizu/src";
-const cssRoot = postcss.parse(
+const core = postcss.parse(
   readFileSync(join(sourceRoot, "core.css"), "utf8"),
+).nodes;
+const marker = core.findIndex(
+  (node) => node.type === "comment" && node.text.includes("component styles"),
 );
-const base = postcss.root();
-const componentStyles = postcss.root();
-let inComponents = false;
-for (const node of cssRoot.nodes) {
-  if (node.type === "comment" && node.text.includes("component styles"))
-    inComponents = true;
-  const shared =
-    node.type === "rule" &&
-    (node.selector.startsWith(":root") ||
-      node.selector.startsWith("[data-theme=") ||
-      node.selector.startsWith(':where([class*="mizu-"])') ||
-      node.selector.startsWith(".mizu-root select option"));
-  (inComponents && !shared ? componentStyles : base).append(node.clone());
-}
-
-const signatureStyles: Record<string, string> = {
-  "trend-chart": "trend",
-  "flow-graph": "flow",
-  outliner: "outline",
-  "query-builder": "query",
-  "transfer-queue": "transfer",
-  "triage-deck": "triage",
-  "split-flap": "flap",
-  "column-browser": "columns",
-  "log-stream": "log",
-  knob: "controls",
-  fader: "controls",
-  xypad: "controls",
-};
+// Every component rule in package stylesheet order, so overrides keep their cascade.
+const styles = [
+  ...core.slice(marker + 1),
+  ...[
+    ...readFileSync("packages/mizu/styles.css", "utf8").matchAll(
+      /@import "\.\/(src\/signature\/[^"]+)"/g,
+    ),
+  ].flatMap(
+    (m) =>
+      postcss.parse(readFileSync(join("packages/mizu", m[1]!), "utf8")).nodes,
+  ),
+];
+// .mizu-root is the consumer's wrapper: rules keyed only on it are shared.
+const componentClasses = (selector: string) =>
+  [...selector.matchAll(/\.([\w-]*mizu-[\w-]+)/g)]
+    .map((m) => m[1]!)
+    .filter((name) => name !== "mizu-root");
+const shared = (rule: postcss.Rule) => !componentClasses(rule.selector).length;
 const written = new Set<string>();
 function output(path: string, content: string) {
   written.add(path);
@@ -72,45 +72,70 @@ function sourceClosure(entry: string) {
 function file(path: string, target: string, type = "registry:ui") {
   return { path, type, target };
 }
-function itemStyles(classes: Set<string>) {
+// The component rules `keep` accepts, inside their at-rules.
+function select(keep: (rule: postcss.Rule) => boolean) {
   const root = postcss.root();
   function include(node: postcss.ChildNode): postcss.ChildNode | undefined {
-    if (node.type === "rule") {
-      const matches = [...node.selector.matchAll(/\.([\w-]*mizu-[\w-]+)/g)].map(
-        (m) => m[1]!,
-      );
-      return matches.some((name) =>
-        [...classes].some(
-          (used) =>
-            name === used || (used.endsWith("-") && name.startsWith(used)),
-        ),
-      )
-        ? node.clone()
-        : undefined;
+    if (node.type === "rule") return keep(node) ? node.clone() : undefined;
+    if (node.type !== "atrule" || !node.nodes || node.name === "keyframes")
+      return undefined;
+    const copy = node.clone({ nodes: [] });
+    for (const child of node.nodes) {
+      const selected = include(child);
+      if (selected) copy.append(selected);
     }
-    if (node.type === "atrule") {
-      if (node.name === "keyframes") return node.clone();
-      if (!node.nodes) return undefined;
-      const copy = node.clone({ nodes: [] });
-      for (const child of node.nodes) {
-        const selected = include(child);
-        if (selected) copy.append(selected);
-      }
-      return copy.nodes?.length ? copy : undefined;
-    }
-    return undefined;
+    return copy.nodes?.length ? copy : undefined;
   }
-  for (const node of componentStyles.nodes) {
+  for (const node of styles) {
     const selected = include(node);
     if (selected) root.append(selected);
   }
-  return root.toString() + "\n";
+  return root;
+}
+// Keyframes travel with the rules that animate with them.
+function withKeyframes(root: postcss.Root) {
+  const names = new Set<string>();
+  root.walkDecls(/^animation(-name)?$/, (decl) => {
+    for (const word of decl.value.split(/[\s,]+/)) names.add(word);
+  });
+  for (const node of styles)
+    if (node.type === "atrule" && node.name === "keyframes")
+      if (names.has(node.params)) root.append(node.clone());
+  return root;
+}
+const reached = new Set<postcss.Rule>();
+function itemStyles(classes: Set<string>) {
+  const uses = (name: string) =>
+    [...classes].some(
+      (used) => name === used || (used.endsWith("-") && name.startsWith(used)),
+    );
+  const root = select((rule) => {
+    const hit = componentClasses(rule.selector).some(uses);
+    if (hit) reached.add(rule);
+    return hit;
+  });
+  return withKeyframes(root).toString() + "\n";
 }
 
-output("registry/styles/base.css", base.toString() + "\n");
-const items = SYSTEMS.map((meta) => {
+const base = postcss.root();
+for (const node of core.slice(0, marker)) base.append(node.clone());
+base.append(select(shared));
+output("registry/styles/base.css", withKeyframes(base).toString() + "\n");
+// Public supporting APIs that are not catalog systems.
+const supporting = [
+  {
+    slug: "motion-preferences",
+    name: "MotionPreferences",
+    source: "motion/Preferences.tsx",
+    tagline:
+      "An explicit motion preference for everything inside it — Motion, CSS and canvas — or the operating system’s when omitted.",
+    usage: "",
+  },
+];
+const items = [...SYSTEMS, ...supporting].map((meta) => {
   const closure = sourceClosure(meta.source);
-  const classes = new Set<string>();
+  // The catalog example's own markup counts too, so the documented usage renders.
+  const classes = new Set(meta.usage.match(/mizu-[\w-]+/g));
   const files = [
     file(`registry/${meta.slug}.tsx`, `@ui/mizu/${meta.slug}.tsx`),
   ];
@@ -127,36 +152,34 @@ const items = SYSTEMS.map((meta) => {
     );
     files.push(file(mirror, `@ui/mizu/source/${relativePath}`));
   }
-  const style = `registry/styles/${meta.slug}.css`;
-  output(style, itemStyles(classes));
   files.push(
     file("registry/styles/base.css", "@ui/mizu/base.css", "registry:file"),
   );
-  files.push(file(style, `@ui/mizu/${meta.slug}.css`, "registry:file"));
-  let cssImports = 'import "./base.css";\nimport "./' + meta.slug + '.css";\n';
-  if (meta.category === "Signature") {
-    const specific = signatureStyles[meta.slug] ?? meta.slug;
-    for (const css of ["signature", specific]) {
-      const path = `packages/mizu/src/signature/${css}.css`;
-      if (!existsSync(path))
-        throw new Error(`Missing signature styles: ${path}`);
-      files.push(file(path, `@ui/mizu/signature/${css}.css`, "registry:file"));
-      cssImports += `import "./signature/${css}.css";\n`;
-    }
+  let imports = 'import "./base.css";\n';
+  const css = itemStyles(classes);
+  if (css.trim()) {
+    const style = `registry/styles/${meta.slug}.css`;
+    output(style, css);
+    files.push(file(style, `@ui/mizu/${meta.slug}.css`, "registry:file"));
+    imports += `import "./${meta.slug}.css";\n`;
   }
   output(
     `registry/${meta.slug}.tsx`,
-    `"use client";\n\n${cssImports}\nexport * from "./source/${meta.source.replace(/\.tsx?$/, "")}";\n`,
+    `"use client";\n\n${imports}\nexport * from "./source/${meta.source.replace(/\.tsx?$/, "")}";\n`,
   );
   return {
     name: meta.slug,
     type: "registry:ui",
     title: meta.name,
     description: meta.tagline,
-    ...(motion ? { dependencies: ["motion@^13.4.4"] } : {}),
+    // Unversioned, so the CLI keeps an installed Motion 12 or 13 (the supported peer range).
+    ...(motion ? { dependencies: ["motion"] } : {}),
     files,
   };
 });
+const unreached = select((rule) => !shared(rule) && !reached.has(rule));
+if (unreached.nodes.length)
+  throw new Error(`No registry item ships these styles:\n${unreached}`);
 output(
   "registry.json",
   JSON.stringify(
@@ -170,6 +193,15 @@ output(
     2,
   ) + "\n",
 );
+// Files an earlier run generated that this one no longer does.
+for (const name of readdirSync("registry", { recursive: true }) as string[]) {
+  const path = join("registry", name);
+  if (written.has(path) || statSync(path).isDirectory()) continue;
+  if (check) {
+    console.error(`Remove stale ${path}: bun run registry:sync`);
+    process.exitCode = 1;
+  } else rmSync(path);
+}
 console.log(
   `${check ? "Checked" : "Generated"} ${items.length} registry items.`,
 );

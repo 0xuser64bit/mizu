@@ -24,12 +24,16 @@ export function Spectrum() {
             minHeight: 56,
             justifyContent: "space-between",
             gap: 16,
+            padding: "14px 16px",
             background: "transparent",
             border: 0,
             color: "var(--mizu-paper)",
             cursor: "pointer",
+            fontFamily: "inherit",
+            fontSize: "inherit",
+            letterSpacing: "inherit",
           }}
-          className="group flex w-full items-center justify-between gap-4 border-b border-line px-4 py-3.5 text-left transition-colors last:border-b-0 hover:bg-ink-2"
+          className="group flex w-full items-center justify-between gap-4 border-b border-line text-left transition-colors last:border-b-0 hover:bg-ink-2"
           aria-label={`Copy ${s.name} ${s.hex}`}
         >
           <span className="flex items-center gap-4">

@@ -117,6 +117,12 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           platform keyboard behavior. Read each component’s notes for its
           particular interactions and limits.
         </p>
+        <Code>{`npx shadcn@latest add 0xuser64bit/mizu/motion-preferences`}</Code>
+        <p>
+          From the registry, the provider is its own item. Import it from{" "}
+          <code>@/components/ui/mizu/motion-preferences</code>; it governs every
+          Mizu component installed alongside it.
+        </p>
         <h2>Inspect and copy</h2>
         <p>
           Every component page has a live preview, compiled typed usage, API

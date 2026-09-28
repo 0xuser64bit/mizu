@@ -36,7 +36,15 @@ export const CopyButton = forwardRef<
   HTMLButtonElement,
   ButtonHTMLAttributes<HTMLButtonElement> & { text: string; feedback?: string }
 >(function CopyButton(
-  { text, feedback = "Copied", className = "", children, onClick, ...props },
+  {
+    text,
+    feedback = "Copied",
+    className = "",
+    children,
+    onClick,
+    style,
+    ...props
+  },
   ref,
 ) {
   const [copied, setCopied] = useState(false);
@@ -78,6 +86,7 @@ export const CopyButton = forwardRef<
         color: copied ? "var(--mizu-accent)" : "var(--mizu-muted)",
         cursor: "pointer",
         transition: "color 250ms ease",
+        ...style,
       }}
       {...props}
     >

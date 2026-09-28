@@ -1,51 +1,4 @@
 
-@keyframes mizu-dialog-enter {
-  from {
-    opacity: 0.6;
-    transform: translateY(16px);
-  }
-}
-@keyframes mizu-type-weight {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 100;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 100;
-  }
-}
-@keyframes mizu-type-width {
-  from {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 125;
-  }
-}
-@keyframes mizu-type-both {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 125;
-  }
-}
-@keyframes mizu-marquee-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
 .mizu-sr-only {
   position: absolute;
   width: 1px;
@@ -265,11 +218,6 @@
   outline: 2px solid var(--mizu-paper);
   outline-offset: 3px;
 }
-@keyframes mizu-skeleton-pulse {
-  50% {
-    opacity: 0.35;
-  }
-}
 .mizu-combobox {
   position: relative;
 }
@@ -311,8 +259,18 @@
   color: var(--mizu-muted);
   font-size: 13px;
 }
-@keyframes mizu-spin {
-  to {
-    transform: rotate(405deg);
-  }
+.mizu-query-head .mizu-segmented span {
+  min-height: 36px;
+  padding: 4px 14px;
+}
+.mizu-query-rule .mizu-input {
+  flex: 0 1 auto;
+  width: auto;
+  min-width: 0;
+}
+.mizu-query-rule > input.mizu-input {
+  flex: 1 1 160px;
+}
+.mizu-query-pair .mizu-input {
+  width: 112px;
 }

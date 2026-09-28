@@ -31,7 +31,11 @@ export function CodeBlock({
           Copy
         </CopyButton>
       </figcaption>
-      <pre tabIndex={0} aria-label={filename ?? `${language} code`}>
+      <pre
+        tabIndex={0}
+        role="region"
+        aria-label={filename ?? `${language} code`}
+      >
         <code>{code}</code>
       </pre>
     </figure>

@@ -275,6 +275,8 @@
   padding: 36px 32px 32px;
   width: min(520px, calc(100vw - 32px));
   max-height: 84dvh;
+  /* Centered even when a reset such as Tailwind's preflight zeroes margins. */
+  margin: auto;
   box-sizing: border-box;
   overflow: auto;
   font-family: var(--mizu-font-display);

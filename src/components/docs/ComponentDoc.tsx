@@ -1,51 +1,10 @@
 import Link from "next/link";
 import usage from "./usage.json";
-import { CopyButton, Kbd } from "@/mizu";
+import { CodeBlock, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
 import { usesMotion } from "./source";
-
-function CodeBlock({ code }: { code: string }) {
-  return (
-    <div style={{ position: "relative" }}>
-      <CopyButton
-        text={code}
-        aria-label="Copy usage example"
-        feedback="Copied"
-        style={{
-          position: "absolute",
-          top: 12,
-          right: 12,
-          padding: "6px 10px",
-          background: "var(--mizu-ink)",
-          zIndex: 1,
-        }}
-      >
-        Copy
-      </CopyButton>
-      <pre
-        tabIndex={0}
-        role="region"
-        aria-label="Usage example"
-        style={{
-          margin: 0,
-          overflowX: "auto",
-          padding: "24px 20px",
-          background: "var(--mizu-ink-2)",
-          border: "1px solid var(--mizu-line)",
-          fontFamily: "var(--mizu-font-mono)",
-          fontSize: 12,
-          lineHeight: 1.75,
-          color: "var(--mizu-paper)",
-          whiteSpace: "pre",
-        }}
-      >
-        {code}
-      </pre>
-    </div>
-  );
-}
 
 function PropsTable({ props }: { props: ComponentMeta["props"] }) {
   return (
@@ -167,7 +126,10 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <section className="mt-14">
           <DemoLabel as="h2">Usage</DemoLabel>
           <div className="mt-4">
-            <CodeBlock code={usage[meta.slug as keyof typeof usage]} />
+            <CodeBlock
+              code={usage[meta.slug as keyof typeof usage]}
+              language="tsx"
+            />
           </div>
           {signature && (
             <div className="mt-4">
@@ -216,6 +178,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               </p>
               <CodeBlock
                 code={`npx shadcn@latest add 0xuser64bit/mizu/${meta.slug}`}
+                language="sh"
               />
             </div>
           )}

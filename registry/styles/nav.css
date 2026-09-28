@@ -41,6 +41,8 @@
   padding: 36px 32px 32px;
   width: min(520px, calc(100vw - 32px));
   max-height: 84dvh;
+  /* Centered even when a reset such as Tailwind's preflight zeroes margins. */
+  margin: auto;
   box-sizing: border-box;
   overflow: auto;
   font-family: var(--mizu-font-display);
@@ -87,56 +89,5 @@
   from {
     opacity: 0.6;
     transform: translateY(16px);
-  }
-}
-@keyframes mizu-type-weight {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 100;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 100;
-  }
-}
-@keyframes mizu-type-width {
-  from {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 125;
-  }
-}
-@keyframes mizu-type-both {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 125;
-  }
-}
-@keyframes mizu-marquee-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
-@keyframes mizu-skeleton-pulse {
-  50% {
-    opacity: 0.35;
-  }
-}
-@keyframes mizu-spin {
-  to {
-    transform: rotate(405deg);
   }
 }

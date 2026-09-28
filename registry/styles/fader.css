@@ -1,58 +1,227 @@
 
-@keyframes mizu-dialog-enter {
-  from {
-    opacity: 0.6;
-    transform: translateY(16px);
-  }
+.mizu-knob,
+.mizu-fader,
+.mizu-xy {
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+  gap: 8px;
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
-@keyframes mizu-type-weight {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 100;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 100;
-  }
+:is(.mizu-knob, .mizu-fader, .mizu-xy)[data-disabled] {
+  opacity: 0.4;
+  pointer-events: none;
 }
-@keyframes mizu-type-width {
-  from {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 125;
-  }
+.mizu-control-label {
+  color: var(--mizu-muted);
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
-@keyframes mizu-type-both {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 125;
-  }
+.mizu-control-readout {
+  min-width: 7ch;
+  color: var(--mizu-paper);
+  font: 12px var(--mizu-font-mono);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
-@keyframes mizu-marquee-scroll {
-  to {
-    transform: translateX(-50%);
-  }
+.mizu-control-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
 }
-@keyframes mizu-skeleton-pulse {
-  50% {
-    opacity: 0.35;
-  }
+.mizu-knob svg {
+  display: block;
+  overflow: visible;
+  cursor: ns-resize;
 }
-@keyframes mizu-spin {
-  to {
-    transform: rotate(405deg);
-  }
+.mizu-knob-face {
+  fill: var(--mizu-ink-2);
+  stroke: var(--mizu-line-bright);
+}
+.mizu-knob-track,
+.mizu-knob-value {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: butt;
+}
+.mizu-knob-track {
+  stroke: var(--mizu-line);
+}
+.mizu-knob-value {
+  stroke: var(--mizu-accent);
+}
+.mizu-knob-tick {
+  stroke: var(--mizu-line-bright);
+  stroke-width: 1;
+}
+.mizu-knob-pointer {
+  stroke: var(--mizu-paper);
+  stroke-width: 2;
+}
+.mizu-knob:has(.mizu-control-input:focus-visible) .mizu-knob-face {
+  stroke: var(--mizu-accent);
+  stroke-width: 2;
+}
+.mizu-knob:has(.mizu-control-input:active) svg,
+.mizu-knob[data-dragging] svg {
+  cursor: grabbing;
+}
+.mizu-fader-body {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+.mizu-fader-track {
+  position: relative;
+  width: 36px;
+  cursor: ns-resize;
+}
+.mizu-fader-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--mizu-line);
+  translate: -50% 0;
+}
+.mizu-fader-fill {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--mizu-accent);
+  transform-origin: bottom;
+  translate: -50% 0;
+}
+.mizu-fader-cap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 16px;
+  border: 1px solid var(--mizu-line-bright);
+  background: var(--mizu-ink-3);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.3);
+}
+.mizu-fader-cap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  right: 5px;
+  height: 1px;
+  background: var(--mizu-paper);
+}
+.mizu-fader:has(.mizu-control-input:focus-visible) .mizu-fader-cap {
+  border-color: var(--mizu-accent);
+  outline: 1px solid var(--mizu-accent);
+}
+.mizu-fader-marks {
+  position: relative;
+  flex: none;
+  font: 9px var(--mizu-font-mono);
+  pointer-events: none;
+}
+.mizu-fader-marks span {
+  position: absolute;
+  right: 0;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+  translate: 0 -50%;
+}
+.mizu-fader-meter {
+  position: relative;
+  width: 6px;
+  overflow: hidden;
+  background: var(--mizu-ink-2);
+}
+.mizu-fader-meter > span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--mizu-success) 0 60%,
+    var(--mizu-warning) 60% 85%,
+    var(--mizu-danger) 85%
+  );
+  transform-origin: bottom;
+}
+.mizu-fader-meter > i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--mizu-paper);
+}
+.mizu-xy-pad {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--mizu-line-bright);
+  background:
+    linear-gradient(var(--mizu-line) 1px, transparent 1px) 0 0 / 25% 25%,
+    linear-gradient(90deg, var(--mizu-line) 1px, transparent 1px) 0 0 / 25% 25%,
+    var(--mizu-ink-2);
+  cursor: crosshair;
+}
+.mizu-xy:has(.mizu-control-input:focus-visible) .mizu-xy-pad {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 2px;
+}
+.mizu-xy-pad svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.mizu-xy-cross {
+  stroke: var(--mizu-line-bright);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: stroke var(--mizu-duration-fast);
+}
+.mizu-xy:has(.mizu-control-input[data-axis="x"]:focus-visible)
+  .mizu-xy-cross[data-axis="x"],
+.mizu-xy:has(.mizu-control-input[data-axis="y"]:focus-visible)
+  .mizu-xy-cross[data-axis="y"] {
+  stroke: var(--mizu-accent);
+}
+.mizu-xy-trail {
+  fill: none;
+  stroke: var(--mizu-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.mizu-xy-puck {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  pointer-events: none;
+}
+.mizu-xy-puck::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--mizu-ink);
+  background: var(--mizu-accent);
+  rotate: 45deg;
+}
+.mizu-xy-readout {
+  display: flex;
+  gap: 14px;
 }

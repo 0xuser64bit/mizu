@@ -1,51 +1,4 @@
 
-@keyframes mizu-dialog-enter {
-  from {
-    opacity: 0.6;
-    transform: translateY(16px);
-  }
-}
-@keyframes mizu-type-weight {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 100;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 100;
-  }
-}
-@keyframes mizu-type-width {
-  from {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" 500,
-      "wdth" 125;
-  }
-}
-@keyframes mizu-type-both {
-  from {
-    font-variation-settings:
-      "wght" var(--mizu-weight-min),
-      "wdth" 62;
-  }
-  to {
-    font-variation-settings:
-      "wght" var(--mizu-weight-max),
-      "wdth" 125;
-  }
-}
-@keyframes mizu-marquee-scroll {
-  to {
-    transform: translateX(-50%);
-  }
-}
 .mizu-sr-only {
   position: absolute;
   width: 1px;
@@ -57,13 +10,195 @@
   white-space: nowrap;
   border: 0;
 }
-@keyframes mizu-skeleton-pulse {
-  50% {
-    opacity: 0.35;
-  }
+.mizu-outline {
+  --mizu-indent: 26px;
+  --mizu-bullet-x: 27px;
+  min-width: 0;
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
 }
-@keyframes mizu-spin {
-  to {
-    transform: rotate(405deg);
-  }
+.mizu-outline-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 10px;
+  min-height: 44px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--mizu-line);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+}
+.mizu-outline-trail > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.mizu-outline-trail button {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-muted);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  max-width: 28ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mizu-outline-trail button:hover:not(:disabled) {
+  color: var(--mizu-paper);
+}
+.mizu-outline-trail button:disabled {
+  opacity: 1;
+  color: var(--mizu-paper);
+  cursor: default;
+}
+.mizu-outline-title {
+  margin: 8px 0 14px;
+}
+.mizu-outline-title textarea {
+  display: block;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  field-sizing: content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-paper);
+  font: 800 clamp(24px, 4vw, 34px) / 1.15 var(--mizu-font-display);
+  letter-spacing: -0.02em;
+  outline: none;
+}
+.mizu-outline-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mizu-outline-row {
+  position: relative;
+  padding-left: calc(var(--mizu-level) * var(--mizu-indent));
+  overflow: hidden;
+  transition: background-color var(--mizu-duration-fast);
+}
+.mizu-outline-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--mizu-bullet-x);
+  width: calc(var(--mizu-level) * var(--mizu-indent));
+  background: linear-gradient(to right, var(--mizu-line) 1px, transparent 1px) 0
+    0 / var(--mizu-indent) 100% repeat-x;
+  pointer-events: none;
+}
+.mizu-outline-row[data-thread]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--mizu-bullet-x) + var(--mizu-thread) * var(--mizu-indent));
+  width: 1px;
+  background: var(--mizu-accent);
+  pointer-events: none;
+}
+.mizu-outline-row:focus-within {
+  background-color: var(--mizu-ink-2);
+}
+.mizu-outline-line {
+  display: grid;
+  grid-template-columns: 18px 18px minmax(0, 1fr);
+  align-items: start;
+}
+.mizu-outline-fold {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-faint);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity var(--mizu-duration-fast);
+}
+.mizu-outline-fold svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+.mizu-outline-row:hover .mizu-outline-fold,
+.mizu-outline-row:focus-within .mizu-outline-fold,
+.mizu-outline-fold[aria-expanded="false"] {
+  opacity: 1;
+}
+.mizu-outline-bullet {
+  position: relative;
+  width: 18px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.mizu-outline-bullet::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 5.5px;
+  width: 7px;
+  height: 7px;
+  background: var(--mizu-muted);
+  transform: rotate(45deg);
+  transition:
+    background var(--mizu-duration-fast),
+    transform var(--mizu-duration-fast) var(--mizu-ease-expo),
+    outline-color var(--mizu-duration-fast);
+}
+.mizu-outline-bullet[data-folded]::before {
+  outline: 1px solid var(--mizu-line-bright);
+  outline-offset: 3px;
+}
+.mizu-outline-bullet:hover::before,
+.mizu-outline-row:focus-within
+  > .mizu-outline-line
+  > .mizu-outline-bullet::before {
+  background: var(--mizu-accent);
+}
+.mizu-outline-bullet:hover::before {
+  transform: rotate(45deg) scale(1.3);
+}
+.mizu-outline-row[data-done] .mizu-outline-bullet::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--mizu-success);
+}
+.mizu-outline-text textarea {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  resize: none;
+  overflow: hidden;
+  field-sizing: content;
+  padding: 7px 8px 7px 4px;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-paper);
+  font: 15px/1.5 var(--mizu-font-display);
+  outline: none;
+}
+.mizu-outline-text textarea::placeholder {
+  color: var(--mizu-faint);
+}
+.mizu-outline-row[data-done] textarea {
+  color: var(--mizu-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--mizu-faint);
 }

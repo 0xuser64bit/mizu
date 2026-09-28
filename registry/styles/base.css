@@ -105,6 +105,7 @@
     transition-duration: 0.01ms !important;
   }
 }
+
 :root,
 [data-theme="dark"] {
   --mizu-success: #70bc96;
@@ -112,25 +113,110 @@
   --mizu-danger: #ef9b8e;
   --mizu-control-height: 44px;
 }
+
 [data-theme="light"] {
   --mizu-success: #206442;
   --mizu-warning: #775100;
   --mizu-danger: #a12716;
 }
+
 :where([class*="mizu-"]) {
   box-sizing: border-box;
 }
+
 :where([class*="mizu-"]) :where(button, input, textarea, select) {
   font: inherit;
 }
+
 :where([class*="mizu-"]) :where(button, input, textarea, select):disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 :where([class*="mizu-"]) :where(input, textarea) {
   caret-color: var(--mizu-accent);
 }
+
 .mizu-root select option {
   background: var(--mizu-ink-2);
   color: var(--mizu-paper);
+}
+
+@supports (appearance: base-select) {
+  .mizu-root select:not([multiple]):not([size]),
+  .mizu-root select:not([multiple]):not([size])::picker(select) {
+    appearance: base-select;
+  }
+  .mizu-root select:not([multiple]):not([size])::picker(select) {
+    min-width: anchor-size(width);
+    max-height: min(320px, 50dvh);
+    overflow: auto;
+    padding: 4px;
+    border: 1px solid var(--mizu-line-bright);
+    border-radius: var(--mizu-radius);
+    background: var(--mizu-ink-2);
+    color: var(--mizu-paper);
+    box-shadow: 0 16px 40px rgb(0 0 0 / 24%);
+  }
+  .mizu-root select:not([multiple]):not([size]) option {
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: var(--mizu-radius);
+    background: transparent;
+    color: var(--mizu-paper);
+    font: inherit;
+  }
+  .mizu-root select:not([multiple]):not([size]) option:checked,
+  .mizu-root select:not([multiple]):not([size]) option:is(:hover, :focus) {
+    background: var(--mizu-ink-3);
+  }
+  .mizu-root select:not([multiple]):not([size])::picker-icon,
+  .mizu-root select:not([multiple]):not([size]) option::checkmark {
+    color: var(--mizu-accent);
+  }
+}
+
+[data-tone="success"] {
+  --mizu-status-color: var(--mizu-success);
+}
+
+[data-tone="warning"] {
+  --mizu-status-color: var(--mizu-warning);
+}
+
+[data-tone="error"] {
+  --mizu-status-color: var(--mizu-danger);
+}
+
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation: none !important;
+  transition-duration: 0s !important;
+  scroll-behavior: auto !important;
+}
+
+[data-tone="accent"] {
+  --mizu-tone: var(--mizu-accent);
+}
+
+[data-tone="paper"] {
+  --mizu-tone: var(--mizu-paper);
+}
+
+[data-tone="muted"],
+[data-tone="neutral"] {
+  --mizu-tone: var(--mizu-muted);
+}
+
+[data-tone="success"] {
+  --mizu-tone: var(--mizu-success);
+}
+
+[data-tone="warning"] {
+  --mizu-tone: var(--mizu-warning);
+}
+
+[data-tone="danger"] {
+  --mizu-tone: var(--mizu-danger);
 }
