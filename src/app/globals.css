@@ -130,7 +130,7 @@ body {
 .mizu-keymap > div { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr); gap: 20px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--mizu-line); }
 .mizu-keymap dt { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 11px var(--mizu-font-mono); color: var(--mizu-faint); }
 .mizu-keymap dd { margin: 0; font-size: 14px; color: var(--mizu-muted); line-height: 1.6; }
-.mizu-showcase { display: grid; gap: 20px; min-width: 0; }
+.mizu-showcase { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; min-width: 0; }
 .mizu-showcase-scenarios { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 .mizu-showcase-scenarios p { margin: 0; flex: 1 1 260px; font-size: 12px; line-height: 1.6; color: var(--mizu-muted); }
 .mizu-showcase-readout { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font: 12px var(--mizu-font-mono); color: var(--mizu-paper); border-left: 1px solid var(--mizu-accent); padding: 4px 0 4px 14px; }
@@ -248,3 +248,4 @@ body {
 .mizu-automation-hint { margin: 0; color: var(--mizu-muted); font-size: 14px; }
 @media (max-width: 1000px) { .mizu-automation-grid { grid-template-columns: 1fr; } }
 .mizu-example-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.mizu-demo-board-scroll { max-width: 100%; overflow-x: auto; }

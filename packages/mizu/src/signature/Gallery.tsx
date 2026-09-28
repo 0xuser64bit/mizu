@@ -234,11 +234,19 @@ export function Gallery({
             return (
               <li
                 key={item.id}
-                style={{
-                  width: box?.w ?? (item.width / item.height) * rowHeight,
-                  height: box?.h ?? rowHeight,
-                  flexGrow: box?.fill ? 1 : 0,
-                }}
+                style={
+                  box
+                    ? {
+                        width: box.w,
+                        height: box.h,
+                        flexGrow: box.fill ? 1 : 0,
+                      }
+                    : // Before the grid is measured: the target height, never wider than the grid.
+                      {
+                        width: `min(100%, ${(item.width / item.height) * rowHeight}px)`,
+                        aspectRatio: `${item.width} / ${item.height}`,
+                      }
+                }
               >
                 <button
                   ref={(el) => {
