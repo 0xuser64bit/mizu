@@ -1,0 +1,214 @@
+
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.mizu-field-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--mizu-muted);
+  line-height: 1.6;
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.mizu-table-scroll {
+  overflow: auto;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mizu-line-bright) transparent;
+}
+.mizu-data-table,
+.mizu-comparison-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.mizu-data-table caption,
+.mizu-comparison-table caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--mizu-paper);
+}
+.mizu-data-table th,
+.mizu-comparison-table th {
+  font-weight: 500;
+  color: var(--mizu-muted);
+  text-align: left;
+}
+.mizu-data-table th,
+.mizu-data-table td,
+.mizu-comparison-table th,
+.mizu-comparison-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--mizu-line);
+  white-space: nowrap;
+}
+.mizu-description-list {
+  margin: 0;
+}
+.mizu-description-list > div {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr);
+  gap: 20px;
+  border-bottom: 1px solid var(--mizu-line);
+  padding: 16px 0;
+  font-size: 14px;
+}
+.mizu-description-list dt {
+  color: var(--mizu-muted);
+}
+.mizu-description-list dd {
+  margin: 0;
+  color: var(--mizu-paper);
+  overflow-wrap: anywhere;
+}
+.mizu-stat p {
+  margin: 0;
+}
+.mizu-stat .mizu-stat-label {
+  color: var(--mizu-muted);
+  font-size: 13px;
+}
+.mizu-stat .mizu-stat-value {
+  color: var(--mizu-paper);
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 12px 0;
+  font-variant-numeric: tabular-nums;
+}
+.mizu-stat .mizu-stat-change {
+  margin: 0 0 8px;
+  font: 12px var(--mizu-font-mono);
+  color: var(--mizu-muted);
+}
+.mizu-stat-change[data-favorable="true"] {
+  color: var(--mizu-success);
+}
+.mizu-stat-change[data-favorable="false"] {
+  color: var(--mizu-danger);
+}
+.mizu-timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mizu-timeline li {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 24px;
+  padding: 0 0 28px;
+  position: relative;
+}
+.mizu-timeline li::before {
+  content: "";
+  position: absolute;
+  left: 121px;
+  top: 6px;
+  width: 5px;
+  height: 5px;
+  background: var(--mizu-muted);
+  transform: rotate(45deg);
+}
+.mizu-timeline li::after {
+  content: "";
+  position: absolute;
+  left: 123px;
+  top: 19px;
+  bottom: 9px;
+  width: 1px;
+  background: var(--mizu-line);
+}
+.mizu-timeline li:last-child::after {
+  display: none;
+}
+.mizu-timeline li[data-state="current"]::before {
+  background: var(--mizu-accent);
+}
+.mizu-timeline time {
+  font: 11px var(--mizu-font-mono);
+  color: var(--mizu-muted);
+  padding-top: 2px;
+}
+.mizu-timeline h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+.mizu-timeline-body {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--mizu-muted);
+}
+.mizu-comparison-table [data-included="true"] {
+  color: var(--mizu-success);
+}
+.mizu-comparison-table [data-included="false"] {
+  color: var(--mizu-faint);
+}
+@media (max-width: 480px) {
+  .mizu-timeline li {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .mizu-timeline li::before {
+    left: 77px;
+  }
+  .mizu-timeline li::after {
+    left: 79px;
+  }
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}

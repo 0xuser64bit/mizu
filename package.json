@@ -10,10 +10,12 @@
     "build:ui": "tsc -p packages/mizu/tsconfig.build.json",
     "test": "vitest run",
     "typecheck": "next typegen && tsc --noEmit",
-    "check": "bun run examples:check && bun run typecheck && bun run lint && bun run test && bun run build:ui",
+    "check": "bun run examples:check && bun run registry:check && bun run typecheck && bun run lint && bun run test && bun run build:ui",
     "test:consumer": "node scripts/check-consumer.mjs",
     "examples:sync": "bun scripts/build-examples.ts",
     "examples:check": "bun scripts/build-examples.ts --check",
+    "registry:sync": "bun scripts/build-registry.ts",
+    "registry:check": "bun scripts/build-registry.ts --check",
     "format": "prettier --write packages/mizu/src src/components/docs scripts src/test"
   },
   "dependencies": {
@@ -37,6 +39,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
     "happy-dom": "^20.14.5",
+    "postcss": "^8",
     "prettier": "^3.9.9",
     "tailwindcss": "^4",
     "typescript": "^5",

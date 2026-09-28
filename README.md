@@ -27,15 +27,29 @@ import "mizu-ui/fonts.css"; // optional self-hosted fonts
 import { Button } from "mizu-ui";
 
 export function App() {
-  return <div className="mizu-root">
-    <Button onClick={() => window.print()}>Print this page</Button>
-  </div>;
+  return (
+    <div className="mizu-root">
+      <Button onClick={() => window.print()}>Print this page</Button>
+    </div>
+  );
 }
 ```
 
 Dark is the default; set `data-theme="light"` on any ancestor. Override the
 `--mizu-*` custom properties for your own material. Package setup, per-family
 imports and behavior limits are in [packages/mizu/README.md](packages/mizu/README.md).
+
+To copy one component into an app configured for the shadcn CLI:
+
+```sh
+npx shadcn@latest add 0xuser64bit/mizu/select-field
+```
+
+Import it from your configured UI directory, for example
+`@/components/ui/mizu/select-field`. The registry includes each component's
+source dependencies and styles, without installing `mizu-ui`. See each catalog
+page for its command. Registry entries are generated from the catalog with
+`bun run registry:sync`.
 
 ## Explore the showcase
 
@@ -61,6 +75,7 @@ bun run test:consumer        # real npm tarball in a temporary external React 19
 bun run test:consumer --react18
 bun run test:consumer --serve # packed app preview at :3102
 bun run examples:sync        # regenerate compiled demos, formatted usage and inventory
+bun run registry:sync        # regenerate single-component registry entries
 bun run format
 ```
 

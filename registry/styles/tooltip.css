@@ -1,0 +1,100 @@
+
+
+.mizu-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.mizu-tooltip-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px 10px;
+  background: var(--mizu-ink-2);
+  border: 1px solid var(--mizu-line-bright);
+  font-family: var(--mizu-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mizu-paper);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--mizu-duration-fast) ease,
+    transform var(--mizu-duration-fast) var(--mizu-ease-expo);
+  z-index: var(--mizu-z-overlay);
+}
+
+.mizu-tooltip--bottom .mizu-tooltip-bubble {
+  bottom: auto;
+  top: calc(100% + 10px);
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.mizu-tooltip:hover .mizu-tooltip-bubble,
+.mizu-tooltip:focus-within .mizu-tooltip-bubble {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.mizu-tooltip[data-dismissed] .mizu-tooltip-bubble {
+  opacity: 0;
+}
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}

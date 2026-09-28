@@ -1,0 +1,113 @@
+
+
+.mizu-slider-input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  background: transparent;
+}
+
+.mizu-slider-input::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--mizu-line-bright);
+}
+
+.mizu-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  background: var(--mizu-accent);
+  transform: rotate(45deg);
+  transition: background var(--mizu-duration-fast) ease;
+}
+
+.mizu-slider-input:hover::-webkit-slider-thumb {
+  background: var(--mizu-paper);
+}
+
+.mizu-slider-input::-moz-range-track {
+  height: 1px;
+  background: var(--mizu-line-bright);
+}
+
+.mizu-slider-input::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 0;
+  background: var(--mizu-accent);
+  transform: rotate(45deg);
+}
+
+.mizu-slider-input:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 4px;
+}
+
+.mizu-specimen-input:focus {
+  border-color: var(--mizu-accent) !important;
+}
+
+.mizu-specimen-toggle:hover {
+  border-color: var(--mizu-line-bright);
+  color: var(--mizu-paper);
+}
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}

@@ -1,0 +1,144 @@
+
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.mizu-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.mizu-input {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--mizu-control-height);
+  padding: 10px 12px;
+  border: 1px solid var(--mizu-line-bright);
+  border-radius: var(--mizu-radius);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-size: 14px;
+  color-scheme: var(--mizu-color-scheme);
+  transition: border-color var(--mizu-duration-fast) ease;
+}
+
+.mizu-input::placeholder {
+  color: var(--mizu-faint);
+  opacity: 1;
+}
+.mizu-input:hover {
+  border-color: var(--mizu-muted);
+}
+.mizu-input[aria-invalid="true"] {
+  border-color: var(--mizu-danger);
+}
+.mizu-input:focus {
+  border-color: var(--mizu-accent);
+}
+.mizu-field-error {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--mizu-danger);
+}
+.mizu-search .mizu-input,
+.mizu-password .mizu-input {
+  padding-right: 72px;
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.mizu-inline-edit > button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  min-height: 44px;
+  border: 0;
+  border-bottom: 1px dashed var(--mizu-line-bright);
+  background: transparent;
+  color: var(--mizu-paper);
+  cursor: text;
+  font-size: 18px;
+  text-align: left;
+}
+.mizu-inline-edit > button > span:last-child {
+  color: var(--mizu-faint);
+  font-size: 14px;
+}
+.mizu-inline-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.mizu-inline-actions button,
+.mizu-history-controls button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--mizu-line);
+  color: var(--mizu-paper);
+  background: transparent;
+  cursor: pointer;
+  font: 12px var(--mizu-font-mono);
+}
+.mizu-inline-actions button:first-child {
+  border-color: var(--mizu-accent);
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}

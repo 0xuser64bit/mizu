@@ -1,0 +1,82 @@
+
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+.mizu-softtype {
+  width: 100%;
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  font-family: var(--mizu-font-display);
+  font-size: clamp(48px, 12vw, 120px);
+  color: var(--mizu-paper);
+  animation: mizu-type-weight 4s ease-in-out infinite alternate;
+}
+.mizu-softtype--width {
+  animation-name: mizu-type-width;
+}
+.mizu-softtype--both {
+  animation-name: mizu-type-both;
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mizu-softtype {
+    animation: none;
+    font-variation-settings:
+      "wght" 600,
+      "wdth" 100;
+  }
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}

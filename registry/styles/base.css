@@ -1,0 +1,136 @@
+:root,
+[data-theme="dark"] {
+  --mizu-color-scheme: dark;
+  --mizu-ink: #0f0e0c;
+  --mizu-ink-2: #16130f;
+  --mizu-ink-3: #201b15;
+  --mizu-paper: #f4f0e8;
+  --mizu-muted: #a8a193;
+  --mizu-faint: #958d7e;
+  --mizu-accent: #ff4d1c;
+  --mizu-accent-fill: #d23e0e;
+  --mizu-line: #29241d;
+  --mizu-line-bright: rgba(244, 240, 232, 0.22);
+
+  --mizu-font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --mizu-font-serif: "Instrument Serif", Georgia, serif;
+  --mizu-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --mizu-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --mizu-ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
+  --mizu-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --mizu-duration-fast: 180ms;
+  --mizu-duration-med: 420ms;
+  --mizu-duration-slow: 900ms;
+
+  --mizu-space-1: 4px;
+  --mizu-space-2: 8px;
+  --mizu-space-3: 12px;
+  --mizu-space-4: 16px;
+  --mizu-space-5: 24px;
+  --mizu-space-6: 32px;
+  --mizu-space-7: 48px;
+  --mizu-space-8: 64px;
+  --mizu-space-9: 96px;
+
+  --mizu-radius: 2px;
+  --mizu-z-base: 0;
+  --mizu-z-raised: 10;
+  --mizu-z-overlay: 60;
+  --mizu-z-wipe: 90;
+  --mizu-z-cursor: 96;
+}
+
+[data-theme="light"] {
+  --mizu-color-scheme: light;
+  --mizu-ink: #f4f0e8;
+  --mizu-ink-2: #e9e3d5;
+  --mizu-ink-3: #dcd4c1;
+  --mizu-paper: #16130f;
+  --mizu-muted: #585348;
+  --mizu-faint: #605a50;
+  --mizu-accent: #a72c0a;
+  --mizu-accent-fill: #a72c0a;
+  --mizu-line: #d9d2c2;
+  --mizu-line-bright: rgba(22, 19, 15, 0.22);
+}
+
+.mizu-root {
+  color-scheme: var(--mizu-color-scheme);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.mizu-root ::selection {
+  background: var(--mizu-accent);
+  color: var(--mizu-ink);
+}
+
+:where(.mizu-root, [class*="mizu-"]) :focus-visible,
+[class*="mizu-"]:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 3px;
+  border-radius: var(--mizu-radius);
+}
+
+.mizu-font-wide {
+  font-stretch: 118%;
+}
+
+.mizu-font-narrow {
+  font-stretch: 88%;
+}
+
+.mizu-text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--mizu-line-bright);
+}
+
+.mizu-text-outline-accent {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--mizu-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mizu-root *,
+  .mizu-root *::before,
+  .mizu-root *::after,
+  [class*="mizu-"] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+:root,
+[data-theme="dark"] {
+  --mizu-success: #70bc96;
+  --mizu-warning: #dbb66a;
+  --mizu-danger: #ef9b8e;
+  --mizu-control-height: 44px;
+}
+[data-theme="light"] {
+  --mizu-success: #206442;
+  --mizu-warning: #775100;
+  --mizu-danger: #a12716;
+}
+:where([class*="mizu-"]) {
+  box-sizing: border-box;
+}
+:where([class*="mizu-"]) :where(button, input, textarea, select) {
+  font: inherit;
+}
+:where([class*="mizu-"]) :where(button, input, textarea, select):disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+:where([class*="mizu-"]) :where(input, textarea) {
+  caret-color: var(--mizu-accent);
+}
+.mizu-root select option {
+  background: var(--mizu-ink-2);
+  color: var(--mizu-paper);
+}

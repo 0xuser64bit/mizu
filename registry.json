@@ -4,10 +4,2495 @@
   "homepage": "https://github.com/0xuser64bit/mizu",
   "items": [
     {
+      "name": "chronicle",
+      "type": "registry:ui",
+      "title": "Chronicle",
+      "description": "A zoomable, multi-lane timeline for incidents, releases and audit trails — spans, instants, a playhead and an overview brush.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/chronicle.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/chronicle.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Chronicle.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Chronicle.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/time.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/time.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/chronicle.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/chronicle.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/chronicle.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/chronicle.css"
+        }
+      ]
+    },
+    {
+      "name": "trend-chart",
+      "type": "registry:ui",
+      "title": "TrendChart",
+      "description": "Values over time as an instrument: a live legend that reads the crosshair, drag-to-measure deltas, annotations, thresholds and linked views.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/trend-chart.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/trend-chart.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/TrendChart.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/TrendChart.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/time.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/time.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/trend-chart.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/trend-chart.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/trend.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/trend.css"
+        }
+      ]
+    },
+    {
+      "name": "waveform",
+      "type": "registry:ui",
+      "title": "Waveform",
+      "description": "Audio you can see and scrub: a waveform over a native audio element, with chapters, speed, skips and an imperative handle.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/waveform.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/waveform.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Waveform.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Waveform.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/time.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/time.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/waveform.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/waveform.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/waveform.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/waveform.css"
+        }
+      ]
+    },
+    {
+      "name": "plane",
+      "type": "registry:ui",
+      "title": "Plane",
+      "description": "An infinite, zoomable surface for boards, maps and diagrams — inertia, pinch, a minimap and a camera that follows keyboard focus.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/plane.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/plane.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Plane.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Plane.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/plane.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/plane.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/plane.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/plane.css"
+        }
+      ]
+    },
+    {
+      "name": "flow-graph",
+      "type": "registry:ui",
+      "title": "FlowGraph",
+      "description": "A node-and-wire editor: drag, wire with magnetic ports or the keyboard, refuse bad connections, watch runs flow and tidy into layers.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/flow-graph.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/flow-graph.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/FlowGraph.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/FlowGraph.tsx"
+        },
+        {
+          "path": "registry/source/signature/Plane.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Plane.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/flow-graph.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/flow-graph.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/flow.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/flow.css"
+        }
+      ]
+    },
+    {
+      "name": "treemap",
+      "type": "registry:ui",
+      "title": "Treemap",
+      "description": "A hierarchy by size that you enter like a place: squarified blocks, a camera that moves inside, nested previews, heat and a path back out.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/treemap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/treemap.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Treemap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Treemap.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/treemap.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/treemap.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/treemap.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/treemap.css"
+        }
+      ]
+    },
+    {
+      "name": "board",
+      "type": "registry:ui",
+      "title": "Board",
+      "description": "A kanban board with lift-and-carry dragging, cards that part and fly into place, advisory limits, collapsible columns and a full keyboard path.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/board.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/board.tsx"
+        },
+        {
+          "path": "registry/source/content/Media.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Media.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Board.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Board.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/board.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/board.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/board.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/board.css"
+        }
+      ]
+    },
+    {
+      "name": "outliner",
+      "type": "registry:ui",
+      "title": "Outliner",
+      "description": "A keyboard-first outline: Enter splits, Tab restructures, whole branches move and fold, and any item can be zoomed into until it becomes the title.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/outliner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/outliner.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Outliner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Outliner.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/outline.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/outline.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/outliner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/outliner.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/outline.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/outline.css"
+        }
+      ]
+    },
+    {
+      "name": "query-builder",
+      "type": "registry:ui",
+      "title": "QueryBuilder",
+      "description": "Conditions that read as a sentence: typed operators per field, nested any/all groups, a plain-language reading and an evaluator for local filtering.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/query-builder.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/query-builder.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/source/interaction/MultiSelect.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/MultiSelect.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/QueryBuilder.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/QueryBuilder.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/query.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/query.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/query-builder.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/query-builder.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/query.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/query.css"
+        }
+      ]
+    },
+    {
+      "name": "annotator",
+      "type": "registry:ui",
+      "title": "Annotator",
+      "description": "Review pins on anything: drop numbered pins, discuss in threads, resolve and reopen, and find every conversation in the list beside the work.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/annotator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/annotator.tsx"
+        },
+        {
+          "path": "registry/source/content/Media.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Media.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Annotator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Annotator.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/annotator.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/annotator.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/annotator.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/annotator.css"
+        }
+      ]
+    },
+    {
+      "name": "tour",
+      "type": "registry:ui",
+      "title": "Tour",
+      "description": "A guided tour whose spotlight travels between real elements, follows them through scrolling and reflow, and explains each one beside it.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/tour.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/tour.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Tour.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Tour.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/tour.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/tour.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/tour.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/tour.css"
+        }
+      ]
+    },
+    {
+      "name": "interview",
+      "type": "registry:ui",
+      "title": "Interview",
+      "description": "A conversation instead of a form: one question at a time, letter keys for choices, branching, a review before sending and an honest submit.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/interview.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/interview.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Interview.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Interview.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/interview.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/interview.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/interview.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/interview.css"
+        }
+      ]
+    },
+    {
+      "name": "transfer-queue",
+      "type": "registry:ui",
+      "title": "TransferQueue",
+      "description": "Uploads you can watch and steer: a concurrency-limited queue around your own transfer function, with live speed, time left, pause, retry and cancel.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/transfer-queue.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/transfer-queue.tsx"
+        },
+        {
+          "path": "registry/source/data/Charts.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Charts.tsx"
+        },
+        {
+          "path": "registry/source/forms/FileDropzone.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/FileDropzone.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/TransferQueue.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/TransferQueue.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/time.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/time.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/transfer-queue.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/transfer-queue.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/transfer.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/transfer.css"
+        }
+      ]
+    },
+    {
+      "name": "triage-deck",
+      "type": "registry:ui",
+      "title": "TriageDeck",
+      "description": "Decisions at the speed of a gesture: fling the top card toward a decision, or use arrows and buttons — with tallies and an undo that flies the card back.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/triage-deck.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/triage-deck.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/TriageDeck.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/TriageDeck.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/triage-deck.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/triage-deck.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/triage.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/triage.css"
+        }
+      ]
+    },
+    {
+      "name": "gallery",
+      "type": "registry:ui",
+      "title": "Gallery",
+      "description": "A justified photo grid whose photos open from exactly where they sit: swipe to travel, pull down to put one back, pinch or double-tap to look closer.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/gallery.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/gallery.tsx"
+        },
+        {
+          "path": "registry/source/composite/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/signature/Gallery.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Gallery.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/gallery.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/gallery.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/gallery.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/gallery.css"
+        }
+      ]
+    },
+    {
+      "name": "folio",
+      "type": "registry:ui",
+      "title": "Folio",
+      "description": "A long-form reading surface: sidenotes sit in the margin beside their marks and fold into the text on narrow screens, while a contents rail keeps your place.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/folio.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/folio.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Folio.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Folio.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/folio.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/folio.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/folio.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/folio.css"
+        }
+      ]
+    },
+    {
+      "name": "split-flap",
+      "type": "registry:ui",
+      "title": "SplitFlap",
+      "description": "A mechanical flip display: every character falls forward through the drum to its new value, cell after cell, and lands with a slap.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/split-flap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/split-flap.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/SplitFlap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/SplitFlap.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/split-flap.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/split-flap.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/flap.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/flap.css"
+        }
+      ]
+    },
+    {
+      "name": "column-browser",
+      "type": "registry:ui",
+      "title": "ColumnBrowser",
+      "description": "Miller columns: choose an item and its contents open alongside, loading on demand, until a leaf opens in a preview — a stack you push and pop on narrow screens.",
+      "files": [
+        {
+          "path": "registry/column-browser.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/column-browser.tsx"
+        },
+        {
+          "path": "registry/source/signature/ColumnBrowser.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/ColumnBrowser.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/column-browser.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/column-browser.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/columns.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/columns.css"
+        }
+      ]
+    },
+    {
+      "name": "log-stream",
+      "type": "registry:ui",
+      "title": "LogStream",
+      "description": "A live log tail that renders only what is in view: it follows new lines until you scroll away, counts what you missed, and searches, filters and opens any line whole.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/log-stream.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/log-stream.tsx"
+        },
+        {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/LogStream.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/LogStream.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/log-stream.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/log-stream.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/log.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/log.css"
+        }
+      ]
+    },
+    {
+      "name": "knob",
+      "type": "registry:ui",
+      "title": "Knob",
+      "description": "A rotary control for instruments rather than forms: drag up or down, Shift for fine, arrows to step, double-click to return home — with log tapers for frequencies and times.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/knob.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/knob.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Controls.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/knob.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/knob.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/controls.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/controls.css"
+        }
+      ]
+    },
+    {
+      "name": "fader",
+      "type": "registry:ui",
+      "title": "Fader",
+      "description": "A console fader with a live meter: drag the cap, click the track to jump, and watch the level fall away beside it with a held peak.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/fader.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/fader.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Controls.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/fader.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/fader.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/controls.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/controls.css"
+        }
+      ]
+    },
+    {
+      "name": "xypad",
+      "type": "registry:ui",
+      "title": "XYPad",
+      "description": "Two parameters under one finger: press anywhere and the puck springs there, then sweep both at once with a trail behind it.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/xypad.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/xypad.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/signature/Controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Controls.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/xypad.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/xypad.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/signature.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/signature.css"
+        },
+        {
+          "path": "packages/mizu/src/signature/controls.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signature/controls.css"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "The primary action surface — solid, ghost and inverse, with a loading state and an arrow that leans into the hover.",
+      "files": [
+        {
+          "path": "registry/button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/button.css"
+        }
+      ]
+    },
+    {
+      "name": "mark",
+      "type": "registry:ui",
+      "title": "Mark",
+      "description": "The diamond: a small marker for a state or position.",
+      "files": [
+        {
+          "path": "registry/mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/mark.css"
+        }
+      ]
+    },
+    {
+      "name": "section-tag",
+      "type": "registry:ui",
+      "title": "SectionTag",
+      "description": "Compact structural text with an optional diamond marker.",
+      "files": [
+        {
+          "path": "registry/section-tag.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/section-tag.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/SectionTag.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/SectionTag.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/section-tag.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/section-tag.css"
+        }
+      ]
+    },
+    {
+      "name": "rule",
+      "type": "registry:ui",
+      "title": "Rule",
+      "description": "A hairline separator with a meaningful optional label.",
+      "files": [
+        {
+          "path": "registry/rule.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/rule.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/Rule.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Rule.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/rule.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/rule.css"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A compact, bordered label for metadata and status.",
+      "files": [
+        {
+          "path": "registry/badge.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/badge.tsx"
+        },
+        {
+          "path": "registry/source/ui/Badge.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Badge.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/badge.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/badge.css"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A rotating diamond with a clear loading announcement.",
+      "files": [
+        {
+          "path": "registry/spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/spinner.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/spinner.css"
+        }
+      ]
+    },
+    {
+      "name": "frame",
+      "type": "registry:ui",
+      "title": "Frame",
+      "description": "Crop marks that frame media without competing with it.",
+      "files": [
+        {
+          "path": "registry/frame.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/frame.tsx"
+        },
+        {
+          "path": "registry/source/ui/Frame.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Frame.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/frame.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/frame.css"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "A diamond-thumb range with an always-readable value.",
+      "files": [
+        {
+          "path": "registry/slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/slider.tsx"
+        },
+        {
+          "path": "registry/source/ui/Slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Slider.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/slider.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/slider.css"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A small, linked explanation that works with focus and can be dismissed.",
+      "files": [
+        {
+          "path": "registry/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/tooltip.tsx"
+        },
+        {
+          "path": "registry/source/ui/Tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Tooltip.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/tooltip.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/tooltip.css"
+        }
+      ]
+    },
+    {
+      "name": "maskline",
+      "type": "registry:ui",
+      "title": "MaskLine",
+      "description": "The Mizu headline reveal — text rises from inside its own mask, one line at a time.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/maskline.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/maskline.tsx"
+        },
+        {
+          "path": "registry/source/motion/MaskLine.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/MaskLine.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/maskline.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/maskline.css"
+        }
+      ]
+    },
+    {
+      "name": "reveal",
+      "type": "registry:ui",
+      "title": "Reveal",
+      "description": "Scroll-triggered entrance with direction, distance and delay control.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/reveal.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/reveal.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Reveal.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Reveal.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/reveal.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/reveal.css"
+        }
+      ]
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:ui",
+      "title": "Magnetic",
+      "description": "A spring-follow wrapper — the surface leans toward the cursor and settles back.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/magnetic.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/magnetic.tsx"
+        },
+        {
+          "path": "registry/source/motion/Magnetic.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Magnetic.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/magnetic.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/magnetic.css"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "A seamless infinite ticker that pauses on hover and stands still for reduced motion.",
+      "files": [
+        {
+          "path": "registry/marquee.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/marquee.tsx"
+        },
+        {
+          "path": "registry/source/motion/Marquee.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Marquee.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/marquee.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/marquee.css"
+        }
+      ]
+    },
+    {
+      "name": "pagewipe",
+      "type": "registry:ui",
+      "title": "PageWipe",
+      "description": "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/pagewipe.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/pagewipe.tsx"
+        },
+        {
+          "path": "registry/source/motion/PageWipe.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/PageWipe.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/pagewipe.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/pagewipe.css"
+        }
+      ]
+    },
+    {
+      "name": "presence",
+      "type": "registry:ui",
+      "title": "Presence",
+      "description": "A keyed state enters after the previous state has made room.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/presence.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/presence.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Presence.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Presence.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/presence.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/presence.css"
+        }
+      ]
+    },
+    {
+      "name": "tilt",
+      "type": "registry:ui",
+      "title": "Tilt",
+      "description": "A restrained depth response to the pointer, returning cleanly to rest.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/tilt.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/tilt.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Tilt.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Tilt.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/tilt.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/tilt.css"
+        }
+      ]
+    },
+    {
+      "name": "parallax",
+      "type": "registry:ui",
+      "title": "Parallax",
+      "description": "A bounded depth cue linked to the surface's actual position in the viewport.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/parallax.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/parallax.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Scroll.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Scroll.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/parallax.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/parallax.css"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "ScrollProgress",
+      "description": "A thin reading indicator driven by real document scroll progress.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/scroll-progress.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/scroll-progress.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Scroll.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Scroll.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/scroll-progress.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/scroll-progress.css"
+        }
+      ]
+    },
+    {
+      "name": "specimen",
+      "type": "registry:ui",
+      "title": "Specimen",
+      "description": "A live type tester — set text, size, weight, tracking and serif voice while the specimen redraws.",
+      "files": [
+        {
+          "path": "registry/specimen.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/specimen.tsx"
+        },
+        {
+          "path": "registry/source/type/Specimen.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/type/Specimen.tsx"
+        },
+        {
+          "path": "registry/source/ui/Slider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Slider.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/specimen.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/specimen.css"
+        }
+      ]
+    },
+    {
+      "name": "softtype",
+      "type": "registry:ui",
+      "title": "SoftType",
+      "description": "A variable-font engine in CSS — weight and width oscillate through the Archivo axes.",
+      "files": [
+        {
+          "path": "registry/softtype.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/softtype.tsx"
+        },
+        {
+          "path": "registry/source/type/SoftType.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/type/SoftType.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/softtype.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/softtype.css"
+        }
+      ]
+    },
+    {
+      "name": "wavetext",
+      "type": "registry:ui",
+      "title": "WaveText",
+      "description": "Kinetic text that answers the cursor — each letter lifts, scales and warms as you pass over it.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/wavetext.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/wavetext.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/type/WaveText.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/type/WaveText.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/wavetext.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/wavetext.css"
+        }
+      ]
+    },
+    {
+      "name": "ghostword",
+      "type": "registry:ui",
+      "title": "GhostWord",
+      "description": "An oversized outlined word that fills with accent when hovered — built for footers and chapter markers.",
+      "files": [
+        {
+          "path": "registry/ghostword.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/ghostword.tsx"
+        },
+        {
+          "path": "registry/source/type/GhostWord.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/type/GhostWord.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/ghostword.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/ghostword.css"
+        }
+      ]
+    },
+    {
+      "name": "pinfield",
+      "type": "registry:ui",
+      "title": "Pinfield",
+      "description": "A grid of pins that carries pulses — click and a wavefront travels outward, lighting the field.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/pinfield.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/pinfield.tsx"
+        },
+        {
+          "path": "registry/source/lab/Pinfield.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/lab/Pinfield.tsx"
+        },
+        {
+          "path": "registry/source/lab/useCanvas.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/lab/useCanvas.ts"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/pinfield.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/pinfield.css"
+        }
+      ]
+    },
+    {
+      "name": "signal",
+      "type": "registry:ui",
+      "title": "Signal",
+      "description": "A waveform you can scrub — drag horizontally to move the phase, hover to light the bars.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/signal.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/signal.tsx"
+        },
+        {
+          "path": "registry/source/lab/Signal.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/lab/Signal.tsx"
+        },
+        {
+          "path": "registry/source/lab/useCanvas.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/lab/useCanvas.ts"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/signal.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/signal.css"
+        }
+      ]
+    },
+    {
+      "name": "ripplesurface",
+      "type": "registry:ui",
+      "title": "RippleSurface",
+      "description": "An ambient surface that ripples where you touch it — built for hero sections and invite panels.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/ripplesurface.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/ripplesurface.tsx"
+        },
+        {
+          "path": "registry/source/lab/RippleSurface.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/lab/RippleSurface.tsx"
+        },
+        {
+          "path": "registry/source/lab/useCanvas.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/lab/useCanvas.ts"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/ripplesurface.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/ripplesurface.css"
+        }
+      ]
+    },
+    {
+      "name": "countup",
+      "type": "registry:ui",
+      "title": "CountUp",
+      "description": "Numbers that count — eased value animation with tabular figures, prefixes and suffixes.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/countup.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/countup.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CountUp.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CountUp.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/countup.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/countup.css"
+        }
+      ]
+    },
+    {
+      "name": "copybutton",
+      "type": "registry:ui",
+      "title": "CopyButton",
+      "description": "Copy to clipboard with a check-morph confirmation and a legacy fallback.",
+      "files": [
+        {
+          "path": "registry/copybutton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/copybutton.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/copybutton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/copybutton.css"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A toast system — provider, imperative API, tones, and a live region for screen readers.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/toast.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/toast.tsx"
+        },
+        {
+          "path": "registry/source/feedback/Toast.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/Toast.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/toast.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/toast.css"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Height-animated disclosure with a diamond marker that morphs between states.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/accordion.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/accordion.tsx"
+        },
+        {
+          "path": "registry/source/composite/Accordion.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Accordion.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/accordion.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/accordion.css"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Controlled or uncontrolled tabs with a sliding underline that travels between triggers.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/tabs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/tabs.tsx"
+        },
+        {
+          "path": "registry/source/composite/Tabs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Tabs.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/easings.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/tabs.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/tabs.css"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal with focus trap, Escape handling, scroll lock and an expo entrance.",
+      "files": [
+        {
+          "path": "registry/dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/dialog.tsx"
+        },
+        {
+          "path": "registry/source/composite/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/dialog.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/dialog.css"
+        }
+      ]
+    },
+    {
+      "name": "nav",
+      "type": "registry:ui",
+      "title": "Nav",
+      "description": "The thread header — scroll progress with a diamond node, chapter tracking, and a full-screen mobile menu.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/nav.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/nav.tsx"
+        },
+        {
+          "path": "registry/source/composite/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/source/composite/Nav.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Nav.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/nav.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/nav.css"
+        }
+      ]
+    },
+    {
+      "name": "form-field",
+      "type": "registry:ui",
+      "title": "FormField",
+      "description": "A label, hint and error linked to a single control without manual IDs.",
+      "files": [
+        {
+          "path": "registry/form-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/form-field.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/form-field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/form-field.css"
+        }
+      ]
+    },
+    {
+      "name": "text-field",
+      "type": "registry:ui",
+      "title": "TextField",
+      "description": "A precise, labelled input with native validation and clear error feedback.",
+      "files": [
+        {
+          "path": "registry/text-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/text-field.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/text-field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/text-field.css"
+        }
+      ]
+    },
+    {
+      "name": "text-area",
+      "type": "registry:ui",
+      "title": "TextArea",
+      "description": "Long-form input with resizable room for thoughts, labels and validation.",
+      "files": [
+        {
+          "path": "registry/text-area.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/text-area.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/text-area.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/text-area.css"
+        }
+      ]
+    },
+    {
       "name": "select-field",
       "type": "registry:ui",
       "title": "SelectField",
-      "description": "A labeled native select with Mizu styling and validation states.",
+      "description": "Native selection with a Mizu-styled option menu where supported.",
       "files": [
         {
           "path": "registry/select-field.tsx",
@@ -15,14 +2500,2151 @@
           "target": "@ui/mizu/select-field.tsx"
         },
         {
-          "path": "packages/mizu/src/forms/Fields.tsx",
+          "path": "registry/source/forms/Fields.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/forms/Fields.tsx"
+          "target": "@ui/mizu/source/forms/Fields.tsx"
         },
         {
-          "path": "packages/mizu/src/core.css",
+          "path": "registry/styles/base.css",
           "type": "registry:file",
-          "target": "@ui/mizu/core.css"
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/select-field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/select-field.css"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A generous check target with a secondary description and native form submission.",
+      "files": [
+        {
+          "path": "registry/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/checkbox.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/checkbox.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/checkbox.css"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A tactile binary setting whose thumb tracks the state.",
+      "files": [
+        {
+          "path": "registry/switch.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/switch.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/switch.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/switch.css"
+        }
+      ]
+    },
+    {
+      "name": "search-field",
+      "type": "registry:ui",
+      "title": "SearchField",
+      "description": "Search with a clear action that belongs to the input.",
+      "files": [
+        {
+          "path": "registry/search-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/search-field.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/search-field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/search-field.css"
+        }
+      ]
+    },
+    {
+      "name": "password-field",
+      "type": "registry:ui",
+      "title": "PasswordField",
+      "description": "A revealable secret with explicit visibility feedback.",
+      "files": [
+        {
+          "path": "registry/password-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/password-field.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/password-field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/password-field.css"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "RadioGroup",
+      "description": "Mutually exclusive choices with room to explain what each choice means.",
+      "files": [
+        {
+          "path": "registry/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/radio-group.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/radio-group.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/radio-group.css"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "SegmentedControl",
+      "description": "A compact selection rail for density, view and other immediate choices.",
+      "files": [
+        {
+          "path": "registry/segmented-control.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/segmented-control.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/segmented-control.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/segmented-control.css"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "NumberField",
+      "description": "A bounded numeric stepper that survives decimals and repeated actions.",
+      "files": [
+        {
+          "path": "registry/number-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/number-field.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/number-field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/number-field.css"
+        }
+      ]
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "title": "Rating",
+      "description": "A star rating you can choose with a mouse, touch or arrow keys.",
+      "files": [
+        {
+          "path": "registry/rating.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/rating.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/rating.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/rating.css"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "ColorPicker",
+      "description": "Named swatches and a native custom-color dialog, with the hex value always visible.",
+      "files": [
+        {
+          "path": "registry/color-picker.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/color-picker.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/color-picker.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/color-picker.css"
+        }
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "title": "TagInput",
+      "description": "Add, remove and deduplicate tags without losing the keyboard path.",
+      "files": [
+        {
+          "path": "registry/tag-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/tag-input.tsx"
+        },
+        {
+          "path": "registry/source/forms/TagInput.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/TagInput.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/tag-input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/tag-input.css"
+        }
+      ]
+    },
+    {
+      "name": "file-dropzone",
+      "type": "registry:ui",
+      "title": "FileDropzone",
+      "description": "Start a file upload by dropping or browsing, with size and type validation on both paths.",
+      "files": [
+        {
+          "path": "registry/file-dropzone.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/file-dropzone.tsx"
+        },
+        {
+          "path": "registry/source/forms/FileDropzone.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/FileDropzone.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/file-dropzone.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/file-dropzone.css"
+        }
+      ]
+    },
+    {
+      "name": "async-form",
+      "type": "registry:ui",
+      "title": "AsyncForm",
+      "description": "A form that follows the save promise and preserves input when a save fails.",
+      "files": [
+        {
+          "path": "registry/async-form.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/async-form.tsx"
+        },
+        {
+          "path": "registry/source/forms/AsyncForm.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/AsyncForm.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/async-form.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/async-form.css"
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "type": "registry:ui",
+      "title": "Status",
+      "description": "A quiet diamond and a readable state, never color alone.",
+      "files": [
+        {
+          "path": "registry/status.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/status.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/status.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/status.css"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Contextual feedback with a title, explanation and a place to recover.",
+      "files": [
+        {
+          "path": "registry/alert.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/alert.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/alert.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/alert.css"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Determinate or indeterminate progress, measured on a hairline track.",
+      "files": [
+        {
+          "path": "registry/progress.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/progress.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/progress.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/progress.css"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "A bounded measurement that distinguishes a reading from task completion.",
+      "files": [
+        {
+          "path": "registry/meter.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/meter.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/meter.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/meter.css"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A restrained placeholder that retains a readable loading announcement.",
+      "files": [
+        {
+          "path": "registry/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/skeleton.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/skeleton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/skeleton.css"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "EmptyState",
+      "description": "A useful absence: explain what belongs here and give the next action.",
+      "files": [
+        {
+          "path": "registry/empty-state.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/empty-state.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/empty-state.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/empty-state.css"
+        }
+      ]
+    },
+    {
+      "name": "error-state",
+      "type": "registry:ui",
+      "title": "ErrorState",
+      "description": "A failure surface that names the problem and lets the user try again.",
+      "files": [
+        {
+          "path": "registry/error-state.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/error-state.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/error-state.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/error-state.css"
+        }
+      ]
+    },
+    {
+      "name": "connection-status",
+      "type": "registry:ui",
+      "title": "ConnectionStatus",
+      "description": "A connection hint that follows actual browser online and offline events.",
+      "files": [
+        {
+          "path": "registry/connection-status.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/connection-status.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/connection-status.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/connection-status.css"
+        }
+      ]
+    },
+    {
+      "name": "save-indicator",
+      "type": "registry:ui",
+      "title": "SaveIndicator",
+      "description": "Keep the difference between saved, dirty, saving and failed visible.",
+      "files": [
+        {
+          "path": "registry/save-indicator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/save-indicator.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/save-indicator.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/save-indicator.css"
+        }
+      ]
+    },
+    {
+      "name": "async-boundary",
+      "type": "registry:ui",
+      "title": "AsyncBoundary",
+      "description": "One readable contract for ready, loading, empty and failed content.",
+      "files": [
+        {
+          "path": "registry/async-boundary.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/async-boundary.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/async-boundary.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/async-boundary.css"
+        }
+      ]
+    },
+    {
+      "name": "task-progress",
+      "type": "registry:ui",
+      "title": "TaskProgress",
+      "description": "Make a multi-stage operation legible, including partial completion and failure.",
+      "files": [
+        {
+          "path": "registry/task-progress.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/task-progress.tsx"
+        },
+        {
+          "path": "registry/source/status/Feedback.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/Feedback.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/task-progress.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/task-progress.css"
+        }
+      ]
+    },
+    {
+      "name": "async-button",
+      "type": "registry:ui",
+      "title": "AsyncButton",
+      "description": "An action whose feedback follows the real promise, with duplicate clicks prevented.",
+      "files": [
+        {
+          "path": "registry/async-button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/async-button.tsx"
+        },
+        {
+          "path": "registry/source/status/AsyncButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/AsyncButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/async-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/async-button.css"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "DataTable",
+      "description": "A sortable, typed table that keeps native table semantics and nulls in their place.",
+      "files": [
+        {
+          "path": "registry/data-table.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/data-table.tsx"
+        },
+        {
+          "path": "registry/source/data/DataTable.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/DataTable.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/data-table.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/data-table.css"
+        }
+      ]
+    },
+    {
+      "name": "description-list",
+      "type": "registry:ui",
+      "title": "DescriptionList",
+      "description": "Aligned names and values with the semantics of a description list.",
+      "files": [
+        {
+          "path": "registry/description-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/description-list.tsx"
+        },
+        {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/description-list.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/description-list.css"
+        }
+      ]
+    },
+    {
+      "name": "stat",
+      "type": "registry:ui",
+      "title": "Stat",
+      "description": "A metric with context: direction and favorability are separate decisions.",
+      "files": [
+        {
+          "path": "registry/stat.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/stat.tsx"
+        },
+        {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/stat.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/stat.css"
+        }
+      ]
+    },
+    {
+      "name": "bar-chart",
+      "type": "registry:ui",
+      "title": "BarChart",
+      "description": "Readable, labelled comparisons without a charting dependency.",
+      "files": [
+        {
+          "path": "registry/bar-chart.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/bar-chart.tsx"
+        },
+        {
+          "path": "registry/source/data/Charts.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Charts.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/bar-chart.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/bar-chart.css"
+        }
+      ]
+    },
+    {
+      "name": "sparkline",
+      "type": "registry:ui",
+      "title": "Sparkline",
+      "description": "A compact history trace with the underlying readings in its accessible name.",
+      "files": [
+        {
+          "path": "registry/sparkline.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/sparkline.tsx"
+        },
+        {
+          "path": "registry/source/data/Charts.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Charts.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/sparkline.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/sparkline.css"
+        }
+      ]
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:ui",
+      "title": "Heatmap",
+      "description": "A daily activity field with every date and reading available as text.",
+      "files": [
+        {
+          "path": "registry/heatmap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/heatmap.tsx"
+        },
+        {
+          "path": "registry/source/data/Charts.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Charts.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/heatmap.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/heatmap.css"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "Events connected by a fine thread, with the present kept distinct.",
+      "files": [
+        {
+          "path": "registry/timeline.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/timeline.tsx"
+        },
+        {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/timeline.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/timeline.css"
+        }
+      ]
+    },
+    {
+      "name": "activity-feed",
+      "type": "registry:ui",
+      "title": "ActivityFeed",
+      "description": "Filter a real event stream by its event type without losing chronological context.",
+      "files": [
+        {
+          "path": "registry/activity-feed.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/activity-feed.tsx"
+        },
+        {
+          "path": "registry/source/data/Inspection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Inspection.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/activity-feed.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/activity-feed.css"
+        }
+      ]
+    },
+    {
+      "name": "diff-view",
+      "type": "registry:ui",
+      "title": "DiffView",
+      "description": "Two text versions, aligned by line, with changes made visible.",
+      "files": [
+        {
+          "path": "registry/diff-view.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/diff-view.tsx"
+        },
+        {
+          "path": "registry/source/data/Inspection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Inspection.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/diff-view.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/diff-view.css"
+        }
+      ]
+    },
+    {
+      "name": "data-inspector",
+      "type": "registry:ui",
+      "title": "DataInspector",
+      "description": "Open a payload, follow its structure and copy the JSON without a developer-tools panel.",
+      "files": [
+        {
+          "path": "registry/data-inspector.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/data-inspector.tsx"
+        },
+        {
+          "path": "registry/source/data/Inspection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Inspection.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/data-inspector.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/data-inspector.css"
+        }
+      ]
+    },
+    {
+      "name": "tree-view",
+      "type": "registry:ui",
+      "title": "TreeView",
+      "description": "Browse a hierarchy with native disclosure and an optional selected leaf.",
+      "files": [
+        {
+          "path": "registry/tree-view.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/tree-view.tsx"
+        },
+        {
+          "path": "registry/source/data/Inspection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Inspection.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/tree-view.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/tree-view.css"
+        }
+      ]
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:ui",
+      "title": "ComparisonTable",
+      "description": "A feature matrix whose rows and columns stay connected to their meaning.",
+      "files": [
+        {
+          "path": "registry/comparison-table.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/comparison-table.tsx"
+        },
+        {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/comparison-table.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/comparison-table.css"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "Breadcrumbs",
+      "description": "A quiet path back through the hierarchy.",
+      "files": [
+        {
+          "path": "registry/breadcrumbs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/breadcrumbs.tsx"
+        },
+        {
+          "path": "registry/source/navigation/Navigation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/Navigation.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/breadcrumbs.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/breadcrumbs.css"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Move through bounded pages with a compact view of the whole sequence.",
+      "files": [
+        {
+          "path": "registry/pagination.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/pagination.tsx"
+        },
+        {
+          "path": "registry/source/navigation/Navigation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/Navigation.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/pagination.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/pagination.css"
+        }
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "A numbered journey with a clear present step.",
+      "files": [
+        {
+          "path": "registry/stepper.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/stepper.tsx"
+        },
+        {
+          "path": "registry/source/navigation/Navigation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/Navigation.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/stepper.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/stepper.css"
+        }
+      ]
+    },
+    {
+      "name": "anchor-nav",
+      "type": "registry:ui",
+      "title": "AnchorNav",
+      "description": "A page outline that follows the section in view.",
+      "files": [
+        {
+          "path": "registry/anchor-nav.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/anchor-nav.tsx"
+        },
+        {
+          "path": "registry/source/navigation/Navigation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/Navigation.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/anchor-nav.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/anchor-nav.css"
+        }
+      ]
+    },
+    {
+      "name": "side-nav",
+      "type": "registry:ui",
+      "title": "SideNav",
+      "description": "Grouped destinations with the current place held in focus.",
+      "files": [
+        {
+          "path": "registry/side-nav.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/side-nav.tsx"
+        },
+        {
+          "path": "registry/source/navigation/Navigation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/Navigation.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/side-nav.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/side-nav.css"
+        }
+      ]
+    },
+    {
+      "name": "bottom-nav",
+      "type": "registry:ui",
+      "title": "BottomNav",
+      "description": "Touch-friendly destinations that fit the phone's safe area.",
+      "files": [
+        {
+          "path": "registry/bottom-nav.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/bottom-nav.tsx"
+        },
+        {
+          "path": "registry/source/navigation/Navigation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/Navigation.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/bottom-nav.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/bottom-nav.css"
+        }
+      ]
+    },
+    {
+      "name": "action-menu",
+      "type": "registry:ui",
+      "title": "ActionMenu",
+      "description": "A compact menu of real actions, with disabled and destructive states.",
+      "files": [
+        {
+          "path": "registry/action-menu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/action-menu.tsx"
+        },
+        {
+          "path": "registry/source/navigation/ActionMenu.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/ActionMenu.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/action-menu.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/action-menu.css"
+        }
+      ]
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:ui",
+      "title": "CommandPalette",
+      "description": "Search commands and execute them without taking your hands off the keyboard.",
+      "files": [
+        {
+          "path": "registry/command-palette.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/command-palette.tsx"
+        },
+        {
+          "path": "registry/source/composite/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/source/navigation/CommandPalette.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/navigation/CommandPalette.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/command-palette.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/command-palette.css"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Identity at a glance, with initials that survive a missing image.",
+      "files": [
+        {
+          "path": "registry/avatar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/avatar.tsx"
+        },
+        {
+          "path": "registry/source/content/Media.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Media.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/avatar.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/avatar.css"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard hints set apart from the surrounding sentence.",
+      "files": [
+        {
+          "path": "registry/kbd.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/kbd.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/kbd.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/kbd.css"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "CodeBlock",
+      "description": "Selectable source with a real copy action and room for long lines.",
+      "files": [
+        {
+          "path": "registry/code-block.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/code-block.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/code-block.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/code-block.css"
+        }
+      ]
+    },
+    {
+      "name": "quote",
+      "type": "registry:ui",
+      "title": "Quote",
+      "description": "A serif voice in the margin, with an honest attribution.",
+      "files": [
+        {
+          "path": "registry/quote.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/quote.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/quote.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/quote.css"
+        }
+      ]
+    },
+    {
+      "name": "prose",
+      "type": "registry:ui",
+      "title": "Prose",
+      "description": "A readable measure for long-form documents inside an interface.",
+      "files": [
+        {
+          "path": "registry/prose.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/prose.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/prose.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/prose.css"
+        }
+      ]
+    },
+    {
+      "name": "image-figure",
+      "type": "registry:ui",
+      "title": "ImageFigure",
+      "description": "Responsive imagery with a caption and a visible failure state.",
+      "files": [
+        {
+          "path": "registry/image-figure.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/image-figure.tsx"
+        },
+        {
+          "path": "registry/source/content/Media.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Media.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/image-figure.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/image-figure.css"
+        }
+      ]
+    },
+    {
+      "name": "media-player",
+      "type": "registry:ui",
+      "title": "MediaPlayer",
+      "description": "Playback handed to the browser's accessible controls.",
+      "files": [
+        {
+          "path": "registry/media-player.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/media-player.tsx"
+        },
+        {
+          "path": "registry/source/content/Media.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Media.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/media-player.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/media-player.css"
+        }
+      ]
+    },
+    {
+      "name": "link-card",
+      "type": "registry:ui",
+      "title": "LinkCard",
+      "description": "A destination with enough context to decide whether to follow it.",
+      "files": [
+        {
+          "path": "registry/link-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/link-card.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/link-card.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/link-card.css"
+        }
+      ]
+    },
+    {
+      "name": "file-card",
+      "type": "registry:ui",
+      "title": "FileCard",
+      "description": "A downloadable resource with a legible name and size.",
+      "files": [
+        {
+          "path": "registry/file-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/file-card.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Mark.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/file-card.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/file-card.css"
+        }
+      ]
+    },
+    {
+      "name": "checklist",
+      "type": "registry:ui",
+      "title": "Checklist",
+      "description": "Complete a set of real tasks and see how much remains.",
+      "files": [
+        {
+          "path": "registry/checklist.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/checklist.tsx"
+        },
+        {
+          "path": "registry/source/content/Checklist.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Checklist.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/checklist.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/checklist.css"
+        }
+      ]
+    },
+    {
+      "name": "stack",
+      "type": "registry:ui",
+      "title": "Stack",
+      "description": "A single-axis layout that wraps when the task calls for it.",
+      "files": [
+        {
+          "path": "registry/stack.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/stack.tsx"
+        },
+        {
+          "path": "registry/source/layout/Layout.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/Layout.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/stack.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/stack.css"
+        }
+      ]
+    },
+    {
+      "name": "grid",
+      "type": "registry:ui",
+      "title": "Grid",
+      "description": "Responsive columns that make room for the content without breakpoint bookkeeping.",
+      "files": [
+        {
+          "path": "registry/grid.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/grid.tsx"
+        },
+        {
+          "path": "registry/source/layout/Layout.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/Layout.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/grid.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/grid.css"
+        }
+      ]
+    },
+    {
+      "name": "split-pane",
+      "type": "registry:ui",
+      "title": "SplitPane",
+      "description": "Give two working regions the space they need, with a real resizable boundary.",
+      "files": [
+        {
+          "path": "registry/split-pane.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/split-pane.tsx"
+        },
+        {
+          "path": "registry/source/layout/SplitPane.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/SplitPane.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/split-pane.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/split-pane.css"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "AspectRatio",
+      "description": "Reserve media space before it arrives, keeping the surrounding reading rhythm steady.",
+      "files": [
+        {
+          "path": "registry/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/aspect-ratio.tsx"
+        },
+        {
+          "path": "registry/source/layout/Layout.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/Layout.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/aspect-ratio.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/aspect-ratio.css"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "ScrollArea",
+      "description": "A bounded reading region that keyboard users can enter and scroll.",
+      "files": [
+        {
+          "path": "registry/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/scroll-area.tsx"
+        },
+        {
+          "path": "registry/source/layout/Layout.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/Layout.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/scroll-area.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/scroll-area.css"
+        }
+      ]
+    },
+    {
+      "name": "app-shell",
+      "type": "registry:ui",
+      "title": "AppShell",
+      "description": "Named working regions and a skip link, composed around the product's real content.",
+      "files": [
+        {
+          "path": "registry/app-shell.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/app-shell.tsx"
+        },
+        {
+          "path": "registry/source/layout/Layout.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/Layout.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/app-shell.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/app-shell.css"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Search a bounded set of choices and select without leaving the keyboard.",
+      "files": [
+        {
+          "path": "registry/combobox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/combobox.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/source/interaction/Combobox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/Combobox.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/combobox.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/combobox.css"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "MultiSelect",
+      "description": "Filter a set, keep several choices and make the selection limit clear.",
+      "files": [
+        {
+          "path": "registry/multi-select.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/multi-select.tsx"
+        },
+        {
+          "path": "registry/source/forms/Selection.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/source/interaction/MultiSelect.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/MultiSelect.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/multi-select.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/multi-select.css"
+        }
+      ]
+    },
+    {
+      "name": "inline-edit",
+      "type": "registry:ui",
+      "title": "InlineEdit",
+      "description": "Change a value in place, with validation and an explicit path back.",
+      "files": [
+        {
+          "path": "registry/inline-edit.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/inline-edit.tsx"
+        },
+        {
+          "path": "registry/source/interaction/InlineEdit.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/InlineEdit.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/inline-edit.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/inline-edit.css"
+        }
+      ]
+    },
+    {
+      "name": "range-selector",
+      "type": "registry:ui",
+      "title": "RangeSelector",
+      "description": "Two bounded handles define an interval without crossing or hiding their values.",
+      "files": [
+        {
+          "path": "registry/range-selector.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/range-selector.tsx"
+        },
+        {
+          "path": "registry/source/interaction/RangeSelector.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/RangeSelector.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/range-selector.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/range-selector.css"
+        }
+      ]
+    },
+    {
+      "name": "reorder-list",
+      "type": "registry:ui",
+      "title": "ReorderList",
+      "description": "Rearrange a sequence while each item keeps its identity.",
+      "dependencies": [
+        "motion@^13.4.4"
+      ],
+      "files": [
+        {
+          "path": "registry/reorder-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/reorder-list.tsx"
+        },
+        {
+          "path": "registry/source/interaction/ReorderList.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/ReorderList.tsx"
+        },
+        {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/reorder-list.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/reorder-list.css"
+        }
+      ]
+    },
+    {
+      "name": "image-compare",
+      "type": "registry:ui",
+      "title": "ImageCompare",
+      "description": "Reveal two versions with a divider that follows your hand.",
+      "files": [
+        {
+          "path": "registry/image-compare.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/image-compare.tsx"
+        },
+        {
+          "path": "registry/source/interaction/ImageCompare.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/ImageCompare.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/image-compare.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/image-compare.css"
+        }
+      ]
+    },
+    {
+      "name": "history-controls",
+      "type": "registry:ui",
+      "title": "HistoryControls",
+      "description": "Undo and redo a bounded edit history, including the branch created by a new change.",
+      "files": [
+        {
+          "path": "registry/history-controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/history-controls.tsx"
+        },
+        {
+          "path": "registry/source/interaction/HistoryControls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/HistoryControls.tsx"
+        },
+        {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/history-controls.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/history-controls.css"
+        }
+      ]
+    },
+    {
+      "name": "confirm-action",
+      "type": "registry:ui",
+      "title": "ConfirmAction",
+      "description": "Review a consequential action, execute the actual promise and recover from failure.",
+      "files": [
+        {
+          "path": "registry/confirm-action.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/confirm-action.tsx"
+        },
+        {
+          "path": "registry/source/composite/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/source/interaction/ConfirmAction.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/ConfirmAction.tsx"
+        },
+        {
+          "path": "registry/source/status/AsyncButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/status/AsyncButton.tsx"
+        },
+        {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/ui/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/confirm-action.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/confirm-action.css"
         }
       ]
     }

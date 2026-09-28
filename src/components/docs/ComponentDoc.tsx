@@ -207,10 +207,23 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
 
         <section className="mt-14">
           <DemoLabel as="h2">Source & setup</DemoLabel>
+          {meta.kind !== "overview" && (
+            <div className="mt-4">
+              <p className="mb-3 text-sm leading-relaxed text-muted">
+                Add this component to your project with the shadcn CLI. The
+                command copies its source and styles into your configured UI
+                directory.
+              </p>
+              <CodeBlock
+                code={`npx shadcn@latest add 0xuser64bit/mizu/${meta.slug}`}
+              />
+            </div>
+          )}
           <p className="mt-4 text-sm leading-relaxed text-muted">
-            Import <code>mizu-ui/styles.css</code> once. Fonts are optional via{" "}
-            <code>mizu-ui/fonts.css</code>. Override <code>--mizu-*</code>{" "}
-            tokens or use <code>className</code> for local styling.{" "}
+            For npm imports, import <code>mizu-ui/styles.css</code> once. Fonts
+            are optional via <code>mizu-ui/fonts.css</code>. Override{" "}
+            <code>--mizu-*</code> tokens or use <code>className</code> for local
+            styling.{" "}
             {usesMotion(meta.source)
               ? "Requires React and Motion."
               : "Uses native React and CSS; install the package peers for root imports."}

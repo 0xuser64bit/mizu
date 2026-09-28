@@ -1,0 +1,142 @@
+
+
+.mizu-nav-links {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+.mizu-nav-chapter {
+  display: none;
+}
+
+.mizu-nav-burger {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .mizu-nav-links {
+    display: flex;
+  }
+
+  .mizu-nav-burger {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mizu-nav-chapter {
+    display: block;
+  }
+}
+
+.mizu-nav-overlay-link:hover span:last-child {
+  transform: translateX(12px);
+}
+.mizu-dialog {
+  color: var(--mizu-paper);
+  background: var(--mizu-ink-2);
+  border: 1px solid var(--mizu-line-bright);
+  padding: 36px 32px 32px;
+  width: min(520px, calc(100vw - 32px));
+  max-height: 84dvh;
+  box-sizing: border-box;
+  overflow: auto;
+  font-family: var(--mizu-font-display);
+}
+.mizu-dialog[open] {
+  animation: mizu-dialog-enter var(--mizu-duration-med) var(--mizu-ease-expo);
+}
+.mizu-dialog::backdrop {
+  background: rgb(15 14 12 / 0.72);
+}
+.mizu-dialog-title {
+  margin: 0;
+  padding-right: 36px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.mizu-dialog-body {
+  margin-top: 18px;
+  color: var(--mizu-muted);
+  line-height: 1.7;
+}
+.mizu-dialog-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mizu-dialog-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--mizu-line-bright);
+  color: var(--mizu-muted);
+  cursor: pointer;
+}
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}

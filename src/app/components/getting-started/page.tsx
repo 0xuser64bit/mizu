@@ -25,6 +25,23 @@ export default function GettingStarted() {
           the React versions your application already supplies. Then import the
           stylesheet and the components you need.
         </p>
+        <h2>Install one component</h2>
+        <Code>{`npx shadcn@latest init
+npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
+        <p>
+          Run this in a project configured for the shadcn CLI. Each catalog page
+          has its own install command. The CLI copies the selected component,
+          its source dependencies and Mizu styles into your UI directory. Motion
+          is installed only for components that use it.
+        </p>
+        <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
+        <p>
+          Use the UI alias configured in your <code>components.json</code> if
+          yours differs from <code>@/components/ui</code>. The installed file
+          imports its CSS. Wrap a surface in{" "}
+          <code>className=&quot;mizu-root&quot;</code>
+          for the default theme, and edit the copied code to suit your app.
+        </p>
         <h2>Render a working interaction</h2>
         <Code>{`"use client"; // required at an interactive Next.js boundary
 import { useState } from "react";

@@ -1,0 +1,186 @@
+
+.mizu-dialog {
+  color: var(--mizu-paper);
+  background: var(--mizu-ink-2);
+  border: 1px solid var(--mizu-line-bright);
+  padding: 36px 32px 32px;
+  width: min(520px, calc(100vw - 32px));
+  max-height: 84dvh;
+  box-sizing: border-box;
+  overflow: auto;
+  font-family: var(--mizu-font-display);
+}
+.mizu-dialog[open] {
+  animation: mizu-dialog-enter var(--mizu-duration-med) var(--mizu-ease-expo);
+}
+.mizu-dialog::backdrop {
+  background: rgb(15 14 12 / 0.72);
+}
+.mizu-dialog-title {
+  margin: 0;
+  padding-right: 36px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.mizu-dialog-body {
+  margin-top: 18px;
+  color: var(--mizu-muted);
+  line-height: 1.7;
+}
+.mizu-dialog-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mizu-dialog-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--mizu-line-bright);
+  color: var(--mizu-muted);
+  cursor: pointer;
+}
+@keyframes mizu-dialog-enter {
+  from {
+    opacity: 0.6;
+    transform: translateY(16px);
+  }
+}
+@keyframes mizu-type-weight {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 100;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 100;
+  }
+}
+@keyframes mizu-type-width {
+  from {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" 500,
+      "wdth" 125;
+  }
+}
+@keyframes mizu-type-both {
+  from {
+    font-variation-settings:
+      "wght" var(--mizu-weight-min),
+      "wdth" 62;
+  }
+  to {
+    font-variation-settings:
+      "wght" var(--mizu-weight-max),
+      "wdth" 125;
+  }
+}
+@keyframes mizu-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.mizu-input {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--mizu-control-height);
+  padding: 10px 12px;
+  border: 1px solid var(--mizu-line-bright);
+  border-radius: var(--mizu-radius);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font-size: 14px;
+  color-scheme: var(--mizu-color-scheme);
+  transition: border-color var(--mizu-duration-fast) ease;
+}
+
+.mizu-input::placeholder {
+  color: var(--mizu-faint);
+  opacity: 1;
+}
+.mizu-input:hover {
+  border-color: var(--mizu-muted);
+}
+.mizu-input[aria-invalid="true"] {
+  border-color: var(--mizu-danger);
+}
+.mizu-input:focus {
+  border-color: var(--mizu-accent);
+}
+.mizu-field-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--mizu-muted);
+  line-height: 1.6;
+}
+.mizu-search .mizu-input,
+.mizu-password .mizu-input {
+  padding-right: 72px;
+}
+@keyframes mizu-skeleton-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.mizu-command-palette {
+  padding: 16px;
+}
+.mizu-command-list {
+  max-height: 320px;
+  overflow: auto;
+  margin-top: 12px;
+}
+.mizu-command-list [role="option"] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 12px;
+  cursor: pointer;
+}
+.mizu-command-list [aria-selected="true"] {
+  background: var(--mizu-ink-3);
+  box-shadow: inset 1px 0 var(--mizu-accent);
+}
+.mizu-command-list strong {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+}
+.mizu-command-list span {
+  display: block;
+  font-size: 12px;
+  color: var(--mizu-muted);
+  margin-top: 4px;
+}
+.mizu-command-list kbd {
+  font: 11px var(--mizu-font-mono);
+  color: var(--mizu-faint);
+}
+.mizu-command-help {
+  margin: 12px 0 0;
+  border-top: 1px solid var(--mizu-line);
+  padding-top: 12px;
+  font: 10px var(--mizu-font-mono);
+  color: var(--mizu-muted);
+}
+@keyframes mizu-spin {
+  to {
+    transform: rotate(405deg);
+  }
+}
