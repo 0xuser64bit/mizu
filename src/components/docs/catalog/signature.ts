@@ -845,4 +845,50 @@ export const SIGNATURE = [
       { keys: "a–z", action: "Jump to a name" },
     ],
   }),
+  s({
+    name: "LogStream",
+    source: "LogStream.tsx",
+    tagline:
+      "A live log tail that renders only what is in view: it follows new lines until you scroll away, counts what you missed, and searches, filters and opens any line whole.",
+    example:
+      '  const t = Date.UTC(2026, 0, 12, 9, 30);\n  return <LogStream label="deploy #214" utc lines={[{ id: 1, time: t, level: "info", source: "build", message: "Build started on runner-3" }, { id: 2, time: t + 4200, level: "warn", source: "cache", message: "Cache cold: restoring 312 files" }, { id: 3, time: t + 9100, level: "error", source: "migrate", message: "Step migrate failed: lock timeout after 30 s", fields: { step: "migrate", exit: 1 } }]} />;',
+    props: [
+      p(
+        "label / lines",
+        "string / LogLine[]",
+        "Oldest first: id, time (ms), level (debug, info, warn, error), message, with optional source and fields. Append as lines arrive and trim to bound memory.",
+      ),
+      p(
+        "selected / defaultSelected / onSelectedChange",
+        "id | null",
+        "The line open in the detail panel, for syncing with a chart or timeline.",
+      ),
+      p(
+        "loading / empty",
+        "boolean / ReactNode",
+        "Skeleton rows with a scan line, or what an empty log says.",
+      ),
+      p("utc", "boolean", "Show times in UTC instead of local time.", "false"),
+      p(
+        "--mizu-log-height",
+        "CSS length",
+        "Height of the scrolling lines (420px).",
+      ),
+    ],
+    a11y: "The lines are a listbox with one tab stop; arrows, Page keys, Home and End move the selection, which is announced through aria-activedescendant, and only rendered lines are ever referenced. Levels are toggle buttons with counts, the search reports its matches as they change, and while you are paused, missed lines are announced at most every five seconds rather than line by line.",
+    motion:
+      "New lines glow briefly as they arrive at the tail. Scrolling away pauses the follow and a count of missed lines springs up from the bottom; choosing it drops you back to the live tail. The overview strip marks the stretch in view as you scroll. Reduced motion keeps every state without the travel.",
+    keys: [
+      {
+        keys: "↑ ↓ PageUp PageDown",
+        action: "Select a line (pauses following)",
+      },
+      { keys: "Home End", action: "First line, or back to the live tail" },
+      { keys: "Esc", action: "Close the selected line" },
+      {
+        keys: "Enter Shift+Enter",
+        action: "Next or previous match, in the search field",
+      },
+    ],
+  }),
 ];

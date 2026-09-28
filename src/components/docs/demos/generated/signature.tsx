@@ -26,6 +26,7 @@ import {
   SplitFlap,
   Button,
   ColumnBrowser,
+  LogStream,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -458,6 +459,40 @@ export function ColumnBrowserDemo() {
         { id: "films", label: "Films", children: [] },
       ]}
       defaultPath={["books"]}
+    />
+  );
+}
+
+export function LogStreamDemo() {
+  const t = Date.UTC(2026, 0, 12, 9, 30);
+  return (
+    <LogStream
+      label="deploy #214"
+      utc
+      lines={[
+        {
+          id: 1,
+          time: t,
+          level: "info",
+          source: "build",
+          message: "Build started on runner-3",
+        },
+        {
+          id: 2,
+          time: t + 4200,
+          level: "warn",
+          source: "cache",
+          message: "Cache cold: restoring 312 files",
+        },
+        {
+          id: 3,
+          time: t + 9100,
+          level: "error",
+          source: "migrate",
+          message: "Step migrate failed: lock timeout after 30 s",
+          fields: { step: "migrate", exit: 1 },
+        },
+      ]}
     />
   );
 }

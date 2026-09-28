@@ -55,6 +55,9 @@ export const GENERATED_DEMOS = {
   "column-browser": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.ColumnBrowserDemo),
   ),
+  "log-stream": dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.LogStreamDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

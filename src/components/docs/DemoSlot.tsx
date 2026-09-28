@@ -84,6 +84,9 @@ const SHOWCASES = {
   "column-browser": dynamic(() =>
     import("./demos/signature/columns").then((m) => m.ColumnBrowserShowcase),
   ),
+  "log-stream": dynamic(() =>
+    import("./demos/signature/log").then((m) => m.LogStreamShowcase),
+  ),
 };
 export function DemoSlot({
   slug,

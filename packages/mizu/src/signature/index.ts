@@ -17,3 +17,4 @@ export * from "./Gallery.tsx";
 export * from "./Folio.tsx";
 export * from "./SplitFlap.tsx";
 export * from "./ColumnBrowser.tsx";
+export * from "./LogStream.tsx";
