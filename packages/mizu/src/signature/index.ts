@@ -9,3 +9,4 @@ export * from "./Board.tsx";
 export * from "./Outliner.tsx";
 export * from "./QueryBuilder.tsx";
 export * from "./Annotator.tsx";
+export * from "./Tour.tsx";

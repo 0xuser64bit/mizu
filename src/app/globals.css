@@ -162,3 +162,10 @@ body {
 .mizu-demo-plans small { font: 10px var(--mizu-font-mono); color: var(--mizu-faint); letter-spacing: .08em; }
 .mizu-demo-page-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 @media (max-width: 540px) { .mizu-demo-plans { grid-template-columns: 1fr; } }
+.mizu-demo-app { border: 1px solid var(--mizu-line); background: var(--mizu-ink); }
+.mizu-demo-app > header { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; gap: 16px; padding: 14px 16px 16px; border-bottom: 1px solid var(--mizu-line); }
+.mizu-demo-app > header > strong { align-self: center; font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
+.mizu-demo-app-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; padding: 18px 16px; border-bottom: 1px solid var(--mizu-line); }
+.mizu-demo-app-stats .mizu-stat-value { font-size: 32px; margin: 6px 0; }
+.mizu-demo-app > [data-tour="table"] { padding: 16px; }
+@media (max-width: 600px) { .mizu-demo-app > header { grid-template-columns: 1fr; align-items: stretch; } }

@@ -1,0 +1,159 @@
+/* Tour — a spotlight that travels and a card that explains. */
+.mizu-tour {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-paper);
+  font-family: var(--mizu-font-display);
+}
+.mizu-tour::backdrop {
+  background: transparent;
+}
+.mizu-tour[open] {
+  animation: mizu-sig-fade 280ms ease both;
+}
+.mizu-tour-veil {
+  position: absolute;
+  inset: 0;
+}
+.mizu-tour-shade {
+  fill: rgb(15 14 12 / 0.74);
+}
+.mizu-tour-brackets path {
+  fill: none;
+  stroke: var(--mizu-accent);
+  stroke-width: 1.5;
+}
+.mizu-tour-card {
+  position: absolute;
+  width: min(340px, calc(100vw - 24px));
+  padding: 18px 20px 14px;
+  background: var(--mizu-ink-2);
+  border: 1px solid var(--mizu-line-bright);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 0.35);
+  outline: none;
+  transition:
+    top 200ms var(--mizu-ease-expo),
+    left 200ms var(--mizu-ease-expo);
+}
+.mizu-tour-card::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--mizu-ink-2);
+  border: 1px solid var(--mizu-line-bright);
+  transform: rotate(45deg);
+}
+.mizu-tour-card[data-side="bottom"]::before {
+  top: -6px;
+  left: calc(var(--mizu-pointer) - 5px);
+  border-right: 0;
+  border-bottom: 0;
+}
+.mizu-tour-card[data-side="top"]::before {
+  bottom: -6px;
+  left: calc(var(--mizu-pointer) - 5px);
+  border-top: 0;
+  border-left: 0;
+}
+.mizu-tour-card[data-side="right"]::before {
+  left: -6px;
+  top: calc(var(--mizu-pointer) - 5px);
+  border-top: 0;
+  border-right: 0;
+}
+.mizu-tour-card[data-side="left"]::before {
+  right: -6px;
+  top: calc(var(--mizu-pointer) - 5px);
+  border-bottom: 0;
+  border-left: 0;
+}
+.mizu-tour-card[data-side="center"],
+.mizu-tour-card[data-side="sheet"] {
+  transition: none;
+}
+.mizu-tour-card[data-side="center"] {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mizu-tour-card[data-side="sheet"] {
+  left: 12px;
+  right: 12px;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: auto;
+}
+.mizu-tour-card:is([data-side="center"], [data-side="sheet"])::before {
+  display: none;
+}
+.mizu-tour-progress {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+.mizu-tour-progress i {
+  width: 6px;
+  height: 6px;
+  background: var(--mizu-line-bright);
+  transform: rotate(45deg);
+  transition:
+    background var(--mizu-duration-fast),
+    transform var(--mizu-duration-med) var(--mizu-ease-expo);
+}
+.mizu-tour-progress i[data-state="done"] {
+  background: var(--mizu-muted);
+}
+.mizu-tour-progress i[data-state="current"] {
+  background: var(--mizu-accent);
+  transform: rotate(45deg) scale(1.35);
+}
+.mizu-tour-progress span {
+  margin-left: auto;
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  color: var(--mizu-faint);
+}
+.mizu-tour-copy {
+  animation: mizu-sig-fade 320ms ease both;
+}
+.mizu-tour-copy h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.mizu-tour-body {
+  margin-top: 8px;
+  color: var(--mizu-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.mizu-tour-body p {
+  margin: 0 0 8px;
+}
+.mizu-tour-missing {
+  color: var(--mizu-warning);
+  font-size: 12px;
+}
+.mizu-tour-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-top: 16px;
+}
+.mizu-tour-actions > span {
+  display: flex;
+  gap: 8px;
+}

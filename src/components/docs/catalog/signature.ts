@@ -515,4 +515,39 @@ export const SIGNATURE = [
       { keys: "Esc", action: "Close the thread or discard the draft" },
     ],
   }),
+  s({
+    name: "Tour",
+    source: "Tour.tsx",
+    tagline:
+      "A guided tour whose spotlight travels between real elements, follows them through scrolling and reflow, and explains each one beside it.",
+    example:
+      '  const [open,setOpen]=useState(false);\n  return <><button type="button" id="tour-start" className="mizu-text-button" onClick={()=>setOpen(true)}>Take the tour</button><Tour open={open} onOpenChange={setOpen} steps={[{target:"#tour-start",title:"This started the tour",body:"Each step points at a real element on the page."}]} /></>;',
+    props: [
+      p(
+        "steps",
+        "TourStep[]",
+        "target (selector or function), title, body, placement and padding.",
+      ),
+      p(
+        "open / onOpenChange",
+        "boolean / function",
+        "Controlled visibility; Escape and Skip request closing.",
+      ),
+      p("step / defaultStep / onStepChange", "number", "The current step."),
+      p(
+        "onFinish",
+        "() => void",
+        "Called when the last step is completed, not when skipped.",
+      ),
+      p("label", "string", "Accessible name of the tour.", '"Product tour"'),
+    ],
+    a11y: "A native modal dialog: the page becomes inert, focus stays on the tour's primary action and returns afterwards, Escape leaves. Each step is announced with its position; arrow keys move between steps. When a step's element is missing, the card centres itself and says so.",
+    motion:
+      "The spotlight pursues each new element — even while it scrolls into view — framed by accent corner brackets, while the card travels to the side with room and its copy fades in. Progress diamonds grow at the current step. Reduced motion moves the spotlight directly.",
+    keys: [
+      { keys: "→ · Enter", action: "Next step" },
+      { keys: "←", action: "Previous step" },
+      { keys: "Esc", action: "Leave the tour" },
+    ],
+  }),
 ];

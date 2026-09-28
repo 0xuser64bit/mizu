@@ -31,6 +31,9 @@ export const GENERATED_DEMOS = {
   annotator: dynamic(() =>
     import("./demos/generated/signature").then((m) => m.AnnotatorDemo),
   ),
+  tour: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.TourDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

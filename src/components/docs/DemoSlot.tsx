@@ -62,6 +62,7 @@ const SHOWCASES = {
   annotator: dynamic(() =>
     import("./demos/signature/annotator").then((m) => m.AnnotatorShowcase),
   ),
+  tour: dynamic(() => import("./demos/signature/tour").then((m) => m.TourShowcase)),
 };
 export function DemoSlot({
   slug,

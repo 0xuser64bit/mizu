@@ -16,6 +16,7 @@ import {
   type QueryGroup,
   Annotator,
   type Annotation,
+  Tour,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -278,5 +279,32 @@ export function AnnotatorDemo() {
     >
       <img src="/images/field.svg" alt="Homepage draft" />
     </Annotator>
+  );
+}
+
+export function TourDemo() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        type="button"
+        id="tour-start"
+        className="mizu-text-button"
+        onClick={() => setOpen(true)}
+      >
+        Take the tour
+      </button>
+      <Tour
+        open={open}
+        onOpenChange={setOpen}
+        steps={[
+          {
+            target: "#tour-start",
+            title: "This started the tour",
+            body: "Each step points at a real element on the page.",
+          },
+        ]}
+      />
+    </>
   );
 }
