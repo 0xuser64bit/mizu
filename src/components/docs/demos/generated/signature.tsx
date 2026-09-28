@@ -20,6 +20,7 @@ import {
   Interview,
   TransferQueue,
   TriageDeck,
+  Gallery,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -379,6 +380,33 @@ export function TriageDeckDemo() {
         { id: "keep", label: "Keep", direction: "right", tone: "success" },
       ]}
       renderItem={(m) => <h3 style={{ margin: 0, fontSize: 24 }}>{m.title}</h3>}
+    />
+  );
+}
+
+export function GalleryDemo() {
+  return (
+    <Gallery
+      label="Field studies"
+      rowHeight={160}
+      items={[
+        {
+          id: "ink",
+          src: "/images/field.svg",
+          alt: "Diamond field on ink",
+          width: 720,
+          height: 360,
+          caption: "Field, ink",
+        },
+        {
+          id: "paper",
+          src: "/images/field-light.svg",
+          alt: "Diamond field on paper",
+          width: 720,
+          height: 360,
+          caption: "Field, paper",
+        },
+      ]}
     />
   );
 }

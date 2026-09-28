@@ -669,4 +669,49 @@ export const SIGNATURE = [
       { keys: "Backspace Z", action: "Undo the last decision" },
     ],
   }),
+  s({
+    name: "Gallery",
+    source: "Gallery.tsx",
+    tagline:
+      "A justified photo grid whose photos open from exactly where they sit: swipe to travel, pull down to put one back, pinch or double-tap to look closer.",
+    example:
+      '  return <Gallery label="Field studies" rowHeight={160} items={[{id:"ink",src:"/images/field.svg",alt:"Diamond field on ink",width:720,height:360,caption:"Field, ink"},{id:"paper",src:"/images/field-light.svg",alt:"Diamond field on paper",width:720,height:360,caption:"Field, paper"}]} />;',
+    props: [
+      p(
+        "label / items",
+        "string / GalleryItem[]",
+        "Region name; each photo has an id, src, alt, width and height, with an optional thumbnail and caption.",
+      ),
+      p(
+        "index / defaultIndex / onIndexChange",
+        "number | null",
+        "The open photo, or null while the viewer is closed.",
+      ),
+      p(
+        "rowHeight / gap",
+        "number",
+        "Rows aim for this height (220) and full rows adjust to fill the width exactly; gap defaults to 6.",
+      ),
+      p(
+        "loading / empty",
+        "boolean / ReactNode",
+        "Skeleton rows with a scan line, or what to show when there are no photos.",
+      ),
+      p(
+        "justifyRows()",
+        "(sizes, width, target, gap) => Row[]",
+        "The layout on its own, for server rendering or grids of your own.",
+      ),
+    ],
+    a11y: "Photos are buttons named by their alt text, in a list; arrow keys move between them, up and down by row. The viewer is a native modal dialog: the page goes inert and stops scrolling, Escape closes, and focus returns to the photo you closed on. Position and alt text are announced as you travel, and every gesture also has a key or a button.",
+    motion:
+      "A photo flies out of its tile into the viewer, and back into the tile of whichever photo you close on. Swipes follow your finger with resistance at the ends; pulling down shrinks the photo and thins the backdrop until it lets go. Zoom springs around the point you pinch, scroll or double-tap. Reduced motion trades the flight for a short fade.",
+    keys: [
+      { keys: "← →", action: "Previous or next photo, in the grid or viewer" },
+      { keys: "↑ ↓", action: "The row above or below, in the grid" },
+      { keys: "Home End", action: "First or last photo" },
+      { keys: "+ − 0", action: "Zoom in, out, or back to fit" },
+      { keys: "Esc", action: "Put the photo back" },
+    ],
+  }),
 ];

@@ -43,6 +43,9 @@ export const GENERATED_DEMOS = {
   "triage-deck": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.TriageDeckDemo),
   ),
+  gallery: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.GalleryDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

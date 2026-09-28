@@ -72,6 +72,9 @@ const SHOWCASES = {
   "triage-deck": dynamic(() =>
     import("./demos/signature/triage").then((m) => m.TriageDeckShowcase),
   ),
+  gallery: dynamic(() =>
+    import("./demos/signature/gallery").then((m) => m.GalleryShowcase),
+  ),
 };
 export function DemoSlot({
   slug,
