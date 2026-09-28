@@ -1,6 +1,6 @@
 {
   "name": "mizu-ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Mizu interface craft for React: accessible surfaces, interaction, data, motion and complete patterns.",
   "type": "module",
   "license": "MIT",
