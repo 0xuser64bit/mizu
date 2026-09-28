@@ -139,7 +139,7 @@ assert(Object.keys(installed).length >= 110);
   writeFileSync(join(scratch, "index.html"), index);
   console.log(`Tree shaking passed — ${sizes.join("; ")}.`);
   console.log(
-    `Packed consumer passed: ${pack.filename}; ${(pack.size / 1024).toFixed(1)} KiB compressed; declarations, all 13 family exports, Node ESM SSR, fonts/CSS and Vite production build.`,
+    `Packed consumer passed: ${pack.filename}; ${(pack.size / 1024).toFixed(1)} KiB compressed; declarations, all 14 family exports, Node ESM SSR, fonts/CSS and Vite production build.`,
   );
   if (process.argv.includes("--serve")) {
     console.log("Packed workshop preview: http://localhost:3102");

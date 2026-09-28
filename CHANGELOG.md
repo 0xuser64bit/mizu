@@ -2,7 +2,17 @@
 
 ## 0.2.0 — prepared, not published
 
-- Grow from 28 systems to 104 across 13 families, with working examples and
+- Add the Signature family: 22 complete systems with one shared contract
+  (label, value / default / change, readOnly, loading and empty states,
+  selection, range and cursor that synchronise across views) — Chronicle,
+  TrendChart, Waveform, Plane, FlowGraph, Treemap, Board, Outliner,
+  QueryBuilder, Annotator, Tour, Interview, TransferQueue, TriageDeck,
+  Gallery, Folio and Sidenote, SplitFlap, ColumnBrowser, LogStream, Knob,
+  Fader and XYPad — each with a keymap, reduced-motion path and tests, at
+  `mizu-ui/signature` and the root.
+- Add composed examples (incident review, design review, automation
+  builder) that share state across several signature systems.
+- Grow from 28 systems to 126 across 14 families, with working examples and
   inspectable typed source. Native forms, promise-driven feedback, data,
   navigation, content, responsive layout, selection, editing, comparison,
   history and motion now compose alongside the original instruments.

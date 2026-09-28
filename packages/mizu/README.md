@@ -1,8 +1,9 @@
 # mizu-ui
 
-Mizu's interface language for React: **104 systems across 13 families**, from
-labelled forms and asynchronous actions to data inspection, bounded history,
-variable type and interactive instruments. Warm ink and paper, hairline rules,
+Mizu's interface language for React: **126 systems across 14 families**, from
+signature instruments — timelines, charts, editors, readers, flows and
+controls — to labelled forms, asynchronous actions, data inspection, bounded
+history and variable type. Warm ink and paper, hairline rules,
 diamond markers and purposeful motion connect the collection.
 
 ## Install and render
@@ -49,6 +50,7 @@ The root exports everything; each family has a focused ESM entry point.
 
 | Path | Systems |
 | --- | --- |
+| `mizu-ui/signature` | Chronicle, TrendChart, Waveform, Plane / PlaneItem, FlowGraph, Treemap, Board, Outliner, QueryBuilder, Annotator, Tour, Interview, TransferQueue, TriageDeck, Gallery, Folio / Sidenote, SplitFlap, ColumnBrowser, LogStream, Knob, Fader, XYPad; layout and query helpers (tidyFlow, squarify, justifyRows, flapPath, moveCard, describeQuery, matchesQuery) |
 | `mizu-ui/ui` | Button / ButtonLink, Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip |
 | `mizu-ui/motion` | MaskLine, Reveal, Magnetic, Marquee, PageWipe, Presence, Tilt, Parallax, ScrollProgress; MotionPreferences |
 | `mizu-ui/type` | Specimen, SoftType, WaveText, GhostWord |
@@ -102,6 +104,16 @@ failed operation open for retry. FileDropzone validates and returns File objects
 but does not upload. Charts render supplied finite values; tables sort locally.
 History is bounded and local. ConnectionStatus reports browser connectivity,
 not your API's health. Native MediaPlayer needs a real playable source.
+
+The signature systems are complete behaviors with the same boundaries: they
+work on the data you pass and report changes, but never fetch, save or upload
+by themselves. TransferQueue runs your transfer function and TriageDeck,
+Board and Annotator report decisions, moves and comments for you to persist.
+ColumnBrowser loads children through your `loadChildren`. Waveform decodes
+audio in the browser, so remote sources need CORS. LogStream virtualizes
+fixed-height rows and opens long lines below rather than wrapping them.
+Gallery needs each photo's width and height to lay out before loading. A log
+taper on Knob and Fader needs a positive minimum.
 
 DataTable does not virtualize large datasets. DiffView aligns lines, without
 semantic diffing. TreeView uses native disclosure rather than a full ARIA tree

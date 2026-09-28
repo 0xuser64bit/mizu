@@ -14,7 +14,7 @@ export default function GettingStarted() {
       <article className="mizu-guide">
         <h1>Make a surface.</h1>
         <p>
-          104 systems for React 18.3 and 19. One stylesheet, optional fonts,
+          126 systems for React 18.3 and 19. One stylesheet, optional fonts,
           native controls and purposeful motion. Mizu needs no Tailwind
           configuration and no provider for ordinary components.
         </p>
@@ -62,7 +62,7 @@ export function App() {
 import { Progress, AsyncButton } from "mizu-ui/status";
 import { MotionPreferences } from "mizu-ui/motion";`}</Code>
         <p>
-          All 13 families have subpaths. The root exports the same APIs. ESM,
+          All 14 families have subpaths. The root exports the same APIs. ESM,
           declarations, source maps and inspectable source ship together. Mizu
           never imports Next.js; the showcase uses the same implementations.
           CommonJS require is unsupported.

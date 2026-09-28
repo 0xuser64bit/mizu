@@ -1,7 +1,9 @@
 # Mizu — interface craft for React
 
-104 component systems across 13 families: labelled forms, asynchronous actions,
-data inspection, bounded history, variable type and interactive instruments.
+126 component systems across 14 families, led by signature systems —
+timelines, charts, editors, readers, flows and instrument controls — with
+labelled forms, asynchronous actions, data inspection, bounded history,
+variable type and interactive instruments.
 Warm ink and paper, hairline rules, diamond markers and purposeful motion.
 
 The React package lives in [packages/mizu](packages/mizu) and ships as
@@ -39,10 +41,12 @@ imports and behavior limits are in [packages/mizu/README.md](packages/mizu/READM
 
 Run `bun install` and `bun run dev`, then open:
 
-- `/components` — search, 13 family indexes, live stages with theme / size /
+- `/components` — search, 14 family indexes, live stages with theme / size /
   motion controls, compiled examples, property tables and source inspection.
 - `/components/getting-started` — first working interaction and customization.
 - `/` — the archive; `/lab` — instruments; `/studio` — the standpoint.
+- `/examples` — whole workflows composed from signature systems: an incident
+  review, a design review and an automation builder.
 - `/examples/nav` — a real, isolated navigation composition.
 
 [The full inventory](docs/COMPONENTS.md) counts compound systems once
@@ -51,7 +55,7 @@ Run `bun install` and `bun run dev`, then open:
 ## Develop and verify
 
 ```sh
-bun run check                # example freshness, types, lint, 83 behavior checks, package emit
+bun run check                # example freshness, types, lint, behavior tests, package emit
 bun run build                # production documentation site
 bun run test:consumer        # real npm tarball in a temporary external React 19 app
 bun run test:consumer --react18
