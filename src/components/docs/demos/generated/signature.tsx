@@ -8,11 +8,8 @@ import {
   Plane,
   PlaneItem,
   FlowGraph,
-  type FlowNode,
-  type FlowEdge,
   Treemap,
   Board,
-  type BoardCard,
   Outliner,
   type OutlineItem,
   QueryBuilder,
@@ -139,35 +136,29 @@ export function PlaneDemo() {
 }
 
 export function FlowGraphDemo() {
-  const [nodes, setNodes] = useState<FlowNode[]>([
-    {
-      id: "a",
-      x: 0,
-      y: 0,
-      kind: "Trigger",
-      label: "Form submitted",
-      inputs: [],
-    },
-    { id: "b", x: 320, y: 0, kind: "Action", label: "Create ticket" },
-    {
-      id: "c",
-      x: 640,
-      y: 0,
-      kind: "Email",
-      label: "Confirm receipt",
-      outputs: [],
-    },
-  ]);
-  const [edges, setEdges] = useState<FlowEdge[]>([
-    { id: "ab", source: "a", target: "b" },
-  ]);
   return (
     <FlowGraph
       label="Support intake"
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={setNodes}
-      onEdgesChange={setEdges}
+      defaultNodes={[
+        {
+          id: "a",
+          x: 0,
+          y: 0,
+          kind: "Trigger",
+          label: "Form submitted",
+          inputs: [],
+        },
+        { id: "b", x: 320, y: 0, kind: "Action", label: "Create ticket" },
+        {
+          id: "c",
+          x: 640,
+          y: 0,
+          kind: "Email",
+          label: "Confirm receipt",
+          outputs: [],
+        },
+      ]}
+      defaultEdges={[{ id: "ab", source: "a", target: "b" }]}
     />
   );
 }
@@ -198,16 +189,6 @@ export function TreemapDemo() {
 }
 
 export function BoardDemo() {
-  const [cards, setCards] = useState<BoardCard[]>([
-    { id: "a", column: "todo", title: "Draft the announcement", meta: "2d" },
-    { id: "b", column: "todo", title: "Record the demo" },
-    {
-      id: "c",
-      column: "done",
-      title: "Pick a launch date",
-      assignee: "Rin Sato",
-    },
-  ]);
   return (
     <Board
       label="Launch"
@@ -216,8 +197,21 @@ export function BoardDemo() {
         { id: "doing", title: "Doing", limit: 2 },
         { id: "done", title: "Done" },
       ]}
-      cards={cards}
-      onCardsChange={setCards}
+      defaultCards={[
+        {
+          id: "a",
+          column: "todo",
+          title: "Draft the announcement",
+          meta: "2d",
+        },
+        { id: "b", column: "todo", title: "Record the demo" },
+        {
+          id: "c",
+          column: "done",
+          title: "Pick a launch date",
+          assignee: "Rin Sato",
+        },
+      ]}
     />
   );
 }

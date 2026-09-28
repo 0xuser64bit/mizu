@@ -100,6 +100,30 @@ describe("Board", () => {
     ).toBeInTheDocument();
   });
 
+  it("moves cards on its own when uncontrolled and refuses when read-only", async () => {
+    const user = userEvent.setup();
+    const { unmount } = render(
+      <Board label="Launch" columns={COLUMNS} defaultCards={CARDS} />,
+    );
+    screen.getByRole("button", { name: "Draft" }).focus();
+    await user.keyboard(" {ArrowRight} ");
+    expect(
+      within(screen.getByRole("region", { name: /^Doing/ })).getByRole(
+        "button",
+        { name: "Draft" },
+      ),
+    ).toBeInTheDocument();
+    unmount();
+    render(
+      <Board label="Launch" columns={COLUMNS} defaultCards={CARDS} readOnly />,
+    );
+    screen.getByRole("button", { name: "Draft" }).focus();
+    await user.keyboard(" ");
+    expect(screen.getByRole("button", { name: "Draft" })).not.toHaveAttribute(
+      "aria-pressed",
+    );
+  });
+
   it("opens cards with Enter and folds columns", async () => {
     const user = userEvent.setup(),
       open = vi.fn();

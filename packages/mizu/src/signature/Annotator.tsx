@@ -105,7 +105,7 @@ export function Annotator({
   const [surfaceRef, surface] = useElementSize<HTMLDivElement>();
   const pinRefs = useRef(new Map<string, HTMLButtonElement>());
   const returnFocus = useRef<string | null>(null);
-  const editable = !!author && !!onAnnotationsChange;
+  const editable = !!author;
 
   const numbered = list.map((a, i) => ({ ...a, number: i + 1 }));
   const shown = numbered.filter(

@@ -206,6 +206,42 @@ describe("FlowGraph", () => {
     expect(edges).toHaveBeenLastCalledWith([]);
   });
 
+  it("wires on its own when uncontrolled and only watches when read-only", async () => {
+    const user = userEvent.setup();
+    const { unmount } = render(
+      <FlowGraph label="Intake" defaultNodes={NODES} defaultEdges={EDGES} />,
+    );
+    screen
+      .getByRole("button", { name: "Is urgent? output no, start a connection" })
+      .focus();
+    await user.keyboard("{Enter}");
+    await user.click(
+      screen.getByRole("button", {
+        name: "Create ticket input in, connect here",
+      }),
+    );
+    expect(
+      screen.getByRole("button", {
+        name: "Connection from Is urgent? to Create ticket",
+      }),
+    ).toBeInTheDocument();
+    unmount();
+    render(
+      <FlowGraph
+        label="Intake"
+        defaultNodes={NODES}
+        defaultEdges={EDGES}
+        readOnly
+      />,
+    );
+    expect(
+      screen.getByRole("button", { name: "Is urgent? output no" }),
+    ).toBeDisabled();
+    expect(
+      screen.queryByRole("button", { name: "Tidy" }),
+    ).not.toBeInTheDocument();
+  });
+
   it("tidies into layers that follow the wires", () => {
     const tidy = tidyFlow(
       NODES.map((n) => ({ ...n, x: 0, y: 0 })),

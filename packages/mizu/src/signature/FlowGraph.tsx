@@ -137,10 +137,13 @@ export function tidyFlow(
  */
 export function FlowGraph({
   label,
-  nodes,
-  edges,
+  nodes: nodesProp,
+  defaultNodes = [],
   onNodesChange,
+  edges: edgesProp,
+  defaultEdges = [],
   onEdgesChange,
+  readOnly = false,
   selected,
   defaultSelected = null,
   onSelectedChange,
@@ -152,12 +155,16 @@ export function FlowGraph({
   style,
 }: {
   label: string;
-  nodes: readonly FlowNode[];
-  edges: readonly FlowEdge[];
-  /** Receives moved, tidied or deleted nodes. Omit for a read-only layout. */
+  nodes?: readonly FlowNode[];
+  defaultNodes?: readonly FlowNode[];
+  /** Receives moved, tidied and deleted nodes. */
   onNodesChange?: (nodes: FlowNode[]) => void;
-  /** Receives new or deleted connections. Omit to prevent wiring. */
+  edges?: readonly FlowEdge[];
+  defaultEdges?: readonly FlowEdge[];
+  /** Receives new and deleted connections. */
   onEdgesChange?: (edges: FlowEdge[]) => void;
+  /** Watch only: no dragging, wiring, tidying or deleting. */
+  readOnly?: boolean;
   selected?: string | null;
   defaultSelected?: string | null;
   onSelectedChange?: (id: string | null) => void;
@@ -175,6 +182,16 @@ export function FlowGraph({
   const plane = useRef<PlaneHandle>(null);
   const [message, announce] = useAnnouncer();
   const [tween] = useTween();
+  const [nodes, setNodes] = useControllable<readonly FlowNode[]>(
+    nodesProp,
+    defaultNodes,
+    onNodesChange && ((next) => onNodesChange(next as FlowNode[])),
+  );
+  const [edges, setEdges] = useControllable<readonly FlowEdge[]>(
+    edgesProp,
+    defaultEdges,
+    onEdgesChange && ((next) => onEdgesChange(next as FlowEdge[])),
+  );
   const [choice, setChoice] = useControllable<string | null>(
     selected,
     defaultSelected,
@@ -200,7 +217,7 @@ export function FlowGraph({
     [nodes, override],
   );
   const byId = useMemo(() => new Map(shown.map((n) => [n.id, n])), [shown]);
-  const editable = !!onEdgesChange;
+  const editable = !readOnly;
 
   const refuse = (reason: string) => {
     setRefusal(reason);
@@ -212,7 +229,7 @@ export function FlowGraph({
     target: { node: string; port: string },
   ) => {
     setWire(null);
-    if (!onEdgesChange) return;
+    if (!editable) return;
     const edge: FlowEdge = {
       id: `${source.node}.${source.port}->${target.node}.${target.port}`,
       source: source.node,
@@ -239,28 +256,26 @@ export function FlowGraph({
           ? verdict
           : "That connection is not allowed.",
       );
-    onEdgesChange([...edges, edge]);
+    setEdges([...edges, edge]);
     const from = byId.get(source.node)!,
       to = byId.get(target.node)!;
     announce(`Connected ${from.label} to ${to.label}.`);
   };
   const remove = (target: string) => {
+    if (!editable) return;
     if (byId.has(target)) {
-      if (!onNodesChange) return;
       const node = byId.get(target)!;
-      onNodesChange(nodes.filter((n) => n.id !== target));
-      onEdgesChange?.(
-        edges.filter((e) => e.source !== target && e.target !== target),
-      );
+      setNodes(nodes.filter((n) => n.id !== target));
+      setEdges(edges.filter((e) => e.source !== target && e.target !== target));
       announce(`Removed ${node.label}.`);
-    } else if (onEdgesChange) {
-      onEdgesChange(edges.filter((e) => e.id !== target));
+    } else {
+      setEdges(edges.filter((e) => e.id !== target));
       announce("Connection removed.");
     }
     setChoice(null);
   };
   const tidy = () => {
-    if (!onNodesChange) return;
+    if (!editable) return;
     const next = tidyFlow(nodes, edges, nodeWidth);
     const from = new Map(nodes.map((n) => [n.id, { x: n.x, y: n.y }]));
     tween(
@@ -279,7 +294,7 @@ export function FlowGraph({
         ),
       () => {
         setOverride(null);
-        onNodesChange(next);
+        setNodes(next);
         requestAnimationFrame(() => plane.current?.fit());
       },
     );
@@ -369,7 +384,7 @@ export function FlowGraph({
         }}
         tools={
           <>
-            {onNodesChange && (
+            {editable && (
               <button type="button" onClick={tidy} disabled={nodes.length < 2}>
                 Tidy
               </button>
@@ -466,9 +481,9 @@ export function FlowGraph({
                 if (!wire) setChoice(node.id);
               }}
               onMove={
-                onNodesChange
+                editable
                   ? (x, y) =>
-                      onNodesChange(
+                      setNodes(
                         nodes.map((n) =>
                           n.id === node.id
                             ? {

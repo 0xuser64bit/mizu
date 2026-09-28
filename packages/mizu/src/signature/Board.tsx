@@ -16,6 +16,7 @@ import { EASE_EXPO } from "../motion/easings.ts";
 import { Avatar } from "../content/Media.tsx";
 import {
   useAnnouncer,
+  useControllable,
   useIsoLayoutEffect,
   useLatest,
   type SignatureTone,
@@ -95,8 +96,10 @@ function DefaultCard({ card }: { card: BoardCard }) {
 export function Board({
   label,
   columns,
-  cards,
+  cards: cardsProp,
+  defaultCards = [],
   onCardsChange,
+  readOnly = false,
   renderCard,
   onCardOpen,
   onAddCard,
@@ -106,8 +109,11 @@ export function Board({
   label: string;
   columns: readonly BoardColumn[];
   /** Order within a column follows array order. */
-  cards: readonly BoardCard[];
+  cards?: readonly BoardCard[];
+  defaultCards?: readonly BoardCard[];
   onCardsChange?: (cards: BoardCard[]) => void;
+  /** Cards can still be opened, but not moved. */
+  readOnly?: boolean;
   renderCard?: (card: BoardCard) => ReactNode;
   /** Enter or double-click opens a card. */
   onCardOpen?: (card: BoardCard) => void;
@@ -127,9 +133,14 @@ export function Board({
   const pendingFocus = useRef<string | null>(null);
   const x = useMotionValue(0),
     y = useMotionValue(0);
+  const [cards, setCards] = useControllable<readonly BoardCard[]>(
+    cardsProp,
+    defaultCards,
+    onCardsChange && ((next) => onCardsChange(next as BoardCard[])),
+  );
   const dragRef = useLatest(drag);
   const cardsRef = useLatest(cards);
-  const editable = !!onCardsChange;
+  const editable = !readOnly;
 
   const shown = drag
     ? moveCard(cards, drag.id, drag.column, drag.index)
@@ -157,7 +168,7 @@ export function Board({
       announce(`${before.title} returned to ${position(d)}.`);
       return;
     }
-    onCardsChange?.(next);
+    setCards(next);
     announce(`Dropped ${before.title} in ${position(d)}.`);
   };
   const cancel = () => {

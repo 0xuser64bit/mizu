@@ -238,19 +238,25 @@ export const SIGNATURE = [
     tagline:
       "A node-and-wire editor: drag, wire with magnetic ports or the keyboard, refuse bad connections, watch runs flow and tidy into layers.",
     example:
-      '  const [nodes,setNodes]=useState<FlowNode[]>([{id:"a",x:0,y:0,kind:"Trigger",label:"Form submitted",inputs:[]},{id:"b",x:320,y:0,kind:"Action",label:"Create ticket"},{id:"c",x:640,y:0,kind:"Email",label:"Confirm receipt",outputs:[]}]);\n  const [edges,setEdges]=useState<FlowEdge[]>([{id:"ab",source:"a",target:"b"}]);\n  return <FlowGraph label="Support intake" nodes={nodes} edges={edges} onNodesChange={setNodes} onEdgesChange={setEdges} />;',
-    imports: "FlowGraph, type FlowNode, type FlowEdge",
+      '  return <FlowGraph label="Support intake" defaultNodes={[{id:"a",x:0,y:0,kind:"Trigger",label:"Form submitted",inputs:[]},{id:"b",x:320,y:0,kind:"Action",label:"Create ticket"},{id:"c",x:640,y:0,kind:"Email",label:"Confirm receipt",outputs:[]}]} defaultEdges={[{id:"ab",source:"a",target:"b"}]} />;',
+    imports: "FlowGraph",
     props: [
       p("label", "string", "Accessible name of the canvas."),
       p(
-        "nodes / onNodesChange",
-        "FlowNode[] / function",
-        "id, x, y, label, kind, description, inputs, outputs and status. Omit the callback for a fixed layout.",
+        "nodes / defaultNodes / onNodesChange",
+        "FlowNode[]",
+        "id, x, y, label, kind, description, inputs, outputs and status.",
       ),
       p(
-        "edges / onEdgesChange",
-        "FlowEdge[] / function",
-        "source, target, optional ports and label. Omit the callback to prevent wiring.",
+        "edges / defaultEdges / onEdgesChange",
+        "FlowEdge[]",
+        "source, target, optional ports and label.",
+      ),
+      p(
+        "readOnly",
+        "boolean",
+        "Watch only: no dragging, wiring, tidying or deleting.",
+        "false",
       ),
       p(
         "selected / defaultSelected / onSelectedChange",
@@ -336,8 +342,8 @@ export const SIGNATURE = [
     tagline:
       "A kanban board with lift-and-carry dragging, cards that part and fly into place, advisory limits, collapsible columns and a full keyboard path.",
     example:
-      '  const [cards,setCards]=useState<BoardCard[]>([{id:"a",column:"todo",title:"Draft the announcement",meta:"2d"},{id:"b",column:"todo",title:"Record the demo"},{id:"c",column:"done",title:"Pick a launch date",assignee:"Rin Sato"}]);\n  return <Board label="Launch" columns={[{id:"todo",title:"To do"},{id:"doing",title:"Doing",limit:2},{id:"done",title:"Done"}]} cards={cards} onCardsChange={setCards} />;',
-    imports: "Board, type BoardCard",
+      '  return <Board label="Launch" columns={[{id:"todo",title:"To do"},{id:"doing",title:"Doing",limit:2},{id:"done",title:"Done"}]} defaultCards={[{id:"a",column:"todo",title:"Draft the announcement",meta:"2d"},{id:"b",column:"todo",title:"Record the demo"},{id:"c",column:"done",title:"Pick a launch date",assignee:"Rin Sato"}]} />;',
+    imports: "Board",
     props: [
       p(
         "label / columns",
@@ -345,10 +351,11 @@ export const SIGNATURE = [
         "Region name; columns have id, title and an optional advisory limit.",
       ),
       p(
-        "cards / onCardsChange",
-        "BoardCard[] / function",
-        "id, column, title, meta, tags, assignee and tone. Order within a column follows array order. Omit the callback for a fixed board.",
+        "cards / defaultCards / onCardsChange",
+        "BoardCard[]",
+        "id, column, title, meta, tags, assignee and tone. Order within a column follows array order.",
       ),
+      p("readOnly", "boolean", "Cards open but cannot be moved.", "false"),
       p(
         "renderCard",
         "(card) => ReactNode",
