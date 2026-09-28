@@ -185,11 +185,11 @@ export function LogStream({
   );
   const unseenRef = useLatest(unseen);
 
-  // Follow the tail: new lines keep the newest in view.
+  // Follow the tail: new lines keep the newest in view, unless a line is open.
   useIsoLayoutEffect(() => {
     const el = scrollerRef.current;
-    if (el && following) el.scrollTop = el.scrollHeight;
-  }, [shown.length, following, height]);
+    if (el && following && current === null) el.scrollTop = el.scrollHeight;
+  }, [shown.length, following, height, current]);
 
   // New lines glow briefly as they arrive.
   useEffect(() => {
@@ -229,6 +229,11 @@ export function LogStream({
     else if (y + ROW > el.scrollTop + el.clientHeight)
       el.scrollTop = y + ROW - el.clientHeight;
   };
+  // A line chosen elsewhere, say from a synchronised timeline, comes into view.
+  useIsoLayoutEffect(() => {
+    if (index >= 0) reveal(index);
+    // Only when the selection itself changes.
+  }, [current]);
   const choose = (i: number) => {
     const line = shown[clamp(i, 0, shown.length - 1)];
     if (!line) return;
