@@ -28,6 +28,9 @@ export const GENERATED_DEMOS = {
   "query-builder": dynamic(() =>
     import("./demos/generated/signature").then((m) => m.QueryBuilderDemo),
   ),
+  annotator: dynamic(() =>
+    import("./demos/generated/signature").then((m) => m.AnnotatorDemo),
+  ),
   mark: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.MarkDemo),
   ),

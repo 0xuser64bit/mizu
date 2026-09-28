@@ -2,12 +2,14 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
+  Annotator,
   Board,
   Outliner,
   QueryBuilder,
   describeQuery,
   matchesQuery,
   moveCard,
+  type Annotation,
   type BoardCard,
   type OutlineItem,
   type QueryField,
@@ -402,5 +404,126 @@ describe("QueryBuilder", () => {
       "true",
     );
     expect(change.mock.lastCall![0].rules[0].value).toEqual(["free"]);
+  });
+});
+
+describe("Annotator", () => {
+  const NOTES: Annotation[] = [
+    { id: "a", x: 0.2, y: 0.3, author: "Rin", body: "Shorter headline?" },
+    {
+      id: "b",
+      x: 0.7,
+      y: 0.6,
+      author: "Mei",
+      body: "Contrast looks fine.",
+      resolved: true,
+    },
+  ];
+
+  it("names pins, hides resolved ones until asked and opens threads", async () => {
+    const user = userEvent.setup();
+    render(
+      <Annotator label="Homepage" defaultAnnotations={NOTES}>
+        <p>Draft</p>
+      </Annotator>,
+    );
+    expect(
+      screen.getByRole("button", {
+        name: "Comment 1 by Rin: Shorter headline?",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /Comment 2 by Mei/ }),
+    ).not.toBeInTheDocument();
+    await user.click(screen.getByRole("checkbox", { name: "Show resolved" }));
+    expect(
+      screen.getByRole("button", {
+        name: "Comment 2 by Mei, resolved: Contrast looks fine.",
+      }),
+    ).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /Comment 1 by Rin/ }));
+    expect(screen.getByRole("dialog", { name: "Comment 1" })).toHaveTextContent(
+      "Shorter headline?",
+    );
+    expect(
+      screen.queryByRole("button", { name: "Comment" }),
+    ).not.toBeInTheDocument();
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Comment 1 by Rin/ }),
+    ).toHaveFocus();
+  });
+
+  it("places, writes and posts a comment from the keyboard", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    render(
+      <Annotator
+        label="Homepage"
+        author="You"
+        now="09:00"
+        defaultAnnotations={NOTES}
+        onAnnotationsChange={change}
+        createId={() => "new"}
+      >
+        <p>Draft</p>
+      </Annotator>,
+    );
+    await user.click(screen.getByRole("button", { name: "Comment C" }));
+    expect(screen.getByRole("button", { name: /Commenting/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    screen.getByRole("group", { name: "Homepage, 2 comments" }).focus();
+    await user.keyboard("{Enter}");
+    const composer = await screen.findByRole("textbox", { name: "Comment 3" });
+    await user.click(composer);
+    await user.keyboard(
+      "Needs a date{Alt>}{ArrowRight}{/Alt}{Control>}{Enter}{/Control}",
+    );
+    expect(change).toHaveBeenLastCalledWith([
+      ...NOTES,
+      {
+        id: "new",
+        x: 0.51,
+        y: 0.5,
+        author: "You",
+        body: "Needs a date",
+        time: "09:00",
+      },
+    ]);
+  });
+
+  it("replies, resolves and nudges pins", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    render(
+      <Annotator
+        label="Homepage"
+        author="You"
+        now="09:30"
+        defaultAnnotations={NOTES}
+        onAnnotationsChange={change}
+        createId={() => "r1"}
+      >
+        <p>Draft</p>
+      </Annotator>,
+    );
+    const pin = screen.getByRole("button", { name: /Comment 1 by Rin/ });
+    pin.focus();
+    await user.keyboard("{ArrowRight}");
+    expect(change.mock.lastCall![0][0]).toMatchObject({ x: 0.21, y: 0.3 });
+    await user.click(pin);
+    await user.type(
+      screen.getByRole("textbox", { name: "Reply to comment 1" }),
+      "Trying one now",
+    );
+    await user.click(screen.getByRole("button", { name: "Reply" }));
+    expect(change.mock.lastCall![0][0].replies).toEqual([
+      { id: "r1", author: "You", body: "Trying one now", time: "09:30" },
+    ]);
+    await user.click(screen.getByRole("button", { name: "Resolve" }));
+    expect(change.mock.lastCall![0][0].resolved).toBe(true);
   });
 });

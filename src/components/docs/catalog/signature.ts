@@ -462,4 +462,50 @@ export const SIGNATURE = [
     motion:
       "New conditions unfold from the left, removed ones close, and the and/or joins roll over like a counter when a group's logic changes. Reduced motion shows each change immediately.",
   }),
+  s({
+    name: "Annotator",
+    source: "Annotator.tsx",
+    tagline:
+      "Review pins on anything: drop numbered pins, discuss in threads, resolve and reopen, and find every conversation in the list beside the work.",
+    example:
+      '  const [notes,setNotes]=useState<Annotation[]>([{id:"a",x:0.3,y:0.4,author:"Rin",body:"Can this headline be shorter?"}]);\n  return <Annotator label="Homepage" author="You" annotations={notes} onAnnotationsChange={setNotes}><img src="/images/field.svg" alt="Homepage draft" /></Annotator>;',
+    imports: "Annotator, type Annotation",
+    props: [
+      p(
+        "label / children",
+        "string / ReactNode",
+        "Region name and the work under review: an image, a page or a live composition.",
+      ),
+      p(
+        "annotations / defaultAnnotations / onAnnotationsChange",
+        "Annotation[]",
+        "id, x and y (0–1 of the surface), author, body, time, resolved and replies.",
+      ),
+      p(
+        "author / now",
+        "string",
+        "Name and time label for new comments and replies. Omit author for read-only review.",
+      ),
+      p(
+        "selected / defaultSelected / onSelectedChange",
+        "string | null",
+        "The open thread.",
+      ),
+      p("createId", "() => string", "Id factory for new comments and replies."),
+    ],
+    a11y: "Pins are buttons named with their number, author, state and text, in reading order; threads are labelled dialogs that return focus to their pin. C toggles comment mode, where Enter places a pin that arrow keys (or Alt+arrows while typing) move before posting. Every action is announced; the comment list offers the same threads without the surface.",
+    motion:
+      "Pins drop in on a spring and send out a single impact ring. Threads unfold from the side of their pin; a pin being placed breathes until it is posted. Resolving settles the pin into a quiet outline. Reduced motion places and opens everything directly.",
+    keys: [
+      { keys: "C", action: "Toggle comment mode" },
+      { keys: "Enter", action: "In comment mode: place a pin at the centre" },
+      {
+        keys: "Alt + ← → ↑ ↓",
+        action: "While writing: move the new pin (Shift: further)",
+      },
+      { keys: "⌘/Ctrl + Enter", action: "Post the comment or reply" },
+      { keys: "← → ↑ ↓", action: "On a pin: move it" },
+      { keys: "Esc", action: "Close the thread or discard the draft" },
+    ],
+  }),
 ];

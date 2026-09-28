@@ -151,3 +151,14 @@ body {
 .mizu-demo-card--figure polyline { stroke: var(--mizu-accent); stroke-width: 1.5; }
 .mizu-demo-card--figure line { stroke: var(--mizu-warning); stroke-dasharray: 2 4; }
 .mizu-demo-card--figure figcaption { margin-top: 10px; font: 10px var(--mizu-font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mizu-faint); }
+.mizu-demo-page { padding: clamp(24px, 5vw, 48px); background: var(--mizu-ink-2); }
+.mizu-demo-page h4 { margin: 18px 0 10px; font-size: clamp(26px, 4vw, 40px); font-weight: 900; font-stretch: 112%; letter-spacing: -.03em; line-height: 1; }
+.mizu-demo-page > p { margin: 0; max-width: 44ch; color: var(--mizu-muted); font-size: 14px; line-height: 1.6; }
+.mizu-demo-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 28px; }
+.mizu-demo-plans > div { display: grid; gap: 6px; align-content: start; min-height: 132px; padding: 16px; border: 1px solid var(--mizu-line-bright); background: var(--mizu-ink); }
+.mizu-demo-plans > div[data-featured] { border-color: var(--mizu-accent); }
+.mizu-demo-plans strong { font-size: 14px; }
+.mizu-demo-plans b { font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+.mizu-demo-plans small { font: 10px var(--mizu-font-mono); color: var(--mizu-faint); letter-spacing: .08em; }
+.mizu-demo-page-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+@media (max-width: 540px) { .mizu-demo-plans { grid-template-columns: 1fr; } }

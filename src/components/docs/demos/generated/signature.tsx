@@ -17,6 +17,8 @@ import {
   type OutlineItem,
   QueryBuilder,
   type QueryGroup,
+  Annotator,
+  type Annotation,
 } from "@/mizu";
 
 export function ChronicleDemo() {
@@ -260,5 +262,27 @@ export function QueryBuilderDemo() {
         { id: "joined", label: "Joined", type: "date" },
       ]}
     />
+  );
+}
+
+export function AnnotatorDemo() {
+  const [notes, setNotes] = useState<Annotation[]>([
+    {
+      id: "a",
+      x: 0.3,
+      y: 0.4,
+      author: "Rin",
+      body: "Can this headline be shorter?",
+    },
+  ]);
+  return (
+    <Annotator
+      label="Homepage"
+      author="You"
+      annotations={notes}
+      onAnnotationsChange={setNotes}
+    >
+      <img src="/images/field.svg" alt="Homepage draft" />
+    </Annotator>
   );
 }
