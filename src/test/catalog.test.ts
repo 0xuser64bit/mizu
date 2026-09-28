@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { SYSTEMS, COMPONENTS } from "../components/docs/registry";
 import * as library from "@/mizu";
@@ -25,5 +25,17 @@ describe("public catalog contract", () => {
             : entry.name;
       expect(library, entry.name).toHaveProperty(exported);
     }
+  });
+  it("registers every showcase under a real component page", () => {
+    const source = readFileSync(
+      resolve("src/components/docs/DemoSlot.tsx"),
+      "utf8",
+    );
+    const keys = [
+      ...source.matchAll(/^\s+"?([a-z][a-z-]*)"?: dynamic\(/gm),
+    ].map((m) => m[1]);
+    expect(keys.length).toBeGreaterThan(20);
+    const slugs = new Set(COMPONENTS.map((c) => c.slug));
+    for (const key of keys) expect(slugs, key).toContain(key);
   });
 });

@@ -93,7 +93,7 @@ const SHOWCASES = {
   fader: dynamic(() =>
     import("./demos/signature/controls").then((m) => m.FaderShowcase),
   ),
-  "xy-pad": dynamic(() =>
+  xypad: dynamic(() =>
     import("./demos/signature/controls").then((m) => m.XYPadShowcase),
   ),
 };
