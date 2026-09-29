@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/forms/TagInput.css";
 
-export * from "./source/forms/TagInput";
+export { TagInput } from "./source/forms/TagInput";

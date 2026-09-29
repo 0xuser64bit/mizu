@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/ui/Mark";
+export { Mark, type MarkTone } from "./source/ui/Mark";

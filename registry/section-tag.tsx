@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/ui/SectionTag";
+export { SectionTag, type SectionTagTone } from "./source/ui/SectionTag";

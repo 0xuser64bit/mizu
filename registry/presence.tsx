@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/motion/Presence";
+export { Presence } from "./source/motion/Presence";

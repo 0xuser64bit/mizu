@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/content/Checklist.css";
 
-export * from "./source/content/Checklist";
+export { Checklist, type ChecklistItem } from "./source/content/Checklist";

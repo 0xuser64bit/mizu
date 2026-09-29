@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/composite/Nav.css";
 
-export * from "./source/composite/Nav";
+export { Nav, type NavLink } from "./source/composite/Nav";

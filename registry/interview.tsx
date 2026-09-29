@@ -3,4 +3,9 @@
 import "./base.css";
 import "./source/signature/Interview.css";
 
-export * from "./source/signature/Interview";
+export {
+  Interview,
+  type InterviewAnswer,
+  type InterviewAnswers,
+  type InterviewQuestion,
+} from "./source/signature/Interview";

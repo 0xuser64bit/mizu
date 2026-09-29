@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/ui/Tooltip.css";
 
-export * from "./source/ui/Tooltip";
+export { Tooltip } from "./source/ui/Tooltip";

@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/navigation/Navigation.css";
 
-export * from "./source/navigation/Navigation";
+export { BottomNav, type NavigationItem } from "./source/navigation/Navigation";

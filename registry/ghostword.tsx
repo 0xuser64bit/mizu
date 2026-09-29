@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/type/GhostWord.css";
 
-export * from "./source/type/GhostWord";
+export { GhostWord } from "./source/type/GhostWord";

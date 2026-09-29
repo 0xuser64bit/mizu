@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/layout/Layout.css";
 
-export * from "./source/layout/Layout";
+export { Grid } from "./source/layout/Layout";

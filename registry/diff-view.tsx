@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/data/Inspection.css";
 
-export * from "./source/data/Inspection";
+export { DiffView } from "./source/data/Inspection";

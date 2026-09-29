@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/lab/RippleSurface.css";
 
-export * from "./source/lab/RippleSurface";
+export { RippleSurface } from "./source/lab/RippleSurface";

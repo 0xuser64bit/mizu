@@ -3,4 +3,8 @@
 import "./base.css";
 import "./source/signature/Annotator.css";
 
-export * from "./source/signature/Annotator";
+export {
+  Annotator,
+  type AnnotationReply,
+  type Annotation,
+} from "./source/signature/Annotator";

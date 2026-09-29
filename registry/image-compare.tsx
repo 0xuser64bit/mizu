@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/interaction/ImageCompare.css";
 
-export * from "./source/interaction/ImageCompare";
+export { ImageCompare } from "./source/interaction/ImageCompare";

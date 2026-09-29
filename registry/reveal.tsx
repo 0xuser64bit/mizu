@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/motion/Reveal";
+export { Reveal } from "./source/motion/Reveal";

@@ -19,6 +19,12 @@
   module share its stylesheet, so installing alert, progress and meter copies
   and bundles one stylesheet, not three identical ones. All 129 items: 386 KB
   of CSS becomes 233 KB.
+- Registry: each item's file names its exports instead of `export *` from the
+  shared module: `knob` exports `Knob` and `ControlTaper`, not `Fader` and
+  `XYPad`. An item exports its share of the npm package's public API, so
+  internals such as Dialog's `lockScroll` are no longer reachable. Migration:
+  a component that came through a sibling's file (DataInspector via
+  `tree-view`) is now imported from its own item (`data-inspector`).
 
 ## 0.2.0 — prepared, not published
 

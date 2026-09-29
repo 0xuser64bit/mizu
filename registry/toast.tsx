@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/feedback/Toast.css";
 
-export * from "./source/feedback/Toast";
+export { useToast, ToastProvider } from "./source/feedback/Toast";

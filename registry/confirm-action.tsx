@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/interaction/ConfirmAction.css";
 
-export * from "./source/interaction/ConfirmAction";
+export { ConfirmAction } from "./source/interaction/ConfirmAction";

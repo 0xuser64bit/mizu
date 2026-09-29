@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/layout/SplitPane.css";
 
-export * from "./source/layout/SplitPane";
+export { SplitPane } from "./source/layout/SplitPane";

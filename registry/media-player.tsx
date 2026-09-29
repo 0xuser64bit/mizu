@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/content/Media.css";
 
-export * from "./source/content/Media";
+export { MediaPlayer } from "./source/content/Media";

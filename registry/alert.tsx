@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/status/Feedback.css";
 
-export * from "./source/status/Feedback";
+export { Alert, type StatusTone } from "./source/status/Feedback";

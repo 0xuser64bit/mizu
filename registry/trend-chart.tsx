@@ -3,4 +3,11 @@
 import "./base.css";
 import "./source/signature/TrendChart.css";
 
-export * from "./source/signature/TrendChart";
+export {
+  TrendChart,
+  type TrendPoint,
+  type TrendSeries,
+  type TrendAnnotation,
+  type TrendThreshold,
+} from "./source/signature/TrendChart";
+export { type Interval, type SignatureTone } from "./source/signature/internal";

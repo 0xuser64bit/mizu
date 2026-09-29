@@ -3,4 +3,9 @@
 import "./base.css";
 import "./source/signature/Treemap.css";
 
-export * from "./source/signature/Treemap";
+export {
+  Treemap,
+  squarify,
+  type TreemapNode,
+} from "./source/signature/Treemap";
+export { type SignatureTone } from "./source/signature/internal";

@@ -3,4 +3,5 @@
 import "./base.css";
 import "./source/interaction/Combobox.css";
 
-export * from "./source/interaction/Combobox";
+export { Combobox } from "./source/interaction/Combobox";
+export { type Choice } from "./source/forms/Selection";

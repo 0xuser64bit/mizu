@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/type/Specimen.css";
 
-export * from "./source/type/Specimen";
+export { Specimen } from "./source/type/Specimen";

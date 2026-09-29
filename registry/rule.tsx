@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/ui/Rule";
+export { Rule } from "./source/ui/Rule";

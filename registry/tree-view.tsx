@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/data/Inspection.css";
 
-export * from "./source/data/Inspection";
+export { TreeView, type TreeNode } from "./source/data/Inspection";

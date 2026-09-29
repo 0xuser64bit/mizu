@@ -3,4 +3,7 @@
 import "./base.css";
 import "./source/signature/ColumnBrowser.css";
 
-export * from "./source/signature/ColumnBrowser";
+export {
+  ColumnBrowser,
+  type BrowserItem,
+} from "./source/signature/ColumnBrowser";

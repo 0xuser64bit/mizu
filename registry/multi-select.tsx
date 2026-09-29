@@ -3,4 +3,5 @@
 import "./base.css";
 import "./source/interaction/MultiSelect.css";
 
-export * from "./source/interaction/MultiSelect";
+export { MultiSelect } from "./source/interaction/MultiSelect";
+export { type Choice } from "./source/forms/Selection";

@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/content/Media.css";
 
-export * from "./source/content/Media";
+export { Avatar } from "./source/content/Media";

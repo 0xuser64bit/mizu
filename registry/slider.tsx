@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/ui/Slider.css";
 
-export * from "./source/ui/Slider";
+export { Slider } from "./source/ui/Slider";

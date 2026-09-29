@@ -3,4 +3,8 @@
 import "./base.css";
 import "./source/signature/LogStream.css";
 
-export * from "./source/signature/LogStream";
+export {
+  LogStream,
+  type LogLevel,
+  type LogLine,
+} from "./source/signature/LogStream";

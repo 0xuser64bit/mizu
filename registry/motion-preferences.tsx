@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/motion/Preferences";
+export { MotionPreferences } from "./source/motion/Preferences";

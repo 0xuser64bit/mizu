@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/ui/Spinner.css";
 
-export * from "./source/ui/Spinner";
+export { Spinner } from "./source/ui/Spinner";

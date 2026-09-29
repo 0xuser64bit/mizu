@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/forms/Fields.css";
 
-export * from "./source/forms/Fields";
+export { Switch } from "./source/forms/Fields";

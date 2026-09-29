@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/ui/Frame";
+export { Frame } from "./source/ui/Frame";

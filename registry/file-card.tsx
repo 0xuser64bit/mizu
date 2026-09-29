@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/content/Typography.css";
 
-export * from "./source/content/Typography";
+export { FileCard } from "./source/content/Typography";

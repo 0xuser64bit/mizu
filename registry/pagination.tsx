@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/navigation/Navigation.css";
 
-export * from "./source/navigation/Navigation";
+export { Pagination } from "./source/navigation/Navigation";

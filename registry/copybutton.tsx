@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/feedback/CopyButton";
+export { CopyButton } from "./source/feedback/CopyButton";

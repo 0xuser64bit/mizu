@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/ui/Badge";
+export { Badge, type BadgeTone } from "./source/ui/Badge";

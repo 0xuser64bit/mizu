@@ -72,6 +72,69 @@ function sourceClosure(entry: string) {
 function file(path: string, target: string, type = "registry:ui") {
   return { path, type, target };
 }
+// The package's public API, each name resolved to the module that declares it.
+const program = ts.createProgram([join(sourceRoot, "index.ts")], {
+  allowImportingTsExtensions: true,
+  jsx: ts.JsxEmit.ReactJSX,
+  module: ts.ModuleKind.ESNext,
+  moduleResolution: ts.ModuleResolutionKind.Bundler,
+  noEmit: true,
+});
+const checker = program.getTypeChecker();
+function exportsOf(path: string) {
+  const file = checker.getSymbolAtLocation(program.getSourceFile(path)!)!;
+  return checker.getExportsOfModule(file).map((symbol) => {
+    const target =
+      symbol.flags & ts.SymbolFlags.Alias
+        ? checker.getAliasedSymbol(symbol)
+        : symbol;
+    const node = target.declarations![0]!;
+    return {
+      name: symbol.name,
+      type: !(target.flags & ts.SymbolFlags.Value),
+      from: relative(".", node.getSourceFile().fileName),
+      node,
+    };
+  });
+}
+const publicApi = exportsOf(join(sourceRoot, "index.ts"));
+const isPublic = (entry: { name: string; from: string }) =>
+  publicApi.some((e) => e.name === entry.name && e.from === entry.from);
+// Names the declarations mention, through the module's own helpers and types but
+// not its other exported values: the types a caller needs to use them.
+function mentions(nodes: ts.Node[]) {
+  const locals = new Map<string, ts.Node>();
+  for (const statement of nodes[0]?.getSourceFile().statements ?? []) {
+    if (
+      ts.isTypeAliasDeclaration(statement) ||
+      ts.isInterfaceDeclaration(statement)
+    )
+      locals.set(statement.name.text, statement);
+    else if (
+      ts.canHaveModifiers(statement) &&
+      ts
+        .getModifiers(statement)
+        ?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)
+    )
+      continue;
+    else if (ts.isFunctionDeclaration(statement) && statement.name)
+      locals.set(statement.name.text, statement);
+    else if (ts.isVariableStatement(statement))
+      for (const d of statement.declarationList.declarations)
+        locals.set(d.name.getText(), d);
+  }
+  const names = new Set<string>();
+  const visit = (node: ts.Node): void => {
+    if (ts.isIdentifier(node) && !names.has(node.text)) {
+      names.add(node.text);
+      const local = locals.get(node.text);
+      if (local) visit(local);
+    }
+    ts.forEachChild(node, visit);
+  };
+  nodes.forEach(visit);
+  return names;
+}
 // The component rules `keep` accepts, inside their at-rules.
 function select(keep: (rule: postcss.Rule) => boolean) {
   const root = postcss.root();
@@ -152,6 +215,69 @@ for (const source of new Set(catalog.map((meta) => meta.source))) {
   output(`registry/${style}`, css);
   moduleStyles.set(source, style);
 }
+// Each item's share of the public API: the whole module when it serves one item, its
+// own component and the types that component mentions when several items share it.
+function itemExports(meta: (typeof catalog)[number]) {
+  const siblings = catalog.filter((m) => m.source === meta.source);
+  const own = exportsOf(join(sourceRoot, meta.source)).filter(isPublic);
+  for (const e of own)
+    if (
+      !e.type &&
+      siblings.length > 1 &&
+      !siblings.some((m) => m.name === e.name)
+    )
+      throw new Error(
+        `${e.name} in ${meta.source} belongs to no registry item`,
+      );
+  const values = own.filter(
+    (e) => !e.type && (siblings.length === 1 || e.name === meta.name),
+  );
+  if (!values.length) throw new Error(`${meta.slug} exports no value`);
+  const mentioned = mentions(values.map((e) => e.node));
+  const types = publicApi.filter(
+    (e) =>
+      e.type &&
+      (mentioned.has(e.name) ||
+        (siblings.length === 1 && own.some((o) => o.name === e.name))),
+  );
+  // Source order, the item's own component first; one statement per declaring
+  // module, so pure helpers never pass through a client one.
+  const order = (list: typeof own) =>
+    list.sort(
+      (a, b) =>
+        Number(b.name === meta.name) - Number(a.name === meta.name) ||
+        a.from.localeCompare(b.from) ||
+        a.node.pos - b.node.pos,
+    );
+  const statements = new Map<string, string[]>();
+  for (const e of [...order(values), ...order(types)]) {
+    const from = `./source/${relative(sourceRoot, e.from).replace(/\.tsx?$/, "")}`;
+    statements.set(from, [
+      ...(statements.get(from) ?? []),
+      e.type ? `type ${e.name}` : e.name,
+    ]);
+  }
+  return [...statements]
+    .map(([from, names]) => {
+      const line = `export { ${names.join(", ")} } from "${from}";`;
+      return line.length <= 80
+        ? line
+        : `export {\n${names.map((name) => `  ${name},\n`).join("")}} from "${from}";`;
+    })
+    .join("\n");
+}
+for (const source of new Set(catalog.map((meta) => meta.source))) {
+  const siblings = catalog.filter((m) => m.source === source);
+  if (siblings.length < 2) continue;
+  const claimed = new Set(
+    siblings.flatMap((meta) => itemExports(meta).match(/type \w+/g) ?? []),
+  );
+  for (const e of exportsOf(join(sourceRoot, source)).filter(isPublic))
+    if (e.type && !claimed.has(`type ${e.name}`))
+      throw new Error(
+        `type ${e.name} in ${source} belongs to no registry item`,
+      );
+}
 const components = catalog.map((meta) => {
   const closure = sourceClosure(meta.source);
   const files = [
@@ -180,7 +306,7 @@ const components = catalog.map((meta) => {
   }
   output(
     `registry/${meta.slug}.tsx`,
-    `"use client";\n\n${imports}\nexport * from "./source/${meta.source.replace(/\.tsx?$/, "")}";\n`,
+    `"use client";\n\n${imports}\n${itemExports(meta)}\n`,
   );
   return {
     name: meta.slug,

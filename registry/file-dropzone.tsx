@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/forms/FileDropzone.css";
 
-export * from "./source/forms/FileDropzone";
+export { FileDropzone } from "./source/forms/FileDropzone";

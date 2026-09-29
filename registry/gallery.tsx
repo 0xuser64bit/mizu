@@ -3,4 +3,9 @@
 import "./base.css";
 import "./source/signature/Gallery.css";
 
-export * from "./source/signature/Gallery";
+export {
+  Gallery,
+  justifyRows,
+  type GalleryItem,
+  type GalleryRow,
+} from "./source/signature/Gallery";

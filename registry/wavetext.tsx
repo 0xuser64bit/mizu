@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/type/WaveText";
+export { WaveText } from "./source/type/WaveText";

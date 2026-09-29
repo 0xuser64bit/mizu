@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/status/Feedback.css";
 
-export * from "./source/status/Feedback";
+export { SaveIndicator } from "./source/status/Feedback";

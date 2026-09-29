@@ -3,4 +3,7 @@
 import "./base.css";
 import "./source/interaction/ReorderList.css";
 
-export * from "./source/interaction/ReorderList";
+export {
+  ReorderList,
+  type ReorderEntry,
+} from "./source/interaction/ReorderList";

@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/signature/Folio.css";
 
-export * from "./source/signature/Folio";
+export { Folio, Sidenote } from "./source/signature/Folio";

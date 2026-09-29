@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/status/Feedback.css";
 
-export * from "./source/status/Feedback";
+export { ConnectionStatus } from "./source/status/Feedback";

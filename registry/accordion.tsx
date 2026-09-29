@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/composite/Accordion";
+export { Accordion, AccordionItem } from "./source/composite/Accordion";

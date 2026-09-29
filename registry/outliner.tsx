@@ -3,4 +3,5 @@
 import "./base.css";
 import "./source/signature/Outliner.css";
 
-export * from "./source/signature/Outliner";
+export { Outliner } from "./source/signature/Outliner";
+export { type OutlineItem } from "./source/signature/outline";

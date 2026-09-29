@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/forms/AsyncForm.css";
 
-export * from "./source/forms/AsyncForm";
+export { AsyncForm } from "./source/forms/AsyncForm";

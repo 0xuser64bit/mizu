@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/type/SoftType.css";
 
-export * from "./source/type/SoftType";
+export { SoftType } from "./source/type/SoftType";

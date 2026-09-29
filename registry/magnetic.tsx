@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/motion/Magnetic";
+export { Magnetic } from "./source/motion/Magnetic";

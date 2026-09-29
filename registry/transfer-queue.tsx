@@ -3,4 +3,10 @@
 import "./base.css";
 import "./source/signature/TransferQueue.css";
 
-export * from "./source/signature/TransferQueue";
+export {
+  TransferQueue,
+  type TransferStatus,
+  type TransferItem,
+  type TransferFunction,
+  type TransferQueueHandle,
+} from "./source/signature/TransferQueue";

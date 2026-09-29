@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/signature/Controls.css";
 
-export * from "./source/signature/Controls";
+export { Knob, type ControlTaper } from "./source/signature/Controls";

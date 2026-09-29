@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/data/DataTable.css";
 
-export * from "./source/data/DataTable";
+export { DataTable, type DataColumn } from "./source/data/DataTable";

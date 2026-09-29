@@ -3,4 +3,7 @@
 import "./base.css";
 import "./source/navigation/CommandPalette.css";
 
-export * from "./source/navigation/CommandPalette";
+export {
+  CommandPalette,
+  type Command,
+} from "./source/navigation/CommandPalette";

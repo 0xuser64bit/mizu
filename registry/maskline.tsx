@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/motion/MaskLine";
+export { MaskLine } from "./source/motion/MaskLine";

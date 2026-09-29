@@ -2,4 +2,4 @@
 
 import "./base.css";
 
-export * from "./source/motion/PageWipe";
+export { usePageWipe, PageWipeProvider } from "./source/motion/PageWipe";

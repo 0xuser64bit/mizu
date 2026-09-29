@@ -2,4 +2,9 @@
 
 import "./base.css";
 
-export * from "./source/composite/Tabs";
+export {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsPanel,
+} from "./source/composite/Tabs";

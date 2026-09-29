@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/data/Records.css";
 
-export * from "./source/data/Records";
+export { Timeline, type TimelineEvent } from "./source/data/Records";

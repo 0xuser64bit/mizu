@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/lab/Pinfield.css";
 
-export * from "./source/lab/Pinfield";
+export { Pinfield } from "./source/lab/Pinfield";

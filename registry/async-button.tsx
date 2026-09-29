@@ -3,4 +3,5 @@
 import "./base.css";
 import "./source/status/AsyncButton.css";
 
-export * from "./source/status/AsyncButton";
+export { AsyncButton } from "./source/status/AsyncButton";
+export { type ButtonProps } from "./source/ui/Button";

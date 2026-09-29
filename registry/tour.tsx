@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/signature/Tour.css";
 
-export * from "./source/signature/Tour";
+export { Tour, type TourStep } from "./source/signature/Tour";

@@ -3,4 +3,4 @@
 import "./base.css";
 import "./source/interaction/RangeSelector.css";
 
-export * from "./source/interaction/RangeSelector";
+export { RangeSelector } from "./source/interaction/RangeSelector";
