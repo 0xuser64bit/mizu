@@ -10,6 +10,10 @@
   `font-stretch`, rendered at normal width before) and Instrument Serif's real
   italic.
 - Registry: add `fonts`, the same faces for shadcn installs.
+- Registry: add `preset` for `shadcn init 0xuser64bit/mizu/preset`. It writes
+  `components.json` without shadcn's theme, so init no longer rewrites the
+  project's global CSS, layout or dependencies, and it adds Mizu's tokens and
+  fonts.
 
 ## 0.2.0 — prepared, not published
 

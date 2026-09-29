@@ -201,7 +201,25 @@ const fonts = {
     file("registry/styles/fonts.css", "@ui/mizu/fonts.css", "registry:file"),
   ],
 };
-const items = [...components, fonts];
+// `shadcn init 0xuser64bit/mizu/preset`. extends "none" skips shadcn's style (its theme,
+// icons and utils) and nothing here sets CSS, so init leaves the project's global CSS alone.
+const preset = {
+  name: "preset",
+  type: "registry:base",
+  title: "Mizu preset",
+  description:
+    "Sets up components.json for Mizu without shadcn’s theme, leaving your global CSS as it is, and adds Mizu’s tokens and fonts.",
+  extends: "none",
+  // Stone is shadcn's warm neutral, closest to Mizu's ink and paper, for any shadcn/ui you add later.
+  config: { tailwind: { baseColor: "stone" } },
+  dependencies: fonts.dependencies,
+  docs: fonts.docs,
+  files: [
+    file("registry/styles/base.css", "@ui/mizu/base.css", "registry:file"),
+    ...fonts.files,
+  ],
+};
+const items = [...components, fonts, preset];
 output(
   "registry.json",
   JSON.stringify(

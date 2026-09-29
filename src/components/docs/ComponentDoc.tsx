@@ -174,13 +174,15 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               <p className="mb-3 text-sm leading-relaxed text-muted">
                 Add this component to your project with the shadcn CLI. The
                 command copies its source and styles into your configured UI
-                directory. Add <code>0xuser64bit/mizu/fonts</code> once for
-                Mizu’s type, or{" "}
+                directory. In a project without a components.json, run{" "}
+                <code>npx shadcn@latest init 0xuser64bit/mizu/preset</code>{" "}
+                first: plain init installs shadcn’s theme into your global CSS.
+                Then{" "}
                 <Link
                   href="/components/getting-started#fonts"
                   className="text-accent underline underline-offset-4"
                 >
-                  load it with next/font
+                  load the fonts
                 </Link>
                 .
               </p>

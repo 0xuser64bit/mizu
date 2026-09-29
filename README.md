@@ -39,11 +39,18 @@ Dark is the default; set `data-theme="light"` on any ancestor. Override the
 `--mizu-*` custom properties for your own material. Package setup, per-family
 imports and behavior limits are in [packages/mizu/README.md](packages/mizu/README.md).
 
-To copy one component into an app configured for the shadcn CLI:
+To copy components with the shadcn CLI, set the project up once with the Mizu
+preset, then add what you need:
 
 ```sh
+npx shadcn@latest init 0xuser64bit/mizu/preset
 npx shadcn@latest add 0xuser64bit/mizu/select-field
 ```
+
+Plain `init` installs shadcn's own theme into your global CSS. The preset
+writes `components.json` without it, leaving your global CSS, layout and
+dependencies as they are, and adds Mizu's tokens and font files. Skip it if the
+project already has a `components.json`.
 
 Import it from your configured UI directory, for example
 `@/components/ui/mizu/select-field`. The registry includes each component's

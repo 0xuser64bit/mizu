@@ -4402,6 +4402,36 @@
           "target": "@ui/mizu/fonts.css"
         }
       ]
+    },
+    {
+      "name": "preset",
+      "type": "registry:base",
+      "title": "Mizu preset",
+      "description": "Sets up components.json for Mizu without shadcn’s theme, leaving your global CSS as it is, and adds Mizu’s tokens and fonts.",
+      "extends": "none",
+      "config": {
+        "tailwind": {
+          "baseColor": "stone"
+        }
+      },
+      "dependencies": [
+        "@fontsource-variable/archivo@^5",
+        "@fontsource/instrument-serif@^5",
+        "@fontsource/jetbrains-mono@^5"
+      ],
+      "docs": "Import mizu/fonts.css from your UI directory once, in your root layout. To use next/font instead, see https://github.com/0xuser64bit/mizu#fonts",
+      "files": [
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/styles/fonts.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/fonts.css"
+        }
+      ]
     }
   ]
 }

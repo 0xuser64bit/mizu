@@ -26,14 +26,21 @@ export default function GettingStarted() {
           stylesheet and the components you need.
         </p>
         <h2>Install one component</h2>
-        <Code>{`npx shadcn@latest init
+        <Code>{`npx shadcn@latest init 0xuser64bit/mizu/preset
 npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
         <p>
-          Run this in a project configured for the shadcn CLI. Each catalog page
-          has its own install command. The CLI copies the selected component,
-          its source dependencies and Mizu styles into your UI directory. Motion
-          is installed only for components that use it. Fonts are a separate
-          step, below.
+          The shadcn CLI needs Tailwind and an import alias in your project.
+          Plain <code>init</code> installs shadcn’s own theme into your global
+          CSS; the Mizu preset writes components.json without it, so your global
+          CSS, layout and dependencies stay as they are, and adds Mizu’s tokens
+          and font files. Skip init if the project already has a
+          components.json.
+        </p>
+        <p>
+          Each catalog page has its own add command. The CLI copies the selected
+          component, its source dependencies and Mizu styles into your UI
+          directory. Motion is installed only for components that use it. Load
+          the fonts as shown below.
         </p>
         <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
         <p>
