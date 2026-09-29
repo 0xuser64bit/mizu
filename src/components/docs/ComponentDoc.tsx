@@ -4,7 +4,7 @@ import { CodeBlock, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
-import { usesMotion } from "./source";
+import { registryExports, usesMotion } from "./source";
 
 function PropsTable({ props }: { props: ComponentMeta["props"] }) {
   return (
@@ -97,6 +97,10 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
   const idx = COMPONENTS.findIndex((c) => c.slug === meta.slug);
   const prev = idx > 0 ? COMPONENTS[idx - 1] : undefined;
   const next = idx < COMPONENTS.length - 1 ? COMPONENTS[idx + 1] : undefined;
+  const siblings = COMPONENTS.filter(
+    (c) =>
+      c.source === meta.source && c.slug !== meta.slug && c.kind !== "overview",
+  );
   const signature = meta.category === "Signature";
   const number =
     COMPONENTS.filter((c) => c.category === "Signature").indexOf(meta) + 1;
@@ -189,6 +193,33 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               <CodeBlock
                 code={`npx shadcn@latest add 0xuser64bit/mizu/${meta.slug}`}
                 language="sh"
+              />
+              <p className="mb-3 mt-5 text-sm leading-relaxed text-muted">
+                Every component imports from its own path, its name in kebab
+                case.
+                {siblings.length > 0 && (
+                  <>
+                    {" "}
+                    Its source, <code>{meta.source}</code>, also holds{" "}
+                    {siblings.map((s, i) => (
+                      <span key={s.slug}>
+                        {i > 0 && (i === siblings.length - 1 ? " and " : ", ")}
+                        <Link
+                          href={`/components/${s.slug}`}
+                          className="text-accent underline underline-offset-4"
+                        >
+                          {s.name}
+                        </Link>
+                      </span>
+                    ))}
+                    . Each has its own command and path; adding one after this
+                    copies only its small entry file.
+                  </>
+                )}
+              </p>
+              <CodeBlock
+                code={`import { ${registryExports(meta.slug).join(", ")} } from "@/components/ui/mizu/${meta.slug}";`}
+                language="tsx"
               />
             </div>
           )}

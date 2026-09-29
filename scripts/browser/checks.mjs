@@ -80,7 +80,7 @@ export async function checkDocumentation(tab, baseUrl) {
       .getAttribute("aria-valuenow"),
     "46",
   );
-  await tab.goto(`${baseUrl}/components/softtype`);
+  await tab.goto(`${baseUrl}/components/soft-type`);
   assert((await page.domSnapshot()).includes("Reduce motion"));
   await page
     .locator(".mizu-softtype")

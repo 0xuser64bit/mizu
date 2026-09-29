@@ -9,20 +9,34 @@ const SHOWCASES = {
   primitives: dynamic(() =>
     import("./demos/foundation").then((m) => m.PrimitivesDemo),
   ),
-  maskline: dynamic(() => import("./demos/motion").then((m) => m.MaskLineDemo)),
+  "mask-line": dynamic(() =>
+    import("./demos/motion").then((m) => m.MaskLineDemo),
+  ),
   reveal: dynamic(() => import("./demos/motion").then((m) => m.RevealDemo)),
   magnetic: dynamic(() => import("./demos/motion").then((m) => m.MagneticDemo)),
   marquee: dynamic(() => import("./demos/motion").then((m) => m.MarqueeDemo)),
-  pagewipe: dynamic(() => import("./demos/motion").then((m) => m.PageWipeDemo)),
+  "page-wipe": dynamic(() =>
+    import("./demos/motion").then((m) => m.PageWipeDemo),
+  ),
   specimen: dynamic(() => import("./demos/type").then((m) => m.SpecimenDemo)),
-  softtype: dynamic(() => import("./demos/type").then((m) => m.SoftTypeDemo)),
-  wavetext: dynamic(() => import("./demos/type").then((m) => m.WaveTextDemo)),
-  ghostword: dynamic(() => import("./demos/type").then((m) => m.GhostWordDemo)),
+  "soft-type": dynamic(() =>
+    import("./demos/type").then((m) => m.SoftTypeDemo),
+  ),
+  "wave-text": dynamic(() =>
+    import("./demos/type").then((m) => m.WaveTextDemo),
+  ),
+  "ghost-word": dynamic(() =>
+    import("./demos/type").then((m) => m.GhostWordDemo),
+  ),
   pinfield: dynamic(() => import("./demos/lab").then((m) => m.PinfieldDemo)),
   signal: dynamic(() => import("./demos/lab").then((m) => m.SignalDemo)),
-  ripplesurface: dynamic(() => import("./demos/lab").then((m) => m.RippleDemo)),
-  countup: dynamic(() => import("./demos/feedback").then((m) => m.CountUpDemo)),
-  copybutton: dynamic(() =>
+  "ripple-surface": dynamic(() =>
+    import("./demos/lab").then((m) => m.RippleDemo),
+  ),
+  "count-up": dynamic(() =>
+    import("./demos/feedback").then((m) => m.CountUpDemo),
+  ),
+  "copy-button": dynamic(() =>
     import("./demos/feedback").then((m) => m.CopyButtonDemo),
   ),
   toast: dynamic(() => import("./demos/feedback").then((m) => m.ToastDemo)),
@@ -62,7 +76,9 @@ const SHOWCASES = {
   annotator: dynamic(() =>
     import("./demos/signature/annotator").then((m) => m.AnnotatorShowcase),
   ),
-  tour: dynamic(() => import("./demos/signature/tour").then((m) => m.TourShowcase)),
+  tour: dynamic(() =>
+    import("./demos/signature/tour").then((m) => m.TourShowcase),
+  ),
   interview: dynamic(() =>
     import("./demos/signature/interview").then((m) => m.InterviewShowcase),
   ),

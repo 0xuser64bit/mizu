@@ -1310,7 +1310,7 @@
       ]
     },
     {
-      "name": "maskline",
+      "name": "mask-line",
       "type": "registry:ui",
       "title": "MaskLine",
       "description": "The Mizu headline reveal — text rises from inside its own mask, one line at a time.",
@@ -1319,9 +1319,9 @@
       ],
       "files": [
         {
-          "path": "registry/maskline.tsx",
+          "path": "registry/mask-line.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/maskline.tsx"
+          "target": "@ui/mizu/mask-line.tsx"
         },
         {
           "path": "registry/source/motion/MaskLine.tsx",
@@ -1446,7 +1446,7 @@
       ]
     },
     {
-      "name": "pagewipe",
+      "name": "page-wipe",
       "type": "registry:ui",
       "title": "PageWipe",
       "description": "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
@@ -1455,9 +1455,9 @@
       ],
       "files": [
         {
-          "path": "registry/pagewipe.tsx",
+          "path": "registry/page-wipe.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/pagewipe.tsx"
+          "target": "@ui/mizu/page-wipe.tsx"
         },
         {
           "path": "registry/source/motion/PageWipe.tsx",
@@ -1654,15 +1654,15 @@
       ]
     },
     {
-      "name": "softtype",
+      "name": "soft-type",
       "type": "registry:ui",
       "title": "SoftType",
       "description": "A variable-font engine in CSS — weight and width oscillate through the Archivo axes.",
       "files": [
         {
-          "path": "registry/softtype.tsx",
+          "path": "registry/soft-type.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/softtype.tsx"
+          "target": "@ui/mizu/soft-type.tsx"
         },
         {
           "path": "registry/source/type/SoftType.tsx",
@@ -1682,7 +1682,7 @@
       ]
     },
     {
-      "name": "wavetext",
+      "name": "wave-text",
       "type": "registry:ui",
       "title": "WaveText",
       "description": "Kinetic text that answers the cursor — each letter lifts, scales and warms as you pass over it.",
@@ -1691,9 +1691,9 @@
       ],
       "files": [
         {
-          "path": "registry/wavetext.tsx",
+          "path": "registry/wave-text.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/wavetext.tsx"
+          "target": "@ui/mizu/wave-text.tsx"
         },
         {
           "path": "registry/source/motion/Preferences.tsx",
@@ -1713,15 +1713,15 @@
       ]
     },
     {
-      "name": "ghostword",
+      "name": "ghost-word",
       "type": "registry:ui",
       "title": "GhostWord",
       "description": "An oversized outlined word that fills with accent when hovered — built for footers and chapter markers.",
       "files": [
         {
-          "path": "registry/ghostword.tsx",
+          "path": "registry/ghost-word.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/ghostword.tsx"
+          "target": "@ui/mizu/ghost-word.tsx"
         },
         {
           "path": "registry/source/type/GhostWord.tsx",
@@ -1823,7 +1823,7 @@
       ]
     },
     {
-      "name": "ripplesurface",
+      "name": "ripple-surface",
       "type": "registry:ui",
       "title": "RippleSurface",
       "description": "An ambient surface that ripples where you touch it — built for hero sections and invite panels.",
@@ -1832,9 +1832,9 @@
       ],
       "files": [
         {
-          "path": "registry/ripplesurface.tsx",
+          "path": "registry/ripple-surface.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/ripplesurface.tsx"
+          "target": "@ui/mizu/ripple-surface.tsx"
         },
         {
           "path": "registry/source/lab/RippleSurface.tsx",
@@ -1864,7 +1864,7 @@
       ]
     },
     {
-      "name": "countup",
+      "name": "count-up",
       "type": "registry:ui",
       "title": "CountUp",
       "description": "Numbers that count — eased value animation with tabular figures, prefixes and suffixes.",
@@ -1873,9 +1873,9 @@
       ],
       "files": [
         {
-          "path": "registry/countup.tsx",
+          "path": "registry/count-up.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/countup.tsx"
+          "target": "@ui/mizu/count-up.tsx"
         },
         {
           "path": "registry/source/feedback/CountUp.tsx",
@@ -1900,15 +1900,15 @@
       ]
     },
     {
-      "name": "copybutton",
+      "name": "copy-button",
       "type": "registry:ui",
       "title": "CopyButton",
       "description": "Copy to clipboard with a check-morph confirmation and a legacy fallback.",
       "files": [
         {
-          "path": "registry/copybutton.tsx",
+          "path": "registry/copy-button.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/copybutton.tsx"
+          "target": "@ui/mizu/copy-button.tsx"
         },
         {
           "path": "registry/source/feedback/CopyButton.tsx",

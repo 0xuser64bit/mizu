@@ -25,6 +25,13 @@
   internals such as Dialog's `lockScroll` are no longer reachable. Migration:
   a component that came through a sibling's file (DataInspector via
   `tree-view`) is now imported from its own item (`data-inspector`).
+- Every page, registry item and import path is its component's name in kebab
+  case. Eight older ones did not match; they move, and their old page URLs
+  redirect: `copybutton` → `copy-button`, `countup` → `count-up`,
+  `ghostword` → `ghost-word`, `maskline` → `mask-line`, `pagewipe` →
+  `page-wipe`, `ripplesurface` → `ripple-surface`, `softtype` → `soft-type`,
+  `wavetext` → `wave-text`. Component pages show the import line and the
+  components that share its source module.
 
 ## 0.2.0 — prepared, not published
 

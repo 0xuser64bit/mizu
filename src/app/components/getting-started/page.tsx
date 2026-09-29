@@ -44,11 +44,13 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
         </p>
         <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
         <p>
-          Use the UI alias configured in your <code>components.json</code> if
-          yours differs from <code>@/components/ui</code>. The installed file
-          imports its CSS. Wrap a surface in{" "}
-          <code>className=&quot;mizu-root&quot;</code>
-          for the default theme, and edit the copied code to suit your app.
+          Every component has its own item and path, its name in kebab case:
+          DataInspector is <code>data-inspector</code>, and that file exports
+          DataInspector and the types it takes. Use the UI alias configured in
+          your <code>components.json</code> if yours differs from{" "}
+          <code>@/components/ui</code>. The installed file imports its CSS. Wrap
+          a surface in <code>className=&quot;mizu-root&quot;</code> for the
+          default theme, and edit the copied code to suit your app.
         </p>
         <h2>Render a working interaction</h2>
         <Code>{`"use client"; // required at an interactive Next.js boundary

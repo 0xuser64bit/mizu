@@ -53,7 +53,9 @@ dependencies as they are, and adds Mizu's tokens and font files. Skip it if the
 project already has a `components.json`.
 
 Import it from your configured UI directory, for example
-`@/components/ui/mizu/select-field`. The registry includes each component's
+`@/components/ui/mizu/select-field`. Every component has its own item and
+path, its name in kebab case (DataInspector is `data-inspector`), exporting
+that component and the types it takes. The registry includes each component's
 source dependencies and styles, without installing `mizu-ui`. See each catalog
 page for its command; `motion-preferences` adds the MotionPreferences provider.
 Registry entries are generated from the catalog with `bun run registry:sync`.

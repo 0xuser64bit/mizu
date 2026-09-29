@@ -1,5 +1,9 @@
 import type { ComponentMeta, PropDoc } from "../registry";
 
+/** A component's page, registry item and import path: its name in kebab case. */
+export const slugOf = (name: string) =>
+  name.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+
 export function define(
   name: string,
   category: ComponentMeta["category"],
@@ -13,7 +17,7 @@ export function define(
 ): ComponentMeta {
   return {
     name,
-    slug: name.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase(),
+    slug: slugOf(name),
     category,
     source,
     tagline,

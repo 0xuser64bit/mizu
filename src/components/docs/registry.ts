@@ -182,7 +182,7 @@ export function Header() {
       "Spinner rotates on a 900ms linear loop. Tooltip fades and rises on hover/focus.",
   },
   {
-    slug: "maskline",
+    slug: "mask-line",
     source: "motion/MaskLine.tsx",
     name: "MaskLine",
     category: "Motion",
@@ -335,7 +335,7 @@ export function Ticker() {
     motion: "Linear transform loop — GPU-friendly, no layout thrash.",
   },
   {
-    slug: "pagewipe",
+    slug: "page-wipe",
     source: "motion/PageWipe.tsx",
     name: "PageWipe",
     category: "Motion",
@@ -417,7 +417,7 @@ export function Tester() {
     motion: "Size and tracking transition over 150ms as you drag the sliders.",
   },
   {
-    slug: "softtype",
+    slug: "soft-type",
     source: "type/SoftType.tsx",
     name: "SoftType",
     category: "Type",
@@ -459,7 +459,7 @@ export function Engine() {
       "CSS keyframes interpolate font-variation-settings. Reduced motion holds the actual font axes still.",
   },
   {
-    slug: "wavetext",
+    slug: "wave-text",
     source: "type/WaveText.tsx",
     name: "WaveText",
     category: "Type",
@@ -504,7 +504,7 @@ export function Title() {
       "Direct motion values with smoothstep falloff. Reduced motion removes pointer listeners and keeps letters at rest.",
   },
   {
-    slug: "ghostword",
+    slug: "ghost-word",
     source: "type/GhostWord.tsx",
     name: "GhostWord",
     category: "Type",
@@ -590,7 +590,7 @@ export function Wave() {
       "Pointer capture for drag; phase eases back to auto-advance on release.",
   },
   {
-    slug: "ripplesurface",
+    slug: "ripple-surface",
     source: "lab/RippleSurface.tsx",
     name: "RippleSurface",
     category: "Instruments",
@@ -619,7 +619,7 @@ export function Hero() {
       "Ripples expand and fade on a 1px stroke. Reduced motion paints a static frame.",
   },
   {
-    slug: "countup",
+    slug: "count-up",
     source: "feedback/CountUp.tsx",
     name: "CountUp",
     category: "Feedback",
@@ -666,7 +666,7 @@ export function Stat() {
       "Quartic ease-out on a rAF loop. Reduced motion sets the value instantly.",
   },
   {
-    slug: "copybutton",
+    slug: "copy-button",
     source: "feedback/CopyButton.tsx",
     name: "CopyButton",
     category: "Feedback",

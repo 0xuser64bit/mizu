@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { SYSTEMS, COMPONENTS } from "../components/docs/registry";
+import { slugOf } from "../components/docs/catalog/define";
 import * as library from "@/mizu";
 describe("public catalog contract", () => {
   it("keeps at least 100 unique systems with source, API, usage and behavior documentation", () => {
@@ -25,6 +26,10 @@ describe("public catalog contract", () => {
             : entry.name;
       expect(library, entry.name).toHaveProperty(exported);
     }
+  });
+  it("names every page, registry item and import path after its component", () => {
+    for (const entry of SYSTEMS)
+      expect(entry.slug, entry.name).toBe(slugOf(entry.name));
   });
   it("registers every showcase under a real component page", () => {
     const source = readFileSync(
