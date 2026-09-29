@@ -34,7 +34,9 @@ corner brackets.
 
 ## Typography
 
-Three voices, all self-hosted and optional for consumers via `fonts.css`:
+Three voices, all self-hosted and optional for consumers via `fonts.css`, or
+loaded with `next/font` as `--font-archivo`, `--font-instrument-serif` and
+`--font-jetbrains-mono`, which the font tokens read first:
 
 - **Archivo Variable** — display, headings and body. Prose measure caps near
   65ch.

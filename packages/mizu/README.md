@@ -41,8 +41,14 @@ export function App() {
 Import CSS in your app entry or root layout, set the document language and
 remove the default body margin. For Next.js, put interactive usage behind a
 `"use client"` boundary. Package client directives are preserved. Optional font
-CSS keeps font files out of a styles-only build; SoftType's width animation
-needs a compatible variable font such as the included Archivo.
+CSS keeps font files out of a styles-only build. It loads Archivo with its
+width axis, which SoftType's width animation needs.
+
+Loading fonts with `next/font` instead? Name the variables `--font-archivo`,
+`--font-instrument-serif` and `--font-jetbrains-mono` (Archivo with
+`axes: ["wdth"]`) and set them on `<html>` or `<body>`. Mizu's font tokens read
+them before falling back to the `fonts.css` families, so nothing needs
+overriding.
 
 ## Focused imports
 

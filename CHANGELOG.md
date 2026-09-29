@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Font tokens read `--font-archivo`, `--font-instrument-serif` and
+  `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
+  without overrides, from `<html>` or `<body>`. They no longer reset inside a
+  nested `data-theme`.
+- `fonts.css` loads Archivo's width axis (SoftType's width and both modes, and
+  `font-stretch`, rendered at normal width before) and Instrument Serif's real
+  italic.
+- Registry: add `fonts`, the same faces for shadcn installs.
+
 ## 0.2.0 — prepared, not published
 
 - Add the Signature family: 22 complete systems with one shared contract

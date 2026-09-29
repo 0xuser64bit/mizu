@@ -51,6 +51,42 @@ source dependencies and styles, without installing `mizu-ui`. See each catalog
 page for its command; `motion-preferences` adds the MotionPreferences provider.
 Registry entries are generated from the catalog with `bun run registry:sync`.
 
+### Fonts
+
+Mizu is set in Archivo (with its width axis), Instrument Serif and JetBrains
+Mono. Without them every component still works, in system fonts, so a missing
+font is easy to miss. Import `mizu-ui/fonts.css` from npm, or run
+`npx shadcn@latest add 0xuser64bit/mizu/fonts` and import
+`@/components/ui/mizu/fonts.css`.
+
+With `next/font`, use these variable names and set them on `<html>` or
+`<body>`. Mizu's font tokens read them; there is nothing to override:
+
+```tsx
+import { Archivo, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+});
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+});
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
+// <html className={`${archivo.variable} ${serif.variable} ${mono.variable}`}>
+```
+
+Keep `axes: ["wdth"]`: SoftType and the wide and narrow styles move along
+Archivo's width axis.
+
 ## Explore the showcase
 
 Run `bun install` and `bun run dev`, then open:

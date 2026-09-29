@@ -4383,6 +4383,25 @@
           "target": "@ui/mizu/base.css"
         }
       ]
+    },
+    {
+      "name": "fonts",
+      "type": "registry:item",
+      "title": "Fonts",
+      "description": "Mizu’s three faces, self-hosted: Archivo with its width axis, Instrument Serif and JetBrains Mono.",
+      "dependencies": [
+        "@fontsource-variable/archivo@^5",
+        "@fontsource/instrument-serif@^5",
+        "@fontsource/jetbrains-mono@^5"
+      ],
+      "docs": "Import mizu/fonts.css from your UI directory once, in your root layout. To use next/font instead, see https://github.com/0xuser64bit/mizu#fonts",
+      "files": [
+        {
+          "path": "registry/styles/fonts.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/fonts.css"
+        }
+      ]
     }
   ]
 }

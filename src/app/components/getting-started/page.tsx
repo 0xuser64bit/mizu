@@ -32,7 +32,8 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           Run this in a project configured for the shadcn CLI. Each catalog page
           has its own install command. The CLI copies the selected component,
           its source dependencies and Mizu styles into your UI directory. Motion
-          is installed only for components that use it.
+          is installed only for components that use it. Fonts are a separate
+          step, below.
         </p>
         <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
         <p>
@@ -68,10 +69,58 @@ export function App() {
 }`}</Code>
         <p>
           Import styles in your app entry or root layout. Set your document
-          language and remove the browser’s default body margin. The optional
-          font file includes Archivo Variable, Instrument Serif and JetBrains
-          Mono. SoftType needs a font with a width axis; the bundled Archivo has
-          one.
+          language and remove the browser’s default body margin.
+        </p>
+        <h2 id="fonts">Load the fonts</h2>
+        <p>
+          Mizu is set in Archivo, Instrument Serif and JetBrains Mono. Without
+          them every component still works, in your system fonts, so a missing
+          font is easy to miss. Import the self-hosted faces once, in your root
+          layout:
+        </p>
+        <Code>{`import "mizu-ui/fonts.css"; // npm
+import "@/components/ui/mizu/fonts.css"; // shadcn: add 0xuser64bit/mizu/fonts`}</Code>
+        <p>
+          With next/font, give the faces these variable names and set them on{" "}
+          <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code>. Mizu’s font
+          tokens read them, so there is nothing to override.
+        </p>
+        <Code>{`import { Archivo, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+});
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+});
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const fonts = \`\${archivo.variable} \${serif.variable} \${mono.variable}\`;
+  return (
+    <html lang="en" className={fonts}>
+      <body>{children}</body>
+    </html>
+  );
+}`}</Code>
+        <p>
+          Keep <code>axes: [&quot;wdth&quot;]</code>: SoftType and the wide and
+          narrow styles move along Archivo’s width axis. For other faces
+          entirely, override <code>--mizu-font-display</code>,{" "}
+          <code>--mizu-font-serif</code> and <code>--mizu-font-mono</code> on
+          your surface.
         </p>
         <h2>Keep imports focused</h2>
         <Code>{`import { TextField, Switch } from "mizu-ui/forms";

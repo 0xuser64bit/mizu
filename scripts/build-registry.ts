@@ -132,7 +132,7 @@ const supporting = [
     usage: "",
   },
 ];
-const items = [...SYSTEMS, ...supporting].map((meta) => {
+const components = [...SYSTEMS, ...supporting].map((meta) => {
   const closure = sourceClosure(meta.source);
   // The catalog example's own markup counts too, so the documented usage renders.
   const classes = new Set(meta.usage.match(/mizu-[\w-]+/g));
@@ -180,6 +180,28 @@ const items = [...SYSTEMS, ...supporting].map((meta) => {
 const unreached = select((rule) => !shared(rule) && !reached.has(rule));
 if (unreached.nodes.length)
   throw new Error(`No registry item ships these styles:\n${unreached}`);
+// The same faces as mizu-ui/fonts.css. next/font users skip it: the tokens read --font-*.
+output(
+  "registry/styles/fonts.css",
+  readFileSync("packages/mizu/fonts.css", "utf8"),
+);
+const fonts = {
+  name: "fonts",
+  type: "registry:item",
+  title: "Fonts",
+  description:
+    "Mizu’s three faces, self-hosted: Archivo with its width axis, Instrument Serif and JetBrains Mono.",
+  dependencies: [
+    "@fontsource-variable/archivo@^5",
+    "@fontsource/instrument-serif@^5",
+    "@fontsource/jetbrains-mono@^5",
+  ],
+  docs: "Import mizu/fonts.css from your UI directory once, in your root layout. To use next/font instead, see https://github.com/0xuser64bit/mizu#fonts",
+  files: [
+    file("registry/styles/fonts.css", "@ui/mizu/fonts.css", "registry:file"),
+  ],
+};
+const items = [...components, fonts];
 output(
   "registry.json",
   JSON.stringify(

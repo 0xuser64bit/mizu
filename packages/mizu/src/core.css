@@ -12,10 +12,6 @@
   --mizu-line: #29241d;
   --mizu-line-bright: rgba(244, 240, 232, 0.22);
 
-  --mizu-font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
-  --mizu-font-serif: "Instrument Serif", Georgia, serif;
-  --mizu-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
-
   --mizu-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --mizu-ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
   --mizu-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
@@ -54,6 +50,20 @@
   --mizu-accent-fill: #a72c0a;
   --mizu-line: #d9d2c2;
   --mizu-line-bright: rgba(22, 19, 15, 0.22);
+}
+
+/* next/font variables when set (on <html> or <body>), else the fonts.css families.
+   Outside the theme blocks, so a nested data-theme keeps the faces set above it. */
+:root,
+body {
+  --mizu-font-display:
+    var(--font-archivo, "Archivo Variable"), ui-sans-serif, system-ui,
+    sans-serif;
+  --mizu-font-serif:
+    var(--font-instrument-serif, "Instrument Serif"), Georgia, serif;
+  --mizu-font-mono:
+    var(--font-jetbrains-mono, "JetBrains Mono"), ui-monospace, "SF Mono",
+    monospace;
 }
 
 .mizu-root {
