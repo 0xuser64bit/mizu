@@ -52,6 +52,10 @@
   stylesheet, or base.css alone for the fifteen inline-styled components such
   as Accordion. Getting started explains keeping server-read data out of
   `"use client"` modules.
+- Non-color tokens (`--mizu-ease-*`, `--mizu-duration-*`, `--mizu-space-*`,
+  `--mizu-radius`, `--mizu-control-height`, `--mizu-z-*`) are declared on
+  `:root` alone, so an override on an ancestor no longer resets inside a
+  nested `data-theme`. Theme blocks keep only the color scheme and color roles.
 
 ## 0.2.0 — prepared, not published
 

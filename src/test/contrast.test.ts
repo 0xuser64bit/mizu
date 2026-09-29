@@ -62,3 +62,11 @@ it("keeps text and status tokens readable across every default surface in both t
     ).toBeGreaterThanOrEqual(4.5);
   }
 });
+it("declares in theme blocks only what the light theme changes, so a nested theme keeps other overrides", () => {
+  const declared = (theme: string) =>
+    [...css.matchAll(/([^{}]+)\{([^{}]+)\}/g)]
+      .filter(([, selector]) => selector.includes(`[data-theme="${theme}"]`))
+      .flatMap(([, , body]) => body.match(/--mizu-[\w-]+(?=:)/g) ?? [])
+      .sort();
+  expect(declared("dark")).toEqual(declared("light"));
+});

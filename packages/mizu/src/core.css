@@ -11,7 +11,10 @@
   --mizu-accent-fill: #d23e0e;
   --mizu-line: #29241d;
   --mizu-line-bright: rgba(244, 240, 232, 0.22);
+}
 
+/* Outside the theme blocks, so a nested data-theme keeps overrides set above it. */
+:root {
   --mizu-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --mizu-ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
   --mizu-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
@@ -31,6 +34,7 @@
   --mizu-space-9: 96px;
 
   --mizu-radius: 2px;
+  --mizu-control-height: 44px;
   --mizu-z-base: 0;
   --mizu-z-raised: 10;
   --mizu-z-overlay: 60;
@@ -498,7 +502,6 @@ body {
   --mizu-success: #70bc96;
   --mizu-warning: #dbb66a;
   --mizu-danger: #ef9b8e;
-  --mizu-control-height: 44px;
 }
 [data-theme="light"] {
   --mizu-success: #206442;
