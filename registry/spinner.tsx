@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./spinner.css";
+import "./source/ui/Spinner.css";
 
 export * from "./source/ui/Spinner";

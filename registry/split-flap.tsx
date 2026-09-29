@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./split-flap.css";
+import "./source/signature/SplitFlap.css";
 
 export * from "./source/signature/SplitFlap";

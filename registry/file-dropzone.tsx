@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./file-dropzone.css";
+import "./source/forms/FileDropzone.css";
 
 export * from "./source/forms/FileDropzone";

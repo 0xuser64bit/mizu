@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./media-player.css";
+import "./source/content/Media.css";
 
 export * from "./source/content/Media";

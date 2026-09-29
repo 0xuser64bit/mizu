@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./multi-select.css";
+import "./source/interaction/MultiSelect.css";
 
 export * from "./source/interaction/MultiSelect";

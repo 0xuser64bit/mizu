@@ -14,6 +14,11 @@
   `components.json` without shadcn's theme, so init no longer rewrites the
   project's global CSS, layout or dependencies, and it adds Mizu's tokens and
   fonts.
+- Registry: styles ship once per source module, beside it
+  (`source/status/Feedback.css`), instead of once per item. Items that share a
+  module share its stylesheet, so installing alert, progress and meter copies
+  and bundles one stylesheet, not three identical ones. All 129 items: 386 KB
+  of CSS becomes 233 KB.
 
 ## 0.2.0 — prepared, not published
 

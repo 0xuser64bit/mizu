@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./marquee.css";
+import "./source/motion/Marquee.css";
 
 export * from "./source/motion/Marquee";

@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./slider.css";
+import "./source/ui/Slider.css";
 
 export * from "./source/ui/Slider";

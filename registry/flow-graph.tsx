@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./flow-graph.css";
+import "./source/signature/FlowGraph.css";
 
 export * from "./source/signature/FlowGraph";

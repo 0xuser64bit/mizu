@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./gallery.css";
+import "./source/signature/Gallery.css";
 
 export * from "./source/signature/Gallery";

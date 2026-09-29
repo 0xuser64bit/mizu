@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./transfer-queue.css";
+import "./source/signature/TransferQueue.css";
 
 export * from "./source/signature/TransferQueue";

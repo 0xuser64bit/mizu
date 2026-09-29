@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./range-selector.css";
+import "./source/interaction/RangeSelector.css";
 
 export * from "./source/interaction/RangeSelector";

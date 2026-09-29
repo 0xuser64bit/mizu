@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./anchor-nav.css";
+import "./source/navigation/Navigation.css";
 
 export * from "./source/navigation/Navigation";

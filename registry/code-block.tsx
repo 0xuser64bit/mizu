@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./code-block.css";
+import "./source/content/Typography.css";
 
 export * from "./source/content/Typography";

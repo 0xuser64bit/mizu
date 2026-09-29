@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./app-shell.css";
+import "./source/layout/Layout.css";
 
 export * from "./source/layout/Layout";

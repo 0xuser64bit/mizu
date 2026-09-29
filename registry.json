@@ -48,9 +48,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/chronicle.css",
+          "path": "registry/source/signature/Chronicle.css",
           "type": "registry:file",
-          "target": "@ui/mizu/chronicle.css"
+          "target": "@ui/mizu/source/signature/Chronicle.css"
         }
       ]
     },
@@ -94,9 +94,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/trend-chart.css",
+          "path": "registry/source/signature/TrendChart.css",
           "type": "registry:file",
-          "target": "@ui/mizu/trend-chart.css"
+          "target": "@ui/mizu/source/signature/TrendChart.css"
         }
       ]
     },
@@ -145,9 +145,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/waveform.css",
+          "path": "registry/source/signature/Waveform.css",
           "type": "registry:file",
-          "target": "@ui/mizu/waveform.css"
+          "target": "@ui/mizu/source/signature/Waveform.css"
         }
       ]
     },
@@ -186,9 +186,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/plane.css",
+          "path": "registry/source/signature/Plane.css",
           "type": "registry:file",
-          "target": "@ui/mizu/plane.css"
+          "target": "@ui/mizu/source/signature/Plane.css"
         }
       ]
     },
@@ -232,9 +232,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/flow-graph.css",
+          "path": "registry/source/signature/FlowGraph.css",
           "type": "registry:file",
-          "target": "@ui/mizu/flow-graph.css"
+          "target": "@ui/mizu/source/signature/FlowGraph.css"
         }
       ]
     },
@@ -273,9 +273,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/treemap.css",
+          "path": "registry/source/signature/Treemap.css",
           "type": "registry:file",
-          "target": "@ui/mizu/treemap.css"
+          "target": "@ui/mizu/source/signature/Treemap.css"
         }
       ]
     },
@@ -324,9 +324,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/board.css",
+          "path": "registry/source/signature/Board.css",
           "type": "registry:file",
-          "target": "@ui/mizu/board.css"
+          "target": "@ui/mizu/source/signature/Board.css"
         }
       ]
     },
@@ -375,9 +375,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/outliner.css",
+          "path": "registry/source/signature/Outliner.css",
           "type": "registry:file",
-          "target": "@ui/mizu/outliner.css"
+          "target": "@ui/mizu/source/signature/Outliner.css"
         }
       ]
     },
@@ -436,9 +436,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/query-builder.css",
+          "path": "registry/source/signature/QueryBuilder.css",
           "type": "registry:file",
-          "target": "@ui/mizu/query-builder.css"
+          "target": "@ui/mizu/source/signature/QueryBuilder.css"
         }
       ]
     },
@@ -497,9 +497,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/annotator.css",
+          "path": "registry/source/signature/Annotator.css",
           "type": "registry:file",
-          "target": "@ui/mizu/annotator.css"
+          "target": "@ui/mizu/source/signature/Annotator.css"
         }
       ]
     },
@@ -548,9 +548,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/tour.css",
+          "path": "registry/source/signature/Tour.css",
           "type": "registry:file",
-          "target": "@ui/mizu/tour.css"
+          "target": "@ui/mizu/source/signature/Tour.css"
         }
       ]
     },
@@ -604,9 +604,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/interview.css",
+          "path": "registry/source/signature/Interview.css",
           "type": "registry:file",
-          "target": "@ui/mizu/interview.css"
+          "target": "@ui/mizu/source/signature/Interview.css"
         }
       ]
     },
@@ -665,9 +665,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/transfer-queue.css",
+          "path": "registry/source/signature/TransferQueue.css",
           "type": "registry:file",
-          "target": "@ui/mizu/transfer-queue.css"
+          "target": "@ui/mizu/source/signature/TransferQueue.css"
         }
       ]
     },
@@ -711,9 +711,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/triage-deck.css",
+          "path": "registry/source/signature/TriageDeck.css",
           "type": "registry:file",
-          "target": "@ui/mizu/triage-deck.css"
+          "target": "@ui/mizu/source/signature/TriageDeck.css"
         }
       ]
     },
@@ -762,9 +762,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/gallery.css",
+          "path": "registry/source/signature/Gallery.css",
           "type": "registry:file",
-          "target": "@ui/mizu/gallery.css"
+          "target": "@ui/mizu/source/signature/Gallery.css"
         }
       ]
     },
@@ -803,9 +803,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/folio.css",
+          "path": "registry/source/signature/Folio.css",
           "type": "registry:file",
-          "target": "@ui/mizu/folio.css"
+          "target": "@ui/mizu/source/signature/Folio.css"
         }
       ]
     },
@@ -844,9 +844,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/split-flap.css",
+          "path": "registry/source/signature/SplitFlap.css",
           "type": "registry:file",
-          "target": "@ui/mizu/split-flap.css"
+          "target": "@ui/mizu/source/signature/SplitFlap.css"
         }
       ]
     },
@@ -882,9 +882,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/column-browser.css",
+          "path": "registry/source/signature/ColumnBrowser.css",
           "type": "registry:file",
-          "target": "@ui/mizu/column-browser.css"
+          "target": "@ui/mizu/source/signature/ColumnBrowser.css"
         }
       ]
     },
@@ -933,9 +933,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/log-stream.css",
+          "path": "registry/source/signature/LogStream.css",
           "type": "registry:file",
-          "target": "@ui/mizu/log-stream.css"
+          "target": "@ui/mizu/source/signature/LogStream.css"
         }
       ]
     },
@@ -974,9 +974,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/knob.css",
+          "path": "registry/source/signature/Controls.css",
           "type": "registry:file",
-          "target": "@ui/mizu/knob.css"
+          "target": "@ui/mizu/source/signature/Controls.css"
         }
       ]
     },
@@ -1015,9 +1015,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/fader.css",
+          "path": "registry/source/signature/Controls.css",
           "type": "registry:file",
-          "target": "@ui/mizu/fader.css"
+          "target": "@ui/mizu/source/signature/Controls.css"
         }
       ]
     },
@@ -1056,9 +1056,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/xypad.css",
+          "path": "registry/source/signature/Controls.css",
           "type": "registry:file",
-          "target": "@ui/mizu/xypad.css"
+          "target": "@ui/mizu/source/signature/Controls.css"
         }
       ]
     },
@@ -1089,9 +1089,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/button.css",
+          "path": "registry/source/ui/Button.css",
           "type": "registry:file",
-          "target": "@ui/mizu/button.css"
+          "target": "@ui/mizu/source/ui/Button.css"
         }
       ]
     },
@@ -1224,9 +1224,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/spinner.css",
+          "path": "registry/source/ui/Spinner.css",
           "type": "registry:file",
-          "target": "@ui/mizu/spinner.css"
+          "target": "@ui/mizu/source/ui/Spinner.css"
         }
       ]
     },
@@ -1275,9 +1275,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/slider.css",
+          "path": "registry/source/ui/Slider.css",
           "type": "registry:file",
-          "target": "@ui/mizu/slider.css"
+          "target": "@ui/mizu/source/ui/Slider.css"
         }
       ]
     },
@@ -1303,9 +1303,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/tooltip.css",
+          "path": "registry/source/ui/Tooltip.css",
           "type": "registry:file",
-          "target": "@ui/mizu/tooltip.css"
+          "target": "@ui/mizu/source/ui/Tooltip.css"
         }
       ]
     },
@@ -1439,9 +1439,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/marquee.css",
+          "path": "registry/source/motion/Marquee.css",
           "type": "registry:file",
-          "target": "@ui/mizu/marquee.css"
+          "target": "@ui/mizu/source/motion/Marquee.css"
         }
       ]
     },
@@ -1542,9 +1542,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/tilt.css",
+          "path": "registry/source/motion/Tilt.css",
           "type": "registry:file",
-          "target": "@ui/mizu/tilt.css"
+          "target": "@ui/mizu/source/motion/Tilt.css"
         }
       ]
     },
@@ -1578,9 +1578,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/parallax.css",
+          "path": "registry/source/motion/Scroll.css",
           "type": "registry:file",
-          "target": "@ui/mizu/parallax.css"
+          "target": "@ui/mizu/source/motion/Scroll.css"
         }
       ]
     },
@@ -1614,9 +1614,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/scroll-progress.css",
+          "path": "registry/source/motion/Scroll.css",
           "type": "registry:file",
-          "target": "@ui/mizu/scroll-progress.css"
+          "target": "@ui/mizu/source/motion/Scroll.css"
         }
       ]
     },
@@ -1647,9 +1647,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/specimen.css",
+          "path": "registry/source/type/Specimen.css",
           "type": "registry:file",
-          "target": "@ui/mizu/specimen.css"
+          "target": "@ui/mizu/source/type/Specimen.css"
         }
       ]
     },
@@ -1675,9 +1675,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/softtype.css",
+          "path": "registry/source/type/SoftType.css",
           "type": "registry:file",
-          "target": "@ui/mizu/softtype.css"
+          "target": "@ui/mizu/source/type/SoftType.css"
         }
       ]
     },
@@ -1734,9 +1734,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/ghostword.css",
+          "path": "registry/source/type/GhostWord.css",
           "type": "registry:file",
-          "target": "@ui/mizu/ghostword.css"
+          "target": "@ui/mizu/source/type/GhostWord.css"
         }
       ]
     },
@@ -1775,9 +1775,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/pinfield.css",
+          "path": "registry/source/lab/Pinfield.css",
           "type": "registry:file",
-          "target": "@ui/mizu/pinfield.css"
+          "target": "@ui/mizu/source/lab/Pinfield.css"
         }
       ]
     },
@@ -1816,9 +1816,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/signal.css",
+          "path": "registry/source/lab/Signal.css",
           "type": "registry:file",
-          "target": "@ui/mizu/signal.css"
+          "target": "@ui/mizu/source/lab/Signal.css"
         }
       ]
     },
@@ -1857,9 +1857,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/ripplesurface.css",
+          "path": "registry/source/lab/RippleSurface.css",
           "type": "registry:file",
-          "target": "@ui/mizu/ripplesurface.css"
+          "target": "@ui/mizu/source/lab/RippleSurface.css"
         }
       ]
     },
@@ -1893,9 +1893,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/countup.css",
+          "path": "registry/source/feedback/CountUp.css",
           "type": "registry:file",
-          "target": "@ui/mizu/countup.css"
+          "target": "@ui/mizu/source/feedback/CountUp.css"
         }
       ]
     },
@@ -1967,9 +1967,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/toast.css",
+          "path": "registry/source/feedback/Toast.css",
           "type": "registry:file",
-          "target": "@ui/mizu/toast.css"
+          "target": "@ui/mizu/source/feedback/Toast.css"
         }
       ]
     },
@@ -2067,9 +2067,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/dialog.css",
+          "path": "registry/source/composite/Dialog.css",
           "type": "registry:file",
-          "target": "@ui/mizu/dialog.css"
+          "target": "@ui/mizu/source/composite/Dialog.css"
         }
       ]
     },
@@ -2108,9 +2108,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/nav.css",
+          "path": "registry/source/composite/Nav.css",
           "type": "registry:file",
-          "target": "@ui/mizu/nav.css"
+          "target": "@ui/mizu/source/composite/Nav.css"
         }
       ]
     },
@@ -2136,9 +2136,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/form-field.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/form-field.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2164,9 +2164,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/text-field.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/text-field.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2192,9 +2192,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/text-area.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/text-area.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2220,9 +2220,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/select-field.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/select-field.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2248,9 +2248,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/checkbox.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/checkbox.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2276,9 +2276,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/switch.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/switch.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2304,9 +2304,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/search-field.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/search-field.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2332,9 +2332,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/password-field.css",
+          "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
-          "target": "@ui/mizu/password-field.css"
+          "target": "@ui/mizu/source/forms/Fields.css"
         }
       ]
     },
@@ -2360,9 +2360,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/radio-group.css",
+          "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/radio-group.css"
+          "target": "@ui/mizu/source/forms/Selection.css"
         }
       ]
     },
@@ -2388,9 +2388,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/segmented-control.css",
+          "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/segmented-control.css"
+          "target": "@ui/mizu/source/forms/Selection.css"
         }
       ]
     },
@@ -2416,9 +2416,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/number-field.css",
+          "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/number-field.css"
+          "target": "@ui/mizu/source/forms/Selection.css"
         }
       ]
     },
@@ -2444,9 +2444,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/rating.css",
+          "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/rating.css"
+          "target": "@ui/mizu/source/forms/Selection.css"
         }
       ]
     },
@@ -2472,9 +2472,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/color-picker.css",
+          "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/color-picker.css"
+          "target": "@ui/mizu/source/forms/Selection.css"
         }
       ]
     },
@@ -2500,9 +2500,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/tag-input.css",
+          "path": "registry/source/forms/TagInput.css",
           "type": "registry:file",
-          "target": "@ui/mizu/tag-input.css"
+          "target": "@ui/mizu/source/forms/TagInput.css"
         }
       ]
     },
@@ -2528,9 +2528,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/file-dropzone.css",
+          "path": "registry/source/forms/FileDropzone.css",
           "type": "registry:file",
-          "target": "@ui/mizu/file-dropzone.css"
+          "target": "@ui/mizu/source/forms/FileDropzone.css"
         }
       ]
     },
@@ -2556,9 +2556,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/async-form.css",
+          "path": "registry/source/forms/AsyncForm.css",
           "type": "registry:file",
-          "target": "@ui/mizu/async-form.css"
+          "target": "@ui/mizu/source/forms/AsyncForm.css"
         }
       ]
     },
@@ -2584,9 +2584,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/status.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/status.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2612,9 +2612,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/alert.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/alert.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2640,9 +2640,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/progress.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/progress.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2668,9 +2668,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/meter.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/meter.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2696,9 +2696,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/skeleton.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/skeleton.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2724,9 +2724,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/empty-state.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/empty-state.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2752,9 +2752,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/error-state.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/error-state.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2780,9 +2780,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/connection-status.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/connection-status.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2808,9 +2808,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/save-indicator.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/save-indicator.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2836,9 +2836,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/async-boundary.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/async-boundary.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2864,9 +2864,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/task-progress.css",
+          "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
-          "target": "@ui/mizu/task-progress.css"
+          "target": "@ui/mizu/source/status/Feedback.css"
         }
       ]
     },
@@ -2902,9 +2902,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/async-button.css",
+          "path": "registry/source/status/AsyncButton.css",
           "type": "registry:file",
-          "target": "@ui/mizu/async-button.css"
+          "target": "@ui/mizu/source/status/AsyncButton.css"
         }
       ]
     },
@@ -2935,9 +2935,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/data-table.css",
+          "path": "registry/source/data/DataTable.css",
           "type": "registry:file",
-          "target": "@ui/mizu/data-table.css"
+          "target": "@ui/mizu/source/data/DataTable.css"
         }
       ]
     },
@@ -2968,9 +2968,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/description-list.css",
+          "path": "registry/source/data/Records.css",
           "type": "registry:file",
-          "target": "@ui/mizu/description-list.css"
+          "target": "@ui/mizu/source/data/Records.css"
         }
       ]
     },
@@ -3001,9 +3001,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/stat.css",
+          "path": "registry/source/data/Records.css",
           "type": "registry:file",
-          "target": "@ui/mizu/stat.css"
+          "target": "@ui/mizu/source/data/Records.css"
         }
       ]
     },
@@ -3029,9 +3029,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/bar-chart.css",
+          "path": "registry/source/data/Charts.css",
           "type": "registry:file",
-          "target": "@ui/mizu/bar-chart.css"
+          "target": "@ui/mizu/source/data/Charts.css"
         }
       ]
     },
@@ -3057,9 +3057,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/sparkline.css",
+          "path": "registry/source/data/Charts.css",
           "type": "registry:file",
-          "target": "@ui/mizu/sparkline.css"
+          "target": "@ui/mizu/source/data/Charts.css"
         }
       ]
     },
@@ -3085,9 +3085,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/heatmap.css",
+          "path": "registry/source/data/Charts.css",
           "type": "registry:file",
-          "target": "@ui/mizu/heatmap.css"
+          "target": "@ui/mizu/source/data/Charts.css"
         }
       ]
     },
@@ -3118,9 +3118,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/timeline.css",
+          "path": "registry/source/data/Records.css",
           "type": "registry:file",
-          "target": "@ui/mizu/timeline.css"
+          "target": "@ui/mizu/source/data/Records.css"
         }
       ]
     },
@@ -3156,9 +3156,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/activity-feed.css",
+          "path": "registry/source/data/Inspection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/activity-feed.css"
+          "target": "@ui/mizu/source/data/Inspection.css"
         }
       ]
     },
@@ -3194,9 +3194,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/diff-view.css",
+          "path": "registry/source/data/Inspection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/diff-view.css"
+          "target": "@ui/mizu/source/data/Inspection.css"
         }
       ]
     },
@@ -3232,9 +3232,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/data-inspector.css",
+          "path": "registry/source/data/Inspection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/data-inspector.css"
+          "target": "@ui/mizu/source/data/Inspection.css"
         }
       ]
     },
@@ -3270,9 +3270,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/tree-view.css",
+          "path": "registry/source/data/Inspection.css",
           "type": "registry:file",
-          "target": "@ui/mizu/tree-view.css"
+          "target": "@ui/mizu/source/data/Inspection.css"
         }
       ]
     },
@@ -3303,9 +3303,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/comparison-table.css",
+          "path": "registry/source/data/Records.css",
           "type": "registry:file",
-          "target": "@ui/mizu/comparison-table.css"
+          "target": "@ui/mizu/source/data/Records.css"
         }
       ]
     },
@@ -3331,9 +3331,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/breadcrumbs.css",
+          "path": "registry/source/navigation/Navigation.css",
           "type": "registry:file",
-          "target": "@ui/mizu/breadcrumbs.css"
+          "target": "@ui/mizu/source/navigation/Navigation.css"
         }
       ]
     },
@@ -3359,9 +3359,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/pagination.css",
+          "path": "registry/source/navigation/Navigation.css",
           "type": "registry:file",
-          "target": "@ui/mizu/pagination.css"
+          "target": "@ui/mizu/source/navigation/Navigation.css"
         }
       ]
     },
@@ -3387,9 +3387,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/stepper.css",
+          "path": "registry/source/navigation/Navigation.css",
           "type": "registry:file",
-          "target": "@ui/mizu/stepper.css"
+          "target": "@ui/mizu/source/navigation/Navigation.css"
         }
       ]
     },
@@ -3415,9 +3415,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/anchor-nav.css",
+          "path": "registry/source/navigation/Navigation.css",
           "type": "registry:file",
-          "target": "@ui/mizu/anchor-nav.css"
+          "target": "@ui/mizu/source/navigation/Navigation.css"
         }
       ]
     },
@@ -3443,9 +3443,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/side-nav.css",
+          "path": "registry/source/navigation/Navigation.css",
           "type": "registry:file",
-          "target": "@ui/mizu/side-nav.css"
+          "target": "@ui/mizu/source/navigation/Navigation.css"
         }
       ]
     },
@@ -3471,9 +3471,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/bottom-nav.css",
+          "path": "registry/source/navigation/Navigation.css",
           "type": "registry:file",
-          "target": "@ui/mizu/bottom-nav.css"
+          "target": "@ui/mizu/source/navigation/Navigation.css"
         }
       ]
     },
@@ -3499,9 +3499,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/action-menu.css",
+          "path": "registry/source/navigation/ActionMenu.css",
           "type": "registry:file",
-          "target": "@ui/mizu/action-menu.css"
+          "target": "@ui/mizu/source/navigation/ActionMenu.css"
         }
       ]
     },
@@ -3532,9 +3532,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/command-palette.css",
+          "path": "registry/source/navigation/CommandPalette.css",
           "type": "registry:file",
-          "target": "@ui/mizu/command-palette.css"
+          "target": "@ui/mizu/source/navigation/CommandPalette.css"
         }
       ]
     },
@@ -3560,9 +3560,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/avatar.css",
+          "path": "registry/source/content/Media.css",
           "type": "registry:file",
-          "target": "@ui/mizu/avatar.css"
+          "target": "@ui/mizu/source/content/Media.css"
         }
       ]
     },
@@ -3603,9 +3603,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/kbd.css",
+          "path": "registry/source/content/Typography.css",
           "type": "registry:file",
-          "target": "@ui/mizu/kbd.css"
+          "target": "@ui/mizu/source/content/Typography.css"
         }
       ]
     },
@@ -3646,9 +3646,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/code-block.css",
+          "path": "registry/source/content/Typography.css",
           "type": "registry:file",
-          "target": "@ui/mizu/code-block.css"
+          "target": "@ui/mizu/source/content/Typography.css"
         }
       ]
     },
@@ -3689,9 +3689,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/quote.css",
+          "path": "registry/source/content/Typography.css",
           "type": "registry:file",
-          "target": "@ui/mizu/quote.css"
+          "target": "@ui/mizu/source/content/Typography.css"
         }
       ]
     },
@@ -3732,9 +3732,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/prose.css",
+          "path": "registry/source/content/Typography.css",
           "type": "registry:file",
-          "target": "@ui/mizu/prose.css"
+          "target": "@ui/mizu/source/content/Typography.css"
         }
       ]
     },
@@ -3760,9 +3760,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/image-figure.css",
+          "path": "registry/source/content/Media.css",
           "type": "registry:file",
-          "target": "@ui/mizu/image-figure.css"
+          "target": "@ui/mizu/source/content/Media.css"
         }
       ]
     },
@@ -3788,9 +3788,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/media-player.css",
+          "path": "registry/source/content/Media.css",
           "type": "registry:file",
-          "target": "@ui/mizu/media-player.css"
+          "target": "@ui/mizu/source/content/Media.css"
         }
       ]
     },
@@ -3831,9 +3831,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/link-card.css",
+          "path": "registry/source/content/Typography.css",
           "type": "registry:file",
-          "target": "@ui/mizu/link-card.css"
+          "target": "@ui/mizu/source/content/Typography.css"
         }
       ]
     },
@@ -3874,9 +3874,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/file-card.css",
+          "path": "registry/source/content/Typography.css",
           "type": "registry:file",
-          "target": "@ui/mizu/file-card.css"
+          "target": "@ui/mizu/source/content/Typography.css"
         }
       ]
     },
@@ -3902,9 +3902,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/checklist.css",
+          "path": "registry/source/content/Checklist.css",
           "type": "registry:file",
-          "target": "@ui/mizu/checklist.css"
+          "target": "@ui/mizu/source/content/Checklist.css"
         }
       ]
     },
@@ -3930,9 +3930,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/stack.css",
+          "path": "registry/source/layout/Layout.css",
           "type": "registry:file",
-          "target": "@ui/mizu/stack.css"
+          "target": "@ui/mizu/source/layout/Layout.css"
         }
       ]
     },
@@ -3958,9 +3958,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/grid.css",
+          "path": "registry/source/layout/Layout.css",
           "type": "registry:file",
-          "target": "@ui/mizu/grid.css"
+          "target": "@ui/mizu/source/layout/Layout.css"
         }
       ]
     },
@@ -3986,9 +3986,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/split-pane.css",
+          "path": "registry/source/layout/SplitPane.css",
           "type": "registry:file",
-          "target": "@ui/mizu/split-pane.css"
+          "target": "@ui/mizu/source/layout/SplitPane.css"
         }
       ]
     },
@@ -4014,9 +4014,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/aspect-ratio.css",
+          "path": "registry/source/layout/Layout.css",
           "type": "registry:file",
-          "target": "@ui/mizu/aspect-ratio.css"
+          "target": "@ui/mizu/source/layout/Layout.css"
         }
       ]
     },
@@ -4042,9 +4042,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/scroll-area.css",
+          "path": "registry/source/layout/Layout.css",
           "type": "registry:file",
-          "target": "@ui/mizu/scroll-area.css"
+          "target": "@ui/mizu/source/layout/Layout.css"
         }
       ]
     },
@@ -4070,9 +4070,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/app-shell.css",
+          "path": "registry/source/layout/Layout.css",
           "type": "registry:file",
-          "target": "@ui/mizu/app-shell.css"
+          "target": "@ui/mizu/source/layout/Layout.css"
         }
       ]
     },
@@ -4103,9 +4103,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/combobox.css",
+          "path": "registry/source/interaction/Combobox.css",
           "type": "registry:file",
-          "target": "@ui/mizu/combobox.css"
+          "target": "@ui/mizu/source/interaction/Combobox.css"
         }
       ]
     },
@@ -4136,9 +4136,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/multi-select.css",
+          "path": "registry/source/interaction/MultiSelect.css",
           "type": "registry:file",
-          "target": "@ui/mizu/multi-select.css"
+          "target": "@ui/mizu/source/interaction/MultiSelect.css"
         }
       ]
     },
@@ -4169,9 +4169,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/inline-edit.css",
+          "path": "registry/source/interaction/InlineEdit.css",
           "type": "registry:file",
-          "target": "@ui/mizu/inline-edit.css"
+          "target": "@ui/mizu/source/interaction/InlineEdit.css"
         }
       ]
     },
@@ -4197,9 +4197,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/range-selector.css",
+          "path": "registry/source/interaction/RangeSelector.css",
           "type": "registry:file",
-          "target": "@ui/mizu/range-selector.css"
+          "target": "@ui/mizu/source/interaction/RangeSelector.css"
         }
       ]
     },
@@ -4238,9 +4238,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/reorder-list.css",
+          "path": "registry/source/interaction/ReorderList.css",
           "type": "registry:file",
-          "target": "@ui/mizu/reorder-list.css"
+          "target": "@ui/mizu/source/interaction/ReorderList.css"
         }
       ]
     },
@@ -4271,9 +4271,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/image-compare.css",
+          "path": "registry/source/interaction/ImageCompare.css",
           "type": "registry:file",
-          "target": "@ui/mizu/image-compare.css"
+          "target": "@ui/mizu/source/interaction/ImageCompare.css"
         }
       ]
     },
@@ -4304,9 +4304,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/history-controls.css",
+          "path": "registry/source/interaction/HistoryControls.css",
           "type": "registry:file",
-          "target": "@ui/mizu/history-controls.css"
+          "target": "@ui/mizu/source/interaction/HistoryControls.css"
         }
       ]
     },
@@ -4352,9 +4352,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/styles/confirm-action.css",
+          "path": "registry/source/interaction/ConfirmAction.css",
           "type": "registry:file",
-          "target": "@ui/mizu/confirm-action.css"
+          "target": "@ui/mizu/source/interaction/ConfirmAction.css"
         }
       ]
     },

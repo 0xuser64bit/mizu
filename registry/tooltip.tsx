@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./tooltip.css";
+import "./source/ui/Tooltip.css";
 
 export * from "./source/ui/Tooltip";

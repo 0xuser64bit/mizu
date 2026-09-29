@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./softtype.css";
+import "./source/type/SoftType.css";
 
 export * from "./source/type/SoftType";

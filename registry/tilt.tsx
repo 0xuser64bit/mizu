@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./tilt.css";
+import "./source/motion/Tilt.css";
 
 export * from "./source/motion/Tilt";

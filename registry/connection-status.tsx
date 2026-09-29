@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./connection-status.css";
+import "./source/status/Feedback.css";
 
 export * from "./source/status/Feedback";

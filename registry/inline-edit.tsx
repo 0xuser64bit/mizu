@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./inline-edit.css";
+import "./source/interaction/InlineEdit.css";
 
 export * from "./source/interaction/InlineEdit";

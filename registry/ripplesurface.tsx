@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./ripplesurface.css";
+import "./source/lab/RippleSurface.css";
 
 export * from "./source/lab/RippleSurface";

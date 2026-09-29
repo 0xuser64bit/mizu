@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./confirm-action.css";
+import "./source/interaction/ConfirmAction.css";
 
 export * from "./source/interaction/ConfirmAction";

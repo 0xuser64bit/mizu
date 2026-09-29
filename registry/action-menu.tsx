@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./action-menu.css";
+import "./source/navigation/ActionMenu.css";
 
 export * from "./source/navigation/ActionMenu";

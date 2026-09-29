@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./countup.css";
+import "./source/feedback/CountUp.css";
 
 export * from "./source/feedback/CountUp";

@@ -104,7 +104,7 @@ function withKeyframes(root: postcss.Root) {
   return root;
 }
 const reached = new Set<postcss.Rule>();
-function itemStyles(classes: Set<string>) {
+function stylesFor(classes: Set<string>) {
   const uses = (name: string) =>
     [...classes].some(
       (used) => name === used || (used.endsWith("-") && name.startsWith(used)),
@@ -132,10 +132,28 @@ const supporting = [
     usage: "",
   },
 ];
-const components = [...SYSTEMS, ...supporting].map((meta) => {
+const catalog = [...SYSTEMS, ...supporting];
+// One stylesheet per source module, beside it, shared by every item the module serves:
+// alert, progress and nine more import the same source/status/Feedback.css.
+const moduleStyles = new Map<string, string>();
+for (const source of new Set(catalog.map((meta) => meta.source))) {
+  // The catalog examples' own markup counts too, so the documented usage renders.
+  const classes = new Set(
+    catalog
+      .filter((meta) => meta.source === source)
+      .flatMap((meta) => meta.usage.match(/mizu-[\w-]+/g) ?? []),
+  );
+  for (const path of sourceClosure(source))
+    for (const match of readFileSync(path, "utf8").matchAll(/mizu-[\w-]+/g))
+      classes.add(match[0]);
+  const css = stylesFor(classes);
+  if (!css.trim()) continue;
+  const style = `source/${source.replace(/\.tsx?$/, ".css")}`;
+  output(`registry/${style}`, css);
+  moduleStyles.set(source, style);
+}
+const components = catalog.map((meta) => {
   const closure = sourceClosure(meta.source);
-  // The catalog example's own markup counts too, so the documented usage renders.
-  const classes = new Set(meta.usage.match(/mizu-[\w-]+/g));
   const files = [
     file(`registry/${meta.slug}.tsx`, `@ui/mizu/${meta.slug}.tsx`),
   ];
@@ -143,7 +161,6 @@ const components = [...SYSTEMS, ...supporting].map((meta) => {
   for (const source of closure) {
     const relativePath = relative(sourceRoot, source);
     const code = readFileSync(source, "utf8");
-    for (const match of code.matchAll(/mizu-[\w-]+/g)) classes.add(match[0]);
     motion ||= code.includes('from "motion/react"');
     const mirror = `registry/source/${relativePath}`;
     output(
@@ -156,12 +173,10 @@ const components = [...SYSTEMS, ...supporting].map((meta) => {
     file("registry/styles/base.css", "@ui/mizu/base.css", "registry:file"),
   );
   let imports = 'import "./base.css";\n';
-  const css = itemStyles(classes);
-  if (css.trim()) {
-    const style = `registry/styles/${meta.slug}.css`;
-    output(style, css);
-    files.push(file(style, `@ui/mizu/${meta.slug}.css`, "registry:file"));
-    imports += `import "./${meta.slug}.css";\n`;
+  const style = moduleStyles.get(meta.source);
+  if (style) {
+    files.push(file(`registry/${style}`, `@ui/mizu/${style}`, "registry:file"));
+    imports += `import "./${style}";\n`;
   }
   output(
     `registry/${meta.slug}.tsx`,

@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./log-stream.css";
+import "./source/signature/LogStream.css";
 
 export * from "./source/signature/LogStream";

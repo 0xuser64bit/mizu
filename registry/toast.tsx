@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./toast.css";
+import "./source/feedback/Toast.css";
 
 export * from "./source/feedback/Toast";

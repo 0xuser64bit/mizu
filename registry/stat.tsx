@@ -1,6 +1,6 @@
 "use client";
 
 import "./base.css";
-import "./stat.css";
+import "./source/data/Records.css";
 
 export * from "./source/data/Records";
