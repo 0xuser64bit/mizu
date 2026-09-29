@@ -55,7 +55,10 @@ project already has a `components.json`.
 Import it from your configured UI directory, for example
 `@/components/ui/mizu/select-field`. Every component has its own item and
 path, its name in kebab case (DataInspector is `data-inspector`), exporting
-that component and the types it takes. The registry includes each component's
+that component and the types it takes. Static components such as Mark, Stat
+and Timeline render as Server Components; `meta.client` on each item in
+`registry.json`, and each component page, say which ones need the browser. The
+registry includes each component's
 source dependencies and styles, without installing `mizu-ui`. See each catalog
 page for its command; `motion-preferences` adds the MotionPreferences provider.
 Registry entries are generated from the catalog with `bun run registry:sync`.

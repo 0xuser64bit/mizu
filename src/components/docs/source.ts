@@ -15,6 +15,13 @@ export function registryExports(slug: string) {
     .filter((name) => name && !name.startsWith("type "));
 }
 
+/** Whether the module draws a client boundary; without one it renders on the server. */
+export function isClientModule(source: string) {
+  return /^\s*["']use client["']/.test(
+    readFileSync(resolve(ROOT, source), "utf8"),
+  );
+}
+
 /** Follows relative imports from a catalog source file to report whether Motion is reached. */
 export function usesMotion(source: string, seen = new Set<string>()): boolean {
   const path = resolve(ROOT, source);

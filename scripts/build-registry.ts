@@ -72,6 +72,8 @@ function sourceClosure(entry: string) {
 function file(path: string, target: string, type = "registry:ui") {
   return { path, type, target };
 }
+const isClient = (path: string) =>
+  /^\s*["']use client["']/.test(readFileSync(path, "utf8"));
 // The package's public API, each name resolved to the module that declares it.
 const program = ts.createProgram([join(sourceRoot, "index.ts")], {
   allowImportingTsExtensions: true,
@@ -304,10 +306,9 @@ const components = catalog.map((meta) => {
     files.push(file(`registry/${style}`, `@ui/mizu/${style}`, "registry:file"));
     imports += `import "./${style}";\n`;
   }
-  output(
-    `registry/${meta.slug}.tsx`,
-    `"use client";\n\n${imports}\n${itemExports(meta)}\n`,
-  );
+  // No directive here: the source module carries its own, so Mark or Stat render as
+  // Server Components, Button stays a client one, and pure helpers stay plain values.
+  output(`registry/${meta.slug}.tsx`, `${imports}\n${itemExports(meta)}\n`);
   return {
     name: meta.slug,
     type: "registry:ui",
@@ -315,6 +316,8 @@ const components = catalog.map((meta) => {
     description: meta.tagline,
     // Unversioned, so the CLI keeps an installed Motion 12 or 13 (the supported peer range).
     ...(motion ? { dependencies: ["motion"] } : {}),
+    // A Client Component ("use client" in its source) or one that renders on the server.
+    meta: { client: isClient(join(sourceRoot, meta.source)) },
     files,
   };
 });

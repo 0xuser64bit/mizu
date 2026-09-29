@@ -52,6 +52,13 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           a surface in <code>className=&quot;mizu-root&quot;</code> for the
           default theme, and edit the copied code to suit your app.
         </p>
+        <p>
+          The installed files carry no <code>&quot;use client&quot;</code> of
+          their own; each component’s source says whether it needs the browser.
+          Mark, Badge, Kbd, Stat, Timeline and the other static pieces render as
+          Server Components, with no client JavaScript. Every component page
+          says which kind it is.
+        </p>
         <h2>Render a working interaction</h2>
         <Code>{`"use client"; // required at an interactive Next.js boundary
 import { useState } from "react";

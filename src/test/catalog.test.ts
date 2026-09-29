@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { SYSTEMS, COMPONENTS } from "../components/docs/registry";
 import { slugOf } from "../components/docs/catalog/define";
@@ -30,6 +30,18 @@ describe("public catalog contract", () => {
   it("names every page, registry item and import path after its component", () => {
     for (const entry of SYSTEMS)
       expect(entry.slug, entry.name).toBe(slugOf(entry.name));
+  });
+  it("keeps every module without 'use client' renderable on the server", () => {
+    // Registry barrels carry no directive, so a missing one is a runtime error there.
+    const root = "packages/mizu/src";
+    for (const name of readdirSync(root, { recursive: true }) as string[]) {
+      if (!/\.tsx?$/.test(name)) continue;
+      const code = readFileSync(resolve(root, name), "utf8");
+      if (/^\s*["']use client["']/.test(code)) continue;
+      expect(code, name).not.toMatch(
+        /\buse[A-Z]\w*\(|\bon[A-Z]\w*=\{|createContext\(/,
+      );
+    }
   });
   it("registers every showcase under a real component page", () => {
     const source = readFileSync(

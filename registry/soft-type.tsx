@@ -1,5 +1,3 @@
-"use client";
-
 import "./base.css";
 import "./source/type/SoftType.css";
 

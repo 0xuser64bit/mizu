@@ -4,7 +4,7 @@ import { CodeBlock, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
-import { registryExports, usesMotion } from "./source";
+import { isClientModule, registryExports, usesMotion } from "./source";
 
 function PropsTable({ props }: { props: ComponentMeta["props"] }) {
   return (
@@ -230,7 +230,11 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
             styling.{" "}
             {usesMotion(meta.source)
               ? "Requires React and Motion."
-              : "Uses native React and CSS; install the package peers for root imports."}
+              : "Uses native React and CSS; install the package peers for root imports."}{" "}
+            {meta.kind !== "overview" &&
+              (isClientModule(meta.source)
+                ? "A Client Component: its source starts with “use client”."
+                : "A Server Component: it renders on the server, with no client JavaScript of its own.")}
           </p>
           <details className="mt-5 border border-line p-4">
             <summary className="cursor-pointer text-sm text-paper">

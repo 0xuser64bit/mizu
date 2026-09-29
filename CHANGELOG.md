@@ -32,6 +32,14 @@
   `page-wipe`, `ripplesurface` → `ripple-surface`, `softtype` → `soft-type`,
   `wavetext` → `wave-text`. Component pages show the import line and the
   components that share its source module.
+- Registry: item files no longer start with `"use client"`. Each source module
+  keeps its own directive, so 22 static components (Mark, Badge, Kbd, Stat,
+  Timeline, CodeBlock, the layout family…) render as Server Components, and
+  `meta.client` on every item says which need the browser. Component pages
+  say it too.
+- Slider declares `"use client"`: its input handles events, and it was the one
+  interactive module without the directive. A test now holds every module
+  without it to no hooks, handlers or context.
 
 ## 0.2.0 — prepared, not published
 

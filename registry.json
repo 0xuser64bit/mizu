@@ -11,6 +11,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/chronicle.tsx",
@@ -62,6 +65,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/trend-chart.tsx",
@@ -108,6 +114,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/waveform.tsx",
@@ -159,6 +168,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/plane.tsx",
@@ -200,6 +212,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/flow-graph.tsx",
@@ -246,6 +261,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/treemap.tsx",
@@ -287,6 +305,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/board.tsx",
@@ -338,6 +359,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/outliner.tsx",
@@ -389,6 +413,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/query-builder.tsx",
@@ -450,6 +477,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/annotator.tsx",
@@ -511,6 +541,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/tour.tsx",
@@ -562,6 +595,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/interview.tsx",
@@ -618,6 +654,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/transfer-queue.tsx",
@@ -679,6 +718,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/triage-deck.tsx",
@@ -725,6 +767,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/gallery.tsx",
@@ -776,6 +821,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/folio.tsx",
@@ -817,6 +865,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/split-flap.tsx",
@@ -855,6 +906,9 @@
       "type": "registry:ui",
       "title": "ColumnBrowser",
       "description": "Miller columns: choose an item and its contents open alongside, loading on demand, until a leaf opens in a preview — a stack you push and pop on narrow screens.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/column-browser.tsx",
@@ -896,6 +950,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/log-stream.tsx",
@@ -947,6 +1004,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/knob.tsx",
@@ -988,6 +1048,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/fader.tsx",
@@ -1029,6 +1092,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/xypad.tsx",
@@ -1067,6 +1133,9 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "The primary action surface — solid, ghost and inverse, with a loading state and an arrow that leans into the hover.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/button.tsx",
@@ -1100,6 +1169,9 @@
       "type": "registry:ui",
       "title": "Mark",
       "description": "The diamond: a small marker for a state or position.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/mark.tsx",
@@ -1123,6 +1195,9 @@
       "type": "registry:ui",
       "title": "SectionTag",
       "description": "Compact structural text with an optional diamond marker.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/section-tag.tsx",
@@ -1151,6 +1226,9 @@
       "type": "registry:ui",
       "title": "Rule",
       "description": "A hairline separator with a meaningful optional label.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/rule.tsx",
@@ -1179,6 +1257,9 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "A compact, bordered label for metadata and status.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/badge.tsx",
@@ -1207,6 +1288,9 @@
       "type": "registry:ui",
       "title": "Spinner",
       "description": "A rotating diamond with a clear loading announcement.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/spinner.tsx",
@@ -1235,6 +1319,9 @@
       "type": "registry:ui",
       "title": "Frame",
       "description": "Crop marks that frame media without competing with it.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/frame.tsx",
@@ -1258,6 +1345,9 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "A diamond-thumb range with an always-readable value.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/slider.tsx",
@@ -1286,6 +1376,9 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "A small, linked explanation that works with focus and can be dismissed.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/tooltip.tsx",
@@ -1317,6 +1410,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/mask-line.tsx",
@@ -1353,6 +1449,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/reveal.tsx",
@@ -1389,6 +1488,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/magnetic.tsx",
@@ -1417,6 +1519,9 @@
       "type": "registry:ui",
       "title": "Marquee",
       "description": "A seamless infinite ticker that pauses on hover and stands still for reduced motion.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/marquee.tsx",
@@ -1453,6 +1558,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/page-wipe.tsx",
@@ -1489,6 +1597,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/presence.tsx",
@@ -1520,6 +1631,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/tilt.tsx",
@@ -1556,6 +1670,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/parallax.tsx",
@@ -1592,6 +1709,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/scroll-progress.tsx",
@@ -1625,6 +1745,9 @@
       "type": "registry:ui",
       "title": "Specimen",
       "description": "A live type tester — set text, size, weight, tracking and serif voice while the specimen redraws.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/specimen.tsx",
@@ -1658,6 +1781,9 @@
       "type": "registry:ui",
       "title": "SoftType",
       "description": "A variable-font engine in CSS — weight and width oscillate through the Archivo axes.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/soft-type.tsx",
@@ -1689,6 +1815,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/wave-text.tsx",
@@ -1717,6 +1846,9 @@
       "type": "registry:ui",
       "title": "GhostWord",
       "description": "An oversized outlined word that fills with accent when hovered — built for footers and chapter markers.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/ghost-word.tsx",
@@ -1748,6 +1880,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/pinfield.tsx",
@@ -1789,6 +1924,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/signal.tsx",
@@ -1830,6 +1968,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/ripple-surface.tsx",
@@ -1871,6 +2012,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/count-up.tsx",
@@ -1904,6 +2048,9 @@
       "type": "registry:ui",
       "title": "CopyButton",
       "description": "Copy to clipboard with a check-morph confirmation and a legacy fallback.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/copy-button.tsx",
@@ -1935,6 +2082,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/toast.tsx",
@@ -1981,6 +2131,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/accordion.tsx",
@@ -2017,6 +2170,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/tabs.tsx",
@@ -2050,6 +2206,9 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "A modal with focus trap, Escape handling, scroll lock and an expo entrance.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/dialog.tsx",
@@ -2081,6 +2240,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/nav.tsx",
@@ -2119,6 +2281,9 @@
       "type": "registry:ui",
       "title": "FormField",
       "description": "A label, hint and error linked to a single control without manual IDs.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/form-field.tsx",
@@ -2147,6 +2312,9 @@
       "type": "registry:ui",
       "title": "TextField",
       "description": "A precise, labelled input with native validation and clear error feedback.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/text-field.tsx",
@@ -2175,6 +2343,9 @@
       "type": "registry:ui",
       "title": "TextArea",
       "description": "Long-form input with resizable room for thoughts, labels and validation.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/text-area.tsx",
@@ -2203,6 +2374,9 @@
       "type": "registry:ui",
       "title": "SelectField",
       "description": "Native selection with a Mizu-styled option menu where supported.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/select-field.tsx",
@@ -2231,6 +2405,9 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "A generous check target with a secondary description and native form submission.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/checkbox.tsx",
@@ -2259,6 +2436,9 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "A tactile binary setting whose thumb tracks the state.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/switch.tsx",
@@ -2287,6 +2467,9 @@
       "type": "registry:ui",
       "title": "SearchField",
       "description": "Search with a clear action that belongs to the input.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/search-field.tsx",
@@ -2315,6 +2498,9 @@
       "type": "registry:ui",
       "title": "PasswordField",
       "description": "A revealable secret with explicit visibility feedback.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/password-field.tsx",
@@ -2343,6 +2529,9 @@
       "type": "registry:ui",
       "title": "RadioGroup",
       "description": "Mutually exclusive choices with room to explain what each choice means.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/radio-group.tsx",
@@ -2371,6 +2560,9 @@
       "type": "registry:ui",
       "title": "SegmentedControl",
       "description": "A compact selection rail for density, view and other immediate choices.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/segmented-control.tsx",
@@ -2399,6 +2591,9 @@
       "type": "registry:ui",
       "title": "NumberField",
       "description": "A bounded numeric stepper that survives decimals and repeated actions.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/number-field.tsx",
@@ -2427,6 +2622,9 @@
       "type": "registry:ui",
       "title": "Rating",
       "description": "A star rating you can choose with a mouse, touch or arrow keys.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/rating.tsx",
@@ -2455,6 +2653,9 @@
       "type": "registry:ui",
       "title": "ColorPicker",
       "description": "Named swatches and a native custom-color dialog, with the hex value always visible.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/color-picker.tsx",
@@ -2483,6 +2684,9 @@
       "type": "registry:ui",
       "title": "TagInput",
       "description": "Add, remove and deduplicate tags without losing the keyboard path.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/tag-input.tsx",
@@ -2511,6 +2715,9 @@
       "type": "registry:ui",
       "title": "FileDropzone",
       "description": "Start a file upload by dropping or browsing, with size and type validation on both paths.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/file-dropzone.tsx",
@@ -2539,6 +2746,9 @@
       "type": "registry:ui",
       "title": "AsyncForm",
       "description": "A form that follows the save promise and preserves input when a save fails.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/async-form.tsx",
@@ -2567,6 +2777,9 @@
       "type": "registry:ui",
       "title": "Status",
       "description": "A quiet diamond and a readable state, never color alone.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/status.tsx",
@@ -2595,6 +2808,9 @@
       "type": "registry:ui",
       "title": "Alert",
       "description": "Contextual feedback with a title, explanation and a place to recover.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/alert.tsx",
@@ -2623,6 +2839,9 @@
       "type": "registry:ui",
       "title": "Progress",
       "description": "Determinate or indeterminate progress, measured on a hairline track.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/progress.tsx",
@@ -2651,6 +2870,9 @@
       "type": "registry:ui",
       "title": "Meter",
       "description": "A bounded measurement that distinguishes a reading from task completion.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/meter.tsx",
@@ -2679,6 +2901,9 @@
       "type": "registry:ui",
       "title": "Skeleton",
       "description": "A restrained placeholder that retains a readable loading announcement.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/skeleton.tsx",
@@ -2707,6 +2932,9 @@
       "type": "registry:ui",
       "title": "EmptyState",
       "description": "A useful absence: explain what belongs here and give the next action.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/empty-state.tsx",
@@ -2735,6 +2963,9 @@
       "type": "registry:ui",
       "title": "ErrorState",
       "description": "A failure surface that names the problem and lets the user try again.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/error-state.tsx",
@@ -2763,6 +2994,9 @@
       "type": "registry:ui",
       "title": "ConnectionStatus",
       "description": "A connection hint that follows actual browser online and offline events.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/connection-status.tsx",
@@ -2791,6 +3025,9 @@
       "type": "registry:ui",
       "title": "SaveIndicator",
       "description": "Keep the difference between saved, dirty, saving and failed visible.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/save-indicator.tsx",
@@ -2819,6 +3056,9 @@
       "type": "registry:ui",
       "title": "AsyncBoundary",
       "description": "One readable contract for ready, loading, empty and failed content.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/async-boundary.tsx",
@@ -2847,6 +3087,9 @@
       "type": "registry:ui",
       "title": "TaskProgress",
       "description": "Make a multi-stage operation legible, including partial completion and failure.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/task-progress.tsx",
@@ -2875,6 +3118,9 @@
       "type": "registry:ui",
       "title": "AsyncButton",
       "description": "An action whose feedback follows the real promise, with duplicate clicks prevented.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/async-button.tsx",
@@ -2913,6 +3159,9 @@
       "type": "registry:ui",
       "title": "DataTable",
       "description": "A sortable, typed table that keeps native table semantics and nulls in their place.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/data-table.tsx",
@@ -2946,6 +3195,9 @@
       "type": "registry:ui",
       "title": "DescriptionList",
       "description": "Aligned names and values with the semantics of a description list.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/description-list.tsx",
@@ -2979,6 +3231,9 @@
       "type": "registry:ui",
       "title": "Stat",
       "description": "A metric with context: direction and favorability are separate decisions.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/stat.tsx",
@@ -3012,6 +3267,9 @@
       "type": "registry:ui",
       "title": "BarChart",
       "description": "Readable, labelled comparisons without a charting dependency.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/bar-chart.tsx",
@@ -3040,6 +3298,9 @@
       "type": "registry:ui",
       "title": "Sparkline",
       "description": "A compact history trace with the underlying readings in its accessible name.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/sparkline.tsx",
@@ -3068,6 +3329,9 @@
       "type": "registry:ui",
       "title": "Heatmap",
       "description": "A daily activity field with every date and reading available as text.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/heatmap.tsx",
@@ -3096,6 +3360,9 @@
       "type": "registry:ui",
       "title": "Timeline",
       "description": "Events connected by a fine thread, with the present kept distinct.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/timeline.tsx",
@@ -3129,6 +3396,9 @@
       "type": "registry:ui",
       "title": "ActivityFeed",
       "description": "Filter a real event stream by its event type without losing chronological context.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/activity-feed.tsx",
@@ -3167,6 +3437,9 @@
       "type": "registry:ui",
       "title": "DiffView",
       "description": "Two text versions, aligned by line, with changes made visible.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/diff-view.tsx",
@@ -3205,6 +3478,9 @@
       "type": "registry:ui",
       "title": "DataInspector",
       "description": "Open a payload, follow its structure and copy the JSON without a developer-tools panel.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/data-inspector.tsx",
@@ -3243,6 +3519,9 @@
       "type": "registry:ui",
       "title": "TreeView",
       "description": "Browse a hierarchy with native disclosure and an optional selected leaf.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/tree-view.tsx",
@@ -3281,6 +3560,9 @@
       "type": "registry:ui",
       "title": "ComparisonTable",
       "description": "A feature matrix whose rows and columns stay connected to their meaning.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/comparison-table.tsx",
@@ -3314,6 +3596,9 @@
       "type": "registry:ui",
       "title": "Breadcrumbs",
       "description": "A quiet path back through the hierarchy.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/breadcrumbs.tsx",
@@ -3342,6 +3627,9 @@
       "type": "registry:ui",
       "title": "Pagination",
       "description": "Move through bounded pages with a compact view of the whole sequence.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/pagination.tsx",
@@ -3370,6 +3658,9 @@
       "type": "registry:ui",
       "title": "Stepper",
       "description": "A numbered journey with a clear present step.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/stepper.tsx",
@@ -3398,6 +3689,9 @@
       "type": "registry:ui",
       "title": "AnchorNav",
       "description": "A page outline that follows the section in view.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/anchor-nav.tsx",
@@ -3426,6 +3720,9 @@
       "type": "registry:ui",
       "title": "SideNav",
       "description": "Grouped destinations with the current place held in focus.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/side-nav.tsx",
@@ -3454,6 +3751,9 @@
       "type": "registry:ui",
       "title": "BottomNav",
       "description": "Touch-friendly destinations that fit the phone's safe area.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/bottom-nav.tsx",
@@ -3482,6 +3782,9 @@
       "type": "registry:ui",
       "title": "ActionMenu",
       "description": "A compact menu of real actions, with disabled and destructive states.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/action-menu.tsx",
@@ -3510,6 +3813,9 @@
       "type": "registry:ui",
       "title": "CommandPalette",
       "description": "Search commands and execute them without taking your hands off the keyboard.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/command-palette.tsx",
@@ -3543,6 +3849,9 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "Identity at a glance, with initials that survive a missing image.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/avatar.tsx",
@@ -3571,6 +3880,9 @@
       "type": "registry:ui",
       "title": "Kbd",
       "description": "Keyboard hints set apart from the surrounding sentence.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/kbd.tsx",
@@ -3614,6 +3926,9 @@
       "type": "registry:ui",
       "title": "CodeBlock",
       "description": "Selectable source with a real copy action and room for long lines.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/code-block.tsx",
@@ -3657,6 +3972,9 @@
       "type": "registry:ui",
       "title": "Quote",
       "description": "A serif voice in the margin, with an honest attribution.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/quote.tsx",
@@ -3700,6 +4018,9 @@
       "type": "registry:ui",
       "title": "Prose",
       "description": "A readable measure for long-form documents inside an interface.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/prose.tsx",
@@ -3743,6 +4064,9 @@
       "type": "registry:ui",
       "title": "ImageFigure",
       "description": "Responsive imagery with a caption and a visible failure state.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/image-figure.tsx",
@@ -3771,6 +4095,9 @@
       "type": "registry:ui",
       "title": "MediaPlayer",
       "description": "Playback handed to the browser's accessible controls.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/media-player.tsx",
@@ -3799,6 +4126,9 @@
       "type": "registry:ui",
       "title": "LinkCard",
       "description": "A destination with enough context to decide whether to follow it.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/link-card.tsx",
@@ -3842,6 +4172,9 @@
       "type": "registry:ui",
       "title": "FileCard",
       "description": "A downloadable resource with a legible name and size.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/file-card.tsx",
@@ -3885,6 +4218,9 @@
       "type": "registry:ui",
       "title": "Checklist",
       "description": "Complete a set of real tasks and see how much remains.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/checklist.tsx",
@@ -3913,6 +4249,9 @@
       "type": "registry:ui",
       "title": "Stack",
       "description": "A single-axis layout that wraps when the task calls for it.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/stack.tsx",
@@ -3941,6 +4280,9 @@
       "type": "registry:ui",
       "title": "Grid",
       "description": "Responsive columns that make room for the content without breakpoint bookkeeping.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/grid.tsx",
@@ -3969,6 +4311,9 @@
       "type": "registry:ui",
       "title": "SplitPane",
       "description": "Give two working regions the space they need, with a real resizable boundary.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/split-pane.tsx",
@@ -3997,6 +4342,9 @@
       "type": "registry:ui",
       "title": "AspectRatio",
       "description": "Reserve media space before it arrives, keeping the surrounding reading rhythm steady.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/aspect-ratio.tsx",
@@ -4025,6 +4373,9 @@
       "type": "registry:ui",
       "title": "ScrollArea",
       "description": "A bounded reading region that keyboard users can enter and scroll.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/scroll-area.tsx",
@@ -4053,6 +4404,9 @@
       "type": "registry:ui",
       "title": "AppShell",
       "description": "Named working regions and a skip link, composed around the product's real content.",
+      "meta": {
+        "client": false
+      },
       "files": [
         {
           "path": "registry/app-shell.tsx",
@@ -4081,6 +4435,9 @@
       "type": "registry:ui",
       "title": "Combobox",
       "description": "Search a bounded set of choices and select without leaving the keyboard.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/combobox.tsx",
@@ -4114,6 +4471,9 @@
       "type": "registry:ui",
       "title": "MultiSelect",
       "description": "Filter a set, keep several choices and make the selection limit clear.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/multi-select.tsx",
@@ -4147,6 +4507,9 @@
       "type": "registry:ui",
       "title": "InlineEdit",
       "description": "Change a value in place, with validation and an explicit path back.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/inline-edit.tsx",
@@ -4180,6 +4543,9 @@
       "type": "registry:ui",
       "title": "RangeSelector",
       "description": "Two bounded handles define an interval without crossing or hiding their values.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/range-selector.tsx",
@@ -4211,6 +4577,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/reorder-list.tsx",
@@ -4249,6 +4618,9 @@
       "type": "registry:ui",
       "title": "ImageCompare",
       "description": "Reveal two versions with a divider that follows your hand.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/image-compare.tsx",
@@ -4282,6 +4654,9 @@
       "type": "registry:ui",
       "title": "HistoryControls",
       "description": "Undo and redo a bounded edit history, including the branch created by a new change.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/history-controls.tsx",
@@ -4315,6 +4690,9 @@
       "type": "registry:ui",
       "title": "ConfirmAction",
       "description": "Review a consequential action, execute the actual promise and recover from failure.",
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/confirm-action.tsx",
@@ -4366,6 +4744,9 @@
       "dependencies": [
         "motion"
       ],
+      "meta": {
+        "client": true
+      },
       "files": [
         {
           "path": "registry/motion-preferences.tsx",
