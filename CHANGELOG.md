@@ -40,6 +40,18 @@
 - Slider declares `"use client"`: its input handles events, and it was the one
   interactive module without the directive. A test now holds every module
   without it to no hooks, handlers or context.
+- Pure helpers leave the `"use client"` modules: `FLAP_CHARACTERS` and
+  `flapPath` (flap.ts), `justifyRows` (justify.ts), `tidyFlow` (flow.ts),
+  `squarify` (squarify.ts) and `moveCard` (cards.ts). With `describeQuery` and
+  `matchesQuery`, the package root now exports them from those plain modules,
+  so a Server Component, route handler or server action gets the functions
+  and data, not client references (`FLAP_CHARACTERS.split is not a function`).
+  Exported names are unchanged; tests hold the rule and keep module names
+  distinct regardless of case.
+- Docs say exactly what `add` copies: base.css and the source module's
+  stylesheet, or base.css alone for the fifteen inline-styled components such
+  as Accordion. Getting started explains keeping server-read data out of
+  `"use client"` modules.
 
 ## 0.2.0 — prepared, not published
 

@@ -237,6 +237,11 @@
           "target": "@ui/mizu/source/signature/Plane.tsx"
         },
         {
+          "path": "registry/source/signature/flow.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/flow.ts"
+        },
+        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
@@ -286,6 +291,11 @@
           "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
+          "path": "registry/source/signature/squarify.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/squarify.ts"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
@@ -333,6 +343,11 @@
           "path": "registry/source/signature/Board.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/Board.tsx"
+        },
+        {
+          "path": "registry/source/signature/cards.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/cards.ts"
         },
         {
           "path": "registry/source/signature/internal.ts",
@@ -802,6 +817,11 @@
           "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
+          "path": "registry/source/signature/justify.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/justify.ts"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
@@ -883,6 +903,11 @@
           "path": "registry/source/signature/SplitFlap.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/SplitFlap.tsx"
+        },
+        {
+          "path": "registry/source/signature/flap.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/flap.ts"
         },
         {
           "path": "registry/source/signature/internal.ts",

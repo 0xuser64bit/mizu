@@ -57,11 +57,16 @@ Import it from your configured UI directory, for example
 path, its name in kebab case (DataInspector is `data-inspector`), exporting
 that component and the types it takes. Static components such as Mark, Stat
 and Timeline render as Server Components; `meta.client` on each item in
-`registry.json`, and each component page, say which ones need the browser. The
-registry includes each component's
-source dependencies and styles, without installing `mizu-ui`. See each catalog
-page for its command; `motion-preferences` adds the MotionPreferences provider.
-Registry entries are generated from the catalog with `bun run registry:sync`.
+`registry.json`, and each component page, say which ones need the browser.
+
+The registry copies each component's source dependencies, `base.css` with
+Mizu's tokens and its source module's stylesheet, without installing
+`mizu-ui`. Fifteen components style themselves inline (Accordion, Tabs, Mark,
+Badge…) and need only `base.css`. Keep data your Server Components read out of
+`"use client"` modules: exported from one, an array reaches server code as a
+client reference, not an array. See each catalog page for its command;
+`motion-preferences` adds the MotionPreferences provider. Registry entries are
+generated from the catalog with `bun run registry:sync`.
 
 ### Fonts
 

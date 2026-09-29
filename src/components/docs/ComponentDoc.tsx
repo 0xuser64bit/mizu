@@ -4,7 +4,12 @@ import { CodeBlock, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
-import { isClientModule, registryExports, usesMotion } from "./source";
+import {
+  hasRegistryStylesheet,
+  isClientModule,
+  registryExports,
+  usesMotion,
+} from "./source";
 
 function PropsTable({ props }: { props: ComponentMeta["props"] }) {
   return (
@@ -177,8 +182,11 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
             <div className="mt-4">
               <p className="mb-3 text-sm leading-relaxed text-muted">
                 Add this component to your project with the shadcn CLI. The
-                command copies its source and styles into your configured UI
-                directory. In a project without a components.json, run{" "}
+                command copies its source into your configured UI directory,{" "}
+                {hasRegistryStylesheet(meta.source)
+                  ? "with its source module’s stylesheet and base.css, Mizu’s tokens."
+                  : "with base.css, Mizu’s tokens: it styles itself inline and brings no stylesheet of its own."}{" "}
+                In a project without a components.json, run{" "}
                 <code>npx shadcn@latest init 0xuser64bit/mizu/preset</code>{" "}
                 first: plain init installs shadcn’s theme into your global CSS.
                 Then{" "}

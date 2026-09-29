@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 
 const ROOT = join(process.cwd(), "packages/mizu/src");
@@ -13,6 +13,13 @@ export function registryExports(slug: string) {
     .flatMap((m) => m[1]!.split(","))
     .map((name) => name.trim())
     .filter((name) => name && !name.startsWith("type "));
+}
+
+/** Whether `add` installs a stylesheet beside the source module; inline-styled ones have none. */
+export function hasRegistryStylesheet(source: string) {
+  return existsSync(
+    join(process.cwd(), "registry/source", source.replace(/\.tsx?$/, ".css")),
+  );
 }
 
 /** Whether the module draws a client boundary; without one it renders on the server. */

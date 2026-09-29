@@ -38,9 +38,12 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
         </p>
         <p>
           Each catalog page has its own add command. The CLI copies the selected
-          component, its source dependencies and Mizu styles into your UI
-          directory. Motion is installed only for components that use it. Load
-          the fonts as shown below.
+          component and its source dependencies into your UI directory, with
+          base.css, Mizu’s tokens, and the stylesheet of its source module.
+          Fifteen components style themselves inline, among them Accordion,
+          Tabs, Mark and Badge; base.css is all the CSS they bring. Motion is
+          installed only for components that use it. Load the fonts as shown
+          below.
         </p>
         <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
         <p>
@@ -48,9 +51,9 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           DataInspector is <code>data-inspector</code>, and that file exports
           DataInspector and the types it takes. Use the UI alias configured in
           your <code>components.json</code> if yours differs from{" "}
-          <code>@/components/ui</code>. The installed file imports its CSS. Wrap
-          a surface in <code>className=&quot;mizu-root&quot;</code> for the
-          default theme, and edit the copied code to suit your app.
+          <code>@/components/ui</code>. The installed file imports that CSS
+          itself. Wrap a surface in <code>className=&quot;mizu-root&quot;</code>{" "}
+          for the default theme, and edit the copied code to suit your app.
         </p>
         <p>
           The installed files carry no <code>&quot;use client&quot;</code> of
@@ -58,6 +61,14 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           Mark, Badge, Kbd, Stat, Timeline and the other static pieces render as
           Server Components, with no client JavaScript. Every component page
           says which kind it is.
+        </p>
+        <p>
+          Keep data your Server Components read in a module without{" "}
+          <code>&quot;use client&quot;</code>, such as a <code>data.ts</code>.
+          Exported from a client module, an array reaches server code as a
+          client reference rather than an array, and <code>.map</code> fails
+          while prerendering. Mizu’s own helpers (matchesQuery, squarify,
+          FLAP_CHARACTERS) live in plain modules for the same reason.
         </p>
         <h2>Render a working interaction</h2>
         <Code>{`"use client"; // required at an interactive Next.js boundary
