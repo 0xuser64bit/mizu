@@ -1,4 +1,7 @@
 
+.mizu-spinner {
+  display: inline-flex;
+}
 .mizu-spinner > span {
   display: block;
   transform: rotate(45deg);

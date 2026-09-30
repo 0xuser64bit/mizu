@@ -11,11 +11,6 @@ import { Spinner } from "./Spinner";
 export type ButtonVariant = "solid" | "ghost" | "inverse";
 export type ButtonSize = "md" | "sm";
 
-const SIZES: Record<ButtonSize, React.CSSProperties> = {
-  md: { padding: "26px 28px", fontSize: 11 },
-  sm: { padding: "12px 18px", fontSize: 10 },
-};
-
 function Arrow() {
   return (
     <svg
@@ -25,7 +20,6 @@ function Arrow() {
       fill="none"
       aria-hidden
       className="mizu-btn-arrow"
-      style={{ flexShrink: 0 }}
     >
       <path
         d="M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8"
@@ -35,6 +29,14 @@ function Arrow() {
     </svg>
   );
 }
+
+// The face lives in .mizu-btn classes, so className and ordinary CSS restyle it.
+const buttonClass = (
+  variant: ButtonVariant,
+  size: ButtonSize,
+  className: string,
+) =>
+  `mizu-btn mizu-btn--${variant} mizu-btn--${size}${className ? ` ${className}` : ""}`;
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -53,7 +55,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className = "",
       children,
       disabled,
-      style,
       type = "button",
       ...props
     },
@@ -65,21 +66,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         aria-busy={loading || undefined}
         disabled={disabled || loading}
-        className={`mizu-btn mizu-btn--${variant} ${className}`}
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 12,
-          fontFamily: "var(--mizu-font-mono)",
-          letterSpacing: "0.22em",
-          textTransform: "uppercase",
-          cursor: loading || disabled ? "default" : "pointer",
-          transition:
-            "background 300ms ease, color 300ms ease, border-color 300ms ease, opacity 300ms ease",
-          ...SIZES[size],
-          opacity: disabled ? 0.4 : 1,
-          ...style,
-        }}
+        className={buttonClass(variant, size, className)}
         {...props}
       >
         {children}
@@ -105,27 +92,12 @@ export function ButtonLink({
   label,
   className = "",
   children,
-  style,
   ...props
 }: ButtonLinkProps) {
   return (
     <a
       aria-label={label}
-      className={`mizu-btn mizu-btn--${variant} ${className}`}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 12,
-        fontFamily: "var(--mizu-font-mono)",
-        letterSpacing: "0.22em",
-        textTransform: "uppercase",
-        textDecoration: "none",
-        cursor: "pointer",
-        transition:
-          "background 300ms ease, color 300ms ease, border-color 300ms ease",
-        ...SIZES[size],
-        ...style,
-      }}
+      className={buttonClass(variant, size, className)}
       {...props}
     >
       {children}

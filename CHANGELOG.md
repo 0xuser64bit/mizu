@@ -20,6 +20,11 @@
   fill, which the light theme makes the same color, so a loading button showed
   no diamond at all. Spinner takes `tone="current"` for the surrounding text
   color.
+- Button and ButtonLink take their static styles from `.mizu-btn` classes
+  (`mizu-btn--md` and `mizu-btn--sm` for the sizes) instead of inline styles,
+  so `className` and ordinary CSS restyle their padding, type, tracking, case
+  and cursor. The inline styles beat every class, so only `style` could.
+  Rendering is unchanged; Spinner's display moves to `.mizu-spinner` too.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

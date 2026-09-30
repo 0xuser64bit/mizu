@@ -18,7 +18,7 @@ export function Spinner({
       role="status"
       aria-label={label}
       className={`mizu-spinner ${className}`}
-      style={{ display: "inline-flex", ...style }}
+      style={style}
     >
       <span
         aria-hidden="true"

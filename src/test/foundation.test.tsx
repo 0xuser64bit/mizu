@@ -42,6 +42,21 @@ describe("Button", () => {
     expect(diamond.style.background).toBe("currentcolor");
   });
 
+  it("styles itself with classes, so className and CSS can restyle it", () => {
+    render(
+      <>
+        <Button size="sm">Plain</Button>
+        <Button style={{ padding: 4 }}>Styled</Button>
+      </>,
+    );
+    const plain = screen.getByRole("button", { name: /plain/i });
+    expect(plain.getAttribute("style")).toBeNull();
+    expect(plain.className).toBe("mizu-btn mizu-btn--solid mizu-btn--sm");
+    expect(screen.getByRole("button", { name: /styled/i }).style.padding).toBe(
+      "4px",
+    );
+  });
+
   it("respects disabled prop", () => {
     render(<Button disabled>No</Button>);
     expect(screen.getByRole("button")).toBeDisabled();
