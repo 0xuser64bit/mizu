@@ -1,73 +1,84 @@
-:root,
-[data-theme="dark"] {
-  --mizu-color-scheme: dark;
-  --mizu-ink: #0f0e0c;
-  --mizu-ink-2: #16130f;
-  --mizu-ink-3: #201b15;
-  --mizu-paper: #f4f0e8;
-  --mizu-muted: #a8a193;
-  --mizu-faint: #958d7e;
-  --mizu-accent: #ff4d1c;
-  --mizu-accent-fill: #d23e0e;
-  --mizu-line: #29241d;
-  --mizu-line-bright: rgba(244, 240, 232, 0.22);
-}
+/* Tokens sit in the lowest cascade layer, the one Tailwind v4 calls theme, so an
+   unlayered override in your own CSS wins wherever it loads: a registry item's
+   base.css arrives after your global stylesheet and would otherwise reset it. */
+@layer theme {
+  :root,
+  [data-theme="dark"] {
+    --mizu-color-scheme: dark;
+    --mizu-ink: #0f0e0c;
+    --mizu-ink-2: #16130f;
+    --mizu-ink-3: #201b15;
+    --mizu-paper: #f4f0e8;
+    --mizu-muted: #a8a193;
+    --mizu-faint: #958d7e;
+    --mizu-accent: #ff4d1c;
+    --mizu-accent-fill: #d23e0e;
+    --mizu-line: #29241d;
+    --mizu-line-bright: rgba(244, 240, 232, 0.22);
+    --mizu-success: #70bc96;
+    --mizu-warning: #dbb66a;
+    --mizu-danger: #ef9b8e;
+  }
 
-/* Outside the theme blocks, so a nested data-theme keeps overrides set above it. */
-:root {
-  --mizu-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --mizu-ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
-  --mizu-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Outside the theme blocks, so a nested data-theme keeps overrides set above it. */
+  :root {
+    --mizu-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --mizu-ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
+    --mizu-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --mizu-duration-fast: 180ms;
-  --mizu-duration-med: 420ms;
-  --mizu-duration-slow: 900ms;
+    --mizu-duration-fast: 180ms;
+    --mizu-duration-med: 420ms;
+    --mizu-duration-slow: 900ms;
 
-  --mizu-space-1: 4px;
-  --mizu-space-2: 8px;
-  --mizu-space-3: 12px;
-  --mizu-space-4: 16px;
-  --mizu-space-5: 24px;
-  --mizu-space-6: 32px;
-  --mizu-space-7: 48px;
-  --mizu-space-8: 64px;
-  --mizu-space-9: 96px;
+    --mizu-space-1: 4px;
+    --mizu-space-2: 8px;
+    --mizu-space-3: 12px;
+    --mizu-space-4: 16px;
+    --mizu-space-5: 24px;
+    --mizu-space-6: 32px;
+    --mizu-space-7: 48px;
+    --mizu-space-8: 64px;
+    --mizu-space-9: 96px;
 
-  --mizu-radius: 2px;
-  --mizu-control-height: 44px;
-  --mizu-z-base: 0;
-  --mizu-z-raised: 10;
-  --mizu-z-overlay: 60;
-  --mizu-z-wipe: 90;
-  --mizu-z-cursor: 96;
-}
+    --mizu-radius: 2px;
+    --mizu-control-height: 44px;
+    --mizu-z-base: 0;
+    --mizu-z-raised: 10;
+    --mizu-z-overlay: 60;
+    --mizu-z-wipe: 90;
+    --mizu-z-cursor: 96;
+  }
 
-[data-theme="light"] {
-  --mizu-color-scheme: light;
-  --mizu-ink: #f4f0e8;
-  --mizu-ink-2: #e9e3d5;
-  --mizu-ink-3: #dcd4c1;
-  --mizu-paper: #16130f;
-  --mizu-muted: #585348;
-  --mizu-faint: #605a50;
-  --mizu-accent: #a72c0a;
-  --mizu-accent-fill: #a72c0a;
-  --mizu-line: #d9d2c2;
-  --mizu-line-bright: rgba(22, 19, 15, 0.22);
-}
+  [data-theme="light"] {
+    --mizu-color-scheme: light;
+    --mizu-ink: #f4f0e8;
+    --mizu-ink-2: #e9e3d5;
+    --mizu-ink-3: #dcd4c1;
+    --mizu-paper: #16130f;
+    --mizu-muted: #585348;
+    --mizu-faint: #605a50;
+    --mizu-accent: #a72c0a;
+    --mizu-accent-fill: #a72c0a;
+    --mizu-line: #d9d2c2;
+    --mizu-line-bright: rgba(22, 19, 15, 0.22);
+    --mizu-success: #206442;
+    --mizu-warning: #775100;
+    --mizu-danger: #a12716;
+  }
 
-/* next/font variables when set (on <html> or <body>), else the fonts.css families.
-   Outside the theme blocks, so a nested data-theme keeps the faces set above it. */
-:root,
-body {
-  --mizu-font-display:
-    var(--font-archivo, "Archivo Variable"), ui-sans-serif, system-ui,
-    sans-serif;
-  --mizu-font-serif:
-    var(--font-instrument-serif, "Instrument Serif"), Georgia, serif;
-  --mizu-font-mono:
-    var(--font-jetbrains-mono, "JetBrains Mono"), ui-monospace, "SF Mono",
-    monospace;
+  /* next/font variables when set (on <html> or <body>), else the fonts.css families.
+     Outside the theme blocks, so a nested data-theme keeps the faces set above it. */
+  :root,
+  body {
+    --mizu-font-display:
+      var(--font-archivo, "Archivo Variable"), ui-sans-serif, system-ui,
+      sans-serif;
+    --mizu-font-serif:
+      var(--font-instrument-serif, "Instrument Serif"), Georgia, serif;
+    --mizu-font-mono:
+      var(--font-jetbrains-mono, "JetBrains Mono"), ui-monospace, "SF Mono",
+      monospace;
+  }
 }
 
 .mizu-root {
@@ -137,19 +148,6 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-:root,
-[data-theme="dark"] {
-  --mizu-success: #70bc96;
-  --mizu-warning: #dbb66a;
-  --mizu-danger: #ef9b8e;
-}
-
-[data-theme="light"] {
-  --mizu-success: #206442;
-  --mizu-warning: #775100;
-  --mizu-danger: #a12716;
 }
 
 :where([class*="mizu-"]) {

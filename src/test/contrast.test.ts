@@ -1,5 +1,6 @@
 import { it, expect } from "vitest";
 import { readFileSync } from "node:fs";
+import postcss from "postcss";
 const css = readFileSync("packages/mizu/src/core.css", "utf8");
 function luminance(hex: string) {
   const channels = [0, 2, 4]
@@ -61,6 +62,26 @@ it("keeps text and status tokens readable across every default surface in both t
       `${theme} filled action label`,
     ).toBeGreaterThanOrEqual(4.5);
   }
+});
+it("keeps every token in the theme layer, so your own CSS overrides it in any load order", () => {
+  // A registry item's base.css loads after the app's global stylesheet; unlayered,
+  // its :root would reset the app's --mizu-accent at equal specificity.
+  const tokens: string[] = [];
+  postcss.parse(css).walkDecls(/^--mizu-/, (decl) => {
+    const rule = decl.parent as postcss.Rule;
+    if (
+      !rule.selectors.every((s) =>
+        /^(:root|body|\[data-theme="\w+"\])$/.test(s),
+      )
+    )
+      return; // a component's own custom property, not a token
+    tokens.push(decl.prop);
+    const layer = rule.parent as postcss.AtRule;
+    expect(`${layer.name} ${layer.params}`, decl.prop).toBe("layer theme");
+  });
+  expect(tokens).toContain("--mizu-accent");
+  expect(tokens).toContain("--mizu-danger");
+  expect(tokens).toContain("--mizu-font-display");
 });
 it("declares in theme blocks only what the light theme changes, so a nested theme keeps other overrides", () => {
   const declared = (theme: string) =>

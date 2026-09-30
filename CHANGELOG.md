@@ -8,6 +8,14 @@
   and 12 failed to render (functions passed to components). `examples:sync`
   derives the directive from the example's code, and static examples such as
   Mark stay Server Components.
+- Tokens (`--mizu-*` on `:root`, `[data-theme]` and `body`) move into
+  `@layer theme`, so an unlayered override in your own CSS wins wherever it
+  loads. A registry item's base.css loads after the app's global stylesheet,
+  and its `:root` silently reset `--mizu-accent` set there, as did
+  `[data-theme="light"]` for an override on the same element. With Tailwind
+  v4 the tokens join its theme layer, below preflight and utilities; Tailwind
+  v3 passes the layer through. The status colors move up beside the other
+  color tokens.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a
