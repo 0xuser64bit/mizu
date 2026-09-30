@@ -7,7 +7,8 @@ export function Spinner({
   style,
 }: {
   size?: number;
-  tone?: "accent" | "paper" | "muted";
+  /** A color token, or `current` for the surrounding text color. */
+  tone?: "accent" | "paper" | "muted" | "current";
   label?: string;
   className?: string;
   style?: CSSProperties;
@@ -21,7 +22,12 @@ export function Spinner({
     >
       <span
         aria-hidden="true"
-        style={{ width: size, height: size, background: `var(--mizu-${tone})` }}
+        style={{
+          width: size,
+          height: size,
+          background:
+            tone === "current" ? "currentColor" : `var(--mizu-${tone})`,
+        }}
       />
     </span>
   );

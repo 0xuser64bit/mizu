@@ -35,6 +35,13 @@ describe("Button", () => {
     expect(screen.getByRole("status")).toBeTruthy();
   });
 
+  it("draws the loading diamond in the label's color", () => {
+    // An accent diamond is invisible on the light theme's accent fill.
+    render(<Button loading>Saving</Button>);
+    const diamond = screen.getByRole("status").firstElementChild as HTMLElement;
+    expect(diamond.style.background).toBe("currentcolor");
+  });
+
   it("respects disabled prop", () => {
     render(<Button disabled>No</Button>);
     expect(screen.getByRole("button")).toBeDisabled();

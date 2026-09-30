@@ -83,7 +83,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {children}
-        {loading ? <Spinner size={10} /> : arrow && <Arrow />}
+        {/* The label's color: an accent diamond vanishes on the light theme's accent fill. */}
+        {loading ? <Spinner size={10} tone="current" /> : arrow && <Arrow />}
       </button>
     );
   },

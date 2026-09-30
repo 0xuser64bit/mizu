@@ -16,6 +16,10 @@
   v4 the tokens join its theme layer, below preflight and utilities; Tailwind
   v3 passes the layer through. The status colors move up beside the other
   color tokens.
+- Button's loading diamond takes the label's color. It was accent on the solid
+  fill, which the light theme makes the same color, so a loading button showed
+  no diamond at all. Spinner takes `tone="current"` for the surrounding text
+  color.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

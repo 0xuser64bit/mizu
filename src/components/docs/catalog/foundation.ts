@@ -77,7 +77,12 @@ export const FOUNDATION = [
     [
       p("size", "number", "Side in pixels.", "14"),
       p("label", "string", "Accessible loading name.", '"Loading"'),
-      p("tone", '"accent" | "paper" | "muted"', "Color token.", '"accent"'),
+      p(
+        "tone",
+        '"accent" | "paper" | "muted" | "current"',
+        "Color token, or current for the surrounding text color, as inside a button.",
+        '"accent"',
+      ),
     ],
     "A labelled status; reduced motion stops rotation.",
     "Linear rotation; static under reduced motion.",
