@@ -127,6 +127,20 @@ export const Waveform = forwardRef<
     return () => controller.abort();
   }, [src, peaks]);
 
+  // The audio can settle before this component commits: a concurrent render creates it
+  // detached, and server HTML starts loading it before hydration. Its error or metadata
+  // then reach no handler, so read where it stands.
+  useEffect(() => {
+    const media = audio.current;
+    if (!media) return;
+    if (media.error) setFailed(true);
+    else if (media.readyState >= 1) {
+      // HAVE_METADATA
+      if (Number.isFinite(media.duration)) setDuration(media.duration);
+      media.playbackRate = rate;
+    }
+  }, [src, rate]);
+
   // Smooth progress while playing; the media element only reports a few times a second.
   useEffect(() => {
     if (!playing) return;

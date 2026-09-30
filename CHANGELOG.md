@@ -81,6 +81,12 @@
   again button sit beside the seek slider instead of inside it, where a
   button is lost to assistive technology. axe reports no violations on
   either.
+- Waveform notices audio that failed or loaded before it mounted. React
+  creates the `<audio>` before committing, and server HTML loads it before
+  hydration, so a fast 404 or metadata event reached no handler: a missing
+  file left a flat, playable-looking track instead of "This audio could not
+  be loaded", and a quick load left the duration unknown. After mounting it
+  now reads the element's error and metadata.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

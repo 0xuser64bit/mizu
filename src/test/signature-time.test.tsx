@@ -427,4 +427,31 @@ describe("Waveform", () => {
     expect(screen.getByRole("button", { name: "Play" })).toBeDisabled();
     fetch.mockRestore();
   });
+
+  it("reads audio that failed or loaded before it mounted", async () => {
+    // Created detached in a concurrent render, or loaded from server HTML before
+    // hydration, the element's events reach no handler.
+    const proto = HTMLMediaElement.prototype;
+    const fetch = vi
+      .spyOn(globalThis, "fetch")
+      .mockRejectedValue(new Error("offline"));
+    const error = vi.spyOn(proto, "error", "get").mockReturnValue({
+      code: 4,
+    } as MediaError);
+    const { unmount } = render(<Waveform src="/missing.mp3" label="Gone" />);
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "This audio could not be loaded.",
+    );
+    unmount();
+    error.mockReturnValue(null);
+    vi.spyOn(proto, "readyState", "get").mockReturnValue(1);
+    vi.spyOn(proto, "duration", "get").mockReturnValue(90);
+    render(<Waveform src="/episode.mp3" label="Episode" peaks={[0.5]} />);
+    expect(screen.getByRole("slider")).toHaveAttribute(
+      "aria-valuetext",
+      "0:00 of 1:30",
+    );
+    vi.restoreAllMocks();
+    fetch.mockRestore();
+  });
 });
