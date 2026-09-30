@@ -119,6 +119,16 @@
   `<code>` took the browser's monospace, or with Tailwind the app's own
   (Geist Mono in a new Next.js app), inside a JetBrains Mono block. A test
   holds every code, kbd, samp and pre a component renders to a font rule.
+- Stat's trend arrow sits beside the change it marks in a Tailwind app, the
+  docs included. Tailwind's preflight makes every svg a block, which put the
+  arrow on a line of its own; the change line is now a flex row. Mizu's
+  icons are blocks everywhere, as the docs drew them: inline without
+  Tailwind, DataTable's sort arrows and ReorderList's controls sat on the
+  text baseline, off center. With the border-box and font fixes, at least 112
+  of the 126 examples match pixel for pixel between a plain Vite app and a
+  Tailwind app, from 94. Of the rest, nine differ only in headings and
+  paragraphs the examples bring, which follow the page's reset, and four keep
+  every element's box and differ in rendering alone.
 - Docs: set up the registry without Tailwind, update copied components, and
   customize. `init` needs Tailwind but `add` does not, and the docs said the
   CLI needed it: they now give the `components.json` to write instead, tried

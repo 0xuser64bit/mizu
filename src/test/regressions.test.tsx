@@ -17,6 +17,12 @@ import {
   TabsPanel,
   Tooltip,
 } from "@/mizu";
+import { readFileSync } from "node:fs";
+import {
+  ArrowIcon,
+  CompareIcon,
+  GripIcon,
+} from "../../packages/mizu/src/ui/icons";
 
 describe("foundation regression gates", () => {
   it("keeps a busy action named and avoids accidental form submission", () => {
@@ -206,5 +212,29 @@ describe("images that fail before hydration", () => {
     render(<Avatar name="Aya Mori" src="/mark.svg" />);
     await Promise.resolve();
     expect(screen.queryByText("AM")).not.toBeInTheDocument();
+  });
+});
+
+describe("icons without Tailwind's preflight", () => {
+  it("are blocks, as the preflight draws every svg", () => {
+    // Inline, an icon sat on the text baseline: DataTable's sort arrows rode above
+    // their headers and ReorderList's controls sat off center.
+    const { container } = render(
+      <>
+        <ArrowIcon />
+        <GripIcon />
+        <CompareIcon />
+        <ArrowIcon style={{ display: "inline" }} />
+      </>,
+    );
+    const [arrow, grip, compare, chosen] = container.querySelectorAll("svg");
+    for (const icon of [arrow, grip, compare])
+      expect(icon!.style.display).toBe("block");
+    expect(chosen!.style.display).toBe("inline");
+  });
+  it("keep Stat's arrow in the row of the change it marks", () => {
+    // As a block inside the paragraph, the arrow took a line of its own.
+    const css = readFileSync("packages/mizu/src/core.css", "utf8");
+    expect(css).toMatch(/\.mizu-stat \.mizu-stat-change \{\s*display: flex;/);
   });
 });

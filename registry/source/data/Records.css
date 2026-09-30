@@ -57,6 +57,9 @@
   font-variant-numeric: tabular-nums;
 }
 .mizu-stat .mizu-stat-change {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: 0 0 8px;
   font: 12px var(--mizu-font-mono);
   color: var(--mizu-muted);
