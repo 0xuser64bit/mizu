@@ -75,6 +75,12 @@
   with a hanging indent. Tailwind's preflight removed them, on the docs site
   too, so a list in a long document read as a run of loose paragraphs.
   Headings keep the surrounding weight, as they were drawn.
+- Accessibility: FileDropzone's file input, which only its button opens, is
+  hidden from assistive technology, where it was a second, unlabeled file
+  control (TransferQueue included). Waveform's failure message and its Try
+  again button sit beside the seek slider instead of inside it, where a
+  button is lost to assistive technology. axe reports no violations on
+  either.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

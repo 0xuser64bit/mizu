@@ -183,9 +183,10 @@
   margin-top: -1px;
   background: var(--mizu-line-bright);
 }
+/* Over the track's box: the stage's padding. */
 .mizu-waveform-error {
   position: absolute;
-  inset: 0;
+  inset: 18px 16px 16px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

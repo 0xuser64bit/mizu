@@ -420,9 +420,10 @@ describe("Waveform", () => {
       screen.getByRole("button", { name: /Playback speed 1.5×/ }),
     ).toBeInTheDocument();
     fireEvent.error(container.querySelector("audio")!);
-    expect(screen.getByRole("alert")).toHaveTextContent(
-      "This audio could not be loaded.",
-    );
+    const alert = screen.getByRole("alert");
+    expect(alert).toHaveTextContent("This audio could not be loaded.");
+    // Beside the slider: a button inside role="slider" is lost to assistive tech.
+    expect(screen.getByRole("slider")).not.toContainElement(alert);
     expect(screen.getByRole("button", { name: "Play" })).toBeDisabled();
     fetch.mockRestore();
   });

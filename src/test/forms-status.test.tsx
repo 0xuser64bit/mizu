@@ -132,6 +132,16 @@ describe("form and status contracts", () => {
     );
     expect(screen.getByRole("alert")).toHaveTextContent("exceeds");
   });
+  it("offers one labelled control, hiding the file input behind it", () => {
+    const { container } = render(
+      <FileDropzone label="Artwork" onFilesChange={() => {}} />,
+    );
+    expect(container.querySelector('input[type="file"]')).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
+    expect(screen.getByRole("button")).toHaveAccessibleName(/Artwork/);
+  });
   it("preserves form input after a rejected save", async () => {
     const user = userEvent.setup();
     render(

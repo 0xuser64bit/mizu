@@ -62,10 +62,12 @@ export function FileDropzone({
   };
   return (
     <div className={`mizu-field ${className}`}>
+      {/* Only the button opens it: a second, unlabeled control for assistive tech. */}
       <input
         ref={input}
         id={id}
         type="file"
+        aria-hidden="true"
         accept={accept}
         multiple={multiple}
         disabled={disabled}

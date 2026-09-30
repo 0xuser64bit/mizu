@@ -185,7 +185,7 @@
 }
 .mizu-waveform-error {
   position: absolute;
-  inset: 0;
+  inset: 18px 16px 16px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

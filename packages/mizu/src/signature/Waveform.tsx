@@ -398,22 +398,24 @@ export const Waveform = forwardRef<
               <output>{formatClock(hover)}</output>
             </span>
           )}
-          {failed && (
-            <p className="mizu-waveform-error" role="alert">
-              This audio could not be loaded.
-              <button
-                type="button"
-                className="mizu-text-button"
-                onClick={() => {
-                  setFailed(false);
-                  audio.current?.load();
-                }}
-              >
-                Try again
-              </button>
-            </p>
-          )}
         </div>
+        {/* Beside the slider, not in it: a button inside role="slider" is lost to
+            assistive tech. It covers the track from the stage. */}
+        {failed && (
+          <p className="mizu-waveform-error" role="alert">
+            This audio could not be loaded.
+            <button
+              type="button"
+              className="mizu-text-button"
+              onClick={() => {
+                setFailed(false);
+                audio.current?.load();
+              }}
+            >
+              Try again
+            </button>
+          </p>
+        )}
       </div>
 
       <div className="mizu-waveform-tools">
