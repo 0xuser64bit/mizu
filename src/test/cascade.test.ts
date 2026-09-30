@@ -162,4 +162,50 @@ describe("cascade", () => {
     }
     expect(checked).toBeGreaterThan(0); // Toast's panel
   });
+  it("sets the font of every code, kbd, samp and pre it renders", () => {
+    // Browsers give these their own monospace, and Tailwind's preflight the app's,
+    // so none inherits: CodeBlock's code sat in Geist Mono inside a JetBrains Mono pre.
+    const fonted = new Set<string>(); // "mizu-code-block code"
+    for (const sheet of sheets)
+      sheet.walkDecls(/^font(-family)?$/, (decl) => {
+        for (const selector of (decl.parent as postcss.Rule).selectors ?? []) {
+          const tag = compounds(selector)
+            .at(-1)!
+            .match(/^[a-z]+/)?.[0];
+          for (const [, owner] of selector.matchAll(/\.(mizu-[\w-]+)/g))
+            fonted.add(`${owner} ${tag}`);
+        }
+      });
+    const unset: string[] = [];
+    for (const source of sources) {
+      const visit = (node: ts.Node): void => {
+        if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+          const tag = node.tagName.getText();
+          const own = node.attributes.properties.some(
+            (a) =>
+              ts.isJsxAttribute(a) &&
+              a.name.getText() === "className" &&
+              a.getText().includes("mizu-"),
+          );
+          if (/^(code|kbd|samp|pre)$/.test(tag) && !own) {
+            // The Mizu classes on the elements around it, in this component.
+            const around: string[] = [];
+            for (let up = node.parent; up; up = up.parent)
+              if (ts.isJsxElement(up))
+                around.push(
+                  ...(up.openingElement.attributes
+                    .getText()
+                    .match(/mizu-[\w-]+/g) ?? []),
+                );
+            if (!around.some((owner) => fonted.has(`${owner} ${tag}`)))
+              unset.push(`${source.fileName}: <${tag}> in ${around.join(" ")}`);
+          }
+        }
+        ts.forEachChild(node, visit);
+      };
+      visit(source);
+    }
+    expect(unset).toEqual([]);
+    expect(fonted).toContain("mizu-code-block code");
+  });
 });

@@ -115,6 +115,10 @@
   do.
   Tests hold every element sized and padded through its parent's class, and
   every inline style that sizes and pads an unclassed element, to border-box.
+- CodeBlock's code and DataInspector's values are set in Mizu's mono. Their
+  `<code>` took the browser's monospace, or with Tailwind the app's own
+  (Geist Mono in a new Next.js app), inside a JetBrains Mono block. A test
+  holds every code, kbd, samp and pre a component renders to a font rule.
 - Docs: set up the registry without Tailwind, update copied components, and
   customize. `init` needs Tailwind but `add` does not, and the docs said the
   CLI needed it: they now give the `components.json` to write instead, tried

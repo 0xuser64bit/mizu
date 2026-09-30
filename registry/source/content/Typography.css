@@ -37,6 +37,9 @@
   color: var(--mizu-paper);
   background: var(--mizu-ink-2);
 }
+.mizu-code-block code {
+  font: inherit;
+}
 .mizu-quote {
   margin: 0;
   padding: 8px 0 8px 28px;

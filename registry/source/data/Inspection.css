@@ -82,6 +82,7 @@
   color: var(--mizu-muted);
 }
 .mizu-json-leaf code {
+  font: inherit;
   color: var(--mizu-accent);
   overflow-wrap: anywhere;
 }
