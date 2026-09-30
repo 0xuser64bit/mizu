@@ -38,6 +38,9 @@
   marker was paper and every span grey, whatever its tone. The defaults now
   apply only without a tone, as Board's and Treemap's already did, and a test
   holds every element that carries `data-tone` to that rule.
+- ErrorState's explanation lines up under its title. It shared EmptyState's
+  auto margins, which center a 44ch box, so in a wide error panel it floated
+  in the middle while the title and retry sat at the left edge.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

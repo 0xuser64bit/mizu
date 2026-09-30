@@ -1360,11 +1360,15 @@
 }
 .mizu-empty-body,
 .mizu-error-state p {
-  margin: 12px auto 0;
+  margin: 12px 0 0;
   max-width: 44ch;
   font-size: 14px;
   color: var(--mizu-muted);
   line-height: 1.7;
+}
+/* Centered under EmptyState's centered title; ErrorState keeps to its left edge. */
+.mizu-empty-body {
+  margin-inline: auto;
 }
 .mizu-empty-icon {
   margin-bottom: 20px;
