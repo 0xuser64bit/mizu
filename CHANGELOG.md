@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Docs: every usage example that keeps state or passes functions to components
+  starts with `"use client"`, so it pastes into a Next.js page as it is. 49 of
+  126 did not: pasted into a fresh App Router app, 37 failed to compile (hooks)
+  and 12 failed to render (functions passed to components). `examples:sync`
+  derives the directive from the example's code, and static examples such as
+  Mark stay Server Components.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

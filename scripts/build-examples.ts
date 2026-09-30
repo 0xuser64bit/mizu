@@ -1,5 +1,6 @@
 import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { format } from "prettier";
+import { needsClient } from "./client-boundary";
 import { CATALOG } from "../src/components/docs/catalog";
 import {
   COMPONENTS,
@@ -77,9 +78,13 @@ await typescript(
   `"use client";\n// Compile the original copied examples too; these do not replace their interactive demos.\nimport { useState, type ReactNode } from "react";\nimport { ${[...legacyImports].join(", ")} } from "@/mizu";\n\n${legacyBodies.join("\n\n")}\n`,
 );
 
+// Pasted into a Next.js page, an example with state or callbacks needs the directive.
 const usage: Record<string, string> = {};
 for (const entry of COMPONENTS)
-  usage[entry.slug] = await format(entry.usage, { parser: "typescript" });
+  usage[entry.slug] = await format(
+    (needsClient(entry.usage) ? '"use client";\n\n' : "") + entry.usage,
+    { parser: "typescript" },
+  );
 output("src/components/docs/usage.json", JSON.stringify(usage, null, 2) + "\n");
 
 // The same inventory drives discovery, source routes and the release count.

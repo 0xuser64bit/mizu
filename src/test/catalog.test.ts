@@ -4,6 +4,8 @@ import { resolve } from "node:path";
 import ts from "typescript";
 import { SYSTEMS, COMPONENTS } from "../components/docs/registry";
 import { slugOf } from "../components/docs/catalog/define";
+import usage from "../components/docs/usage.json";
+import { needsClient } from "../../scripts/client-boundary";
 import * as library from "@/mizu";
 describe("public catalog contract", () => {
   it("keeps at least 100 unique systems with source, API, usage and behavior documentation", () => {
@@ -27,6 +29,36 @@ describe("public catalog contract", () => {
             : entry.name;
       expect(library, entry.name).toHaveProperty(exported);
     }
+  });
+  it("starts every example that needs the browser with 'use client'", () => {
+    // Pasted into a Next.js page, a hook fails to compile and a function prop fails
+    // to render without the directive.
+    for (const entry of COMPONENTS) {
+      const code = usage[entry.slug as keyof typeof usage];
+      expect(code.startsWith('"use client";\n'), entry.slug).toBe(
+        needsClient(entry.usage),
+      );
+    }
+  });
+  it("tells a browser example from one a Server Component can render", () => {
+    const example = (body: string) => `export function Example() {\n${body}\n}`;
+    for (const body of [
+      "const [on, setOn] = useState(false);\n  return <Switch checked={on} />;",
+      "const { toast } = useToast();\n  return <p>{String(toast)}</p>;",
+      'return <Button onClick={() => alert("hi")}>Hi</Button>;',
+      "return <DataTable columns={[{ render: (r) => r.name }]} />;",
+      "async function save() {}\n  return <AsyncButton action={save} />;",
+      "const pick = (id: string) => id;\n  return <Menu onSelect={pick} />;",
+      "return <Grid>{[1, 2].map((n) => <Tile key={n} onFocus={() => n} />)}</Grid>;",
+      "return <Card {...{ onOpen() {} }} />;",
+    ])
+      expect(needsClient(example(body)), body).toBe(true);
+    for (const body of [
+      "return <Mark size={8} />;",
+      "const at = (h: number) => Date.UTC(2026, 0, 1, h);\n  return <Timeline items={[{ at: at(9) }]} />;",
+      "return <Prose>{Array.from({ length: 2 }, (_, i) => <p key={i}>{i}</p>)}</Prose>;",
+    ])
+      expect(needsClient(example(body)), body).toBe(false);
   });
   it("names every page, registry item and import path after its component", () => {
     for (const entry of SYSTEMS)

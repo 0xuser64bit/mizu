@@ -140,6 +140,15 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               language="tsx"
             />
           </div>
+          {usage[meta.slug as keyof typeof usage].startsWith(
+            '"use client"',
+          ) && (
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              It starts with <code>&quot;use client&quot;</code> because it
+              keeps state or passes functions to components, so it pastes into a
+              Next.js page as it is. Other React setups ignore the directive.
+            </p>
+          )}
           {signature && (
             <div className="mt-4">
               <DemoLabel>
