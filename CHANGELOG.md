@@ -87,6 +87,11 @@
   file left a flat, playable-looking track instead of "This audio could not
   be loaded", and a quick load left the duration unknown. After mounting it
   now reads the element's error and metadata.
+- Component pages give shadcn users one command for everything an example
+  uses, and the imports to paste. The command added only the page's own item,
+  so 16 examples that also use another (Dialog and CommandPalette use Button,
+  Parallax ImageFigure, AsyncForm TextField) failed to compile once pasted, and
+  every `mizu-ui` import had to be rewritten by hand, item by item.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

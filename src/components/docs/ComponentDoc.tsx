@@ -5,6 +5,7 @@ import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
 import {
+  exampleImports,
   isClientModule,
   registryExports,
   registryStylesheets,
@@ -107,6 +108,12 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
       c.source === meta.source && c.slug !== meta.slug && c.kind !== "overview",
   );
   const signature = meta.category === "Signature";
+  // Everything the example imports, as registry items: one add, then paste.
+  const code = usage[meta.slug as keyof typeof usage];
+  const imports = exampleImports(meta.slug, code);
+  const extra = imports
+    .slice(1)
+    .map(([item]) => COMPONENTS.find((c) => c.slug === item)?.name ?? item);
   const number =
     COMPONENTS.filter((c) => c.category === "Signature").indexOf(meta) + 1;
 
@@ -135,14 +142,9 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <section className="mt-14">
           <DemoLabel as="h2">Usage</DemoLabel>
           <div className="mt-4">
-            <CodeBlock
-              code={usage[meta.slug as keyof typeof usage]}
-              language="tsx"
-            />
+            <CodeBlock code={code} language="tsx" />
           </div>
-          {usage[meta.slug as keyof typeof usage].startsWith(
-            '"use client"',
-          ) && (
+          {code.startsWith('"use client"') && (
             <p className="mt-3 text-sm leading-relaxed text-muted">
               It starts with <code>&quot;use client&quot;</code> because it
               keeps state or passes functions to components, so it pastes into a
@@ -208,9 +210,15 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
                 .
               </p>
               <CodeBlock
-                code={`npx shadcn@latest add 0xuser64bit/mizu/${meta.slug}`}
+                code={`npx shadcn@latest add ${imports.map(([item]) => `0xuser64bit/mizu/${item}`).join(" ")}`}
                 language="sh"
               />
+              {extra.length > 0 && (
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  The example also uses {extra.join(" and ")}, so the command
+                  adds {extra.length > 1 ? "them" : "it"} too.
+                </p>
+              )}
               <p className="mb-3 mt-5 text-sm leading-relaxed text-muted">
                 Every component imports from its own path, its name in kebab
                 case.
@@ -232,10 +240,17 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
                     . Each has its own command and path; adding one after this
                     copies only its small entry file.
                   </>
-                )}
+                )}{" "}
+                To paste the example, replace its <code>mizu-ui</code> import
+                with:
               </p>
               <CodeBlock
-                code={`import { ${registryExports(meta.slug).join(", ")} } from "@/components/ui/mizu/${meta.slug}";`}
+                code={imports
+                  .map(
+                    ([item, names]) =>
+                      `import { ${(names.length ? names : registryExports(item)).join(", ")} } from "@/components/ui/mizu/${item}";`,
+                  )
+                  .join("\n")}
                 language="tsx"
               />
             </div>

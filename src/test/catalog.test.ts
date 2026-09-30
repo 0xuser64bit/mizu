@@ -6,6 +6,7 @@ import { SYSTEMS, COMPONENTS } from "../components/docs/registry";
 import { slugOf } from "../components/docs/catalog/define";
 import usage from "../components/docs/usage.json";
 import { needsClient } from "../../scripts/client-boundary";
+import { exampleImports } from "../components/docs/source";
 import * as library from "@/mizu";
 describe("public catalog contract", () => {
   it("keeps at least 100 unique systems with source, API, usage and behavior documentation", () => {
@@ -59,6 +60,22 @@ describe("public catalog contract", () => {
       "return <Prose>{Array.from({ length: 2 }, (_, i) => <p key={i}>{i}</p>)}</Prose>;",
     ])
       expect(needsClient(example(body)), body).toBe(false);
+  });
+  it("installs and imports everything each example uses from the registry", () => {
+    // A shadcn user runs one add for the page's items and pastes these imports.
+    for (const entry of COMPONENTS) {
+      if (entry.kind === "overview") continue;
+      const code = usage[entry.slug as keyof typeof usage];
+      const wanted = [...code.matchAll(/import \{([^}]+)\} from "mizu-ui"/g)]
+        .flatMap((m) => m[1]!.split(","))
+        .map((name) => name.trim())
+        .filter(Boolean);
+      const imports = exampleImports(entry.slug, code);
+      expect(imports[0]![0], entry.slug).toBe(entry.slug);
+      expect(imports.flatMap(([, names]) => names).sort(), entry.slug).toEqual(
+        wanted.sort(),
+      );
+    }
   });
   it("names every page, registry item and import path after its component", () => {
     for (const entry of SYSTEMS)
