@@ -179,7 +179,6 @@
   border-bottom: 1px solid var(--mizu-line);
 }
 .mizu-chronicle-event {
-  --mizu-tone: var(--mizu-paper);
   position: absolute;
   top: 0;
   left: 0;
@@ -188,6 +187,9 @@
   align-items: center;
   cursor: pointer;
   transition: opacity 260ms ease;
+}
+.mizu-chronicle-event:not([data-tone]) {
+  --mizu-tone: var(--mizu-paper);
 }
 .mizu-chronicle-event[data-tone="neutral"] {
   --mizu-tone: var(--mizu-muted);
@@ -428,8 +430,10 @@
   width: 2px;
   background: var(--mizu-paper);
 }
-.mizu-chronicle-detail {
+.mizu-chronicle-detail:not([data-tone]) {
   --mizu-tone: var(--mizu-muted);
+}
+.mizu-chronicle-detail {
   display: grid;
   gap: 12px;
   padding: 20px 16px 8px;

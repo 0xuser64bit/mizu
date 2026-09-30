@@ -32,6 +32,12 @@
   `--mizu-wave-from` and `--mizu-wave-to` (the theme's paper and accent unless
   `colorFrom` and `colorTo` say otherwise). The usage example no longer
   hard-codes the dark theme's colors.
+- Chronicle's events and detail panel show their tone. Their own
+  `--mizu-tone` default, a bare class rule, tied with `[data-tone="success"]`
+  and won wherever it loaded later, which `styles.css` always did: every
+  marker was paper and every span grey, whatever its tone. The defaults now
+  apply only without a tone, as Board's and Treemap's already did, and a test
+  holds every element that carries `data-tone` to that rule.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a
