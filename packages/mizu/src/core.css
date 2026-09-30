@@ -790,6 +790,7 @@
   }
 }
 .mizu-marquee {
+  --mizu-marquee-gap: 56px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -804,10 +805,17 @@
   width: max-content;
   animation: mizu-marquee-scroll 42s linear infinite;
 }
+/* One rhythm between items, around the diamond and into the next copy of the row. */
 .mizu-marquee-row {
   display: flex;
   flex-shrink: 0;
   align-items: center;
+  column-gap: var(--mizu-marquee-gap);
+  row-gap: 8px;
+  padding-inline-end: var(--mizu-marquee-gap);
+}
+.mizu-marquee-separator {
+  display: inline-flex;
 }
 .mizu-marquee-control {
   min-height: 44px;
@@ -830,6 +838,7 @@
   }
   .mizu-marquee-row {
     flex-wrap: wrap;
+    padding-inline-end: 0;
   }
   .mizu-marquee-row[aria-hidden="true"],
   .mizu-marquee-control {

@@ -43,7 +43,7 @@ export function Marquee({
     >
       {children}
       {separator && (
-        <span style={{ display: "inline-flex", padding: "0 28px" }}>
+        <span className="mizu-marquee-separator">
           <Mark size={6} />
         </span>
       )}

@@ -120,7 +120,7 @@ export function MarqueeDemo() {
         ].map((item) => (
           <span
             key={item}
-            className="px-7 font-mono text-[11px] uppercase tracking-[0.35em] text-muted"
+            className="font-mono text-[11px] uppercase tracking-[0.35em] text-muted"
           >
             {item}
           </span>

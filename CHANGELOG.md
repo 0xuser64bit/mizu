@@ -41,6 +41,11 @@
 - ErrorState's explanation lines up under its title. It shared EmptyState's
   auto margins, which center a 44ch box, so in a wide error panel it floated
   in the middle while the title and retry sat at the left edge.
+- Marquee spaces its items: 56px (`--mizu-marquee-gap`) between them, around
+  the diamond and into the next copy of the row. The row had no gap, so two
+  items read as one word ("SurfacesMotion") unless each carried its own
+  padding, as the docs and home page did with Tailwind classes they no longer
+  need.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a
