@@ -29,12 +29,35 @@ export default function GettingStarted() {
         <Code>{`npx shadcn@latest init 0xuser64bit/mizu/preset
 npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
         <p>
-          The shadcn CLI needs Tailwind and an import alias in your project.
-          Plain <code>init</code> installs shadcn’s own theme into your global
-          CSS; the Mizu preset writes components.json without it, so your global
-          CSS, layout and dependencies stay as they are, and adds Mizu’s tokens
-          and font files. Skip init if the project already has a
-          components.json.
+          shadcn’s <code>init</code> needs Tailwind and an import alias in your
+          project. Plain init installs shadcn’s own theme into your global CSS;
+          the Mizu preset writes components.json without it, so your global CSS,
+          layout and dependencies stay as they are, and adds Mizu’s tokens and
+          font files. Skip init if the project already has a components.json.
+        </p>
+        <p>
+          Mizu itself needs no Tailwind, and <code>add</code> needs only
+          components.json and the alias. Without Tailwind (Vite, React Router,
+          any React app), skip init and write the file yourself:
+        </p>
+        <Code>{`{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": { "config": "", "css": "", "baseColor": "stone", "cssVariables": true },
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/components/ui",
+    "utils": "@/lib/utils",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  }
+}`}</Code>
+        <p>
+          Map <code>@/*</code> to your source folder in tsconfig.json’s{" "}
+          <code>paths</code> and in your bundler’s aliases. In a JavaScript
+          project, set <code>tsx</code> to false and the CLI writes .jsx files.
         </p>
         <p>
           Each catalog page has its own add command. The CLI copies the selected
@@ -161,19 +184,57 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           never imports Next.js; the showcase uses the same implementations.
           CommonJS require is unsupported.
         </p>
+        <h2>Choose a theme</h2>
+        <Code>{`<div className="mizu-root" data-theme="light">…</div>`}</Code>
+        <p>
+          Dark is the default. Set <code>data-theme</code> on any ancestor,
+          including <code>&lt;html&gt;</code>. Native dialogs keep the theme
+          where they are rendered. With next-themes, write both the class
+          Tailwind reads and the attribute Mizu reads:
+        </p>
+        <Code>{`<ThemeProvider attribute={["class", "data-theme"]}>`}</Code>
         <h2>Change the material</h2>
-        <Code>{`<div className="mizu-root" data-theme="light">…</div>
-
-.my-surface {
+        <Code>{`/* your global CSS */
+:root,
+[data-theme] {
   --mizu-accent: #2763c4;
   --mizu-accent-fill: #2052a3;
 }`}</Code>
         <p>
-          Dark is the default. Theme any ancestor, pass className and style, or
-          override <code>--mizu-*</code> tokens. Foreground accent and
-          filled-button accent are separate for legibility. Check contrast when
-          replacing colors. Native dialogs retain the theme where they are
-          rendered.
+          Mizu is drawn from <code>--mizu-*</code> tokens. They sit in a cascade
+          layer, so your overrides win wherever your CSS loads. Name{" "}
+          <code>[data-theme]</code> as above: each theme ancestor sets the
+          colors again, and an override on <code>:root</code> alone stops there.
+          Use <code>[data-theme=&quot;light&quot;]</code> to change one theme.
+          Foreground accent and filled-button accent are separate for
+          legibility; check contrast when replacing colors.
+        </p>
+        <Code>{`<Button className="brand">Publish</Button>
+
+.brand { --mizu-accent-fill: #2052a3; }
+
+// or with Tailwind
+<Button className="[--mizu-accent-fill:var(--color-blue-600)]">Publish</Button>`}</Code>
+        <p>
+          Set a token on one component to change only that one. States made from
+          the token follow it: the hover darkens your color rather than
+          returning to Mizu’s.
+        </p>
+        <p>
+          For properties without a token, pass <code>className</code>. Component
+          rules sit outside any layer, mostly as one class: they beat Tailwind’s
+          utilities, and a single class of yours wins only if it loads later.
+          Your global CSS usually loads first. Add the component’s class to your
+          selector (<code>.mizu-btn.brand</code>), or use Tailwind’s important
+          modifier (<code>!px-5</code>). With the npm package and Tailwind v4,
+          import the stylesheet from your CSS instead of JavaScript, into the
+          components layer, and plain utilities win:
+        </p>
+        <Code>{`@import "tailwindcss";
+@import "mizu-ui/styles.css" layer(components);`}</Code>
+        <p>
+          Copied components are yours to change: edit their source and
+          stylesheets directly.
         </p>
         <h2>Use real states</h2>
         <p>
@@ -200,6 +261,25 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           From the registry, the provider is its own item. Import it from{" "}
           <code>@/components/ui/mizu/motion-preferences</code>; it governs every
           Mizu component installed alongside it.
+        </p>
+        <h2>Update copied components</h2>
+        <p>
+          <code>add</code> asks before it replaces a file that differs from the
+          registry’s, even with <code>--yes</code>, and skips files that match.
+          Components share base.css and the stylesheets under shared/, so adding
+          one can ask about those; answer no to keep your edits. To take a newer
+          Mizu, add what you installed again with <code>--overwrite</code>. It
+          replaces your edits to those files, so commit first and review the
+          diff:
+        </p>
+        <Code>{`npx shadcn@latest add --overwrite $(ls components/ui/mizu/*.tsx | sed -E 's#.*/(.*)\\.tsx$#0xuser64bit/mizu/\\1#')`}</Code>
+        <p>
+          Use your UI directory’s path, such as{" "}
+          <code>src/components/ui/mizu</code>. The{" "}
+          <a href="https://github.com/0xuser64bit/mizu/blob/main/CHANGELOG.md">
+            changelog
+          </a>{" "}
+          says what changed.
         </p>
         <h2>Inspect and copy</h2>
         <p>

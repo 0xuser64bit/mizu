@@ -106,6 +106,8 @@ body {
 .mizu-guide h1 { font-size: clamp(36px,5vw,60px); font-weight: 900; letter-spacing: -.03em; }
 .mizu-guide h2 { font-size: 24px; font-weight: 700; margin: 48px 0 12px; }
 .mizu-guide p { color: var(--mizu-muted); font-size: 15px; line-height: 1.8; margin: 16px 0; }
+.mizu-guide p a { color: var(--mizu-paper); text-decoration: underline; text-decoration-color: var(--mizu-line-bright); text-underline-offset: 4px; }
+.mizu-guide p a:hover { text-decoration-color: currentColor; }
 .mizu-guide pre { overflow-x: auto; font: 12px/1.8 var(--mizu-font-mono); background: var(--mizu-ink-2); border: 1px solid var(--mizu-line); padding: 20px; }
 @media (max-width: 900px) {
  .mizu-docs-shell { display: block; }

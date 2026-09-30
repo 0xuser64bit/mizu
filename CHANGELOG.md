@@ -102,6 +102,18 @@
   SegmentedControl instead of bare `<button>`, `<select>` and range inputs,
   which looked like plain text in a Tailwind app. Progress shows both
   determinate and indeterminate states, and renders on the server.
+- Docs: set up the registry without Tailwind, update copied components, and
+  customize. `init` needs Tailwind but `add` does not, and the docs said the
+  CLI needed it: they now give the `components.json` to write instead, tried
+  in a Vite app. Updating explains that `add` asks before replacing a changed
+  file, even with `--yes`, and gives the `--overwrite` command that re-adds
+  everything installed. Customizing leads with tokens, globally or on one
+  component, since a background set on `.mizu-btn.brand` loses to Mizu's hover
+  rule and a token's derived states follow it; then the `!` modifier or a
+  second class for other properties, and, for the npm package with Tailwind
+  v4, `@import "mizu-ui/styles.css" layer(components)` so utilities win.
+  next-themes needs `attribute={["class", "data-theme"]}`, and an override for
+  every theme names `[data-theme]` beside `:root`.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

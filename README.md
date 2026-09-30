@@ -35,9 +35,10 @@ export function App() {
 }
 ```
 
-Dark is the default; set `data-theme="light"` on any ancestor. Override the
-`--mizu-*` custom properties for your own material. Package setup, per-family
-imports and behavior limits are in [packages/mizu/README.md](packages/mizu/README.md).
+Dark is the default; set `data-theme="light"` on any ancestor, and see
+[Theme and customize](#theme-and-customize) for your own material. Package
+setup, per-family imports and behavior limits are in
+[packages/mizu/README.md](packages/mizu/README.md).
 
 To copy components with the shadcn CLI, set the project up once with the Mizu
 preset, then add what you need:
@@ -47,10 +48,11 @@ npx shadcn@latest init 0xuser64bit/mizu/preset
 npx shadcn@latest add 0xuser64bit/mizu/select-field
 ```
 
-Plain `init` installs shadcn's own theme into your global CSS. The preset
-writes `components.json` without it, leaving your global CSS, layout and
-dependencies as they are, and adds Mizu's tokens and font files. Skip it if the
-project already has a `components.json`.
+`init` needs Tailwind. Plain `init` installs shadcn's own theme into your
+global CSS. The preset writes `components.json` without it, leaving your global
+CSS, layout and dependencies as they are, and adds Mizu's tokens and font
+files. Skip it if the project already has a `components.json`, or has no
+Tailwind: see [Without Tailwind](#without-tailwind).
 
 Import it from your configured UI directory, for example
 `@/components/ui/mizu/select-field`. Every component has its own item and
@@ -70,6 +72,49 @@ modules: exported from one, an array reaches server code as a client
 reference, not an array. See each catalog page for its command; `motion-preferences` adds the MotionPreferences
 provider. Registry entries are generated from the catalog with
 `bun run registry:sync`.
+
+### Without Tailwind
+
+Mizu needs no Tailwind, and `add` needs only a `components.json` and an import
+alias. In a Vite, React Router or any other React app, write the file yourself
+instead of running `init`:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": { "config": "", "css": "", "baseColor": "stone", "cssVariables": true },
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/components/ui",
+    "utils": "@/lib/utils",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  }
+}
+```
+
+Map `@/*` to your source folder in `tsconfig.json`'s `paths` and in your
+bundler's aliases. In a JavaScript project, set `"tsx": false` and the CLI
+writes `.jsx` files.
+
+### Update copied components
+
+`add` asks before it replaces a file that differs from the registry's, even
+with `--yes`, and skips files that match. Components share `base.css` and the
+stylesheets under `shared/`, so adding one can ask about those; answer no to
+keep your edits. To take a newer Mizu, add what you installed again with
+`--overwrite`. It replaces your edits to those files, so commit first and
+review the diff:
+
+```sh
+npx shadcn@latest add --overwrite $(ls components/ui/mizu/*.tsx | sed -E 's#.*/(.*)\.tsx$#0xuser64bit/mizu/\1#')
+```
+
+Use your UI directory's path, such as `src/components/ui/mizu`. The
+[changelog](CHANGELOG.md) says what changed.
 
 ### Fonts
 
@@ -106,6 +151,49 @@ const mono = JetBrains_Mono({
 
 Keep `axes: ["wdth"]`: SoftType and the wide and narrow styles move along
 Archivo's width axis.
+
+### Theme and customize
+
+Dark is the default. Set `data-theme="light"` on any ancestor, including
+`<html>`. With next-themes, write both the class Tailwind reads and the
+attribute Mizu reads: `<ThemeProvider attribute={["class", "data-theme"]}>`.
+
+Mizu is drawn from `--mizu-*` tokens. They sit in a cascade layer, so your
+overrides win wherever your CSS loads:
+
+```css
+:root,
+[data-theme] {
+  --mizu-accent: #2763c4; /* text and marks */
+  --mizu-accent-fill: #2052a3; /* filled buttons */
+}
+```
+
+Name `[data-theme]` as above: each theme ancestor sets the colors again, and an
+override on `:root` alone stops there. Use `[data-theme="light"]` to change one
+theme, and check contrast when replacing colors.
+
+Set a token on one component to change only that one, with `className` and
+your CSS (`.brand { --mizu-accent-fill: #2052a3; }`) or a Tailwind arbitrary
+property (`className="[--mizu-accent-fill:var(--color-blue-600)]"`). States
+made from the token follow it: the hover darkens your color rather than
+returning to Mizu's.
+
+For properties without a token, pass `className`. Component rules sit outside
+any layer, mostly as one class: they beat Tailwind's utilities, and a single
+class of yours wins only if it loads later. Your global CSS usually loads
+first. Add the component's class to your selector (`.mizu-btn.brand`), or use
+Tailwind's important modifier (`!px-5`). With the npm package and Tailwind v4,
+import the stylesheet from your CSS instead of JavaScript, into the components
+layer, and plain utilities win:
+
+```css
+@import "tailwindcss";
+@import "mizu-ui/styles.css" layer(components);
+```
+
+Copied components are yours to change: edit their source and stylesheets
+directly.
 
 ## Explore the showcase
 

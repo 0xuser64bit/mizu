@@ -79,11 +79,42 @@ Compound parts count with their system; providers and hooks are supporting APIs.
 <div className="mizu-root" data-theme="light">…</div>
 ```
 
-Dark is the default. Local theme ancestors are preserved inside native dialogs.
-All systems share `--mizu-*` custom properties. Pass `className` / `style` where
-exposed, or override tokens on an ancestor. `--mizu-accent` is foreground signal;
+Dark is the default; set `data-theme` on any ancestor, including `<html>`.
+Local theme ancestors are preserved inside native dialogs. With next-themes,
+write both the class Tailwind reads and the attribute Mizu reads:
+`<ThemeProvider attribute={["class", "data-theme"]}>`.
+
+All systems share `--mizu-*` custom properties. They sit in a cascade layer, so
+your overrides win wherever your CSS loads:
+
+```css
+:root,
+[data-theme] {
+  --mizu-accent: #2763c4;
+  --mizu-accent-fill: #2052a3;
+}
+```
+
+Each theme ancestor sets the colors again, so name `[data-theme]` as above, or
+`[data-theme="light"]` for one theme. `--mizu-accent` is foreground signal;
 `--mizu-accent-fill` is the filled action background. Check contrast after any
 color override; status colors have separate success / warning / danger tokens.
+Set a token on one component (`.brand { --mizu-accent-fill: … }`, or
+`className="[--mizu-accent-fill:var(--color-blue-600)]"` with Tailwind) to
+change only that one; its hover and other derived states follow.
+
+For other properties, pass `className` / `style` where exposed. Component rules
+sit outside any layer, mostly as one class, so they beat Tailwind utilities and
+tie with one class of yours. With Tailwind v4, import the stylesheet from your
+CSS instead of JavaScript, into the components layer, and utilities win:
+
+```css
+@import "tailwindcss";
+@import "mizu-ui/styles.css" layer(components);
+```
+
+Otherwise add the component's class to your selector (`.mizu-btn.brand`) or use
+Tailwind's important modifier (`!px-5`).
 
 Components honor `prefers-reduced-motion`. For an explicit preference including
 CSS and canvas animation, use:
