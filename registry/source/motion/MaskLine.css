@@ -1,0 +1,8 @@
+
+.mizu-maskline {
+  display: block;
+  overflow: hidden;
+}
+.mizu-maskline > span {
+  display: block;
+}

@@ -185,7 +185,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
                 command copies its source into your configured UI directory,{" "}
                 {registryStylesheets(meta.slug).length
                   ? "with base.css, Mizu’s tokens, and the stylesheets that hold its rules. Each rule lives in one stylesheet, so components you add together never repeat CSS."
-                  : "with base.css, Mizu’s tokens: it styles itself inline and brings no stylesheet of its own."}{" "}
+                  : "with base.css, Mizu’s tokens: it has no static styles and brings no stylesheet of its own."}{" "}
                 In a project without a components.json, run{" "}
                 <code>npx shadcn@latest init 0xuser64bit/mizu/preset</code>{" "}
                 first: plain init installs shadcn’s theme into your global CSS.

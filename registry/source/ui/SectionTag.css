@@ -1,0 +1,21 @@
+
+.mizu-section-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--mizu-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+}
+.mizu-section-tag--faint {
+  color: var(--mizu-faint);
+}
+.mizu-section-tag--paper {
+  color: var(--mizu-paper);
+}
+.mizu-section-tag--accent {
+  color: var(--mizu-accent);
+}

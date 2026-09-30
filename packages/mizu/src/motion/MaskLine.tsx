@@ -21,12 +21,9 @@ export function MaskLine({
   const reduce = useReducedMotion();
 
   return (
-    <span
-      className={`mizu-maskline ${className}`}
-      style={{ ...style, display: "block", overflow: "hidden" }}
-    >
+    <span className={`mizu-maskline ${className}`} style={style}>
       <motion.span
-        style={{ display: "block", willChange: reduce ? "auto" : "transform" }}
+        style={{ willChange: reduce ? "auto" : "transform" }}
         initial={reduce ? { y: "0%" } : { y }}
         animate={{ y: "0%" }}
         transition={

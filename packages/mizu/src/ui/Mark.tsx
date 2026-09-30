@@ -2,13 +2,6 @@ import type { CSSProperties } from "react";
 
 export type MarkTone = "accent" | "paper" | "muted" | "line";
 
-const TONES: Record<MarkTone, string> = {
-  accent: "var(--mizu-accent)",
-  paper: "var(--mizu-paper)",
-  muted: "var(--mizu-muted)",
-  line: "var(--mizu-line-bright)",
-};
-
 export function Mark({
   size = 6,
   tone = "accent",
@@ -23,16 +16,8 @@ export function Mark({
   return (
     <span
       aria-hidden
-      className={className}
-      style={{
-        display: "inline-block",
-        width: size,
-        height: size,
-        flexShrink: 0,
-        background: TONES[tone],
-        transform: "rotate(45deg)",
-        ...style,
-      }}
+      className={`mizu-mark mizu-mark--${tone} ${className}`}
+      style={{ width: size, height: size, ...style }}
     />
   );
 }

@@ -59,9 +59,20 @@
   Exported names are unchanged; tests hold the rule and keep module names
   distinct regardless of case.
 - Docs say exactly what `add` copies: base.css and the stylesheets that hold
-  the component's rules, or base.css alone for the seventeen inline-styled
-  components such as Accordion. Getting started explains keeping server-read
-  data out of `"use client"` modules.
+  the component's rules, or base.css alone for Reveal, Presence and
+  MotionPreferences. Getting started explains keeping server-read data out of
+  `"use client"` modules.
+- Accordion, Tabs, Mark, Badge, Frame, Rule, SectionTag, CopyButton, WaveText,
+  MaskLine, Magnetic, PageWipe, Tilt and CountUp take their static styles from
+  `mizu-*` classes in core.css instead of inline styles, so ordinary CSS
+  restyles them and hover and focus rules can reach them. Sizes from props and
+  Motion values stay inline. `style` now overrides their defaults (Badge,
+  Frame, Rule, SectionTag, MaskLine and Magnetic used to discard conflicting
+  properties), and the registry ships their rules in their modules'
+  stylesheets (`source/ui/Badge.css`). Rendering is unchanged. The newly
+  classed elements are border-box like the rest of Mizu, so Frame's corner
+  brackets are 9px even without a global border-box reset, and disabled tabs
+  and copy buttons show the not-allowed cursor like other disabled controls.
 - Non-color tokens (`--mizu-ease-*`, `--mizu-duration-*`, `--mizu-space-*`,
   `--mizu-radius`, `--mizu-control-height`, `--mizu-z-*`) are declared on
   `:root` alone, so an override on an ancestor no longer resets inside a

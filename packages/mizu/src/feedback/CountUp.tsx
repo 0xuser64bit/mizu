@@ -72,7 +72,7 @@ export function CountUp({
     : "—";
 
   return (
-    <span className={className} style={{ fontVariantNumeric: "tabular-nums" }}>
+    <span className={`mizu-count-up ${className}`}>
       {reduce || seconds === 0 ? (
         `${prefix}${final}${suffix}`
       ) : (

@@ -72,22 +72,9 @@ export const CopyButton = forwardRef<
       aria-label={
         copied ? feedback : failed ? "Copy failed. Try again." : `Copy ${text}`
       }
-      className={className}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 8,
-        background: "transparent",
-        border: "none",
-        padding: 0,
-        fontFamily: "var(--mizu-font-mono)",
-        fontSize: 11,
-        letterSpacing: "0.12em",
-        color: copied ? "var(--mizu-accent)" : "var(--mizu-muted)",
-        cursor: "pointer",
-        transition: "color 250ms ease",
-        ...style,
-      }}
+      className={`mizu-copy-button ${className}`}
+      data-copied={copied || undefined}
+      style={style}
       {...props}
     >
       {copied ? (

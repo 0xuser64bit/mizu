@@ -1,0 +1,52 @@
+
+.mizu-frame {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--mizu-line);
+}
+.mizu-frame--line-bright {
+  border-color: var(--mizu-line-bright);
+}
+.mizu-frame-corner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 0 solid;
+}
+.mizu-frame-corner--tl {
+  top: -1px;
+  left: -1px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.mizu-frame-corner--tr {
+  top: -1px;
+  right: -1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.mizu-frame-corner--bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+.mizu-frame-corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+.mizu-frame-label {
+  position: absolute;
+  top: -7px;
+  left: 14px;
+  padding: 0 6px;
+  background: var(--mizu-ink);
+  font-family: var(--mizu-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+}

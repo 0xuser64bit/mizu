@@ -1,0 +1,26 @@
+
+.mizu-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.mizu-rule-line {
+  flex: 1;
+  height: 1px;
+  background: var(--mizu-line);
+}
+.mizu-rule--line-bright .mizu-rule-line {
+  background: var(--mizu-line-bright);
+}
+.mizu-rule--accent .mizu-rule-line {
+  background: var(--mizu-accent);
+}
+.mizu-rule-label {
+  font-family: var(--mizu-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+}

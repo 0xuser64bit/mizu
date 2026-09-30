@@ -1,0 +1,46 @@
+
+.mizu-accordion {
+  border-top: 1px solid var(--mizu-line);
+}
+.mizu-accordion-item {
+  border-bottom: 1px solid var(--mizu-line);
+}
+.mizu-accordion-heading {
+  margin: 0;
+}
+.mizu-accordion-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 4px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+.mizu-accordion-marker {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: var(--mizu-muted);
+}
+.mizu-accordion-trigger[aria-expanded="true"] .mizu-accordion-marker {
+  background: var(--mizu-accent);
+}
+.mizu-accordion-title {
+  font-family: var(--mizu-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--mizu-paper);
+  transition: color 250ms ease;
+}
+.mizu-accordion-panel {
+  overflow: hidden;
+}
+.mizu-accordion-body {
+  padding: 2px 4px 28px 27px;
+  color: var(--mizu-muted);
+  line-height: 1.7;
+}

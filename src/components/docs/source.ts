@@ -15,7 +15,7 @@ export function registryExports(slug: string) {
     .filter((name) => name && !name.startsWith("type "));
 }
 
-/** The stylesheets `add` installs besides base.css; inline-styled components have none. */
+/** The stylesheets `add` installs besides base.css; components with no static styles have none. */
 export function registryStylesheets(slug: string) {
   const code = readFileSync(
     join(process.cwd(), "registry", `${slug}.tsx`),

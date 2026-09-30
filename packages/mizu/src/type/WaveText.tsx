@@ -36,8 +36,6 @@ function Letter({
         y: reduced ? 0 : y,
         scale: reduced ? 1 : scale,
         color: reduced ? colorFrom : color,
-        display: "inline-block",
-        willChange: "transform",
       }}
     >
       {char === " " ? "\u00A0" : char}
@@ -91,9 +89,9 @@ export function WaveText({
 
   return (
     <Tag
-      className={className}
+      className={`mizu-wave-text ${className}`}
       aria-label={text}
-      style={{ display: "inline-flex", flexWrap: "wrap", ...style }}
+      style={style}
       onPointerMove={reduce ? undefined : onMove}
       onPointerLeave={reduce ? undefined : onLeave}
     >
@@ -103,7 +101,6 @@ export function WaveText({
           ref={(el) => {
             refs.current[i] = el;
           }}
-          style={{ display: "inline-flex" }}
         >
           <Letter
             reduced={!!reduce}

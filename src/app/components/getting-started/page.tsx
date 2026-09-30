@@ -42,10 +42,10 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           base.css, Mizu’s tokens, and the stylesheets that hold its rules. Each
           rule lives in one stylesheet, beside the module that renders it, or
           under shared/ when unrelated components render it, so components you
-          add together never repeat CSS. Seventeen components style themselves
-          inline, among them Accordion, Tabs, Mark and Badge; base.css is all
-          the CSS they bring. Motion is installed only for components that use
-          it. Load the fonts as shown below.
+          add together never repeat CSS. Reveal and Presence, which only
+          animate, and the MotionPreferences provider have no stylesheet of
+          their own; base.css is all the CSS they bring. Motion is installed
+          only for components that use it. Load the fonts as shown below.
         </p>
         <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
         <p>

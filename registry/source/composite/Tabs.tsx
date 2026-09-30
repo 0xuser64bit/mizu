@@ -95,14 +95,8 @@ export function TabsList({
     <div
       role="tablist"
       aria-label={label}
-      className={className}
+      className={`mizu-tabs-list ${className}`}
       onKeyDown={onKeyDown}
-      style={{
-        display: "flex",
-        gap: 32,
-        borderBottom: "1px solid var(--mizu-line)",
-        overflowX: "auto",
-      }}
     >
       {children}
     </div>
@@ -137,48 +131,17 @@ export function TabsTrigger({
       data-value={value}
       tabIndex={active ? 0 : -1}
       onClick={() => ctx.setValue(value)}
-      className={className}
-      style={{
-        position: "relative",
-        padding: "14px 2px",
-        background: "transparent",
-        border: "none",
-        cursor: "pointer",
-        fontFamily: "var(--mizu-font-mono)",
-        fontSize: 11,
-        letterSpacing: "0.22em",
-        textTransform: "uppercase",
-        color: active ? "var(--mizu-paper)" : "var(--mizu-faint)",
-        transition: "color 250ms ease",
-        whiteSpace: "nowrap",
-      }}
+      className={`mizu-tabs-trigger ${className}`}
     >
       {children}
       {active &&
         (reduce ? (
-          <span
-            aria-hidden
-            style={{
-              position: "absolute",
-              bottom: -1,
-              left: 0,
-              right: 0,
-              height: 1,
-              background: "var(--mizu-accent)",
-            }}
-          />
+          <span aria-hidden className="mizu-tabs-underline" />
         ) : (
           <motion.span
             layoutId={ctx.layoutId}
             aria-hidden
-            style={{
-              position: "absolute",
-              bottom: -1,
-              left: 0,
-              right: 0,
-              height: 1,
-              background: "var(--mizu-accent)",
-            }}
+            className="mizu-tabs-underline"
             transition={{ duration: 0.35, ease: EASE_EXPO }}
           />
         ))}
@@ -207,8 +170,7 @@ export function TabsPanel({
       role="tabpanel"
       aria-labelledby={`${ctx.id}-tab-${value}`}
       tabIndex={0}
-      className={className}
-      style={{ paddingTop: 28 }}
+      className={`mizu-tabs-panel ${className}`}
     >
       <AnimatePresence mode="wait">
         <motion.div

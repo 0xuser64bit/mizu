@@ -1,0 +1,12 @@
+
+.mizu-wave-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.mizu-wave-text > span {
+  display: inline-flex;
+}
+.mizu-wave-text > span > span {
+  display: inline-block;
+  will-change: transform;
+}

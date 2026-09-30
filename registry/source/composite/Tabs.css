@@ -1,0 +1,35 @@
+
+.mizu-tabs-list {
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px solid var(--mizu-line);
+  overflow-x: auto;
+}
+.mizu-tabs-trigger {
+  position: relative;
+  padding: 14px 2px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--mizu-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+  transition: color 250ms ease;
+}
+.mizu-tabs-trigger[aria-selected="true"] {
+  color: var(--mizu-paper);
+}
+.mizu-tabs-underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--mizu-accent);
+}
+.mizu-tabs-panel {
+  padding-top: 28px;
+}

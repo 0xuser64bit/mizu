@@ -82,17 +82,6 @@ export function PageWipeProvider({ children }: { children: ReactNode }) {
             key={active.id}
             aria-hidden
             className="mizu-wipe"
-            style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: "var(--mizu-z-wipe)",
-              background: "var(--mizu-ink-2)",
-              borderRight: "2px solid var(--mizu-accent)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              pointerEvents: "none",
-            }}
             initial={{ x: "-101%" }}
             animate={{ x: "101%" }}
             exit={{ opacity: 0 }}
@@ -101,14 +90,7 @@ export function PageWipeProvider({ children }: { children: ReactNode }) {
           >
             {active.label && (
               <motion.span
-                style={{
-                  fontFamily: "var(--mizu-font-mono)",
-                  fontSize: 12,
-                  letterSpacing: "0.45em",
-                  textTransform: "uppercase",
-                  color: "var(--mizu-paper)",
-                  opacity: 0.7,
-                }}
+                className="mizu-wipe-label"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: [0, 1, 1, 0], y: 0 }}
                 transition={{

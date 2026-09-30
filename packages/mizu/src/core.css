@@ -141,6 +141,285 @@ body {
 
 /* ---------- component styles ---------- */
 
+/* Marks, rules and the wrappers: faces here; sizes from props and motion values stay inline. */
+.mizu-mark {
+  display: inline-block;
+  flex-shrink: 0;
+  background: var(--mizu-accent);
+  transform: rotate(45deg);
+}
+.mizu-mark--paper {
+  background: var(--mizu-paper);
+}
+.mizu-mark--muted {
+  background: var(--mizu-muted);
+}
+.mizu-mark--line {
+  background: var(--mizu-line-bright);
+}
+.mizu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid var(--mizu-line);
+  font-family: var(--mizu-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+  white-space: nowrap;
+}
+.mizu-badge--paper {
+  border-color: var(--mizu-line-bright);
+  color: var(--mizu-paper);
+}
+.mizu-badge--accent {
+  border-color: var(--mizu-accent);
+  color: var(--mizu-accent);
+}
+.mizu-badge--line {
+  color: var(--mizu-faint);
+}
+.mizu-section-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--mizu-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+}
+.mizu-section-tag--faint {
+  color: var(--mizu-faint);
+}
+.mizu-section-tag--paper {
+  color: var(--mizu-paper);
+}
+.mizu-section-tag--accent {
+  color: var(--mizu-accent);
+}
+.mizu-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.mizu-rule-line {
+  flex: 1;
+  height: 1px;
+  background: var(--mizu-line);
+}
+.mizu-rule--line-bright .mizu-rule-line {
+  background: var(--mizu-line-bright);
+}
+.mizu-rule--accent .mizu-rule-line {
+  background: var(--mizu-accent);
+}
+.mizu-rule-label {
+  font-family: var(--mizu-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+}
+.mizu-frame {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--mizu-line);
+}
+.mizu-frame--line-bright {
+  border-color: var(--mizu-line-bright);
+}
+/* Brackets take the frame's text color. */
+.mizu-frame-corner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 0 solid;
+}
+.mizu-frame-corner--tl {
+  top: -1px;
+  left: -1px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.mizu-frame-corner--tr {
+  top: -1px;
+  right: -1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.mizu-frame-corner--bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+.mizu-frame-corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+.mizu-frame-label {
+  position: absolute;
+  top: -7px;
+  left: 14px;
+  padding: 0 6px;
+  background: var(--mizu-ink);
+  font-family: var(--mizu-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+}
+.mizu-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--mizu-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mizu-muted);
+  cursor: pointer;
+  transition: color 250ms ease;
+}
+.mizu-copy-button[data-copied] {
+  color: var(--mizu-accent);
+}
+.mizu-count-up {
+  font-variant-numeric: tabular-nums;
+}
+.mizu-accordion {
+  border-top: 1px solid var(--mizu-line);
+}
+.mizu-accordion-item {
+  border-bottom: 1px solid var(--mizu-line);
+}
+.mizu-accordion-heading {
+  margin: 0;
+}
+.mizu-accordion-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 4px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+.mizu-accordion-marker {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: var(--mizu-muted);
+}
+.mizu-accordion-trigger[aria-expanded="true"] .mizu-accordion-marker {
+  background: var(--mizu-accent);
+}
+.mizu-accordion-title {
+  font-family: var(--mizu-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--mizu-paper);
+  transition: color 250ms ease;
+}
+.mizu-accordion-panel {
+  overflow: hidden;
+}
+.mizu-accordion-body {
+  padding: 2px 4px 28px 27px;
+  color: var(--mizu-muted);
+  line-height: 1.7;
+}
+.mizu-tabs-list {
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px solid var(--mizu-line);
+  overflow-x: auto;
+}
+.mizu-tabs-trigger {
+  position: relative;
+  padding: 14px 2px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--mizu-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  white-space: nowrap;
+  transition: color 250ms ease;
+}
+.mizu-tabs-trigger[aria-selected="true"] {
+  color: var(--mizu-paper);
+}
+.mizu-tabs-underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--mizu-accent);
+}
+.mizu-tabs-panel {
+  padding-top: 28px;
+}
+.mizu-wave-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.mizu-wave-text > span {
+  display: inline-flex;
+}
+.mizu-wave-text > span > span {
+  display: inline-block;
+  will-change: transform;
+}
+.mizu-maskline {
+  display: block;
+  overflow: hidden;
+}
+.mizu-maskline > span {
+  display: block;
+}
+.mizu-magnetic {
+  display: inline-block;
+}
+.mizu-tilt {
+  perspective: 800px;
+}
+.mizu-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: var(--mizu-z-wipe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--mizu-accent);
+  background: var(--mizu-ink-2);
+  pointer-events: none;
+}
+.mizu-wipe-label {
+  font-family: var(--mizu-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--mizu-paper);
+}
+
 .mizu-slider-input {
   -webkit-appearance: none;
   appearance: none;

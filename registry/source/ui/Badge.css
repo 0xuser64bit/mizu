@@ -1,0 +1,25 @@
+
+.mizu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid var(--mizu-line);
+  font-family: var(--mizu-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+  white-space: nowrap;
+}
+.mizu-badge--paper {
+  border-color: var(--mizu-line-bright);
+  color: var(--mizu-paper);
+}
+.mizu-badge--accent {
+  border-color: var(--mizu-accent);
+  color: var(--mizu-accent);
+}
+.mizu-badge--line {
+  color: var(--mizu-faint);
+}

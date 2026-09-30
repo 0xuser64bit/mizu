@@ -25,13 +25,8 @@ export function Magnetic({
   return (
     <motion.div
       ref={ref}
-      className={className}
-      style={{
-        ...style,
-        x: reduce ? 0 : sx,
-        y: reduce ? 0 : sy,
-        display: "inline-block",
-      }}
+      className={`mizu-magnetic ${className}`}
+      style={{ ...style, x: reduce ? 0 : sx, y: reduce ? 0 : sy }}
       onMouseMove={
         reduce
           ? undefined

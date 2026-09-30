@@ -18,19 +18,8 @@ export function SectionTag({
 }) {
   return (
     <p
-      className={className}
-      style={{
-        ...style,
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        margin: 0,
-        fontFamily: "var(--mizu-font-mono)",
-        fontSize: 11,
-        letterSpacing: "0.28em",
-        textTransform: "uppercase",
-        color: `var(--mizu-${tone})`,
-      }}
+      className={`mizu-section-tag mizu-section-tag--${tone} ${className}`}
+      style={style}
     >
       {diamond && (
         <Mark size={5} tone={tone === "accent" ? "accent" : "line"} />

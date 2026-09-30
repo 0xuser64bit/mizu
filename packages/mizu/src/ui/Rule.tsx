@@ -13,52 +13,19 @@ export function Rule({
   className?: string;
   style?: React.CSSProperties;
 }) {
-  const line = (
-    <span
-      aria-hidden
-      style={{
-        flex: 1,
-        height: 1,
-        background:
-          tone === "accent"
-            ? "var(--mizu-accent)"
-            : tone === "line-bright"
-              ? "var(--mizu-line-bright)"
-              : "var(--mizu-line)",
-      }}
-    />
-  );
+  const line = <span aria-hidden className="mizu-rule-line" />;
 
   return (
     <div
       role="separator"
       aria-label={label}
       aria-orientation="horizontal"
-      className={className}
-      style={{
-        ...style,
-        display: "flex",
-        alignItems: "center",
-        gap: 12,
-        width: "100%",
-      }}
+      className={`mizu-rule mizu-rule--${tone} ${className}`}
+      style={style}
     >
       {line}
       {node && <Mark size={5} tone={tone === "accent" ? "accent" : "line"} />}
-      {label && (
-        <span
-          style={{
-            fontFamily: "var(--mizu-font-mono)",
-            fontSize: 10,
-            letterSpacing: "0.28em",
-            textTransform: "uppercase",
-            color: "var(--mizu-faint)",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {label}
-        </span>
-      )}
+      {label && <span className="mizu-rule-label">{label}</span>}
       {label && line}
     </div>
   );

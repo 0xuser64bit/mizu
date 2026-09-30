@@ -21,7 +21,6 @@ export function Tilt({
     <motion.div
       className={`mizu-tilt ${className}`}
       style={{
-        perspective: 800,
         rotateX: reduced ? 0 : rotateX,
         rotateY: reduced ? 0 : rotateY,
       }}

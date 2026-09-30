@@ -42,11 +42,11 @@ describe("Button", () => {
 });
 
 describe("primitives", () => {
-  it("Mark renders a rotated diamond", () => {
-    const { container } = render(<Mark size={8} />);
-    const mark = container.querySelector("span")!;
-    expect(mark.style.transform).toContain("rotate(45deg)");
-    expect(mark.style.background).toContain("--mizu-accent");
+  it("Mark renders a sized diamond in its tone", () => {
+    const { container } = render(<Mark size={8} tone="paper" />);
+    const mark = container.querySelector(".mizu-mark.mizu-mark--paper");
+    expect(mark).toBeTruthy();
+    expect((mark as HTMLElement).style.width).toBe("8px");
   });
 
   it("SectionTag shows text and diamond by default", () => {
@@ -54,11 +54,14 @@ describe("primitives", () => {
     expect(screen.getByText("Hello")).toBeTruthy();
   });
 
-  it("Badge applies tone", () => {
-    const { container } = render(<Badge tone="accent">Live</Badge>);
-    expect(container.querySelector("span")!.style.color).toContain(
-      "--mizu-accent",
+  it("Badge applies tone and lets style override its face", () => {
+    const { container } = render(
+      <Badge tone="accent" style={{ color: "red" }}>
+        Live
+      </Badge>,
     );
+    const badge = container.querySelector(".mizu-badge.mizu-badge--accent");
+    expect((badge as HTMLElement).style.color).toBe("red");
     expect(screen.getByText("Live")).toBeTruthy();
   });
 

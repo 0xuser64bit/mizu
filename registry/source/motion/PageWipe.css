@@ -1,0 +1,19 @@
+
+.mizu-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: var(--mizu-z-wipe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--mizu-accent);
+  background: var(--mizu-ink-2);
+  pointer-events: none;
+}
+.mizu-wipe-label {
+  font-family: var(--mizu-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--mizu-paper);
+}

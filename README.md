@@ -63,11 +63,11 @@ The registry copies each component's source dependencies, `base.css` with
 Mizu's tokens and the stylesheets that hold its rules, without installing
 `mizu-ui`. Each rule ships in one stylesheet, beside the module that renders
 it or under `shared/` when unrelated components render it, so components added
-together never repeat CSS. Seventeen components style themselves inline
-(Accordion, Tabs, Mark, Badge…) and need only `base.css`. Keep data your
-Server Components read out of `"use client"` modules: exported from one, an
-array reaches server code as a client reference, not an array. See each
-catalog page for its command; `motion-preferences` adds the MotionPreferences
+together never repeat CSS. Reveal and Presence, which only animate, and the
+MotionPreferences provider have no stylesheet of their own and need only
+`base.css`. Keep data your Server Components read out of `"use client"`
+modules: exported from one, an array reaches server code as a client
+reference, not an array. See each catalog page for its command; `motion-preferences` adds the MotionPreferences
 provider. Registry entries are generated from the catalog with
 `bun run registry:sync`.
 

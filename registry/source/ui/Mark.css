@@ -1,0 +1,16 @@
+
+.mizu-mark {
+  display: inline-block;
+  flex-shrink: 0;
+  background: var(--mizu-accent);
+  transform: rotate(45deg);
+}
+.mizu-mark--paper {
+  background: var(--mizu-paper);
+}
+.mizu-mark--muted {
+  background: var(--mizu-muted);
+}
+.mizu-mark--line {
+  background: var(--mizu-line-bright);
+}

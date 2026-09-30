@@ -1392,6 +1392,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
         }
       ]
     },
@@ -1423,6 +1428,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/ui/SectionTag.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/SectionTag.css"
         }
       ]
     },
@@ -1454,6 +1469,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/ui/Rule.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Rule.css"
         }
       ]
     },
@@ -1485,6 +1510,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/ui/Badge.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Badge.css"
         }
       ]
     },
@@ -1542,6 +1577,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Frame.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Frame.css"
         }
       ]
     },
@@ -1643,6 +1683,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/motion/MaskLine.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/motion/MaskLine.css"
         }
       ]
     },
@@ -1716,6 +1761,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/motion/Magnetic.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/motion/Magnetic.css"
         }
       ]
     },
@@ -1747,6 +1797,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
         },
         {
           "path": "registry/source/motion/Marquee.css",
@@ -1791,6 +1846,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/motion/PageWipe.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/motion/PageWipe.css"
         }
       ]
     },
@@ -1859,6 +1919,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/motion/Tilt.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/motion/Tilt.css"
         }
       ]
     },
@@ -2043,6 +2108,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/type/WaveText.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/type/WaveText.css"
         }
       ]
     },
@@ -2245,6 +2315,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/feedback/CountUp.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CountUp.css"
         }
       ]
     },
@@ -2276,6 +2351,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
         }
       ]
     },
@@ -2322,6 +2407,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
           "path": "registry/source/feedback/Toast.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/feedback/Toast.css"
@@ -2364,6 +2454,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/composite/Accordion.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Accordion.css"
         }
       ]
     },
@@ -2403,6 +2498,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/composite/Tabs.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Tabs.css"
         }
       ]
     },
@@ -4001,6 +4101,16 @@
           "target": "@ui/mizu/shared/input.css"
         },
         {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
+        },
+        {
           "path": "registry/source/data/Inspection.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/data/Inspection.css"
@@ -4045,6 +4155,16 @@
           "path": "registry/shared/input.css",
           "type": "registry:file",
           "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
         },
         {
           "path": "registry/source/data/Inspection.css",
@@ -4093,6 +4213,16 @@
           "target": "@ui/mizu/shared/input.css"
         },
         {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
+        },
+        {
           "path": "registry/source/data/Inspection.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/data/Inspection.css"
@@ -4137,6 +4267,16 @@
           "path": "registry/shared/input.css",
           "type": "registry:file",
           "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
         },
         {
           "path": "registry/source/data/Inspection.css",
@@ -4520,6 +4660,16 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
+        },
+        {
           "path": "registry/source/content/Typography.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/content/Typography.css"
@@ -4564,6 +4714,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
         },
         {
           "path": "registry/source/content/Typography.css",
@@ -4612,6 +4772,16 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
+        },
+        {
           "path": "registry/source/content/Typography.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/content/Typography.css"
@@ -4656,6 +4826,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
         },
         {
           "path": "registry/source/content/Typography.css",
@@ -4766,6 +4946,16 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
+        },
+        {
           "path": "registry/source/content/Typography.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/content/Typography.css"
@@ -4810,6 +5000,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Mark.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Mark.css"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/feedback/CopyButton.css"
         },
         {
           "path": "registry/source/content/Typography.css",

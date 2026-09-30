@@ -1,0 +1,18 @@
+
+.mizu-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--mizu-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mizu-muted);
+  cursor: pointer;
+  transition: color 250ms ease;
+}
+.mizu-copy-button[data-copied] {
+  color: var(--mizu-accent);
+}
