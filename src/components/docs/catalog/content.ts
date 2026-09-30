@@ -83,7 +83,7 @@ export const CONTENT = [
     "Content",
     "content/Media.tsx",
     "Responsive imagery with a caption and a visible failure state.",
-    '  return <ImageFigure src="/images/field.svg" alt="Warm diamonds arranged on a dark measurement field" caption="Field study 01 — a repeatable spacing rhythm." width={720} height={360} />;',
+    '  // Stand-in art, so the example runs anywhere: use your own images.\n  const field = (ground: string, mark: string) =>\n    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;\n  return <ImageFigure src={field("#141413", "#7e776b")} alt="Warm diamonds arranged on a dark measurement field" caption="Field study 01 — a repeatable spacing rhythm." width={720} height={360} />;',
     [
       p(
         "src / alt",
@@ -105,7 +105,7 @@ export const CONTENT = [
     "Content",
     "content/Media.tsx",
     "Playback handed to the browser's accessible controls.",
-    '  return <MediaPlayer kind="audio" label="A four-second calibration tone" src="/audio/calibration.wav" preload="metadata" />;',
+    '  const src = "/audio/calibration.wav"; // an audio file your app serves\n  return <MediaPlayer kind="audio" label="A four-second calibration tone" src={src} preload="metadata" />;',
     [
       p("kind", '"audio" | "video"', "Native media element.", '"video"'),
       p("label", "string", "Figure and player name."),

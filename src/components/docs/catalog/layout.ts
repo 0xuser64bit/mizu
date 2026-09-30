@@ -70,7 +70,7 @@ export const LAYOUT = [
     "Layout",
     "layout/Layout.tsx",
     "Reserve media space before it arrives, keeping the surrounding reading rhythm steady.",
-    '  return <AspectRatio ratio={2}><img src="/images/field.svg" alt="A diamond measurement field" /></AspectRatio>;',
+    '  // Stand-in art, so the example runs anywhere: use your own images.\n  const field = (ground: string, mark: string) =>\n    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;\n  return <AspectRatio ratio={2}><img src={field("#141413", "#7e776b")} alt="A diamond measurement field" /></AspectRatio>;',
     [
       p("ratio", "number", "Width divided by height.", "16 / 9"),
       p(

@@ -38,24 +38,31 @@ export function TiltDemo() {
   return (
     <Tilt max={5}>
       <Frame>
-        <p className="mizu-field-hint">POINTER STUDY</p>
-        <h3 style={{ fontSize: 36, letterSpacing: "-.04em", margin: "20px 0" }}>
-          A little depth.
-        </h3>
-        <p className="mizu-field-hint">
-          Move across the surface. The reading order and hit targets stay
-          familiar.
-        </p>
+        <div style={{ padding: 32 }}>
+          <p className="mizu-field-hint">POINTER STUDY</p>
+          <h3
+            style={{ fontSize: 36, letterSpacing: "-.04em", margin: "20px 0" }}
+          >
+            A little depth.
+          </h3>
+          <p className="mizu-field-hint">
+            Move across the surface. The reading order and hit targets stay
+            familiar.
+          </p>
+        </div>
       </Frame>
     </Tilt>
   );
 }
 
 export function ParallaxDemo() {
+  // Stand-in art, so the example runs anywhere: use your own images.
+  const field = (ground: string, mark: string) =>
+    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;
   return (
     <Parallax distance={35}>
       <ImageFigure
-        src="/images/field.svg"
+        src={field("#141413", "#7e776b")}
         alt="A field of measurement diamonds"
         caption="Scroll the page to study the relationship."
         width={720}

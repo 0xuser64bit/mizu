@@ -106,9 +106,8 @@ export function TrendChartDemo() {
 }
 
 export function WaveformDemo() {
-  return (
-    <Waveform src="/audio/calibration.wav" label="Calibration tone, 440 Hz" />
-  );
+  const src = "/audio/calibration.wav"; // an audio file your app serves
+  return <Waveform src={src} label="Calibration tone, 440 Hz" />;
 }
 
 export function PlaneDemo() {
@@ -274,6 +273,9 @@ export function QueryBuilderDemo() {
 }
 
 export function AnnotatorDemo() {
+  // Stand-in art, so the example runs anywhere: use your own images.
+  const field = (ground: string, mark: string) =>
+    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;
   const [notes, setNotes] = useState<Annotation[]>([
     {
       id: "a",
@@ -290,7 +292,7 @@ export function AnnotatorDemo() {
       annotations={notes}
       onAnnotationsChange={setNotes}
     >
-      <img src="/images/field.svg" alt="Homepage draft" />
+      <img src={field("#141413", "#7e776b")} alt="Homepage draft" />
     </Annotator>
   );
 }
@@ -394,6 +396,9 @@ export function TriageDeckDemo() {
 }
 
 export function GalleryDemo() {
+  // Stand-in art, so the example runs anywhere: use your own images.
+  const field = (ground: string, mark: string) =>
+    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;
   return (
     <Gallery
       label="Field studies"
@@ -401,7 +406,7 @@ export function GalleryDemo() {
       items={[
         {
           id: "ink",
-          src: "/images/field.svg",
+          src: field("#141413", "#7e776b"),
           alt: "Diamond field on ink",
           width: 720,
           height: 360,
@@ -409,7 +414,7 @@ export function GalleryDemo() {
         },
         {
           id: "paper",
-          src: "/images/field-light.svg",
+          src: field("#f4f0e8", "#93877a"),
           alt: "Diamond field on paper",
           width: 720,
           height: 360,
@@ -437,7 +442,14 @@ export function SplitFlapDemo() {
   const [n, setN] = useState(0);
   const states = ["ON TIME", "BOARDING", "DEPARTED"];
   return (
-    <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 16,
+        alignItems: "center",
+      }}
+    >
       <SplitFlap value={states[n % 3]!} length={8} label="Status" live />
       <Button variant="ghost" onClick={() => setN(n + 1)}>
         Advance

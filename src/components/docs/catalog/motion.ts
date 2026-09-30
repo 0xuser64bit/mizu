@@ -27,7 +27,7 @@ export const MOTION = [
     "Motion",
     "motion/Tilt.tsx",
     "A restrained depth response to the pointer, returning cleanly to rest.",
-    '  return <Tilt max={5}><Frame><p className="mizu-field-hint">POINTER STUDY</p><h3 style={{fontSize:36,letterSpacing:"-.04em",margin:"20px 0"}}>A little depth.</h3><p className="mizu-field-hint">Move across the surface. The reading order and hit targets stay familiar.</p></Frame></Tilt>;',
+    '  return <Tilt max={5}><Frame><div style={{ padding: 32 }}><p className="mizu-field-hint">POINTER STUDY</p><h3 style={{fontSize:36,letterSpacing:"-.04em",margin:"20px 0"}}>A little depth.</h3><p className="mizu-field-hint">Move across the surface. The reading order and hit targets stay familiar.</p></div></Frame></Tilt>;',
     [
       p("max", "number", "Maximum tilt in degrees, clamped to 0–20.", "6"),
       p(
@@ -45,7 +45,7 @@ export const MOTION = [
     "Motion",
     "motion/Scroll.tsx",
     "A bounded depth cue linked to the surface's actual position in the viewport.",
-    '  return <Parallax distance={35}><ImageFigure src="/images/field.svg" alt="A field of measurement diamonds" caption="Scroll the page to study the relationship." width={720} height={360} /></Parallax>;',
+    '  // Stand-in art, so the example runs anywhere: use your own images.\n  const field = (ground: string, mark: string) =>\n    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;\n  return <Parallax distance={35}><ImageFigure src={field("#141413", "#7e776b")} alt="A field of measurement diamonds" caption="Scroll the page to study the relationship." width={720} height={360} /></Parallax>;',
     [
       p(
         "distance",

@@ -73,9 +73,12 @@ export function ProseDemo() {
 }
 
 export function ImageFigureDemo() {
+  // Stand-in art, so the example runs anywhere: use your own images.
+  const field = (ground: string, mark: string) =>
+    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;
   return (
     <ImageFigure
-      src="/images/field.svg"
+      src={field("#141413", "#7e776b")}
       alt="Warm diamonds arranged on a dark measurement field"
       caption="Field study 01 — a repeatable spacing rhythm."
       width={720}
@@ -85,11 +88,12 @@ export function ImageFigureDemo() {
 }
 
 export function MediaPlayerDemo() {
+  const src = "/audio/calibration.wav"; // an audio file your app serves
   return (
     <MediaPlayer
       kind="audio"
       label="A four-second calibration tone"
-      src="/audio/calibration.wav"
+      src={src}
       preload="metadata"
     />
   );

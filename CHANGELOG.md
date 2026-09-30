@@ -92,6 +92,16 @@
   so 16 examples that also use another (Dialog and CommandPalette use Button,
   Parallax ImageFigure, AsyncForm TextField) failed to compile once pasted, and
   every `mizu-ui` import had to be rewritten by hand, item by item.
+- Usage examples render as their previews when pasted into a fresh app. Six
+  referenced the docs site's `/images/field.svg`, a 404 anywhere else; they
+  now draw a stand-in diamond field from a data URI. Audio examples name the
+  file as yours. Button's example lays its buttons out in a row instead of
+  fused together, RippleSurface's hero has a height, Tilt's frame gives its
+  text room clear of the corner marks, MaskLine's headline has a size, and
+  SplitFlap's row wraps on a phone. Examples use Mizu's Button and
+  SegmentedControl instead of bare `<button>`, `<select>` and range inputs,
+  which looked like plain text in a Tailwind app. Progress shows both
+  determinate and indeterminate states, and renders on the server.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

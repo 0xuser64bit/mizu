@@ -12,6 +12,7 @@ import {
   ErrorState,
   ConnectionStatus,
   SaveIndicator,
+  SegmentedControl,
   AsyncBoundary,
   TaskProgress,
   AsyncButton,
@@ -30,17 +31,11 @@ export function AlertDemo() {
 }
 
 export function ProgressDemo() {
-  const [value, setValue] = useState(42);
   return (
-    <>
-      <Progress label="Processing artwork" value={value} />
-      <input
-        type="range"
-        aria-label="Demo progress"
-        value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
-      />
-    </>
+    <div style={{ display: "grid", gap: 24 }}>
+      <Progress label="Processing artwork" value={42} />
+      <Progress label="Waiting for a worker" />
+    </div>
   );
 }
 
@@ -99,18 +94,18 @@ export function SaveIndicatorDemo() {
     "unsaved",
   );
   return (
-    <>
+    <div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
       <SaveIndicator state={state} onRetry={() => setState("saving")} />
-      <select
-        aria-label="Demo save state"
+      <SegmentedControl
+        label="Demo save state"
         value={state}
-        onChange={(e) => setState(e.target.value as typeof state)}
-      >
-        {["saved", "unsaved", "saving", "error"].map((v) => (
-          <option key={v}>{v}</option>
-        ))}
-      </select>
-    </>
+        onValueChange={(v) => setState(v as typeof state)}
+        options={["saved", "unsaved", "saving", "error"].map((v) => ({
+          value: v,
+          label: v,
+        }))}
+      />
+    </div>
   );
 }
 
@@ -119,20 +114,20 @@ export function AsyncBoundaryDemo() {
     "ready",
   );
   return (
-    <>
-      <select
-        aria-label="Demo content state"
+    <div style={{ display: "grid", gap: 16, justifyItems: "start" }}>
+      <SegmentedControl
+        label="Demo content state"
         value={state}
-        onChange={(e) => setState(e.target.value as typeof state)}
-      >
-        {["ready", "loading", "empty", "error"].map((v) => (
-          <option key={v}>{v}</option>
-        ))}
-      </select>
+        onValueChange={(v) => setState(v as typeof state)}
+        options={["ready", "loading", "empty", "error"].map((v) => ({
+          value: v,
+          label: v,
+        }))}
+      />
       <AsyncBoundary state={state} onRetry={() => setState("ready")}>
-        <p>The archive is ready.</p>
+        <p style={{ margin: 0 }}>The archive is ready.</p>
       </AsyncBoundary>
-    </>
+    </div>
   );
 }
 

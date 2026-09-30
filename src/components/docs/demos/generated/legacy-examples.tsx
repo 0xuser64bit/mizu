@@ -44,7 +44,14 @@ import {
 
 export function ButtonUsage_Actions() {
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 12,
+        alignItems: "center",
+      }}
+    >
       <Button variant="solid">Continue</Button>
       <Button variant="ghost" size="sm">
         Cancel
@@ -53,7 +60,7 @@ export function ButtonUsage_Actions() {
       <ButtonLink href="/next" label="Next page">
         Next page
       </ButtonLink>
-    </>
+    </div>
   );
 }
 
@@ -78,7 +85,7 @@ export function PrimitivesUsage_Header() {
 
 export function MaskLineUsage_Headline() {
   return (
-    <h1>
+    <h1 style={{ margin: 0, fontSize: 64, fontWeight: 900, lineHeight: 1 }}>
       <MaskLine>Movement</MaskLine>
       <MaskLine delay={0.15}>travels.</MaskLine>
     </h1>
@@ -96,7 +103,7 @@ export function RevealUsage_Grid() {
 export function MagneticUsage_PullTab() {
   return (
     <Magnetic strength={0.4}>
-      <button>Pull</button>
+      <Button>Pull</Button>
     </Magnetic>
   );
 }
@@ -122,7 +129,7 @@ export function PageWipeUsage_NavLink() {
     window.location.assign("/lab"); // or call your router here
   };
 
-  return <button onClick={go}>Enter</button>;
+  return <Button onClick={go}>Enter</Button>;
 }
 
 export function SpecimenUsage_Tester() {
@@ -158,9 +165,25 @@ export function SignalUsage_Wave() {
 
 export function RippleSurfaceUsage_Hero() {
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      style={{
+        position: "relative",
+        display: "grid",
+        placeItems: "center",
+        minHeight: 320,
+      }}
+    >
       <RippleSurface style={{ position: "absolute", inset: 0 }} />
-      <h1>Step inside</h1>
+      <h1
+        style={{
+          position: "relative",
+          margin: 0,
+          fontSize: 48,
+          pointerEvents: "none",
+        }}
+      >
+        Step inside
+      </h1>
     </div>
   );
 }
@@ -180,7 +203,7 @@ export function ToastUsage_App({ children }: { children: ReactNode }) {
 export function ToastUsage_Saver() {
   const { toast } = useToast();
   const notify = () => toast("Notification received", { tone: "success" });
-  return <button onClick={notify}>Notify</button>;
+  return <Button onClick={notify}>Notify</Button>;
 }
 
 export function AccordionUsage_Faq() {

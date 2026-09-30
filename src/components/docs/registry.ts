@@ -65,14 +65,14 @@ const ORIGINAL_COMPONENTS: ComponentMeta[] = [
 
 export function Actions() {
   return (
-    <>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
       <Button variant="solid">Continue</Button>
       <Button variant="ghost" size="sm">Cancel</Button>
       <Button loading>Saving</Button>
       <ButtonLink href="/next" label="Next page">
         Next page
       </ButtonLink>
-    </>
+    </div>
   );
 }`,
     props: [
@@ -192,7 +192,7 @@ export function Header() {
 
 export function Headline() {
   return (
-    <h1>
+    <h1 style={{ margin: 0, fontSize: 64, fontWeight: 900, lineHeight: 1 }}>
       <MaskLine>Movement</MaskLine>
       <MaskLine delay={0.15}>travels.</MaskLine>
     </h1>
@@ -268,12 +268,12 @@ export function Grid() {
     category: "Motion",
     tagline:
       "A spring-follow wrapper — the surface leans toward the cursor and settles back.",
-    usage: `import { Magnetic } from "mizu-ui";
+    usage: `import { Button, Magnetic } from "mizu-ui";
 
 export function PullTab() {
   return (
     <Magnetic strength={0.4}>
-      <button>Pull</button>
+      <Button>Pull</Button>
     </Magnetic>
   );
 }`,
@@ -342,7 +342,7 @@ export function Ticker() {
     tagline:
       "The page transition — a full-screen sweep with a label, and an imperative API that hands you the midpoint.",
     usage: `import type { ReactNode } from "react";
-import { PageWipeProvider, usePageWipe } from "mizu-ui";
+import { Button, PageWipeProvider, usePageWipe } from "mizu-ui";
 
 export function App({ children }: { children: ReactNode }) {
   return <PageWipeProvider>{children}</PageWipeProvider>;
@@ -356,7 +356,7 @@ export function NavLink() {
     window.location.assign("/lab"); // or call your router here
   };
 
-  return <button onClick={go}>Enter</button>;
+  return <Button onClick={go}>Enter</Button>;
 }`,
     props: [
       {
@@ -605,9 +605,11 @@ export function Wave() {
 
 export function Hero() {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", display: "grid", placeItems: "center", minHeight: 320 }}>
       <RippleSurface style={{ position: "absolute", inset: 0 }} />
-      <h1>Step inside</h1>
+      <h1 style={{ position: "relative", margin: 0, fontSize: 48, pointerEvents: "none" }}>
+        Step inside
+      </h1>
     </div>
   );
 }`,
@@ -703,7 +705,7 @@ export function Swatch({ hex }: { hex: string }) {
     tagline:
       "A toast system — provider, imperative API, tones, and a live region for screen readers.",
     usage: `import type { ReactNode } from "react";
-import { ToastProvider, useToast } from "mizu-ui";
+import { Button, ToastProvider, useToast } from "mizu-ui";
 
 export function App({ children }: { children: ReactNode }) {
   return <ToastProvider>{children}</ToastProvider>;
@@ -712,7 +714,7 @@ export function App({ children }: { children: ReactNode }) {
 export function Saver() {
   const { toast } = useToast();
   const notify = () => toast("Notification received", { tone: "success" });
-  return <button onClick={notify}>Notify</button>;
+  return <Button onClick={notify}>Notify</Button>;
 }`,
     props: [
       {

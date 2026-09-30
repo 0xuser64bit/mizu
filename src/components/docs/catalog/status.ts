@@ -35,7 +35,7 @@ export const STATUS = [
     "Status",
     "status/Feedback.tsx",
     "Determinate or indeterminate progress, measured on a hairline track.",
-    '  const [value, setValue] = useState(42);\n  return <><Progress label="Processing artwork" value={value} /><input type="range" aria-label="Demo progress" value={value} onChange={e => setValue(Number(e.target.value))} /></>;',
+    '  return (\n    <div style={{ display: "grid", gap: 24 }}>\n      <Progress label="Processing artwork" value={42} />\n      <Progress label="Waiting for a worker" />\n    </div>\n  );',
     [
       p("value", "number | undefined", "Omit for indeterminate progress."),
       p("max", "number", "Completion value.", "100"),
@@ -128,7 +128,7 @@ export const STATUS = [
     "Status",
     "status/Feedback.tsx",
     "Keep the difference between saved, dirty, saving and failed visible.",
-    '  const [state, setState] = useState<"saved" | "unsaved" | "saving" | "error">("unsaved");\n  return <><SaveIndicator state={state} onRetry={() => setState("saving")} /><select aria-label="Demo save state" value={state} onChange={e => setState(e.target.value as typeof state)}>{["saved","unsaved","saving","error"].map(v => <option key={v}>{v}</option>)}</select></>;',
+    '  const [state, setState] = useState<"saved" | "unsaved" | "saving" | "error">("unsaved");\n  return (\n    <div style={{ display: "grid", gap: 16, justifyItems: "start" }}>\n      <SaveIndicator state={state} onRetry={() => setState("saving")} />\n      <SegmentedControl label="Demo save state" value={state} onValueChange={(v) => setState(v as typeof state)} options={["saved", "unsaved", "saving", "error"].map((v) => ({ value: v, label: v }))} />\n    </div>\n  );',
     [
       p(
         "state",
@@ -138,13 +138,15 @@ export const STATUS = [
       p("onRetry", "() => void", "Optional retry for a failed save."),
     ],
     "Changes are announced politely. The retry control appears only when it can recover a failure.",
+    undefined,
+    "SaveIndicator, SegmentedControl",
   ),
   d(
     "AsyncBoundary",
     "Status",
     "status/Feedback.tsx",
     "One readable contract for ready, loading, empty and failed content.",
-    '  const [state, setState] = useState<"ready" | "loading" | "empty" | "error">("ready");\n  return <><select aria-label="Demo content state" value={state} onChange={e => setState(e.target.value as typeof state)}>{["ready","loading","empty","error"].map(v => <option key={v}>{v}</option>)}</select><AsyncBoundary state={state} onRetry={() => setState("ready")}><p>The archive is ready.</p></AsyncBoundary></>;',
+    '  const [state, setState] = useState<"ready" | "loading" | "empty" | "error">("ready");\n  return (\n    <div style={{ display: "grid", gap: 16, justifyItems: "start" }}>\n      <SegmentedControl label="Demo content state" value={state} onValueChange={(v) => setState(v as typeof state)} options={["ready", "loading", "empty", "error"].map((v) => ({ value: v, label: v }))} />\n      <AsyncBoundary state={state} onRetry={() => setState("ready")}>\n        <p style={{ margin: 0 }}>The archive is ready.</p>\n      </AsyncBoundary>\n    </div>\n  );',
     [
       p(
         "state",
@@ -159,6 +161,8 @@ export const STATUS = [
       ),
     ],
     "Default placeholders are labelled; error recovery is keyboard accessible. It does not fetch or infer emptiness.",
+    undefined,
+    "AsyncBoundary, SegmentedControl",
   ),
   d(
     "TaskProgress",

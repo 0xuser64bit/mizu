@@ -125,7 +125,7 @@ export const SIGNATURE = [
     tagline:
       "Audio you can see and scrub: a waveform over a native audio element, with chapters, speed, skips and an imperative handle.",
     example:
-      '  return <Waveform src="/audio/calibration.wav" label="Calibration tone, 440 Hz" />;',
+      '  const src = "/audio/calibration.wav"; // an audio file your app serves\n  return <Waveform src={src} label="Calibration tone, 440 Hz" />;',
     props: [
       p("src / label", "string", "Playable source and accessible name."),
       p(
@@ -475,7 +475,7 @@ export const SIGNATURE = [
     tagline:
       "Review pins on anything: drop numbered pins, discuss in threads, resolve and reopen, and find every conversation in the list beside the work.",
     example:
-      '  const [notes,setNotes]=useState<Annotation[]>([{id:"a",x:0.3,y:0.4,author:"Rin",body:"Can this headline be shorter?"}]);\n  return <Annotator label="Homepage" author="You" annotations={notes} onAnnotationsChange={setNotes}><img src="/images/field.svg" alt="Homepage draft" /></Annotator>;',
+      '  // Stand-in art, so the example runs anywhere: use your own images.\n  const field = (ground: string, mark: string) =>\n    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;\n  const [notes,setNotes]=useState<Annotation[]>([{id:"a",x:0.3,y:0.4,author:"Rin",body:"Can this headline be shorter?"}]);\n  return <Annotator label="Homepage" author="You" annotations={notes} onAnnotationsChange={setNotes}><img src={field("#141413", "#7e776b")} alt="Homepage draft" /></Annotator>;',
     imports: "Annotator, type Annotation",
     props: [
       p(
@@ -675,7 +675,7 @@ export const SIGNATURE = [
     tagline:
       "A justified photo grid whose photos open from exactly where they sit: swipe to travel, pull down to put one back, pinch or double-tap to look closer.",
     example:
-      '  return <Gallery label="Field studies" rowHeight={160} items={[{id:"ink",src:"/images/field.svg",alt:"Diamond field on ink",width:720,height:360,caption:"Field, ink"},{id:"paper",src:"/images/field-light.svg",alt:"Diamond field on paper",width:720,height:360,caption:"Field, paper"}]} />;',
+      '  // Stand-in art, so the example runs anywhere: use your own images.\n  const field = (ground: string, mark: string) =>\n    `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;\n  return <Gallery label="Field studies" rowHeight={160} items={[{id:"ink",src:field("#141413", "#7e776b"),alt:"Diamond field on ink",width:720,height:360,caption:"Field, ink"},{id:"paper",src:field("#f4f0e8", "#93877a"),alt:"Diamond field on paper",width:720,height:360,caption:"Field, paper"}]} />;',
     props: [
       p(
         "label / items",
@@ -763,7 +763,7 @@ export const SIGNATURE = [
     tagline:
       "A mechanical flip display: every character falls forward through the drum to its new value, cell after cell, and lands with a slap.",
     example:
-      '  const [n, setN] = useState(0);\n  const states = ["ON TIME", "BOARDING", "DEPARTED"];\n  return <div style={{ display: "flex", gap: 16, alignItems: "center" }}><SplitFlap value={states[n % 3]!} length={8} label="Status" live /><Button variant="ghost" onClick={() => setN(n + 1)}>Advance</Button></div>;',
+      '  const [n, setN] = useState(0);\n  const states = ["ON TIME", "BOARDING", "DEPARTED"];\n  return <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}><SplitFlap value={states[n % 3]!} length={8} label="Status" live /><Button variant="ghost" onClick={() => setN(n + 1)}>Advance</Button></div>;',
     props: [
       p(
         "value / length / align",
