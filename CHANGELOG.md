@@ -129,6 +129,10 @@
   Tailwind app, from 94. Of the rest, nine differ only in headings and
   paragraphs the examples bring, which follow the page's reset, and four keep
   every element's box and differ in rendering alone.
+- TrendChart's last axis label stays inside the chart. Labels read right of
+  their tick, so a tick at the right edge, as when the data ends on a day or
+  an hour, drew its label past the chart's border ("MON 7"). A label that
+  would cross the edge now ends at its tick.
 - Docs: set up the registry without Tailwind, update copied components, and
   customize. `init` needs Tailwind but `add` does not, and the docs said the
   CLI needed it: they now give the `components.json` to write instead, tried

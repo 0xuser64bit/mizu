@@ -296,6 +296,33 @@ describe("TrendChart", () => {
     expect(range).toHaveBeenLastCalledWith([minute(0), minute(3)]);
   });
 
+  it("keeps the last axis label inside the chart", async () => {
+    // Labels read right of their tick, so one at the right edge ran past the
+    // chart's border; it ends at its tick instead.
+    const { container } = render(
+      <TrendChart
+        label="Throughput"
+        xType="number"
+        series={[
+          {
+            id: "a",
+            label: "Requests",
+            data: [0, 50, 100].map((x) => ({ x, y: x })),
+          },
+        ]}
+      />,
+    );
+    await screen.findByRole("group", { name: /Throughput\./ });
+    const labels = [
+      ...container.querySelectorAll<SVGTextElement>(".mizu-trend-axis text"),
+    ];
+    const last = labels.find((t) => t.textContent === "100")!;
+    expect(last.getAttribute("text-anchor")).toBe("end");
+    expect(last.getAttribute("x")).toBe("-5");
+    const first = labels.find((t) => t.textContent === "0")!;
+    expect(first.getAttribute("text-anchor")).toBeNull();
+  });
+
   it("offers the visible readings as a table", async () => {
     const user = userEvent.setup();
     render(

@@ -637,14 +637,23 @@ export function TrendChart({
                 className="mizu-trend-axis"
                 transform={`translate(0 ${PAD.top + plotH})`}
               >
-                {xTicks.map((t) => (
-                  <g key={t.t} transform={`translate(${sx(t.t)} 0)`}>
-                    <line y2={5} />
-                    <text x={5} y={20}>
-                      {t.label}
-                    </text>
-                  </g>
-                ))}
+                {xTicks.map((t) => {
+                  // A label reads right of its tick; one that would run past the
+                  // chart's edge (10px mono, about 6.6px a character) ends at it.
+                  const end = sx(t.t) + 5 + t.label.length * 6.6 > width;
+                  return (
+                    <g key={t.t} transform={`translate(${sx(t.t)} 0)`}>
+                      <line y2={5} />
+                      <text
+                        x={end ? -5 : 5}
+                        y={20}
+                        textAnchor={end ? "end" : undefined}
+                      >
+                        {t.label}
+                      </text>
+                    </g>
+                  );
+                })}
               </g>
               {measure && (
                 <g className="mizu-trend-measure">
