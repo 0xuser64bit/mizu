@@ -60,6 +60,7 @@
     color var(--mizu-duration-fast);
 }
 .mizu-annotator-mode > span {
+  box-sizing: border-box;
   width: 8px;
   height: 8px;
   border: 1px solid currentColor;
@@ -327,6 +328,7 @@
   display: grid;
   grid-template-columns: 22px minmax(0, 1fr);
   gap: 12px;
+  box-sizing: border-box;
   width: 100%;
   padding: 14px 16px;
   border: 0;

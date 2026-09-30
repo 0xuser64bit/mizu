@@ -39,6 +39,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  box-sizing: border-box;
   min-height: 30px;
   padding: 0 9px;
   border: 1px solid var(--mizu-line);
@@ -117,6 +118,7 @@
   cursor: pointer;
 }
 .mizu-log-follow i {
+  box-sizing: border-box;
   width: 7px;
   height: 7px;
   border: 1px solid currentColor;

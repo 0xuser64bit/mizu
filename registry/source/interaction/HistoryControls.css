@@ -1,5 +1,6 @@
 
 .mizu-history-controls button {
+  box-sizing: border-box;
   min-height: 44px;
   padding: 10px 16px;
   border: 1px solid var(--mizu-line);

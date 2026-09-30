@@ -102,6 +102,19 @@
   SegmentedControl instead of bare `<button>`, `<select>` and range inputs,
   which looked like plain text in a Tailwind app. Progress shows both
   determinate and indeterminate states, and renders on the server.
+- Elements a component styles without a class of its own are border-box, as
+  its classed elements already were, so they keep their size without a
+  border-box reset. Tailwind's preflight supplied it, so apps without one got
+  content-box: SegmentedControl's 44px options grew to 60px, and so did
+  BottomNav, SideNav and AnchorNav links, ActionMenu and MultiSelect summaries,
+  Checklist rows, Interview choices, TagInput's field, Outliner's text and
+  AppShell's panes; FlowGraph's ports, Interview's and LogStream's dots and
+  Annotator's comment diamond drew 2px wider. Toast's panel, 100% wide plus
+  its padding, ran off both edges of a phone. Of 126 examples in a plain Vite
+  app, 94 matched the same examples in a Tailwind app pixel for pixel; now 107
+  do.
+  Tests hold every element sized and padded through its parent's class, and
+  every inline style that sizes and pads an unclassed element, to border-box.
 - Docs: set up the registry without Tailwind, update copied components, and
   customize. `init` needs Tailwind but `add` does not, and the docs said the
   CLI needed it: they now give the `components.json` to write instead, tried

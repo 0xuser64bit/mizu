@@ -170,6 +170,7 @@
 }
 
 .mizu-root select option {
+  box-sizing: border-box;
   background: var(--mizu-ink-2);
   color: var(--mizu-paper);
 }
@@ -177,6 +178,7 @@
 @supports (appearance: base-select) {
   .mizu-root select:not([multiple]):not([size]),
   .mizu-root select:not([multiple]):not([size])::picker(select) {
+    box-sizing: border-box;
     appearance: base-select;
   }
   .mizu-root select:not([multiple]):not([size])::picker(select) {

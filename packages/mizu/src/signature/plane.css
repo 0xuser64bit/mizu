@@ -89,6 +89,7 @@
 .mizu-plane-tools button {
   display: grid;
   place-items: center;
+  box-sizing: border-box;
   min-width: 40px;
   min-height: 40px;
   padding: 0 12px;

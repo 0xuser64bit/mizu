@@ -18,6 +18,7 @@
   border: 1px solid var(--mizu-line-bright);
 }
 .mizu-option-list [role="option"] {
+  box-sizing: border-box;
   padding: 12px 16px;
   cursor: pointer;
   min-height: 44px;

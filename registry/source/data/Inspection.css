@@ -23,6 +23,7 @@
 }
 .mizu-diff pre > span {
   display: block;
+  box-sizing: border-box;
   padding: 0 16px;
   min-width: max-content;
 }
@@ -103,6 +104,7 @@
 }
 .mizu-tree button {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   text-align: left;
   min-height: 44px;

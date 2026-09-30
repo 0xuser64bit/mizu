@@ -921,12 +921,14 @@
   border-color: var(--mizu-accent);
 }
 .mizu-root select option {
+  box-sizing: border-box;
   background: var(--mizu-ink-2);
   color: var(--mizu-paper);
 }
 @supports (appearance: base-select) {
   .mizu-root select:not([multiple]):not([size]),
   .mizu-root select:not([multiple]):not([size])::picker(select) {
+    box-sizing: border-box;
     appearance: base-select;
   }
   .mizu-root select:not([multiple]):not([size])::picker(select) {
@@ -1077,6 +1079,7 @@
 .mizu-segmented span {
   display: grid;
   place-items: center;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 8px 16px;
   color: var(--mizu-muted);
@@ -1119,6 +1122,7 @@
   align-items: stretch;
 }
 .mizu-number button {
+  box-sizing: border-box;
   width: 44px;
   flex-shrink: 0;
   padding: 0;
@@ -1168,6 +1172,7 @@
   color: var(--mizu-muted);
 }
 .mizu-color-native input {
+  box-sizing: border-box;
   width: 44px;
   height: 44px;
   padding: 3px;
@@ -1182,6 +1187,7 @@
   margin-top: 12px;
 }
 .mizu-color-swatches button {
+  box-sizing: border-box;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -1202,6 +1208,7 @@
   border: 1px solid var(--mizu-line-bright);
 }
 .mizu-tag-input input {
+  box-sizing: border-box;
   min-width: 100px;
   flex: 1;
   width: 100px;
@@ -1215,6 +1222,7 @@
 .mizu-tag-input > button {
   background: transparent;
   color: var(--mizu-paper);
+  box-sizing: border-box;
   border: 1px solid var(--mizu-line);
   padding: 8px 12px;
   min-height: 44px;
@@ -1716,6 +1724,7 @@
 }
 .mizu-diff pre > span {
   display: block;
+  box-sizing: border-box;
   padding: 0 16px;
   min-width: max-content;
 }
@@ -1796,6 +1805,7 @@
 }
 .mizu-tree button {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   text-align: left;
   min-height: 44px;
@@ -1884,6 +1894,7 @@
   align-items: center;
 }
 .mizu-pagination button {
+  box-sizing: border-box;
   min-width: 44px;
   min-height: 44px;
   padding: 8px 12px;
@@ -1949,6 +1960,7 @@
 }
 .mizu-anchor-nav a {
   text-decoration: none;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 12px;
   border-left: 1px solid var(--mizu-line);
@@ -1972,6 +1984,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  box-sizing: border-box;
   padding: 12px;
   min-height: 44px;
   font-size: 13px;
@@ -1994,6 +2007,7 @@
   display: grid;
   justify-items: center;
   gap: 8px;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 8px 12px;
   font-size: 12px;
@@ -2007,6 +2021,7 @@
   position: relative;
 }
 .mizu-action-menu summary {
+  box-sizing: border-box;
   min-height: 44px;
   padding: 12px 16px;
   border: 1px solid var(--mizu-line-bright);
@@ -2018,6 +2033,7 @@
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
+  box-sizing: border-box;
   width: max-content;
   min-width: 180px;
   max-width: min(300px, 80vw);
@@ -2029,6 +2045,7 @@
 }
 .mizu-action-menu button {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   text-align: left;
   min-height: 44px;
@@ -2366,6 +2383,7 @@
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  box-sizing: border-box;
   width: 100%;
   font-weight: 600;
   font-size: 14px;
@@ -2387,6 +2405,7 @@
   display: flex;
   gap: 14px;
   align-items: center;
+  box-sizing: border-box;
   min-height: 64px;
   cursor: pointer;
   padding-block: 12px;
@@ -2449,12 +2468,14 @@
   min-width: 0;
 }
 .mizu-app-body > aside {
+  box-sizing: border-box;
   width: 200px;
   flex-shrink: 0;
   padding: 20px;
   border-right: 1px solid var(--mizu-line);
 }
 .mizu-app-body > :is(main, section) {
+  box-sizing: border-box;
   min-width: 0;
   flex: 1;
   padding: 24px;
@@ -2531,6 +2552,7 @@
   border: 1px solid var(--mizu-line-bright);
 }
 .mizu-option-list [role="option"] {
+  box-sizing: border-box;
   padding: 12px 16px;
   cursor: pointer;
   min-height: 44px;
@@ -2561,6 +2583,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 12px 16px;
   border: 1px solid var(--mizu-line-bright);
@@ -2587,6 +2610,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
+  box-sizing: border-box;
   min-height: 44px;
   padding-block: 8px;
   font-size: 14px;
@@ -2605,6 +2629,7 @@
 }
 .mizu-inline-edit > button {
   display: flex;
+  box-sizing: border-box;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -2630,6 +2655,7 @@
 }
 .mizu-inline-actions button,
 .mizu-history-controls button {
+  box-sizing: border-box;
   min-height: 44px;
   padding: 10px 16px;
   border: 1px solid var(--mizu-line);
@@ -2651,6 +2677,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  box-sizing: border-box;
   width: 100%;
   padding: 0 0 24px;
   font-size: 14px;

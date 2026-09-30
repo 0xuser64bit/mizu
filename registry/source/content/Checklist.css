@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  box-sizing: border-box;
   width: 100%;
   font-weight: 600;
   font-size: 14px;
@@ -30,6 +31,7 @@
   display: flex;
   gap: 14px;
   align-items: center;
+  box-sizing: border-box;
   min-height: 64px;
   cursor: pointer;
   padding-block: 12px;

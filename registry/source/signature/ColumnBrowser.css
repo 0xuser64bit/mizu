@@ -47,6 +47,7 @@
   color: var(--mizu-faint);
 }
 .mizu-columns-crumbs button {
+  box-sizing: border-box;
   min-height: 36px;
   padding: 0 8px;
   overflow: hidden;

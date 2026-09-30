@@ -114,6 +114,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 display: "flex",
                 alignItems: "center",
                 gap: 12,
+                boxSizing: "border-box",
                 width: "100%",
                 padding: "14px 18px",
                 background: "var(--mizu-ink-2)",

@@ -45,6 +45,7 @@
   content: "";
   position: absolute;
   z-index: 1;
+  box-sizing: border-box;
   width: 14px;
   height: 14px;
   border: 0 solid var(--mizu-accent);

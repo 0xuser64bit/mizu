@@ -40,6 +40,7 @@
   grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 8px;
+  box-sizing: border-box;
   min-height: 48px;
 }
 .mizu-board-column h3 {

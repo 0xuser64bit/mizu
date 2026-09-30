@@ -34,6 +34,7 @@
   align-items: center;
 }
 .mizu-pagination button {
+  box-sizing: border-box;
   min-width: 44px;
   min-height: 44px;
   padding: 8px 12px;
@@ -99,6 +100,7 @@
 }
 .mizu-anchor-nav a {
   text-decoration: none;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 12px;
   border-left: 1px solid var(--mizu-line);
@@ -122,6 +124,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  box-sizing: border-box;
   padding: 12px;
   min-height: 44px;
   font-size: 13px;
@@ -144,6 +147,7 @@
   display: grid;
   justify-items: center;
   gap: 8px;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 8px 12px;
   font-size: 12px;

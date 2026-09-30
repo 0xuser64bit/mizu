@@ -9,20 +9,42 @@ const files = readdirSync(root, { recursive: true }) as string[];
 const sheets = files
   .filter((name) => name.endsWith(".css"))
   .map((name) => postcss.parse(readFileSync(join(root, name), "utf8")));
+const sources = files
+  .filter((name) => name.endsWith(".tsx"))
+  .map((name) =>
+    ts.createSourceFile(
+      name,
+      readFileSync(join(root, name), "utf8"),
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TSX,
+    ),
+  );
+
+const SIZE =
+  /^(width|height|(min|max)-(width|height)|(min-)?(inline|block)-size|flex-basis|aspect-ratio)$/;
+const BOX =
+  /^(padding|border)(-(top|right|bottom|left|inline|block)(-(start|end))?)?(-width)?$/;
+const nothing = (value: string) =>
+  /^(0(px)?|none)(\s+(solid|none))?$/.test(value);
+/** A selector's compounds, split at combinators outside parentheses. */
+function compounds(selector: string) {
+  const parts = [""];
+  let depth = 0;
+  for (const c of selector) {
+    depth += c === "(" ? 1 : c === ")" ? -1 : 0;
+    if (!depth && /[\s>+~]/.test(c)) parts.push("");
+    else parts[parts.length - 1] += c;
+  }
+  return parts.filter(Boolean);
+}
 
 describe("cascade", () => {
   it("never lets a class default tie with the [data-tone] it should yield to", () => {
     // Registry stylesheets load in whatever order the bundler emits, and styles.css
     // imports signature.css first: a bare-class --mizu-tone that loads later wins.
     const toned = new Set<string>();
-    for (const name of files.filter((f) => f.endsWith(".tsx"))) {
-      const source = ts.createSourceFile(
-        name,
-        readFileSync(join(root, name), "utf8"),
-        ts.ScriptTarget.Latest,
-        true,
-        ts.ScriptKind.TSX,
-      );
+    for (const source of sources) {
       const visit = (node: ts.Node): void => {
         if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
           const attributes = node.attributes.properties;
@@ -49,5 +71,95 @@ describe("cascade", () => {
           );
         }
       });
+  });
+  it("sizes every element it pads or borders by its border box", () => {
+    // `:where([class*="mizu-"])` makes classed elements border-box. An element styled
+    // through its parent's class (`.mizu-segmented span`), or a pseudo-element, is
+    // content-box unless the page's reset says otherwise, as Tailwind's does: without
+    // one, a 44px control padded 8px grew to 60px. Keyed by the nearest Mizu class
+    // and the tag, across rules, since states set padding and borders apart.
+    const elements = new Map<
+      string,
+      { size: string[]; box: string[]; set: boolean }
+    >();
+    for (const sheet of sheets)
+      sheet.walkRules((rule) => {
+        if ((rule.parent as postcss.AtRule | undefined)?.name === "keyframes")
+          return;
+        const decls = rule.nodes.filter(
+          (node): node is postcss.Declaration => node.type === "decl",
+        );
+        for (const selector of rule.selectors) {
+          const flat = selector.replace(/:where\(([^()]*)\)/g, "$1");
+          const subject = compounds(flat).at(-1)!;
+          const pseudo = subject.match(/::[\w-]+/)?.[0];
+          if (!pseudo && /\.mizu-|\[class\*="mizu-"\]/.test(subject)) continue;
+          const owner = [...flat.matchAll(/\.(mizu-[\w-]+)/g)].at(-1)?.[1];
+          if (!owner) continue;
+          const tag = subject.match(/^([a-z]+|:is\([^)]*\)|\[[^\]]+\])/)?.[0];
+          const key = `${owner} ${tag ?? ""}${pseudo ?? ""}`;
+          const element = elements.get(key) ?? {
+            size: [],
+            box: [],
+            set: false,
+          };
+          for (const { prop, value } of decls) {
+            if (SIZE.test(prop) && !/^(auto|none)$/.test(value))
+              element.size.push(prop);
+            if (BOX.test(prop) && !nothing(value)) element.box.push(prop);
+            if (prop === "box-sizing") element.set = true;
+          }
+          elements.set(key, element);
+        }
+      });
+    expect(elements.get("mizu-segmented span")?.set).toBe(true);
+    for (const [key, { size, box, set }] of elements)
+      if (size.length && box.length) expect(set, key).toBe(true);
+  });
+  it("sets box-sizing where an inline style sizes and pads an unclassed element", () => {
+    // Toast's panel, 100% wide plus 18px of padding each side, spilled out of its
+    // container and off a phone's screen without a border-box reset.
+    const sizing = /^(width|height|(min|max)(Width|Height)|flexBasis)$/;
+    const boxing = /^(padding|border)(Top|Right|Bottom|Left|Inline|Block)?$/;
+    let checked = 0;
+    for (const source of sources) {
+      const visit = (node: ts.Node): void => {
+        if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+          const attributes = node.attributes.properties.filter(
+            ts.isJsxAttribute,
+          );
+          const named = (n: string) =>
+            attributes.find((a) => a.name.getText() === n)?.initializer;
+          const style = named("style");
+          const inner =
+            style && ts.isJsxExpression(style) ? style.expression : undefined;
+          if (
+            inner &&
+            ts.isObjectLiteralExpression(inner) &&
+            !named("className")?.getText().includes("mizu-")
+          ) {
+            const set = inner.properties
+              .filter(ts.isPropertyAssignment)
+              .filter(
+                (p) => !/^(0|"0(px)?"|"none")$/.test(p.initializer.getText()),
+              )
+              .map((p) => p.name.getText());
+            if (
+              set.some((p) => sizing.test(p)) &&
+              set.some((p) => boxing.test(p))
+            ) {
+              checked++;
+              expect(
+                set,
+                `${source.fileName}: ${inner.getText().slice(0, 60)}`,
+              ).toContain("boxSizing");
+            }
+          }
+        }
+        ts.forEachChild(node, visit);
+      };
+      visit(source);
+    }
+    expect(checked).toBeGreaterThan(0); // Toast's panel
   });
 });

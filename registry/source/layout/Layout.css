@@ -39,12 +39,14 @@
   min-width: 0;
 }
 .mizu-app-body > aside {
+  box-sizing: border-box;
   width: 200px;
   flex-shrink: 0;
   padding: 20px;
   border-right: 1px solid var(--mizu-line);
 }
 .mizu-app-body > :is(main, section) {
+  box-sizing: border-box;
   min-width: 0;
   flex: 1;
   padding: 24px;

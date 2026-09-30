@@ -172,6 +172,7 @@
 }
 .mizu-outline-text textarea {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   min-height: 36px;
   resize: none;

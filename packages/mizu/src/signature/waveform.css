@@ -205,6 +205,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 0 16px;
   border: 0;
@@ -247,6 +248,7 @@
   grid-template-columns: 64px minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 16px;
+  box-sizing: border-box;
   width: 100%;
   min-height: 44px;
   padding: 12px 16px;

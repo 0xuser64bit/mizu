@@ -47,6 +47,7 @@
 .mizu-tour-card::before {
   content: "";
   position: absolute;
+  box-sizing: border-box;
   width: 10px;
   height: 10px;
   background: var(--mizu-ink-2);

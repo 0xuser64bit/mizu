@@ -4,6 +4,7 @@
   position: relative;
 }
 .mizu-action-menu summary {
+  box-sizing: border-box;
   min-height: 44px;
   padding: 12px 16px;
   border: 1px solid var(--mizu-line-bright);
@@ -15,6 +16,7 @@
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
+  box-sizing: border-box;
   width: max-content;
   min-width: 180px;
   max-width: min(300px, 80vw);
@@ -26,6 +28,7 @@
 }
 .mizu-action-menu button {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   text-align: left;
   min-height: 44px;
