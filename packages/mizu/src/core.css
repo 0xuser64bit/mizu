@@ -568,7 +568,12 @@
   transform: translate(2px, -2px);
 }
 
+/* A display word: the heaviest, widest Archivo; the size comes from its prop. */
 .mizu-ghost {
+  font-family: var(--mizu-font-display);
+  font-weight: 900;
+  font-stretch: 118%;
+  line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px var(--mizu-line-bright);
   transition:

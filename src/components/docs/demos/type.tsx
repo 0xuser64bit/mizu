@@ -67,10 +67,7 @@ export function WaveTextDemo() {
 export function GhostWordDemo() {
   return (
     <div className="flex min-h-[140px] flex-col items-start justify-center gap-8">
-      <GhostWord
-        text="MIZU."
-        className="font-display text-[clamp(4rem,12vw,9rem)] font-black font-wide leading-none tracking-[-0.02em]"
-      />
+      <GhostWord text="MIZU." className="tracking-[-0.02em]" />
       <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
         Hover the word — it fills
       </p>

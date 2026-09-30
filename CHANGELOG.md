@@ -46,6 +46,11 @@
   items read as one word ("SurfacesMotion") unless each carried its own
   padding, as the docs and home page did with Tailwind classes they no longer
   need.
+- GhostWord is a display word on its own: Archivo at its heaviest and widest,
+  `clamp(4rem, 12vw, 9rem)` by default through a new `size` prop (`inherit`
+  takes the surrounding size). It had no size or weight, so the usage example
+  drew a faint 16px outline; the docs demo and home footer sized it with
+  classes a copied example lacks.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

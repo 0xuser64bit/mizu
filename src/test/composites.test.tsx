@@ -7,6 +7,7 @@ import {
   fireEvent,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { renderToStaticMarkup } from "react-dom/server";
 import { installClipboardMock, reduceMotionQuery } from "./helpers";
 import {
   Accordion,
@@ -340,6 +341,15 @@ describe("type systems", () => {
   it("GhostWord renders its text", () => {
     render(<GhostWord text="MIZU." />);
     expect(screen.getByText("MIZU.")).toBeTruthy();
+  });
+
+  it("GhostWord is display-sized unless told otherwise", () => {
+    // happy-dom drops clamp() from the DOM; the server markup keeps it.
+    expect(renderToStaticMarkup(<GhostWord text="Big" />)).toContain(
+      "font-size:clamp(4rem, 12vw, 9rem)",
+    );
+    render(<GhostWord text="Small" size="inherit" />);
+    expect(screen.getByText("Small").style.fontSize).toBe("inherit");
   });
 });
 

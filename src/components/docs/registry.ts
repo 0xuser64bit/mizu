@@ -522,6 +522,12 @@ export function Footer() {
         def: '"accent"',
         desc: "Hover fill color.",
       },
+      {
+        name: "size",
+        type: "string | number",
+        def: '"clamp(4rem, 12vw, 9rem)"',
+        desc: "Font size, any CSS length; inherit takes the surrounding text's.",
+      },
     ],
     a11y: "aria-hidden — pair with an sr-only heading for the same text.",
     motion:
