@@ -318,6 +318,25 @@ describe("type systems", () => {
     expect(screen.getByLabelText("Mizu")).toBeTruthy();
   });
 
+  it("WaveText leaves color to CSS, so a theme switch reaches its letters", () => {
+    // Motion resolves var() in a value it computes, freezing the mount theme's paper.
+    const { container } = render(
+      <>
+        <WaveText text="Mizu" />
+        <WaveText text="Ink" colorFrom="red" colorTo="blue" />
+      </>,
+    );
+    for (const letter of container.querySelectorAll<HTMLElement>(
+      ".mizu-wave-text > span > span",
+    ))
+      expect(letter.style.color).toBe("");
+    const [plain, colored] =
+      container.querySelectorAll<HTMLElement>(".mizu-wave-text");
+    expect(plain!.getAttribute("style")).toBeNull();
+    expect(colored!.style.getPropertyValue("--mizu-wave-from")).toBe("red");
+    expect(colored!.style.getPropertyValue("--mizu-wave-to")).toBe("blue");
+  });
+
   it("GhostWord renders its text", () => {
     render(<GhostWord text="MIZU." />);
     expect(screen.getByText("MIZU.")).toBeTruthy();

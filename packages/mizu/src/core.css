@@ -389,15 +389,23 @@
   padding-top: 28px;
 }
 .mizu-wave-text {
+  --mizu-wave-from: var(--mizu-paper);
+  --mizu-wave-to: var(--mizu-accent);
   display: inline-flex;
   flex-wrap: wrap;
 }
 .mizu-wave-text > span {
   display: inline-flex;
 }
+/* --mizu-wave, 0 at rest to 1 under the pointer, is the only value Motion writes. */
 .mizu-wave-text > span > span {
   display: inline-block;
   will-change: transform;
+  color: color-mix(
+    in srgb,
+    var(--mizu-wave-to) calc(var(--mizu-wave, 0) * 100%),
+    var(--mizu-wave-from)
+  );
 }
 .mizu-maskline {
   display: block;

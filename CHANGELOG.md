@@ -25,6 +25,13 @@
   so `className` and ordinary CSS restyle their padding, type, tracking, case
   and cursor. The inline styles beat every class, so only `style` could.
   Rendering is unchanged; Spinner's display moves to `.mizu-spinner` too.
+- WaveText follows a theme switch. Motion computed each letter's color and
+  resolved `var(--mizu-paper)` at mount, so after switching to light the
+  letters stayed the dark theme's paper, invisible on the light surface. Motion
+  now writes only the pointer's pull, `--mizu-wave`, and CSS mixes
+  `--mizu-wave-from` and `--mizu-wave-to` (the theme's paper and accent unless
+  `colorFrom` and `colorTo` say otherwise). The usage example no longer
+  hard-codes the dark theme's colors.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

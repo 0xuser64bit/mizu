@@ -42,7 +42,7 @@
   "scroll-progress": "import { ScrollProgress, Stack } from \"mizu-ui\";\n\nexport function Example() {\n  return (\n    <Stack gap={20}>\n      <ScrollProgress label=\"Documentation reading progress\" />\n      <p className=\"mizu-field-hint\">\n        Scroll this document. The line measures the available document scroll,\n        including the API below.\n      </p>\n    </Stack>\n  );\n}\n",
   "specimen": "import { Specimen } from \"mizu-ui\";\n\nexport function Tester() {\n  return <Specimen />;\n}\n",
   "soft-type": "import { SoftType } from \"mizu-ui\";\n\nexport function Engine() {\n  return <SoftType text=\"Aa\" mode=\"both\" speed={1} />;\n}\n",
-  "wave-text": "import { WaveText } from \"mizu-ui\";\n\nexport function Title() {\n  return (\n    <WaveText\n      text=\"Mizu\"\n      as=\"h1\"\n      radius={120}\n      colorFrom=\"#f4f0e8\"\n      colorTo=\"#ff4d1c\"\n    />\n  );\n}\n",
+  "wave-text": "import { WaveText } from \"mizu-ui\";\n\nexport function Title() {\n  return (\n    <WaveText\n      text=\"Mizu\"\n      as=\"h1\"\n      radius={120}\n      style={{ margin: 0, fontSize: 72, fontWeight: 900 }}\n    />\n  );\n}\n",
   "ghost-word": "import { GhostWord } from \"mizu-ui\";\n\nexport function Footer() {\n  return <GhostWord text=\"MIZU.\" />;\n}\n",
   "pinfield": "import { Pinfield } from \"mizu-ui\";\n\nexport function Field() {\n  return <Pinfield gap={26} />;\n}\n",
   "signal": "import { Signal } from \"mizu-ui\";\n\nexport function Wave() {\n  return <Signal density={14} />;\n}\n",

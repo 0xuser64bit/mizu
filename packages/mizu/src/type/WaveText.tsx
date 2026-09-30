@@ -1,42 +1,35 @@
 "use client";
 import { useReducedMotion } from "../motion/Preferences.tsx";
 
-import { useMemo, useRef, type PointerEvent } from "react";
+import { useMemo, useRef, type CSSProperties, type PointerEvent } from "react";
 import {
   motion,
   motionValue,
   useTransform,
+  type MotionStyle,
   type MotionValue,
 } from "motion/react";
 
 function Letter({
   mv,
   char,
-  colorFrom,
-  colorTo,
   reduced,
 }: {
   mv: MotionValue<number>;
   char: string;
-  colorFrom: string;
-  colorTo: string;
   reduced: boolean | null;
 }) {
   const y = useTransform(mv, (v) => v * -10);
   const scale = useTransform(mv, (v) => 1 + v * 0.08);
-  const color = useTransform(
-    mv,
-    (v) => `color-mix(in srgb, ${colorTo} ${v * 100}%, ${colorFrom})`,
-  );
 
   return (
     <motion.span
       aria-hidden
-      style={{
-        y: reduced ? 0 : y,
-        scale: reduced ? 1 : scale,
-        color: reduced ? colorFrom : color,
-      }}
+      // Warmth is a number; CSS mixes the colors from it. A color Motion computes is
+      // fixed at mount, so the letters would keep the old theme's paper after a switch.
+      style={
+        reduced ? undefined : ({ y, scale, "--mizu-wave": mv } as MotionStyle)
+      }
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>
@@ -46,18 +39,20 @@ function Letter({
 export function WaveText({
   text,
   radius = 120,
-  colorFrom = "var(--mizu-paper)",
-  colorTo = "var(--mizu-accent)",
+  colorFrom,
+  colorTo,
   className = "",
   style,
   as: Tag = "span",
 }: {
   text: string;
   radius?: number;
+  /** Resting color; the theme's paper when omitted. */
   colorFrom?: string;
+  /** Color under the pointer; the theme's accent when omitted. */
   colorTo?: string;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   as?: "span" | "h1" | "h2" | "p" | "div";
 }) {
   const reduce = useReducedMotion();
@@ -91,7 +86,13 @@ export function WaveText({
     <Tag
       className={`mizu-wave-text ${className}`}
       aria-label={text}
-      style={style}
+      style={
+        {
+          ...(colorFrom && { "--mizu-wave-from": colorFrom }),
+          ...(colorTo && { "--mizu-wave-to": colorTo }),
+          ...style,
+        } as CSSProperties
+      }
       onPointerMove={reduce ? undefined : onMove}
       onPointerLeave={reduce ? undefined : onLeave}
     >
@@ -106,8 +107,6 @@ export function WaveText({
             reduced={!!reduce}
             mv={values[i] ?? motionValue(0)}
             char={c}
-            colorFrom={colorFrom}
-            colorTo={colorTo}
           />
         </span>
       ))}

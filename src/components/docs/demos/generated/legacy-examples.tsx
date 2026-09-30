@@ -139,8 +139,7 @@ export function WaveTextUsage_Title() {
       text="Mizu"
       as="h1"
       radius={120}
-      colorFrom="#f4f0e8"
-      colorTo="#ff4d1c"
+      style={{ margin: 0, fontSize: 72, fontWeight: 900 }}
     />
   );
 }
