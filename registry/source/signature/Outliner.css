@@ -136,6 +136,7 @@
   padding: 0;
   border: 0;
   background: transparent;
+  color: inherit;
   cursor: pointer;
 }
 .mizu-outline-bullet::before {

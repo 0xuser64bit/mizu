@@ -23,6 +23,7 @@
   text-transform: uppercase;
 }
 .mizu-control-readout {
+  margin: 0;
   min-width: 7ch;
   color: var(--mizu-paper);
   font: 12px var(--mizu-font-mono);

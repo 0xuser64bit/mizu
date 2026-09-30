@@ -20,6 +20,7 @@
 }
 .mizu-breadcrumbs a {
   color: var(--mizu-muted);
+  text-decoration: none;
   text-underline-offset: 4px;
 }
 .mizu-breadcrumbs a:hover {
@@ -97,6 +98,7 @@
   gap: 4px;
 }
 .mizu-anchor-nav a {
+  text-decoration: none;
   min-height: 44px;
   padding: 12px;
   border-left: 1px solid var(--mizu-line);
@@ -116,6 +118,7 @@
   margin: 0 0 8px;
 }
 .mizu-side-nav a {
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -137,6 +140,7 @@
   background: var(--mizu-ink);
 }
 .mizu-bottom-nav a {
+  text-decoration: none;
   display: grid;
   justify-items: center;
   gap: 8px;

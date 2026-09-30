@@ -75,6 +75,7 @@
   font: 11px var(--mizu-font-mono);
 }
 .mizu-image-compare-stage > p {
+  margin: 0;
   padding: 40px 20px;
   border: 1px solid var(--mizu-line);
   font-size: 13px;

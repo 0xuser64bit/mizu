@@ -61,6 +61,16 @@
   two overlapping broken images and an Avatar a broken icon instead of
   initials. On attach, a complete image with no pixels that also fails
   `decode()` now counts as failed; an unsized SVG, which decodes, does not.
+- Components look the same with or without Tailwind. They inherited the host
+  page's line height and left headings, links, native controls and paragraphs
+  they render to its reset: in a plain React app, next to the same examples in
+  a Tailwind app, 124 of 126 differed, with underlined navigation links,
+  Accordion titles in the browser's bold h3, checkboxes offset by their
+  default margins and paragraphs with default spacing. `.mizu-root` now sets
+  the 1.5 line height the components were drawn at, native controls inside
+  components lose their default margins, and each rule states the text
+  decoration, padding, weight and margins its element needs. Only content an
+  example brings still differs.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a

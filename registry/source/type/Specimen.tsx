@@ -176,7 +176,7 @@ export function Specimen({
 
       <p
         style={{
-          marginTop: 24,
+          margin: "24px 0 0",
           fontFamily: "var(--mizu-font-mono)",
           fontSize: 10,
           lineHeight: 1.6,

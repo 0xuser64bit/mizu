@@ -56,6 +56,9 @@
   color: var(--mizu-faint);
   font-variant-numeric: tabular-nums;
 }
+.mizu-board-count small {
+  font-size: 80%;
+}
 .mizu-board-column[data-over] .mizu-board-count {
   color: var(--mizu-warning);
 }

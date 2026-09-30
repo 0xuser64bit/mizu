@@ -7,6 +7,8 @@
 }
 .mizu-accordion-heading {
   margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 .mizu-accordion-trigger {
   display: flex;
@@ -16,6 +18,7 @@
   padding: 22px 4px;
   border: 0;
   background: transparent;
+  color: inherit;
   cursor: pointer;
   text-align: left;
 }

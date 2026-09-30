@@ -39,6 +39,7 @@
 .mizu-tag button {
   min-width: 32px;
   min-height: 44px;
+  padding: 0;
   background: transparent;
   border: 0;
   color: var(--mizu-muted);
