@@ -1,6 +1,11 @@
 "use client";
 import { CompareIcon } from "../ui/icons.tsx";
 import { useId, useRef, useState } from "react";
+/** Ref for an image that may have failed before hydration, when onError never reaches
+ * React: a complete image without pixels that also refuses to decode is broken. */
+const whenBroken = (fail: () => void) => (img: HTMLImageElement | null) => {
+  if (img?.complete && !img.naturalWidth) img.decode?.().catch(fail);
+};
 export function ImageCompare({
   before,
   after,
@@ -57,11 +62,13 @@ export function ImageCompare({
         ) : (
           <>
             <img
+              ref={whenBroken(() => setFailed(before.src))}
               src={before.src}
               alt={before.alt}
               onError={() => setFailed(before.src)}
             />
             <img
+              ref={whenBroken(() => setFailed(after.src))}
               className="mizu-image-compare-after"
               src={after.src}
               alt={after.alt}

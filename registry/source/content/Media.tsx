@@ -5,6 +5,11 @@ import {
   type VideoHTMLAttributes,
   type ReactNode,
 } from "react";
+/** Ref for an image that may have failed before hydration, when onError never reaches
+ * React: a complete image without pixels that also refuses to decode is broken. */
+const whenBroken = (fail: () => void) => (img: HTMLImageElement | null) => {
+  if (img?.complete && !img.naturalWidth) img.decode?.().catch(fail);
+};
 export function Avatar({
   name,
   src,
@@ -33,7 +38,12 @@ export function Avatar({
       style={{ width: Math.max(24, size), height: Math.max(24, size) }}
     >
       {src && src !== failed ? (
-        <img src={src} alt="" onError={() => setFailed(src)} />
+        <img
+          ref={whenBroken(() => setFailed(src))}
+          src={src}
+          alt=""
+          onError={() => setFailed(src)}
+        />
       ) : (
         <span aria-hidden="true">{initials}</span>
       )}
@@ -61,6 +71,7 @@ export function ImageFigure({
       ) : (
         <img
           {...props}
+          ref={whenBroken(() => setFailed(String(src)))}
           src={src}
           alt={alt ?? ""}
           loading={props.loading ?? "lazy"}

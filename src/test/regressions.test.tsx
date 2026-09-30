@@ -1,12 +1,15 @@
-import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   Accordion,
   AccordionItem,
+  Avatar,
   Button,
   CopyButton,
   Dialog,
+  ImageCompare,
+  ImageFigure,
   Marquee,
   Tabs,
   TabsList,
@@ -157,4 +160,51 @@ it("releases the body lock when an outer dialog and its nested dialog unmount to
   expect(document.body.style.overflow).toBe("hidden");
   unmount();
   expect(document.body.style.overflow).not.toBe("hidden");
+});
+
+describe("images that fail before hydration", () => {
+  // Server-rendered images start loading before React attaches onError, so a
+  // failure there is only visible as a complete image that refuses to decode.
+  const proto = HTMLImageElement.prototype;
+  const decode = proto.decode;
+  afterEach(() => {
+    vi.restoreAllMocks();
+    proto.decode = decode;
+  });
+  function loaded(decodes: boolean) {
+    vi.spyOn(proto, "complete", "get").mockReturnValue(true);
+    vi.spyOn(proto, "naturalWidth", "get").mockReturnValue(0);
+    proto.decode = () =>
+      decodes ? Promise.resolve() : Promise.reject(new Error("broken"));
+  }
+  it("show their failure state", async () => {
+    loaded(false);
+    render(
+      <>
+        <ImageCompare
+          before={{ src: "/a.png", alt: "Before" }}
+          after={{ src: "/b.png", alt: "After" }}
+          value={50}
+          onValueChange={() => {}}
+        />
+        <Avatar name="Aya Mori" src="/missing.png" />
+        <ImageFigure src="/missing.png" alt="Field" loading="eager" />
+      </>,
+    );
+    await waitFor(() =>
+      expect(
+        screen.getByText("Comparison image unavailable."),
+      ).toBeInTheDocument(),
+    );
+    expect(screen.getByText("AM")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Field" })).toHaveTextContent(
+      "Image unavailable",
+    );
+  });
+  it("keep an image that decodes without a natural width, like an unsized SVG", async () => {
+    loaded(true);
+    render(<Avatar name="Aya Mori" src="/mark.svg" />);
+    await Promise.resolve();
+    expect(screen.queryByText("AM")).not.toBeInTheDocument();
+  });
 });

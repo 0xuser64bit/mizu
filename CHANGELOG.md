@@ -55,6 +55,12 @@
   gave a 12-character timestamp 8ch and the level 4ch, with nothing clipped,
   so on a phone they ran into each other ("09:30:04.WARN"). The milliseconds
   now hide there, leaving the clock in 8ch, and the level keeps 5ch.
+- ImageCompare, Avatar and ImageFigure show their failure state for an image
+  that fails before hydration. Server-rendered images start loading before
+  React attaches `onError`, so in a Next.js app a broken ImageCompare showed
+  two overlapping broken images and an Avatar a broken icon instead of
+  initials. On attach, a complete image with no pixels that also fails
+  `decode()` now counts as failed; an unsized SVG, which decodes, does not.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a
