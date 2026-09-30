@@ -1,8 +1,10 @@
 # Release `mizu-ui`
 
-Version 0.2.0 is prepared in packages/mizu/package.json. No publication, push,
-remote CI run or hosted deployment is implied by local verification. Publishing
-is a separate maintainer action, after reviewing the artifact and npm access.
+packages/mizu/package.json keeps the version last published to npm until a
+release bumps it, and the changelog's Unreleased section lists what that release
+carries. No publication, push, remote CI run or hosted deployment is implied by
+local verification. Publishing is a separate maintainer action, after reviewing
+the artifact and npm access.
 
 ## Candidate checks
 
@@ -37,7 +39,9 @@ matrix.
 
 Confirm the package name and registry permissions. Use semver appropriate to
 compatibility; pre-1.0 minor releases may change behavior and need migration
-notes. Once checks and review pass, from packages/mizu:
+notes. Set the version in packages/mizu/package.json and give the changelog's
+Unreleased section that version and the date. Once checks and review pass, from
+packages/mizu:
 
 ```sh
 npm login --auth-type=web --registry=https://registry.npmjs.org/
