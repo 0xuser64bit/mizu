@@ -1,37 +1,20 @@
 
-.mizu-field-hint {
-  margin: 0;
-  font-size: 12px;
-  color: var(--mizu-muted);
-  line-height: 1.6;
-}
-.mizu-table-scroll {
-  overflow: auto;
-  max-width: 100%;
-  scrollbar-width: thin;
-  scrollbar-color: var(--mizu-line-bright) transparent;
-}
-.mizu-data-table,
 .mizu-comparison-table {
   border-collapse: collapse;
   width: 100%;
   font-size: 13px;
 }
-.mizu-data-table caption,
 .mizu-comparison-table caption {
   text-align: left;
   font-weight: 600;
   margin-bottom: 16px;
   color: var(--mizu-paper);
 }
-.mizu-data-table th,
 .mizu-comparison-table th {
   font-weight: 500;
   color: var(--mizu-muted);
   text-align: left;
 }
-.mizu-data-table th,
-.mizu-data-table td,
 .mizu-comparison-table th,
 .mizu-comparison-table td {
   padding: 14px 16px;

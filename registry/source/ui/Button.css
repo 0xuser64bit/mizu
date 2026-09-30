@@ -37,18 +37,3 @@
   color: #fffaf4;
   background: var(--mizu-accent-fill);
 }
-.mizu-spinner > span {
-  display: block;
-  transform: rotate(45deg);
-  animation: mizu-spin 0.9s linear infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .mizu-spinner > span {
-    animation: none;
-  }
-}
-@keyframes mizu-spin {
-  to {
-    transform: rotate(405deg);
-  }
-}

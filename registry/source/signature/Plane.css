@@ -1,15 +1,4 @@
 
-.mizu-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 .mizu-plane {
   container-type: inline-size;
   position: relative;
@@ -185,23 +174,6 @@
   .mizu-plane-minimap {
     display: none;
   }
-}
-.mizu-flow .mizu-plane {
-  height: var(--mizu-flow-height, 560px);
-}
-.mizu-plane-world[data-scale="far"] .mizu-flow-node-title {
-  font-size: min(28px, calc(10.5px / var(--mizu-plane-zoom)));
-  margin-top: 4px;
-}
-.mizu-plane-world[data-scale="far"] .mizu-flow-node-kind {
-  font-size: min(15px, calc(6.5px / var(--mizu-plane-zoom)));
-}
-.mizu-plane-world[data-scale="far"] .mizu-flow-node-note,
-.mizu-plane-world[data-scale="far"] .mizu-flow-port {
-  color: transparent;
-}
-.mizu-plane-world[data-scale="far"] .mizu-flow-wire text {
-  display: none;
 }
 @keyframes mizu-sig-fade {
   from {

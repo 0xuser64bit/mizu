@@ -14,11 +14,21 @@
   `components.json` without shadcn's theme, so init no longer rewrites the
   project's global CSS, layout or dependencies, and it adds Mizu's tokens and
   fonts.
-- Registry: styles ship once per source module, beside it
-  (`source/status/Feedback.css`), instead of once per item. Items that share a
-  module share its stylesheet, so installing alert, progress and meter copies
-  and bundles one stylesheet, not three identical ones. All 129 items: 386 KB
-  of CSS becomes 233 KB.
+- Registry: each CSS rule ships once, in the stylesheet of the module that
+  owns it (`source/status/Feedback.css`), instead of once per item. The owner
+  is the lowest module that renders the rule's classes and that every item
+  needing the rule imports. An item imports the stylesheets of the modules it
+  copies, dependencies first, so an override still loads after the rule it
+  overrides: confirm-action imports Button's stylesheet instead of a copy, and
+  alert, progress and meter share one Feedback.css. Classes unrelated modules
+  render, such as the field chrome and the data table, ship once under
+  `shared/` (`shared/input.css`) to the items that render them. All 129 items:
+  386 KB of CSS becomes 171 KB. Since no rule sits in two files, a later
+  file's copy can no longer undo an override: CommandPalette's padding, Board's
+  avatar size and Chronicle's loading fill hold in any import order.
+- `.mizu-sr-only` and `.mizu-field-hint` move to the utilities at the top of
+  core.css, so the registry's base.css carries them and they work in any
+  markup once the preset is installed.
 - Registry: each item's file names its exports instead of `export *` from the
   shared module: `knob` exports `Knob` and `ControlTaper`, not `Fader` and
   `XYPad`. An item exports its share of the npm package's public API, so
@@ -48,10 +58,10 @@
   and data, not client references (`FLAP_CHARACTERS.split is not a function`).
   Exported names are unchanged; tests hold the rule and keep module names
   distinct regardless of case.
-- Docs say exactly what `add` copies: base.css and the source module's
-  stylesheet, or base.css alone for the fifteen inline-styled components such
-  as Accordion. Getting started explains keeping server-read data out of
-  `"use client"` modules.
+- Docs say exactly what `add` copies: base.css and the stylesheets that hold
+  the component's rules, or base.css alone for the seventeen inline-styled
+  components such as Accordion. Getting started explains keeping server-read
+  data out of `"use client"` modules.
 - Non-color tokens (`--mizu-ease-*`, `--mizu-duration-*`, `--mizu-space-*`,
   `--mizu-radius`, `--mizu-control-height`, `--mizu-z-*`) are declared on
   `:root` alone, so an override on an ancestor no longer resets inside a

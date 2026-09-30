@@ -1,0 +1,8 @@
+
+.mizu-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mizu-paper);
+  padding: 0;
+  margin-bottom: 4px;
+}

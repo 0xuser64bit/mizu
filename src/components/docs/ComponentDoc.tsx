@@ -5,9 +5,9 @@ import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
 import { DemoLabel } from "./demos/shared";
 import {
-  hasRegistryStylesheet,
   isClientModule,
   registryExports,
+  registryStylesheets,
   usesMotion,
 } from "./source";
 
@@ -183,8 +183,8 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               <p className="mb-3 text-sm leading-relaxed text-muted">
                 Add this component to your project with the shadcn CLI. The
                 command copies its source into your configured UI directory,{" "}
-                {hasRegistryStylesheet(meta.source)
-                  ? "with its source module’s stylesheet and base.css, Mizu’s tokens."
+                {registryStylesheets(meta.slug).length
+                  ? "with base.css, Mizu’s tokens, and the stylesheets that hold its rules. Each rule lives in one stylesheet, so components you add together never repeat CSS."
                   : "with base.css, Mizu’s tokens: it styles itself inline and brings no stylesheet of its own."}{" "}
                 In a project without a components.json, run{" "}
                 <code>npx shadcn@latest init 0xuser64bit/mizu/preset</code>{" "}

@@ -1,0 +1,7 @@
+
+.mizu-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  font-family: var(--mizu-font-display);
+}

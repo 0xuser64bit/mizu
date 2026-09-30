@@ -51,23 +51,29 @@ function output(path: string, content: string) {
     writeFileSync(path, content);
   }
 }
+// The module and every module it imports, each after its own imports.
+const closures = new Map<string, string[]>();
 function sourceClosure(entry: string) {
-  const files = new Set<string>();
+  if (closures.has(entry)) return closures.get(entry)!;
+  const seen = new Set<string>();
+  const files: string[] = [];
   function visit(path: string) {
     path = normalize(path);
-    if (files.has(path)) return;
+    if (seen.has(path)) return;
     if (!path.startsWith(sourceRoot + "/") || !existsSync(path))
       throw new Error(`Missing source dependency: ${path}`);
-    files.add(path);
+    seen.add(path);
     const code = readFileSync(path, "utf8");
     for (const imported of ts.preProcessFile(code, true, true).importedFiles) {
       if (!imported.fileName.startsWith(".")) continue;
       const dependency = normalize(join(dirname(path), imported.fileName));
       visit(extname(dependency) ? dependency : `${dependency}.tsx`);
     }
+    files.push(path);
   }
   visit(join(sourceRoot, entry));
-  return [...files].sort();
+  closures.set(entry, files);
+  return files;
 }
 function file(path: string, target: string, type = "registry:ui") {
   return { path, type, target };
@@ -137,11 +143,100 @@ function mentions(nodes: ts.Node[]) {
   nodes.forEach(visit);
   return names;
 }
-// The component rules `keep` accepts, inside their at-rules.
-function select(keep: (rule: postcss.Rule) => boolean) {
+// Public supporting APIs that are not catalog systems.
+const supporting = [
+  {
+    slug: "motion-preferences",
+    name: "MotionPreferences",
+    source: "motion/Preferences.tsx",
+    tagline:
+      "An explicit motion preference for everything inside it — Motion, CSS and canvas — or the operating system’s when omitted.",
+    usage: "",
+  },
+];
+const catalog = [...SYSTEMS, ...supporting];
+const closureOf = (source: string) =>
+  sourceClosure(relative(sourceRoot, source));
+// Classes a module renders, itself or through its imports.
+const rendered = new Map<string, Set<string>>();
+function renders(source: string) {
+  if (!rendered.has(source))
+    rendered.set(
+      source,
+      new Set(
+        closureOf(source).flatMap(
+          (path) => readFileSync(path, "utf8").match(/mizu-[\w-]+/g) ?? [],
+        ),
+      ),
+    );
+  return rendered.get(source)!;
+}
+// What each catalog module's items render. The examples' own markup counts too, so the
+// documented usage renders.
+const served = new Map<string, Set<string>>();
+for (const meta of catalog) {
+  const source = join(sourceRoot, meta.source);
+  const classes = served.get(source) ?? new Set(renders(source));
+  for (const name of meta.usage.match(/mizu-[\w-]+/g) ?? []) classes.add(name);
+  served.set(source, classes);
+}
+// A selector applies where every component class in it is rendered.
+const matches = (classes: Set<string>, selector: string) =>
+  componentClasses(selector).every((name) =>
+    [...classes].some(
+      (used) => name === used || (used.endsWith("-") && name.startsWith(used)),
+    ),
+  );
+// The module that owns selectors: of the modules rendering them, the lowest one that
+// every item rendering them imports. Undefined when unrelated modules render them,
+// "unreached" when no item does.
+function ownerOf(selectors: string[]) {
+  const needers = [...served]
+    .filter(([, classes]) => selectors.some((s) => matches(classes, s)))
+    .map(([source]) => closureOf(source));
+  if (!needers.length) return "unreached";
+  const owners = needers[0]!.filter(
+    (source) =>
+      needers.every((closure) => closure.includes(source)) &&
+      selectors.some((s) => matches(renders(source), s)),
+  );
+  return owners.find((source) =>
+    owners.every((other) => closureOf(other).includes(source)),
+  );
+}
+// Each rule once, in its owner's stylesheet; a selector list splits only when no one
+// module owns all of it. A class unrelated modules render (the field chrome, the data
+// table) gets a stylesheet of its own, shared/input.css, and rules no component class
+// keys go to base.css.
+const placement = new Map<postcss.Rule, Map<string, string[]>>();
+function place(node: postcss.ChildNode) {
+  if (node.type === "atrule" && node.name !== "keyframes")
+    node.nodes?.forEach(place);
+  if (node.type !== "rule") return;
+  const sheets = new Map<string, string[]>();
+  const whole = shared(node) ? "base" : ownerOf(node.selectors);
+  for (const selector of node.selectors) {
+    const [name] = componentClasses(selector);
+    const sheet =
+      whole ??
+      (name ? ownerOf([selector]) : "base") ??
+      `shared/${name!.replace(/^mizu-/, "")}.css`;
+    sheets.set(sheet, [...(sheets.get(sheet) ?? []), selector]);
+  }
+  placement.set(node, sheets);
+}
+styles.forEach(place);
+// The rules, or selectors of a rule, placed in `sheet`, inside their at-rules.
+function select(sheet: string) {
   const root = postcss.root();
   function include(node: postcss.ChildNode): postcss.ChildNode | undefined {
-    if (node.type === "rule") return keep(node) ? node.clone() : undefined;
+    if (node.type === "rule") {
+      const selectors = placement.get(node)?.get(sheet);
+      if (!selectors) return undefined;
+      return selectors.length === node.selectors.length
+        ? node.clone()
+        : node.clone({ selectors });
+    }
     if (node.type !== "atrule" || !node.nodes || node.name === "keyframes")
       return undefined;
     const copy = node.clone({ nodes: [] });
@@ -168,54 +263,29 @@ function withKeyframes(root: postcss.Root) {
       if (names.has(node.params)) root.append(node.clone());
   return root;
 }
-const reached = new Set<postcss.Rule>();
-function stylesFor(classes: Set<string>) {
-  const uses = (name: string) =>
-    [...classes].some(
-      (used) => name === used || (used.endsWith("-") && name.startsWith(used)),
-    );
-  const root = select((rule) => {
-    const hit = componentClasses(rule.selector).some(uses);
-    if (hit) reached.add(rule);
-    return hit;
-  });
-  return withKeyframes(root).toString() + "\n";
-}
-
 const base = postcss.root();
 for (const node of core.slice(0, marker)) base.append(node.clone());
-base.append(select(shared));
+base.append(select("base"));
 output("registry/styles/base.css", withKeyframes(base).toString() + "\n");
-// Public supporting APIs that are not catalog systems.
-const supporting = [
-  {
-    slug: "motion-preferences",
-    name: "MotionPreferences",
-    source: "motion/Preferences.tsx",
-    tagline:
-      "An explicit motion preference for everything inside it — Motion, CSS and canvas — or the operating system’s when omitted.",
-    usage: "",
-  },
-];
-const catalog = [...SYSTEMS, ...supporting];
-// One stylesheet per source module, beside it, shared by every item the module serves:
-// alert, progress and nine more import the same source/status/Feedback.css.
+// One stylesheet beside each module that owns rules, shared by every item importing it:
+// alert, progress and nine more import source/status/Feedback.css, and confirm-action
+// imports Button's rather than a copy.
 const moduleStyles = new Map<string, string>();
-for (const source of new Set(catalog.map((meta) => meta.source))) {
-  // The catalog examples' own markup counts too, so the documented usage renders.
-  const classes = new Set(
-    catalog
-      .filter((meta) => meta.source === source)
-      .flatMap((meta) => meta.usage.match(/mizu-[\w-]+/g) ?? []),
-  );
-  for (const path of sourceClosure(source))
-    for (const match of readFileSync(path, "utf8").matchAll(/mizu-[\w-]+/g))
-      classes.add(match[0]);
-  const css = stylesFor(classes);
-  if (!css.trim()) continue;
-  const style = `source/${source.replace(/\.tsx?$/, ".css")}`;
-  output(`registry/${style}`, css);
-  moduleStyles.set(source, style);
+const sharedStyles = new Map<string, string[]>(); // path -> its selectors, package order
+for (const sheet of new Set(
+  [...placement.values()].flatMap((sheets) => [...sheets.keys()]),
+)) {
+  if (sheet === "base" || sheet === "unreached") continue;
+  const style = sheet.startsWith("shared/")
+    ? sheet
+    : `source/${relative(sourceRoot, sheet).replace(/\.tsx?$/, ".css")}`;
+  output(`registry/${style}`, withKeyframes(select(sheet)).toString() + "\n");
+  if (style === sheet)
+    sharedStyles.set(
+      style,
+      [...placement.values()].flatMap((sheets) => sheets.get(sheet) ?? []),
+    );
+  else moduleStyles.set(sheet, style);
 }
 // Each item's share of the public API: the whole module when it serves one item, its
 // own component and the types that component mentions when several items share it.
@@ -301,8 +371,15 @@ const components = catalog.map((meta) => {
     file("registry/styles/base.css", "@ui/mizu/base.css", "registry:file"),
   );
   let imports = 'import "./base.css";\n';
-  const style = moduleStyles.get(meta.source);
-  if (style) {
+  // The shared stylesheets its items render, then every one in its closure, dependencies
+  // first, so an override loads after what it overrides: Button's before ConfirmAction's.
+  const classes = served.get(join(sourceRoot, meta.source))!;
+  for (const style of [
+    ...[...sharedStyles]
+      .filter(([, selectors]) => selectors.some((s) => matches(classes, s)))
+      .map(([style]) => style),
+    ...closure.flatMap((source) => moduleStyles.get(source) ?? []),
+  ]) {
     files.push(file(`registry/${style}`, `@ui/mizu/${style}`, "registry:file"));
     imports += `import "./${style}";\n`;
   }
@@ -321,7 +398,7 @@ const components = catalog.map((meta) => {
     files,
   };
 });
-const unreached = select((rule) => !shared(rule) && !reached.has(rule));
+const unreached = select("unreached");
 if (unreached.nodes.length)
   throw new Error(`No registry item ships these styles:\n${unreached}`);
 // The same faces as mizu-ui/fonts.css. next/font users skip it: the tokens read --font-*.

@@ -31,11 +31,6 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Chronicle.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Chronicle.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
@@ -46,9 +41,24 @@
           "target": "@ui/mizu/source/signature/time.ts"
         },
         {
+          "path": "registry/source/signature/Chronicle.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Chronicle.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/shared/sig-scan.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/sig-scan.css"
         },
         {
           "path": "registry/source/signature/Chronicle.css",
@@ -80,11 +90,6 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/TrendChart.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/TrendChart.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
@@ -95,9 +100,34 @@
           "target": "@ui/mizu/source/signature/time.ts"
         },
         {
+          "path": "registry/source/signature/TrendChart.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/TrendChart.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
+        },
+        {
+          "path": "registry/shared/data-table.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/data-table.css"
+        },
+        {
+          "path": "registry/shared/sig-scan.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/sig-scan.css"
         },
         {
           "path": "registry/source/signature/TrendChart.css",
@@ -134,11 +164,6 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Waveform.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Waveform.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
@@ -149,9 +174,19 @@
           "target": "@ui/mizu/source/signature/time.ts"
         },
         {
+          "path": "registry/source/signature/Waveform.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Waveform.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/signature/Waveform.css",
@@ -183,14 +218,14 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Plane.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Plane.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Plane.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Plane.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -227,9 +262,9 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/FlowGraph.tsx",
+          "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/FlowGraph.tsx"
+          "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
           "path": "registry/source/signature/Plane.tsx",
@@ -242,14 +277,19 @@
           "target": "@ui/mizu/source/signature/flow.ts"
         },
         {
-          "path": "registry/source/signature/internal.ts",
+          "path": "registry/source/signature/FlowGraph.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/internal.ts"
+          "target": "@ui/mizu/source/signature/FlowGraph.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/signature/Plane.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/signature/Plane.css"
         },
         {
           "path": "registry/source/signature/FlowGraph.css",
@@ -281,11 +321,6 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Treemap.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Treemap.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
@@ -294,6 +329,11 @@
           "path": "registry/source/signature/squarify.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/squarify.ts"
+        },
+        {
+          "path": "registry/source/signature/Treemap.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Treemap.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -325,11 +365,6 @@
           "target": "@ui/mizu/board.tsx"
         },
         {
-          "path": "registry/source/content/Media.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Media.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -340,14 +375,9 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Board.tsx",
+          "path": "registry/source/content/Media.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Board.tsx"
-        },
-        {
-          "path": "registry/source/signature/cards.ts",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/cards.ts"
+          "target": "@ui/mizu/source/content/Media.tsx"
         },
         {
           "path": "registry/source/signature/internal.ts",
@@ -355,9 +385,24 @@
           "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
+          "path": "registry/source/signature/cards.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/cards.ts"
+        },
+        {
+          "path": "registry/source/signature/Board.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Board.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/content/Media.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/content/Media.css"
         },
         {
           "path": "registry/source/signature/Board.css",
@@ -394,11 +439,6 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Outliner.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Outliner.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
@@ -407,6 +447,11 @@
           "path": "registry/source/signature/outline.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/outline.ts"
+        },
+        {
+          "path": "registry/source/signature/Outliner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Outliner.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -438,16 +483,6 @@
           "target": "@ui/mizu/query-builder.tsx"
         },
         {
-          "path": "registry/source/forms/Selection.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/forms/Selection.tsx"
-        },
-        {
-          "path": "registry/source/interaction/MultiSelect.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/interaction/MultiSelect.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -458,9 +493,14 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/QueryBuilder.tsx",
+          "path": "registry/source/forms/Selection.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/QueryBuilder.tsx"
+          "target": "@ui/mizu/source/forms/Selection.tsx"
+        },
+        {
+          "path": "registry/source/interaction/MultiSelect.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/MultiSelect.tsx"
         },
         {
           "path": "registry/source/signature/internal.ts",
@@ -473,9 +513,39 @@
           "target": "@ui/mizu/source/signature/query.ts"
         },
         {
+          "path": "registry/source/signature/QueryBuilder.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/QueryBuilder.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/source/forms/Selection.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/Selection.css"
+        },
+        {
+          "path": "registry/source/interaction/MultiSelect.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/interaction/MultiSelect.css"
         },
         {
           "path": "registry/source/signature/QueryBuilder.css",
@@ -502,11 +572,6 @@
           "target": "@ui/mizu/annotator.tsx"
         },
         {
-          "path": "registry/source/content/Media.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Media.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -517,19 +582,9 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Annotator.tsx",
+          "path": "registry/source/content/Media.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Annotator.tsx"
-        },
-        {
-          "path": "registry/source/signature/internal.ts",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/internal.ts"
-        },
-        {
-          "path": "registry/source/ui/Button.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Button.tsx"
+          "target": "@ui/mizu/source/content/Media.tsx"
         },
         {
           "path": "registry/source/ui/Spinner.tsx",
@@ -537,9 +592,49 @@
           "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
+          "path": "registry/source/signature/internal.ts",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Annotator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Annotator.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/source/content/Media.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/content/Media.css"
+        },
+        {
+          "path": "registry/source/ui/Spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Spinner.css"
+        },
+        {
+          "path": "registry/source/ui/Button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Button.css"
         },
         {
           "path": "registry/source/signature/Annotator.css",
@@ -571,14 +666,9 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Tour.tsx",
+          "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Tour.tsx"
-        },
-        {
-          "path": "registry/source/signature/internal.ts",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/internal.ts"
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
           "path": "registry/source/ui/Button.tsx",
@@ -586,14 +676,34 @@
           "target": "@ui/mizu/source/ui/Button.tsx"
         },
         {
-          "path": "registry/source/ui/Spinner.tsx",
+          "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Spinner.tsx"
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Tour.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Tour.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/source/ui/Spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Spinner.css"
+        },
+        {
+          "path": "registry/source/ui/Button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Button.css"
         },
         {
           "path": "registry/source/signature/Tour.css",
@@ -630,14 +740,9 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Interview.tsx",
+          "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Interview.tsx"
-        },
-        {
-          "path": "registry/source/signature/internal.ts",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/internal.ts"
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
           "path": "registry/source/ui/Button.tsx",
@@ -645,14 +750,34 @@
           "target": "@ui/mizu/source/ui/Button.tsx"
         },
         {
-          "path": "registry/source/ui/Spinner.tsx",
+          "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Spinner.tsx"
+          "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Interview.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Interview.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/source/ui/Spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Spinner.css"
+        },
+        {
+          "path": "registry/source/ui/Button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Button.css"
         },
         {
           "path": "registry/source/signature/Interview.css",
@@ -679,16 +804,6 @@
           "target": "@ui/mizu/transfer-queue.tsx"
         },
         {
-          "path": "registry/source/data/Charts.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Charts.tsx"
-        },
-        {
-          "path": "registry/source/forms/FileDropzone.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/forms/FileDropzone.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -699,9 +814,14 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/TransferQueue.tsx",
+          "path": "registry/source/forms/FileDropzone.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/TransferQueue.tsx"
+          "target": "@ui/mizu/source/forms/FileDropzone.tsx"
+        },
+        {
+          "path": "registry/source/data/Charts.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Charts.tsx"
         },
         {
           "path": "registry/source/signature/internal.ts",
@@ -714,9 +834,39 @@
           "target": "@ui/mizu/source/signature/time.ts"
         },
         {
+          "path": "registry/source/signature/TransferQueue.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/TransferQueue.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/source/forms/FileDropzone.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/FileDropzone.css"
+        },
+        {
+          "path": "registry/source/data/Charts.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/data/Charts.css"
         },
         {
           "path": "registry/source/signature/TransferQueue.css",
@@ -753,14 +903,14 @@
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/TriageDeck.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/TriageDeck.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/TriageDeck.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/TriageDeck.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -797,19 +947,14 @@
           "target": "@ui/mizu/source/composite/Dialog.tsx"
         },
         {
-          "path": "registry/source/motion/Preferences.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Preferences.tsx"
-        },
-        {
           "path": "registry/source/motion/easings.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/easings.ts"
         },
         {
-          "path": "registry/source/signature/Gallery.tsx",
+          "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Gallery.tsx"
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
           "path": "registry/source/signature/internal.ts",
@@ -822,9 +967,19 @@
           "target": "@ui/mizu/source/signature/justify.ts"
         },
         {
+          "path": "registry/source/signature/Gallery.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Gallery.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/composite/Dialog.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Dialog.css"
         },
         {
           "path": "registry/source/signature/Gallery.css",
@@ -856,14 +1011,14 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Folio.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Folio.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Folio.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Folio.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -900,9 +1055,9 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/SplitFlap.tsx",
+          "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/SplitFlap.tsx"
+          "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
           "path": "registry/source/signature/flap.ts",
@@ -910,9 +1065,9 @@
           "target": "@ui/mizu/source/signature/flap.ts"
         },
         {
-          "path": "registry/source/signature/internal.ts",
+          "path": "registry/source/signature/SplitFlap.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/internal.ts"
+          "target": "@ui/mizu/source/signature/SplitFlap.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -941,9 +1096,9 @@
           "target": "@ui/mizu/column-browser.tsx"
         },
         {
-          "path": "registry/source/signature/ColumnBrowser.tsx",
+          "path": "registry/source/status/Feedback.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/ColumnBrowser.tsx"
+          "target": "@ui/mizu/source/status/Feedback.tsx"
         },
         {
           "path": "registry/source/signature/internal.ts",
@@ -951,14 +1106,24 @@
           "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
-          "path": "registry/source/status/Feedback.tsx",
+          "path": "registry/source/signature/ColumnBrowser.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/status/Feedback.tsx"
+          "target": "@ui/mizu/source/signature/ColumnBrowser.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
+          "path": "registry/source/status/Feedback.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/status/Feedback.css"
         },
         {
           "path": "registry/source/signature/ColumnBrowser.css",
@@ -985,6 +1150,11 @@
           "target": "@ui/mizu/log-stream.tsx"
         },
         {
+          "path": "registry/source/ui/icons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
           "path": "registry/source/data/Records.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/data/Records.tsx"
@@ -995,24 +1165,29 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/LogStream.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/LogStream.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/signature/LogStream.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/signature/LogStream.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
+        },
+        {
+          "path": "registry/source/data/Records.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/data/Records.css"
         },
         {
           "path": "registry/source/signature/LogStream.css",
@@ -1044,14 +1219,14 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Controls.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Controls.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Controls.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1088,14 +1263,14 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Controls.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Controls.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Controls.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1132,14 +1307,14 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/signature/Controls.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/signature/Controls.tsx"
-        },
-        {
           "path": "registry/source/signature/internal.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/signature/internal.ts"
+        },
+        {
+          "path": "registry/source/signature/Controls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/signature/Controls.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1168,19 +1343,24 @@
           "target": "@ui/mizu/button.tsx"
         },
         {
-          "path": "registry/source/ui/Button.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Button.tsx"
-        },
-        {
           "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
+          "path": "registry/source/ui/Button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Button.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Spinner.css"
         },
         {
           "path": "registry/source/ui/Button.css",
@@ -1292,14 +1472,14 @@
           "target": "@ui/mizu/badge.tsx"
         },
         {
-          "path": "registry/source/ui/Badge.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Badge.tsx"
-        },
-        {
           "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/ui/Badge.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Badge.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1390,9 +1570,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/source/ui/Slider.css",
+          "path": "registry/shared/slider-input.css",
           "type": "registry:file",
-          "target": "@ui/mizu/source/ui/Slider.css"
+          "target": "@ui/mizu/shared/slider-input.css"
         }
       ]
     },
@@ -1445,11 +1625,6 @@
           "target": "@ui/mizu/mask-line.tsx"
         },
         {
-          "path": "registry/source/motion/MaskLine.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/MaskLine.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -1458,6 +1633,11 @@
           "path": "registry/source/motion/easings.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/motion/MaskLine.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/MaskLine.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1489,14 +1669,14 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/motion/Reveal.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Reveal.tsx"
-        },
-        {
           "path": "registry/source/motion/easings.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/motion/Reveal.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Reveal.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1523,14 +1703,14 @@
           "target": "@ui/mizu/magnetic.tsx"
         },
         {
-          "path": "registry/source/motion/Magnetic.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Magnetic.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/source/motion/Magnetic.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Magnetic.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1554,14 +1734,14 @@
           "target": "@ui/mizu/marquee.tsx"
         },
         {
-          "path": "registry/source/motion/Marquee.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Marquee.tsx"
-        },
-        {
           "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/motion/Marquee.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Marquee.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1593,11 +1773,6 @@
           "target": "@ui/mizu/page-wipe.tsx"
         },
         {
-          "path": "registry/source/motion/PageWipe.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/PageWipe.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -1606,6 +1781,11 @@
           "path": "registry/source/motion/easings.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/motion/PageWipe.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/PageWipe.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1679,11 +1859,6 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/source/motion/Tilt.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/source/motion/Tilt.css"
         }
       ]
     },
@@ -1780,19 +1955,24 @@
           "target": "@ui/mizu/specimen.tsx"
         },
         {
-          "path": "registry/source/type/Specimen.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/type/Specimen.tsx"
-        },
-        {
           "path": "registry/source/ui/Slider.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Slider.tsx"
         },
         {
+          "path": "registry/source/type/Specimen.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/type/Specimen.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/slider-input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/slider-input.css"
         },
         {
           "path": "registry/source/type/Specimen.css",
@@ -1915,9 +2095,9 @@
           "target": "@ui/mizu/pinfield.tsx"
         },
         {
-          "path": "registry/source/lab/Pinfield.tsx",
+          "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/lab/Pinfield.tsx"
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
           "path": "registry/source/lab/useCanvas.ts",
@@ -1925,9 +2105,9 @@
           "target": "@ui/mizu/source/lab/useCanvas.ts"
         },
         {
-          "path": "registry/source/motion/Preferences.tsx",
+          "path": "registry/source/lab/Pinfield.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Preferences.tsx"
+          "target": "@ui/mizu/source/lab/Pinfield.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -1935,9 +2115,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/source/lab/Pinfield.css",
+          "path": "registry/shared/canvas-pointer.css",
           "type": "registry:file",
-          "target": "@ui/mizu/source/lab/Pinfield.css"
+          "target": "@ui/mizu/shared/canvas-pointer.css"
         }
       ]
     },
@@ -1959,9 +2139,9 @@
           "target": "@ui/mizu/signal.tsx"
         },
         {
-          "path": "registry/source/lab/Signal.tsx",
+          "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/lab/Signal.tsx"
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
           "path": "registry/source/lab/useCanvas.ts",
@@ -1969,14 +2149,19 @@
           "target": "@ui/mizu/source/lab/useCanvas.ts"
         },
         {
-          "path": "registry/source/motion/Preferences.tsx",
+          "path": "registry/source/lab/Signal.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Preferences.tsx"
+          "target": "@ui/mizu/source/lab/Signal.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/slider-input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/slider-input.css"
         },
         {
           "path": "registry/source/lab/Signal.css",
@@ -2003,9 +2188,9 @@
           "target": "@ui/mizu/ripple-surface.tsx"
         },
         {
-          "path": "registry/source/lab/RippleSurface.tsx",
+          "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/lab/RippleSurface.tsx"
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
           "path": "registry/source/lab/useCanvas.ts",
@@ -2013,9 +2198,9 @@
           "target": "@ui/mizu/source/lab/useCanvas.ts"
         },
         {
-          "path": "registry/source/motion/Preferences.tsx",
+          "path": "registry/source/lab/RippleSurface.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Preferences.tsx"
+          "target": "@ui/mizu/source/lab/RippleSurface.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -2023,9 +2208,9 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/source/lab/RippleSurface.css",
+          "path": "registry/shared/canvas-pointer.css",
           "type": "registry:file",
-          "target": "@ui/mizu/source/lab/RippleSurface.css"
+          "target": "@ui/mizu/shared/canvas-pointer.css"
         }
       ]
     },
@@ -2047,24 +2232,19 @@
           "target": "@ui/mizu/count-up.tsx"
         },
         {
-          "path": "registry/source/feedback/CountUp.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CountUp.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
+          "path": "registry/source/feedback/CountUp.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CountUp.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
-        },
-        {
-          "path": "registry/source/feedback/CountUp.css",
-          "type": "registry:file",
-          "target": "@ui/mizu/source/feedback/CountUp.css"
         }
       ]
     },
@@ -2083,14 +2263,14 @@
           "target": "@ui/mizu/copy-button.tsx"
         },
         {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
-        },
-        {
           "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/feedback/CopyButton.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -2117,11 +2297,6 @@
           "target": "@ui/mizu/toast.tsx"
         },
         {
-          "path": "registry/source/feedback/Toast.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/Toast.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -2135,6 +2310,11 @@
           "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Mark.tsx"
+        },
+        {
+          "path": "registry/source/feedback/Toast.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/feedback/Toast.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -2166,11 +2346,6 @@
           "target": "@ui/mizu/accordion.tsx"
         },
         {
-          "path": "registry/source/composite/Accordion.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/composite/Accordion.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -2179,6 +2354,11 @@
           "path": "registry/source/motion/easings.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/composite/Accordion.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Accordion.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -2205,11 +2385,6 @@
           "target": "@ui/mizu/tabs.tsx"
         },
         {
-          "path": "registry/source/composite/Tabs.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/composite/Tabs.tsx"
-        },
-        {
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
@@ -2218,6 +2393,11 @@
           "path": "registry/source/motion/easings.ts",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/easings.ts"
+        },
+        {
+          "path": "registry/source/composite/Tabs.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Tabs.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -2275,6 +2455,11 @@
           "target": "@ui/mizu/nav.tsx"
         },
         {
+          "path": "registry/source/motion/Preferences.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
           "path": "registry/source/composite/Dialog.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/composite/Dialog.tsx"
@@ -2285,14 +2470,14 @@
           "target": "@ui/mizu/source/composite/Nav.tsx"
         },
         {
-          "path": "registry/source/motion/Preferences.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/motion/Preferences.tsx"
-        },
-        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/composite/Dialog.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Dialog.css"
         },
         {
           "path": "registry/source/composite/Nav.css",
@@ -2326,6 +2511,26 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
           "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Fields.css"
@@ -2355,6 +2560,26 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
         },
         {
           "path": "registry/source/forms/Fields.css",
@@ -2388,6 +2613,26 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
           "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Fields.css"
@@ -2417,6 +2662,26 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
         },
         {
           "path": "registry/source/forms/Fields.css",
@@ -2450,6 +2715,26 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
           "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Fields.css"
@@ -2479,6 +2764,26 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
         },
         {
           "path": "registry/source/forms/Fields.css",
@@ -2512,6 +2817,26 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
           "path": "registry/source/forms/Fields.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Fields.css"
@@ -2541,6 +2866,26 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
         },
         {
           "path": "registry/source/forms/Fields.css",
@@ -2574,6 +2919,21 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
           "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Selection.css"
@@ -2603,6 +2963,21 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
         },
         {
           "path": "registry/source/forms/Selection.css",
@@ -2636,6 +3011,21 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
           "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Selection.css"
@@ -2665,6 +3055,21 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
         },
         {
           "path": "registry/source/forms/Selection.css",
@@ -2698,6 +3103,21 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
           "path": "registry/source/forms/Selection.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/Selection.css"
@@ -2727,6 +3147,21 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
         },
         {
           "path": "registry/source/forms/TagInput.css",
@@ -2760,6 +3195,16 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
           "path": "registry/source/forms/FileDropzone.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/FileDropzone.css"
@@ -2789,6 +3234,16 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/forms/AsyncForm.css",
@@ -2822,6 +3277,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
           "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/status/Feedback.css"
@@ -2851,6 +3311,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/status/Feedback.css",
@@ -2884,6 +3349,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
           "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/status/Feedback.css"
@@ -2913,6 +3383,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/status/Feedback.css",
@@ -2946,6 +3421,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
           "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/status/Feedback.css"
@@ -2975,6 +3455,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/status/Feedback.css",
@@ -3008,6 +3493,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
           "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/status/Feedback.css"
@@ -3037,6 +3527,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/status/Feedback.css",
@@ -3070,6 +3565,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
           "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/status/Feedback.css"
@@ -3099,6 +3599,11 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
         },
         {
           "path": "registry/source/status/Feedback.css",
@@ -3132,6 +3637,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/text-button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/text-button.css"
+        },
+        {
           "path": "registry/source/status/Feedback.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/status/Feedback.css"
@@ -3153,9 +3663,9 @@
           "target": "@ui/mizu/async-button.tsx"
         },
         {
-          "path": "registry/source/status/AsyncButton.tsx",
+          "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/status/AsyncButton.tsx"
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
           "path": "registry/source/ui/Button.tsx",
@@ -3163,14 +3673,24 @@
           "target": "@ui/mizu/source/ui/Button.tsx"
         },
         {
-          "path": "registry/source/ui/Spinner.tsx",
+          "path": "registry/source/status/AsyncButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Spinner.tsx"
+          "target": "@ui/mizu/source/status/AsyncButton.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/ui/Spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Spinner.css"
+        },
+        {
+          "path": "registry/source/ui/Button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Button.css"
         },
         {
           "path": "registry/source/status/AsyncButton.css",
@@ -3194,19 +3714,29 @@
           "target": "@ui/mizu/data-table.tsx"
         },
         {
-          "path": "registry/source/data/DataTable.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/data/DataTable.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
+          "path": "registry/source/data/DataTable.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/DataTable.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
+        },
+        {
+          "path": "registry/shared/data-table.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/data-table.css"
         },
         {
           "path": "registry/source/data/DataTable.css",
@@ -3230,19 +3760,24 @@
           "target": "@ui/mizu/description-list.tsx"
         },
         {
-          "path": "registry/source/data/Records.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Records.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
         },
         {
           "path": "registry/source/data/Records.css",
@@ -3266,19 +3801,24 @@
           "target": "@ui/mizu/stat.tsx"
         },
         {
-          "path": "registry/source/data/Records.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Records.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
         },
         {
           "path": "registry/source/data/Records.css",
@@ -3395,19 +3935,24 @@
           "target": "@ui/mizu/timeline.tsx"
         },
         {
-          "path": "registry/source/data/Records.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Records.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
         },
         {
           "path": "registry/source/data/Records.css",
@@ -3431,9 +3976,9 @@
           "target": "@ui/mizu/activity-feed.tsx"
         },
         {
-          "path": "registry/source/data/Inspection.tsx",
+          "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Inspection.tsx"
+          "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
           "path": "registry/source/feedback/CopyButton.tsx",
@@ -3441,14 +3986,19 @@
           "target": "@ui/mizu/source/feedback/CopyButton.tsx"
         },
         {
-          "path": "registry/source/ui/Mark.tsx",
+          "path": "registry/source/data/Inspection.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Mark.tsx"
+          "target": "@ui/mizu/source/data/Inspection.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
         },
         {
           "path": "registry/source/data/Inspection.css",
@@ -3472,9 +4022,9 @@
           "target": "@ui/mizu/diff-view.tsx"
         },
         {
-          "path": "registry/source/data/Inspection.tsx",
+          "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Inspection.tsx"
+          "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
           "path": "registry/source/feedback/CopyButton.tsx",
@@ -3482,14 +4032,19 @@
           "target": "@ui/mizu/source/feedback/CopyButton.tsx"
         },
         {
-          "path": "registry/source/ui/Mark.tsx",
+          "path": "registry/source/data/Inspection.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Mark.tsx"
+          "target": "@ui/mizu/source/data/Inspection.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
         },
         {
           "path": "registry/source/data/Inspection.css",
@@ -3513,9 +4068,9 @@
           "target": "@ui/mizu/data-inspector.tsx"
         },
         {
-          "path": "registry/source/data/Inspection.tsx",
+          "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Inspection.tsx"
+          "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
           "path": "registry/source/feedback/CopyButton.tsx",
@@ -3523,14 +4078,19 @@
           "target": "@ui/mizu/source/feedback/CopyButton.tsx"
         },
         {
-          "path": "registry/source/ui/Mark.tsx",
+          "path": "registry/source/data/Inspection.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Mark.tsx"
+          "target": "@ui/mizu/source/data/Inspection.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
         },
         {
           "path": "registry/source/data/Inspection.css",
@@ -3554,9 +4114,9 @@
           "target": "@ui/mizu/tree-view.tsx"
         },
         {
-          "path": "registry/source/data/Inspection.tsx",
+          "path": "registry/source/ui/Mark.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Inspection.tsx"
+          "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
           "path": "registry/source/feedback/CopyButton.tsx",
@@ -3564,14 +4124,19 @@
           "target": "@ui/mizu/source/feedback/CopyButton.tsx"
         },
         {
-          "path": "registry/source/ui/Mark.tsx",
+          "path": "registry/source/data/Inspection.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Mark.tsx"
+          "target": "@ui/mizu/source/data/Inspection.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
         },
         {
           "path": "registry/source/data/Inspection.css",
@@ -3595,19 +4160,24 @@
           "target": "@ui/mizu/comparison-table.tsx"
         },
         {
-          "path": "registry/source/data/Records.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/data/Records.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
+          "path": "registry/source/data/Records.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/data/Records.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/table-scroll.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/table-scroll.css"
         },
         {
           "path": "registry/source/data/Records.css",
@@ -3863,6 +4433,16 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/source/composite/Dialog.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Dialog.css"
+        },
+        {
           "path": "registry/source/navigation/CommandPalette.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/navigation/CommandPalette.css"
@@ -3915,14 +4495,9 @@
           "target": "@ui/mizu/kbd.tsx"
         },
         {
-          "path": "registry/source/content/Typography.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Typography.tsx"
-        },
-        {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/ui/Mark.tsx",
@@ -3930,9 +4505,14 @@
           "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/feedback/CopyButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -3961,14 +4541,9 @@
           "target": "@ui/mizu/code-block.tsx"
         },
         {
-          "path": "registry/source/content/Typography.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Typography.tsx"
-        },
-        {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/ui/Mark.tsx",
@@ -3976,9 +4551,14 @@
           "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/feedback/CopyButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4007,14 +4587,9 @@
           "target": "@ui/mizu/quote.tsx"
         },
         {
-          "path": "registry/source/content/Typography.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Typography.tsx"
-        },
-        {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/ui/Mark.tsx",
@@ -4022,9 +4597,14 @@
           "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/feedback/CopyButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4053,14 +4633,9 @@
           "target": "@ui/mizu/prose.tsx"
         },
         {
-          "path": "registry/source/content/Typography.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Typography.tsx"
-        },
-        {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/ui/Mark.tsx",
@@ -4068,9 +4643,14 @@
           "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/feedback/CopyButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4161,14 +4741,9 @@
           "target": "@ui/mizu/link-card.tsx"
         },
         {
-          "path": "registry/source/content/Typography.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Typography.tsx"
-        },
-        {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/ui/Mark.tsx",
@@ -4176,9 +4751,14 @@
           "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/feedback/CopyButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4207,14 +4787,9 @@
           "target": "@ui/mizu/file-card.tsx"
         },
         {
-          "path": "registry/source/content/Typography.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/content/Typography.tsx"
-        },
-        {
-          "path": "registry/source/feedback/CopyButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/ui/Mark.tsx",
@@ -4222,9 +4797,14 @@
           "target": "@ui/mizu/source/ui/Mark.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/feedback/CopyButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/feedback/CopyButton.tsx"
+        },
+        {
+          "path": "registry/source/content/Typography.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/content/Typography.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4485,6 +5065,26 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/source/forms/Selection.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/Selection.css"
+        },
+        {
           "path": "registry/source/interaction/Combobox.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/interaction/Combobox.css"
@@ -4521,6 +5121,26 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/source/forms/Selection.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/Selection.css"
+        },
+        {
           "path": "registry/source/interaction/MultiSelect.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/interaction/MultiSelect.css"
@@ -4542,19 +5162,29 @@
           "target": "@ui/mizu/inline-edit.tsx"
         },
         {
-          "path": "registry/source/interaction/InlineEdit.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/interaction/InlineEdit.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
+          "path": "registry/source/interaction/InlineEdit.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/InlineEdit.tsx"
+        },
+        {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
         },
         {
           "path": "registry/source/interaction/InlineEdit.css",
@@ -4612,9 +5242,9 @@
           "target": "@ui/mizu/reorder-list.tsx"
         },
         {
-          "path": "registry/source/interaction/ReorderList.tsx",
+          "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/interaction/ReorderList.tsx"
+          "target": "@ui/mizu/source/ui/icons.tsx"
         },
         {
           "path": "registry/source/motion/Preferences.tsx",
@@ -4622,14 +5252,19 @@
           "target": "@ui/mizu/source/motion/Preferences.tsx"
         },
         {
-          "path": "registry/source/ui/icons.tsx",
+          "path": "registry/source/interaction/ReorderList.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/icons.tsx"
+          "target": "@ui/mizu/source/interaction/ReorderList.tsx"
         },
         {
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
         },
         {
           "path": "registry/source/interaction/ReorderList.css",
@@ -4653,14 +5288,14 @@
           "target": "@ui/mizu/image-compare.tsx"
         },
         {
-          "path": "registry/source/interaction/ImageCompare.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/interaction/ImageCompare.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/source/interaction/ImageCompare.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/ImageCompare.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4689,14 +5324,14 @@
           "target": "@ui/mizu/history-controls.tsx"
         },
         {
-          "path": "registry/source/interaction/HistoryControls.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/interaction/HistoryControls.tsx"
-        },
-        {
           "path": "registry/source/ui/icons.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/icons.tsx"
+        },
+        {
+          "path": "registry/source/interaction/HistoryControls.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/HistoryControls.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4730,14 +5365,9 @@
           "target": "@ui/mizu/source/composite/Dialog.tsx"
         },
         {
-          "path": "registry/source/interaction/ConfirmAction.tsx",
+          "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/interaction/ConfirmAction.tsx"
-        },
-        {
-          "path": "registry/source/status/AsyncButton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/mizu/source/status/AsyncButton.tsx"
+          "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
           "path": "registry/source/ui/Button.tsx",
@@ -4745,9 +5375,14 @@
           "target": "@ui/mizu/source/ui/Button.tsx"
         },
         {
-          "path": "registry/source/ui/Spinner.tsx",
+          "path": "registry/source/status/AsyncButton.tsx",
           "type": "registry:ui",
-          "target": "@ui/mizu/source/ui/Spinner.tsx"
+          "target": "@ui/mizu/source/status/AsyncButton.tsx"
+        },
+        {
+          "path": "registry/source/interaction/ConfirmAction.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/interaction/ConfirmAction.tsx"
         },
         {
           "path": "registry/styles/base.css",
@@ -4755,9 +5390,24 @@
           "target": "@ui/mizu/base.css"
         },
         {
-          "path": "registry/source/interaction/ConfirmAction.css",
+          "path": "registry/source/composite/Dialog.css",
           "type": "registry:file",
-          "target": "@ui/mizu/source/interaction/ConfirmAction.css"
+          "target": "@ui/mizu/source/composite/Dialog.css"
+        },
+        {
+          "path": "registry/source/ui/Spinner.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Spinner.css"
+        },
+        {
+          "path": "registry/source/ui/Button.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/ui/Button.css"
+        },
+        {
+          "path": "registry/source/status/AsyncButton.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/status/AsyncButton.css"
         }
       ]
     },

@@ -1,0 +1,13 @@
+
+.mizu-text-button {
+  color: var(--mizu-paper);
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-color: var(--mizu-accent);
+  text-underline-offset: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}

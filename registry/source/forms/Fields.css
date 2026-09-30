@@ -1,62 +1,7 @@
 
-.mizu-field {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
-  font-family: var(--mizu-font-display);
-}
-.mizu-field-label,
-.mizu-radio-group legend,
-.mizu-rating legend,
-.mizu-color-picker legend {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--mizu-paper);
-  padding: 0;
-  margin-bottom: 4px;
-}
-.mizu-input {
-  width: 100%;
-  min-width: 0;
-  min-height: var(--mizu-control-height);
-  padding: 10px 12px;
-  border: 1px solid var(--mizu-line-bright);
-  border-radius: var(--mizu-radius);
-  background: var(--mizu-ink);
-  color: var(--mizu-paper);
-  font-size: 14px;
-  color-scheme: var(--mizu-color-scheme);
-  transition: border-color var(--mizu-duration-fast) ease;
-}
-
-.mizu-input::placeholder {
-  color: var(--mizu-faint);
-  opacity: 1;
-}
-.mizu-input:hover {
-  border-color: var(--mizu-muted);
-}
-.mizu-input[aria-invalid="true"] {
-  border-color: var(--mizu-danger);
-}
-.mizu-input:focus {
-  border-color: var(--mizu-accent);
-}
 .mizu-textarea {
   resize: vertical;
   line-height: 1.65;
-}
-.mizu-field-hint {
-  margin: 0;
-  font-size: 12px;
-  color: var(--mizu-muted);
-  line-height: 1.6;
-}
-.mizu-field-error {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--mizu-danger);
 }
 .mizu-check,
 .mizu-switch {
@@ -68,15 +13,13 @@
   font-size: 14px;
   cursor: pointer;
 }
-.mizu-check input,
-.mizu-radio-option input {
+.mizu-check input {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
   accent-color: var(--mizu-accent-fill);
 }
-.mizu-check small,
-.mizu-radio-option small {
+.mizu-check small {
   display: block;
   margin-top: 4px;
   color: var(--mizu-muted);
@@ -86,9 +29,7 @@
 .mizu-switch {
   position: relative;
 }
-.mizu-switch input,
-.mizu-segmented input,
-.mizu-rating input {
+.mizu-switch input {
   position: absolute;
   opacity: 0;
   width: 1px;
@@ -121,9 +62,7 @@
   transform: translateX(16px);
   background: #fffaf4;
 }
-.mizu-switch input:focus-visible + .mizu-switch-track,
-.mizu-segmented input:focus-visible + span,
-.mizu-rating input:focus-visible + svg {
+.mizu-switch input:focus-visible + .mizu-switch-track {
   outline: 2px solid var(--mizu-accent);
   outline-offset: 4px;
 }
@@ -149,15 +88,4 @@
   padding: 0 12px;
   font-size: 12px;
   cursor: pointer;
-}
-.mizu-query-rule .mizu-input {
-  flex: 0 1 auto;
-  width: auto;
-  min-width: 0;
-}
-.mizu-query-rule > input.mizu-input {
-  flex: 1 1 160px;
-}
-.mizu-query-pair .mizu-input {
-  width: 112px;
 }

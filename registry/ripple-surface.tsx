@@ -1,4 +1,4 @@
 import "./base.css";
-import "./source/lab/RippleSurface.css";
+import "./shared/canvas-pointer.css";
 
 export { RippleSurface } from "./source/lab/RippleSurface";

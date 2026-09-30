@@ -1,4 +1,4 @@
 import "./base.css";
-import "./source/lab/Pinfield.css";
+import "./shared/canvas-pointer.css";
 
 export { Pinfield } from "./source/lab/Pinfield";

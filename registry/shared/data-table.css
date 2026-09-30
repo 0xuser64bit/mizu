@@ -1,0 +1,45 @@
+
+.mizu-data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.mizu-data-table caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--mizu-paper);
+}
+.mizu-data-table th {
+  font-weight: 500;
+  color: var(--mizu-muted);
+  text-align: left;
+}
+.mizu-data-table th,
+.mizu-data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--mizu-line);
+  white-space: nowrap;
+}
+.mizu-data-table th:first-child,
+.mizu-data-table td:first-child {
+  padding-left: 0;
+}
+.mizu-data-table th button {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  min-height: 44px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+.mizu-data-table td {
+  color: var(--mizu-paper);
+}
+.mizu-data-table tr:hover td {
+  background: var(--mizu-ink-2);
+}

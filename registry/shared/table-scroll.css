@@ -1,0 +1,7 @@
+
+.mizu-table-scroll {
+  overflow: auto;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--mizu-line-bright) transparent;
+}

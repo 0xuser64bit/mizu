@@ -109,6 +109,25 @@ body {
   -webkit-text-stroke: 1px var(--mizu-accent);
 }
 
+.mizu-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mizu-field-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--mizu-muted);
+  line-height: 1.6;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mizu-root *,
   .mizu-root *::before,
@@ -508,17 +527,6 @@ body {
   --mizu-warning: #775100;
   --mizu-danger: #a12716;
 }
-.mizu-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 :where([class*="mizu-"]) {
   box-sizing: border-box;
 }
@@ -615,12 +623,6 @@ body {
 .mizu-textarea {
   resize: vertical;
   line-height: 1.65;
-}
-.mizu-field-hint {
-  margin: 0;
-  font-size: 12px;
-  color: var(--mizu-muted);
-  line-height: 1.6;
 }
 .mizu-field-error {
   margin: 0;

@@ -24,8 +24,7 @@
   color: var(--mizu-muted);
   font-size: 12px;
 }
-.mizu-range-selector input,
-.mizu-image-compare input {
+.mizu-range-selector input {
   width: 100%;
   min-height: 44px;
   accent-color: var(--mizu-accent);

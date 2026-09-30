@@ -1,20 +1,4 @@
 
-.mizu-field-label,
-.mizu-radio-group legend,
-.mizu-rating legend,
-.mizu-color-picker legend {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--mizu-paper);
-  padding: 0;
-  margin-bottom: 4px;
-}
-.mizu-field-hint {
-  margin: 0;
-  font-size: 12px;
-  color: var(--mizu-muted);
-  line-height: 1.6;
-}
 .mizu-reorder-list ul {
   list-style: none;
   padding: 0;

@@ -1,10 +1,4 @@
 
-.mizu-field-hint {
-  margin: 0;
-  font-size: 12px;
-  color: var(--mizu-muted);
-  line-height: 1.6;
-}
 .mizu-breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;

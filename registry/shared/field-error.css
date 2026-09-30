@@ -1,7 +1,7 @@
 
-.mizu-field-hint {
+.mizu-field-error {
   margin: 0;
   font-size: 12px;
-  color: var(--mizu-muted);
   line-height: 1.6;
+  color: var(--mizu-danger);
 }
