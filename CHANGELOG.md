@@ -71,6 +71,10 @@
   components lose their default margins, and each rule states the text
   decoration, padding, weight and margins its element needs. Only content an
   example brings still differs.
+- Prose lists show their markers: faint discs, or numbers for an ordered list,
+  with a hanging indent. Tailwind's preflight removed them, on the docs site
+  too, so a list in a long document read as a run of loose paragraphs.
+  Headings keep the surrounding weight, as they were drawn.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a
