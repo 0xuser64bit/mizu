@@ -324,12 +324,15 @@
     opacity: 0.35;
   }
 }
+/* Narrow: the clock without milliseconds fills 8ch, and the level keeps its 5ch.
+   At 4ch and a 12-character stamp, each column spilled into the next. */
 @container (max-width: 560px) {
   .mizu-log-row {
-    grid-template-columns: 8ch 4ch minmax(0, 1fr);
+    grid-template-columns: 8ch 5ch minmax(0, 1fr);
     gap: 8px;
   }
-  .mizu-log-row .mizu-log-source {
+  .mizu-log-row .mizu-log-source,
+  .mizu-log-row .mizu-log-ms {
     display: none;
   }
 }

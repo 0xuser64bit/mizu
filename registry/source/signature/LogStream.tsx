@@ -465,7 +465,10 @@ export function LogStream({
                       }}
                     >
                       <time dateTime={new Date(l.time).toISOString()}>
-                        {stamp(l.time, utc)}
+                        {stamp(l.time, utc).slice(0, 8)}
+                        <span className="mizu-log-ms">
+                          {stamp(l.time, utc).slice(8)}
+                        </span>
                       </time>
                       <b>{l.level}</b>
                       <span className="mizu-log-source">

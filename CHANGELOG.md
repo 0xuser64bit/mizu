@@ -51,6 +51,10 @@
   takes the surrounding size). It had no size or weight, so the usage example
   drew a faint 16px outline; the docs demo and home footer sized it with
   classes a copied example lacks.
+- LogStream keeps its columns apart on narrow screens. Below 560px the grid
+  gave a 12-character timestamp 8ch and the level 4ch, with nothing clipped,
+  so on a phone they ran into each other ("09:30:04.WARN"). The milliseconds
+  now hide there, leaving the clock in 8ch, and the level keeps 5ch.
 - Font tokens read `--font-archivo`, `--font-instrument-serif` and
   `--font-jetbrains-mono` first, so faces loaded with `next/font` apply
   without overrides, from `<html>` or `<body>`. They no longer reset inside a
