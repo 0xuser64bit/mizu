@@ -7,8 +7,10 @@ variable type and interactive instruments.
 Warm ink and paper, hairline rules, diamond markers and purposeful motion.
 
 The React package lives in [packages/mizu](packages/mizu) and ships as
-`mizu-ui` on npm. This Next.js site is its working documentation, archive and
-instrument lab. Consumers need neither Next.js nor Tailwind.
+`mizu-ui` on npm. This Next.js site, live at
+[mizu.user64bit.world](https://mizu.user64bit.world), is its working
+documentation, archive and instrument lab. Consumers need neither Next.js nor
+Tailwind.
 
 ## Use Mizu
 
@@ -248,6 +250,9 @@ inventory and checks for meaningful behavior.
 
 ## Further reading
 
+- [Documentation site](https://mizu.user64bit.world), and its
+  [llms.txt](https://mizu.user64bit.world/llms.txt): every component's usage,
+  props and accessibility notes as Markdown, for AI agents
 - [Package setup and APIs](packages/mizu/README.md)
 - [Design and motion guidance](DESIGN.md)
 - [Release procedure](PUBLISHING.md)

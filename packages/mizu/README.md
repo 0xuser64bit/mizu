@@ -160,9 +160,12 @@ composing more demanding workflows.
 
 ## Inspect, copy and validate
 
-The [repository](https://github.com/0xuser64bit/mizu) includes the searchable
-showcase: run it and visit `/components`. Every page has working usage,
-properties, accessibility / motion notes and a source link. The
+The [documentation site](https://mizu.user64bit.world) is the searchable
+showcase; its source is in the [repository](https://github.com/0xuser64bit/mizu)
+(run it and visit `/components`). Every page has working usage, properties,
+accessibility / motion notes and a source link, and
+[llms.txt](https://mizu.user64bit.world/llms.txt) lists them as Markdown for AI
+agents. The
 [complete inventory](https://github.com/0xuser64bit/mizu/blob/main/docs/COMPONENTS.md)
 links to implementation files.
 

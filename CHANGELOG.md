@@ -220,6 +220,17 @@
   `--mizu-radius`, `--mizu-control-height`, `--mizu-z-*`) are declared on
   `:root` alone, so an override on an ancestor no longer resets inside a
   nested `data-theme`. Theme blocks keep only the color scheme and color roles.
+- Package metadata says what Mizu is: `homepage` is the documentation site
+  rather than the GitHub readme, the description names the kinds of system
+  and the keywords add `react-components`, `component-library`, `typescript`,
+  `accessibility`, `dark-mode`, `shadcn`, `timeline`, `charts` and `forms`.
+  Both readmes link the documentation site and its `llms.txt`.
+- Docs site: every page has its own title, description, canonical URL and link
+  preview (they all carried the home page's), and a sitemap and robots.txt
+  exist. The home page names Mizu as a React component library in its text and
+  structured data, `/llms.txt` indexes every component, and each component's
+  usage, props and accessibility notes are served as Markdown at
+  `/components/<slug>.md`.
 
 ## 0.2.1 — 2026-09-28
 

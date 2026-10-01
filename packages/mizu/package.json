@@ -1,16 +1,25 @@
 {
   "name": "mizu-ui",
   "version": "0.2.1",
-  "description": "Mizu interface craft for React: accessible surfaces, interaction, data, motion and complete patterns.",
+  "description": "Accessible React component systems for interface craft: timelines, charts, editors, flows, forms and data, with purposeful motion. No Tailwind required.",
   "type": "module",
   "license": "MIT",
   "keywords": [
     "mizu",
     "react",
+    "react-components",
+    "component-library",
     "components",
     "design-system",
+    "ui",
+    "typescript",
+    "accessibility",
+    "dark-mode",
     "motion",
-    "ui"
+    "shadcn",
+    "timeline",
+    "charts",
+    "forms"
   ],
   "sideEffects": [
     "*.css"
@@ -114,7 +123,7 @@
     "url": "git+https://github.com/0xuser64bit/mizu.git",
     "directory": "packages/mizu"
   },
-  "homepage": "https://github.com/0xuser64bit/mizu#readme",
+  "homepage": "https://mizu.user64bit.world",
   "bugs": {
     "url": "https://github.com/0xuser64bit/mizu/issues"
   }
