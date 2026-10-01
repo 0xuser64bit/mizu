@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata = { title: "Getting started — Mizu" };
+export const metadata: Metadata = {
+  title: "Getting started: install mizu-ui",
+  description:
+    "Install the mizu-ui React package or add single components with the shadcn CLI. Load fonts, pick a theme and customize --mizu-* tokens, with or without Tailwind.",
+  alternates: { canonical: "/components/getting-started" },
+};
 function Code({ children }: { children: string }) {
   return (
     <pre tabIndex={0} role="region" aria-label="Code example">

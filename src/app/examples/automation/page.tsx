@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
 import { ExampleShell } from "@/components/examples/ExampleShell";
 import { AutomationBuilder } from "@/components/examples/AutomationBuilder";
 
-export const metadata = {
-  title: "Automation builder — Mizu examples",
+export const metadata: Metadata = {
+  title: "Automation builder example",
   description:
     "Wire a flow, write its condition as a query, and see which records take which path before anything runs.",
+  alternates: { canonical: "/examples/automation" },
 };
 
 export default function AutomationPage() {

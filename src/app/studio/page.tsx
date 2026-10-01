@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { SectionTag, Reveal, Magnetic, ButtonLink } from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
+
+export const metadata: Metadata = {
+  title: "The standpoint: a manifesto for interface craft",
+  description:
+    "Why Mizu exists and what it refuses to be: surfaces before components, motion as a material, and systems that hold up beyond a screenshot.",
+  alternates: { canonical: "/studio" },
+};
 
 const ARTICLES = [
   {

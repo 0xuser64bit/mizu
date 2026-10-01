@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { SectionTag, Reveal, Magnetic, ButtonLink, Signal, Specimen, Pinfield } from "@/mizu";
 import { Station } from "@/components/lab/Station";
 import { Spectrum } from "@/components/lab/Spectrum";
 import { SiteNav } from "@/components/shell/SiteNav";
+
+export const metadata: Metadata = {
+  title: "The lab: live interface instruments",
+  description:
+    "Touch, drag and break live instruments from Mizu: a scrubbable signal, a type specimen, a copyable color spectrum and a pinfield that carries pulses.",
+  alternates: { canonical: "/lab" },
+};
 
 export default function LabPage() {
   return (

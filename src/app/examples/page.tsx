@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
 import { LinkCard } from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
 
-export const metadata = {
-  title: "Examples — Mizu",
+export const metadata: Metadata = {
+  title: "Examples: React systems working together",
   description:
-    "Whole workflows built from Mizu's signature systems, each sharing state across several of them.",
+    "Whole workflows built from Mizu's signature systems, sharing state across several of them: an incident review, a design review and an automation builder.",
+  alternates: { canonical: "/examples" },
 };
 
 const EXAMPLES = [

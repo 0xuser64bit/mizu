@@ -1,11 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CopyButton } from "@/mizu";
 import { ComponentBrowser } from "@/components/docs/ComponentBrowser";
 import { CATEGORIES, SYSTEMS } from "@/components/docs/registry";
 
-export const metadata = {
-  title: "The collection — Mizu",
-  description: "Discover, preview and use the Mizu interface language.",
+export const metadata: Metadata = {
+  title: "React component collection",
+  description: `Browse ${SYSTEMS.length} React component systems in ${CATEGORIES.length} families — timelines, charts, forms, data tables, motion and more — each with a live demo, props and source.`,
+  alternates: { canonical: "/components" },
 };
 export default function ComponentsIndex() {
   const summaries = SYSTEMS.map(({ slug, name, category, tagline }) => ({

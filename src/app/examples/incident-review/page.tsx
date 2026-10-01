@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
 import { ExampleShell } from "@/components/examples/ExampleShell";
 import { IncidentReview } from "@/components/examples/IncidentReview";
 
-export const metadata = {
-  title: "Incident review — Mizu examples",
+export const metadata: Metadata = {
+  title: "Incident review example",
   description:
     "A post-incident review where a timeline, two charts and the logs share one moment and one window.",
+  alternates: { canonical: "/examples/incident-review" },
 };
 
 export default function IncidentReviewPage() {

@@ -3,7 +3,7 @@ import { ButtonLink, Magnetic, SectionTag } from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
 
 export const metadata: Metadata = {
-  title: "Not found — Mizu",
+  title: "Not found",
   description: "This piece is not in the archive.",
 };
 

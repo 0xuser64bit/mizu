@@ -7,6 +7,7 @@ import { Cursor } from "@/components/shell/Cursor";
 import { Noise } from "@/components/shell/Noise";
 import { PageWipeProvider } from "@/mizu";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-Q3K0S22ZXL";
 
@@ -19,20 +20,15 @@ const previewImage = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.SITE_URL ??
-      (process.env.VERCEL_PROJECT_PRODUCTION_URL
-        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-        : "http://localhost:3000"),
-  ),
-  title: "Mizu — An Archive of Interface Craft",
-  description:
-    "Mizu is a living archive of interface craft: surfaces, motion, typography and systems, made slowly.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: "%s — Mizu" },
+  description: SITE_DESCRIPTION,
+  // No title or description here: a page that sets its own gets them in its
+  // link previews. Setting either would put the home page's on every route.
   openGraph: {
-    title: "Mizu — An Archive of Interface Craft",
-    description:
-      "Mizu is a living archive of interface craft: surfaces, motion, typography and systems, made slowly.",
     type: "website",
+    siteName: "Mizu",
+    locale: "en_US",
     images: [previewImage],
   },
   twitter: { card: "summary_large_image", images: [previewImage] },

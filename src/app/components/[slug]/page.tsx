@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ComponentDoc } from "@/components/docs/ComponentDoc";
 import { COMPONENTS, getComponent } from "@/components/docs/registry";
+import { descriptionOf, titleOf } from "@/components/docs/seo";
 
 export function generateStaticParams() {
   return COMPONENTS.map((c) => ({ slug: c.slug }));
@@ -16,8 +17,9 @@ export async function generateMetadata({
   const meta = getComponent(slug);
   if (!meta) return {};
   return {
-    title: `${meta.name} — Mizu Components`,
-    description: meta.tagline,
+    title: titleOf(meta),
+    description: descriptionOf(meta),
+    alternates: { canonical: `/components/${slug}` },
   };
 }
 

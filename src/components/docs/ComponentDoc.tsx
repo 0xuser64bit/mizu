@@ -3,6 +3,8 @@ import usage from "./usage.json";
 import { CodeBlock, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
+import { JsonLd } from "@/components/shell/JsonLd";
+import { PACKAGE, REPO_URL, SITE_URL } from "@/lib/site";
 import { DemoLabel } from "./demos/shared";
 import {
   exampleImports,
@@ -119,6 +121,24 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
 
   return (
     <div className="px-5 py-16 md:px-10 md:py-24">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          name: meta.name,
+          description: meta.tagline,
+          url: `${SITE_URL}/components/${meta.slug}`,
+          codeRepository: `${REPO_URL}/blob/main/packages/mizu/src/${meta.source}`,
+          programmingLanguage: "TypeScript",
+          runtimePlatform: "React",
+          isPartOf: {
+            "@type": "SoftwareSourceCode",
+            "@id": `${SITE_URL}/#library`,
+            name: PACKAGE.name,
+            url: SITE_URL,
+          },
+        }}
+      />
       <div className={`mx-auto ${signature ? "max-w-6xl" : "max-w-4xl"}`}>
         {signature && (
           <p className="mizu-signature-number">

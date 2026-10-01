@@ -5,13 +5,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { usePageWipe } from "@/mizu";
 
-const TITLES: Record<string, string> = {
-  "/": "Mizu — An Archive of Interface Craft",
-  "/lab": "The Lab — Mizu",
-  "/studio": "The Standpoint — Mizu",
-  "/components": "The Components — Mizu",
-};
-
 type NavContextValue = { navigate: (href: string, label: string) => void };
 const NavContext = createContext<NavContextValue>({ navigate: () => {} });
 
@@ -31,7 +24,6 @@ export function NavigatorProvider({ children }: { children: ReactNode }) {
       void wipe(label).then(() => {
         router.push(href);
         window.scrollTo({ top: 0, behavior: "instant" });
-        if (TITLES[href]) document.title = TITLES[href];
         window.setTimeout(() => {
           busy.current = false;
         }, 600);

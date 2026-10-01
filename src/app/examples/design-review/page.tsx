@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
 import { ExampleShell } from "@/components/examples/ExampleShell";
 import { DesignReview } from "@/components/examples/DesignReview";
 
-export const metadata = {
-  title: "Design review — Mizu examples",
+export const metadata: Metadata = {
+  title: "Design review example",
   description:
     "Triage submissions at the speed of a gesture, pin comments where they belong, and arrange the decisions on a board.",
+  alternates: { canonical: "/examples/design-review" },
 };
 
 export default function DesignReviewPage() {

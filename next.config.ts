@@ -19,6 +19,13 @@ const nextConfig: NextConfig = {
       destination: `/components/${to}`,
       permanent: true,
     })),
+  headers: async () => [
+    // The fixture the Nav page embeds in an iframe: not a page to find.
+    {
+      source: "/examples/nav",
+      headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+    },
+  ],
 };
 
 export default nextConfig;
