@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
       destination: `/components/${to}`,
       permanent: true,
     })),
+  // Every component page's documentation as Markdown, for agents (/llms.txt).
+  rewrites: async () => [
+    { source: "/components/:slug.md", destination: "/components/:slug/md" },
+  ],
   headers: async () => [
     // The fixture the Nav page embeds in an iframe: not a page to find.
     {

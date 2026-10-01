@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import { readdirSync } from "node:fs";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
+import { GET as llms } from "@/app/llms.txt/route";
 import { COMPONENTS } from "@/components/docs/registry";
+import { componentMarkdown } from "@/components/docs/markdown";
 import { descriptionOf, titleOf } from "@/components/docs/seo";
 import { SITE_URL } from "@/lib/site";
 
@@ -38,5 +40,17 @@ describe("search and agent discovery", () => {
       expect(title.length, title).toBeLessThanOrEqual(60);
     const descriptions = COMPONENTS.map(descriptionOf);
     expect(new Set(descriptions).size).toBe(descriptions.length);
+  });
+
+  it("indexes every component in llms.txt and documents it as Markdown", async () => {
+    const index = await llms().text();
+    for (const c of COMPONENTS) {
+      expect(index, c.slug).toContain(`${SITE_URL}/components/${c.slug}.md`);
+      const doc = componentMarkdown(c);
+      expect(doc.startsWith(`# ${c.name}\n`), c.slug).toBe(true);
+      expect(doc, c.slug).toContain("\n## Props\n");
+      // An unbalanced fence would swallow the rest of the page.
+      expect(doc.split("```").length % 2, c.slug).toBe(1);
+    }
   });
 });
