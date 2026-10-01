@@ -3,6 +3,7 @@ import { readdirSync } from "node:fs";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { GET as llms } from "@/app/llms.txt/route";
+import { GET as llmsFull } from "@/app/llms-full.txt/route";
 import { COMPONENTS } from "@/components/docs/registry";
 import { componentMarkdown } from "@/components/docs/markdown";
 import { descriptionOf, titleOf } from "@/components/docs/seo";
@@ -52,5 +53,14 @@ describe("search and agent discovery", () => {
       // An unbalanced fence would swallow the rest of the page.
       expect(doc.split("```").length % 2, c.slug).toBe(1);
     }
+  });
+
+  it("offers every component's documentation in one file, linked from llms.txt", async () => {
+    expect(await llms().text()).toContain(`${SITE_URL}/llms-full.txt`);
+    const all = llmsFull();
+    expect(all.headers.get("X-Robots-Tag")).toBe("noindex");
+    const text = await all.text();
+    for (const c of COMPONENTS)
+      expect(text, c.slug).toContain(componentMarkdown(c));
   });
 });

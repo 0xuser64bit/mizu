@@ -230,7 +230,7 @@
   exist. The home page names Mizu as a React component library in its text and
   structured data, `/llms.txt` indexes every component, and each component's
   usage, props and accessibility notes are served as Markdown at
-  `/components/<slug>.md`.
+  `/components/<slug>.md`, and all of them in one file at `/llms-full.txt`.
 
 ## 0.2.1 — 2026-09-28
 
