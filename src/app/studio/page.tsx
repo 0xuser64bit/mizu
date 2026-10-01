@@ -40,7 +40,7 @@ const ARTICLES = [
 ];
 
 const NOTS = [
-  { what: "A component library.", why: "Components are the output, not the input." },
+  { what: "Just a component library.", why: "Components are the output, not the input." },
   { what: "A template shop.", why: "Nothing here is a starting point for someone else's idea." },
   { what: "A growth surface.", why: "No tracking, no funnels, no engagement tricks." },
   { what: "Finished.", why: "An archive is never finished. It's kept." },

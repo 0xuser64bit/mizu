@@ -50,6 +50,8 @@ export function Footer() {
           <ul className="mt-5 space-y-3">
             {[
               { href: "/", label: "Home" },
+              { href: "/components", label: "Components" },
+              { href: "/examples", label: "Examples" },
               { href: "/lab", label: "Lab" },
               { href: "/studio", label: "Standpoint" },
             ].map((l) => (
@@ -74,6 +76,22 @@ export function Footer() {
             <li>Set in Archivo, Instrument Serif</li>
             <li>& JetBrains Mono</li>
             <li>Built with Next.js & motion</li>
+            <li>
+              MIT — on{" "}
+              <a
+                href="https://github.com/0xuser64bit/mizu"
+                className="text-paper underline underline-offset-4"
+              >
+                GitHub
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://www.npmjs.com/package/mizu-ui"
+                className="text-paper underline underline-offset-4"
+              >
+                npm
+              </a>
+            </li>
             <li className="text-paper">
               Local time —{" "}
               <span className="tabular-nums text-accent">

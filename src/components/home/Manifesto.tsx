@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { SectionTag, Reveal } from "@/mizu";
+import { CATEGORIES, SYSTEMS } from "@/components/docs/registry";
 
 const PRINCIPLES = [
   {
@@ -39,6 +41,23 @@ export function Manifesto() {
               Mizu is a living archive of interface craft —{" "}
               <span className="font-serif italic text-accent">surfaces, motion and systems</span> — gathered
               slowly, finished properly, and released when they&apos;re ready.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-10 max-w-xl leading-relaxed text-muted">
+              It ships as <code className="font-mono text-[0.9em] text-paper">mizu-ui</code>,
+              a React component library on npm: {SYSTEMS.length} systems in{" "}
+              {CATEGORIES.length} families, from timelines and charts to forms
+              and data tables.{" "}
+              <Link href="/components" className="text-accent underline underline-offset-4">
+                Browse the collection
+              </Link>{" "}
+              or{" "}
+              <Link href="/components/getting-started" className="text-accent underline underline-offset-4">
+                get started
+              </Link>
+              .
             </p>
           </Reveal>
 

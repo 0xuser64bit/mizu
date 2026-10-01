@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ButtonLink, Reveal, SectionTag } from "@/mizu";
-import { COMPONENTS } from "@/components/docs/registry";
+import { COMPONENTS, SYSTEMS } from "@/components/docs/registry";
 
 const SIGNATURE = COMPONENTS.filter((c) => c.category === "Signature");
 
@@ -63,6 +63,9 @@ export function Signature() {
         <div className="mt-14 flex flex-wrap items-center gap-6">
           <ButtonLink href="/examples" label="Examples">
             See them working together
+          </ButtonLink>
+          <ButtonLink href="/components" variant="ghost">
+            Browse all {SYSTEMS.length} systems
           </ButtonLink>
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
             Incident review · Design review · Automation
