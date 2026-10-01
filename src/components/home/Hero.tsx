@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { HeroField } from "./HeroField";
-import { MaskLine, Reveal, Magnetic, ButtonLink } from "@/mizu";
+import { Magnetic, ButtonLink } from "@/mizu";
+import { Rise, RiseMask } from "@/components/ui/Rise";
 import { useNavigator } from "@/components/shell/Navigator";
 
 export function Hero() {
@@ -23,66 +24,70 @@ export function Hero() {
         className="relative z-10 flex h-full flex-col justify-between px-5 pb-8 pt-24 md:px-10 md:pt-28"
       >
         <div className="flex items-start justify-between gap-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-          <MaskLine delay={0.1}>
+          <RiseMask delay={0.1}>
             <span>An archive of interface craft</span>
-          </MaskLine>
-          <MaskLine delay={0.2}>
+          </RiseMask>
+          <RiseMask delay={0.2}>
             <span className="hidden sm:inline">Vol. 01 — MMXXVI</span>
-          </MaskLine>
+          </RiseMask>
         </div>
 
         <div>
           <h1 className="font-display font-black font-wide leading-[0.82] tracking-[-0.03em]">
             {"MIZU".split("").map((ch, i) => (
               <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom">
-                <MaskLine delay={0.25 + i * 0.09}>
+                <RiseMask delay={0.25 + i * 0.09}>
                   <span className="inline-block text-[clamp(4.2rem,16vw,13.5rem)]">{ch}</span>
-                </MaskLine>
+                </RiseMask>
               </span>
             ))}
             <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
-              <MaskLine delay={0.68}>
+              <RiseMask delay={0.68}>
                 <span className="inline-block text-[clamp(4.2rem,16vw,13.5rem)] text-accent">.</span>
-              </MaskLine>
+              </RiseMask>
             </span>
           </h1>
 
           <div className="mt-10 flex flex-col gap-10 md:mt-14 md:flex-row md:items-end md:justify-between">
-            <Reveal delay={0.95} className="max-w-md">
-              <p className="text-base leading-relaxed text-muted md:text-lg">
-                Surfaces, motion and systems —{" "}
-                <span className="font-serif italic text-paper">made slowly</span>, finished properly, released
-                when ready.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-4">
-                <Magnetic>
-                  <ButtonLink
-                    href="/lab"
-                    label="The lab"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      navigate("/lab", "The lab");
-                    }}
-                  >
-                    Enter the lab
-                  </ButtonLink>
-                </Magnetic>
-                <Magnetic>
-                  <ButtonLink
-                    href="/studio"
-                    label="The standpoint"
-                    variant="ghost"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      navigate("/studio", "The standpoint");
-                    }}
-                  >
-                    The standpoint
-                  </ButtonLink>
-                </Magnetic>
-              </div>
-            </Reveal>
-            <Reveal delay={1.1} className="hidden md:block">
+            <div className="max-w-md">
+              <Rise fade={false} delay={0.1}>
+                <p className="text-base leading-relaxed text-muted md:text-lg">
+                  Surfaces, motion and systems —{" "}
+                  <span className="font-serif italic text-paper">made slowly</span>, finished properly, released
+                  when ready.
+                </p>
+              </Rise>
+              <Rise delay={0.5}>
+                <div className="mt-7 flex flex-wrap gap-4">
+                  <Magnetic>
+                    <ButtonLink
+                      href="/lab"
+                      label="The lab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate("/lab", "The lab");
+                      }}
+                    >
+                      Enter the lab
+                    </ButtonLink>
+                  </Magnetic>
+                  <Magnetic>
+                    <ButtonLink
+                      href="/studio"
+                      label="The standpoint"
+                      variant="ghost"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate("/studio", "The standpoint");
+                      }}
+                    >
+                      The standpoint
+                    </ButtonLink>
+                  </Magnetic>
+                </div>
+              </Rise>
+            </div>
+            <Rise delay={0.65} className="hidden md:block">
               <p className="text-right font-mono text-[10px] uppercase leading-loose tracking-[0.25em] text-faint">
                 Surfaces — Motion
                 <br />
@@ -90,7 +95,7 @@ export function Hero() {
                 <br />
                 Scroll to begin ↓
               </p>
-            </Reveal>
+            </Rise>
           </div>
         </div>
       </motion.div>

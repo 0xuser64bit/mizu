@@ -8,6 +8,7 @@ import { Noise } from "@/components/shell/Noise";
 import { PageWipeProvider } from "@/mizu";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site";
+import { preloadFonts } from "@/lib/fonts";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-Q3K0S22ZXL";
 
@@ -39,6 +40,7 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  preloadFonts();
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="mizu-root flex min-h-full flex-col">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionTag, Reveal, Magnetic, ButtonLink } from "@/mizu";
+import { Rise } from "@/components/ui/Rise";
 import { SiteNav } from "@/components/shell/SiteNav";
 
 export const metadata: Metadata = {
@@ -53,27 +54,27 @@ export default function StudioPage() {
       <main id="main" className="pt-16">
       <header data-chapter="Standpoint" className="px-5 py-20 md:px-10 md:py-28">
         <SectionTag>The standpoint</SectionTag>
-        <Reveal delay={0.1}>
+        <Rise delay={0.1}>
           <h1 className="mt-6 font-display text-[clamp(2.8rem,7vw,6rem)] font-black font-wide leading-[0.9] tracking-[-0.02em]">
             What Mizu <span className="font-serif font-normal italic text-accent">is.</span>
           </h1>
-        </Reveal>
-        <Reveal delay={0.2}>
+        </Rise>
+        <Rise delay={0.2}>
           <p className="mt-8 max-w-lg leading-relaxed text-muted">
             A short manifesto for interface craft — why this archive exists, and what it refuses to be.
           </p>
-        </Reveal>
+        </Rise>
       </header>
 
       <div className="px-5 md:px-10">
-        <Reveal>
+        <Rise fade={false} delay={0.3}>
           <p className="max-w-3xl text-[clamp(1.4rem,2.8vw,2.1rem)] font-medium leading-[1.3] tracking-tight">
             Mizu began with a simple irritation: most interfaces are <span className="font-serif italic text-accent">assembled, not made</span>.
             Components dropped in, motion pasted on, polish applied at the end. The result works — and forgets itself
             instantly. Mizu is the opposite instinct: every surface, transition and system treated as a crafted
             object.
           </p>
-        </Reveal>
+        </Rise>
 
         <div className="mt-20 md:mt-32">
           {ARTICLES.map((a, i) => (

@@ -231,6 +231,15 @@
   structured data, `/llms.txt` indexes every component, and each component's
   usage, props and accessibility notes are served as Markdown at
   `/components/<slug>.md`, and all of them in one file at `/llms-full.txt`.
+- Docs site: the first screen of the home, lab and standpoint pages no longer
+  waits for hydration. Reveal and MaskLine render hidden and animate only once
+  the JavaScript has run, so on a throttled phone the hero was empty for about
+  two seconds and Chrome measured the largest paint at 4.3 s (home) and 2.8 s
+  (lab, standpoint). Their first screens now rise from CSS, with the same
+  easing, and the largest text rises without fading, which Chrome counts at
+  once: 1.4 s on all three. Instrument Serif and JetBrains Mono are preloaded,
+  as text that appears earlier would otherwise reflow when they arrive. Under
+  reduced motion the first screen no longer sits 32px low, as Reveal left it.
 
 ## 0.2.1 — 2026-09-28
 

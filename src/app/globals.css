@@ -46,6 +46,48 @@
   font-stretch: 88%;
 }
 
+/* The entrance for what is on screen at load, in CSS so it starts at first
+   paint. Reveal and MaskLine render hidden and wait for hydration: seconds of
+   empty hero on a slow phone. Reveal still serves everything below the fold.
+   The largest text of a first screen rises without fading (rise-up): Chrome
+   counts faded-in text only once something repaints it after the fade, so a
+   fade makes the page look seconds slower than it is. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+@keyframes rise-up {
+  from {
+    transform: translateY(32px);
+  }
+}
+@keyframes rise-mask {
+  from {
+    transform: translateY(112%);
+  }
+}
+.rise-in {
+  animation: rise-in var(--rise-time, 0.8s) var(--mizu-ease-expo)
+    var(--rise-delay, 0s) backwards;
+}
+.rise-up {
+  animation: rise-up var(--rise-time, 0.8s) var(--mizu-ease-expo)
+    var(--rise-delay, 0s) backwards;
+}
+.rise-mask {
+  animation: rise-mask 1.15s var(--mizu-ease-expo) var(--rise-delay, 0s)
+    backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise-in,
+  .rise-up,
+  .rise-mask {
+    animation: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
