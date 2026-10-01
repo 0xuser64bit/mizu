@@ -104,7 +104,7 @@ export function Footer() {
 
       <div className="mt-16 flex items-center justify-between border-t border-line pt-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-faint">
-          Independent — no tracking, no cookies
+          Independent
         </p>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
