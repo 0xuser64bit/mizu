@@ -7,6 +7,7 @@ import { Cursor } from "@/components/shell/Cursor";
 import { Noise } from "@/components/shell/Noise";
 import { PageWipeProvider } from "@/mizu";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site";
 import { preloadFonts } from "@/lib/fonts";
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </MotionConfig>
         <Noise />
         <GoogleAnalytics gaId={gaId} />
+        <Analytics />
       </body>
     </html>
   );
