@@ -42,7 +42,7 @@ const ARTICLES = [
 
 const NOTS = [
   { what: "Just a component library.", why: "Components are the output, not the input." },
-  { what: "A template shop.", why: "Nothing here is a starting point for someone else's idea." },
+  { what: "A template shop.", why: "Commissions are made for you, not filled in from a kit." },
   { what: "A growth surface.", why: "No funnels, no engagement tricks." },
   { what: "Finished.", why: "An archive is never finished. It's kept." },
 ];
@@ -139,7 +139,10 @@ export default function StudioPage() {
             <p className="mt-8 font-serif text-2xl italic text-muted">— Mizu Studio</p>
           </Reveal>
           <Reveal delay={0.25}>
-            <div className="mt-12 flex justify-center">
+            <div className="mt-12 flex flex-wrap justify-center gap-4">
+              <Magnetic>
+                <ButtonLink href="/work">Have something made</ButtonLink>
+              </Magnetic>
               <Magnetic>
                 <ButtonLink href="/" label="Home" variant="ghost">
                   Back to the archive
