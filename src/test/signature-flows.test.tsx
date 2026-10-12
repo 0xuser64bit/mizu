@@ -136,6 +136,10 @@ describe("Interview", () => {
         onSubmit={() => {}}
       />,
     );
+    // On mount it leaves the page's focus alone.
+    await new Promise((r) => requestAnimationFrame(r));
+    expect(document.body).toHaveFocus();
+    await user.click(screen.getByRole("textbox", { name: /Your name/ }));
     await user.keyboard("{Enter}");
     expect(screen.getByRole("alert")).toHaveTextContent(
       "This one needs an answer to continue.",

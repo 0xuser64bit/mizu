@@ -111,6 +111,9 @@ export function Interview({
   const [direction, setDirection] = useState(1);
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState<string | null>(null);
+  // Focus follows the questions only once the visitor is in the interview:
+  // taking it on mount would hijack a page's arrow keys and space bar.
+  const [engaged, setEngaged] = useState(false);
   const [scope, animate] = useAnimate();
   const advanceTimer = useRef(0);
   useEffect(() => () => window.clearTimeout(advanceTimer.current), []);
@@ -301,6 +304,7 @@ export function Interview({
       style={style}
       aria-label={label}
       onKeyDown={onKey}
+      onFocus={() => setEngaged(true)}
     >
       <div
         className="mizu-interview-progress"
@@ -375,6 +379,7 @@ export function Interview({
                 )}
                 <div ref={scope} className="mizu-interview-answer">
                   <Field
+                    autoFocus={engaged}
                     question={current}
                     value={value}
                     confirming={confirming}
@@ -513,6 +518,7 @@ export function Interview({
 }
 
 function Field({
+  autoFocus,
   question: q,
   value,
   confirming,
@@ -522,6 +528,7 @@ function Field({
   onChange,
   onChoose,
 }: {
+  autoFocus: boolean;
   question: InterviewQuestion;
   value: InterviewAnswer;
   confirming: string | null;
@@ -532,7 +539,11 @@ function Field({
   onChoose: (value: string) => void;
 }) {
   const first = useRef<HTMLElement | null>(null);
+  // Read once: a question shown after the visitor engaged takes focus, and
+  // engaging (a click on a choice) never pulls focus back to the first one.
+  const focusOnShow = useRef(autoFocus);
   useEffect(() => {
+    if (!focusOnShow.current) return;
     const frame = requestAnimationFrame(() =>
       first.current?.focus({ preventScroll: true }),
     );

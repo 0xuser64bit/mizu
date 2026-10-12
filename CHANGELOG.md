@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Interview no longer takes focus when it mounts. On a long page it put focus
+  on its first answer, so the arrow keys and space bar meant to scroll picked
+  answers in a form the visitor had not reached. Focus now follows the
+  questions only once focus has been inside the interview.
 - Docs: every usage example that keeps state or passes functions to components
   starts with `"use client"`, so it pastes into a Next.js page as it is. 49 of
   126 did not: pasted into a fresh App Router app, 37 failed to compile (hooks)
