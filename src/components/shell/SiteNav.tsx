@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/examples", label: "Examples" },
   { href: "/lab", label: "Lab" },
   { href: "/studio", label: "Standpoint" },
+  { href: "/work", label: "Hire" },
 ];
 
 export function SiteNav({ trackChapters = true }: { trackChapters?: boolean }) {

@@ -54,6 +54,7 @@ export function Footer() {
               { href: "/examples", label: "Examples" },
               { href: "/lab", label: "Lab" },
               { href: "/studio", label: "Standpoint" },
+              { href: "/work", label: "Hire" },
             ].map((l) => (
               <li key={l.href}>
                 <NavigatorLink
