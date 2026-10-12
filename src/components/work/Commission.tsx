@@ -185,7 +185,7 @@ export function Commission() {
             <span>Mizu Studio</span>
           </p>
         </div>
-        {/* The frame's brackets, as on the stage: the page's two working surfaces. */}
+        {/* The stage's bracket frame, on a div: Frame is a figure, and a form isn't one. */}
         <div className="mizu-frame mizu-frame--line-bright work-interview-frame">
           {(["tl", "tr", "bl", "br"] as const).map((c) => (
             <span
