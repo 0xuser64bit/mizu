@@ -73,7 +73,6 @@ const QUESTIONS: InterviewQuestion[] = [
   },
 ];
 
-
 /** The rates and the brief: a rate row primes the brief with its commission. */
 export function Commission() {
   const [answers, setAnswers] = useState<InterviewAnswers>({});
@@ -181,31 +180,45 @@ export function Commission() {
               Prefer email? <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
             </p>
           )}
+          <p className="work-sign">
+            Talk soon.
+            <span>Mizu Studio</span>
+          </p>
         </div>
-        <Interview
-          label="Commission brief"
-          className="work-interview"
-          questions={QUESTIONS}
-          answers={answers}
-          onAnswersChange={setAnswers}
-          submitLabel="Send the brief"
-          done={
-            <p>
-              <strong>It’s in.</strong> I read every brief myself, and I’ll
-              write back to {String(answers.email ?? "you")}.
-            </p>
-          }
-          onSubmit={async (a) => {
-            setFailure("");
-            const reason = await sendBrief(a).catch(
-              () => "The brief didn’t send.",
-            );
-            if (reason) {
-              setFailure(reason);
-              throw new Error(reason);
+        {/* The frame's brackets, as on the stage: the page's two working surfaces. */}
+        <div className="mizu-frame mizu-frame--line-bright work-interview-frame">
+          {(["tl", "tr", "bl", "br"] as const).map((c) => (
+            <span
+              key={c}
+              aria-hidden
+              className={`mizu-frame-corner mizu-frame-corner--${c}`}
+            />
+          ))}
+          <Interview
+            label="Commission brief"
+            className="work-interview"
+            questions={QUESTIONS}
+            answers={answers}
+            onAnswersChange={setAnswers}
+            submitLabel="Send the brief"
+            done={
+              <p>
+                <strong>It’s in.</strong> I read every brief myself, and I’ll
+                write back to {String(answers.email ?? "you")}.
+              </p>
             }
-          }}
-        />
+            onSubmit={async (a) => {
+              setFailure("");
+              const reason = await sendBrief(a).catch(
+                () => "The brief didn’t send.",
+              );
+              if (reason) {
+                setFailure(reason);
+                throw new Error(reason);
+              }
+            }}
+          />
+        </div>
       </section>
     </>
   );

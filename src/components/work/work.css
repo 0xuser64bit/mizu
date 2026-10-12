@@ -60,10 +60,6 @@
   text-transform: uppercase;
   color: var(--mizu-faint);
 }
-.work-hero-floor b {
-  font-weight: 400;
-  color: var(--mizu-paper);
-}
 
 .work-stage-col {
   grid-column: 2;
@@ -100,19 +96,20 @@
 .work-steps li[data-now] {
   opacity: 1;
 }
-.work-step-n {
-  font: 12px var(--mizu-font-mono);
-  letter-spacing: 0.2em;
-  color: var(--mizu-accent);
-}
 .work-steps h2 {
-  margin: 18px 0 0;
+  margin: 0;
   font-size: clamp(2rem, 3.6vw, 3.25rem);
   font-weight: 800;
   font-stretch: 112%;
   line-height: 1;
   letter-spacing: -0.025em;
   text-wrap: balance;
+}
+.work-steps h2 em,
+.work-hero-lede em {
+  font: italic 400 1.06em/1 var(--mizu-font-serif);
+  letter-spacing: -0.01em;
+  color: var(--mizu-accent);
 }
 .work-steps p {
   margin: 22px 0 0;
@@ -170,11 +167,17 @@
 .work-stage[data-stage="1"] .work-r {
   border-color: var(--mizu-line-bright);
 }
+/* Each sketched box carries a dimension line: ticks at its edges, the note
+   set into the line. */
 .work-note {
   position: absolute;
-  top: 7px;
-  left: 9px;
+  top: 8px;
+  right: 8px;
+  left: 8px;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font: clamp(8px, 1.6cqw, 10px) var(--mizu-font-mono);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -183,6 +186,21 @@
   opacity: 0;
   transition: opacity 0.4s var(--ease);
   pointer-events: none;
+}
+.work-note::before,
+.work-note::after {
+  content: "";
+  flex: 1;
+  height: 7px;
+  background: linear-gradient(var(--mizu-line-bright), var(--mizu-line-bright))
+    center / 100% 1px no-repeat;
+}
+.work-note::before {
+  flex: 0 0 14px;
+  border-left: 1px solid var(--mizu-muted);
+}
+.work-note::after {
+  border-right: 1px solid var(--mizu-muted);
 }
 .work-stage[data-stage="1"] .work-note {
   opacity: 1;
@@ -860,11 +878,8 @@
 .work-proof {
   display: grid;
   grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-  align-items: end;
+  align-items: center;
   gap: 48px clamp(40px, 6vw, 96px);
-}
-.work-proof .mizu-btn {
-  margin-top: 36px;
 }
 .work-proof-list {
   margin: 0;
@@ -914,6 +929,66 @@
   outline-offset: 4px;
 }
 
+.work-proof > div:first-child {
+  display: grid;
+  gap: 48px;
+}
+.work-proof-board {
+  display: grid;
+  gap: 14px;
+}
+.work-proof-board .mizu-frame {
+  display: grid;
+  gap: 18px;
+  padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 36px);
+  background: var(--mizu-ink-2);
+  color: var(--mizu-accent);
+}
+.work-proof-board .mizu-flap {
+  --mizu-flap-size: clamp(15px, 2.1vw, 30px);
+  justify-self: start;
+}
+.work-proof-board .mizu-frame p {
+  margin: 0;
+  min-height: 3.2em;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mizu-muted);
+}
+.work-proof-board-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+}
+.work-proof-board-bar a,
+.work-proof-board-bar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-paper);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.work-proof-board-bar button {
+  color: var(--mizu-muted);
+}
+.work-proof-board-bar :is(a, button):hover {
+  color: var(--mizu-accent);
+}
+.work-proof-board-bar :is(a, button):focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 2px;
+}
+
 /* Rates: a rate card, set like an index. */
 .work-rate-list {
   margin: clamp(56px, 7vw, 96px) 0 0;
@@ -924,7 +999,7 @@
 .work-rate {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 7.5rem auto;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 7.5rem 11rem;
   grid-template-areas:
     "name includes weeks price"
     "name includes weeks cta";
@@ -1114,8 +1189,38 @@ p.work-brief-mail {
   font: 12px var(--mizu-font-mono);
   letter-spacing: 0.06em;
 }
+.work-interview-frame {
+  color: var(--mizu-accent);
+}
+.work-interview {
+  border: 0;
+}
 .work-interview .mizu-interview-stage {
   min-height: 520px;
+}
+.work-interview .mizu-interview-screen {
+  max-width: 720px;
+}
+.work-interview .mizu-interview-choices {
+  max-width: none;
+}
+/* The question count is a quiet aid here; vermilion stays with action and selection. */
+.work-interview .mizu-interview-number {
+  color: var(--mizu-faint);
+}
+.work-brief-copy .work-sign {
+  display: grid;
+  gap: 4px;
+  margin-top: 48px;
+  font: italic 400 30px/1.1 var(--mizu-font-serif);
+  color: var(--mizu-paper);
+}
+.work-sign span {
+  font: 10px var(--mizu-font-mono);
+  font-style: normal;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
 }
 .work-interview .mizu-interview-done p {
   margin: 0;

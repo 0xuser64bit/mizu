@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ButtonLink, Reveal } from "@/mizu";
+import { Reveal } from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
 import { Footer } from "@/components/home/Footer";
 import { Build } from "@/components/work/Build";
 import { Commission } from "@/components/work/Commission";
 import { Arrow } from "@/components/work/Arrow";
-import { SYSTEMS } from "@/components/docs/registry";
+import { ProofBoard } from "@/components/work/ProofBoard";
+import { COMPONENTS, SYSTEMS } from "@/components/docs/registry";
 import "@/components/work/work.css";
 
 export const metadata: Metadata = {
@@ -39,6 +40,15 @@ const PROOF = [
   },
 ];
 
+// Only what the board shows travels to the browser, not the catalog.
+const PIECES = COMPONENTS.filter((c) => c.category === "Signature").map(
+  (c) => ({
+    name: c.name,
+    slug: c.slug,
+    line: c.tagline.split(/[:—]/)[0]!.trim(),
+  }),
+);
+
 export default function WorkPage() {
   return (
     <>
@@ -47,38 +57,38 @@ export default function WorkPage() {
         <Build />
 
         <section data-chapter="Proof" className="work-section work-proof">
-          <div className="work-section-head">
-            <Reveal>
-              <h2>
-                Judge the work, <em>not a logo wall.</em>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p>
-                Whatever I build for you is held to the standard of this
-                archive, and the archive is open. Pick any piece: press a key,
-                resize the window, turn motion off.
-              </p>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <ButtonLink href="/components" variant="ghost">
-                Open the archive
-              </ButtonLink>
-            </Reveal>
+          <div>
+            <div className="work-section-head">
+              <Reveal>
+                <h2>
+                  Judge the <em>work</em>, not a logo wall.
+                </h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p>
+                  Whatever I build for you is held to the standard of this
+                  archive, and the archive is open. Pick any piece: press a key,
+                  resize the window, turn motion off.
+                </p>
+              </Reveal>
+            </div>
+            <ul className="work-proof-list">
+              {PROOF.map((p, i) => (
+                <li key={p.href}>
+                  <Reveal delay={i * 0.06}>
+                    <Link href={p.href}>
+                      <span>{p.name}</span>
+                      <span>{p.line}</span>
+                      <Arrow />
+                    </Link>
+                  </Reveal>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="work-proof-list">
-            {PROOF.map((p, i) => (
-              <li key={p.href}>
-                <Reveal delay={i * 0.06}>
-                  <Link href={p.href}>
-                    <span>{p.name}</span>
-                    <span>{p.line}</span>
-                    <Arrow />
-                  </Link>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <Reveal delay={0.15}>
+            <ProofBoard pieces={PIECES} />
+          </Reveal>
         </section>
 
         <Commission />

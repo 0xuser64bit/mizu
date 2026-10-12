@@ -23,9 +23,10 @@ export const STAGES = [
 const STATES = ["Loading", "Empty", "Error", "Ready"] as const;
 type State = (typeof STATES)[number];
 
-// Illustrative data: a day of p95 latency in half hours, one bad deploy and
-// its rollback. Rounded so the server and every browser draw the same path.
-const N = 48;
+// Illustrative data: a day of p95 latency in half hours, 00:00 to 24:00, with
+// one bad deploy and its rollback. Rounded so the server and every browser
+// draw the same path.
+const N = 49;
 const W = 480;
 const H = 140;
 const VALUES = Array.from({ length: N }, (_, i) =>
@@ -53,7 +54,7 @@ const REST = 30 / (N - 1);
 
 const clock = (i: number) => {
   const m = Math.round(i * 30);
-  return `${String(Math.floor(m / 60) % 24).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+  return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 };
 
 function sample(p: number) {

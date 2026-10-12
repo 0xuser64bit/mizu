@@ -17,8 +17,13 @@ OWN-WORLD: Mizu's settled world at full commitment. Warm ink layers, paper type,
 
 STORY: The visitor sees a component go from wireframe to surface to states to motion to handed-off code. They believe the studio builds whole systems, not screenshots. They read four commissions with real floors, then brief the maker through the Interview system.
 
-FIRST VIEWPORT: Left five columns: "Commission the work." at display scale, one first-person line with the $4k floor, a solid "Start a brief" and a ghost "See the rates". Right seven columns: the bracketed stage showing the component as an annotated hairline wireframe with mono leader notes.
+FIRST VIEWPORT: Left five columns: "Have it made." at display scale, one first-person line with the $4k floor, a solid "Start a brief" and a ghost "See the rates". Right seven columns: the bracketed stage showing the component as an annotated hairline wireframe with mono leader notes.
 
 FORM: The Build, scroll-driven process specimen. Ranked 4 of 7, dealt as the lead's alternate and locked by Claude on delegation. Seed key 594d803c. Raises: from The Letter, the first-person voice and a signed close; from The Work Order, every commission row pre-fills the brief. Signature interaction: the sticky stage morphs through five data-stage states on one DOM. The playhead is draggable and keyboard-driven (role slider), the states cycle Empty, Loading, Error and Ready, and the readout flips in tabular mono.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## Decisions after the contract
+
+- Headline: "Have it made." replaced "Commission the work." It answers the manifesto's "assembled, not made" (/studio), and the line under it plus the "Start a brief" action and the nav's Hire make the offer plain. Decided by Claude on the user's delegation, 2026-10-13.
+- Proof shows the archive working: a split-flap board turns through the signature systems, each a link away. Added after the finish review.

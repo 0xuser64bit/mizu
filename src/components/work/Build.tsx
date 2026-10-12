@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ButtonLink, Magnetic } from "@/mizu";
 import { Rise, RiseMask } from "@/components/ui/Rise";
 import { COMMISSIONS, usd } from "@/app/work/brief";
@@ -8,25 +8,50 @@ import { Stage } from "./Stage";
 
 const FLOOR = usd(Math.min(...COMMISSIONS.map((c) => c.from)));
 
-const STEPS = [
+const STEPS: { key: string; title: ReactNode; body: string }[] = [
   {
-    title: "First, what it has to do.",
+    key: "brief",
+    title: (
+      <>
+        First, what it has to <em>do.</em>
+      </>
+    ),
     body: "Before anything is drawn, we write down what the component holds, which states it can be in and which keys it answers to. You read it before I build anything.",
   },
   {
-    title: "Then, what it’s made of.",
+    key: "surface",
+    title: (
+      <>
+        Then, its <em>surface.</em>
+      </>
+    ),
     body: "Ink, type, rules and spacing, taken from your brand or built with you. Anything decorative goes. Everything left has a job to do.",
   },
   {
-    title: "Every state, designed.",
+    key: "states",
+    title: (
+      <>
+        Every state, <em>designed.</em>
+      </>
+    ),
     body: "Loading, empty, error, ready. Most products design one of these and ship all four. I design all four, because the other three are where people get stuck.",
   },
   {
-    title: "Motion that tells you something.",
+    key: "motion",
+    title: (
+      <>
+        Motion that tells you <em>something.</em>
+      </>
+    ),
     body: "The playhead follows your hand, the readout settles, the selection travels to what you are looking at. Drag it, or use the arrow keys. It moves to show what changed, never to decorate.",
   },
   {
-    title: "Then it’s yours.",
+    key: "handoff",
+    title: (
+      <>
+        Then it’s <em>yours.</em>
+      </>
+    ),
     body: "Typed React in your repository, documented, with the keymap written down. Nothing to license and nothing to renew. Your team can extend it the day I leave.",
   },
 ];
@@ -72,7 +97,7 @@ export function Build() {
           <p className="work-hero-lede">
             <strong>Mizu Studio is one person: me.</strong> I design and build
             the parts of a product people remember, to the standard of this
-            archive.
+            archive, from <strong>{FLOOR}</strong>.
           </p>
         </Rise>
         <Rise delay={0.42}>
@@ -86,9 +111,7 @@ export function Build() {
               </ButtonLink>
             </Magnetic>
           </div>
-          <p className="work-hero-floor">
-            Commissions from <b>{FLOOR}</b> · Scroll to watch one get made
-          </p>
+          <p className="work-hero-floor">Scroll to watch one get made</p>
         </Rise>
       </header>
 
@@ -103,17 +126,13 @@ export function Build() {
       <ol className="work-steps" data-chapter="Process">
         {STEPS.map((s, i) => (
           <li
-            key={s.title}
+            key={s.key}
             ref={(el) => {
               marks.current[i + 1] = el;
             }}
             data-stage={i + 1}
             data-now={stage === i + 1 || undefined}
           >
-            <span className="work-step-n">
-              {String(i + 1).padStart(2, "0")} /{" "}
-              {String(STEPS.length).padStart(2, "0")}
-            </span>
             <h2>{s.title}</h2>
             <p>{s.body}</p>
           </li>
