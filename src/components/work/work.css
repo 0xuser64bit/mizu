@@ -828,3 +828,343 @@
     opacity: 0;
   }
 }
+
+/* ── The sections after the build: proof, rates, brief ── */
+.work-section {
+  padding: clamp(96px, 12vw, 168px) 40px;
+  border-top: 1px solid var(--mizu-line);
+}
+.work-section h2 {
+  margin: 0;
+  font-size: clamp(2.6rem, 6.2vw, 5.5rem);
+  font-weight: 900;
+  font-stretch: 118%;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.work-section h2 em {
+  font: italic 400 1.06em/1 var(--mizu-font-serif);
+  letter-spacing: -0.01em;
+  color: var(--mizu-accent);
+}
+.work-section-head p {
+  max-width: 46ch;
+  margin: 28px 0 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--mizu-muted);
+}
+
+/* Proof: the archive itself, as a short index of where to look. */
+.work-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  align-items: end;
+  gap: 48px clamp(40px, 6vw, 96px);
+}
+.work-proof .mizu-btn {
+  margin-top: 36px;
+}
+.work-proof-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--mizu-line);
+}
+.work-proof-list a {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding: 20px 40px 20px 0;
+  border-top: 1px solid var(--mizu-line);
+  text-decoration: none;
+}
+.work-proof-list svg {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  color: var(--mizu-faint);
+  transform: translateY(-50%);
+  transition:
+    transform 0.4s var(--mizu-ease-expo),
+    color 0.3s;
+}
+.work-proof-list a:hover svg,
+.work-proof-list a:focus-visible svg {
+  color: var(--mizu-accent);
+  transform: translate(6px, -50%);
+}
+.work-proof-list span:first-child {
+  font-size: clamp(19px, 1.8vw, 24px);
+  font-weight: 700;
+  font-stretch: 112%;
+  letter-spacing: -0.015em;
+  transition: color 0.3s;
+}
+.work-proof-list a:hover span:first-child {
+  color: var(--mizu-accent);
+}
+.work-proof-list span:last-child {
+  font-size: 14px;
+  color: var(--mizu-muted);
+}
+.work-proof-list a:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 4px;
+}
+
+/* Rates: a rate card, set like an index. */
+.work-rate-list {
+  margin: clamp(56px, 7vw, 96px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--mizu-line);
+}
+.work-rate {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 7.5rem auto;
+  grid-template-areas:
+    "name includes weeks price"
+    "name includes weeks cta";
+  align-items: start;
+  gap: 8px clamp(24px, 3vw, 48px);
+  padding: clamp(28px, 3vw, 40px) 0 clamp(28px, 3vw, 40px) 20px;
+  border-top: 1px solid var(--mizu-line);
+}
+/* The selection bar of the house: it grows down the row you're on. */
+.work-rate::before {
+  content: "";
+  position: absolute;
+  inset: -1px auto 0 0;
+  width: 2px;
+  background: var(--mizu-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s var(--mizu-ease-expo);
+}
+.work-rate:hover::before,
+.work-rate:focus-within::before {
+  transform: scaleY(1);
+}
+.work-rate-name {
+  grid-area: name;
+}
+.work-rate h3 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  font-stretch: 112%;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.work-rate-name p {
+  max-width: 48ch;
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mizu-muted);
+}
+.work-rate-includes {
+  grid-area: includes;
+  display: grid;
+  gap: 8px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--mizu-paper);
+}
+.work-rate-includes li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.work-rate-includes li::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--mizu-muted);
+  transform: translateY(-2px) rotate(45deg);
+}
+.work-rate-weeks {
+  grid-area: weeks;
+  margin: 8px 0 0;
+  font: 12px var(--mizu-font-mono);
+  letter-spacing: 0.08em;
+  color: var(--mizu-muted);
+}
+.work-rate-price {
+  grid-area: price;
+  display: grid;
+  justify-items: end;
+  margin: 0;
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  font-weight: 900;
+  font-stretch: 118%;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  transition: color 0.3s;
+}
+.work-rate-price span {
+  margin-bottom: 6px;
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+}
+.work-rate:hover .work-rate-price,
+.work-rate:focus-within .work-rate-price {
+  color: var(--mizu-accent);
+}
+.work-rate-cta {
+  grid-area: cta;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-muted);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+/* The whole row is the button's target. */
+.work-rate-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.work-rate-cta svg {
+  transition: transform 0.4s var(--mizu-ease-expo);
+}
+.work-rate:hover .work-rate-cta,
+.work-rate-cta:focus-visible {
+  color: var(--mizu-paper);
+}
+.work-rate:hover .work-rate-cta svg,
+.work-rate-cta:focus-visible svg {
+  transform: translateX(5px);
+}
+.work-rate-cta:focus-visible {
+  outline: none;
+}
+.work-rate-cta:focus-visible::after {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: -2px;
+}
+.work-outside {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 32px 0 0;
+  font-size: 14px;
+  color: var(--mizu-muted);
+}
+.work-outside span {
+  font: 10px var(--mizu-font-mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 2.1;
+  color: var(--mizu-faint);
+}
+
+/* The brief: the case on the left, the Interview on the right. */
+.work-brief {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  align-items: start;
+  gap: 48px clamp(40px, 6vw, 96px);
+}
+.work-brief-copy {
+  position: sticky;
+  top: 112px;
+}
+.work-brief-copy h2 {
+  outline: none;
+  scroll-margin-top: 112px;
+}
+.work-brief-copy p {
+  max-width: 36ch;
+  margin: 24px 0 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--mizu-muted);
+}
+.work-brief-copy a {
+  color: var(--mizu-paper);
+  text-decoration: underline;
+  text-decoration-color: var(--mizu-accent);
+  text-underline-offset: 4px;
+}
+p.work-brief-failure {
+  padding-left: 14px;
+  border-left: 1px solid var(--mizu-danger);
+  color: var(--mizu-danger);
+}
+p.work-brief-mail {
+  font: 12px var(--mizu-font-mono);
+  letter-spacing: 0.06em;
+}
+.work-interview .mizu-interview-stage {
+  min-height: 520px;
+}
+.work-interview .mizu-interview-done p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--mizu-muted);
+}
+.work-interview .mizu-interview-done strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: clamp(28px, 4cqw, 40px);
+  font-weight: 900;
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+  color: var(--mizu-paper);
+}
+
+@media (max-width: 899px) {
+  .work-section {
+    padding: 88px 20px;
+  }
+  .work-proof,
+  .work-brief {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .work-brief-copy {
+    position: static;
+  }
+  .work-brief-copy h2 {
+    scroll-margin-top: 88px;
+  }
+  .work-rate {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name name"
+      "includes includes"
+      "weeks price"
+      "cta price";
+    align-items: end;
+    gap: 18px 16px;
+    padding-left: 16px;
+  }
+  .work-rate-weeks {
+    margin: 0;
+  }
+  .work-rate-cta {
+    justify-self: start;
+  }
+  .work-interview .mizu-interview-stage {
+    min-height: 460px;
+  }
+}

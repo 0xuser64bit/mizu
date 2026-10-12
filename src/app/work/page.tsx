@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ButtonLink, Reveal } from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
+import { Footer } from "@/components/home/Footer";
 import { Build } from "@/components/work/Build";
+import { Commission } from "@/components/work/Commission";
+import { Arrow } from "@/components/work/Arrow";
+import { SYSTEMS } from "@/components/docs/registry";
 import "@/components/work/work.css";
 
 export const metadata: Metadata = {
@@ -10,12 +16,73 @@ export const metadata: Metadata = {
   alternates: { canonical: "/work" },
 };
 
+const PROOF = [
+  {
+    href: "/examples/incident-review",
+    name: "Incident review",
+    line: "A timeline, two charts and the logs, scrubbed as one.",
+  },
+  {
+    href: "/examples/design-review",
+    name: "Design review",
+    line: "Pin comments, fling a decision, arrange the results.",
+  },
+  {
+    href: "/examples/automation",
+    name: "Automation builder",
+    line: "Every record’s route, shown before anything runs.",
+  },
+  {
+    href: "/components",
+    name: `All ${SYSTEMS.length} systems`,
+    line: "Each one documented, with its states and its keys.",
+  },
+];
+
 export default function WorkPage() {
   return (
     <>
       <SiteNav />
       <main id="main">
         <Build />
+
+        <section data-chapter="Proof" className="work-section work-proof">
+          <div className="work-section-head">
+            <Reveal>
+              <h2>
+                Judge the work, <em>not a logo wall.</em>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p>
+                Whatever I build for you is held to the standard of this
+                archive, and the archive is open. Pick any piece: press a key,
+                resize the window, turn motion off.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ButtonLink href="/components" variant="ghost">
+                Open the archive
+              </ButtonLink>
+            </Reveal>
+          </div>
+          <ul className="work-proof-list">
+            {PROOF.map((p, i) => (
+              <li key={p.href}>
+                <Reveal delay={i * 0.06}>
+                  <Link href={p.href}>
+                    <span>{p.name}</span>
+                    <span>{p.line}</span>
+                    <Arrow />
+                  </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <Commission />
+        <Footer />
       </main>
     </>
   );
