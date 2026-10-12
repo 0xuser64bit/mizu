@@ -21,7 +21,7 @@ describe("commission brief", () => {
     expect(parseBrief({ ...good, kind: "logo" })).toBe("Pick what you want made.");
     expect(parseBrief({ ...good, budget: 5 })).toBe("Pick a budget range.");
     expect(parseBrief({ ...good, email: "ada@" })).toBe(
-      "That email address doesn't look right.",
+      "That email address doesn’t look right.",
     );
     expect(parseBrief({ ...good, about: "x".repeat(4001) })).toBe("The about is too long.");
   });

@@ -118,7 +118,7 @@ export function parseBrief(input: unknown): Brief | string {
   if (!labelOf(BUDGETS, brief.budget)) return "Pick a budget range.";
   if (!labelOf(TIMELINES, brief.timeline)) return "Pick a timeline.";
   if (!brief.name) return "Add your name.";
-  if (!EMAIL.test(brief.email)) return "That email address doesn't look right.";
+  if (!EMAIL.test(brief.email)) return "That email address doesn’t look right.";
   for (const [key, max] of Object.entries(LIMITS))
     if (brief[key as keyof typeof LIMITS].length > max)
       return `The ${key} is too long.`;

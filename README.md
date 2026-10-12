@@ -204,7 +204,8 @@ Run `bun install` and `bun run dev`, then open:
 - `/components` — search, 14 family indexes, live stages with theme / size /
   motion controls, compiled examples, property tables and source inspection.
 - `/components/getting-started` — first working interaction and customization.
-- `/` — the archive; `/lab` — instruments; `/studio` — the standpoint.
+- `/` — the archive; `/lab` — instruments; `/studio` — the standpoint;
+  `/work` — commissions, with their rates and a brief.
 - `/examples` — whole workflows composed from signature systems: an incident
   review, a design review and an automation builder.
 - `/examples/nav` — a real, isolated navigation composition.
@@ -229,6 +230,22 @@ The packed workshop demonstrates editing, bounded undo/redo, actual filtering
 and sorting, local save/restore, recoverable archival, command execution, theme
 and motion preferences. Its records are synthetic with browser-local
 persistence; no backend is implied.
+
+### The commission inbox
+
+Briefs from `/work` are sent by a server action through
+[Resend](https://resend.com). Set these on the deployment:
+
+- `RESEND_API_KEY`: the Resend API key.
+- `CONTACT_TO`: the inbox that receives briefs.
+- `CONTACT_FROM`: the sender, on a domain verified in Resend, such as
+  `Mizu Studio <briefs@your-domain>`. It defaults to Resend's test sender,
+  which only delivers to the Resend account's own address.
+- `NEXT_PUBLIC_CONTACT_EMAIL` (optional): an address shown beside the brief,
+  and offered when sending fails.
+
+Without a key, `bun run dev` prints each brief to the terminal and production
+tells the visitor that the inbox isn't connected yet.
 
 ## Repository layout
 

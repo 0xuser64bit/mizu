@@ -20,7 +20,7 @@ export async function sendBrief(input: unknown): Promise<string | undefined> {
       console.info(`[brief] ${subject}\n${text}`);
       return;
     }
-    return "The inbox isn't connected yet.";
+    return "The inbox isn’t connected yet.";
   }
 
   const res = await fetch("https://api.resend.com/emails", {
@@ -40,6 +40,6 @@ export async function sendBrief(input: unknown): Promise<string | undefined> {
   });
   if (!res.ok) {
     console.error(`[brief] Resend ${res.status}: ${await res.text()}`);
-    return "The brief didn't send.";
+    return "The brief didn’t send.";
   }
 }
