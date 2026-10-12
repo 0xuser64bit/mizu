@@ -16,6 +16,7 @@ const PAGES = [
   "/examples/automation",
   "/lab",
   "/studio",
+  "/work",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

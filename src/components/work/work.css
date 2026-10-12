@@ -1,0 +1,830 @@
+/* /work — the commission page. One component built in five stages beside the
+   copy, then the rates and the brief. Every stage is the same DOM under a
+   different data-stage, so CSS transitions carry the build. */
+
+/* ── The build: copy on the left, the sticky stage on the right ── */
+.work-build {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(32px, 5vw, 88px);
+  padding-inline: 40px;
+}
+.work-hero {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 112px 64px;
+}
+.work-hero h1 {
+  margin: 0;
+  font-size: clamp(3.4rem, 8.4vw, 6rem);
+  font-weight: 900;
+  font-stretch: 118%;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+/* Room for ascenders inside the masks the lines rise from. */
+.work-hero h1 .mizu-maskline {
+  margin-block: -0.08em;
+  padding-block: 0.08em;
+}
+.work-hero h1 em {
+  font: italic 400 1.08em/0.95 var(--mizu-font-serif);
+  letter-spacing: -0.01em;
+  color: var(--mizu-accent);
+}
+.work-hero-lede {
+  max-width: 34ch;
+  margin: 36px 0 0;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  color: var(--mizu-muted);
+}
+.work-hero-lede strong {
+  font-weight: 500;
+  color: var(--mizu-paper);
+}
+.work-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+.work-hero-floor {
+  margin: 28px 0 0;
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+}
+.work-hero-floor b {
+  font-weight: 400;
+  color: var(--mizu-paper);
+}
+
+.work-stage-col {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.work-stage-col > div {
+  position: sticky;
+  top: 64px;
+  display: grid;
+  height: calc(100svh - 64px);
+  place-items: center;
+  padding-block: 24px;
+}
+.work-stage-col > div > * {
+  width: min(100%, 720px);
+}
+
+.work-steps {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  padding: 0 0 18svh;
+  list-style: none;
+}
+.work-steps li {
+  display: flex;
+  min-height: 82svh;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 44ch;
+  opacity: 0.32;
+  transition: opacity 0.6s var(--mizu-ease-expo);
+}
+.work-steps li[data-now] {
+  opacity: 1;
+}
+.work-step-n {
+  font: 12px var(--mizu-font-mono);
+  letter-spacing: 0.2em;
+  color: var(--mizu-accent);
+}
+.work-steps h2 {
+  margin: 18px 0 0;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  font-weight: 800;
+  font-stretch: 112%;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.work-steps p {
+  margin: 22px 0 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--mizu-muted);
+}
+
+/* ── The stage ── */
+.work-stage-wrap {
+  width: 100%;
+}
+.work-frame {
+  container-type: inline-size;
+  background: var(--mizu-ink);
+}
+.work-frame .mizu-frame-corner {
+  color: var(--mizu-accent);
+}
+.work-stage {
+  --rh: clamp(30px, 7.4cqw, 42px);
+  --ease: var(--mizu-ease-expo);
+  position: relative;
+  display: grid;
+  gap: clamp(8px, 2cqw, 14px);
+  padding: clamp(14px, 3.6cqw, 26px);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* The drafting grid the sketch sits on. */
+.work-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+    var(--mizu-line-bright) 1px,
+    transparent 1.4px
+  );
+  background-size: 18px 18px;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+  pointer-events: none;
+}
+.work-stage[data-stage="1"]::before {
+  opacity: 0.7;
+}
+
+/* Regions are dashed boxes in the sketch; their content arrives from stage 2. */
+.work-r {
+  position: relative;
+  border: 1px dashed transparent;
+  transition: border-color 0.7s var(--ease) calc(var(--i) * 60ms);
+}
+.work-stage[data-stage="1"] .work-r {
+  border-color: var(--mizu-line-bright);
+}
+.work-note {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  z-index: 2;
+  font: clamp(8px, 1.6cqw, 10px) var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--mizu-muted);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+}
+.work-stage[data-stage="1"] .work-note {
+  opacity: 1;
+  transition-delay: calc(var(--i) * 90ms + 200ms);
+}
+.work-fill {
+  transition:
+    opacity 0.8s var(--ease) calc(var(--i) * 90ms + 150ms),
+    transform 0.8s var(--ease) calc(var(--i) * 90ms + 150ms);
+}
+.work-stage[data-stage="1"] .work-fill {
+  opacity: 0;
+  transform: translateY(8px);
+  transition-delay: 0s;
+}
+
+.work-head .work-fill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: clamp(8px, 2cqw, 14px);
+  border-bottom: 1px solid var(--mizu-line);
+}
+.work-head p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 0;
+}
+.work-head strong {
+  font-size: clamp(16px, 3.6cqw, 22px);
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+}
+.work-head p span {
+  font-size: clamp(11px, 2cqw, 13px);
+  color: var(--mizu-muted);
+}
+.work-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: clamp(9px, 1.7cqw, 10px) var(--mizu-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mizu-success);
+}
+.work-live::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.work-readout p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 16px;
+  margin: 0;
+  padding: 6px 0 6px 12px;
+  border-left: 1px solid var(--mizu-accent);
+  font: clamp(11px, 2.1cqw, 13px) var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--mizu-paper);
+}
+.work-readout b {
+  font-weight: 400;
+}
+.work-readout-event {
+  color: var(--mizu-muted);
+}
+
+.work-body {
+  position: relative;
+  display: grid;
+  gap: clamp(8px, 2cqw, 14px);
+}
+
+/* The chart, its played line and the playhead. */
+.work-chart {
+  touch-action: pan-y;
+  outline: none;
+}
+.work-stage[data-stage="4"] .work-chart,
+.work-stage[data-stage="5"] .work-chart {
+  cursor: ew-resize;
+}
+.work-chart:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 3px;
+}
+.work-plot {
+  position: relative;
+  background: var(--mizu-ink-2);
+}
+.work-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.work-grid {
+  stroke: var(--mizu-line);
+  stroke-width: 1;
+}
+.work-area {
+  fill: var(--mizu-ink-3);
+  opacity: 0.7;
+}
+.work-line {
+  fill: none;
+  stroke: var(--mizu-paper);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.work-plot > svg:first-child .work-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.8s var(--ease) 0.35s;
+}
+.work-stage[data-stage="1"] .work-plot > svg:first-child .work-line {
+  stroke-dashoffset: 1;
+  transition: none;
+}
+/* The sketch's pencil line, gone once the real line is drawn. */
+.work-pencil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: var(--mizu-muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.work-stage[data-stage="1"] .work-pencil {
+  opacity: 0.8;
+  transition-delay: 0.4s;
+}
+.work-played {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  clip-path: inset(0 calc((1 - var(--p)) * 100%) 0 0);
+  transition: opacity 0.5s var(--ease);
+}
+.work-played .work-line {
+  stroke: var(--mizu-accent);
+  stroke-width: 2;
+}
+.work-marks {
+  position: absolute;
+  inset: auto 0 -5px;
+  height: 0;
+}
+.work-marks i {
+  position: absolute;
+  left: calc(var(--at) * 100%);
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border: 1px solid var(--mizu-muted);
+  background: var(--mizu-ink);
+  transform: rotate(45deg);
+}
+/* A diamond seals once the playhead has passed it. */
+.work-marks i::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--mizu-accent);
+  opacity: 0;
+}
+.work-playhead {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(calc(var(--p) * 100%));
+  transition: opacity 0.5s var(--ease);
+  pointer-events: none;
+}
+.work-playhead::before {
+  content: "";
+  position: absolute;
+  inset: -6px auto -6px -0.5px;
+  width: 1px;
+  background: var(--mizu-accent);
+}
+.work-playhead::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  background: var(--mizu-accent);
+  transform: rotate(45deg);
+}
+.work-stage[data-stage="4"] :is(.work-played, .work-playhead),
+.work-stage[data-stage="5"] :is(.work-played, .work-playhead) {
+  opacity: 1;
+}
+.work-stage[data-stage="4"] .work-marks i::after,
+.work-stage[data-stage="5"] .work-marks i::after {
+  opacity: clamp(0, (var(--p) - var(--at)) * 999, 1);
+}
+.work-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font: clamp(8px, 1.6cqw, 10px) var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--mizu-faint);
+}
+
+/* Rows, with one selection bar that travels between them. */
+/* Row lines, ruled in pencil before there is anything to put in them. */
+.work-rows::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 calc(var(--rh) - 1px),
+    var(--mizu-line-bright) calc(var(--rh) - 1px) var(--rh)
+  );
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  pointer-events: none;
+}
+.work-stage[data-stage="1"] .work-rows::after {
+  opacity: 0.8;
+  transition-delay: 0.5s;
+}
+.work-rows ol {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.work-rows ol::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: var(--rh);
+  background: var(--mizu-accent);
+  transform: translateY(calc(var(--row) * var(--rh)));
+  transition:
+    transform 0.55s var(--ease),
+    opacity 0.3s;
+}
+.work-rows ol[data-none]::before {
+  opacity: 0;
+}
+.work-rows li {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 4.5em) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(8px, 2.2cqw, 16px);
+  height: var(--rh);
+  padding-left: clamp(10px, 2.4cqw, 16px);
+  border-top: 1px solid var(--mizu-line);
+  font-size: clamp(11px, 2.2cqw, 14px);
+  color: var(--mizu-muted);
+  transition: color 0.3s;
+}
+.work-rows li[aria-current] {
+  color: var(--mizu-paper);
+}
+.work-rows li i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+.work-rows li[aria-current] i {
+  border-color: var(--mizu-accent);
+  background: var(--mizu-accent);
+}
+.work-rows li b {
+  font: 600 1em var(--mizu-font-mono);
+}
+.work-rows li span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.work-rows time {
+  font: 0.9em var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--mizu-faint);
+}
+
+/* States: each one covers the chart and rows with its own face. */
+.work-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 20px;
+  background: var(--mizu-ink);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+.work-stage[data-state="loading"] [data-for="loading"],
+.work-stage[data-state="empty"] [data-for="empty"],
+.work-stage[data-state="error"] [data-for="error"] {
+  opacity: 1;
+}
+.work-overlay p {
+  margin: 0;
+  font-size: clamp(15px, 3cqw, 19px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.work-overlay > span {
+  font-size: clamp(12px, 2.2cqw, 14px);
+  color: var(--mizu-muted);
+}
+[data-for="error"] p {
+  color: var(--mizu-danger);
+}
+.work-overlay button {
+  min-height: 44px;
+  margin-top: 6px;
+  padding: 0 18px;
+  border: 1px solid var(--mizu-line-bright);
+  background: transparent;
+  color: var(--mizu-paper);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.work-overlay button:hover {
+  border-color: var(--mizu-paper);
+}
+.work-overlay button:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 2px;
+}
+[data-for="loading"] {
+  align-content: stretch;
+  justify-items: stretch;
+  padding: 0;
+}
+.work-skeleton {
+  position: relative;
+  display: grid;
+  grid-template-rows: 3fr repeat(3, 1fr);
+  gap: 10px;
+  overflow: hidden;
+}
+.work-skeleton i {
+  background: var(--mizu-ink-2);
+}
+/* Loading is a hairline sweeping across the skeleton. */
+.work-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 1px;
+  background: var(--mizu-accent);
+  box-shadow: 0 0 0 0.5px var(--mizu-accent);
+  animation: work-sweep 1.4s var(--mizu-ease-wipe) infinite;
+}
+@keyframes work-sweep {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(min(700px, 100cqw));
+  }
+}
+.work-overlay-label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font: 10px var(--mizu-font-mono) !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+}
+
+/* The handoff: the component's code slides up over its rows. */
+.work-rows {
+  overflow: hidden;
+}
+.work-code {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-top: 1px solid var(--mizu-line-bright);
+  background: var(--mizu-ink);
+  transform: translateY(101%);
+  transition: transform 0.9s var(--ease);
+}
+.work-stage[data-stage="5"] .work-code {
+  transform: none;
+}
+.work-code p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: clamp(6px, 1.6cqw, 10px) 0 clamp(4px, 1.2cqw, 8px);
+  font: clamp(9px, 1.8cqw, 11px) var(--mizu-font-mono);
+  letter-spacing: 0.06em;
+  color: var(--mizu-faint);
+}
+.work-code-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mizu-paper);
+}
+.work-code-seal::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--mizu-accent);
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.6s var(--mizu-ease-spring) 0.7s;
+}
+.work-stage[data-stage="5"] .work-code-seal::before {
+  transform: rotate(45deg) scale(1);
+}
+.work-code pre {
+  margin: 0;
+  overflow-x: auto;
+  font: clamp(10px, 2cqw, 13px) / 1.6 var(--mizu-font-mono);
+  color: var(--mizu-faint);
+}
+.work-code b {
+  font-weight: 600;
+  color: var(--mizu-paper);
+}
+.work-code i {
+  font-style: normal;
+  color: var(--mizu-muted);
+}
+.work-code em {
+  font-style: normal;
+  color: var(--mizu-success);
+}
+
+/* The bar under the component: state switches, then the transport. */
+.work-bar {
+  display: grid;
+  min-height: 44px;
+  border-top: 1px solid var(--mizu-line);
+}
+.work-bar > div {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.work-legend {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  font: clamp(9px, 1.7cqw, 10px) var(--mizu-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.work-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.work-legend span:first-child::before {
+  content: "";
+  width: 16px;
+  height: 1.5px;
+  background: var(--mizu-paper);
+}
+.work-legend span:last-child::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--mizu-muted);
+  transform: rotate(45deg);
+}
+.work-stage[data-stage="2"] .work-legend,
+.work-stage[data-stage="3"] .work-bar > div:first-of-type,
+.work-stage[data-stage="4"] .work-bar > div:last-child,
+.work-stage[data-stage="5"] .work-bar > div:last-child {
+  opacity: 1;
+}
+.work-bar button {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--mizu-muted);
+  font: clamp(9px, 1.8cqw, 11px) var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.work-bar button:first-child {
+  padding-left: 0;
+}
+.work-bar button:hover,
+.work-bar button[aria-pressed="true"] {
+  color: var(--mizu-paper);
+}
+.work-bar button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-color: var(--mizu-accent);
+  text-underline-offset: 6px;
+}
+.work-bar button:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: -2px;
+}
+.work-bar span {
+  margin-left: auto;
+  font: clamp(9px, 1.7cqw, 10px) var(--mizu-font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+}
+
+/* The five stages, under the frame. */
+.work-ruler {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.work-ruler li {
+  padding-top: 10px;
+  border-top: 1px solid var(--mizu-line-bright);
+  font: clamp(8px, 1.1vw, 10px) var(--mizu-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mizu-faint);
+  transition:
+    color 0.4s,
+    border-color 0.4s;
+}
+.work-ruler li[data-on] {
+  border-color: var(--mizu-paper);
+}
+.work-ruler li[data-now] {
+  border-color: var(--mizu-accent);
+  color: var(--mizu-paper);
+}
+
+/* ── Narrow screens: the stage sticks under the nav, the steps pass beneath. ── */
+@media (max-width: 899px) {
+  .work-build {
+    display: block;
+    padding-inline: 20px;
+  }
+  .work-hero {
+    min-height: auto;
+    padding-block: 120px 48px;
+  }
+  .work-stage-col {
+    position: sticky;
+    top: 64px;
+    z-index: 5;
+    margin-inline: -20px;
+    padding: 14px 20px 12px;
+    background: var(--mizu-ink);
+    border-bottom: 1px solid var(--mizu-line);
+  }
+  .work-stage-col > div {
+    position: static;
+    height: auto;
+    padding: 0;
+  }
+  .work-stage-wrap {
+    width: 100%;
+  }
+  /* The frame's label names the stage; the ruler would cost the steps room. */
+  .work-ruler {
+    display: none;
+  }
+  .work-stage {
+    --rh: 30px;
+    gap: 8px;
+    padding: 12px;
+  }
+  .work-readout-event {
+    display: none;
+  }
+  .work-steps {
+    padding-bottom: 20svh;
+  }
+  .work-steps li {
+    min-height: 62svh;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+  .work-steps h2 {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+  .work-steps p {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-build *,
+  .work-build *::before,
+  .work-build *::after {
+    transition-duration: 1ms !important;
+    transition-delay: 0s !important;
+  }
+  .work-skeleton::after {
+    animation: none;
+    opacity: 0;
+  }
+}

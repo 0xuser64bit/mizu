@@ -4,31 +4,19 @@
  * for the visitor, these are for the inbox.
  */
 
-/** The commissions on offer. Prices are floors in USD, not quotes. */
+/** The commissions on offer, cheapest first. Prices are floors in USD, not quotes. */
 export const COMMISSIONS = [
-  {
-    id: "signature",
-    name: "Signature interface",
-    from: 12_000,
-    weeks: "3–6 weeks",
-    line: "One complete system at the heart of your product — an editor, a timeline, a dashboard, a flow — built to this archive's standard.",
-    includes: ["Every state, designed", "Keyboard paths and reduced motion", "Production React, yours to own"],
-  },
-  {
-    id: "system",
-    name: "Design system",
-    from: 20_000,
-    weeks: "6–10 weeks",
-    line: "Tokens, components and documentation for your product: the whole kit, written down so the team can keep building after I leave.",
-    includes: ["Tokens and themes", "Components with docs", "A handoff your team can extend"],
-  },
   {
     id: "craft",
     name: "Craft pass",
     from: 4_000,
     weeks: "1–2 weeks",
     line: "Your product already works. I go through it and give it motion, states and finish, without changing what it does.",
-    includes: ["Motion with a reason", "Empty, loading and error states", "A written list of what changed"],
+    includes: [
+      "Motion with a reason",
+      "Empty, loading and error states",
+      "A written list of what changed",
+    ],
   },
   {
     id: "launch",
@@ -36,7 +24,35 @@ export const COMMISSIONS = [
     from: 8_000,
     weeks: "2–4 weeks",
     line: "A landing page or launch site with the same finish as the product it sells, and that holds up past the first screenshot.",
-    includes: ["Art direction and copy edit", "Built, not templated", "Fast on a phone"],
+    includes: [
+      "Art direction and copy edit",
+      "Built, not templated",
+      "Fast on a phone",
+    ],
+  },
+  {
+    id: "signature",
+    name: "Signature interface",
+    from: 12_000,
+    weeks: "3–6 weeks",
+    line: "One complete system at the heart of your product — an editor, a timeline, a dashboard, a flow — built to this archive's standard.",
+    includes: [
+      "Every state, designed",
+      "Keyboard paths and reduced motion",
+      "Production React, yours to own",
+    ],
+  },
+  {
+    id: "system",
+    name: "Design system",
+    from: 20_000,
+    weeks: "6–10 weeks",
+    line: "Tokens, components and documentation for your product: the whole kit, written down so the team can keep building after I leave.",
+    includes: [
+      "Tokens and themes",
+      "Components with docs",
+      "A handoff your team can extend",
+    ],
   },
 ] as const;
 
@@ -77,8 +93,10 @@ export type Brief = {
 const LIMITS = { about: 4000, link: 300, name: 120, email: 254 } as const;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const labelOf = (list: readonly { value: string; label: string }[], v: string) =>
-  list.find((o) => o.value === v)?.label;
+const labelOf = (
+  list: readonly { value: string; label: string }[],
+  v: string,
+) => list.find((o) => o.value === v)?.label;
 
 /** A clean brief, or the first reason it isn't one. */
 export function parseBrief(input: unknown): Brief | string {
@@ -102,13 +120,17 @@ export function parseBrief(input: unknown): Brief | string {
   if (!brief.name) return "Add your name.";
   if (!EMAIL.test(brief.email)) return "That email address doesn't look right.";
   for (const [key, max] of Object.entries(LIMITS))
-    if (brief[key as keyof typeof LIMITS].length > max) return `The ${key} is too long.`;
+    if (brief[key as keyof typeof LIMITS].length > max)
+      return `The ${key} is too long.`;
   return brief;
 }
 
 /** The brief as the plain-text email that lands in the studio inbox. */
 export function formatBrief(b: Brief) {
-  const subject = `Brief — ${labelOf(KINDS, b.kind)} — ${b.name}`.replace(/[\r\n]+/g, " ");
+  const subject = `Brief — ${labelOf(KINDS, b.kind)} — ${b.name}`.replace(
+    /[\r\n]+/g,
+    " ",
+  );
   const text = [
     `${b.name} <${b.email}>`,
     "",
