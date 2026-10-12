@@ -7,7 +7,7 @@ import { Build } from "@/components/work/Build";
 import { Commission } from "@/components/work/Commission";
 import { Arrow } from "@/components/work/Arrow";
 import { ProofBoard } from "@/components/work/ProofBoard";
-import { COMPONENTS, SYSTEMS } from "@/components/docs/registry";
+import { SYSTEMS } from "@/components/docs/registry";
 import "@/components/work/work.css";
 
 export const metadata: Metadata = {
@@ -39,15 +39,6 @@ const PROOF = [
     line: "Each one documented, with its states and its keys.",
   },
 ];
-
-// Only what the board shows travels to the browser, not the catalog.
-const PIECES = COMPONENTS.filter((c) => c.category === "Signature").map(
-  (c) => ({
-    name: c.name,
-    slug: c.slug,
-    line: c.tagline.split(/[:—]/)[0]!.trim(),
-  }),
-);
 
 export default function WorkPage() {
   return (
@@ -87,7 +78,7 @@ export default function WorkPage() {
             </ul>
           </div>
           <Reveal delay={0.15}>
-            <ProofBoard pieces={PIECES} />
+            <ProofBoard />
           </Reveal>
         </section>
 
