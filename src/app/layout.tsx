@@ -33,7 +33,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [previewImage],
   },
-  twitter: { card: "summary_large_image", images: [previewImage] },
+  // No twitter image: Next copies each page's own og:image into twitter:image.
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {
