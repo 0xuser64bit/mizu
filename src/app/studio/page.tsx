@@ -32,7 +32,7 @@ const ARTICLES = [
   {
     n: "03",
     title: "Systems hold; pages don't.",
-    quote: "We design the machine, not the screenshot.",
+    quote: "Design the machine, not the screenshot.",
     body: [
       "A landing page is a photograph of a system. Mizu builds the system: states, edges, empty and loading cases, reduced motion, keyboard paths. The pieces in this archive are meant to be taken apart and rebuilt — that's the point of an archive.",
       "Anything that only works at exactly 1440 pixels wide, with a mouse, and with the animation on, doesn't work.",
@@ -131,7 +131,7 @@ export default function StudioPage() {
         <div className="py-14 text-center md:py-24">
           <Reveal>
             <p className="mx-auto max-w-2xl font-display text-[clamp(1.8rem,4vw,3rem)] font-bold leading-[1.1] tracking-tight">
-              Made slowly, in the open, by people who care about{" "}
+              Made slowly, in the open, by one person who cares about{" "}
               <span className="font-serif font-normal italic text-accent">the difference.</span>
             </p>
           </Reveal>
