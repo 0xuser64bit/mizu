@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useReducedMotion } from "../../../packages/mizu/src/motion/Preferences";
 import { HeroField } from "./HeroField";
 import { Magnetic, ButtonLink } from "@/mizu";
 import { Rise, RiseMask } from "@/components/ui/Rise";

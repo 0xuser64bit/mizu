@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Components that change under reduced motion no longer mismatch on
+  hydration. `useReducedMotion` read the visitor's setting during the first
+  render, which the server can't know, so Reveal, MaskLine, Chronicle and
+  others rendered different markup from the server's (11 of the docs site's
+  137 pages), and React keeps the server's attributes when they differ. The
+  hook now reads "no preference" while hydrating, then re-renders with the
+  setting and follows changes to it. Reveal's start and end no longer depend
+  on the setting; only its timing does.
 - Interview no longer takes focus when it mounts. On a long page it put focus
   on its first answer, so the arrow keys and space bar meant to scroll picked
   answers in a form the visitor had not reached. Focus now follows the

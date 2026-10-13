@@ -10,7 +10,7 @@ import {
   type PointerEvent,
   type ReactNode,
 } from "react";
-import { useReducedMotion } from "motion/react";
+import { useReducedMotion } from "../../../packages/mizu/src/motion/Preferences";
 import { Frame } from "@/mizu";
 
 export const STAGES = [

@@ -1,5 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, act } from "@testing-library/react";
+import { hydrateRoot } from "react-dom/client";
+import { renderToString } from "react-dom/server";
 import {
   Marquee,
   MaskLine,
@@ -8,6 +10,7 @@ import {
   Reveal,
   Magnetic,
 } from "@/mizu";
+import { useReducedMotion } from "../../packages/mizu/src/motion/Preferences";
 import { reduceMotionQuery } from "./helpers";
 
 describe("MaskLine", () => {
@@ -29,6 +32,33 @@ describe("Reveal", () => {
       </Reveal>,
     );
     expect(screen.getByText("Content")).toBeTruthy();
+  });
+  it("hydrates under reduced motion without a mismatch, then follows it", async () => {
+    function Probe() {
+      return <p data-reduced={String(useReducedMotion())}>Content</p>;
+    }
+    // The server has no preference; the visitor's browser reduces motion.
+    reduceMotionQuery.matches = false;
+    reduceMotionQuery.dispatchEvent();
+    const page = (
+      <Reveal>
+        <Probe />
+      </Reveal>
+    );
+    const host = document.createElement("div");
+    host.innerHTML = renderToString(page);
+    reduceMotionQuery.matches = true;
+    reduceMotionQuery.dispatchEvent();
+    const error = vi.spyOn(console, "error").mockImplementation(() => {});
+    try {
+      await act(async () => {
+        hydrateRoot(host, page);
+      });
+      expect(error).not.toHaveBeenCalled();
+      expect(host.querySelector("p")).toHaveAttribute("data-reduced", "true");
+    } finally {
+      error.mockRestore();
+    }
   });
 });
 

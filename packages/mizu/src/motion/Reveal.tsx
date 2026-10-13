@@ -30,8 +30,9 @@ export function Reveal({
     <motion.div
       className={className}
       style={style}
-      initial={reduce ? { opacity: 1 } : { opacity: 0, y, x }}
-      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, x: 0 }}
+      // The server can't know the preference, so only timing may depend on it.
+      initial={{ opacity: 0, y, x }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once, margin: "-70px" }}
       transition={
         reduce ? { duration: 0 } : { duration, delay, ease: EASE_EXPO }
