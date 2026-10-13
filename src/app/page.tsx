@@ -5,6 +5,7 @@ import { Manifesto } from "@/components/home/Manifesto";
 import { Index } from "@/components/home/Index";
 import { Signature } from "@/components/home/Signature";
 import { Invite } from "@/components/home/Invite";
+import { Hire } from "@/components/home/Hire";
 import { Footer } from "@/components/home/Footer";
 import { SiteNav } from "@/components/shell/SiteNav";
 import { JsonLd } from "@/components/shell/JsonLd";
@@ -59,6 +60,7 @@ export default function Home() {
         <Index />
         <Signature />
         <Invite />
+        <Hire />
         <Footer />
       </main>
     </>
