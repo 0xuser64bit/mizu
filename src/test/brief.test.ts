@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formatBrief, parseBrief } from "@/app/work/brief";
+import { formatBrief, parseBrief, sender } from "@/app/work/brief";
 
 const good = {
   kind: "signature",
@@ -32,5 +32,11 @@ describe("commission brief", () => {
     const { subject, text } = formatBrief(brief);
     expect(subject).toBe("Brief — Signature interface — Ada Bcc: x@y.z");
     expect(text).toContain("Budget      $8k – $15k");
+  });
+
+  it("sends from an address, or from a verified domain alone", () => {
+    expect(sender("Briefs <hi@studio.dev>")).toBe("Briefs <hi@studio.dev>");
+    expect(sender("studio.dev")).toBe("Mizu Studio <briefs@studio.dev>");
+    expect(sender(undefined)).toBe("Mizu Studio <onboarding@resend.dev>");
   });
 });

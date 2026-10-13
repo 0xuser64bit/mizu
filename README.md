@@ -239,8 +239,9 @@ Briefs from `/work` are sent by a server action through
 - `RESEND_API_KEY`: the Resend API key.
 - `CONTACT_TO`: the inbox that receives briefs.
 - `CONTACT_FROM`: the sender, on a domain verified in Resend, such as
-  `Mizu Studio <briefs@your-domain>`. It defaults to Resend's test sender,
-  which only delivers to the Resend account's own address.
+  `Mizu Studio <briefs@your-domain>`, or the domain alone, which sends as
+  `Mizu Studio <briefs@…>`. It defaults to Resend's test sender, which only
+  delivers to the Resend account's own address.
 - `NEXT_PUBLIC_CONTACT_EMAIL` (optional): an address shown beside the brief,
   and offered when sending fails.
 

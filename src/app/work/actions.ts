@@ -1,6 +1,6 @@
 "use server";
 
-import { formatBrief, parseBrief } from "./brief";
+import { formatBrief, parseBrief, sender } from "./brief";
 
 /**
  * Sends a commission brief to the studio inbox through Resend's API. Returns
@@ -30,7 +30,7 @@ export async function sendBrief(input: unknown): Promise<string | undefined> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM ?? "Mizu Studio <onboarding@resend.dev>",
+      from: sender(process.env.CONTACT_FROM),
       to,
       reply_to: brief.email,
       subject,

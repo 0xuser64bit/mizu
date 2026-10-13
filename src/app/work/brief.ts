@@ -143,3 +143,9 @@ export function formatBrief(b: Brief) {
   ].join("\n");
   return { subject, text };
 }
+
+/** The From of the email: an address as given, or a verified domain alone. */
+export function sender(from: string | undefined) {
+  if (!from) return "Mizu Studio <onboarding@resend.dev>";
+  return from.includes("@") ? from : `Mizu Studio <briefs@${from}>`;
+}
