@@ -112,6 +112,7 @@ export function Annotator({
     (a) => showResolved || !a.resolved || a.id === open,
   );
   const active = numbered.find((a) => a.id === open);
+  const popover = draft ?? active;
   const openCount = numbered.filter((a) => !a.resolved).length;
 
   const patch = (
@@ -390,18 +391,16 @@ export function Annotator({
           </ol>
 
           <AnimatePresence>
-            {(draft || active) && (
+            {popover && (
               <motion.div
                 key={draft ? "draft" : active!.id}
                 id={`${id}-thread`}
                 className="mizu-annotator-thread"
                 role="dialog"
                 aria-label={draft ? "New comment" : `Comment ${active!.number}`}
-                data-side={docked ? "dock" : popoverSide((draft ?? active)!.x)}
-                data-rise={
-                  !docked && (draft ?? active)!.y > 0.55 ? "" : undefined
-                }
-                style={docked ? undefined : anchor((draft ?? active)!)}
+                data-side={docked ? "dock" : popoverSide(popover.x)}
+                data-rise={!docked && popover.y > 0.55 ? "" : undefined}
+                style={docked ? undefined : anchor(popover)}
                 initial={reduce ? false : { opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={
