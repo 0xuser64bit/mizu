@@ -7,6 +7,7 @@ import {
   type InterviewAnswers,
   type InterviewQuestion,
 } from "@/mizu";
+import { sendGAEvent } from "@next/third-parties/google";
 import { sendBrief } from "@/app/work/actions";
 import { Arrow } from "./Arrow";
 import { BUDGETS, COMMISSIONS, KINDS, TIMELINES, usd } from "@/app/work/brief";
@@ -73,13 +74,31 @@ const QUESTIONS: InterviewQuestion[] = [
   },
 ];
 
+/** One funnel event to Analytics. Only question ids and choice values go, never what someone typed. */
+const track = (event: string, params: Record<string, string | number> = {}) =>
+  sendGAEvent("event", event, params);
+
 /** The rates and the brief: a rate row primes the brief with its commission. */
 export function Commission() {
   const [answers, setAnswers] = useState<InterviewAnswers>({});
   const [failure, setFailure] = useState("");
   const heading = useRef<HTMLHeadingElement>(null);
+  // The questions this visitor has answered, so each counts once: the
+  // furthest one is where a brief that never arrives stopped.
+  const reached = useRef(new Set<string>());
+
+  const answer = (next: InterviewAnswers) => {
+    QUESTIONS.forEach((q, i) => {
+      if (next[q.id] === answers[q.id] || reached.current.has(q.id)) return;
+      if (reached.current.size === 0) track("brief_start");
+      reached.current.add(q.id);
+      track("brief_answer", { question: q.id, step: i + 1 });
+    });
+    setAnswers(next);
+  };
 
   const brief = (kind: string) => {
+    track("brief_prefill", { commission: kind });
     setAnswers((a) => ({ ...a, kind }));
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -111,7 +130,7 @@ export function Commission() {
 
         <ol className="work-rate-list">
           {COMMISSIONS.map((c, i) => (
-            <li key={c.id}>
+            <li key={c.id} id={`rate-${c.id}`}>
               <Reveal delay={i * 0.06} className="work-rate">
                 <div className="work-rate-name">
                   <h3>{c.name}</h3>
@@ -199,7 +218,7 @@ export function Commission() {
             className="work-interview"
             questions={QUESTIONS}
             answers={answers}
-            onAnswersChange={setAnswers}
+            onAnswersChange={answer}
             submitLabel="Send the brief"
             done={
               <p>
@@ -213,9 +232,15 @@ export function Commission() {
                 () => "The brief didn’t send.",
               );
               if (reason) {
+                track("brief_failed", { reason });
                 setFailure(reason);
                 throw new Error(reason);
               }
+              track("brief_sent", {
+                commission: String(a.kind),
+                budget: String(a.budget),
+                timeline: String(a.timeline),
+              });
             }}
           />
         </div>

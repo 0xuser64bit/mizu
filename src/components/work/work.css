@@ -1041,6 +1041,10 @@
 .work-rate:focus-within::before {
   transform: scaleY(1);
 }
+/* A link from the home page's index lands on its row, under the nav. */
+.work-rate-list > li {
+  scroll-margin-top: 96px;
+}
 .work-rate-name {
   grid-area: name;
 }
