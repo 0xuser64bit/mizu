@@ -77,7 +77,7 @@ export default function WorkPage() {
               ))}
             </ul>
           </div>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} className="work-proof-aside">
             <ProofBoard />
           </Reveal>
         </section>

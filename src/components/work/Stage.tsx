@@ -223,7 +223,7 @@ export function Stage({ stage }: { stage: number }) {
               <span>
                 p95 <b ref={value}>{rest.v} ms</b>
               </span>
-              <span className="work-readout-event">
+              <span key={row} className="work-readout-event">
                 {row >= 0
                   ? `after ${EVENTS[row]!.service} · ${EVENTS[row]!.what}`
                   : "before the first deploy"}

@@ -274,8 +274,17 @@
 .work-readout b {
   font-weight: 400;
 }
+/* Each deploy the playhead crosses drops in like a split-flap card. */
 .work-readout-event {
   color: var(--mizu-muted);
+  transform-origin: 50% 0;
+  animation: work-flap 0.3s var(--mizu-ease-expo);
+}
+@keyframes work-flap {
+  from {
+    opacity: 0;
+    transform: perspective(240px) rotateX(-75deg);
+  }
 }
 
 .work-body {
@@ -844,6 +853,9 @@
     animation: none;
     opacity: 0;
   }
+  .work-readout-event {
+    animation: none;
+  }
 }
 
 /* ── The sections after the build: proof, rates, brief ── */
@@ -931,6 +943,10 @@
 .work-proof > div:first-child {
   display: grid;
   gap: 48px;
+}
+.work-proof-aside {
+  position: sticky;
+  top: 112px;
 }
 .work-proof-board {
   display: grid;
@@ -1249,6 +1265,7 @@ p.work-brief-mail {
   .work-brief {
     grid-template-columns: minmax(0, 1fr);
   }
+  .work-proof-aside,
   .work-brief-copy {
     position: static;
   }
