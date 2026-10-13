@@ -100,6 +100,29 @@ them around the same state.
   instead of React state; server-rendered geometry is rounded so hydration
   matches across engines.
 
+## Site surfaces
+
+Patterns the site's own pages use beyond the package, from `/work`
+(`src/components/work/work.css`). Reach for them before inventing new ones.
+
+- **Drafting surface**: work in progress sits on a dotted grid (1px
+  `--mizu-line-bright` dots every 18px), its regions drawn as dashed hairline
+  boxes and its lines as dashed pencil strokes in `--mizu-muted`. The finished
+  surface replaces the sketch in place; the grid fades out, nothing jumps.
+- **Dimension-line note**: a sketched box is annotated the way a drawing is,
+  with a mono uppercase note set into a hairline that ends in short ticks at
+  the box's edges. Never a floating label or a tooltip.
+- **Step ruler**: a sequence reads as a row of hairline segments under the
+  stage, one per step; passed steps turn paper, the current one vermilion.
+  It replaces step counters such as "01 / 05".
+- **Rate row**: a priced offer is a ruled row on fixed column tracks, so name,
+  inclusions, weeks and price line up down the list. On hover or focus the
+  house selection bar (2px vermilion) grows down its left edge; the row's
+  whole area is its one action.
+- **Working-surface frame**: a form someone fills in sits in the same accent
+  corner brackets as the stage, on a `div` with Frame's classes, since a form
+  is not a figure.
+
 ## Do / Don't
 
 - Do use semantic `--mizu-*` tokens so nested themes keep their roles.

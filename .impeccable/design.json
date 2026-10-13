@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-27T13:32:16.515Z",
+  "generatedAt": "2026-10-13T09:56:35.000Z",
   "title": "Design System: Mizu",
   "extensions": {
     "colorMeta": {
@@ -16,7 +16,8 @@
           "oklch(from #0f0e0c 72% c h)",
           "oklch(from #0f0e0c 84% c h)",
           "oklch(from #0f0e0c 95% c h)"
-        ]
+        ],
+        "canonical": "#0f0e0c"
       },
       "ink-2": {
         "role": "neutral",
@@ -30,7 +31,8 @@
           "oklch(from #16130f 72% c h)",
           "oklch(from #16130f 84% c h)",
           "oklch(from #16130f 95% c h)"
-        ]
+        ],
+        "canonical": "#16130f"
       },
       "ink-3": {
         "role": "neutral",
@@ -44,7 +46,8 @@
           "oklch(from #201b15 72% c h)",
           "oklch(from #201b15 84% c h)",
           "oklch(from #201b15 95% c h)"
-        ]
+        ],
+        "canonical": "#201b15"
       },
       "paper": {
         "role": "neutral",
@@ -58,7 +61,8 @@
           "oklch(from #f4f0e8 72% c h)",
           "oklch(from #f4f0e8 84% c h)",
           "oklch(from #f4f0e8 95% c h)"
-        ]
+        ],
+        "canonical": "#f4f0e8"
       },
       "muted": {
         "role": "neutral",
@@ -72,7 +76,8 @@
           "oklch(from #a8a193 72% c h)",
           "oklch(from #a8a193 84% c h)",
           "oklch(from #a8a193 95% c h)"
-        ]
+        ],
+        "canonical": "#a8a193"
       },
       "faint": {
         "role": "neutral",
@@ -86,7 +91,8 @@
           "oklch(from #958d7e 72% c h)",
           "oklch(from #958d7e 84% c h)",
           "oklch(from #958d7e 95% c h)"
-        ]
+        ],
+        "canonical": "#958d7e"
       },
       "accent": {
         "role": "primary",
@@ -100,7 +106,8 @@
           "oklch(from #ff4d1c 72% c h)",
           "oklch(from #ff4d1c 84% c h)",
           "oklch(from #ff4d1c 95% c h)"
-        ]
+        ],
+        "canonical": "#ff4d1c"
       },
       "accent-fill": {
         "role": "primary",
@@ -114,7 +121,8 @@
           "oklch(from #d23e0e 72% c h)",
           "oklch(from #d23e0e 84% c h)",
           "oklch(from #d23e0e 95% c h)"
-        ]
+        ],
+        "canonical": "#d23e0e"
       },
       "line": {
         "role": "neutral",
@@ -128,7 +136,8 @@
           "oklch(from #29241d 72% c h)",
           "oklch(from #29241d 84% c h)",
           "oklch(from #29241d 95% c h)"
-        ]
+        ],
+        "canonical": "#29241d"
       },
       "line-bright": {
         "role": "neutral",
@@ -142,7 +151,8 @@
           "oklch(from rgba(244, 240, 232, 0.22) 72% c h)",
           "oklch(from rgba(244, 240, 232, 0.22) 84% c h)",
           "oklch(from rgba(244, 240, 232, 0.22) 95% c h)"
-        ]
+        ],
+        "canonical": "rgba(244, 240, 232, 0.22)"
       },
       "success": {
         "role": "secondary",
@@ -156,7 +166,8 @@
           "oklch(from #70bc96 72% c h)",
           "oklch(from #70bc96 84% c h)",
           "oklch(from #70bc96 95% c h)"
-        ]
+        ],
+        "canonical": "#70bc96"
       },
       "warning": {
         "role": "secondary",
@@ -170,7 +181,8 @@
           "oklch(from #dbb66a 72% c h)",
           "oklch(from #dbb66a 84% c h)",
           "oklch(from #dbb66a 95% c h)"
-        ]
+        ],
+        "canonical": "#dbb66a"
       },
       "danger": {
         "role": "secondary",
@@ -184,7 +196,8 @@
           "oklch(from #ef9b8e 72% c h)",
           "oklch(from #ef9b8e 84% c h)",
           "oklch(from #ef9b8e 95% c h)"
-        ]
+        ],
+        "canonical": "#ef9b8e"
       },
       "solid-text": {
         "role": "neutral",
@@ -198,7 +211,8 @@
           "oklch(from #fffaf4 72% c h)",
           "oklch(from #fffaf4 84% c h)",
           "oklch(from #fffaf4 95% c h)"
-        ]
+        ],
+        "canonical": "#fffaf4"
       },
       "light-ink": {
         "role": "neutral",
@@ -212,7 +226,8 @@
           "oklch(from #f4f0e8 72% c h)",
           "oklch(from #f4f0e8 84% c h)",
           "oklch(from #f4f0e8 95% c h)"
-        ]
+        ],
+        "canonical": "#f4f0e8"
       },
       "light-ink-2": {
         "role": "neutral",
@@ -226,7 +241,8 @@
           "oklch(from #e9e3d5 72% c h)",
           "oklch(from #e9e3d5 84% c h)",
           "oklch(from #e9e3d5 95% c h)"
-        ]
+        ],
+        "canonical": "#e9e3d5"
       },
       "light-ink-3": {
         "role": "neutral",
@@ -240,7 +256,8 @@
           "oklch(from #dcd4c1 72% c h)",
           "oklch(from #dcd4c1 84% c h)",
           "oklch(from #dcd4c1 95% c h)"
-        ]
+        ],
+        "canonical": "#dcd4c1"
       },
       "light-paper": {
         "role": "neutral",
@@ -254,7 +271,8 @@
           "oklch(from #16130f 72% c h)",
           "oklch(from #16130f 84% c h)",
           "oklch(from #16130f 95% c h)"
-        ]
+        ],
+        "canonical": "#16130f"
       },
       "light-muted": {
         "role": "neutral",
@@ -268,7 +286,8 @@
           "oklch(from #585348 72% c h)",
           "oklch(from #585348 84% c h)",
           "oklch(from #585348 95% c h)"
-        ]
+        ],
+        "canonical": "#585348"
       },
       "light-faint": {
         "role": "neutral",
@@ -282,7 +301,8 @@
           "oklch(from #605a50 72% c h)",
           "oklch(from #605a50 84% c h)",
           "oklch(from #605a50 95% c h)"
-        ]
+        ],
+        "canonical": "#605a50"
       },
       "light-accent": {
         "role": "primary",
@@ -296,7 +316,8 @@
           "oklch(from #a72c0a 72% c h)",
           "oklch(from #a72c0a 84% c h)",
           "oklch(from #a72c0a 95% c h)"
-        ]
+        ],
+        "canonical": "#a72c0a"
       },
       "light-accent-fill": {
         "role": "primary",
@@ -310,7 +331,8 @@
           "oklch(from #a72c0a 72% c h)",
           "oklch(from #a72c0a 84% c h)",
           "oklch(from #a72c0a 95% c h)"
-        ]
+        ],
+        "canonical": "#a72c0a"
       },
       "light-line": {
         "role": "neutral",
@@ -324,7 +346,8 @@
           "oklch(from #d9d2c2 72% c h)",
           "oklch(from #d9d2c2 84% c h)",
           "oklch(from #d9d2c2 95% c h)"
-        ]
+        ],
+        "canonical": "#d9d2c2"
       },
       "light-line-bright": {
         "role": "neutral",
@@ -338,7 +361,8 @@
           "oklch(from rgba(22, 19, 15, 0.22) 72% c h)",
           "oklch(from rgba(22, 19, 15, 0.22) 84% c h)",
           "oklch(from rgba(22, 19, 15, 0.22) 95% c h)"
-        ]
+        ],
+        "canonical": "rgba(22, 19, 15, 0.22)"
       },
       "light-success": {
         "role": "secondary",
@@ -352,7 +376,8 @@
           "oklch(from #206442 72% c h)",
           "oklch(from #206442 84% c h)",
           "oklch(from #206442 95% c h)"
-        ]
+        ],
+        "canonical": "#206442"
       },
       "light-warning": {
         "role": "secondary",
@@ -366,7 +391,8 @@
           "oklch(from #775100 72% c h)",
           "oklch(from #775100 84% c h)",
           "oklch(from #775100 95% c h)"
-        ]
+        ],
+        "canonical": "#775100"
       },
       "light-danger": {
         "role": "secondary",
@@ -380,7 +406,8 @@
           "oklch(from #a12716 72% c h)",
           "oklch(from #a12716 84% c h)",
           "oklch(from #a12716 95% c h)"
-        ]
+        ],
+        "canonical": "#a12716"
       }
     },
     "typographyMeta": {
@@ -423,9 +450,9 @@
     },
     "shadows": [
       {
-        "name": "action-menu",
-        "value": "0 12px 32px rgb(0 0 0 / 0.15)",
-        "purpose": "Floating menu at --mizu-z-overlay: 60."
+        "name": "lifted",
+        "value": "0 12px 32px rgb(0 0 0 / 0.15) … 0 20px 44px rgb(0 0 0 / 0.28)",
+        "purpose": "One soft shadow for whatever is lifted off the page and nothing that rests: the action menu (0 12px 32px / 0.15), the select picker (0 16px 40px / 24%), the annotator thread, the log pill, the top triage card, the tour card. The fader cap carries a small one (0 4px 10px / 0.3)."
       },
       {
         "name": "current-marker",
@@ -482,7 +509,7 @@
       {
         "name": "reveal-default",
         "value": "950ms",
-        "purpose": "Reveal default with y: 32px, x: 0, once: true; reduced mode is opacity 1 and duration 0."
+        "purpose": "Reveal default with y: 32px, x: 0, once: true. Its start is the same under reduced motion so hydration matches; reduced mode only drops the timing to 0."
       },
       {
         "name": "mask-line",
@@ -558,7 +585,11 @@
       },
       {
         "name": "nav-chapter-min",
-        "value": "1024px"
+        "value": "1360px"
+      },
+      {
+        "name": "site-mobile-max",
+        "value": "899px"
       }
     ]
   },
@@ -633,6 +664,41 @@
       "description": "Native range style from the package Slider; captures its distinct 4px focus offset.",
       "html": "<label class=\"ds-range-label\"><span>Position</span><input class=\"ds-range\" type=\"range\" min=\"0\" max=\"100\" value=\"40\" aria-label=\"Position\"><span class=\"ds-range-value\">40</span></label>",
       "css": ".ds-range-label { display: grid; grid-template-columns: minmax(60px,104px) minmax(0,1fr) 44px; align-items: center; gap: 16px; font-family: var(--mizu-font-mono, \"JetBrains Mono\", ui-monospace, \"SF Mono\", monospace); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--mizu-faint, #958d7e); } .ds-range-value { text-align: right; font-variant-numeric: tabular-nums; color: var(--mizu-muted, #a8a193); } .ds-range { width: 100%; min-width: 0; min-height: 44px; margin: 0; appearance: none; height: 16px; background: transparent; } .ds-range::-webkit-slider-runnable-track { height: 1px; background: var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); } .ds-range::-webkit-slider-thumb { appearance: none; width: 10px; height: 10px; margin-top: -5px; background: var(--mizu-accent, #ff4d1c); transform: rotate(45deg); transition: background var(--mizu-duration-fast, 180ms) ease; } .ds-range:hover::-webkit-slider-thumb { background: var(--mizu-paper, #f4f0e8); } .ds-range::-moz-range-track { height: 1px; background: var(--mizu-line-bright, rgba(244, 240, 232, 0.22)); } .ds-range::-moz-range-thumb { width: 10px; height: 10px; border: none; border-radius: 0; background: var(--mizu-accent, #ff4d1c); transform: rotate(45deg); } .ds-range:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-range::-webkit-slider-thumb { transition-duration: .01ms !important; } }"
+    },
+    {
+      "name": "Drafting Surface",
+      "kind": "custom",
+      "description": "Work in progress on a dotted grid: dashed hairline regions and a dashed pencil line.",
+      "html": "<div class=\"ds-draft\"><div class=\"ds-draft-box\"></div><svg class=\"ds-draft-pencil\" viewBox=\"0 0 200 40\" aria-hidden=\"true\"><path d=\"M0 30 C40 28 50 8 90 14 S150 34 200 6\"/></svg></div>",
+      "css": ".ds-draft { position: relative; display: grid; gap: 12px; padding: 24px; background-color: var(--mizu-ink-2, #16130f); background-image: radial-gradient(var(--mizu-line-bright, rgba(244,240,232,.22)) 1px, transparent 1.4px); background-size: 18px 18px; } .ds-draft-box { height: 56px; border: 1px dashed var(--mizu-line-bright, rgba(244,240,232,.22)); } .ds-draft-pencil { width: 100%; height: 40px; fill: none; stroke: var(--mizu-muted, #a8a193); stroke-width: 1; stroke-dasharray: 3 5; }"
+    },
+    {
+      "name": "Dimension-Line Note",
+      "kind": "custom",
+      "description": "A sketched box's annotation: a mono note set into a hairline with end ticks.",
+      "html": "<div class=\"ds-dim\"><span>Title — what this is</span></div>",
+      "css": ".ds-dim { display: flex; align-items: center; gap: 10px; font: 10px var(--mizu-font-mono, \"JetBrains Mono\", monospace); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--mizu-muted, #a8a193); } .ds-dim::before, .ds-dim::after { content: \"\"; flex: 1; height: 7px; background: linear-gradient(var(--mizu-line-bright, rgba(244,240,232,.22)), var(--mizu-line-bright, rgba(244,240,232,.22))) center / 100% 1px no-repeat; } .ds-dim::before { flex: 0 0 14px; border-left: 1px solid var(--mizu-muted, #a8a193); } .ds-dim::after { border-right: 1px solid var(--mizu-muted, #a8a193); }"
+    },
+    {
+      "name": "Step Ruler",
+      "kind": "nav",
+      "description": "A sequence as hairline segments: passed steps paper, the current one vermilion.",
+      "html": "<ol class=\"ds-ruler\"><li data-on>Sketch</li><li data-on>Surface</li><li data-on data-now>States</li><li>Motion</li><li>Handoff</li></ol>",
+      "css": ".ds-ruler { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; } .ds-ruler li { padding-top: 10px; border-top: 1px solid var(--mizu-line-bright, rgba(244,240,232,.22)); font: 10px var(--mizu-font-mono, \"JetBrains Mono\", monospace); letter-spacing: .16em; text-transform: uppercase; color: var(--mizu-faint, #958d7e); transition: color .4s, border-color .4s; } .ds-ruler li[data-on] { border-color: var(--mizu-paper, #f4f0e8); } .ds-ruler li[data-now] { border-color: var(--mizu-accent, #ff4d1c); color: var(--mizu-paper, #f4f0e8); }"
+    },
+    {
+      "name": "Rate Row",
+      "kind": "card",
+      "description": "A priced offer on fixed column tracks; the selection bar grows down it on hover or focus.",
+      "html": "<div class=\"ds-rate\"><strong>Craft pass</strong><span>1–2 weeks</span><span class=\"ds-rate-price\">from $4k</span><button type=\"button\" class=\"ds-rate-cta\">Brief this</button></div>",
+      "css": ".ds-rate { position: relative; display: grid; grid-template-columns: minmax(0, 1.5fr) 7.5rem 7rem auto; align-items: baseline; gap: 24px; padding: 28px 0 28px 20px; border-top: 1px solid var(--mizu-line, #29241d); border-bottom: 1px solid var(--mizu-line, #29241d); color: var(--mizu-paper, #f4f0e8); font: 15px var(--mizu-font-display, \"Archivo Variable\", sans-serif); } .ds-rate::before { content: \"\"; position: absolute; inset: -1px auto 0 0; width: 2px; background: var(--mizu-accent, #ff4d1c); transform: scaleY(0); transform-origin: top; transition: transform .5s var(--mizu-ease-expo, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-rate:hover::before, .ds-rate:focus-within::before { transform: scaleY(1); } .ds-rate-price { font: 13px var(--mizu-font-mono, \"JetBrains Mono\", monospace); font-variant-numeric: tabular-nums; } .ds-rate-cta { padding: 0; border: 0; background: none; color: var(--mizu-muted, #a8a193); font: 11px var(--mizu-font-mono, \"JetBrains Mono\", monospace); letter-spacing: .22em; text-transform: uppercase; cursor: pointer; } .ds-rate-cta::after { content: \"\"; position: absolute; inset: 0; } .ds-rate:hover .ds-rate-cta, .ds-rate-cta:focus-visible { color: var(--mizu-paper, #f4f0e8); } .ds-rate-cta:focus-visible { outline: none; } .ds-rate-cta:focus-visible::after { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: -2px; }"
+    },
+    {
+      "name": "Working-Surface Frame",
+      "kind": "custom",
+      "description": "Accent corner brackets around a form, on a div rather than a figure.",
+      "html": "<div class=\"ds-frame\"><span class=\"tl\"></span><span class=\"tr\"></span><span class=\"bl\"></span><span class=\"br\"></span><label>Your email<input type=\"email\" placeholder=\"you@studio.com\"></label></div>",
+      "css": ".ds-frame { position: relative; padding: 32px; background: var(--mizu-ink-2, #16130f); } .ds-frame > span { position: absolute; width: 14px; height: 14px; border: 0 solid var(--mizu-accent, #ff4d1c); } .ds-frame .tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; } .ds-frame .tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; } .ds-frame .bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; } .ds-frame .br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; } .ds-frame label { display: grid; gap: 8px; font: 10px var(--mizu-font-mono, \"JetBrains Mono\", monospace); letter-spacing: .28em; text-transform: uppercase; color: var(--mizu-muted, #a8a193); } .ds-frame input { min-height: 44px; padding: 0 12px; border: 1px solid var(--mizu-line-bright, rgba(244,240,232,.22)); border-radius: 2px; background: var(--mizu-ink, #0f0e0c); color: var(--mizu-paper, #f4f0e8); font: 15px var(--mizu-font-display, \"Archivo Variable\", sans-serif); letter-spacing: normal; text-transform: none; } .ds-frame input:focus-visible { outline: 2px solid var(--mizu-accent, #ff4d1c); outline-offset: 2px; }"
     }
   ],
   "narrative": {
@@ -648,27 +714,22 @@
     "rules": [
       {
         "name": "The Signal Rule",
-        "body": "Use the accent to express action, selection or position;\nthe diamond is not repeated merely to fill space.",
+        "body": "Reserve vermilion for action and selection — the diamond marks state, never decoration.",
         "section": "colors"
       },
       {
         "name": "The Material Rule",
-        "body": "Establish hierarchy with ink layers and rules; reserve\nthe floating shadow for the action-menu surface that already uses it.",
+        "body": "Hierarchy comes from tonal layering plus 1px hairline rules (`--mizu-line`), not shadows. One soft shadow marks whatever is lifted off the page — a floating menu, the card in your hand, a pill hovering over a list, a fader cap — and nothing that rests.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** use the semantic `--mizu-*` palette so nested light and dark scopes retain their roles.",
-      "**Do** pair compact typography with readable secondary text and visible focus.",
-      "**Do** keep motion tied to a state change and preserve useful resting and reduced-motion states.",
-      "**Do** retain labels, native semantics, keyboard paths and explicit overflow handling.",
-      "**Do** qualify synthetic demonstration data and retain navigable documentation headings."
+      "Do use semantic `--mizu-*` tokens so nested themes keep their roles.",
+      "Do keep native semantics, keyboard paths, visible focus and explicit overflow handling.",
+      "Do qualify synthetic demonstration data as illustrative."
     ],
     "donts": [
-      "**Don't** replace the incumbent warm material and editorial world with unrelated visual conventions.",
-      "**Don't** use diamonds or animation solely to occupy space.",
-      "**Don't** turn every container into the same shadowed, rounded card.",
-      "**Don't** treat source-backed documentation or the scoped ship verdict as certification of every API."
+      "Don't redecorate with unrelated visual conventions, shadowed rounded cards, or purposeless diamonds and animation."
     ]
   }
 }
