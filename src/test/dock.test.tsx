@@ -113,10 +113,27 @@ describe("Dock", () => {
         .getAllByRole("tab")
         .map((tab) => tab.textContent),
     ).toEqual(["Preview", "Notes"]);
-    expect(secondTabs().getByRole("tab", { name: "Notes" })).toHaveFocus();
+    const moved = secondTabs().getByRole("tab", { name: "Notes" });
+    expect(moved).toHaveFocus();
     expect(screen.getByRole("tabpanel", { name: "Notes" })).toHaveTextContent(
       "Review notes",
     );
+    fireEvent.keyDown(moved, {
+      key: "ArrowRight",
+      altKey: true,
+      shiftKey: true,
+    });
+    expect(secondTabs().getByRole("tab", { name: "Notes" })).toBe(moved);
+    fireEvent.keyDown(moved, {
+      key: "ArrowLeft",
+      altKey: true,
+      shiftKey: true,
+    });
+    expect(
+      firstTabs()
+        .getAllByRole("tab")
+        .map((tab) => tab.textContent),
+    ).toEqual(["Source", "Notes"]);
   });
 
   it("clamps keyboard and incoming panel sizes to safe bounds", () => {

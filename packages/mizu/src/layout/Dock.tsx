@@ -216,8 +216,9 @@ export function Dock({
                               : 0;
                         if (event.altKey && direction) {
                           event.preventDefault();
-                          if (event.shiftKey) move(pane, key);
-                          else reorder(pane, key, direction);
+                          if (!event.shiftKey) reorder(pane, key, direction);
+                          else if (direction === (pane === 0 ? 1 : -1))
+                            move(pane, key);
                           return;
                         }
                         if (
@@ -248,6 +249,7 @@ export function Dock({
               )}
               {selected && (
                 <div
+                  role="group"
                   className="mizu-dock-actions"
                   aria-label={`${selected.label} panel actions`}
                 >

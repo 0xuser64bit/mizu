@@ -72,7 +72,7 @@ export function DockDemo() {
   };
   const [layout, setLayout] = useState(initial);
   return (
-    <div>
+    <div style={{ display: "grid", gap: 16 }}>
       <Dock
         label="Release workspace"
         value={layout}
@@ -98,7 +98,7 @@ export function DockDemo() {
             content: (
               <section>
                 <h3>Before publishing</h3>
-                <ul>
+                <ul className="mizu-field-hint">
                   <li>Check the keyboard path.</li>
                   <li>Read the empty and error states.</li>
                   <li>Keep the motion purposeful.</li>
@@ -112,13 +112,10 @@ export function DockDemo() {
             content: (
               <article>
                 <h3>A quieter way to work.</h3>
-                <p>
-                  A focused workspace for the source, its context and the
-                  result.
-                </p>
                 <p className="mizu-field-hint">
-                  Tabs keep their content mounted when you switch, collapse or
-                  move them. On narrow screens the panes stack.
+                  A focused workspace for the source, its context and the
+                  result. Tabs keep their content mounted when you switch,
+                  collapse or move them; on narrow screens the panes stack.
                 </p>
               </article>
             ),
@@ -129,6 +126,7 @@ export function DockDemo() {
         variant="ghost"
         arrow={false}
         size="sm"
+        style={{ justifySelf: "start" }}
         onClick={() => setLayout(initial)}
       >
         Reset layout
