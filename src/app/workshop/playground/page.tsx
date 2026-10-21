@@ -3,7 +3,7 @@ import { PropsPlayground } from "@/components/workshop/PropsPlayground";
 import { WorkshopShell } from "@/components/workshop/WorkshopShell";
 
 export const metadata: Metadata = {
-  title: "Props Playground",
+  title: "Props playground: tune a component, copy the JSX",
   description:
     "Tune Mizu component props on a real preview and copy the matching working React example.",
   alternates: { canonical: "/workshop/playground" },

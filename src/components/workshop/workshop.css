@@ -35,13 +35,27 @@
   border-top: 1px solid var(--mizu-line);
 }
 .mizu-workshop-index > a {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(180px, 0.75fr) minmax(0, 1fr) auto;
-  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 14rem;
+  gap: 10px clamp(24px, 3vw, 48px);
   align-items: baseline;
-  padding: 30px 0;
+  padding: 30px 0 30px 20px;
   border-bottom: 1px solid var(--mizu-line);
   text-decoration: none;
+}
+.mizu-workshop-index > a::before {
+  content: "";
+  position: absolute;
+  inset: -1px auto 0 0;
+  width: 2px;
+  background: var(--mizu-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s var(--mizu-ease-expo);
+}
+.mizu-workshop-index > a:is(:hover, :focus-visible)::before {
+  transform: scaleY(1);
 }
 .mizu-workshop-index h2 {
   font-size: 24px;
@@ -57,11 +71,24 @@
   line-height: 1.7;
 }
 .mizu-workshop-index span {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font: 11px var(--mizu-font-mono);
-  color: var(--mizu-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mizu-muted);
+  transition: color 0.3s;
 }
-.mizu-workshop-index a:hover h2 {
-  color: var(--mizu-accent);
+.mizu-workshop-index svg {
+  transition: transform 0.4s var(--mizu-ease-expo);
+}
+.mizu-workshop-index > a:is(:hover, :focus-visible) span {
+  color: var(--mizu-paper);
+}
+.mizu-workshop-index > a:hover svg {
+  transform: translateX(5px);
 }
 .mizu-workshop-note {
   margin: 32px 0 0;
@@ -343,20 +370,14 @@
     padding: 20px;
   }
   .mizu-workshop-index > a {
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    padding: 24px 0;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px 0 24px 16px;
   }
   .mizu-workshop-index h2 {
     font-size: 22px;
   }
-  .mizu-workshop-index p {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
   .mizu-workshop-index span {
-    grid-column: 2;
-    grid-row: 1;
+    justify-self: start;
   }
 }
 @media (max-width: 640px) {
@@ -365,5 +386,11 @@
   }
   .mizu-workshop-navigation .mizu-theme-toggle {
     display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mizu-workshop-index > a::before,
+  .mizu-workshop-index svg {
+    transition: none;
   }
 }

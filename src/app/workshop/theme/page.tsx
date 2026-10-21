@@ -3,7 +3,7 @@ import { WorkshopShell } from "@/components/workshop/WorkshopShell";
 import { ThemeWorkshop } from "@/components/workshop/ThemeWorkshop";
 
 export const metadata: Metadata = {
-  title: "Theme Workshop",
+  title: "Theme workshop: palettes with contrast checks",
   description:
     "Make a Mizu palette on real components, check its contrast, and take the CSS with you.",
   alternates: { canonical: "/workshop/theme" },

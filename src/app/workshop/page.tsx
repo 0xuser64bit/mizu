@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Arrow } from "@/components/work/Arrow";
 import { WorkshopShell } from "@/components/workshop/WorkshopShell";
 
 export const metadata: Metadata = {
-  title: "Workshop",
+  title: "Workshop: themes, props and blocks",
   description:
     "Make a theme, tune a component, or take a working Mizu composition into your own product.",
   alternates: { canonical: "/workshop" },
@@ -12,28 +13,28 @@ export const metadata: Metadata = {
 const benches = [
   {
     href: "/workshop/theme",
-    title: "Theme Workshop",
+    title: "Theme workshop",
     description:
       "Shape the surface, signal, type and details. Test a palette on real controls and export its CSS.",
     kind: "Make a theme",
   },
   {
     href: "/workshop/playground",
-    title: "Props Playground",
+    title: "Props playground",
     description:
       "Turn the controls, try every state, and copy the React code for exactly what you see.",
     kind: "Tune a component",
   },
   {
     href: "/blocks",
-    title: "Mizu Blocks",
+    title: "Blocks",
     description:
       "Whole working sections for settings, files and analytics, with source and installation included.",
     kind: "Take a composition",
   },
   {
     href: "/examples/audio-workbench",
-    title: "Audio Workbench",
+    title: "Audio workbench",
     description:
       "Listen, find a passage, mark an excerpt, and keep notes tied to a moment in the recording.",
     kind: "Review a recording",
@@ -66,7 +67,10 @@ export default function WorkshopPage() {
           <Link key={bench.href} href={bench.href}>
             <h2>{bench.title}</h2>
             <p>{bench.description}</p>
-            <span>{bench.kind}</span>
+            <span>
+              {bench.kind}
+              <Arrow />
+            </span>
           </Link>
         ))}
       </div>
