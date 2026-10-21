@@ -52,6 +52,7 @@ export function Footer() {
               { href: "/", label: "Home" },
               { href: "/components", label: "Components" },
               { href: "/examples", label: "Examples" },
+              { href: "/workshop", label: "Workshop" },
               { href: "/lab", label: "Lab" },
               { href: "/studio", label: "Standpoint" },
               { href: "/work", label: "Hire" },
