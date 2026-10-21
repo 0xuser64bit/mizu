@@ -37,7 +37,7 @@ function Playground({ piece }: { piece: PlaygroundPiece }) {
     key: K,
     next: PlaygroundConfig[K],
   ) => setConfig({ ...config, [key]: next });
-  const code = playgroundCode(piece, { ...config, amount });
+  const code = playgroundCode(piece, { ...config, amount, inputValue: value });
   const reset = () => {
     const next = defaultConfig(piece);
     setConfig(next);

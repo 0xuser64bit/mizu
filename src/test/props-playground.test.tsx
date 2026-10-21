@@ -77,6 +77,12 @@ describe("Props Playground", () => {
     );
     await user.type(fieldPreview.getByRole("textbox"), "Launch");
     expect(screen.getByRole("status")).toHaveTextContent("Value: Launch");
+    await user.click(
+      screen.getByRole("button", { name: "Copy playground JSX" }),
+    );
+    expect(await navigator.clipboard.readText()).toContain(
+      'useState("Launch")',
+    );
     await user.click(screen.getByRole("checkbox", { name: "Show error" }));
     expect(fieldPreview.getByRole("textbox")).toHaveAttribute(
       "aria-invalid",

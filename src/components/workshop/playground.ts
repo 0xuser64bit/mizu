@@ -14,6 +14,7 @@ export type PlaygroundConfig = {
   required: boolean;
   error: boolean;
   amount: number;
+  inputValue: string;
 };
 export const PLAYGROUND_PIECES = [
   { value: "button", label: "Button" },
@@ -50,6 +51,7 @@ export function defaultConfig(piece: PlaygroundPiece): PlaygroundConfig {
     required: false,
     error: false,
     amount: 50,
+    inputValue: "",
   };
 }
 
@@ -65,7 +67,7 @@ export function playgroundCode(
     piece === "button"
       ? "  const [clicks, setClicks] = useState(0);\n"
       : piece === "text-field"
-        ? '  const [value, setValue] = useState("");\n'
+        ? `  const [value, setValue] = useState(${q(config.inputValue)});\n`
         : piece === "slider"
           ? `  const [value, setValue] = useState(${config.amount});\n`
           : "";
