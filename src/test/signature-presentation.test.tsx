@@ -91,7 +91,6 @@ describe("Gallery", () => {
     render(<Gallery label="Trip" items={PHOTOS} rowHeight={200} />);
     const list = screen.getByRole("list");
     expect(screen.getAllByRole("button")).toHaveLength(PHOTOS.length);
-    // Square photos at 800px wide make rows of four.
     await waitFor(() =>
       expect(list.firstElementChild).toHaveStyle({ height: "195.5px" }),
     );
@@ -125,7 +124,6 @@ describe("Gallery", () => {
     expect(
       screen.getByRole("button", { name: "Photo 3", current: true }),
     ).toBeInTheDocument();
-    // The grid behind is inert while the viewer is modal; happy-dom does not model that.
     await user.click(within(viewer).getByRole("button", { name: "Photo 10" }));
     expect(screen.getByRole("button", { name: "Next photo" })).toBeDisabled();
     await user.keyboard("{Home}");
@@ -133,7 +131,6 @@ describe("Gallery", () => {
       screen.getByRole("button", { name: "Previous photo" }),
     ).toBeDisabled();
 
-    // happy-dom does not turn Escape into the native dialog's cancel event.
     fireEvent(viewer, new Event("cancel", { cancelable: true }));
     await waitFor(() =>
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument(),
@@ -347,7 +344,6 @@ describe("ColumnBrowser", () => {
     expect(screen.getByRole("option", { name: "Banana" })).toHaveFocus();
     await user.keyboard("bl");
     expect(screen.getByRole("option", { name: "Blueberry" })).toHaveFocus();
-    // Disabled items are skipped.
     await user.keyboard("{End}");
     expect(screen.getByRole("option", { name: "Blueberry" })).toHaveFocus();
     await user.keyboard("{Enter}");

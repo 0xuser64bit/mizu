@@ -4,8 +4,6 @@ import { NPM_URL, REPO_URL, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-// The llms.txt convention (llmstxt.org): what the project is, then links an
-// agent can follow. Generated from the catalog, so it can't drift from it.
 export function GET() {
   const families = CATEGORIES.map((category) => {
     const items = COMPONENTS.filter((c) => c.category === category).map(

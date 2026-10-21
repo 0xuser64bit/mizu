@@ -19,7 +19,6 @@ describe("composed examples", () => {
     expect(screen.getByText("Time in focus: 09:31:20")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: /Next moment/ }));
     expect(screen.getByText("Time in focus: 09:33:10")).toBeInTheDocument();
-    // The log opens the line nearest that moment.
     await waitFor(() =>
       expect(screen.getByText(/line \d+ of/)).toBeInTheDocument(),
     );

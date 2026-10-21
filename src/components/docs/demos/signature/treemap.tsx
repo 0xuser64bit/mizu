@@ -19,7 +19,6 @@ const leaf = (
   detail,
 });
 
-// Illustrative production bundle; growth is the change since the previous release.
 const BUNDLE: TreemapNode = {
   id: "bundle",
   label: "app.js",
@@ -192,7 +191,6 @@ const SPEND: TreemapNode = {
   ],
 };
 
-/** Size-weighted growth, so branches glow by what changed inside them. */
 function growth(node: TreemapNode): { size: number; grown: number } {
   if (!node.children?.length) {
     const size = node.value ?? 0;

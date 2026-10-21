@@ -46,12 +46,6 @@
   font-stretch: 88%;
 }
 
-/* The entrance for what is on screen at load, in CSS so it starts at first
-   paint. Reveal and MaskLine render hidden and wait for hydration: seconds of
-   empty hero on a slow phone. Reveal still serves everything below the fold.
-   The largest text of a first screen rises without fading (rise-up): Chrome
-   counts faded-in text only once something repaints it after the fade, so a
-   fade makes the page look seconds slower than it is. */
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -103,8 +97,6 @@ body {
   overflow-x: clip;
 }
 
-/* The nav's chapter sits at the page's center; with six links it would run
-   into them below this width (measured with the longest chapter, Commission). */
 @media (max-width: 1359px) {
   .mizu-nav-chapter {
     display: none;
@@ -205,7 +197,6 @@ body {
 .mizu-demo-card--figure figcaption { margin-top: 10px; font: 10px var(--mizu-font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mizu-faint); }
 .mizu-demo-page { padding: clamp(24px, 5vw, 48px); background: var(--mizu-ink-2); }
 .mizu-demo-page h4 { margin: 18px 0 10px; font-size: clamp(26px, 4vw, 40px); font-weight: 900; font-stretch: 112%; letter-spacing: -.03em; line-height: 1; }
-/* Zero specificity, so the SectionTag inside keeps its own face. */
 :where(.mizu-demo-page > p) { margin: 0; max-width: 44ch; color: var(--mizu-muted); font-size: 14px; line-height: 1.6; }
 .mizu-demo-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 28px; }
 .mizu-demo-plans > div { display: grid; gap: 6px; align-content: start; min-height: 132px; padding: 16px; border: 1px solid var(--mizu-line-bright); background: var(--mizu-ink); }
@@ -251,7 +242,6 @@ body {
 .mizu-demo-grade-view { position: relative; max-width: 560px; }
 .mizu-demo-grade-view .mizu-image-figure { margin: 0; }
 .mizu-demo-grade-view > span { position: absolute; inset: 0; pointer-events: none; }
-/* Composed examples */
 .mizu-example { box-sizing: border-box; width: min(100%, 1440px); margin: 0 auto; padding: 104px 40px 96px; }
 .mizu-example-head { display: grid; gap: 16px; margin-bottom: 36px; }
 .mizu-example-kicker { margin: 0; font: 11px var(--mizu-font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--mizu-accent); }

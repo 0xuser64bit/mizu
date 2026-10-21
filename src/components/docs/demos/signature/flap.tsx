@@ -14,7 +14,6 @@ const TONES: Record<Status, SignatureTone | undefined> = {
   DELAYED: "warning",
   DEPARTED: "muted",
 };
-// An invented timetable that loops.
 const TIMETABLE: Omit<Departure, "status">[] = [
   { time: "08:42", to: "KANAZAWA", platform: "4" },
   { time: "08:50", to: "NAGANO", platform: "11" },
@@ -32,7 +31,6 @@ const initialBoard = (start: number): Departure[] =>
     status: i === 2 ? "DELAYED" : "ON TIME",
   }));
 
-/** One tick of the board: the first train boards, departs, then makes way. */
 type BoardState = { board: Departure[]; next: number; news: string };
 function advance(state: BoardState): BoardState {
   const [first, ...rest] = state.board;
@@ -87,7 +85,6 @@ function Departures() {
           </thead>
           <tbody>
             {board.map((row, i) => (
-              // Rows are board positions: a departure moving up re-flips the row it lands on.
               <tr key={i}>
                 <td>
                   <SplitFlap value={row.time} length={5} />

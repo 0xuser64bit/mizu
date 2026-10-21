@@ -20,7 +20,6 @@ import {
 } from "@/mizu";
 import { seeded } from "@/components/docs/demos/signature/shared";
 
-// An invented harbour's berth bookings and the rule that routes them.
 const FIELDS: QueryField[] = [
   {
     id: "type",
@@ -185,7 +184,6 @@ export function AutomationBuilder() {
   const crane = BOOKINGS.filter(matches).length;
   const node = nodes.find((n) => n.id === selected);
 
-  // A dry run: each step lights up in turn along the path the booking takes.
   const run = async () => {
     const booking = BOOKINGS.find((b) => b.id === sample)!;
     const token = ++runRef.current;

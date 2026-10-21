@@ -47,7 +47,6 @@ const FIELDS: QueryField[] = [
   { id: "active", label: "Active this week", type: "boolean" },
 ];
 
-// Illustrative accounts, generated deterministically.
 const NOW = Date.UTC(2026, 8, 28);
 type Account = {
   id: string;

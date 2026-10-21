@@ -25,7 +25,7 @@ Import the stylesheet once, then use the components you need:
 
 ```tsx
 import "mizu-ui/styles.css";
-import "mizu-ui/fonts.css"; // optional self-hosted fonts
+import "mizu-ui/fonts.css";
 import { Button } from "mizu-ui";
 
 export function App() {
@@ -166,8 +166,8 @@ overrides win wherever your CSS loads:
 ```css
 :root,
 [data-theme] {
-  --mizu-accent: #2763c4; /* text and marks */
-  --mizu-accent-fill: #2052a3; /* filled buttons */
+  --mizu-accent: #2763c4;
+  --mizu-accent-fill: #2052a3;
 }
 ```
 
@@ -216,13 +216,13 @@ Run `bun install` and `bun run dev`, then open:
 ## Develop and verify
 
 ```sh
-bun run check                # example freshness, types, lint, behavior tests, package emit
-bun run build                # production documentation site
-bun run test:consumer        # real npm tarball in a temporary external React 19 app
+bun run check
+bun run build
+bun run test:consumer
 bun run test:consumer --react18
-bun run test:consumer --serve # packed app preview at :3102
-bun run examples:sync        # regenerate compiled demos, formatted usage and inventory
-bun run registry:sync        # regenerate single-component registry entries
+bun run test:consumer --serve
+bun run examples:sync
+bun run registry:sync
 bun run format
 ```
 

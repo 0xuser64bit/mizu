@@ -1,7 +1,6 @@
 import { getComponent } from "@/components/docs/registry";
 import { card, contentType, size } from "@/lib/og/card";
 
-// The first clause, as the home index reads it: "A rotary control for instruments rather than forms".
 const summary = (tagline: string) => tagline.split(/[:—]/)[0]!.trim();
 
 export async function generateImageMetadata({

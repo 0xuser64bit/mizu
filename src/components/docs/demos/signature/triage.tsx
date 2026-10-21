@@ -11,7 +11,6 @@ type Post = {
   body: string;
   age: string;
 };
-// Invented community posts and reports.
 const POSTS: Post[] = [
   {
     id: "p1",

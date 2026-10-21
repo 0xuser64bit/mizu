@@ -8,7 +8,6 @@ import {
 } from "@/mizu";
 import { Scenarios } from "./shared";
 
-/** A named file with a declared size and no contents, so samples cost no memory. */
 class SampleFile extends File {
   #size: number;
   constructor(name: string, size: number, type = "") {
@@ -34,7 +33,6 @@ export function TransferQueueShowcase() {
   const [scenario, setScenario] = useState<Scenario>("steady");
   const [finished, setFinished] = useState<string[]>([]);
   const queue = useRef<TransferQueueHandle>(null);
-  // A simulated network: nothing leaves the browser. It honours the abort signal like a real upload.
   const simulate: TransferFunction = (file, { signal, onProgress }) =>
     new Promise((resolve, reject) => {
       const rate = (3 + Math.random() * 7) * MB;

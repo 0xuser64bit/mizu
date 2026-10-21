@@ -64,8 +64,6 @@ it("keeps text and status tokens readable across every default surface in both t
   }
 });
 it("keeps every token in the theme layer, so your own CSS overrides it in any load order", () => {
-  // A registry item's base.css loads after the app's global stylesheet; unlayered,
-  // its :root would reset the app's --mizu-accent at equal specificity.
   const tokens: string[] = [];
   postcss.parse(css).walkDecls(/^--mizu-/, (decl) => {
     const rule = decl.parent as postcss.Rule;
@@ -74,7 +72,7 @@ it("keeps every token in the theme layer, so your own CSS overrides it in any lo
         /^(:root|body|\[data-theme="\w+"\])$/.test(s),
       )
     )
-      return; // a component's own custom property, not a token
+      return;
     tokens.push(decl.prop);
     const layer = rule.parent as postcss.AtRule;
     expect(`${layer.name} ${layer.params}`, decl.prop).toBe("layer theme");

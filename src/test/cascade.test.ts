@@ -27,7 +27,6 @@ const BOX =
   /^(padding|border)(-(top|right|bottom|left|inline|block)(-(start|end))?)?(-width)?$/;
 const nothing = (value: string) =>
   /^(0(px)?|none)(\s+(solid|none))?$/.test(value);
-/** A selector's compounds, split at combinators outside parentheses. */
 function compounds(selector: string) {
   const parts = [""];
   let depth = 0;
@@ -41,8 +40,6 @@ function compounds(selector: string) {
 
 describe("cascade", () => {
   it("never lets a class default tie with the [data-tone] it should yield to", () => {
-    // Registry stylesheets load in whatever order the bundler emits, and styles.css
-    // imports signature.css first: a bare-class --mizu-tone that loads later wins.
     const toned = new Set<string>();
     for (const source of sources) {
       const visit = (node: ts.Node): void => {
@@ -73,11 +70,6 @@ describe("cascade", () => {
       });
   });
   it("sizes every element it pads or borders by its border box", () => {
-    // `:where([class*="mizu-"])` makes classed elements border-box. An element styled
-    // through its parent's class (`.mizu-segmented span`), or a pseudo-element, is
-    // content-box unless the page's reset says otherwise, as Tailwind's does: without
-    // one, a 44px control padded 8px grew to 60px. Keyed by the nearest Mizu class
-    // and the tag, across rules, since states set padding and borders apart.
     const elements = new Map<
       string,
       { size: string[]; box: string[]; set: boolean }
@@ -117,8 +109,6 @@ describe("cascade", () => {
       if (size.length && box.length) expect(set, key).toBe(true);
   });
   it("sets box-sizing where an inline style sizes and pads an unclassed element", () => {
-    // Toast's panel, 100% wide plus 18px of padding each side, spilled out of its
-    // container and off a phone's screen without a border-box reset.
     const sizing = /^(width|height|(min|max)(Width|Height)|flexBasis)$/;
     const boxing = /^(padding|border)(Top|Right|Bottom|Left|Inline|Block)?$/;
     let checked = 0;
@@ -160,12 +150,10 @@ describe("cascade", () => {
       };
       visit(source);
     }
-    expect(checked).toBeGreaterThan(0); // Toast's panel
+    expect(checked).toBeGreaterThan(0);
   });
   it("sets the font of every code, kbd, samp and pre it renders", () => {
-    // Browsers give these their own monospace, and Tailwind's preflight the app's,
-    // so none inherits: CodeBlock's code sat in Geist Mono inside a JetBrains Mono pre.
-    const fonted = new Set<string>(); // "mizu-code-block code"
+    const fonted = new Set<string>();
     for (const sheet of sheets)
       sheet.walkDecls(/^font(-family)?$/, (decl) => {
         for (const selector of (decl.parent as postcss.Rule).selectors ?? []) {
@@ -188,7 +176,6 @@ describe("cascade", () => {
               a.getText().includes("mizu-"),
           );
           if (/^(code|kbd|samp|pre)$/.test(tag) && !own) {
-            // The Mizu classes on the elements around it, in this component.
             const around: string[] = [];
             for (let up = node.parent; up; up = up.parent)
               if (ts.isJsxElement(up))

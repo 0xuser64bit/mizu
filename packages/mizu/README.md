@@ -21,7 +21,7 @@ required.
 ```tsx
 import { useState } from "react";
 import "mizu-ui/styles.css";
-import "mizu-ui/fonts.css"; // optional Archivo, Instrument Serif, JetBrains Mono
+import "mizu-ui/fonts.css";
 import { Button, TextField } from "mizu-ui";
 
 export function App() {

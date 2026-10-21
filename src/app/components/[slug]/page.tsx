@@ -21,7 +21,6 @@ export async function generateMetadata({
     description: descriptionOf(meta),
     alternates: {
       canonical: `/components/${slug}`,
-      // The same documentation without the page around it, for agents.
       types: { "text/markdown": `/components/${slug}.md` },
     },
   };

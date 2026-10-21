@@ -54,7 +54,6 @@ type Voice = {
 const NOTES = { A2: 110, C3: 130.81, E3: 164.81, A3: 220 } as const;
 const PEAK = 0.28;
 
-/** A small subtractive voice: saw and sub oscillators and noise, through a filter and envelope. */
 function build(): Voice {
   const ctx = new AudioContext();
   const saw = ctx.createOscillator(),
@@ -128,7 +127,6 @@ function Synth() {
     (v: Params[K]) =>
       setP((q) => ({ ...q, [key]: v }));
 
-  // Parameters follow the controls, smoothed so nothing clicks.
   useEffect(() => {
     const v = voiceRef.current;
     if (!v) return;
@@ -146,7 +144,6 @@ function Synth() {
     v.depth.gain.setTargetAtTime(p.vibrato.y, at, 0.02);
   }, [p, note, playing]);
 
-  // Meters and the scope read the audio graph directly, every frame.
   useEffect(() => {
     let frame = 0;
     const data = new Float32Array(1024);

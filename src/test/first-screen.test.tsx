@@ -6,9 +6,6 @@ import { reduceMotionQuery } from "./helpers";
 
 describe("first screen", () => {
   it("is visible in the server HTML instead of waiting for hydration", () => {
-    // Reveal and MaskLine render hidden inline (opacity 0, translateY(112%))
-    // until the client animates them: seconds of empty hero on a slow phone.
-    // A server knows no motion preference, so render without one.
     reduceMotionQuery.matches = false;
     reduceMotionQuery.dispatchEvent();
     const html = renderToString(<Hero />);

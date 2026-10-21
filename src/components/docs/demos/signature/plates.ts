@@ -1,11 +1,6 @@
 import type { GalleryItem } from "@/mizu";
 import { seeded } from "./shared";
 
-/*
- * Generated landscape "plates": layered ridgelines drawn with midpoint
- * displacement, so the gallery demos need no network images and stay crisp
- * at any zoom.
- */
 type Palette = {
   sky: [string, string];
   haze: string;
@@ -116,7 +111,6 @@ function mix(a: string, b: string, t: number) {
   return `rgb(${channel(16)},${channel(8)},${channel(0)})`;
 }
 
-/** Midpoint displacement: a natural ridgeline, normalised to 0–1. */
 function ridge(rand: () => number, segments = 64, roughness = 0.56) {
   const points = new Array<number>(segments + 1).fill(0);
   points[0] = rand();
@@ -176,7 +170,6 @@ function draw(seed: number, w: number, h: number, p: Palette) {
     );
   }
   if (p.water) {
-    // Still water: the sky's own colours, darkening toward you, with a broken path of light.
     out.push(
       `<defs><linearGradient id="w" x2="0" y2="1"><stop offset="0" stop-color="${mix(p.sky[1], p.haze, 0.35)}"/><stop offset="1" stop-color="${mix(p.haze, p.ink, 0.7)}"/></linearGradient></defs>`,
       `<rect y="${f(horizon)}" width="${w}" height="${f(h - horizon)}" fill="url(#w)"/>`,

@@ -22,7 +22,6 @@ const make = (n: number, from = 0): LogLine[] =>
 describe("LogStream", () => {
   let restore: () => void;
   beforeEach(() => {
-    // Every element measures 240px tall: ten 24px rows in view.
     restore = mockLayout(800, 240);
   });
   afterEach(() => restore());
@@ -109,7 +108,6 @@ describe("LogStream", () => {
       "aria-pressed",
       "true",
     );
-    // Scrolling away from the bottom pauses; trimmed arrivals still count.
     Object.defineProperty(list, "scrollHeight", {
       value: 1200,
       configurable: true,
@@ -178,7 +176,6 @@ describe("Knob and Fader", () => {
     );
     screen.getByRole("slider", { name: "Cutoff" }).focus();
     await user.keyboard("{PageUp}");
-    // A tenth of three decades is 10^0.3: about double.
     expect(change).toHaveBeenLastCalledWith(399);
   });
 

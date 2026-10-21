@@ -74,17 +74,13 @@ const QUESTIONS: InterviewQuestion[] = [
   },
 ];
 
-/** One funnel event to Analytics. Only question ids and choice values go, never what someone typed. */
 const track = (event: string, params: Record<string, string | number> = {}) =>
   sendGAEvent("event", event, params);
 
-/** The rates and the brief: a rate row primes the brief with its commission. */
 export function Commission() {
   const [answers, setAnswers] = useState<InterviewAnswers>({});
   const [failure, setFailure] = useState("");
   const heading = useRef<HTMLHeadingElement>(null);
-  // The questions this visitor has answered, so each counts once: the
-  // furthest one is where a brief that never arrives stopped.
   const reached = useRef(new Set<string>());
 
   const answer = (next: InterviewAnswers) => {
@@ -204,7 +200,6 @@ export function Commission() {
             <span>Mizu Studio</span>
           </p>
         </div>
-        {/* The stage's bracket frame, on a div: Frame is a figure, and a form isn't one. */}
         <div className="mizu-frame mizu-frame--line-bright work-interview-frame">
           {(["tl", "tr", "bl", "br"] as const).map((c) => (
             <span

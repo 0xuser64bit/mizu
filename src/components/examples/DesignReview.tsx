@@ -14,7 +14,6 @@ import {
 } from "@/mizu";
 import { PLATES } from "@/components/docs/demos/signature/plates";
 
-// Invented submissions for an invented harbour app's key art.
 const DESIGNERS = ["Aiko Tanaka", "Léo Martin", "Ruth Mensah", "Sana Qureshi"];
 const SUBMISSIONS = PLATES.slice(0, 8).map((plate, i) => ({
   id: plate.id,

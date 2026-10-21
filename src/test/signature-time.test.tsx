@@ -297,8 +297,6 @@ describe("TrendChart", () => {
   });
 
   it("keeps the last axis label inside the chart", async () => {
-    // Labels read right of their tick, so one at the right edge ran past the
-    // chart's border; it ends at its tick instead.
     const { container } = render(
       <TrendChart
         label="Throughput"
@@ -449,15 +447,12 @@ describe("Waveform", () => {
     fireEvent.error(container.querySelector("audio")!);
     const alert = screen.getByRole("alert");
     expect(alert).toHaveTextContent("This audio could not be loaded.");
-    // Beside the slider: a button inside role="slider" is lost to assistive tech.
     expect(screen.getByRole("slider")).not.toContainElement(alert);
     expect(screen.getByRole("button", { name: "Play" })).toBeDisabled();
     fetch.mockRestore();
   });
 
   it("reads audio that failed or loaded before it mounted", async () => {
-    // Created detached in a concurrent render, or loaded from server HTML before
-    // hydration, the element's events reach no handler.
     const proto = HTMLMediaElement.prototype;
     const fetch = vi
       .spyOn(globalThis, "fetch")

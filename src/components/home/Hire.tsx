@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ButtonLink, Reveal, SectionTag } from "@/mizu";
 import { COMMISSIONS, usd } from "@/app/work/brief";
 
-/** The archive's close: the same hands, for hire, with what it costs. */
 export function Hire() {
   return (
     <section

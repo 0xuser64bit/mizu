@@ -20,7 +20,6 @@ const COLUMNS: BoardColumn[] = [
   { id: "done", title: "Done" },
 ];
 
-// Illustrative launch work: identifiers, estimates and people are invented.
 const CARDS: BoardCard[] = [
   {
     id: "c1",

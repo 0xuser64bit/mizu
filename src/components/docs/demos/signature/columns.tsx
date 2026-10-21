@@ -30,7 +30,6 @@ const FOLDER = icon("M1.5 3.5h4l1 1.5h6v6.5h-11z");
 const FILE = icon("M3 1.5h5l3 3v8H3z M8 1.5v3h3");
 const IMAGE = icon("M1.5 2.5h11v9h-11z M1.5 9l3-3 3 3 2-2 3 3");
 
-// An invented project. Folders marked `hasChildren` load on first visit.
 type File = BrowserItem & {
   kind?: "code" | "image" | "text";
   body?: string;
@@ -153,7 +152,6 @@ function FilePreview({ item }: { item: File }) {
   );
 }
 
-// An invented organisation, fully known up front.
 type Person = BrowserItem & { role?: string; since?: string };
 const person = (
   id: string,

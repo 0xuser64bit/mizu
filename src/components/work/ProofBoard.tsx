@@ -9,14 +9,9 @@ const hz = (v: number) =>
   v >= 1000 ? `${(v / 1000).toFixed(1)}K` : `${Math.round(v)}`;
 const db = (v: number) => `${v > 0 ? "+" : ""}${Math.round(v)}`;
 
-/**
- * Three pieces of the archive working together, there to be handled: a knob
- * and a fader, and a split-flap board that settles on what they were set to.
- */
 export function ProofBoard() {
   const [cutoff, setCutoff] = useState(1200);
   const [level, setLevel] = useState(-6);
-  // The board flips when a control lets go, not on every step of a drag.
   const [board, setBoard] = useState({ cutoff, level });
 
   return (

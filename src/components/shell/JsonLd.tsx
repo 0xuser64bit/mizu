@@ -1,4 +1,4 @@
-/** Structured data as a script tag; `<` is escaped so a string can't close it early. */
+/** Escape < so data cannot terminate the script element. */
 export function JsonLd({ data }: { data: object }) {
   return (
     <script

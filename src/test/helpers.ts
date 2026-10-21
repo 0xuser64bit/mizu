@@ -59,7 +59,6 @@ export function installClipboardMock() {
   });
 }
 
-/** Gives every element a measured box and a ResizeObserver that reports it. */
 export function mockLayout(width = 800, height = 400) {
   const rect = vi
     .spyOn(Element.prototype, "getBoundingClientRect")

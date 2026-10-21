@@ -102,10 +102,10 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           FLAP_CHARACTERS) live in plain modules for the same reason.
         </p>
         <h2>Render a working interaction</h2>
-        <Code>{`"use client"; // required at an interactive Next.js boundary
+        <Code>{`"use client";
 import { useState } from "react";
 import "mizu-ui/styles.css";
-import "mizu-ui/fonts.css"; // optional self-hosted fonts
+import "mizu-ui/fonts.css";
 import { Button, TextField } from "mizu-ui";
 
 export function App() {
@@ -136,7 +136,7 @@ export function App() {
           font is easy to miss. Import the self-hosted faces once, in your root
           layout:
         </p>
-        <Code>{`import "mizu-ui/fonts.css"; // npm
+        <Code>{`import "mizu-ui/fonts.css";
 import "@/components/ui/mizu/fonts.css"; // shadcn: add 0xuser64bit/mizu/fonts`}</Code>
         <p>
           With next/font, give the faces these variable names and set them on{" "}
@@ -200,8 +200,7 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
         </p>
         <Code>{`<ThemeProvider attribute={["class", "data-theme"]}>`}</Code>
         <h2>Change the material</h2>
-        <Code>{`/* your global CSS */
-:root,
+        <Code>{`:root,
 [data-theme] {
   --mizu-accent: #2763c4;
   --mizu-accent-fill: #2052a3;
@@ -219,7 +218,6 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
 
 .brand { --mizu-accent-fill: #2052a3; }
 
-// or with Tailwind
 <Button className="[--mizu-accent-fill:var(--color-blue-600)]">Publish</Button>`}</Code>
         <p>
           Set a token on one component to change only that one. States made from

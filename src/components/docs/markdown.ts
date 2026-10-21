@@ -4,11 +4,8 @@ import { exampleImports } from "./source";
 import { CATEGORIES, SYSTEMS, type ComponentMeta } from "./registry";
 
 const section = (title: string, body: string) => `## ${title}\n\n${body}\n`;
-// Catalog prose is plain text: keep a tag it mentions, like <button>, from
-// being read as HTML and dropped.
 const prose = (text: string) => text.replace(/<\/?[a-z][^>]*>/gi, "`$&`");
 
-/** What Mizu is and how to use it: the top of llms.txt and of llms-full.txt. */
 export function projectSummary() {
   const peers = PACKAGE.peerDependencies;
   return `# Mizu
@@ -21,7 +18,6 @@ export function projectSummary() {
 `;
 }
 
-/** A component's page without the page around it: what an agent needs to use it. */
 export function componentMarkdown(c: ComponentMeta) {
   const code = usage[c.slug as keyof typeof usage].trimEnd();
   const items = exampleImports(c.slug, code).map(

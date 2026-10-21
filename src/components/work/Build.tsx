@@ -56,13 +56,10 @@ const STEPS: { key: string; title: ReactNode; body: string }[] = [
   },
 ];
 
-/** The opening of /work: the pitch, then one component built step by step as the copy scrolls past. */
 export function Build() {
   const [stage, setStage] = useState(1);
   const marks = useRef<(HTMLElement | null)[]>([]);
 
-  // The step crossing a line sets the stage: just below the middle of the
-  // screen beside the stage, lower on a phone, where the stage sits on top.
   useEffect(() => {
     const narrow = window.matchMedia("(max-width: 899px)").matches;
     const io = new IntersectionObserver(

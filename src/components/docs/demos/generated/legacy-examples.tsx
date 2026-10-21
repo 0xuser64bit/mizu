@@ -124,8 +124,8 @@ export function PageWipeUsage_NavLink() {
   const { wipe } = usePageWipe();
 
   const go = async () => {
-    await wipe("The lab"); // resolves at the sweep midpoint
-    window.location.assign("/lab"); // or call your router here
+    await wipe("The lab");
+    window.location.assign("/lab");
   };
 
   return <Button onClick={go}>Enter</Button>;

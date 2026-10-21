@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { SegmentedControl } from "@/mizu";
 
-/** Scenario switch shared by the signature showcases. */
 export function Scenarios<T extends string>({
   label,
   value,
@@ -30,7 +29,6 @@ export function Scenarios<T extends string>({
   );
 }
 
-/** Deterministic pseudo-random numbers so demos render identically on server and client. */
 export function seeded(seed: number) {
   let t = seed >>> 0;
   return () => {

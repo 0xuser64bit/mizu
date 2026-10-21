@@ -92,7 +92,6 @@ describe("Tour", () => {
     await user.click(screen.getByRole("button", { name: "Skip tour" }));
     closed();
     await user.click(screen.getByRole("button", { name: "Start" }));
-    // happy-dom does not turn Escape into the native dialog's cancel event.
     fireEvent(
       screen.getByRole("dialog"),
       new Event("cancel", { cancelable: true }),
@@ -136,7 +135,6 @@ describe("Interview", () => {
         onSubmit={() => {}}
       />,
     );
-    // On mount it leaves the page's focus alone.
     await new Promise((r) => requestAnimationFrame(r));
     expect(document.body).toHaveFocus();
     await user.click(screen.getByRole("textbox", { name: /Your name/ }));

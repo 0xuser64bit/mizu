@@ -1,6 +1,5 @@
 import type { ComponentMeta, PropDoc } from "../registry";
 
-/** A component's page, registry item and import path: its name in kebab case. */
 export const slugOf = (name: string) =>
   name.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 
@@ -34,7 +33,6 @@ export const prop = (
   def?: string,
 ): PropDoc => ({ name, type, desc, def });
 
-/** Signature systems: object form, a keyboard map and the same compiled usage. */
 export function signature(entry: {
   name: string;
   source: string;

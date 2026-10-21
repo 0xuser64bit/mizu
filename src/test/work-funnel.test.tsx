@@ -16,7 +16,6 @@ describe("commission brief funnel", () => {
     const user = userEvent.setup();
     render(<Commission />);
 
-    // A rate row's prefill isn't the visitor starting the brief.
     await user.click(
       screen.getByRole("button", { name: "Brief a signature interface" }),
     );

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Annotator, Badge, Button, SectionTag, type Annotation } from "@/mizu";
 import { Scenarios } from "./shared";
 
-// Illustrative review: people, times and feedback are invented.
 const REVIEW: Annotation[] = [
   {
     id: "a1",

@@ -110,7 +110,6 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
       c.source === meta.source && c.slug !== meta.slug && c.kind !== "overview",
   );
   const signature = meta.category === "Signature";
-  // Everything the example imports, as registry items: one add, then paste.
   const code = usage[meta.slug as keyof typeof usage];
   const imports = exampleImports(meta.slug, code);
   const extra = imports

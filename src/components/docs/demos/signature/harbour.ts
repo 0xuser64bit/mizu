@@ -1,10 +1,6 @@
 import type { LogLine, TrendPoint } from "@/mizu";
 import { seeded } from "./shared";
 
-/*
- * An invented harbour service shared by the LogStream showcase and the
- * incident review: requests, jobs and the occasional bad minute.
- */
 const ROUTES = [
   "/berths",
   "/tides/today",
@@ -14,7 +10,6 @@ const ROUTES = [
 ];
 const USERS = ["harbourmaster", "pilot-7", "crane-ops", "visitor"];
 
-/** One log line; `trouble` from 0 to 1 raises the share of errors and the latency. */
 export function harbourLine(
   rand: () => number,
   id: number,
@@ -75,10 +70,8 @@ export function harbourLine(
   };
 }
 
-/** 09:00 UTC on 14 September 2026, when the replayed hour begins. */
 export const HARBOUR_START = Date.UTC(2026, 8, 14, 9, 0, 0);
 
-/** A fixed hour of history, with a bad ten minutes from 09:26. */
 export function harbourReplay(): LogLine[] {
   const rand = seeded(42),
     start = HARBOUR_START,
@@ -94,7 +87,6 @@ export function harbourReplay(): LogLine[] {
   return out;
 }
 
-/** Per-minute error rate (%) and p95 latency (ms), derived from the lines themselves. */
 export function harbourMetrics(lines: readonly LogLine[]) {
   const minutes = new Map<
     number,

@@ -21,7 +21,6 @@ import {
   harbourReplay,
 } from "@/components/docs/demos/signature/harbour";
 
-// An invented incident, told by the same invented service's own logs.
 const LINES = harbourReplay();
 const METRICS = harbourMetrics(LINES);
 const at = (minute: number, second = 0) =>
@@ -147,7 +146,6 @@ export function IncidentReview() {
     () => nearest(at(31, 20), LINES)?.id ?? null,
   );
 
-  // One moment under investigation, set from any of the three views.
   const moveTo = (t: number, from?: "log") => {
     setFocus(t);
     if (from !== "log") setLine(nearest(t, visible)?.id ?? null);

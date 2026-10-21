@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteNav } from "@/components/shell/SiteNav";
 
-/** The frame every composed example shares: navigation, a numbered title and a lede. */
 export function ExampleShell({
   number,
   title,
@@ -13,7 +12,6 @@ export function ExampleShell({
   number: string;
   title: string;
   lede: ReactNode;
-  /** The signature systems composed on the page. */
   systems: readonly string[];
   children: ReactNode;
 }) {

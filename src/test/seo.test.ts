@@ -9,7 +9,6 @@ import { componentMarkdown } from "@/components/docs/markdown";
 import { descriptionOf, titleOf } from "@/components/docs/seo";
 import { SITE_URL } from "@/lib/site";
 
-// Pages that exist but are not worth finding.
 const NOT_LISTED = ["/examples/nav"];
 
 describe("search and agent discovery", () => {
@@ -34,7 +33,6 @@ describe("search and agent discovery", () => {
   });
 
   it("gives every component page its own title and description", () => {
-    // Pages that share either compete for the same result.
     const titles = COMPONENTS.map((c) => `${titleOf(c)} — Mizu`);
     expect(new Set(titles).size).toBe(titles.length);
     for (const title of titles)
@@ -50,7 +48,6 @@ describe("search and agent discovery", () => {
       const doc = componentMarkdown(c);
       expect(doc.startsWith(`# ${c.name}\n`), c.slug).toBe(true);
       expect(doc, c.slug).toContain("\n## Props\n");
-      // An unbalanced fence would swallow the rest of the page.
       expect(doc.split("```").length % 2, c.slug).toBe(1);
     }
   });

@@ -12,7 +12,6 @@ type Card = {
   by?: string;
 };
 
-// An illustrative retrospective wall: three clusters you can rearrange.
 const CARDS: Card[] = [
   { id: "h1", x: 0, y: 0, kind: "heading", text: "What worked" },
   {

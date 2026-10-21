@@ -169,8 +169,6 @@ it("releases the body lock when an outer dialog and its nested dialog unmount to
 });
 
 describe("images that fail before hydration", () => {
-  // Server-rendered images start loading before React attaches onError, so a
-  // failure there is only visible as a complete image that refuses to decode.
   const proto = HTMLImageElement.prototype;
   const decode = proto.decode;
   afterEach(() => {
@@ -217,8 +215,6 @@ describe("images that fail before hydration", () => {
 
 describe("icons without Tailwind's preflight", () => {
   it("are blocks, as the preflight draws every svg", () => {
-    // Inline, an icon sat on the text baseline: DataTable's sort arrows rode above
-    // their headers and ReorderList's controls sat off center.
     const { container } = render(
       <>
         <ArrowIcon />
@@ -233,7 +229,6 @@ describe("icons without Tailwind's preflight", () => {
     expect(chosen!.style.display).toBe("inline");
   });
   it("keep Stat's arrow in the row of the change it marks", () => {
-    // As a block inside the paragraph, the arrow took a line of its own.
     const css = readFileSync("packages/mizu/src/core.css", "utf8");
     expect(css).toMatch(/\.mizu-stat \.mizu-stat-change \{\s*display: flex;/);
   });

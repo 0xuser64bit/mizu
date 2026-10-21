@@ -72,7 +72,6 @@ export function ProseDemo() {
 }
 
 export function ImageFigureDemo() {
-  // Stand-in art, so the example runs anywhere: use your own images.
   const field = (ground: string, mark: string) =>
     `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360"><pattern id="d" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M18 13l5 5-5 5-5-5z" fill="${mark}"/></pattern><rect width="720" height="360" fill="${ground}"/><rect width="720" height="360" fill="url(#d)"/></svg>`)}`;
   return (
@@ -87,7 +86,7 @@ export function ImageFigureDemo() {
 }
 
 export function MediaPlayerDemo() {
-  const src = "/audio/calibration.wav"; // an audio file your app serves
+  const src = "/audio/calibration.wav";
   return (
     <MediaPlayer
       kind="audio"

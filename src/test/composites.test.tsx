@@ -320,7 +320,6 @@ describe("type systems", () => {
   });
 
   it("WaveText leaves color to CSS, so a theme switch reaches its letters", () => {
-    // Motion resolves var() in a value it computes, freezing the mount theme's paper.
     const { container } = render(
       <>
         <WaveText text="Mizu" />
@@ -344,7 +343,6 @@ describe("type systems", () => {
   });
 
   it("GhostWord is display-sized unless told otherwise", () => {
-    // happy-dom drops clamp() from the DOM; the server markup keeps it.
     expect(renderToStaticMarkup(<GhostWord text="Big" />)).toContain(
       "font-size:clamp(4rem, 12vw, 9rem)",
     );

@@ -4,7 +4,6 @@ import { COMPONENTS, SYSTEMS } from "@/components/docs/registry";
 
 const SIGNATURE = COMPONENTS.filter((c) => c.category === "Signature");
 
-/** The signature systems as a typographic index, numbered as in the collection. */
 export function Signature() {
   return (
     <section

@@ -36,7 +36,6 @@ describe("Button", () => {
   });
 
   it("draws the loading diamond in the label's color", () => {
-    // An accent diamond is invisible on the light theme's accent fill.
     render(<Button loading>Saving</Button>);
     const diamond = screen.getByRole("status").firstElementChild as HTMLElement;
     expect(diamond.style.background).toBe("currentcolor");

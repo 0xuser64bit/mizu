@@ -1,10 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
 
-/**
- * Reveal for what is on screen at load: the same rise, started by CSS (see
- * .rise-in). Pass `fade={false}` for the largest text of the screen, which
- * should be visible from the first paint and only move.
- */
 export function Rise({
   delay = 0,
   time = 0.8,
@@ -33,7 +28,6 @@ export function Rise({
   );
 }
 
-/** MaskLine for what is on screen at load: the line rises from inside its mask, started by CSS. */
 export function RiseMask({
   delay = 0,
   children,

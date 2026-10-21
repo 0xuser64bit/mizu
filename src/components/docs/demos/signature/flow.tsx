@@ -10,7 +10,6 @@ import {
 } from "@/mizu";
 import { Scenarios } from "./shared";
 
-// An illustrative onboarding automation, deliberately arranged by hand so Tidy has work to do.
 const AUTOMATION: FlowNode[] = [
   {
     id: "signup",
@@ -162,7 +161,6 @@ const PIPELINE_WIRES: FlowEdge[] = [
   { id: "g", source: "consumer", target: "deploy" },
 ];
 
-/** Refuse a wire that would let the automation loop back on itself. */
 function wouldLoop(edges: readonly FlowEdge[], candidate: FlowEdge) {
   const next = new Map<string, string[]>();
   for (const e of [...edges, candidate])

@@ -1,10 +1,3 @@
-/**
- * What a commission brief holds, shared by the page that asks and the action
- * that sends. The server re-checks everything here: the page's checks are
- * for the visitor, these are for the inbox.
- */
-
-/** The commissions on offer, cheapest first. Prices are floors in USD, not quotes. */
 export const COMMISSIONS = [
   {
     id: "craft",
@@ -98,7 +91,6 @@ const labelOf = (
   v: string,
 ) => list.find((o) => o.value === v)?.label;
 
-/** A clean brief, or the first reason it isn't one. */
 export function parseBrief(input: unknown): Brief | string {
   if (typeof input !== "object" || input === null) return "Empty brief.";
   const raw = input as Record<string, unknown>;
@@ -125,7 +117,6 @@ export function parseBrief(input: unknown): Brief | string {
   return brief;
 }
 
-/** The brief as the plain-text email that lands in the studio inbox. */
 export function formatBrief(b: Brief) {
   const subject = `Brief — ${labelOf(KINDS, b.kind)} — ${b.name}`.replace(
     /[\r\n]+/g,
@@ -144,7 +135,6 @@ export function formatBrief(b: Brief) {
   return { subject, text };
 }
 
-/** The From of the email: an address as given, or a verified domain alone. */
 export function sender(from: string | undefined) {
   if (!from) return "Mizu Studio <onboarding@resend.dev>";
   return from.includes("@") ? from : `Mizu Studio <briefs@${from}>`;

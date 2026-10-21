@@ -37,7 +37,6 @@ describe("Reveal", () => {
     function Probe() {
       return <p data-reduced={String(useReducedMotion())}>Content</p>;
     }
-    // The server has no preference; the visitor's browser reduces motion.
     reduceMotionQuery.matches = false;
     reduceMotionQuery.dispatchEvent();
     const page = (

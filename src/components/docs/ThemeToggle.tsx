@@ -21,9 +21,7 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem("mizu-theme", next);
-    } catch {
-      /* Theme still works when storage is disabled. */
-    }
+    } catch {}
   };
   return (
     <button

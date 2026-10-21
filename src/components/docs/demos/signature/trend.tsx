@@ -8,7 +8,6 @@ const MIN = 6e4;
 const START = Date.UTC(2026, 8, 27, 12, 0);
 const at = (h: number, m: number) => Date.UTC(2026, 8, 27, h, m);
 
-// Illustrative readings: a quiet afternoon, then retries swamp the database from 14:03 to 14:34.
 const INCIDENT = (() => {
   const random = seeded(7);
   const p50: { x: number; y: number }[] = [],

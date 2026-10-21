@@ -25,15 +25,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_TITLE, template: "%s — Mizu" },
   description: SITE_DESCRIPTION,
-  // No title or description here: a page that sets its own gets them in its
-  // link previews. Setting either would put the home page's on every route.
   openGraph: {
     type: "website",
     siteName: "Mizu",
     locale: "en_US",
     images: [previewImage],
   },
-  // No twitter image: Next copies each page's own og:image into twitter:image.
   twitter: { card: "summary_large_image" },
 };
 

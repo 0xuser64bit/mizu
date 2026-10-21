@@ -30,7 +30,6 @@ function Live() {
           TROUBLE[rate],
         ),
       );
-      // Keep a bounded window, as a real tail would.
       setLines((l) => [...l, ...fresh].slice(-KEEP));
     }, EVERY[rate]);
     return () => clearInterval(tick);

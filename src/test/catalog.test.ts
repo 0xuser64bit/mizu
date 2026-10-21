@@ -32,8 +32,6 @@ describe("public catalog contract", () => {
     }
   });
   it("starts every example that needs the browser with 'use client'", () => {
-    // Pasted into a Next.js page, a hook fails to compile and a function prop fails
-    // to render without the directive.
     for (const entry of COMPONENTS) {
       const code = usage[entry.slug as keyof typeof usage];
       expect(code.startsWith('"use client";\n'), entry.slug).toBe(
@@ -62,7 +60,6 @@ describe("public catalog contract", () => {
       expect(needsClient(example(body)), body).toBe(false);
   });
   it("installs and imports everything each example uses from the registry", () => {
-    // A shadcn user runs one add for the page's items and pastes these imports.
     for (const entry of COMPONENTS) {
       if (entry.kind === "overview") continue;
       const code = usage[entry.slug as keyof typeof usage];
@@ -82,7 +79,6 @@ describe("public catalog contract", () => {
       expect(entry.slug, entry.name).toBe(slugOf(entry.name));
   });
   it("keeps every module without 'use client' renderable on the server", () => {
-    // Registry barrels carry no directive, so a missing one is a runtime error there.
     const root = "packages/mizu/src";
     for (const name of readdirSync(root, { recursive: true }) as string[]) {
       if (!/\.tsx?$/.test(name)) continue;
@@ -94,8 +90,6 @@ describe("public catalog contract", () => {
     }
   });
   it("keeps module names distinct without extensions, in any case", () => {
-    // dist rewrites .ts/.tsx to .js and the registry drops extensions:
-    // Gallery.tsx beside gallery.ts would be one file on macOS and Windows.
     const seen = new Map<string, string>();
     for (const name of readdirSync("packages/mizu/src", {
       recursive: true,
@@ -107,8 +101,6 @@ describe("public catalog contract", () => {
     }
   });
   it("gives Server Components real values for every public helper", () => {
-    // Through a "use client" module a value reaches server code as a client
-    // reference: FLAP_CHARACTERS.split or matchesQuery() would throw there.
     const index = resolve("packages/mizu/src/index.ts");
     const program = ts.createProgram([index], {
       allowImportingTsExtensions: true,
@@ -121,14 +113,13 @@ describe("public catalog contract", () => {
     const root = checker.getSymbolAtLocation(program.getSourceFile(index)!)!;
     for (let symbol of checker.getExportsOfModule(root)) {
       const name = symbol.name;
-      // Components and hooks belong on the client; constants and helpers don't.
       if (/^(use)?[A-Z]/.test(name) && !/^[A-Z0-9_]+$/.test(name)) continue;
       const route = [];
       while (symbol.flags & ts.SymbolFlags.Alias) {
         route.push(symbol.declarations![0]!.getSourceFile());
         symbol = checker.getImmediateAliasedSymbol(symbol)!;
       }
-      if (!(symbol.flags & ts.SymbolFlags.Value)) continue; // types are erased
+      if (!(symbol.flags & ts.SymbolFlags.Value)) continue;
       route.push(symbol.declarations![0]!.getSourceFile());
       const client = route.filter((file) =>
         /^\s*["']use client["']/.test(file.text),

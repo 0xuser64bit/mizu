@@ -23,9 +23,6 @@ export const STAGES = [
 const STATES = ["Loading", "Empty", "Error", "Ready"] as const;
 type State = (typeof STATES)[number];
 
-// Illustrative data: a day of p95 latency in half hours, 00:00 to 24:00, with
-// one bad deploy and its rollback. Rounded so the server and every browser
-// draw the same path.
 const N = 49;
 const W = 480;
 const H = 140;
@@ -49,7 +46,6 @@ const py = (v: number) =>
   Math.round((H - 10 - ((v - 80) / 180) * (H - 20)) * 10) / 10;
 const LINE = VALUES.map((v, i) => `${i ? "L" : "M"}${px(i)} ${py(v)}`).join("");
 const AREA = `${LINE}L${W} ${H}L0 ${H}Z`;
-/** Where the playhead rests before it moves: just after the bad deploy. */
 const REST = 30 / (N - 1);
 
 const clock = (i: number) => {
@@ -73,11 +69,6 @@ const Note = ({ children }: { children: ReactNode }) => (
   </span>
 );
 
-/**
- * One component, built in five stages: the sketch, its surface, its states,
- * its motion and the handoff. The stages share one DOM so each step is the
- * same thing changing, not a slide swapped for another.
- */
 export function Stage({ stage }: { stage: number }) {
   const reduce = useReducedMotion();
   const root = useRef<HTMLDivElement>(null);
@@ -87,7 +78,6 @@ export function Stage({ stage }: { stage: number }) {
   const p = useRef(REST);
   const retryTimer = useRef(0);
   const [row, setRow] = useState(rest.row);
-  // Undefined until the visitor decides: then it plays unless they asked for less motion.
   const [playing, setPlaying] = useState<boolean>();
   const [state, setState] = useState<State>("Loading");
   const [pinned, setPinned] = useState(false);
@@ -95,7 +85,6 @@ export function Stage({ stage }: { stage: number }) {
   const moving = live && (playing ?? !reduce);
   const shown: State = stage === 3 ? state : "Ready";
 
-  // The playhead changes every frame, so it is written to the DOM, not state.
   const place = useCallback((next: number) => {
     p.current = Math.min(1, Math.max(0, next));
     const s = sample(p.current);
@@ -110,7 +99,6 @@ export function Stage({ stage }: { stage: number }) {
     setRow(s.row);
   }, []);
 
-  // Leaving the motion stage hands the playhead back to its resting place.
   const [wasLive, setWasLive] = useState(live);
   if (wasLive !== live) {
     setWasLive(live);

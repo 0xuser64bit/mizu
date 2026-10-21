@@ -11,7 +11,6 @@ import {
 } from "@/mizu";
 import { Scenarios } from "./shared";
 
-// An invented product screen; the tour points at its real, working parts.
 const STEPS: TourStep[] = [
   {
     target: "[data-tour='search']",

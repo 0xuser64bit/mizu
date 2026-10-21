@@ -3,13 +3,10 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { SITE_URL } from "@/lib/site";
 
-/** The link-preview card every page shares with its own words. */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Static cuts, since satori reads neither woff2 nor variable axes: Archivo at
-// the site's display width (118) and weight (900), and at 400 for the line.
-// All four faces are SIL Open Font License.
+// ImageResponse requires TTF, OTF or WOFF fonts.
 const font = (file: string) =>
   readFile(join(process.cwd(), "src/lib/og", file));
 const fonts = Promise.all([
@@ -49,18 +46,14 @@ export async function card({
   path,
   foot = "npm i mizu-ui",
 }: {
-  /** What kind of page this is, set as a mono label. */
   label: string;
   title: string;
-  /** One word after the title in the serif italic, as the page heading has it. */
   accent?: string;
   line?: string;
   path: string;
   foot?: string;
 }) {
   const [wide, body, serif, mono] = await fonts;
-  // Satori doesn't fit text, so the title scales with its length (wide
-  // Archivo 900 runs up to 0.82em a capital) to fit the card's measure.
   const chars = title.length + (accent ? accent.length * 0.6 + 1 : 0);
   const fontSize = Math.max(76, Math.min(136, Math.floor(1250 / chars)));
 

@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { GENERATED_DEMOS } from "./GeneratedDemos";
 
-// Hand-built showcases take precedence; the compiled usage demo remains available beside them.
 const SHOWCASES = {
   button: dynamic(() => import("./demos/foundation").then((m) => m.ButtonDemo)),
   primitives: dynamic(() =>

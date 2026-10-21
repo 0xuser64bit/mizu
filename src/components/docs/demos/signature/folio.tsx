@@ -6,7 +6,6 @@ import { Scenarios } from "./shared";
 
 type Scenario = "wide" | "column";
 
-/** An original essay, written for this demo. */
 function Essay() {
   return (
     <>

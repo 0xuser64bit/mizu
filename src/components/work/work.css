@@ -1,8 +1,3 @@
-/* /work — the commission page. One component built in five stages beside the
-   copy, then the rates and the brief. Every stage is the same DOM under a
-   different data-stage, so CSS transitions carry the build. */
-
-/* ── The build: copy on the left, the sticky stage on the right ── */
 .work-build {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -26,7 +21,6 @@
   line-height: 0.9;
   letter-spacing: -0.03em;
 }
-/* Room for ascenders inside the masks the lines rise from. */
 .work-hero h1 .mizu-maskline {
   margin-block: -0.08em;
   padding-block: 0.08em;
@@ -118,7 +112,6 @@
   color: var(--mizu-muted);
 }
 
-/* ── The stage ── */
 .work-stage-wrap {
   width: 100%;
 }
@@ -139,7 +132,6 @@
   overflow: hidden;
   isolation: isolate;
 }
-/* The drafting grid the sketch sits on. */
 .work-stage::before {
   content: "";
   position: absolute;
@@ -158,7 +150,6 @@
   opacity: 0.7;
 }
 
-/* Regions are dashed boxes in the sketch; their content arrives from stage 2. */
 .work-r {
   position: relative;
   border: 1px dashed transparent;
@@ -167,8 +158,6 @@
 .work-stage[data-stage="1"] .work-r {
   border-color: var(--mizu-line-bright);
 }
-/* Each sketched box carries a dimension line: ticks at its edges, the note
-   set into the line. */
 .work-note {
   position: absolute;
   top: 8px;
@@ -274,7 +263,6 @@
 .work-readout b {
   font-weight: 400;
 }
-/* Each deploy the playhead crosses drops in like a split-flap card. */
 .work-readout-event {
   color: var(--mizu-muted);
   transform-origin: 50% 0;
@@ -293,7 +281,6 @@
   gap: clamp(8px, 2cqw, 14px);
 }
 
-/* The chart, its played line and the playhead. */
 .work-chart {
   touch-action: pan-y;
   outline: none;
@@ -339,7 +326,6 @@
   stroke-dashoffset: 1;
   transition: none;
 }
-/* The sketch's pencil line, gone once the real line is drawn. */
 .work-pencil {
   position: absolute;
   top: 0;
@@ -383,7 +369,6 @@
   background: var(--mizu-ink);
   transform: rotate(45deg);
 }
-/* A diamond seals once the playhead has passed it. */
 .work-marks i::after {
   content: "";
   position: absolute;
@@ -433,8 +418,6 @@
   color: var(--mizu-faint);
 }
 
-/* Rows, with one selection bar that travels between them. */
-/* Row lines, ruled in pencil before there is anything to put in them. */
 .work-rows::after {
   content: "";
   position: absolute;
@@ -513,7 +496,6 @@
   color: var(--mizu-faint);
 }
 
-/* States: each one covers the chart and rows with its own face. */
 .work-overlay {
   position: absolute;
   inset: 0;
@@ -580,7 +562,6 @@
 .work-skeleton i {
   background: var(--mizu-ink-2);
 }
-/* Loading is a hairline sweeping across the skeleton. */
 .work-skeleton::after {
   content: "";
   position: absolute;
@@ -608,7 +589,6 @@
   color: var(--mizu-muted);
 }
 
-/* The handoff: the component's code slides up over its rows. */
 .work-rows {
   overflow: hidden;
 }
@@ -672,7 +652,6 @@
   color: var(--mizu-success);
 }
 
-/* The bar under the component: state switches, then the transport. */
 .work-bar {
   display: grid;
   min-height: 44px;
@@ -759,7 +738,6 @@
   color: var(--mizu-faint);
 }
 
-/* The five stages, under the frame. */
 .work-ruler {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -787,7 +765,6 @@
   color: var(--mizu-paper);
 }
 
-/* ── Narrow screens: the stage sticks under the nav, the steps pass beneath. ── */
 @media (max-width: 899px) {
   .work-build {
     display: block;
@@ -814,7 +791,6 @@
   .work-stage-wrap {
     width: 100%;
   }
-  /* The frame's label names the stage; the ruler would cost the steps room. */
   .work-ruler {
     display: none;
   }
@@ -858,7 +834,6 @@
   }
 }
 
-/* ── The sections after the build: proof, rates, brief ── */
 .work-section {
   padding: clamp(96px, 12vw, 168px) 40px;
   border-top: 1px solid var(--mizu-line);
@@ -885,7 +860,6 @@
   color: var(--mizu-muted);
 }
 
-/* Proof: the archive itself, as a short index of where to look. */
 .work-proof {
   display: grid;
   grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
@@ -1007,7 +981,6 @@
   outline-offset: 2px;
 }
 
-/* Rates: a rate card, set like an index. */
 .work-rate-list {
   margin: clamp(56px, 7vw, 96px) 0 0;
   padding: 0;
@@ -1026,7 +999,6 @@
   padding: clamp(28px, 3vw, 40px) 0 clamp(28px, 3vw, 40px) 20px;
   border-top: 1px solid var(--mizu-line);
 }
-/* The selection bar of the house: it grows down the row you're on. */
 .work-rate::before {
   content: "";
   position: absolute;
@@ -1041,7 +1013,6 @@
 .work-rate:focus-within::before {
   transform: scaleY(1);
 }
-/* A link from the home page's index lands on its row, under the nav. */
 .work-rate-list > li {
   scroll-margin-top: 96px;
 }
@@ -1134,7 +1105,6 @@
   cursor: pointer;
   transition: color 0.3s;
 }
-/* The whole row is the button's target. */
 .work-rate-cta::after {
   content: "";
   position: absolute;
@@ -1174,7 +1144,6 @@
   color: var(--mizu-faint);
 }
 
-/* The brief: the case on the left, the Interview on the right. */
 .work-brief {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
@@ -1226,7 +1195,6 @@ p.work-brief-mail {
 .work-interview .mizu-interview-choices {
   max-width: none;
 }
-/* The progress rule already counts the questions; vermilion stays with action. */
 .work-interview .mizu-interview-number {
   display: none;
 }

@@ -14,7 +14,6 @@ const CHAPTERS: WaveformMarker[] = [
   { id: "coda", time: 42, label: "Coda" },
 ];
 
-/** A short pentatonic piece rendered offline, so the showcase plays real audio without shipping a file. */
 async function compose() {
   const ctx = new OfflineAudioContext(1, RATE * SECONDS, RATE);
   const master = ctx.createGain();
