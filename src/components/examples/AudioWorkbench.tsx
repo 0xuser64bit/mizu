@@ -364,25 +364,15 @@ export function AudioWorkbench() {
           }}
         />
         <div className="mizu-audio-excerpt">
-          <div className="mizu-audio-range">
-            <RangeSelector
-              label="Selected excerpt"
-              min={0}
-              max={recording.duration}
-              step={0.01}
-              value={range}
-              onValueChange={chooseRange}
-              format={clock}
-            />
-            <div className="mizu-audio-selection-ruler" aria-hidden="true">
-              <span
-                style={{
-                  left: `${(range[0] / recording.duration) * 100}%`,
-                  width: `${((range[1] - range[0]) / recording.duration) * 100}%`,
-                }}
-              />
-            </div>
-          </div>
+          <RangeSelector
+            label="Selected excerpt"
+            min={0}
+            max={recording.duration}
+            step={0.01}
+            value={range}
+            onValueChange={chooseRange}
+            format={clock}
+          />
           <div className="mizu-audio-actions">
             <Button
               size="sm"

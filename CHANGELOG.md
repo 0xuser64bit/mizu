@@ -20,6 +20,13 @@
   transcript seek, excerpt playback and timestamped outline notes with Markdown
   export. Notes remain in the current tab; no backend is implied.
 
+- RangeSelector's two handles share one scale. Each handle's native bounds
+  follow the other handle, so its slider's track used to stretch only from
+  min to the other value, and a start of 17 on a 0–50 scale sat two thirds
+  along the track. Each input now spans just its stretch of a shared scale,
+  so the thumbs land where their values fall, the selected window is drawn on
+  both rows, and the bounds announced to assistive technology are unchanged.
+  The handles take Slider's hairline and diamond.
 - Nav's menu overlay scrolls, with its close bar pinned, and its link type
   steps down from 44px on narrow screens. Six or seven links are taller than
   many phones, so the last ones fell off the bottom of the screen with no way

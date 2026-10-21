@@ -92,6 +92,27 @@ describe("editing and direct manipulation", () => {
     fireEvent.change(start, { target: { value: "40" } });
     expect(change).toHaveBeenCalledWith([40, 70]);
   });
+  it("lays both bounded handles on one scale", () => {
+    render(
+      <RangeSelector
+        label="Window"
+        value={[30, 90]}
+        min={0}
+        max={120}
+        onValueChange={() => {}}
+      />,
+    );
+    const [start, end] = screen.getAllByRole("slider");
+    const stretch = (input: HTMLElement) =>
+      ["--mizu-range-min", "--mizu-range-max"].map((name) =>
+        input.parentElement!.style.getPropertyValue(name),
+      );
+    expect(stretch(start)).toEqual(["0", "0.75"]);
+    expect(stretch(end)).toEqual(["0.25", "1"]);
+    const scale = screen.getByRole("group", { name: /Window/ }).style;
+    expect(scale.getPropertyValue("--mizu-range-start")).toBe("0.25");
+    expect(scale.getPropertyValue("--mizu-range-end")).toBe("0.75");
+  });
   it("reorders with keyboard controls and rejects an invalid boundary move", async () => {
     const user = userEvent.setup(),
       change = vi.fn();

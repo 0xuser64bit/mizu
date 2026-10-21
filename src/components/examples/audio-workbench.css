@@ -61,33 +61,11 @@
   border-top: 1px solid var(--mizu-line);
 }
 
-.mizu-audio-range {
-  min-width: 0;
-}
 .mizu-audio .mizu-range-selector {
   margin: 0;
 }
 .mizu-audio .mizu-range-selector legend {
   width: 100%;
-}
-
-.mizu-audio-selection-ruler {
-  height: 9px;
-  position: relative;
-  margin-top: 13px;
-  border-block: 1px solid var(--mizu-line);
-  background: repeating-linear-gradient(
-    90deg,
-    var(--mizu-line) 0 1px,
-    transparent 1px 5%
-  );
-}
-
-.mizu-audio-selection-ruler span {
-  position: absolute;
-  inset-block: -1px;
-  min-width: 1px;
-  background: var(--mizu-accent);
 }
 
 .mizu-audio-actions {

@@ -2680,12 +2680,53 @@
   color: var(--mizu-muted);
   font-size: 12px;
 }
-.mizu-range-selector input,
 .mizu-image-compare input {
   width: 100%;
   min-height: 44px;
   accent-color: var(--mizu-accent);
   cursor: pointer;
+}
+.mizu-range-selector {
+  --mizu-range-thumb: 10px;
+}
+.mizu-range-selector-track {
+  position: relative;
+  height: 44px;
+}
+.mizu-range-selector-track + label {
+  margin-top: 12px;
+}
+.mizu-range-selector-track::before {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 0.5px) calc(var(--mizu-range-thumb) / 2) auto;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--mizu-line) calc(var(--mizu-range-min) * 100%),
+    var(--mizu-line-bright) 0 calc(var(--mizu-range-start) * 100%),
+    var(--mizu-accent) 0 calc(var(--mizu-range-end) * 100%),
+    var(--mizu-line-bright) 0 calc(var(--mizu-range-max) * 100%),
+    var(--mizu-line) 0
+  );
+}
+.mizu-range-selector-track input {
+  position: absolute;
+  top: 0;
+  left: calc(var(--mizu-range-min) * (100% - var(--mizu-range-thumb)));
+  width: calc(
+    (var(--mizu-range-max) - var(--mizu-range-min)) *
+      (100% - var(--mizu-range-thumb)) + var(--mizu-range-thumb)
+  );
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.mizu-range-selector-track input::-webkit-slider-runnable-track {
+  background: transparent;
+}
+.mizu-range-selector-track input::-moz-range-track {
+  background: transparent;
 }
 .mizu-reorder-list ul {
   list-style: none;

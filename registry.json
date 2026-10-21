@@ -5510,6 +5510,11 @@
           "target": "@ui/mizu/base.css"
         },
         {
+          "path": "registry/shared/slider-input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/slider-input.css"
+        },
+        {
           "path": "registry/source/interaction/RangeSelector.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/interaction/RangeSelector.css"

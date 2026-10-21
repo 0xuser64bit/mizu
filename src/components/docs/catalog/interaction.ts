@@ -77,7 +77,7 @@ export const INTERACTION = [
       ),
       p("format", "(value: number) => string", "Visible and announced units."),
     ],
-    "Two separately labelled native ranges share a fieldset legend. Start is bounded by end, end by start. Native keyboard and touch behavior.",
+    "Two separately labelled native ranges share a fieldset legend. Start is bounded by end, end by start, and each input spans only the stretch of the shared scale it may move along, so both thumbs and the selected window line up. Native keyboard and touch behavior.",
     "Direct native input.",
   ),
   d(
