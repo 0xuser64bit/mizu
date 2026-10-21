@@ -1,53 +1,28 @@
-.mizu-workshop {
-  max-width: 1480px;
-  margin: 0 auto;
-  padding: 96px 40px 96px;
-}
 .mizu-workshop-navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  border-bottom: 1px solid var(--mizu-line);
+  margin-block: -14px;
 }
 .mizu-workshop-navigation nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 28px;
+  column-gap: 24px;
 }
 .mizu-workshop-navigation nav a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  font-size: 13px;
-  color: var(--mizu-muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+  min-height: 44px;
 }
-.mizu-workshop-navigation nav a:hover,
 .mizu-workshop-navigation nav a[aria-current] {
-  color: var(--mizu-paper);
-  border-color: var(--mizu-accent);
+  color: var(--mizu-accent);
 }
-.mizu-workshop-heading {
-  padding: 56px 0 44px;
+.mizu-workshop-navigation .mizu-theme-toggle {
+  margin-right: -8px;
 }
-.mizu-workshop-heading h1 {
-  margin: 0;
-  max-width: 18ch;
-  font-size: clamp(2.6rem, 5.5vw, 5rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  font-weight: 850;
-  font-stretch: 118%;
+.mizu-workshop .mizu-example-head h1 {
   text-wrap: balance;
-}
-.mizu-workshop-heading > p {
-  max-width: 65ch;
-  margin: 20px 0 0;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--mizu-muted);
 }
 .mizu-workshop a:focus-visible,
 .mizu-workshop button:focus-visible,
@@ -325,9 +300,6 @@
   text-underline-offset: 4px;
 }
 @media (max-width: 960px) {
-  .mizu-workshop {
-    padding-inline: 24px;
-  }
   .mizu-workbench {
     grid-template-columns: 230px minmax(0, 1fr);
   }
@@ -339,24 +311,6 @@
   }
 }
 @media (max-width: 700px) {
-  .mizu-workshop {
-    padding: 88px 20px 64px;
-  }
-  .mizu-workshop-navigation {
-    align-items: flex-start;
-  }
-  .mizu-workshop-navigation nav {
-    gap: 0 20px;
-  }
-  .mizu-workshop-navigation nav a {
-    font-size: 12px;
-  }
-  .mizu-workshop-heading {
-    padding: 36px 0 32px;
-  }
-  .mizu-workshop-heading > p {
-    font-size: 15px;
-  }
   .mizu-workbench {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -403,5 +357,13 @@
   .mizu-workshop-index span {
     grid-column: 2;
     grid-row: 1;
+  }
+}
+@media (max-width: 640px) {
+  .mizu-workshop-navigation nav {
+    column-gap: 16px;
+  }
+  .mizu-workshop-navigation .mizu-theme-toggle {
+    display: none;
   }
 }
