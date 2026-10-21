@@ -1,4 +1,3 @@
-/* SplitFlap — a mechanical display: every character falls into place. */
 .mizu-flap {
   --mizu-flap-size: 28px;
   display: inline-block;

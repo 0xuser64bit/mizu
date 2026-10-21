@@ -30,7 +30,6 @@ export function Reveal({
     <motion.div
       className={className}
       style={style}
-      // The server can't know the preference, so only timing may depend on it.
       initial={{ opacity: 0, y, x }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once, margin: "-70px" }}

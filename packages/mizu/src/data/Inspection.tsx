@@ -18,7 +18,6 @@ export function DiffView({
 }) {
   const a = before.split("\n"),
     b = after.split("\n");
-  // ponytail: aligned-line comparison, use a diff engine when moved-line matching matters.
   return (
     <div className={`mizu-diff ${className}`}>
       <section aria-label={beforeLabel}>
@@ -79,7 +78,6 @@ function JsonNode({
   const next = new Set(ancestors);
   next.add(value);
   const entries = Object.entries(value);
-  // ponytail: at most 200 siblings per node; paginate before inspecting large payloads.
   return (
     <details className="mizu-json-node" open={depth === 0}>
       <summary>
@@ -117,9 +115,7 @@ export function DataInspector({
   let serialized = "";
   try {
     serialized = JSON.stringify(value, null, 2) ?? String(value);
-  } catch {
-    /* Circular data remains inspectable; copying is unavailable. */
-  }
+  } catch {}
   return (
     <section className={`mizu-data-inspector ${className}`} aria-label={label}>
       <div className="mizu-inspector-heading">

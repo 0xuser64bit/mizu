@@ -34,7 +34,6 @@ export type InterviewQuestion = {
   options?: readonly { value: string; label: string }[];
   required?: boolean;
   placeholder?: string;
-  /** Scale and number bounds. */
   min?: number;
   max?: number;
   /** Return a message to keep the question open. */
@@ -63,10 +62,6 @@ function display(q: InterviewQuestion, v: InterviewAnswer) {
   return String(v);
 }
 
-/**
- * A conversation instead of a form: one question at a time, letter keys for
- * choices, branching, a review before sending and an honest submit.
- */
 export function Interview({
   label,
   questions,
@@ -87,7 +82,6 @@ export function Interview({
   onAnswersChange?: (answers: InterviewAnswers) => void;
   /** Resolve to finish; throw to offer a retry. */
   onSubmit: (answers: InterviewAnswers) => void | Promise<unknown>;
-  /** An optional welcome screen before the first question. */
   intro?: { title: string; body?: ReactNode; start?: string };
   done?: ReactNode;
   submitLabel?: string;
@@ -111,8 +105,6 @@ export function Interview({
   const [direction, setDirection] = useState(1);
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState<string | null>(null);
-  // Focus follows the questions only once the visitor is in the interview:
-  // taking it on mount would hijack a page's arrow keys and space bar.
   const [engaged, setEngaged] = useState(false);
   const [scope, animate] = useAnimate();
   const advanceTimer = useRef(0);
@@ -231,7 +223,6 @@ export function Interview({
     }
   };
 
-  // Shortcuts: letters pick choices, digits pick a scale, Y and N answer yes/no, Enter continues.
   const onKey = (e: KeyboardEvent<HTMLElement>) => {
     if (screen !== "question" || !current || e.metaKey || e.altKey) return;
     const typing = (e.target as HTMLElement).matches(
@@ -539,8 +530,6 @@ function Field({
   onChoose: (value: string) => void;
 }) {
   const first = useRef<HTMLElement | null>(null);
-  // Read once: a question shown after the visitor engaged takes focus, and
-  // engaging (a click on a choice) never pulls focus back to the first one.
   const focusOnShow = useRef(autoFocus);
   useEffect(() => {
     if (!focusOnShow.current) return;

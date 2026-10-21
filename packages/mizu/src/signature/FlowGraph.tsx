@@ -51,11 +51,6 @@ function curve(a: { x: number; y: number }, b: { x: number; y: number }) {
   return `M${a.x},${a.y}C${a.x + dx},${a.y} ${b.x - dx},${b.y} ${b.x},${b.y}`;
 }
 
-/**
- * A node-and-wire editor on a Plane: drag nodes, wire outputs to inputs with
- * magnetic snapping or the keyboard, watch run status flow along the wires,
- * and tidy the whole graph into layers.
- */
 export function FlowGraph({
   label,
   nodes: nodesProp,
@@ -78,20 +73,16 @@ export function FlowGraph({
   label: string;
   nodes?: readonly FlowNode[];
   defaultNodes?: readonly FlowNode[];
-  /** Receives moved, tidied and deleted nodes. */
   onNodesChange?: (nodes: FlowNode[]) => void;
   edges?: readonly FlowEdge[];
   defaultEdges?: readonly FlowEdge[];
-  /** Receives new and deleted connections. */
   onEdgesChange?: (edges: FlowEdge[]) => void;
-  /** Watch only: no dragging, wiring, tidying or deleting. */
   readOnly?: boolean;
   selected?: string | null;
   defaultSelected?: string | null;
   onSelectedChange?: (id: string | null) => void;
   /** Return false or a reason to refuse a connection. */
   validateConnection?: (edge: FlowEdge) => boolean | string;
-  /** Replaces the default caption, title and description of a node. */
   renderNode?: (node: FlowNode) => ReactNode;
   nodeWidth?: number;
   tools?: ReactNode;
@@ -222,7 +213,6 @@ export function FlowGraph({
     announce("Arranged into layers.");
   };
 
-  // Pointer wiring: follow the pointer and snap to the nearest compatible input within reach.
   const startWire = (node: string, portName: string, e: React.PointerEvent) => {
     if (!editable || e.button !== 0) return;
     e.stopPropagation();

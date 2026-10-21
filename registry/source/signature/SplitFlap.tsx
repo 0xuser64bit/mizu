@@ -7,7 +7,6 @@ import { FLAP_CHARACTERS, flapPath } from "./flap";
 
 export { FLAP_CHARACTERS, flapPath } from "./flap";
 
-/** Pads or trims `text` to exactly `length` cells, in capitals when the drum has no others. */
 function fit(
   text: string,
   length: number,
@@ -29,11 +28,6 @@ const LAND = [
   { transform: "rotateX(0deg)", filter: "brightness(1)" },
 ];
 
-/**
- * A split-flap display. Each character falls through the drum to its new
- * value, cell after cell, and settles with a slap; the text itself is
- * always available to assistive technology.
- */
 export function SplitFlap({
   value,
   length,
@@ -49,7 +43,6 @@ export function SplitFlap({
   style,
 }: {
   value: string;
-  /** Cells to show; the value is padded or trimmed to fit. Defaults to its length. */
   length?: number;
   align?: "left" | "right";
   /** The drum, in the order the flaps fall. Other characters arrive in one flip. */
@@ -58,19 +51,15 @@ export function SplitFlap({
   flip?: number;
   /** Milliseconds between neighbouring cells starting. */
   stagger?: number;
-  /** Read before the value, e.g. "Platform". */
   label?: string;
-  /** Announce new values politely. */
   live?: boolean;
   tone?: SignatureTone;
-  /** Called when every cell has arrived. */
   onSettle?: (value: string) => void;
   className?: string;
   style?: CSSProperties;
 }) {
   const reduce = useReducedMotion();
   const cells = length ?? [...value].length;
-  // The text React renders never changes after mount; flips write to the DOM directly.
   const [initial] = useState(() => fit(value, cells, align, characters));
   const cellsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const shownRef = useRef<string[]>(initial);
@@ -78,7 +67,6 @@ export function SplitFlap({
 
   useEffect(() => {
     const target = fit(value, cells, align, characters);
-    // Updated in place as flaps land, so the cleanup sees the latest.
     const shown = shownRef.current;
     const glyphs = (i: number) =>
       cellsRef.current[i]?.querySelectorAll<HTMLElement>(".mizu-flap-glyph");
@@ -139,7 +127,6 @@ export function SplitFlap({
     return () => {
       stopped = true;
       running.forEach((a) => a.cancel());
-      // Leave every cell showing a whole character for the next value to start from.
       shown.forEach((ch, i) => show(i, ch));
     };
   }, [value, cells, align, characters, flip, stagger, reduce, settleRef]);

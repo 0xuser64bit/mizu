@@ -1,6 +1,4 @@
 import type { CSSProperties } from "react";
-// Blocks, as Tailwind's preflight makes every svg: inline, an icon sits on the text
-// baseline and its line box adds height, so it drifts off center without Tailwind.
 export function ArrowIcon({
   direction = "right",
   className = "",

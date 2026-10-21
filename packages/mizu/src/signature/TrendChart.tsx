@@ -31,9 +31,7 @@ export type TrendSeries = {
   label: string;
   data: readonly TrendPoint[];
   tone?: SignatureTone;
-  /** Fill beneath the line. */
   area?: boolean;
-  /** A dashed stroke, e.g. for a previous period or forecast. */
   dashed?: boolean;
 };
 export type TrendAnnotation = {
@@ -61,7 +59,6 @@ const compact = new Intl.NumberFormat("en", {
   maximumFractionDigits: 1,
 });
 
-/** Nearest index by x in an x-sorted array. */
 function nearest(points: readonly Pt[], x: number) {
   let lo = 0,
     hi = points.length - 1;
@@ -74,7 +71,6 @@ function nearest(points: readonly Pt[], x: number) {
   return Math.abs(points[lo]!.x - x) <= Math.abs(points[hi]!.x - x) ? lo : hi;
 }
 
-/** Keeps each pixel column's first, lowest, highest and last point, so peaks survive. */
 function decimate(
   points: readonly Pt[],
   x0: number,
@@ -120,11 +116,6 @@ function decimate(
   return out;
 }
 
-/**
- * An instrument for values over time: a live legend doubles as the readout,
- * dragging measures change across a period, and every reading is reachable
- * from the keyboard or as a table.
- */
 export function TrendChart({
   label,
   series,
@@ -154,14 +145,11 @@ export function TrendChart({
   formatX?: (x: number) => string;
   xType?: "time" | "number";
   utc?: boolean;
-  /** Plot height in pixels. */
   height?: number;
-  /** Keep zero on the value axis. Defaults to true when any series fills an area. */
   zero?: boolean;
   range?: Interval;
   defaultRange?: Interval;
   onRangeChange?: (range: Interval) => void;
-  /** x of the crosshair, or null. Control it to synchronise several views. */
   cursor?: number | null;
   onCursorChange?: (x: number | null) => void;
   loading?: boolean;
@@ -212,7 +200,6 @@ export function TrendChart({
     range,
     defaultRange ?? null,
   );
-  // A stored range from other data falls back to the full extent.
   const view =
     rangeState &&
     rangeState[1] > rangeState[0] &&
@@ -243,7 +230,6 @@ export function TrendChart({
   const plotH = Math.max(40, height - PAD.top - PAD.bottom);
   const baseline = zero ?? prepared.some((s) => s.area);
 
-  // The value axis follows the visible data and eases when it changes.
   const target = useMemo(() => {
     let lo = Infinity,
       hi = -Infinity;
@@ -279,7 +265,6 @@ export function TrendChart({
     tweenY(reduce ? 0 : 420, (t) =>
       setYView([a + (target.lo - a) * t, b + (target.hi - b) * t]),
     );
-    // yView is read as the start of the tween, not a trigger.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target.lo, target.hi, reduce, tweenY]);
 
@@ -312,7 +297,6 @@ export function TrendChart({
       close();
       return { id: s.id, line, area };
     });
-    // sx / sy close over x0, x1, y0, y1 and plotW, listed here.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prepared, x0, x1, y0, y1, plotW, plotH]);
 
@@ -349,7 +333,6 @@ export function TrendChart({
   const readout = (x: number) =>
     `${fx(x)} — ${shown.map((s) => `${s.label} ${valueText(s, x)}`).join(", ")}`;
 
-  // Pointer: hover reads, drag measures, a tap places the crosshair.
   const drag = useRef<{ start: number; px: number; moved: boolean } | null>(
     null,
   );
@@ -408,7 +391,6 @@ export function TrendChart({
     };
     plot.addEventListener("wheel", wheel, { passive: false });
     return () => plot.removeEventListener("wheel", wheel);
-    // commit reads refs and the latest extent through closure refresh on re-subscribe.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [extent]);
 
@@ -638,8 +620,6 @@ export function TrendChart({
                 transform={`translate(0 ${PAD.top + plotH})`}
               >
                 {xTicks.map((t) => {
-                  // A label reads right of its tick; one that would run past the
-                  // chart's edge (10px mono, about 6.6px a character) ends at it.
                   const end = sx(t.t) + 5 + t.label.length * 6.6 > width;
                   return (
                     <g key={t.t} transform={`translate(${sx(t.t)} 0)`}>
@@ -900,7 +880,6 @@ function TrendTable({
       ),
     ),
   ].sort((a, b) => a - b);
-  // ponytail: rows are thinned to 240 evenly spaced readings; export raw data for complete tables.
   const stride = Math.max(1, Math.ceil(xs.length / 240));
   const rows = xs.filter((_, i) => i % stride === 0);
   const lookup = series.map((s) => new Map(s.points.map((p) => [p.x, p.y])));

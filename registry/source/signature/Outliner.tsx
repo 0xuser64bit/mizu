@@ -36,11 +36,6 @@ const makeId = () =>
 const sizes =
   typeof CSS !== "undefined" && CSS.supports?.("field-sizing", "content");
 
-/**
- * A keyboard-first outline: Enter splits, Tab and Shift+Tab restructure,
- * Alt+arrows move whole branches, items fold and can be zoomed into until
- * they become the page's title.
- */
 export function Outliner({
   label,
   items,
@@ -63,7 +58,6 @@ export function Outliner({
   const id = useId();
   const reduce = useReducedMotion();
   const [message, announce] = useAnnouncer();
-  // `build` always returns a fresh array, so handing it on as mutable is honest.
   const [tree, setTree] = useControllable<readonly OutlineItem[]>(
     items,
     defaultItems,
@@ -96,7 +90,6 @@ export function Outliner({
     const caret = Math.min(target.caret, el.value.length);
     el.setSelectionRange(caret, caret);
   });
-  // Browsers without field-sizing grow each line to its content here.
   useIsoLayoutEffect(() => {
     if (sizes) return;
     for (const el of fields.current.values()) {
@@ -115,7 +108,6 @@ export function Outliner({
       }
     return out;
   };
-  // One pass: each row's parent index, and each visible row's position among its visible siblings.
   const parents = useMemo(() => {
     const out: number[] = [];
     const stack: number[] = [];

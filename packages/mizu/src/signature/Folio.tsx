@@ -15,7 +15,6 @@ import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useReducedMotion } from "../motion/Preferences.tsx";
 import { useElementSize, useIsoLayoutEffect } from "./internal.ts";
 
-/** The container width where notes move into the margin; mirrored in folio.css. */
 const MARGIN_AT = 880;
 const WORDS_PER_MINUTE = 230;
 const NOTE_GAP = 18;
@@ -23,11 +22,6 @@ const NOTE_GAP = 18;
 type Heading = { id: string; text: string; level: 2 | 3 };
 const Placement = createContext<"margin" | "inline">("inline");
 
-/**
- * A long-form reading surface: sidenotes sit in the margin beside their
- * marks and fold into the text on narrow screens, while a contents rail and
- * a progress line keep your place. Headings with an id become the contents.
- */
 export function Folio({
   label,
   children,
@@ -36,9 +30,7 @@ export function Folio({
   style,
 }: {
   label: string;
-  /** Prose: paragraphs, h2 and h3 headings, blockquotes — and Sidenotes inside them. */
   children: ReactNode;
-  /** Show the contents rail, built from headings with an id, when there is room. */
   contents?: boolean;
   className?: string;
   style?: CSSProperties;
@@ -52,7 +44,6 @@ export function Folio({
   const [active, setActive] = useState<string | null>(null);
   const [minutes, setMinutes] = useState(0);
   const [progress, setProgress] = useState(0);
-  // Progress only counts once the reader has scrolled; a short article starts unread.
   const [scrolled, setScrolled] = useState(false);
   const { scrollYProgress } = useScroll({
     target: bodyRef,
@@ -62,7 +53,6 @@ export function Folio({
     setProgress(Math.round(p * 100) / 100),
   );
 
-  // Margin notes start level with their mark; later ones step down rather than overlap.
   useIsoLayoutEffect(() => {
     const body = bodyRef.current;
     if (!body) return;
@@ -86,7 +76,6 @@ export function Folio({
     const observer =
       typeof ResizeObserver === "undefined" ? null : new ResizeObserver(place);
     observer?.observe(body);
-    // Web fonts change line breaks; a superseded pass must not undo a newer one.
     let live = true;
     void document.fonts?.ready.then(() => live && place());
     return () => {
@@ -95,7 +84,6 @@ export function Folio({
     };
   }, [placement, children]);
 
-  // Contents from the headings, the section in view, and the reading time.
   useEffect(() => {
     const body = bodyRef.current;
     if (!body) return;
@@ -155,7 +143,6 @@ export function Folio({
       block: "start",
       behavior: reduce ? "auto" : "smooth",
     });
-    // Continue keyboard navigation and screen reading from the section.
     if (!heading.hasAttribute("tabindex")) heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
     history.replaceState(null, "", `#${target}`);
@@ -232,11 +219,6 @@ export function Folio({
   );
 }
 
-/**
- * A numbered note on the text around it. Inside a wide Folio it sits in the
- * margin level with its mark; otherwise the mark unfolds it in place.
- * Notes are phrasing content, like the paragraph they belong to.
- */
 export function Sidenote({ children }: { children: ReactNode }) {
   const id = useId();
   const placement = useContext(Placement);
@@ -252,7 +234,6 @@ export function Sidenote({ children }: { children: ReactNode }) {
         aria-expanded={inline ? open : undefined}
         onClick={() => {
           if (inline) return setOpen((o) => !o);
-          // Already visible in the margin: point to it.
           const note = noteRef.current;
           if (!note) return;
           note.removeAttribute("data-flash");

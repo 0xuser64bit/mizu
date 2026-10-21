@@ -37,7 +37,6 @@ export type ChronicleEvent = {
   end?: number | Date;
   label: string;
   tone?: SignatureTone;
-  /** Shown in the detail panel when the event is selected. */
   detail?: ReactNode;
 };
 
@@ -54,10 +53,6 @@ const ROW = 30;
 const LANE_PAD = 14;
 const CHAR = 6.9;
 
-/**
- * Greedy row packing per lane. Each item reserves room for its label at the
- * fit-all scale, so labels never collide there; deeper zooms only gain room.
- */
 function place(
   events: readonly ChronicleEvent[],
   laneIds: readonly string[],
@@ -80,7 +75,6 @@ function place(
   }
   for (const lane of byLane) {
     lane.sort((a, b) => a.t0 - b.t0 || a.t1 - b.t1);
-    // Label room may add up to three rows; overlapping spans always get their own.
     const rows: { soft: number; hard: number }[] = [];
     for (const item of lane) {
       const label = (item.event.label.length * CHAR + 24) * msPerPx;
@@ -99,11 +93,6 @@ function place(
   return byLane;
 }
 
-/**
- * A pannable, zoomable account of what happened when. Lanes separate sources,
- * spans show duration, a playhead can drive other views and every event is
- * reachable from the keyboard.
- */
 export function Chronicle({
   label,
   events,
@@ -189,7 +178,6 @@ export function Chronicle({
     range,
     defaultRange ?? null,
   );
-  // A stored range that no longer overlaps the events falls back to fitting them.
   const view =
     rangeState &&
     rangeState[1] > rangeState[0] &&
@@ -260,7 +248,6 @@ export function Chronicle({
     return r && r.width ? a + ((clientX - r.left) / r.width) * span : a;
   };
 
-  // Wheel needs a non-passive listener: pinch (ctrl + wheel) zooms, horizontal wheel pans, vertical scrolls the page.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -283,11 +270,9 @@ export function Chronicle({
     };
     track.addEventListener("wheel", wheel, { passive: false });
     return () => track.removeEventListener("wheel", wheel);
-    // commit reads only refs and stable setters.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Direct manipulation: one pointer pans with inertia, two pointers pinch.
   const pointers = useRef(new Map<number, number>());
   const gesture = useRef<{
     last: number;
@@ -388,7 +373,6 @@ export function Chronicle({
     }
   };
 
-  // Keyboard travel across events: arrows follow time within a lane, up/down change lanes.
   const neighbour = (from: Placed, key: string): Placed | undefined => {
     const lane = placed[from.lane]!;
     const i = lane.indexOf(from);
@@ -466,7 +450,6 @@ export function Chronicle({
     glide([p.t0 - d * 0.4, p.t1 + d * 0.4]);
   };
 
-  // Render only what is near the visible interval, plus anything focused or selected.
   const margin = span * 0.25;
   const tabStop =
     focusId ??

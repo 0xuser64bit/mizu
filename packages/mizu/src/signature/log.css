@@ -1,4 +1,3 @@
-/* LogStream — a live tail you can stop, search and read. */
 .mizu-log {
   --mizu-log-height: 420px;
   --mizu-log-row: 24px;
@@ -326,8 +325,6 @@
     opacity: 0.35;
   }
 }
-/* Narrow: the clock without milliseconds fills 8ch, and the level keeps its 5ch.
-   At 4ch and a 12-character stamp, each column spilled into the next. */
 @container (max-width: 560px) {
   .mizu-log-row {
     grid-template-columns: 8ch 5ch minmax(0, 1fr);

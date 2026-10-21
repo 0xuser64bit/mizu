@@ -52,10 +52,6 @@ const extension = (name: string) =>
 let sequence = 0;
 export type TransferQueueHandle = { add: (files: readonly File[]) => void };
 
-/**
- * Transfers you can watch and steer: a concurrency-limited queue around your
- * own transfer function, with live speed, time left, pause, retry and cancel.
- */
 export const TransferQueue = forwardRef<
   TransferQueueHandle,
   {
@@ -102,7 +98,6 @@ export const TransferQueue = forwardRef<
     changeRef.current?.(items);
   }, [items, changeRef]);
 
-  // Progress arrives far more often than frames; apply it once per frame.
   const schedule = () => {
     if (flush.current) return;
     flush.current = requestAnimationFrame(() => {
@@ -185,7 +180,6 @@ export const TransferQueue = forwardRef<
       );
   };
 
-  // The runner: keep up to `concurrency` transfers active.
   useEffect(() => {
     const active = items.filter((i) => i.status === "active").length;
     const waiting = items.filter(
@@ -203,11 +197,9 @@ export const TransferQueue = forwardRef<
             : i,
         ),
       );
-    // start() is stable enough: it reads the latest transfer through a ref.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, concurrency]);
 
-  // A throughput trace for the whole queue, sampled twice a second while anything moves.
   const busy = items.some((i) => i.status === "active");
   const speedRef = useLatest(
     items.reduce((s, i) => s + (i.status === "active" ? i.speed : 0), 0),

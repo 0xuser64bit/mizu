@@ -30,7 +30,6 @@ function Arrow() {
   );
 }
 
-// The face lives in .mizu-btn classes, so className and ordinary CSS restyle it.
 const buttonClass = (
   variant: ButtonVariant,
   size: ButtonSize,
@@ -70,7 +69,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {children}
-        {/* The label's color: an accent diamond vanishes on the light theme's accent fill. */}
         {loading ? <Spinner size={10} tone="current" /> : arrow && <Arrow />}
       </button>
     );

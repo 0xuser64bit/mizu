@@ -1,4 +1,3 @@
-/* Signature — tone roles and motifs shared by the signature systems. */
 [data-tone="accent"] {
   --mizu-tone: var(--mizu-accent);
 }
@@ -18,7 +17,6 @@
 [data-tone="danger"] {
   --mizu-tone: var(--mizu-danger);
 }
-/* Loading instruments scan: a single accent hairline travels the empty frame. */
 .mizu-sig-scan {
   position: absolute;
   overflow: hidden;
@@ -50,7 +48,6 @@
     opacity: 0;
   }
 }
-/* Completion: a diamond turns into place. */
 @keyframes mizu-sig-seal {
   from {
     transform: rotate(-135deg) scale(0);

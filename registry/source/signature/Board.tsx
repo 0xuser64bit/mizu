@@ -59,11 +59,6 @@ function DefaultCard({ card }: { card: BoardCard }) {
   );
 }
 
-/**
- * A kanban board with lift-and-carry dragging, cards that part to make room
- * and fly into place, advisory limits, collapsible columns and a complete
- * keyboard path for picking up, moving and dropping.
- */
 export function Board({
   label,
   columns,
@@ -83,10 +78,8 @@ export function Board({
   cards?: readonly BoardCard[];
   defaultCards?: readonly BoardCard[];
   onCardsChange?: (cards: BoardCard[]) => void;
-  /** Cards can still be opened, but not moved. */
   readOnly?: boolean;
   renderCard?: (card: BoardCard) => ReactNode;
-  /** Enter or double-click opens a card. */
   onCardOpen?: (card: BoardCard) => void;
   onAddCard?: (column: string) => void;
   className?: string;
@@ -150,7 +143,6 @@ export function Board({
     announce(`Cancelled. ${titleOf(d.id)} is back where it started.`);
   };
 
-  // Moving between columns remounts a card; keep keyboard focus with it (and scroll it into view).
   useIsoLayoutEffect(() => {
     const target = pendingFocus.current;
     const el = target && cardRefs.current.get(target);
@@ -159,7 +151,6 @@ export function Board({
     if (document.activeElement !== el) el.focus();
   });
 
-  // Pointer dragging lives on the window: the card element is replaced by a placeholder mid-drag.
   const press = useRef<{
     id: string;
     px: number;
@@ -231,7 +222,6 @@ export function Board({
           !dragRef.current)
       )
         setDrag(next);
-      // Edge auto-scroll while carrying a card near the scroller's sides.
       const s = scroller.current;
       cancelAnimationFrame(edge.current);
       if (s) {

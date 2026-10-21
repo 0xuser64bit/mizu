@@ -33,12 +33,10 @@ export { justifyRows, type GalleryRow } from "./justify.ts";
 
 export type GalleryItem = {
   id: string;
-  /** The full image, fetched when the photo opens. */
   src: string;
-  /** A lighter image for the grid and filmstrip; defaults to `src`. */
   thumbnail?: string;
   alt: string;
-  /** Intrinsic size, or any pair in the same proportion: lays out before anything loads. */
+  /** Intrinsic size, or any pair in the same proportion. */
   width: number;
   height: number;
   caption?: ReactNode;
@@ -49,11 +47,6 @@ const MAX_ZOOM = 4;
 const SPRING = { type: "spring", stiffness: 300, damping: 32 } as const;
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/**
- * A justified photo grid whose photos open into a viewer from exactly where
- * they sit. Swipe or use the arrows to travel, pull down to dismiss, and
- * pinch, scroll or double-tap to zoom.
- */
 export function Gallery({
   label,
   items,
@@ -69,11 +62,9 @@ export function Gallery({
 }: {
   label: string;
   items: readonly GalleryItem[];
-  /** The open photo, or null while the viewer is closed. */
   index?: number | null;
   defaultIndex?: number | null;
   onIndexChange?: (index: number | null) => void;
-  /** The height rows aim for; full rows adjust around it to fill the width. */
   rowHeight?: number;
   gap?: number;
   loading?: boolean;
@@ -91,7 +82,6 @@ export function Gallery({
   const current =
     open === null || !items.length ? null : clamp(open, 0, items.length - 1);
 
-  // Each photo's box and horizontal centre, so arrow keys can move between rows.
   const rows = width ? justifyRows(items, width, rowHeight, gap) : [];
   const boxes = rows.flatMap((row, r) => {
     let left = 0;
@@ -178,8 +168,7 @@ export function Gallery({
                         height: box.h,
                         flexGrow: box.fill ? 1 : 0,
                       }
-                    : // Before the grid is measured: the target height, never wider than the grid.
-                      {
+                    : {
                         width: `min(100%, ${(item.width / item.height) * rowHeight}px)`,
                         aspectRatio: `${item.width} / ${item.height}`,
                       }
@@ -267,7 +256,6 @@ function Viewer({
   const [loaded, setLoaded] = useState<string | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
 
-  // The frame travels (flight, swipe, pan); the image zooms; a dismiss is pulled.
   const x = useMotionValue(0),
     y = useMotionValue(0),
     scale = useMotionValue(1),
@@ -288,7 +276,6 @@ function Viewer({
   const item = items[index]!;
   const ratio = item.width / item.height;
 
-  // The frame's resting centre and size, and the stage it may pan across.
   const measure = () => {
     const frame = frameRef.current,
       stage = stageRef.current;
@@ -305,7 +292,6 @@ function Viewer({
     };
   };
   type Measure = NonNullable<ReturnType<typeof measure>>;
-  // Offsets that keep a zoomed photo covering the stage, or centred when it fits.
   const bound = (m: Measure, z: number, to: Point) => ({
     x:
       m.w * z <= m.stage.width
@@ -324,7 +310,6 @@ function Viewer({
             (m.h * z) / 2 - m.cy,
           ),
   });
-  // The transform that lays the frame exactly over `rect`.
   const over = (m: Measure, rect: DOMRect) => ({
     x: rect.left + rect.width / 2 - m.stage.left - m.cx,
     y: rect.top + rect.height / 2 - m.stage.top - m.cy,
@@ -339,7 +324,6 @@ function Viewer({
     const p = at
       ? { x: at.x - m.stage.left, y: at.y - m.stage.top }
       : { x: m.stage.width / 2, y: m.stage.height / 2 };
-    // The point under the cursor or fingers stays where it is.
     const to = bound(m, next, {
       x: p.x - m.cx - (p.x - m.cx - x.get()) * k,
       y: p.y - m.cy - (p.y - m.cy - y.get()) * k,
@@ -414,7 +398,6 @@ function Viewer({
   const measureRef = useLatest(measure);
   const boundRef = useLatest(bound);
 
-  // Native modality, the scroll lock, and the flight out of the grid.
   useIsoLayoutEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -440,10 +423,8 @@ function Viewer({
       const home = tileRef.current(indexRef.current) ?? restore;
       if (home?.isConnected) home.focus({ preventScroll: true });
     };
-    // Runs once per opening; later photos travel sideways instead.
   }, []);
 
-  // Trackpads: pinch zooms around the cursor, two-finger scroll pans or travels.
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
@@ -469,7 +450,6 @@ function Viewer({
         return;
       }
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      // One photo per swipe: momentum stays quiet until it has died away.
       const now = performance.now();
       if (now < quietUntil) {
         quietUntil = now + 180;
@@ -486,7 +466,6 @@ function Viewer({
     return () => stage.removeEventListener("wheel", onWheel);
   }, [boundRef, goRef, indexRef, measureRef, x, y, zoom, zoomRef]);
 
-  // Arriving at a photo: centre its thumbnail, warm its neighbours, announce it.
   useEffect(() => {
     const strip = stripRef.current,
       thumb = strip?.children[index] as HTMLElement | undefined;
@@ -573,7 +552,6 @@ function Viewer({
       pull.set(Math.abs(dy));
       scale.set(1 - Math.min(0.3, Math.abs(dy) / 1200));
     } else {
-      // Resistance past the first and last photo.
       const edge =
         (dx > 0 && index === 0) || (dx < 0 && index === items.length - 1);
       x.set(edge ? dx * 0.3 : dx);
@@ -585,7 +563,6 @@ function Viewer({
     if (!g) return;
     const remaining = [...pointersRef.current.values()][0];
     if (remaining) {
-      // A pinch that loses a finger carries on as a pan.
       gestureRef.current = {
         start: remaining,
         base: { x: x.get(), y: y.get() },

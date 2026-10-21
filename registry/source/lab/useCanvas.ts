@@ -5,7 +5,6 @@ import { useReducedMotion } from "../motion/Preferences";
 
 export type CanvasColors = { paper: string; accent: string; line: string };
 
-/** One observer and one cancellable loop. Sleeping canvases schedule no frames. */
 export function useCanvasLoop(
   draw: (
     ctx: CanvasRenderingContext2D,

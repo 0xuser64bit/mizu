@@ -18,7 +18,6 @@ export type TourStep = {
   title: string;
   body?: ReactNode;
   placement?: "top" | "bottom" | "left" | "right";
-  /** Space between the element and the spotlight's edge. */
   padding?: number;
 };
 type Frame = { x: number; y: number; w: number; h: number };
@@ -31,11 +30,6 @@ const resolve = (target: TourStep["target"]) =>
       ? null
       : document.querySelector(target);
 
-/**
- * A guided tour: a spotlight that travels between elements and a card that
- * explains each one, with keyboard steps and a graceful fallback when an
- * element is missing.
- */
 export function Tour({
   steps,
   open,
@@ -75,11 +69,9 @@ export function Tour({
   const change = useLatest(onOpenChange);
   const glideUntil = useRef(0);
 
-  // Native modality: top layer, inert page, focus containment and restoration.
   useEffect(() => {
     const el = dialog.current;
     if (!el || !open) return;
-    // Captured before anything inside the tour takes focus.
     const restore = document.activeElement as HTMLElement | null;
     el.showModal();
     primary.current?.focus();
@@ -89,7 +81,6 @@ export function Tour({
     };
   }, [open]);
 
-  // When the step changes, bring its element into view and glide the spotlight there.
   useEffect(() => {
     if (!open || !current) return;
     const target = resolve(current.target);
@@ -104,7 +95,6 @@ export function Tour({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, index]);
 
-  // Follow the element every frame while open, so scrolling and layout shifts never detach it.
   useEffect(() => {
     if (!open || !current) return;
     let raf = 0;
@@ -145,7 +135,6 @@ export function Tour({
           Math.abs(now.h - next.h)
         : Infinity;
       if (distance < 0.5) return;
-      // After a step change the spotlight pursues the element, even while it scrolls into view.
       if (
         now &&
         !reduce &&
@@ -177,7 +166,6 @@ export function Tour({
     setIndex(clamp(to, 0, steps.length - 1));
   };
 
-  // Card placement: the preferred side if it fits, otherwise the side with the most room.
   const sheet = viewport.w > 0 && viewport.w < 560;
   let place: CSSProperties = {};
   let side: "top" | "bottom" | "left" | "right" | "center" | "sheet" = "center";

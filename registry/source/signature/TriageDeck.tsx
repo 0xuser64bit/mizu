@@ -41,10 +41,6 @@ const GLYPH: Record<TriageDirection, string> = {
 };
 const THRESHOLD = 110;
 
-/**
- * Decisions at the speed of a gesture: fling the top card toward a decision,
- * or use arrow keys and buttons. Every decision can be undone.
- */
 export function TriageDeck<T extends { id: string }>({
   label,
   items,
@@ -60,9 +56,7 @@ export function TriageDeck<T extends { id: string }>({
   label: string;
   items: readonly T[];
   renderItem: (item: T) => ReactNode;
-  /** A short name for announcements, e.g. the item's title. */
   itemLabel: (item: T) => string;
-  /** Up to one decision per direction: left, right and up. */
   decisions: readonly TriageDecision[];
   onDecide?: (item: T, decision: TriageDecision) => void;
   onUndo?: (item: T, decision: TriageDecision) => void;
@@ -296,7 +290,6 @@ function TopCard({
   const leftStamp = useTransform(x, [-THRESHOLD, -30], [1, 0]);
   const rightStamp = useTransform(x, [30, THRESHOLD], [0, 1]);
   const upStamp = useTransform(y, [-THRESHOLD, -30], [1, 0]);
-  // An undone card arrives from the side it left by; otherwise it sits in place.
   useEffect(() => {
     if (x.get() === 0 && y.get() === 0) return;
     const ax = animate(x, 0, { type: "spring", stiffness: 260, damping: 28 });

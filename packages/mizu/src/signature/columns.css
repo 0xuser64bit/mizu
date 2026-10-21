@@ -1,4 +1,3 @@
-/* ColumnBrowser — a hierarchy walked column by column. */
 .mizu-columns {
   --mizu-columns-height: 420px;
   container: mizu-columns / inline-size;
@@ -233,7 +232,6 @@
   }
 }
 
-/* Narrow: one pane at a time, pushed and popped like a stack. */
 @container mizu-columns (max-width: 519px) {
   .mizu-columns-back {
     display: grid;

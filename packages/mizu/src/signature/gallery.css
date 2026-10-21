@@ -1,4 +1,3 @@
-/* Gallery — photos that open from exactly where they sit. */
 .mizu-gallery {
   min-width: 0;
   color: var(--mizu-paper);
@@ -40,7 +39,6 @@
 .mizu-gallery-tile[data-open] img {
   visibility: hidden;
 }
-/* Accent corner brackets close in on the photo you are about to open. */
 .mizu-gallery-tile::before,
 .mizu-gallery-tile::after {
   content: "";
@@ -110,7 +108,6 @@
   text-align: center;
 }
 
-/* The viewer: a full-bleed modal that keeps its theme scope. */
 .mizu-lightbox {
   position: fixed;
   inset: 0;

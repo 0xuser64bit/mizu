@@ -11,7 +11,6 @@ import {
 
 let scrollLocks = 0,
   previousOverflow = "";
-/** Holds the page still under a modal surface; returns the release. Nested locks stack. */
 export function lockScroll() {
   if (scrollLocks++ === 0) {
     previousOverflow = document.body.style.overflow;
@@ -23,7 +22,6 @@ export function lockScroll() {
 }
 const DialogContext = createContext<(() => void) | null>(null);
 
-/** Native modality supplies inert background, focus containment and nested-dialog order. */
 export function Dialog({
   open,
   onOpenChange,

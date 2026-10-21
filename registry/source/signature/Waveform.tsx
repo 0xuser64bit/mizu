@@ -29,7 +29,6 @@ const BAR = 4;
 const PLAY = "M5 4L10.5 7L10.5 13L5 16Z M10.5 7L16 10L16 10L10.5 13Z";
 const PAUSE = "M5 4L8.5 4L8.5 16L5 16Z M11.5 4L15 4L15 16L11.5 16Z";
 
-/** Peak amplitude per bucket from any audio the browser can decode. */
 async function decodePeaks(src: string, buckets: number, signal: AbortSignal) {
   const response = await fetch(src, { signal });
   if (!response.ok) throw new Error(`Audio request failed: ${response.status}`);
@@ -53,15 +52,9 @@ async function decodePeaks(src: string, buckets: number, signal: AbortSignal) {
     peaks[b] = peak;
     loudest = Math.max(loudest, peak);
   }
-  // A gentle gamma keeps quiet passages visible beside loud ones.
   return peaks.map((p) => (loudest ? Math.pow(p / loudest, 0.75) : 0));
 }
 
-/**
- * Audio you can see: a waveform scrubber over a native audio element, with
- * chapters, speed and skip controls. Peaks may be supplied; otherwise they are
- * decoded from the source.
- */
 export const Waveform = forwardRef<
   WaveformHandle,
   {
@@ -73,7 +66,6 @@ export const Waveform = forwardRef<
     /** Seconds, shown before the media reports its own duration. */
     duration?: number;
     rates?: readonly number[];
-    /** Waveform height in pixels. */
     height?: number;
     onTimeUpdate?: (seconds: number) => void;
     onPlayingChange?: (playing: boolean) => void;
@@ -127,21 +119,16 @@ export const Waveform = forwardRef<
     return () => controller.abort();
   }, [src, peaks]);
 
-  // The audio can settle before this component commits: a concurrent render creates it
-  // detached, and server HTML starts loading it before hydration. Its error or metadata
-  // then reach no handler, so read where it stands.
   useEffect(() => {
     const media = audio.current;
     if (!media) return;
     if (media.error) setFailed(true);
     else if (media.readyState >= 1) {
-      // HAVE_METADATA
       if (Number.isFinite(media.duration)) setDuration(media.duration);
       media.playbackRate = rate;
     }
   }, [src, rate]);
 
-  // Smooth progress while playing; the media element only reports a few times a second.
   useEffect(() => {
     if (!playing) return;
     let frame = 0;
@@ -413,8 +400,6 @@ export const Waveform = forwardRef<
             </span>
           )}
         </div>
-        {/* Beside the slider, not in it: a button inside role="slider" is lost to
-            assistive tech. It covers the track from the stage. */}
         {failed && (
           <p className="mizu-waveform-error" role="alert">
             This audio could not be loaded.

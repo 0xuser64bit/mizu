@@ -1,6 +1,5 @@
 export type Box = { x: number; y: number; w: number; h: number };
 
-/** Squarified layout (Bruls, Huizing, van Wijk): rows along the shorter side keep aspect ratios near 1. */
 export function squarify<T>(
   items: readonly { item: T; value: number }[],
   box: Box,

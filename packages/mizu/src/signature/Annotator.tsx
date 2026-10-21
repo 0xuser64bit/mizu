@@ -42,13 +42,8 @@ export type Annotation = {
 };
 
 const makeId = () => `n${Math.random().toString(36).slice(2, 9)}`;
-/** Positions stay inside the surface and free of float noise. */
 const spot = (n: number) => Math.round(clamp(n, 0.01, 0.99) * 1e4) / 1e4;
 
-/**
- * Review pins on anything: drop a numbered pin, discuss it in a thread,
- * resolve it, and find every conversation in the list beside the work.
- */
 export function Annotator({
   label,
   children,
@@ -65,14 +60,12 @@ export function Annotator({
   style,
 }: {
   label: string;
-  /** The surface under review: an image, a page, a design. */
   children: ReactNode;
   annotations?: readonly Annotation[];
   defaultAnnotations?: readonly Annotation[];
   onAnnotationsChange?: (annotations: Annotation[]) => void;
   /** Name used for new comments and replies. Omit for a read-only review. */
   author?: string;
-  /** Time label for new comments. */
   now?: string;
   selected?: string | null;
   defaultSelected?: string | null;
@@ -171,12 +164,10 @@ export function Annotator({
       return;
     const r = e.currentTarget.getBoundingClientRect();
     if (!r.width || !r.height) return;
-    // Keep the surface from taking focus back from the composer that opens next.
     e.preventDefault();
     place((e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
   };
 
-  // Keyboard shortcuts while focus is inside the annotator.
   const onKey = (e: KeyboardEvent<HTMLElement>) => {
     const typing = (e.target as HTMLElement).closest("textarea, input");
     if (e.key === "Escape") {
@@ -214,7 +205,6 @@ export function Annotator({
 
   const popoverSide = (x: number) =>
     surface.width && x * surface.width + 340 > surface.width ? "left" : "right";
-  // Threads open beside their pin, and upward from pins in the lower part of the work.
   const anchor = ({ x, y }: { x: number; y: number }): CSSProperties => ({
     ...(popoverSide(x) === "right"
       ? { left: `${x * 100}%` }

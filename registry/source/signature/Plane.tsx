@@ -44,7 +44,6 @@ type Registry = {
 };
 const PlaneContext = createContext<Registry | null>(null);
 
-/** For content inside a Plane that needs world coordinates, e.g. drawing connections while dragging. */
 export function usePlane() {
   const plane = useContext(PlaneContext);
   if (!plane) throw new Error("usePlane must be used within <Plane>");
@@ -65,12 +64,6 @@ const union = (boxes: Iterable<PlaneBox>): PlaneBox | null => {
   return x0 <= x1 ? { x: x0, y: y0, width: x1 - x0, height: y1 - y0 } : null;
 };
 
-/**
- * An infinite, zoomable surface. Drag or scroll to travel, pinch or
- * Ctrl-scroll to zoom, and tab between items — the camera follows focus.
- * Content can adapt to scale through `--mizu-plane-zoom` and the world's
- * `data-scale="far"` when zoomed out.
- */
 export const Plane = forwardRef<
   PlaneHandle,
   {
@@ -83,9 +76,7 @@ export const Plane = forwardRef<
     maxZoom?: number;
     grid?: "dots" | "lines" | "none";
     minimap?: boolean;
-    /** Show the pointer's world coordinates. */
     coordinates?: boolean;
-    /** Extra controls placed in the toolbar. */
     tools?: ReactNode;
     onBackgroundPointerDown?: (point: { x: number; y: number }) => void;
     className?: string;
@@ -156,7 +147,6 @@ export const Plane = forwardRef<
     [viewportRef, cameraRef],
   );
 
-  /** A camera flight: long distances pull back before settling in. */
   const fly = useCallback(
     (target: PlaneView) => {
       cancelAnimationFrame(inertia.current);
@@ -284,7 +274,6 @@ export const Plane = forwardRef<
     [reveal, cameraRef, toWorld],
   );
 
-  // Frame the content once it has been measured, unless a view was supplied.
   useEffect(() => {
     if (fitted.current || !size.width || !items.length) return;
     fitted.current = true;
@@ -293,7 +282,6 @@ export const Plane = forwardRef<
     if (target) set({ ...target, zoom: Math.min(target.zoom, 1) });
   }, [items, size.width, frame, set]);
 
-  // Wheel: Ctrl or pinch zooms at the pointer; plain scrolling pans only once the plane is active.
   const [hint, setHint] = useState(false);
   const hintTimer = useRef(0);
   useEffect(() => () => window.clearTimeout(hintTimer.current), []);
@@ -330,7 +318,6 @@ export const Plane = forwardRef<
     return () => viewport.removeEventListener("wheel", wheel);
   }, [viewportRef, cameraRef, toWorld, set, stopTween, minZoom, maxZoom]);
 
-  // Pointer: drag pans with inertia, two pointers pinch.
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const gesture = useRef<{
     vx: number;
@@ -660,10 +647,6 @@ function Minimap({
   );
 }
 
-/**
- * Content placed at world coordinates. Supplying `onMove` makes it draggable
- * with the pointer and nudgeable with arrow keys (Shift for larger steps).
- */
 export function PlaneItem({
   id,
   x,

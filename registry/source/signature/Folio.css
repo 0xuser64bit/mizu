@@ -1,4 +1,3 @@
-
 .mizu-folio {
   --mizu-folio-offset: 24px;
   --mizu-folio-note: 232px;
@@ -33,6 +32,7 @@
   max-width: 68ch;
   counter-reset: mizu-sidenote;
 }
+
 .mizu-folio-body > p {
   margin: 0 0 1.3em;
   font-size: 17px;
@@ -70,6 +70,7 @@
   font: 26px/1.3 var(--mizu-font-serif);
   text-wrap: balance;
 }
+
 .mizu-sidenote {
   counter-increment: mizu-sidenote;
 }
@@ -144,6 +145,7 @@
 .mizu-sidenote-note[data-flash] .mizu-sidenote-body {
   animation: mizu-folio-flash 1.4s var(--mizu-ease-expo);
 }
+
 @container mizu-folio (min-width: 880px) {
   .mizu-folio-body {
     max-width: calc(68ch + var(--mizu-folio-note) + 48px);
@@ -173,6 +175,7 @@
     color: var(--mizu-paper);
   }
 }
+
 @container mizu-folio (min-width: 1040px) {
   .mizu-folio:not([data-contents="none"]) > .mizu-folio-frame {
     display: grid;

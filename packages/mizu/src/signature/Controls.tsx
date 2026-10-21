@@ -18,14 +18,13 @@ import {
 import { useReducedMotion } from "../motion/Preferences.tsx";
 import { clamp, useControllable, useLatest } from "./internal.ts";
 
-/** How travel maps to value: evenly, or by ratio (frequencies, times, gains). */
 export type ControlTaper = "linear" | "log";
 type Scale = { min: number; max: number; step: number; taper: ControlTaper };
 type ScaleProps = {
   min?: number;
   max?: number;
   step?: number;
-  /** "log" needs a positive min. */
+  /** "log" falls back to linear unless min > 0. */
   taper?: ControlTaper;
   format?: (value: number) => string;
 };
@@ -34,12 +33,11 @@ type ControlProps = ScaleProps & {
   value?: number;
   defaultValue?: number;
   onValueChange?: (value: number) => void;
-  /** When a gesture or key press finishes: the moment to save or send. */
+  /** Fires when a gesture or key press finishes. */
   onValueCommit?: (value: number) => void;
   /** Where double-click, Backspace or Delete return to; defaults to defaultValue. */
   resetValue?: number;
   disabled?: boolean;
-  /** Submits the value with a surrounding form. */
   name?: string;
   className?: string;
   style?: CSSProperties;
@@ -69,7 +67,6 @@ function snap(v: number, s: Scale) {
   const n = Math.round((v - s.min) / s.step) * s.step + s.min;
   return clamp(Number(n.toFixed(places(s.step))), s.min, s.max);
 }
-/** Travel (0–1) for a value, and back. */
 function travelOf(v: number, s: Scale) {
   const t =
     s.taper === "log"
@@ -86,7 +83,6 @@ function valueAt(t: number, s: Scale) {
     s,
   );
 }
-/** One key press: a step (1% of travel when log), or a tenth of the range with Shift or Page keys. */
 function stepped(v: number, s: Scale, direction: number, big: boolean) {
   if (s.taper === "log")
     return valueAt(travelOf(v, s) + direction * (big ? 0.1 : 0.01), s);
@@ -104,7 +100,6 @@ const DIRECTION: Record<string, number> = {
   PageDown: -1,
 };
 
-/** A value that glides to discrete changes and follows the hand directly. */
 function useTravel(value: number, s: Scale) {
   const reduce = useReducedMotion();
   const travel = useMotionValue(travelOf(value, s));
@@ -121,7 +116,6 @@ function useTravel(value: number, s: Scale) {
   return [travel, handRef] as const;
 }
 
-/** The native range input behind a drawn control, and a hidden field for forms. */
 function Input({
   label,
   value,
@@ -171,7 +165,6 @@ function Input({
   );
 }
 
-/** Shared state and gestures for the single-value controls. */
 function useControl(props: ControlProps) {
   const s = scaleOf(props);
   const format = props.format ?? ((v: number) => String(v));
@@ -209,7 +202,6 @@ function useControl(props: ControlProps) {
     e.preventDefault();
     change(next, true);
   };
-  /** A relative vertical drag: `pixels` of travel cover the range; Shift is ten times finer. */
   const drag = (e: PointerEvent<Element>, pixels: number) => {
     if (props.disabled || e.button !== 0) return;
     e.preventDefault();
@@ -259,7 +251,6 @@ function useControl(props: ControlProps) {
   return { s, value, travel, format, dragging, change, reset, drag, input };
 }
 
-/** A point on the knob's 270° dial, from 7 o'clock round to 5. */
 function dial(c: number, r: number, t: number) {
   const a = ((-135 + 270 * t) * Math.PI) / 180;
   // Rounded: engines disagree in the last digit of sin and cos, which would break hydration.
@@ -274,10 +265,6 @@ function arc(c: number, r: number, from: number, to: number) {
   return `M${x0.toFixed(2)} ${y0.toFixed(2)}A${r} ${r} 0 ${(b - a) * 270 > 180 ? 1 : 0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`;
 }
 
-/**
- * A rotary control: drag up or down (Shift for fine), use the arrow keys,
- * or double-click to return home. Bipolar knobs fill from the centre.
- */
 export function Knob({
   size = 64,
   bipolar = false,
@@ -289,7 +276,6 @@ export function Knob({
   const c = size / 2,
     r = c - 5;
   const value = useTransform(k.travel, (t) => arc(c, r, bipolar ? 0.5 : 0, t));
-  // The pointer runs from just inside the face towards its centre.
   const tipX = useTransform(k.travel, (t) => dial(c, r - 11, t)[0]),
     tipY = useTransform(k.travel, (t) => dial(c, r - 11, t)[1]),
     tailX = useTransform(k.travel, (t) => dial(c, (r - 8) * 0.35, t)[0]),
@@ -347,11 +333,6 @@ export function Knob({
 
 const CAP = 16;
 
-/**
- * A console fader: drag the cap (Shift for fine), click the track to jump,
- * double-click to return home. Give it a `level` to show a meter beside it
- * with a falling peak.
- */
 export function Fader({
   height = 176,
   marks = [],
@@ -361,9 +342,8 @@ export function Fader({
   ...props
 }: ControlProps & {
   height?: number;
-  /** Values to label beside the track. */
   marks?: readonly number[];
-  /** A live signal level from 0 to 1 for the meter; a motion value updates it without re-rendering. */
+  /** Signal level from 0 to 1. */
   level?: number | MotionValue<number>;
 }) {
   const f = useControl(props);
@@ -376,7 +356,6 @@ export function Fader({
   const levelRef = useLatest(level);
   const metered = level !== undefined;
 
-  // Meter ballistics: instant attack, steady release, and a peak that holds then falls.
   useEffect(() => {
     if (!metered) return;
     let frame = 0,
@@ -474,11 +453,6 @@ export function Fader({
 type Point = { x: number; y: number };
 type Axis = ScaleProps & { label?: string };
 
-/**
- * A two-dimensional control: press anywhere and the puck springs there,
- * then follows (Shift for fine). Each axis is also a slider for keyboards
- * and assistive technology; arrows move both from either.
- */
 export function XYPad({
   label,
   value,
@@ -589,7 +563,6 @@ export function XYPad({
       trail.set(points.join(" "));
     };
     trailFade.set(reduce ? 0 : 1);
-    // The press itself springs the puck over; after that it follows the hand.
     change({ x: valueAt(t.x, sx), y: valueAt(t.y, sy) });
     draw();
     const move = (ev: globalThis.PointerEvent) => {

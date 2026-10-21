@@ -55,7 +55,6 @@ function floor(t: number, { unit, n }: Step, utc: boolean) {
   if (unit === "hour") return set("Hours", Math.floor(get("Hours") / n) * n);
   set("Hours", 0);
   if (unit === "day" || unit === "week") {
-    // Count whole days from a Monday epoch so multi-day steps stay put while panning.
     if (unit === "week") set("Date", get("Date") - ((get("Day") + 6) % 7));
     const days = Math.round(
       (d.getTime() - (utc ? MONDAY : MONDAY + d.getTimezoneOffset() * M)) / D,
@@ -128,10 +127,6 @@ function label(t: number, unit: Unit, utc: boolean) {
   }
 }
 
-/**
- * Calendar-aligned ticks for a visible interval. Majors keep at least
- * `spacing` pixels apart; minors subdivide them when there is room.
- */
 export function timeTicks(
   start: number,
   end: number,
@@ -143,7 +138,6 @@ export function timeTicks(
   const need = (spacing / width) * span;
   let index = STEPS.findIndex((s) => s.ms >= need);
   if (index === -1) index = STEPS.length - 1;
-  // Prefer a slightly tighter step over leaving the axis with one or two labels.
   const finer = STEPS[index - 1];
   if (
     finer &&
@@ -189,7 +183,6 @@ export function timeTicks(
   return { ticks, context };
 }
 
-/** Round, readable numeric ticks covering [min, max]. */
 export function numberTicks(min: number, max: number, count = 5) {
   if (!Number.isFinite(min) || !Number.isFinite(max)) return [0];
   if (min === max) {
@@ -221,7 +214,6 @@ export function formatDuration(ms: number) {
   return `${sign}${Math.floor(abs / D)}d ${Math.floor((abs % D) / H)}h`;
 }
 
-/** Media clock: m:ss, or h:mm:ss past an hour. */
 export function formatClock(seconds: number) {
   const s = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
   const h = Math.floor(s / 3600),
@@ -230,7 +222,6 @@ export function formatClock(seconds: number) {
   return h ? `${h}:${String(m).padStart(2, "0")}:${r}` : `${m}:${r}`;
 }
 
-/** A precise stamp for readouts and announcements. */
 export function formatStamp(t: number, span: number, utc = false) {
   return span < 2 * M
     ? format(t, { hour: "2-digit", minute: "2-digit", second: "2-digit" }, utc)

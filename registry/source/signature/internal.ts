@@ -11,7 +11,6 @@ import {
 
 /** A visible interval on a numeric or time axis: [start, end]. */
 export type Interval = readonly [number, number];
-/** Colour roles shared by the signature systems. */
 export type SignatureTone =
   "neutral" | "accent" | "paper" | "muted" | "success" | "warning" | "danger";
 
@@ -21,7 +20,6 @@ export const clamp = (n: number, low: number, high: number) =>
 export const useIsoLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-/** The latest render's value, readable from events and effects without re-subscribing. */
 export function useLatest<T>(value: T) {
   const ref = useRef(value);
   useIsoLayoutEffect(() => {
@@ -30,7 +28,6 @@ export function useLatest<T>(value: T) {
   return ref;
 }
 
-/** Controlled when `value` is defined, otherwise owns the state; `onChange` fires either way. */
 export function useControllable<T>(
   value: T | undefined,
   initial: T,
@@ -62,7 +59,6 @@ export function useControllable<T>(
   return [current, set] as const;
 }
 
-/** Border-box size from a ResizeObserver; 0 × 0 until the element is measured. */
 export function useElementSize<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -81,7 +77,6 @@ export function useElementSize<T extends HTMLElement>() {
   return [ref, size] as const;
 }
 
-/** Polite announcements for operations that have no other visible text change. */
 export function useAnnouncer() {
   const [message, setMessage] = useState("");
   const frame = useRef(0);
@@ -94,7 +89,6 @@ export function useAnnouncer() {
   return [message, announce] as const;
 }
 
-/** Runs `step(t)` for eased t in 0..1 over `duration`; a new run or `cancel` stops the last one. */
 export function useTween() {
   const frame = useRef(0);
   useEffect(() => () => cancelAnimationFrame(frame.current), []);

@@ -11,7 +11,6 @@ export type BoardCard = {
   tone?: SignatureTone;
 };
 
-/** Returns cards with `id` moved into `column` before the card now at `index`. */
 export function moveCard(
   cards: readonly BoardCard[],
   id: string,

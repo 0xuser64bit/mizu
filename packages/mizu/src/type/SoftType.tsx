@@ -2,7 +2,6 @@
 
 import type { CSSProperties } from "react";
 
-/** CSS interpolates real font axes; browsers without variable fonts keep readable text. */
 export function SoftType({
   text = "Aa",
   mode = "weight",

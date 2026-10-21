@@ -1,4 +1,3 @@
-
 .mizu-columns {
   --mizu-columns-height: 420px;
   container: mizu-columns / inline-size;
@@ -226,6 +225,7 @@
     scroll-behavior: auto;
   }
 }
+
 @container mizu-columns (max-width: 519px) {
   .mizu-columns-back {
     display: grid;

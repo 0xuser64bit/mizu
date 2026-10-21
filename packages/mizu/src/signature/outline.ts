@@ -13,7 +13,6 @@ export type OutlineRow = {
   collapsed?: boolean;
 };
 
-/** Depth-first rows; editing works on this flat form and is rebuilt with `build`. */
 export function flatten(
   items: readonly OutlineItem[],
   depth = 0,
@@ -50,7 +49,6 @@ export function build(rows: readonly OutlineRow[]): OutlineItem[] {
   return prune(root);
 }
 
-/** Index after the last descendant of row `i`. */
 export const subtreeEnd = (rows: readonly OutlineRow[], i: number) => {
   let j = i + 1;
   while (j < rows.length && rows[j]!.depth > rows[i]!.depth) j++;
@@ -59,7 +57,6 @@ export const subtreeEnd = (rows: readonly OutlineRow[], i: number) => {
 export const hasChildren = (rows: readonly OutlineRow[], i: number) =>
   (rows[i + 1]?.depth ?? -1) > rows[i]!.depth;
 
-/** Tab: become the last child of the previous sibling, bringing descendants along. */
 export function indent(rows: readonly OutlineRow[], i: number) {
   const previous = rows[i - 1];
   if (!previous || previous.depth < rows[i]!.depth) return rows;
@@ -75,7 +72,6 @@ export function indent(rows: readonly OutlineRow[], i: number) {
   );
 }
 
-/** Shift+Tab: leave the parent and follow its whole subtree, so later siblings stay put. */
 export function outdent(rows: readonly OutlineRow[], i: number, floor = 0) {
   const depth = rows[i]!.depth;
   if (depth <= floor) return rows;
@@ -89,7 +85,6 @@ export function outdent(rows: readonly OutlineRow[], i: number, floor = 0) {
   return [...rest.slice(0, at), ...block, ...rest.slice(at)];
 }
 
-/** Alt+Up / Alt+Down: swap with the neighbouring sibling, subtrees included. */
 export function moveSibling(
   rows: readonly OutlineRow[],
   i: number,
@@ -118,7 +113,6 @@ export function moveSibling(
   ];
 }
 
-/** Rows that are drawn: descendants of collapsed rows are skipped, as is anything outside the zoomed item. */
 export function visibleRows(rows: readonly OutlineRow[], zoom: string | null) {
   let start = 0,
     end = rows.length,

@@ -7,10 +7,6 @@ export type GalleryRow = {
   full: boolean;
 };
 
-/**
- * Justified rows: photos keep their proportions and each full row fills the
- * width, at the height closest to `target` within half to one and a half of it.
- */
 export function justifyRows(
   sizes: readonly Size[],
   width: number,
@@ -29,8 +25,6 @@ export function justifyRows(
       ratios += ratio;
       return;
     }
-    // Break before this photo when the shorter row lands closer to the target,
-    // or when taking it would crush the row (a panorama after a portrait).
     const without = i > start ? fit(start, i, ratios) : Infinity;
     if (
       without - target < target - height ||

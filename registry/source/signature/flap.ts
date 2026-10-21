@@ -1,10 +1,5 @@
 export const FLAP_CHARACTERS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:.-/'&!?";
 
-/**
- * The flaps a cell shows on its way from `from` to `to`: always forward
- * through the drum like the real mechanism, but never more than `most`, so a
- * long way round arrives in time.
- */
 export function flapPath(
   from: string,
   to: string,

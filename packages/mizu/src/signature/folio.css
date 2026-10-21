@@ -1,4 +1,3 @@
-/* Folio — long-form reading with its notes in the margin. */
 .mizu-folio {
   --mizu-folio-offset: 24px;
   --mizu-folio-note: 232px;
@@ -34,7 +33,6 @@
   counter-reset: mizu-sidenote;
 }
 
-/* Prose defaults: generous measure, an ink drop cap, serif pull quotes. */
 .mizu-folio-body > p {
   margin: 0 0 1.3em;
   font-size: 17px;
@@ -73,7 +71,6 @@
   text-wrap: balance;
 }
 
-/* Marks and notes — inline by default, folded until asked for. */
 .mizu-sidenote {
   counter-increment: mizu-sidenote;
 }
@@ -109,7 +106,6 @@
   background: var(--mizu-accent-fill);
   color: #fffaf4;
 }
-/* Folded notes take no room; an opened one unfolds beneath its line. */
 .mizu-sidenote-note {
   display: none;
   grid-template-rows: 0fr;
@@ -156,13 +152,11 @@
   }
 }
 
-/* From 880px the notes move into the margin beside their marks. Mirrored in Folio.tsx. */
 @container mizu-folio (min-width: 880px) {
   .mizu-folio-body {
     max-width: calc(68ch + var(--mizu-folio-note) + 48px);
     padding-right: calc(var(--mizu-folio-note) + 48px);
   }
-  /* Inline, so its static position is the top of its mark's line. */
   .mizu-sidenote-note {
     position: absolute;
     right: 0;
@@ -188,7 +182,6 @@
   }
 }
 
-/* From 1040px a contents rail follows the reader down the page. */
 @container mizu-folio (min-width: 1040px) {
   .mizu-folio:not([data-contents="none"]) > .mizu-folio-frame {
     display: grid;

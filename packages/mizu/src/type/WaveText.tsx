@@ -25,8 +25,6 @@ function Letter({
   return (
     <motion.span
       aria-hidden
-      // Warmth is a number; CSS mixes the colors from it. A color Motion computes is
-      // fixed at mount, so the letters would keep the old theme's paper after a switch.
       style={
         reduced ? undefined : ({ y, scale, "--mizu-wave": mv } as MotionStyle)
       }
@@ -47,9 +45,7 @@ export function WaveText({
 }: {
   text: string;
   radius?: number;
-  /** Resting color; the theme's paper when omitted. */
   colorFrom?: string;
-  /** Color under the pointer; the theme's accent when omitted. */
   colorTo?: string;
   className?: string;
   style?: CSSProperties;

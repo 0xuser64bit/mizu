@@ -1,6 +1,3 @@
-/* Tokens sit in the lowest cascade layer, the one Tailwind v4 calls theme, so an
-   unlayered override in your own CSS wins wherever it loads: a registry item's
-   base.css arrives after your global stylesheet and would otherwise reset it. */
 @layer theme {
   :root,
   [data-theme="dark"] {
@@ -20,7 +17,6 @@
     --mizu-danger: #ef9b8e;
   }
 
-  /* Outside the theme blocks, so a nested data-theme keeps overrides set above it. */
   :root {
     --mizu-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --mizu-ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
@@ -66,8 +62,6 @@
     --mizu-danger: #a12716;
   }
 
-  /* next/font variables when set (on <html> or <body>), else the fonts.css families.
-     Outside the theme blocks, so a nested data-theme keeps the faces set above it. */
   :root,
   body {
     --mizu-font-display:

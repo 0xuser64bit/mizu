@@ -42,10 +42,6 @@ function update(
   };
 }
 
-/**
- * Conditions that read as a sentence: typed operators per field, nested
- * groups, a plain-language summary and an evaluator for local filtering.
- */
 export function QueryBuilder({
   label,
   fields,
@@ -66,7 +62,6 @@ export function QueryBuilder({
   /** Nesting limit for groups; 1 allows no subgroups. */
   maxDepth?: number;
   createId?: () => string;
-  /** Beside the summary, e.g. a live count of matches. */
   footer?: ReactNode;
   className?: string;
   style?: CSSProperties;

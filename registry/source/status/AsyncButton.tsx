@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Button, type ButtonProps } from "../ui/Button";
 
-/** State follows the supplied promise. AbortSignal allows consumers to cancel network work. */
 export function AsyncButton({
   action,
   children,

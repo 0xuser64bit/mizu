@@ -1,4 +1,3 @@
-
 .mizu-gallery {
   min-width: 0;
   color: var(--mizu-paper);
@@ -108,6 +107,7 @@
   font-size: 15px;
   text-align: center;
 }
+
 .mizu-lightbox {
   position: fixed;
   inset: 0;

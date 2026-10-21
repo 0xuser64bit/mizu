@@ -9,7 +9,6 @@ export function GhostWord({
 }: {
   text: string;
   fill?: "accent" | "paper";
-  /** Any CSS font size; `inherit` takes the surrounding text's. */
   size?: string | number;
   className?: string;
   style?: CSSProperties;

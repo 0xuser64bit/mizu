@@ -1,4 +1,3 @@
-
 .mizu-chronicle {
   --mizu-chronicle-head: 136px;
   --mizu-chronicle-axis: 40px;
@@ -90,7 +89,7 @@
 .mizu-chronicle-lanes-head > span {
   display: flex;
   align-items: flex-start;
-  box-sizing: border-box; /* its height, set inline, matches its lane's */
+  box-sizing: border-box;
   padding: 18px 14px 0 16px;
   overflow: hidden;
   border-bottom: 1px solid var(--mizu-line);

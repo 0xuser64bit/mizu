@@ -52,7 +52,6 @@ function stamp(time: number, utc: boolean) {
   return `${pad(h)}:${pad(m)}:${pad(s)}.${pad(ms, 3)}`;
 }
 
-/** Splits `text` around case-insensitive matches of `query`, for highlighting. */
 function marked(text: string, query: string): ReactNode {
   if (!query) return text;
   const out: ReactNode[] = [];
@@ -68,11 +67,6 @@ function marked(text: string, query: string): ReactNode {
   return out;
 }
 
-/**
- * A live log tail that only renders the lines in view. It follows new lines
- * until you scroll away, then counts what you missed; filter by level,
- * search with highlighted matches, and read any line in full.
- */
 export function LogStream({
   label,
   lines,
@@ -86,14 +80,13 @@ export function LogStream({
   style,
 }: {
   label: string;
-  /** Oldest first. Append to it as lines arrive; trim it to bound memory. */
+  /** Oldest first. */
   lines: readonly LogLine[];
   selected?: LineId | null;
   defaultSelected?: LineId | null;
   onSelectedChange?: (id: LineId | null) => void;
   loading?: boolean;
   empty?: ReactNode;
-  /** Show times in UTC rather than local time. */
   utc?: boolean;
   className?: string;
   style?: CSSProperties;
@@ -113,7 +106,6 @@ export function LogStream({
   const [match, setMatch] = useState(0);
   const [top, setTop] = useState(0);
   const [following, setFollowing] = useState(true);
-  // Positions are kept as line ids, so trimming old lines never skews the counts.
   const lastId = lines.length ? lines[lines.length - 1]!.id : null;
   const [pausedAfter, setPausedAfter] = useState<LineId | null>(null);
   const [freshAfter, setFreshAfter] = useState<LineId | null>(lastId);
@@ -147,7 +139,6 @@ export function LogStream({
     return c;
   }, [lines]);
 
-  // Overview: lines over time, stacked by level so a spike of errors stands out.
   const overview = useMemo(() => {
     if (lines.length < 2) return null;
     const start = lines[0]!.time,
@@ -185,20 +176,17 @@ export function LogStream({
   );
   const unseenRef = useLatest(unseen);
 
-  // Follow the tail: new lines keep the newest in view, unless a line is open.
   useIsoLayoutEffect(() => {
     const el = scrollerRef.current;
     if (el && following && current === null) el.scrollTop = el.scrollHeight;
   }, [shown.length, following, height, current]);
 
-  // New lines glow briefly as they arrive.
   useEffect(() => {
     if (lastId === freshAfter) return;
     const settle = setTimeout(() => setFreshAfter(lastId), 1200);
     return () => clearTimeout(settle);
   }, [lastId, freshAfter]);
 
-  // While paused, missed lines are announced at most every five seconds.
   useEffect(() => {
     if (following) return;
     let said = 0;
@@ -229,10 +217,8 @@ export function LogStream({
     else if (y + ROW > el.scrollTop + el.clientHeight)
       el.scrollTop = y + ROW - el.clientHeight;
   };
-  // A line chosen elsewhere, say from a synchronised timeline, comes into view.
   useIsoLayoutEffect(() => {
     if (index >= 0) reveal(index);
-    // Only when the selection itself changes.
   }, [current]);
   const choose = (i: number) => {
     const line = shown[clamp(i, 0, shown.length - 1)];
@@ -365,7 +351,6 @@ export function LogStream({
         >
           {overview.bins.map((bin, i) => {
             if (!bin.total) return null;
-            // Errors sit on the baseline, warnings above them, the rest on top.
             const h = (bin.total / overview.most) * 9 + 1;
             const parts = [
               ["error", (bin.error / bin.total) * h],

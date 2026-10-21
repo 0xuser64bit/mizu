@@ -3,9 +3,7 @@ export type QueryField = {
   id: string;
   label: string;
   type: QueryFieldType;
-  /** Choices for select fields. */
   options?: readonly { value: string; label: string }[];
-  /** Shown after numeric values, e.g. "GB". */
   unit?: string;
 };
 export type QueryValue =
@@ -71,7 +69,6 @@ export const OPERATORS: Record<QueryFieldType, Operator[]> = {
 export const operatorOf = (field: QueryField | undefined, id: string) =>
   field ? OPERATORS[field.type].find((o) => o.id === id) : undefined;
 
-/** A rule is complete when its operator exists and it has every value that operator needs. */
 export function isComplete(rule: QueryRule, fields: readonly QueryField[]) {
   const field = fields.find((f) => f.id === rule.field);
   const op = operatorOf(field, rule.operator);
@@ -99,10 +96,7 @@ const day = (value: unknown) => {
   return Number.isFinite(t) ? Math.floor(t / DAY) : NaN;
 };
 
-/**
- * Whether a record satisfies the query. Incomplete rules are ignored, so a
- * half-written condition never empties a result list. `now` fixes "in the last".
- */
+/** Incomplete rules are ignored; `now` fixes relative-date evaluation. */
 export function matchesQuery(
   group: QueryGroup,
   record: Record<string, unknown>,
@@ -186,7 +180,6 @@ function test(
   }
 }
 
-/** A readable sentence for the whole query, e.g. for a saved segment's description. */
 export function describeQuery(
   group: QueryGroup,
   fields: readonly QueryField[],

@@ -20,12 +20,9 @@ import {
 export type BrowserItem = {
   id: string;
   label: string;
-  /** Nested items, when you already have them. */
   children?: readonly BrowserItem[];
-  /** Has children that `loadChildren` fetches on first visit. */
   hasChildren?: boolean;
   icon?: ReactNode;
-  /** A short readout on the right: a count, a size, a date. */
   meta?: ReactNode;
   disabled?: boolean;
 };
@@ -37,15 +34,9 @@ type Column = {
   selected?: string;
 };
 
-/** Below this container width one pane shows at a time; mirrored in columns.css. */
 const NARROW_BELOW = 520;
 const isBranch = (item: BrowserItem) => !!item.children || !!item.hasChildren;
 
-/**
- * Miller columns: choose an item and its contents open in the next column,
- * loading on demand, until a leaf opens in a preview. On narrow screens the
- * columns become a stack you push and pop.
- */
 export function ColumnBrowser({
   label,
   items,
@@ -68,9 +59,7 @@ export function ColumnBrowser({
   path?: readonly string[];
   defaultPath?: readonly string[];
   onPathChange?: (path: readonly string[]) => void;
-  /** Enter or double-click on an item without children. */
   onOpen?: (item: BrowserItem) => void;
-  /** The last pane, for an item without children; `trail` is the selected path. */
   renderPreview?: (
     item: BrowserItem,
     trail: readonly BrowserItem[],
@@ -88,7 +77,6 @@ export function ColumnBrowser({
     onPathChange,
   );
   const [loaded, setLoaded] = useState<Record<string, Loaded>>({});
-  // The pane that holds focus, or shows alone when narrow: where the path ends.
   const [current, setCurrent] = useState(() =>
     Math.max(0, (path ?? defaultPath).length - 1),
   );
@@ -100,7 +88,6 @@ export function ColumnBrowser({
   const typedRef = useRef({ text: "", at: 0 });
   const loadRef = useLatest(loadChildren);
 
-  // The columns along the selected path, and the leaf at its end if any.
   const columns: Column[] = [];
   let list: readonly BrowserItem[] | null = items,
     parent: BrowserItem | null = null,
@@ -129,7 +116,6 @@ export function ColumnBrowser({
   const panes = columns.length + (leaf ? 1 : 0);
   const active = Math.min(current, panes - 1);
 
-  // Fetch what the path needs; the results are kept for the next visit.
   useEffect(() => {
     const load = loadRef.current;
     if (!load) return;
@@ -160,7 +146,6 @@ export function ColumnBrowser({
     }
   });
 
-  // Focus follows keyboard moves into columns that may only just have rendered.
   useIsoLayoutEffect(() => {
     const target = focusRef.current,
       root = rootRef.current;
@@ -178,7 +163,6 @@ export function ColumnBrowser({
     }
   });
 
-  // Keep the newest column in view.
   useIsoLayoutEffect(() => {
     const track = trackRef.current;
     if (track && !narrow) track.scrollLeft = track.scrollWidth;
@@ -221,7 +205,6 @@ export function ColumnBrowser({
     const target = e.target as HTMLElement;
     const el = target.closest<HTMLElement>('[role="option"]');
     if (!el) {
-      // A pane that was still loading, or empty, when focus arrived.
       if (!target.hasAttribute("data-pane")) return;
       const level = Number(target.dataset.level);
       const first = columns[level]?.items?.find((i) => !i.disabled);
@@ -274,7 +257,6 @@ export function ColumnBrowser({
       go(level - 1, selected[level - 1], "back");
       return;
     } else if (e.key.length === 1 && e.key.trim()) {
-      // Type to jump: letters build a prefix; one repeated letter cycles.
       const now = e.timeStamp,
         typed = typedRef.current;
       typed.text = now - typed.at > 700 ? e.key : typed.text + e.key;

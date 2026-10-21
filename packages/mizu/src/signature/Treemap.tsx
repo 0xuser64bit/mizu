@@ -29,7 +29,6 @@ export type TreemapNode = {
   value?: number;
   children?: readonly TreemapNode[];
   tone?: SignatureTone;
-  /** Shown in the readout for this node. */
   detail?: ReactNode;
 };
 
@@ -57,10 +56,6 @@ const sum = (node: TreemapNode, cache: Map<TreemapNode, number>): number => {
   return total;
 };
 
-/**
- * A hierarchy by size. Blocks are proportional to their value; opening one
- * moves the camera into it, and the path leads back out.
- */
 export function Treemap({
   label,
   data,
@@ -75,14 +70,12 @@ export function Treemap({
   style,
 }: {
   label: string;
-  /** The root. Its children fill the first view. */
   data: TreemapNode;
   format?: (value: number) => string;
   /** Ids from the root's child down to the opened node. */
   path?: readonly string[];
   defaultPath?: readonly string[];
   onPathChange?: (path: readonly string[]) => void;
-  /** Called when a leaf is chosen. */
   onSelect?: (node: TreemapNode, path: readonly TreemapNode[]) => void;
   /** 0–1 intensity mixed into each block's surface, e.g. growth or error rate. */
   heat?: (node: TreemapNode) => number | undefined;
@@ -106,7 +99,6 @@ export function Treemap({
     onPathChange,
   );
 
-  // Resolve ids to nodes, stopping at the first id that no longer exists.
   const chain = useMemo(() => {
     const nodes: TreemapNode[] = [data];
     for (const step of trail) {
@@ -126,7 +118,6 @@ export function Treemap({
     [focus, width, height, totals],
   );
 
-  // A move between levels is a camera move: the opened block's box fills the stage.
   const [motion, setMotion] = useState<{
     layers: [TreemapNode, Box][][];
     from: Box;
@@ -139,7 +130,6 @@ export function Treemap({
   const nodes = useRef(new Map<string, HTMLButtonElement>());
   const pendingFocus = useRef<string | null>(null);
 
-  // The entering level uses its final arrangement, squeezed into the opened block's box.
   const inside = (node: TreemapNode, box: Box): [TreemapNode, Box][] =>
     [...layout(node, full)].map(([n, r]) => [
       n,
@@ -223,7 +213,6 @@ export function Treemap({
     }
   });
 
-  // Spatial arrows: move to the nearest block whose centre lies in that direction.
   const onKey = (e: KeyboardEvent<HTMLButtonElement>, node: TreemapNode) => {
     const box = current.get(node);
     if (e.key === "Backspace" || e.key === "Escape") {
@@ -296,7 +285,6 @@ export function Treemap({
   const share = (v: number, of: number) =>
     of ? `${((v / of) * 100).toFixed(v / of < 0.1 ? 1 : 0)}%` : "—";
 
-  // Levels cross-fade in the direction of travel: the deeper level leads going in, trails going out.
   const fade = (layer: number) => {
     if (!motion) return 1;
     const deeper = Math.min(

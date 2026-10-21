@@ -4,7 +4,6 @@ export type FlowNode = {
   x: number;
   y: number;
   label: string;
-  /** A short caption such as TRIGGER or ACTION. */
   kind?: string;
   description?: string;
   /** Input port names. Defaults to one input, "in". Use [] for a source. */
@@ -30,7 +29,6 @@ export const ins = (n: FlowNode) => n.inputs ?? ["in"];
 export const outs = (n: FlowNode) => n.outputs ?? ["out"];
 export const rows = (n: FlowNode) => Math.max(1, ins(n).length, outs(n).length);
 
-/** Layered layout: longest path from the sources, then two barycentre passes to untangle. */
 export function tidyFlow(
   nodes: readonly FlowNode[],
   edges: readonly FlowEdge[],

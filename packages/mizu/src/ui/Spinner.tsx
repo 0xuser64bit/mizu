@@ -7,7 +7,6 @@ export function Spinner({
   style,
 }: {
   size?: number;
-  /** A color token, or `current` for the surrounding text color. */
   tone?: "accent" | "paper" | "muted" | "current";
   label?: string;
   className?: string;

@@ -1,4 +1,3 @@
-
 .mizu-knob,
 .mizu-fader,
 .mizu-xy {
@@ -38,6 +37,7 @@
   opacity: 0;
   pointer-events: none;
 }
+
 .mizu-knob svg {
   display: block;
   overflow: visible;
@@ -75,6 +75,7 @@
 .mizu-knob[data-dragging] svg {
   cursor: grabbing;
 }
+
 .mizu-fader-body {
   position: relative;
   display: flex;
@@ -164,6 +165,7 @@
   height: 2px;
   background: var(--mizu-paper);
 }
+
 .mizu-xy-pad {
   position: relative;
   overflow: hidden;

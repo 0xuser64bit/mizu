@@ -1,4 +1,3 @@
-/* Controls — Knob, Fader and XYPad: instruments rather than form fields. */
 .mizu-knob,
 .mizu-fader,
 .mizu-xy {
@@ -30,7 +29,6 @@
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
-/* The native inputs carry keyboard, assistive technology and forms; the drawing shows focus. */
 .mizu-control-input {
   position: absolute;
   width: 1px;
@@ -40,7 +38,6 @@
   pointer-events: none;
 }
 
-/* Knob */
 .mizu-knob svg {
   display: block;
   overflow: visible;
@@ -79,7 +76,6 @@
   cursor: grabbing;
 }
 
-/* Fader */
 .mizu-fader-body {
   position: relative;
   display: flex;
@@ -170,7 +166,6 @@
   background: var(--mizu-paper);
 }
 
-/* XY pad */
 .mizu-xy-pad {
   position: relative;
   overflow: hidden;
@@ -212,7 +207,6 @@
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
-/* Moved by transform, so the diamond turns on a layer of its own. */
 .mizu-xy-puck {
   position: absolute;
   top: 0;
