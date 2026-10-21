@@ -1,8 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { MotionPreferences } from "@/mizu";
 import { DemoSlot } from "./DemoSlot";
+import type { PlaygroundPiece } from "@/components/workshop/playground";
+const PropsPlayground = dynamic(() =>
+  import("@/components/workshop/PropsPlayground").then(
+    (module) => module.PropsPlayground,
+  ),
+);
+const editable = new Set(["button", "badge", "text-field", "alert", "slider"]);
 export function PreviewStage({
   slug,
   usage = false,
@@ -11,6 +19,7 @@ export function PreviewStage({
   usage?: boolean;
 }) {
   const [reduced, setReduced] = useState(false);
+  const [editing, setEditing] = useState(false);
   const [narrow, setNarrow] = useState(false),
     [theme, setTheme] = useState<"inherit" | "light" | "dark">("inherit"),
     [replay, setReplay] = useState(0);
@@ -46,6 +55,15 @@ export function PreviewStage({
         <button type="button" onClick={() => setReplay((v) => v + 1)}>
           Reset demo
         </button>
+        {!usage && editable.has(slug) && (
+          <button
+            type="button"
+            aria-expanded={editing}
+            onClick={() => setEditing(!editing)}
+          >
+            {editing ? "Close prop controls" : "Edit props & copy JSX"}
+          </button>
+        )}
       </div>
       <div
         data-theme={theme === "inherit" ? undefined : theme}
@@ -56,6 +74,11 @@ export function PreviewStage({
           <DemoSlot key={replay} slug={slug} usage={usage} />
         </MotionPreferences>
       </div>
+      {editing && (
+        <div className="mizu-inline-playground">
+          <PropsPlayground initialPiece={slug as PlaygroundPiece} />
+        </div>
+      )}
     </div>
   );
 }
