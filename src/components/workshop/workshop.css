@@ -337,6 +337,73 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+.mizu-block-showcase {
+  padding-top: 32px;
+  border-top: 1px solid var(--mizu-line);
+  scroll-margin-top: 96px;
+}
+.mizu-block-showcase + .mizu-block-showcase {
+  margin-top: 72px;
+}
+.mizu-block-showcase > header {
+  display: flex;
+  gap: 8px 24px;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.mizu-block-showcase h2 {
+  margin: 0 0 12px;
+  font: 650 clamp(26px, 3vw, 40px) / 1.1 var(--mizu-font-display);
+  letter-spacing: -0.03em;
+}
+.mizu-block-showcase header p {
+  max-width: 60ch;
+  margin: 0;
+  color: var(--mizu-muted);
+  line-height: 1.6;
+}
+.mizu-block-showcase-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--mizu-muted);
+  font: 11px var(--mizu-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.mizu-block-showcase-source:hover {
+  color: var(--mizu-paper);
+}
+.mizu-block-showcase-source svg {
+  color: var(--mizu-accent);
+}
+.mizu-block-showcase-frame {
+  border: 1px solid var(--mizu-line-bright);
+}
+.mizu-block-showcase-install {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 8px 12px 8px 20px;
+  border-bottom: 1px solid var(--mizu-line);
+  background: var(--mizu-ink-2);
+}
+.mizu-block-showcase-install code {
+  min-width: 0;
+  color: var(--mizu-paper);
+  font: 12px / 1.6 var(--mizu-font-mono);
+  overflow-wrap: anywhere;
+}
+.mizu-block-showcase-stage {
+  padding: 32px;
+}
 @media (max-width: 960px) {
   .mizu-workbench {
     grid-template-columns: 230px minmax(0, 1fr);
@@ -395,6 +462,15 @@
   }
 }
 @media (max-width: 640px) {
+  .mizu-block-showcase + .mizu-block-showcase {
+    margin-top: 48px;
+  }
+  .mizu-block-showcase-install {
+    padding-left: 16px;
+  }
+  .mizu-block-showcase-stage {
+    padding: 20px 16px;
+  }
   .mizu-workshop-navigation nav {
     column-gap: 16px;
   }

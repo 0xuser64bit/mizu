@@ -126,16 +126,14 @@ export function FileBrowserBlock() {
               header: "Name",
               sortValue: (file) => file.name,
               render: (file) => (
-                <Button
+                <button
+                  type="button"
                   className="mizu-block-file-name"
-                  variant="ghost"
-                  size="sm"
-                  arrow={false}
                   aria-pressed={selected?.id === file.id}
                   onClick={() => setSelection(file.id)}
                 >
                   {file.name}
-                </Button>
+                </button>
               ),
             },
             {

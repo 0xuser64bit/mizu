@@ -8,7 +8,7 @@ import { BLOCKS } from "@/components/blocks/manifest";
 import "@/components/blocks/blocks.css";
 
 export const metadata: Metadata = {
-  title: "Blocks — Mizu compositions",
+  title: "Blocks: installable React compositions",
   description:
     "Installable React compositions: workspace settings, a searchable file browser and a date-filtered analytics workspace.",
   alternates: { canonical: "/blocks" },
@@ -25,17 +25,16 @@ export default function BlocksPage() {
       path="/blocks"
       title="Start with a working surface."
       description="Three compositions with real state, readable source and the parts already connected. Install one, then make it yours."
+      aside={
+        <ul className="mizu-example-systems" aria-label="Blocks on this page">
+          {BLOCKS.map((block) => (
+            <li key={block.id}>
+              <a href={`#${block.id}`}>{block.title}</a>
+            </li>
+          ))}
+        </ul>
+      }
     >
-      <nav
-        className="mizu-block-showcase-index"
-        aria-label="Block compositions"
-      >
-        {BLOCKS.map((block) => (
-          <a key={block.id} href={`#${block.id}`}>
-            {block.title}
-          </a>
-        ))}
-      </nav>
       {BLOCKS.map((block) => {
         const Preview = previews[block.id];
         return (
@@ -50,12 +49,35 @@ export default function BlocksPage() {
                 <h2 id={`${block.id}-title`}>{block.title}</h2>
                 <p>{block.description}</p>
               </div>
-              <a href={`/r/${block.id}.json`} target="_blank" rel="noreferrer">
-                Inspect registry source
+              <a
+                className="mizu-block-showcase-source"
+                href={`/r/${block.id}.json`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Registry JSON
+                <span className="mizu-sr-only"> (opens in a new tab)</span>
+                <svg
+                  aria-hidden="true"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                >
+                  <path
+                    d="M2 10 10 2M4 2h6v6"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                  />
+                </svg>
               </a>
             </header>
-            <BlockInstall id={block.id} />
-            <Preview />
+            <div className="mizu-block-showcase-frame">
+              <BlockInstall id={block.id} />
+              <div className="mizu-block-showcase-stage">
+                <Preview />
+              </div>
+            </div>
           </section>
         );
       })}

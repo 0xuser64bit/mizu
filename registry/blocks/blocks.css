@@ -31,6 +31,9 @@
 .mizu-block-settings-form > p {
   margin: 0;
 }
+.mizu-block-settings-form > p:empty {
+  position: absolute;
+}
 .mizu-block-actions,
 .mizu-block-toolbar {
   display: flex;
@@ -40,6 +43,7 @@
   flex-wrap: wrap;
 }
 .mizu-block-actions {
+  align-items: stretch;
   justify-content: flex-start;
 }
 .mizu-block-text-action,
@@ -62,6 +66,7 @@
 }
 .mizu-block-text-action:focus-visible,
 .mizu-block-download:focus-visible,
+.mizu-block-file-name:focus-visible,
 .mizu-block-file-detail pre:focus-visible {
   outline: 2px solid var(--mizu-accent);
   outline-offset: 4px;
@@ -85,9 +90,22 @@
   align-items: start;
 }
 .mizu-block-file-name {
-  padding-inline: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mizu-paper);
+  font: inherit;
   text-align: left;
-  white-space: normal;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: text-decoration-color var(--mizu-duration-fast);
+}
+.mizu-block-file-name:hover {
+  text-decoration-color: var(--mizu-line-bright);
 }
 .mizu-block-file-name[aria-pressed="true"] {
   color: var(--mizu-accent);
@@ -128,60 +146,6 @@
   gap: 24px;
   padding-top: 28px;
 }
-.mizu-block-showcase-index {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--mizu-line);
-}
-.mizu-block-showcase-index a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--mizu-muted);
-  text-underline-offset: 5px;
-}
-.mizu-block-showcase-index a:hover {
-  color: var(--mizu-accent);
-}
-.mizu-block-showcase {
-  margin-top: 72px;
-  padding-top: 32px;
-  border-top: 1px solid var(--mizu-line);
-  scroll-margin-top: 112px;
-}
-.mizu-block-showcase > header {
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
-  align-items: start;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-}
-.mizu-block-showcase h2 {
-  margin: 0 0 12px;
-  font: 650 clamp(26px, 3vw, 40px) / 1.1 var(--mizu-font-display);
-  letter-spacing: -0.03em;
-}
-.mizu-block-showcase header p {
-  max-width: 60ch;
-  margin: 0;
-  color: var(--mizu-muted);
-  line-height: 1.6;
-}
-.mizu-block-showcase-install {
-  max-width: 100%;
-  margin-bottom: 28px;
-  overflow: auto;
-}
-.mizu-block-showcase-install code {
-  display: block;
-  padding: 16px;
-  border: 1px solid var(--mizu-line);
-  background: var(--mizu-ink-2);
-  font: 11px / 1.6 var(--mizu-font-mono);
-}
 @media (max-width: 800px) {
   .mizu-block-settings,
   .mizu-block-file-workspace,
@@ -191,9 +155,6 @@
   }
   .mizu-block-analytics-summary {
     padding-top: 0;
-  }
-  .mizu-block-showcase {
-    margin-top: 48px;
   }
 }
 @media (max-width: 420px) {
