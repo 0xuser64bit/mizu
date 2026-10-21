@@ -235,16 +235,22 @@ export function Nav({
             zIndex: 85,
             display: "flex",
             flexDirection: "column",
+            overflowY: "auto",
             background: "var(--mizu-ink)",
             padding: "20px var(--mizu-space-5)",
           }}
         >
           <div
             style={{
+              position: "sticky",
+              top: 0,
+              zIndex: 1,
               display: "flex",
+              flexShrink: 0,
               height: 64,
               alignItems: "center",
               justifyContent: "space-between",
+              background: "var(--mizu-ink)",
             }}
           >
             {brand}
@@ -301,7 +307,7 @@ export function Nav({
                 </span>
                 <span
                   style={{
-                    fontSize: 44,
+                    fontSize: "clamp(28px, 9.5vw, 44px)",
                     fontWeight: 900,
                     fontStretch: "118%",
                     letterSpacing: "-0.01em",
