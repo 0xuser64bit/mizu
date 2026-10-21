@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import {
+  DateRangeField,
   FormField,
   TextField,
   TextArea,
@@ -18,6 +19,34 @@ import {
   FileDropzone,
   AsyncForm,
 } from "@/mizu";
+
+export function DateRangeFieldDemo() {
+  const [range, setRange] = useState({
+    start: "2026-10-15",
+    end: "2026-10-21",
+  });
+  return (
+    <DateRangeField
+      label="Reporting window"
+      value={range}
+      onValueChange={setRange}
+      defaultValue={{ start: "2026-10-15", end: "2026-10-21" }}
+      min="2026-01-01"
+      max="2026-12-31"
+      hint="Choose a window, or start with a preset."
+      presets={[
+        {
+          label: "Sample week",
+          value: { start: "2026-10-15", end: "2026-10-21" },
+        },
+        {
+          label: "Sample month",
+          value: { start: "2026-10-01", end: "2026-10-21" },
+        },
+      ]}
+    />
+  );
+}
 
 export function FormFieldDemo() {
   return (

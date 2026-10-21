@@ -91,6 +91,9 @@ export const GENERATED_DEMOS = {
   tooltip: dynamic(() =>
     import("./demos/generated/foundation").then((m) => m.TooltipDemo),
   ),
+  "date-range-field": dynamic(() =>
+    import("./demos/generated/forms").then((m) => m.DateRangeFieldDemo),
+  ),
   "form-field": dynamic(() =>
     import("./demos/generated/forms").then((m) => m.FormFieldDemo),
   ),
@@ -271,6 +274,9 @@ export const GENERATED_DEMOS = {
   ),
   "split-pane": dynamic(() =>
     import("./demos/generated/layout").then((m) => m.SplitPaneDemo),
+  ),
+  dock: dynamic(() =>
+    import("./demos/generated/layout").then((m) => m.DockDemo),
   ),
   "aspect-ratio": dynamic(() =>
     import("./demos/generated/layout").then((m) => m.AspectRatioDemo),

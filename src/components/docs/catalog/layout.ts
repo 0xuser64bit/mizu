@@ -65,6 +65,62 @@ export const LAYOUT = [
     "Focusable separator with orientation, controls and current/min/max values. Arrow keys move 1%, Shift moves 10%; Home/End reach bounds. Pointer capture supports touch.",
     "Direct manipulation, no spring lag.",
   ),
+  {
+    ...d(
+      "Dock",
+      "Layout",
+      "layout/Dock.tsx",
+      "A two-pane workspace that keeps your drafts intact as tabs move, panels collapse and the working space changes.",
+      `  const initial: DockLayout = { panes: [["draft", "notes"], ["preview"]], active: ["draft", "preview"], split: 52, collapsed: null };
+  const [layout, setLayout] = useState(initial);
+  return <div>
+    <Dock label="Release workspace" value={layout} onValueChange={setLayout} tabs={[
+      { id: "draft", label: "Draft", content: <TextArea label="Release draft" rows={7} defaultValue={"A quieter way to work.\\n\\nEvery panel keeps its place, and every draft stays yours."} hint="Edit this, then move the tab. Your draft travels with it." /> },
+      { id: "notes", label: "Notes", content: <section><h3>Before publishing</h3><ul><li>Check the keyboard path.</li><li>Read the empty and error states.</li><li>Keep the motion purposeful.</li></ul></section> },
+      { id: "preview", label: "Preview", content: <article><h3>A quieter way to work.</h3><p>A focused workspace for the source, its context and the result.</p><p className="mizu-field-hint">Tabs keep their content mounted when you switch, collapse or move them. On narrow screens the panes stack.</p></article> },
+    ]} />
+    <Button variant="ghost" arrow={false} size="sm" onClick={() => setLayout(initial)}>Reset layout</Button>
+  </div>;`,
+      [
+        p(
+          "label",
+          "string",
+          "Accessible workspace name, also shown in the toolbar.",
+        ),
+        p(
+          "tabs",
+          "DockTab[]",
+          "Unique id, label and content for every panel. Content stays mounted when hidden or moved.",
+        ),
+        p(
+          "value / defaultValue / onValueChange",
+          "DockLayout / DockLayout / function",
+          "Controlled layout or an initial layout: panes contains two ordered ID lists, active contains each pane's selected ID, split is the first pane's percentage, and collapsed is 0, 1 or null.",
+        ),
+        p(
+          "readOnly",
+          "boolean",
+          "Lock resizing, collapsing, moving and reordering. Tab selection stays available.",
+          "false",
+        ),
+      ],
+      "Named workspace with two roving-tabindex tablists and labelled tabpanels. Arrow keys select, Home/End reach the first/last tab. Every structural action has a labelled button. The separator supports pointer capture, arrows, Shift for 10%, and Home/End for the 20–80% bounds. On small screens panes stack and the separator is removed. Unknown or repeated IDs are removed, newly supplied tabs join the first pane, and missing selections fall back to the first available tab.",
+      "Resizing tracks the hand directly; tabs and collapse update without travel. Hidden panels remain mounted so form values and component state survive layout changes.",
+      "Dock, type DockLayout, TextArea, Button",
+    ),
+    keys: [
+      { keys: "← → / Home End", action: "Select a tab within its pane" },
+      { keys: "Alt + ← →", action: "Reorder the focused tab" },
+      {
+        keys: "Alt + Shift + ← →",
+        action: "Move the focused tab to the other pane",
+      },
+      {
+        keys: "← → / Shift + ← →",
+        action: "Resize the focused divider by 1% / 10%",
+      },
+    ],
+  },
   d(
     "AspectRatio",
     "Layout",

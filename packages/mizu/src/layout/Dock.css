@@ -24,6 +24,7 @@
   font-weight: 600;
 }
 .mizu-dock button {
+  box-sizing: border-box;
   min-height: 44px;
   padding: 8px 10px;
   border: 0;

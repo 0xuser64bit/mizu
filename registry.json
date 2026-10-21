@@ -2587,6 +2587,67 @@
       ]
     },
     {
+      "name": "date-range-field",
+      "type": "registry:ui",
+      "title": "DateRangeField",
+      "description": "A date window with native calendars, useful presets and clear boundaries.",
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/date-range-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/date-range-field.tsx"
+        },
+        {
+          "path": "registry/source/forms/Fields.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/Fields.tsx"
+        },
+        {
+          "path": "registry/source/forms/DateRangeField.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/DateRangeField.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/input.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/input.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
+          "path": "registry/source/forms/Fields.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/Fields.css"
+        },
+        {
+          "path": "registry/source/forms/DateRangeField.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/DateRangeField.css"
+        }
+      ]
+    },
+    {
       "name": "form-field",
       "type": "registry:ui",
       "title": "FormField",
@@ -5143,6 +5204,37 @@
       ]
     },
     {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Dock",
+      "description": "A two-pane workspace that keeps your drafts intact as tabs move, panels collapse and the working space changes.",
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/dock.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/dock.tsx"
+        },
+        {
+          "path": "registry/source/layout/Dock.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/layout/Dock.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/layout/Dock.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/layout/Dock.css"
+        }
+      ]
+    },
+    {
       "name": "aspect-ratio",
       "type": "registry:ui",
       "title": "AspectRatio",
@@ -5637,6 +5729,91 @@
           "path": "registry/styles/base.css",
           "type": "registry:file",
           "target": "@ui/mizu/base.css"
+        }
+      ]
+    },
+    {
+      "name": "settings-block",
+      "type": "registry:block",
+      "title": "Workspace settings",
+      "description": "A labelled settings form with local persistence, draft recovery and honest save errors.",
+      "registryDependencies": [
+        "button",
+        "select-field",
+        "status",
+        "switch",
+        "text-field"
+      ],
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/blocks/SettingsBlock.tsx",
+          "type": "registry:component",
+          "target": "@ui/mizu/blocks/SettingsBlock.tsx"
+        },
+        {
+          "path": "registry/blocks/blocks.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/blocks/blocks.css"
+        }
+      ]
+    },
+    {
+      "name": "file-browser-block",
+      "type": "registry:block",
+      "title": "File browser",
+      "description": "Search and filter a small collection, inspect a file and download its original sample content.",
+      "registryDependencies": [
+        "button",
+        "data-table",
+        "description-list",
+        "empty-state",
+        "search-field",
+        "select-field"
+      ],
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/blocks/FileBrowserBlock.tsx",
+          "type": "registry:component",
+          "target": "@ui/mizu/blocks/FileBrowserBlock.tsx"
+        },
+        {
+          "path": "registry/blocks/blocks.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/blocks/blocks.css"
+        }
+      ]
+    },
+    {
+      "name": "analytics-block",
+      "type": "registry:block",
+      "title": "Analytics workspace",
+      "description": "A date window, a chart and sortable readings driven by the same sample dataset, with CSV export.",
+      "registryDependencies": [
+        "data-table",
+        "date-range-field",
+        "segmented-control",
+        "stat",
+        "trend-chart"
+      ],
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/blocks/AnalyticsBlock.tsx",
+          "type": "registry:component",
+          "target": "@ui/mizu/blocks/AnalyticsBlock.tsx"
+        },
+        {
+          "path": "registry/blocks/blocks.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/blocks/blocks.css"
         }
       ]
     },

@@ -1,6 +1,48 @@
 import { define as d, prop as p } from "./define";
 export const FORMS = [
   d(
+    "DateRangeField",
+    "Forms",
+    "forms/DateRangeField.tsx",
+    "A date window with native calendars, useful presets and clear boundaries.",
+    '  const [range, setRange] = useState({ start: "2026-10-15", end: "2026-10-21" });\n  return <DateRangeField label="Reporting window" value={range} onValueChange={setRange} defaultValue={{ start: "2026-10-15", end: "2026-10-21" }} min="2026-01-01" max="2026-12-31" hint="Choose a window, or start with a preset." presets={[{ label: "Sample week", value: { start: "2026-10-15", end: "2026-10-21" } }, { label: "Sample month", value: { start: "2026-10-01", end: "2026-10-21" } }]} />;',
+    [
+      p(
+        "label / hint / error",
+        "string / ReactNode / string",
+        "Group name, shared help and external validation feedback.",
+      ),
+      p(
+        "value / defaultValue / onValueChange",
+        "DateRange / DateRange / function",
+        "Controlled or initial { start, end } date-only strings. Empty strings preserve an incomplete range. defaultValue is also the reset target.",
+      ),
+      p(
+        "presets",
+        "readonly DateRangePreset[]",
+        "Named { label, value } ranges. Incomplete, invalid and out-of-bounds presets are disabled.",
+      ),
+      p(
+        "min / max",
+        "string",
+        "Inclusive boundaries in YYYY-MM-DD format. Dates are compared without local timezone conversion.",
+      ),
+      p(
+        "startName / endName",
+        "string",
+        "Native form-data field names.",
+        '"start" / "end"',
+      ),
+      p(
+        "required / disabled / readOnly",
+        "boolean",
+        "Native validation and interaction states. Clear empties both dates; Reset restores the initial defaultValue.",
+      ),
+    ],
+    "A fieldset and legend group two individually labelled native date inputs. Help and errors describe both inputs. End cannot precede start; invalid ranges block native form submission. Native calendars retain platform keyboard behavior and locale formatting. Native form reset restores defaultValue and reports the range through onValueChange.",
+    "Native date picking and immediate value changes; no forced travel.",
+  ),
+  d(
     "FormField",
     "Forms",
     "forms/Fields.tsx",

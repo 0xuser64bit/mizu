@@ -12,6 +12,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "check": "bun run examples:check && bun run registry:check && bun run typecheck && bun run lint && bun run test && bun run build:ui",
     "test:consumer": "node scripts/check-consumer.mjs",
+    "test:blocks": "node scripts/check-blocks.mjs",
     "examples:sync": "bun scripts/build-examples.ts",
     "examples:check": "bun scripts/build-examples.ts --check",
     "registry:sync": "bun scripts/build-registry.ts",

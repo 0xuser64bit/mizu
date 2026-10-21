@@ -11,6 +11,7 @@ import { dirname, extname, join, normalize, relative } from "node:path";
 import postcss from "postcss";
 import ts from "typescript";
 import { SYSTEMS } from "../src/components/docs/registry";
+import { BLOCKS } from "../src/components/blocks/manifest";
 
 const check = process.argv.includes("--check");
 const sourceRoot = "packages/mizu/src";
@@ -24,7 +25,7 @@ const styles = [
   ...core.slice(marker + 1),
   ...[
     ...readFileSync("packages/mizu/styles.css", "utf8").matchAll(
-      /@import "\.\/(src\/signature\/[^"]+)"/g,
+      /@import "\.\/(src\/(?!core\.css)[^"]+\.css)"/g,
     ),
   ].flatMap(
     (m) =>
@@ -403,7 +404,84 @@ const preset = {
     ...fonts.files,
   ],
 };
-const items = [...components, fonts, preset];
+const blocks = BLOCKS.map((block) => {
+  const code = readFileSync(block.source, "utf8");
+  const source = ts.createSourceFile(
+    block.source,
+    code,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX,
+  );
+  const dependencies = new Set<string>();
+  const replacements: { start: number; end: number; text: string }[] = [];
+  for (const statement of source.statements) {
+    if (
+      !ts.isImportDeclaration(statement) ||
+      !ts.isStringLiteral(statement.moduleSpecifier) ||
+      statement.moduleSpecifier.text !== "@/mizu"
+    )
+      continue;
+    const bindings = statement.importClause?.namedBindings;
+    if (!bindings || !ts.isNamedImports(bindings))
+      throw new Error(`${block.id} requires named library imports`);
+    const imports = new Map<string, string[]>();
+    for (const element of bindings.elements) {
+      const name = (element.propertyName ?? element.name).text;
+      const owner = catalog.find((meta) =>
+        new RegExp(`\\b${name}\\b`).test(itemExports(meta)),
+      );
+      if (!owner)
+        throw new Error(`${block.id}: no registry export for ${name}`);
+      dependencies.add(owner.slug);
+      const symbol = `${element.isTypeOnly ? "type " : ""}${name}${element.propertyName ? ` as ${element.name.text}` : ""}`;
+      imports.set(owner.slug, [...(imports.get(owner.slug) ?? []), symbol]);
+    }
+    replacements.push({
+      start: statement.getStart(source),
+      end: statement.end,
+      text: [...imports]
+        .map(
+          ([slug, names]) =>
+            `import { ${names.join(", ")} } from "../${slug}";`,
+        )
+        .join("\n"),
+    });
+  }
+  let installed = code;
+  for (const replacement of replacements.reverse())
+    installed =
+      installed.slice(0, replacement.start) +
+      replacement.text +
+      installed.slice(replacement.end);
+  const path = `registry/blocks/${block.exportName}.tsx`;
+  output(path, installed);
+  return {
+    name: block.id,
+    type: "registry:block",
+    title: block.title,
+    description: block.description,
+    registryDependencies: [...dependencies],
+    meta: { client: true },
+    files: [
+      file(
+        path,
+        `@ui/mizu/blocks/${block.exportName}.tsx`,
+        "registry:component",
+      ),
+      file(
+        "registry/blocks/blocks.css",
+        "@ui/mizu/blocks/blocks.css",
+        "registry:file",
+      ),
+    ],
+  };
+});
+output(
+  "registry/blocks/blocks.css",
+  readFileSync("src/components/blocks/blocks.css", "utf8"),
+);
+const items = [...components, ...blocks, fonts, preset];
 output(
   "registry.json",
   JSON.stringify(

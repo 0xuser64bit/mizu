@@ -6,6 +6,10 @@ import {
   Grid,
   Stat,
   SplitPane,
+  Dock,
+  type DockLayout,
+  TextArea,
+  Button,
   AspectRatio,
   ScrollArea,
   Prose,
@@ -56,6 +60,80 @@ export function SplitPaneDemo() {
         </div>
       }
     />
+  );
+}
+
+export function DockDemo() {
+  const initial: DockLayout = {
+    panes: [["draft", "notes"], ["preview"]],
+    active: ["draft", "preview"],
+    split: 52,
+    collapsed: null,
+  };
+  const [layout, setLayout] = useState(initial);
+  return (
+    <div>
+      <Dock
+        label="Release workspace"
+        value={layout}
+        onValueChange={setLayout}
+        tabs={[
+          {
+            id: "draft",
+            label: "Draft",
+            content: (
+              <TextArea
+                label="Release draft"
+                rows={7}
+                defaultValue={
+                  "A quieter way to work.\n\nEvery panel keeps its place, and every draft stays yours."
+                }
+                hint="Edit this, then move the tab. Your draft travels with it."
+              />
+            ),
+          },
+          {
+            id: "notes",
+            label: "Notes",
+            content: (
+              <section>
+                <h3>Before publishing</h3>
+                <ul>
+                  <li>Check the keyboard path.</li>
+                  <li>Read the empty and error states.</li>
+                  <li>Keep the motion purposeful.</li>
+                </ul>
+              </section>
+            ),
+          },
+          {
+            id: "preview",
+            label: "Preview",
+            content: (
+              <article>
+                <h3>A quieter way to work.</h3>
+                <p>
+                  A focused workspace for the source, its context and the
+                  result.
+                </p>
+                <p className="mizu-field-hint">
+                  Tabs keep their content mounted when you switch, collapse or
+                  move them. On narrow screens the panes stack.
+                </p>
+              </article>
+            ),
+          },
+        ]}
+      />
+      <Button
+        variant="ghost"
+        arrow={false}
+        size="sm"
+        onClick={() => setLayout(initial)}
+      >
+        Reset layout
+      </Button>
+    </div>
   );
 }
 

@@ -12,6 +12,7 @@ const renamed = {
 };
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: { "/r/*": ["./registry/**/*"] },
   redirects: async () =>
     Object.entries(renamed).map(([from, to]) => ({
       source: `/components/${from}`,
