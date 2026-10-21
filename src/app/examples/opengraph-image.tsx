@@ -9,7 +9,7 @@ export default function Image() {
     label: "Examples",
     title: "Working",
     accent: "together.",
-    line: "An incident review, a design review and an automation builder, built from Mizu’s signature systems.",
+    line: "An incident review, a design review, an automation builder and an audio workbench, built from Mizu’s signature systems.",
     path: "/examples",
   });
 }

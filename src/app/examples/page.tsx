@@ -5,7 +5,7 @@ import { SiteNav } from "@/components/shell/SiteNav";
 export const metadata: Metadata = {
   title: "Examples: React systems working together",
   description:
-    "Whole workflows built from Mizu's signature systems, sharing state across several of them: an incident review, a design review and an automation builder.",
+    "Whole workflows built from Mizu's signature systems, sharing state across several of them: an incident review, a design review, an automation builder and an audio workbench.",
   alternates: { canonical: "/examples" },
 };
 
@@ -25,18 +25,18 @@ const EXAMPLES = [
       "Pin comments on a submission, fling it to a decision, and arrange the results on a board.",
   },
   {
-    href: "/examples/audio-workbench",
-    title: "Audio workbench",
-    systems: "Waveform · Outliner · RangeSelector · SplitPane",
-    description:
-      "Listen to a recording, select a passage and collect structured notes tied to its time.",
-  },
-  {
     href: "/examples/automation",
     title: "Automation builder",
     systems: "FlowGraph · QueryBuilder · SplitFlap",
     description:
       "Write a flow's condition as a query and see every record's route before anything runs.",
+  },
+  {
+    href: "/examples/audio-workbench",
+    title: "Audio workbench",
+    systems: "Waveform · RangeSelector · Outliner · SplitPane",
+    description:
+      "Listen to a recording, select a passage and collect structured notes tied to its time.",
   },
 ];
 
