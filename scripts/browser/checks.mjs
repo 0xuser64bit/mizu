@@ -1,7 +1,5 @@
 import assert from "node:assert/strict";
 
-// Browser-adapter tests. Pass a native Codex tab; all UI actions stay in its API.
-// A Playwright runner can provide the same adapter (including domSnapshot).
 export async function checkDocumentation(tab, baseUrl) {
   const page = tab.playwright;
   await tab.goto(`${baseUrl}/components/command-palette`);

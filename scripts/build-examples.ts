@@ -20,7 +20,6 @@ async function typescript(path: string, value: string) {
   output(path, await format(value, { parser: "typescript" }));
 }
 
-// Compile the documented examples as live demos: copied usage cannot silently drift.
 const overrides: Record<string, string> = {
   AsyncForm: `  return <AsyncForm onSubmit={async (data) => { localStorage.setItem("mizu-demo-name", String(data.get("name"))); }} successMessage="Saved on this device."><TextField label="Display name" name="name" required /><button type="submit" className="mizu-text-button">Save locally</button></AsyncForm>;`,
   EmptyState: `  const [created, setCreated] = useState(false);\n  return created ? <p>Your new draft is ready.</p> : <EmptyState title="No releases yet" action={<Button size="sm" onClick={() => setCreated(true)}>Create a release</Button>}>Your first release starts with a finished piece.</EmptyState>;`,
@@ -52,7 +51,7 @@ for (const [family, entries] of families) {
   });
   await typescript(
     `src/components/docs/demos/generated/${family.toLowerCase()}.tsx`,
-    `"use client";\n// Generated from catalog usage by bun run examples:sync.\n${bodies.some((b) => b.includes("useState")) ? 'import { useState } from "react";\n' : ""}import { ${[...imports].join(", ")} } from "@/mizu";\n\n${bodies.join("\n\n")}\n`,
+    `"use client";\n${bodies.some((b) => b.includes("useState")) ? 'import { useState } from "react";\n' : ""}import { ${[...imports].join(", ")} } from "@/mizu";\n\n${bodies.join("\n\n")}\n`,
   );
 }
 await typescript(
@@ -75,10 +74,9 @@ const legacyBodies = legacy.map((entry) => {
 });
 await typescript(
   "src/components/docs/demos/generated/legacy-examples.tsx",
-  `"use client";\n// Compile the original copied examples too; these do not replace their interactive demos.\nimport { useState, type ReactNode } from "react";\nimport { ${[...legacyImports].join(", ")} } from "@/mizu";\n\n${legacyBodies.join("\n\n")}\n`,
+  `"use client";\nimport { useState, type ReactNode } from "react";\nimport { ${[...legacyImports].join(", ")} } from "@/mizu";\n\n${legacyBodies.join("\n\n")}\n`,
 );
 
-// Pasted into a Next.js page, an example with state or callbacks needs the directive.
 const usage: Record<string, string> = {};
 for (const entry of COMPONENTS)
   usage[entry.slug] = await format(
@@ -87,7 +85,6 @@ for (const entry of COMPONENTS)
   );
 output("src/components/docs/usage.json", JSON.stringify(usage, null, 2) + "\n");
 
-// The same inventory drives discovery, source routes and the release count.
 const inventory = [
   "# Component inventory",
   "",

@@ -1,6 +1,5 @@
 import type { NextConfig } from "next";
 
-// Pages renamed so every slug is its component name in kebab case.
 const renamed = {
   copybutton: "copy-button",
   countup: "count-up",
@@ -19,12 +18,10 @@ const nextConfig: NextConfig = {
       destination: `/components/${to}`,
       permanent: true,
     })),
-  // Every component page's documentation as Markdown, for agents (/llms.txt).
   rewrites: async () => [
     { source: "/components/:slug.md", destination: "/components/:slug/md" },
   ],
   headers: async () => [
-    // The fixture the Nav page embeds in an iframe: not a page to find.
     {
       source: "/examples/nav",
       headers: [{ key: "X-Robots-Tag", value: "noindex" }],

@@ -12,7 +12,6 @@ import { join, resolve } from "node:path";
 import assert from "node:assert/strict";
 import { gzipSync } from "node:zlib";
 
-// A tarball installed outside the repository cannot resolve source aliases or workspace links.
 const root = resolve(import.meta.dirname, "..");
 const scratch = mkdtempSync(join(tmpdir(), "mizu-consumer-"));
 const run = (cmd, args, cwd = scratch) =>

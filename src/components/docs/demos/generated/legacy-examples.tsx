@@ -1,5 +1,4 @@
 "use client";
-// Compile the original copied examples too; these do not replace their interactive demos.
 import { useState, type ReactNode } from "react";
 import {
   Button,

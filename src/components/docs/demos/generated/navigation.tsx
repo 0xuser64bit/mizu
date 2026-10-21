@@ -1,5 +1,4 @@
 "use client";
-// Generated from catalog usage by bun run examples:sync.
 import { useState } from "react";
 import {
   Breadcrumbs,
