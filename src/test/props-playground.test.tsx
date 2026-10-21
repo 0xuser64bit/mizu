@@ -36,6 +36,21 @@ describe("Props Playground", () => {
         expect(code).toContain('import { useState } from "react"');
     }
   });
+  it("writes plain JSX for plain text and leaves defaults out", () => {
+    expect(playgroundCode("button", defaultConfig("button"))).toContain(
+      "<Button onClick={() => setClicks(clicks + 1)}>Keep the good work</Button>",
+    );
+    const field = playgroundCode("text-field", {
+      ...defaultConfig("text-field"),
+      text: "Path C:\\work",
+      detail: "",
+    });
+    expect(field).toContain('label="Path C:\\work"');
+    expect(field).not.toContain("hint=");
+    expect(playgroundCode("alert", defaultConfig("alert"))).toContain(
+      '<Alert title="Your changes are saved" tone="success">You can return',
+    );
+  });
   it("matches button props, interactions and copied code, then resets", async () => {
     const user = userEvent.setup();
     render(<PropsPlayground />);
@@ -50,7 +65,7 @@ describe("Props Playground", () => {
     expect(preview.getByRole("button")).toBeDisabled();
     await user.click(screen.getByRole("button", { name: "Copy code" }));
     expect(await navigator.clipboard.readText()).toContain(
-      'variant="ghost" size="md" loading',
+      '<Button variant="ghost" loading onClick',
     );
     await user.click(
       screen.getByRole("button", { name: "Reset props and preview" }),

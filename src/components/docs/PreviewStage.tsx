@@ -76,7 +76,7 @@ export function PreviewStage({
       </div>
       {editing && (
         <div className="mizu-inline-playground">
-          <PropsPlayground initialPiece={slug as PlaygroundPiece} />
+          <PropsPlayground initialPiece={slug as PlaygroundPiece} inline />
         </div>
       )}
     </div>

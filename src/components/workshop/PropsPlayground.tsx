@@ -276,10 +276,13 @@ function Playground({ piece }: { piece: PlaygroundPiece }) {
 
 export function PropsPlayground({
   initialPiece = "button",
+  inline = false,
 }: {
   initialPiece?: PlaygroundPiece;
+  inline?: boolean;
 }) {
   const [piece, setPiece] = useState<PlaygroundPiece>(initialPiece);
+  if (inline) return <Playground piece={piece} />;
   return (
     <>
       <div className="mizu-playground-picker">

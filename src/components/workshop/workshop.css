@@ -302,13 +302,6 @@
   padding: 20px;
   border-top: 1px solid var(--mizu-line);
 }
-.mizu-inline-playground .mizu-workbench {
-  grid-template-columns: minmax(0, 1fr);
-}
-.mizu-inline-playground .mizu-workbench-controls {
-  border-right: 0;
-  border-bottom: 1px solid var(--mizu-line);
-}
 .mizu-playground-stage > div {
   width: 100%;
   max-width: 460px;
