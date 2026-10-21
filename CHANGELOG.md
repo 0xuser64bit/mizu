@@ -20,6 +20,10 @@
   transcript seek, excerpt playback and timestamped outline notes with Markdown
   export. Notes remain in the current tab; no backend is implied.
 
+- Nav's menu overlay scrolls, with its close bar pinned, and its link type
+  steps down from 44px on narrow screens. Six or seven links are taller than
+  many phones, so the last ones fell off the bottom of the screen with no way
+  to reach them, and long labels were clipped at the right edge.
 - Components that change under reduced motion no longer mismatch on
   hydration. `useReducedMotion` read the visitor's setting during the first
   render, which the server can't know, so Reveal, MaskLine, Chronicle and

@@ -34,8 +34,9 @@ and the documentation sidebar also lead here.
 - Analytics: change the reporting window, select a preset, switch metric,
   sort the table, and export CSV. All views use the same filtered records.
 - Copy an install command into a separate React project with a configured
-  `components.json`. The local URL works while this development server runs.
-  Add Mizu's fonts separately if wanted. Nothing is published by this work.
+  `components.json`. The command uses the origin you are browsing, so a local
+  URL works while this development server runs. Add Mizu's fonts separately
+  if wanted.
 
 ## Audio Workbench — `/examples/audio-workbench`
 
@@ -49,7 +50,8 @@ and the documentation sidebar also lead here.
 
 - Edit a draft, switch tabs, move the draft to the other pane, and return to it.
   The text stays intact. The arrow keys select tabs; Alt + arrows reorder;
-  Alt + Shift + arrows move between panes. Buttons perform the same actions.
+  Alt + Shift + → moves a tab to the second pane and Alt + Shift + ← back to
+  the first. Buttons perform the same actions.
 - Drag the separator or use arrows, Shift + arrows, Home and End. Collapse
   and restore either pane. Narrow containers stack panes instead of shrinking
   them into unusable columns.
@@ -70,6 +72,7 @@ React 19/18 consumption, exports, CSS, fonts, SSR and tree shaking.
 `bun run test:blocks` installs the three blocks via the real shadcn CLI into
 a temporary project and type-checks the copied source (local server required).
 
-Visual browser QA was unavailable during implementation because local browser
-use was disabled in Work settings. Check the pages on desktop and at a narrow
-mobile width, in both themes, and with reduced motion and keyboard navigation.
+Every page above has had a browser pass at 1440, 820 and 375 pixels wide, in
+both themes. Repeat it after layout changes, with reduced motion and the
+keyboard as well: the workshop pages share the examples container, and the
+site navigation switches to its menu below 900 pixels.

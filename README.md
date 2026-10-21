@@ -220,12 +220,13 @@ Run `bun install` and `bun run dev`, then open:
 
 ### Install a block
 
-The Blocks page gives an install command for the current origin. While running
-locally, for example:
+The Blocks page gives an install command for the origin you are browsing:
 
 ```sh
-npx shadcn@latest add http://localhost:3000/r/analytics-block.json
+npx shadcn@latest add https://mizu.user64bit.world/r/analytics-block.json
 ```
+
+While the site runs locally, use `http://localhost:3000/r/…` instead.
 
 Use the same setup and font imports as individual registry components. Blocks
 are copied to your UI directory under `mizu/blocks/`, with their source

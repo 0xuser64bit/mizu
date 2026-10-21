@@ -122,6 +122,11 @@ Patterns the site's own pages use beyond the package, from `/work`
 - **Working-surface frame**: a form someone fills in sits in the same accent
   corner brackets as the stage, on a `div` with Frame's classes, since a form
   is not a figure.
+- **Bench page** (`/workshop`, `/blocks`): the examples container and header,
+  with the kicker line as the local navigation and the current page in
+  accent. A bench is a control column beside its live result in one hairline
+  frame; an installable block sits in a demo frame, its install command in the
+  top bar. Anything copyable gets exactly one copy action.
 
 ## Do / Don't
 

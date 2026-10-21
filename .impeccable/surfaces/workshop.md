@@ -14,7 +14,8 @@ related_targets:
 Mode: Operate, with Read for the index and installation notes. Audience:
 developers trying Mizu and bringing its systems into a real React product.
 The user delegated product, design and implementation decisions, accepted all
-six additions, requested local commits, and explicitly prohibited pushing.
+six additions and requested local commits. After a design QA pass on
+2026-10-21 the user asked for the branch to land on main and be pushed.
 
 Inherit DESIGN.md and the existing collection. The new surfaces are working
 benches: a restrained control column alongside a generous, live working area.
@@ -41,4 +42,4 @@ existing platform demonstrably cannot do the work.
 Verification: behavior tests, catalog and registry regeneration checks, types,
 lint, package build, production site build, packed consumers, and a bounded
 desktop/mobile browser pass. Commit each coherent feature locally, then the
-integration and verified release notes. Never push or deploy.
+integration and verified release notes.
