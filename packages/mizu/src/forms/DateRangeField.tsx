@@ -128,7 +128,11 @@ export function DateRangeField({
         </div>
       )}
       {presets.length > 0 && (
-        <div className="mizu-date-range-presets" aria-label="Date presets">
+        <div
+          role="group"
+          className="mizu-date-range-presets"
+          aria-label="Date presets"
+        >
           {presets.map((preset, index) => (
             <button
               key={`${preset.label}-${index}`}

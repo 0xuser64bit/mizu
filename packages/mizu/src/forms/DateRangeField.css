@@ -25,11 +25,14 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+.mizu-date-range-actions {
+  column-gap: 20px;
+}
 .mizu-date-range-preset,
 .mizu-date-range-action {
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--mizu-line);
+  border: 1px solid var(--mizu-line-bright);
   background: transparent;
   color: var(--mizu-paper);
   font: 11px var(--mizu-font-mono);
