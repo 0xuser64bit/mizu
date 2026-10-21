@@ -1,0 +1,68 @@
+.mizu-date-range {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.mizu-date-range > legend {
+  margin-bottom: 12px;
+  padding: 0;
+}
+.mizu-date-range-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.mizu-date-range-fields .mizu-input {
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+.mizu-date-range-presets,
+.mizu-date-range-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mizu-date-range-preset,
+.mizu-date-range-action {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--mizu-line);
+  background: transparent;
+  color: var(--mizu-paper);
+  font: 11px var(--mizu-font-mono);
+  cursor: pointer;
+}
+.mizu-date-range-preset:hover,
+.mizu-date-range-preset[aria-pressed="true"] {
+  border-color: var(--mizu-accent);
+  color: var(--mizu-accent);
+  background: var(--mizu-ink-2);
+}
+.mizu-date-range-action {
+  padding-inline: 0;
+  border-color: transparent;
+  color: var(--mizu-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.mizu-date-range-action:hover {
+  color: var(--mizu-paper);
+}
+.mizu-date-range-preset:focus-visible,
+.mizu-date-range-action:focus-visible {
+  outline: 2px solid var(--mizu-accent);
+  outline-offset: 3px;
+}
+.mizu-date-range button:disabled,
+.mizu-date-range:disabled button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+@media (max-width: 380px) {
+  .mizu-date-range-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
