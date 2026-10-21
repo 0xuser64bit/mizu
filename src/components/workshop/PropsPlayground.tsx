@@ -9,7 +9,6 @@ import {
   Button,
   Checkbox,
   CodeBlock,
-  CopyButton,
   SegmentedControl,
   SelectField,
   Slider,
@@ -29,7 +28,9 @@ function Playground({ piece }: { piece: PlaygroundPiece }) {
   const [value, setValue] = useState("");
   const [amount, setAmount] = useState(config.amount);
   const [readout, setReadout] = useState(
-    "Try the component. Its actions appear here.",
+    piece === "badge" || piece === "alert"
+      ? "Change a prop. The preview and code follow."
+      : "Try the component. Its actions appear here.",
   );
   const [theme, setTheme] = useState("inherit");
   const [narrow, setNarrow] = useState(false);
@@ -44,7 +45,7 @@ function Playground({ piece }: { piece: PlaygroundPiece }) {
     setClicks(0);
     setValue("");
     setAmount(next.amount);
-    setReadout("Preview reset. Try the component.");
+    setReadout("Preview reset.");
   };
   const preview =
     piece === "button" ? (
@@ -265,12 +266,7 @@ function Playground({ piece }: { piece: PlaygroundPiece }) {
           className="mizu-playground-source"
           aria-label="Generated React code"
         >
-          <div className="mizu-workshop-export-heading">
-            <h2>What you see, in React</h2>
-            <CopyButton text={code} aria-label="Copy playground JSX">
-              Copy JSX
-            </CopyButton>
-          </div>
+          <h2>What you see, in React</h2>
           <CodeBlock filename="Example.tsx" language="tsx" code={code} />
         </section>
       </div>

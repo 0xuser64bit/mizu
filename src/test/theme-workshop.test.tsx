@@ -43,7 +43,7 @@ describe("Theme Workshop", () => {
     expect(preview.style.getPropertyValue("--mizu-font-display")).toContain(
       "JetBrains Mono",
     );
-    await user.click(screen.getByRole("button", { name: "Copy theme CSS" }));
+    await user.click(screen.getByRole("button", { name: "Copy code" }));
     expect(await navigator.clipboard.readText()).toBe(
       themeCSS({ ...THEME_PRESETS.Moss, font: "mono" }),
     );

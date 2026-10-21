@@ -129,6 +129,17 @@
 .mizu-workbench-controls .mizu-color-native {
   justify-content: space-between;
 }
+.mizu-workbench-controls > .mizu-workshop-reset {
+  align-self: flex-start;
+}
+.mizu-workbench-controls .mizu-slider {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  row-gap: 0 !important;
+}
+.mizu-workbench-controls .mizu-slider > input {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
 .mizu-workbench-result {
   min-width: 0;
 }
@@ -141,6 +152,9 @@
   padding: 16px 24px;
   border-bottom: 1px solid var(--mizu-line);
   min-height: 76px;
+}
+.mizu-workbench-toolbar:has(> .mizu-field) {
+  align-items: end;
 }
 .mizu-workbench-toolbar > p {
   margin: 0;
@@ -192,9 +206,12 @@
 .mizu-theme-preview .mizu-theme-tasks {
   display: grid;
   gap: 16px;
-  margin: 24px 0;
-  border-block: 1px solid var(--mizu-line);
-  padding: 24px 0;
+  margin: 0 0 24px;
+  border-bottom: 1px solid var(--mizu-line);
+  padding: 0 0 24px;
+}
+.mizu-theme-preview .mizu-btn {
+  justify-self: start;
 }
 .mizu-theme-preview .mizu-theme-samples {
   display: grid;
@@ -215,7 +232,8 @@
   border-top: 1px solid var(--mizu-line);
 }
 .mizu-theme-checks h2,
-.mizu-workshop-export h2 {
+.mizu-workshop-export h2,
+.mizu-playground-source h2 {
   margin: 0 0 16px;
   font-size: 17px;
   font-weight: 650;
@@ -313,7 +331,7 @@
   padding: 24px;
 }
 .mizu-playground-source .mizu-code-block {
-  margin: 16px 0 0;
+  margin: 0;
 }
 .mizu-workshop-reset {
   padding: 0;
@@ -353,6 +371,9 @@
   .mizu-workbench-controls > .mizu-slider,
   .mizu-workbench-controls > .mizu-workshop-reset {
     grid-column: 1 / -1;
+  }
+  .mizu-workbench-controls > .mizu-workshop-reset {
+    justify-self: start;
   }
   .mizu-workbench-controls .mizu-color-native {
     flex-wrap: wrap;

@@ -8,7 +8,6 @@ import {
   Checkbox,
   CodeBlock,
   ColorPicker,
-  CopyButton,
   Progress,
   SegmentedControl,
   SelectField,
@@ -307,18 +306,13 @@ export function ThemeWorkshop() {
       <section className="mizu-workshop-export" aria-label="Export theme">
         <div className="mizu-workshop-export-heading">
           <h2>Your theme, ready to take</h2>
-          <div className="mizu-workbench-actions">
-            <CopyButton text={css} aria-label="Copy theme CSS">
-              Copy CSS
-            </CopyButton>
-            <a
-              className="mizu-btn mizu-btn--ghost mizu-btn--sm"
-              download="mizu-theme.css"
-              href={`data:text/css;charset=utf-8,${encodeURIComponent(css)}`}
-            >
-              Download CSS
-            </a>
-          </div>
+          <a
+            className="mizu-btn mizu-btn--ghost mizu-btn--sm"
+            download="mizu-theme.css"
+            href={`data:text/css;charset=utf-8,${encodeURIComponent(css)}`}
+          >
+            Download CSS
+          </a>
         </div>
         <CodeBlock filename="mizu-theme.css" language="css" code={css} />
         <p className="mizu-workshop-note">

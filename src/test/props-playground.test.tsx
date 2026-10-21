@@ -48,9 +48,7 @@ describe("Props Playground", () => {
     expect(screen.getByRole("status")).toHaveTextContent("Clicked 1 times.");
     await user.click(screen.getByRole("checkbox", { name: "Loading" }));
     expect(preview.getByRole("button")).toBeDisabled();
-    await user.click(
-      screen.getByRole("button", { name: "Copy playground JSX" }),
-    );
+    await user.click(screen.getByRole("button", { name: "Copy code" }));
     expect(await navigator.clipboard.readText()).toContain(
       'variant="ghost" size="md" loading',
     );
@@ -67,9 +65,7 @@ describe("Props Playground", () => {
       screen.getByRole("region", { name: "Component preview" }),
     );
     fireEvent.change(preview.getByRole("slider"), { target: { value: "73" } });
-    await user.click(
-      screen.getByRole("button", { name: "Copy playground JSX" }),
-    );
+    await user.click(screen.getByRole("button", { name: "Copy code" }));
     expect(await navigator.clipboard.readText()).toContain("useState(73)");
     await user.click(screen.getByRole("radio", { name: "TextField" }));
     const fieldPreview = within(
@@ -77,9 +73,7 @@ describe("Props Playground", () => {
     );
     await user.type(fieldPreview.getByRole("textbox"), "Launch");
     expect(screen.getByRole("status")).toHaveTextContent("Value: Launch");
-    await user.click(
-      screen.getByRole("button", { name: "Copy playground JSX" }),
-    );
+    await user.click(screen.getByRole("button", { name: "Copy code" }));
     expect(await navigator.clipboard.readText()).toContain(
       'useState("Launch")',
     );
