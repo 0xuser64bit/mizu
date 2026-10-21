@@ -323,10 +323,10 @@ export function ThemeWorkshop() {
         <CodeBlock filename="mizu-theme.css" language="css" code={css} />
         <p className="mizu-workshop-note">
           Import this after Mizu’s stylesheet. It applies one palette to all
-          theme ancestors; use a specific <code>{'[data-theme="light"]'}</code> or{" "}
-          <code>{'[data-theme="dark"]'}</code> selector to keep separate variants.
-          Fonts use Mizu’s optional font stylesheet or your existing font
-          variables.
+          theme ancestors; use a specific <code>{'[data-theme="light"]'}</code>{" "}
+          or <code>{'[data-theme="dark"]'}</code> selector to keep separate
+          variants. Fonts use Mizu’s optional font stylesheet or your existing
+          font variables.
         </p>
       </section>
     </>

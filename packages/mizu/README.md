@@ -1,6 +1,6 @@
 # mizu-ui
 
-Mizu's interface language for React: **126 systems across 14 families**, from
+Mizu's interface language for React: **128 systems across 14 families**, from
 signature instruments — timelines, charts, editors, readers, flows and
 controls — to labelled forms, asynchronous actions, data inspection, bounded
 history and variable type. Warm ink and paper, hairline rules,
@@ -63,15 +63,30 @@ The root exports everything; each family has a focused ESM entry point.
 | `mizu-ui/lab` | Pinfield, Signal, RippleSurface |
 | `mizu-ui/feedback` | CountUp, CopyButton, Toast |
 | `mizu-ui/composite` | Accordion, Tabs, Dialog, Nav and compound parts |
-| `mizu-ui/forms` | FormField, TextField, TextArea, SelectField, Checkbox, Switch, SearchField, PasswordField, RadioGroup, SegmentedControl, NumberField, Rating, ColorPicker, TagInput, FileDropzone, AsyncForm |
+| `mizu-ui/forms` | FormField, TextField, TextArea, SelectField, Checkbox, Switch, SearchField, PasswordField, RadioGroup, SegmentedControl, NumberField, Rating, ColorPicker, TagInput, FileDropzone, AsyncForm, DateRangeField |
 | `mizu-ui/status` | Status, Alert, Progress, Meter, Skeleton, EmptyState, ErrorState, ConnectionStatus, SaveIndicator, AsyncBoundary, TaskProgress, AsyncButton |
 | `mizu-ui/data` | DataTable, DescriptionList, Stat, BarChart, Sparkline, Heatmap, Timeline, ActivityFeed, DiffView, DataInspector, TreeView, ComparisonTable |
 | `mizu-ui/navigation` | Breadcrumbs, Pagination, Stepper, AnchorNav, SideNav, BottomNav, ActionMenu, CommandPalette |
 | `mizu-ui/content` | Avatar, Kbd, CodeBlock, Quote, Prose, ImageFigure, MediaPlayer, LinkCard, FileCard, Checklist |
-| `mizu-ui/layout` | Stack, Grid, SplitPane, AspectRatio, ScrollArea, AppShell |
+| `mizu-ui/layout` | Stack, Grid, SplitPane, AspectRatio, ScrollArea, AppShell, Dock |
 | `mizu-ui/interaction` | Combobox, MultiSelect, InlineEdit, RangeSelector, ReorderList, ImageCompare, HistoryControls / useHistory, ConfirmAction |
 
 Compound parts count with their system; providers and hooks are supporting APIs.
+
+`DateRangeField` uses native date inputs and date-only strings (`YYYY-MM-DD`),
+including partial ranges. Pass `value / onValueChange` or `defaultValue`; invalid
+order and bounds prevent form submission. Presets are explicit `{label, value}`
+records, so the caller owns relative-date and timezone policy. `startName` and
+`endName` default to `start` and `end`. Clear, reset and native form reset are
+supported; `disabled` and `readOnly` keep native behavior.
+
+`Dock` takes labelled `{id, label, content}` tabs and an optional controlled
+`DockLayout` (`panes`, `active`, `split`, `collapsed`). Arrow keys select tabs,
+Alt + arrows reorder, and Alt + Shift + arrows move a tab between panes; every
+layout action also has a button. Its separator supports arrows, Shift for
+larger steps, and Home/End. Inactive and moved panels stay mounted, preserving
+editor state. Narrow containers stack panes; layout persistence belongs to
+the caller. `readOnly` locks layout edits while allowing tab selection.
 
 ## Theme, style and motion
 

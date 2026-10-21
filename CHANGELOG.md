@@ -2,6 +2,24 @@
 
 ## Unreleased
 
+- Add DateRangeField: native start/end dates, supplied presets, date-only
+  validation, form names, bounds, clear/reset and controlled state.
+- Add Dock: two tabbed panes with resizing, collapse/restore, keyboard and
+  button reordering, cross-pane moves, and mounted panels that preserve drafts.
+- Add `/workshop/theme`: four starting palettes, live surface/type controls,
+  contrast readouts, and downloadable CSS.
+- Add `/workshop/playground` and editable controls on five component pages:
+  Button, Badge, TextField, Alert and Slider. Copied examples include state and
+  safely escaped user text.
+- Add `/blocks`: settings with recoverable local saves, searchable files with
+  downloads, and date-filtered analytics with CSV export. Registry block items
+  include their source dependencies and CSS; `/r/[slug].json` serves installable
+  JSON for the current origin. `bun run test:blocks` installs all three through
+  the actual shadcn CLI and checks the copied source.
+- Add `/examples/audio-workbench`: real synthetic speech with measured peaks,
+  transcript seek, excerpt playback and timestamped outline notes with Markdown
+  export. Notes remain in the current tab; no backend is implied.
+
 - Components that change under reduced motion no longer mismatch on
   hydration. `useReducedMotion` read the visitor's setting during the first
   render, which the server can't know, so Reveal, MaskLine, Chronicle and

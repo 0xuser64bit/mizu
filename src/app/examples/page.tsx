@@ -25,6 +25,13 @@ const EXAMPLES = [
       "Pin comments on a submission, fling it to a decision, and arrange the results on a board.",
   },
   {
+    href: "/examples/audio-workbench",
+    title: "Audio workbench",
+    systems: "Waveform · Outliner · RangeSelector · SplitPane",
+    description:
+      "Listen to a recording, select a passage and collect structured notes tied to its time.",
+  },
+  {
     href: "/examples/automation",
     title: "Automation builder",
     systems: "FlowGraph · QueryBuilder · SplitFlap",

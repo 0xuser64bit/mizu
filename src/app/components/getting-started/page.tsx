@@ -19,7 +19,7 @@ export default function GettingStarted() {
       <article className="mizu-guide">
         <h1>Make a surface.</h1>
         <p>
-          126 systems for React 18.3 and 19. One stylesheet, optional fonts,
+          128 systems for React 18.3 and 19. One stylesheet, optional fonts,
           native controls and purposeful motion. Mizu needs no Tailwind
           configuration and no provider for ordinary components.
         </p>

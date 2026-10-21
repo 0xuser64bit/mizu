@@ -18,6 +18,8 @@ export function GET() {
 - [Getting started](${SITE_URL}/components/getting-started): install, fonts, themes and design tokens, with or without Tailwind
 - [Component collection](${SITE_URL}/components): every system, searchable, with live demos
 - [Examples](${SITE_URL}/examples): whole workflows composed from signature systems
+- [Workshop](${SITE_URL}/workshop): theme builder, interactive props playground and new working surfaces
+- [Blocks](${SITE_URL}/blocks): installable settings, file browser and analytics compositions
 - [Source on GitHub](${REPO_URL}): issues, changelog and the full inventory
 - [Package on npm](${NPM_URL})
 

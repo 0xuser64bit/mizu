@@ -36,6 +36,9 @@ export function DocsNav({
       <Link className="mizu-docs-guide" href="/components/getting-started">
         Getting started ↗
       </Link>
+      <Link className="mizu-docs-guide" href="/workshop">
+        Workshop & blocks ↗
+      </Link>
       <nav aria-label="Component families">
         {categories.map((cat) => {
           const items = matches.filter((c) => c.category === cat);

@@ -75,7 +75,7 @@ try {
     join(scratch, "ssr.mjs"),
     `import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { Button, Badge, Tabs, TabsList, TabsTrigger, TabsPanel, DataTable, TextField, Sparkline, InlineEdit, Marquee } from 'mizu-ui';
+import { Button, Badge, Tabs, TabsList, TabsTrigger, TabsPanel, DataTable, TextField, Sparkline, InlineEdit, Marquee, DateRangeField, Dock } from 'mizu-ui';
 for (const path of ${JSON.stringify(entrypoints)}) assert(Object.keys(await import('mizu-ui' + path.slice(1))).length > 0, path);
 import assert from 'node:assert/strict';
 const html = renderToString(React.createElement(Button, null, 'Installed'));
@@ -88,6 +88,8 @@ assert(renderToString(React.createElement(Sparkline, {label:'Trend',values:[1,2]
 assert(renderToString(React.createElement(DataTable, {label:'Rows',rows:[],getRowId:r=>r.id,columns:[]})).includes('Rows'));
 assert(renderToString(React.createElement(InlineEdit, {label:'Name',value:'Draft',onValueChange:()=>{}})).includes('Draft'));
 assert(renderToString(React.createElement(Marquee, null, 'Loop')).includes('inert=""'));
+assert(renderToString(React.createElement(DateRangeField, {label:'Reporting window', defaultValue:{start:'2026-10-01',end:'2026-10-21'}})).includes('2026-10-01'));
+assert(renderToString(React.createElement(Dock, {label:'Editor', tabs:[{id:'a',label:'Draft',content:'Working draft'}]})).includes('Working draft'));
 const installed = await import('mizu-ui');
 assert(Object.keys(installed).length >= 110);
 `,
