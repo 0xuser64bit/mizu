@@ -37,7 +37,8 @@
   padding-top: 5px;
   color: var(--mizu-muted);
   font: 10px/1.6 var(--mizu-font-mono);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
 }
 
 .mizu-audio .mizu-waveform {
@@ -98,6 +99,11 @@
 .mizu-audio .mizu-split-pane {
   align-items: start;
 }
+.mizu-audio .mizu-split-handle {
+  align-self: stretch;
+  align-items: start;
+  padding-top: 20px;
+}
 
 .mizu-audio-panel-head {
   display: flex;
@@ -134,11 +140,11 @@
   justify-items: start;
   padding: 18px 12px;
   border-bottom: 1px solid var(--mizu-line);
-  transition: background-color 180ms;
+  transition: box-shadow 180ms;
 }
 
 .mizu-audio-passages li[data-current] {
-  background: color-mix(in srgb, var(--mizu-accent) 7%, transparent);
+  box-shadow: inset 2px 0 var(--mizu-accent);
 }
 
 .mizu-audio-passage {

@@ -340,7 +340,7 @@ export function AudioWorkbench() {
             <h2>{recording.title}</h2>
             <p>An original field note on interface craft.</p>
           </div>
-          <span>00:51 / MONO / SYNTHETIC VOICE</span>
+          <span>{clock(recording.duration)} / MONO / SYNTHETIC VOICE</span>
         </div>
         <Waveform
           ref={player}
