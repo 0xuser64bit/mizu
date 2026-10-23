@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SectionTag, Magnetic, ButtonLink, Signal, Specimen, Pinfield } from "@/mizu";
 import { Rise } from "@/components/ui/Rise";
 import { Station } from "@/components/lab/Station";
@@ -53,8 +54,15 @@ export default function LabPage() {
       </div>
 
       <div className="px-5 py-24 text-center md:px-10 md:py-32">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-faint">
-          More instruments are in the workshop
+        <p className="font-mono text-[11px] uppercase leading-loose tracking-[0.3em] text-faint">
+          Most of these ship in mizu-ui. Take them from{" "}
+          <Link
+            href="/components?family=Instruments"
+            className="text-paper underline underline-offset-4"
+          >
+            the collection
+          </Link>
+          .
         </p>
         <div className="mt-7 flex justify-center">
           <Magnetic>
