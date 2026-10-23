@@ -32,8 +32,14 @@ export const FOUNDATION = [
         '"muted"',
       ),
       p("diamond", "boolean", "Show the marker.", "true"),
+      p(
+        "as",
+        '"p" | "h2" | "h3" | "h4"',
+        "The element. Use a heading level when the tag is the section's only title.",
+        '"p"',
+      ),
     ],
-    "Readable paragraph text; use a heading element for a section title.",
+    "A paragraph by default. When a section has no other heading, pass a heading level to `as` so the tag titles it in the outline.",
     "Static text.",
   ),
   d(

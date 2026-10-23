@@ -65,6 +65,8 @@
   technology and the word was given as an `aria-label` on a span, which
   screen readers ignore, so a WaveText that wasn't a heading said nothing.
   The text now sits in a visually hidden span beside the letters.
+- SectionTag takes `as` (`"p"`, `"h2"`, `"h3"` or `"h4"`) for sections
+  whose tag is their only title, so the page outline doesn't skip a level.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

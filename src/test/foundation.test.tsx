@@ -75,6 +75,13 @@ describe("primitives", () => {
     expect(screen.getByText("Hello")).toBeTruthy();
   });
 
+  it("SectionTag can title its section", () => {
+    render(<SectionTag as="h2">01 — Manifesto</SectionTag>);
+    expect(
+      screen.getByRole("heading", { level: 2, name: "01 — Manifesto" }),
+    ).toBeTruthy();
+  });
+
   it("Badge applies tone and lets style override its face", () => {
     const { container } = render(
       <Badge tone="accent" style={{ color: "red" }}>
