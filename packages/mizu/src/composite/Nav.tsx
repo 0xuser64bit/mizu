@@ -18,12 +18,14 @@ export type NavLink = { href: string; label: string };
 export function Nav({
   brand,
   links,
+  actions,
   currentPath,
   trackChapters = true,
   className = "",
 }: {
   brand: ReactNode;
   links: NavLink[];
+  actions?: ReactNode;
   currentPath?: string;
   trackChapters?: boolean;
   className?: string;
@@ -120,71 +122,77 @@ export function Nav({
               )}
             </div>
 
-            <nav aria-label="Primary" className="mizu-nav-links">
-              {links.map((l) => {
-                const active = path === l.href;
-                return (
-                  <Anchor
-                    key={l.href}
-                    href={l.href}
-                    aria-current={active ? "page" : undefined}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      columnGap: 10,
-                      minHeight: 44,
-                      fontFamily: "var(--mizu-font-mono)",
-                      fontSize: 11,
-                      letterSpacing: "0.22em",
-                      textTransform: "uppercase",
-                      textDecoration: "none",
-                      color: active ? "var(--mizu-paper)" : "var(--mizu-muted)",
-                    }}
-                  >
-                    <span
-                      aria-hidden
+            <div className="mizu-nav-end">
+              <nav aria-label="Primary" className="mizu-nav-links">
+                {links.map((l) => {
+                  const active = path === l.href;
+                  return (
+                    <Anchor
+                      key={l.href}
+                      href={l.href}
+                      aria-current={active ? "page" : undefined}
                       style={{
-                        width: "4px",
-                        height: "4px",
-                        transform: "rotate(45deg)",
-                        background: active
-                          ? "var(--mizu-accent)"
-                          : "var(--mizu-line-bright)",
-                        transitionProperty: "background",
-                        transitionDuration: "300ms",
-                        transitionTimingFunction: "ease",
-                        transitionDelay: "0s",
-                        transitionBehavior: "normal",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        columnGap: 10,
+                        minHeight: 44,
+                        fontFamily: "var(--mizu-font-mono)",
+                        fontSize: 11,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        textDecoration: "none",
+                        color: active
+                          ? "var(--mizu-paper)"
+                          : "var(--mizu-muted)",
                       }}
-                    />
-                    {l.label}
-                  </Anchor>
-                );
-              })}
-            </nav>
+                    >
+                      <span
+                        aria-hidden
+                        style={{
+                          width: "4px",
+                          height: "4px",
+                          transform: "rotate(45deg)",
+                          background: active
+                            ? "var(--mizu-accent)"
+                            : "var(--mizu-line-bright)",
+                          transitionProperty: "background",
+                          transitionDuration: "300ms",
+                          transitionTimingFunction: "ease",
+                          transitionDelay: "0s",
+                          transitionBehavior: "normal",
+                        }}
+                      />
+                      {l.label}
+                    </Anchor>
+                  );
+                })}
+              </nav>
 
-            <button
-              onClick={() => setOpen(true)}
-              aria-label="Open menu"
-              aria-expanded={open}
-              className="mizu-nav-burger"
-              type="button"
-              style={{
-                minWidth: 44,
-                minHeight: 44,
-                justifyContent: "center",
-                background: "transparent",
-                border: "none",
-                fontFamily: "var(--mizu-font-mono)",
-                fontSize: 11,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "var(--mizu-muted)",
-                cursor: "pointer",
-              }}
-            >
-              Menu
-            </button>
+              {actions && <div className="mizu-nav-actions">{actions}</div>}
+
+              <button
+                onClick={() => setOpen(true)}
+                aria-label="Open menu"
+                aria-expanded={open}
+                className="mizu-nav-burger"
+                type="button"
+                style={{
+                  minWidth: 44,
+                  minHeight: 44,
+                  justifyContent: "center",
+                  background: "transparent",
+                  border: "none",
+                  fontFamily: "var(--mizu-font-mono)",
+                  fontSize: 11,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: "var(--mizu-muted)",
+                  cursor: "pointer",
+                }}
+              >
+                Menu
+              </button>
+            </div>
           </div>
         </div>
 

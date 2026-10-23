@@ -10,6 +10,20 @@
   display: none;
 }
 
+.mizu-nav-end {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.mizu-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .mizu-nav-burger {
   display: inline-flex;
   align-items: center;
@@ -19,6 +33,10 @@
 @media (min-width: 768px) {
   .mizu-nav-links {
     display: flex;
+  }
+
+  .mizu-nav-end {
+    gap: 24px;
   }
 
   .mizu-nav-burger {

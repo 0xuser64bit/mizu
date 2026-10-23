@@ -872,6 +872,11 @@ export function Shell() {
         desc: "Primary navigation links.",
       },
       {
+        name: "actions",
+        type: "ReactNode",
+        desc: "Controls kept in the bar at every width, beside the links or the Menu button: search, a theme switch, an account.",
+      },
+      {
         name: "currentPath",
         type: "string",
         desc: "Current path for active state. Defaults to window.location.pathname.",

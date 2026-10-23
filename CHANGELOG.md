@@ -16,6 +16,8 @@
   include their source dependencies and CSS; `/r/[slug].json` serves installable
   JSON for the current origin. `bun run test:blocks` installs all three through
   the actual shadcn CLI and checks the copied source.
+- Nav takes `actions`: controls such as search or a theme switch that stay
+  in the bar at every width, after the links or beside the Menu button.
 - Add LinkProvider. Nav, Breadcrumbs, SideNav, BottomNav and ButtonLink
   render through the link component you give it, such as Next.js's `Link`,
   so their navigation stays inside your router instead of loading a new
