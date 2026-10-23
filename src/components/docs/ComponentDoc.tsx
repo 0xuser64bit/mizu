@@ -161,7 +161,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <section className="mt-14">
           <DemoLabel as="h2">Usage</DemoLabel>
           <div className="mt-4">
-            <CodeBlock code={code} language="tsx" />
+            <CodeBlock code={code} language="tsx" label="Usage example" />
           </div>
           {code.startsWith('"use client"') && (
             <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -231,6 +231,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               <CodeBlock
                 code={`npx shadcn@latest add ${imports.map(([item]) => `0xuser64bit/mizu/${item}`).join(" ")}`}
                 language="sh"
+                label="Install command"
               />
               {extra.length > 0 && (
                 <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -271,6 +272,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
                   )
                   .join("\n")}
                 language="tsx"
+                label="Registry imports"
               />
             </div>
           )}

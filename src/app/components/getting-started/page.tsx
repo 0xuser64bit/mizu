@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CodeBlock } from "@/mizu";
 export const metadata: Metadata = {
   title: "Getting started: install mizu-ui",
   description:
     "Install the mizu-ui React package or add single components with the shadcn CLI. Load fonts, pick a theme and customize --mizu-* tokens, with or without Tailwind.",
   alternates: { canonical: "/components/getting-started" },
 };
-function Code({ children }: { children: string }) {
-  return (
-    <pre tabIndex={0} role="region" aria-label="Code example">
-      <code>{children}</code>
-    </pre>
-  );
+function Code({
+  children,
+  label,
+  language,
+}: {
+  children: string;
+  label: string;
+  language: string;
+}) {
+  return <CodeBlock code={children} language={language} label={label} />;
 }
 export default function GettingStarted() {
   return (
@@ -24,7 +29,7 @@ export default function GettingStarted() {
           configuration and no provider for ordinary components.
         </p>
         <h2>Install</h2>
-        <Code>npm install mizu-ui</Code>
+        <Code language="sh" label="Install with npm">npm install mizu-ui</Code>
         <p>
           Run this command in your React application. Mizu supports React and
           React DOM 18.3 or 19, with Motion 12 or 13 as a peer dependency. Use
@@ -32,7 +37,7 @@ export default function GettingStarted() {
           stylesheet and the components you need.
         </p>
         <h2>Install one component</h2>
-        <Code>{`npx shadcn@latest init 0xuser64bit/mizu/preset
+        <Code language="sh" label="Add one component with shadcn">{`npx shadcn@latest init 0xuser64bit/mizu/preset
 npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
         <p>
           shadcn’s <code>init</code> needs Tailwind and an import alias in your
@@ -46,7 +51,7 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           components.json and the alias. Without Tailwind (Vite, React Router,
           any React app), skip init and write the file yourself:
         </p>
-        <Code>{`{
+        <Code language="json" label="components.json without Tailwind">{`{
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
   "rsc": false,
@@ -76,7 +81,7 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           their own; base.css is all the CSS they bring. Motion is installed
           only for components that use it. Load the fonts as shown below.
         </p>
-        <Code>{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
+        <Code language="tsx" label="Import an added component">{`import { SelectField } from "@/components/ui/mizu/select-field";`}</Code>
         <p>
           Every component has its own item and path, its name in kebab case:
           DataInspector is <code>data-inspector</code>, and that file exports
@@ -102,7 +107,7 @@ npx shadcn@latest add 0xuser64bit/mizu/select-field`}</Code>
           FLAP_CHARACTERS) live in plain modules for the same reason.
         </p>
         <h2>Render a working interaction</h2>
-        <Code>{`"use client";
+        <Code language="tsx" label="A working interaction">{`"use client";
 import { useState } from "react";
 import "mizu-ui/styles.css";
 import "mizu-ui/fonts.css";
@@ -136,14 +141,14 @@ export function App() {
           font is easy to miss. Import the self-hosted faces once, in your root
           layout:
         </p>
-        <Code>{`import "mizu-ui/fonts.css";
+        <Code language="tsx" label="Import the fonts">{`import "mizu-ui/fonts.css";
 import "@/components/ui/mizu/fonts.css"; // shadcn: add 0xuser64bit/mizu/fonts`}</Code>
         <p>
           With next/font, give the faces these variable names and set them on{" "}
           <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code>. Mizu’s font
           tokens read them, so there is nothing to override.
         </p>
-        <Code>{`import { Archivo, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+        <Code language="tsx" label="Load the fonts with next/font">{`import { Archivo, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -181,7 +186,7 @@ export default function RootLayout({
           your surface.
         </p>
         <h2>Keep imports focused</h2>
-        <Code>{`import { TextField, Switch } from "mizu-ui/forms";
+        <Code language="tsx" label="Family imports">{`import { TextField, Switch } from "mizu-ui/forms";
 import { Progress, AsyncButton } from "mizu-ui/status";
 import { MotionPreferences } from "mizu-ui/motion";`}</Code>
         <p>
@@ -191,16 +196,16 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           CommonJS require is unsupported.
         </p>
         <h2>Choose a theme</h2>
-        <Code>{`<div className="mizu-root" data-theme="light">…</div>`}</Code>
+        <Code language="tsx" label="A light surface">{`<div className="mizu-root" data-theme="light">…</div>`}</Code>
         <p>
           Dark is the default. Set <code>data-theme</code> on any ancestor,
           including <code>&lt;html&gt;</code>. Native dialogs keep the theme
           where they are rendered. With next-themes, write both the class
           Tailwind reads and the attribute Mizu reads:
         </p>
-        <Code>{`<ThemeProvider attribute={["class", "data-theme"]}>`}</Code>
+        <Code language="tsx" label="next-themes attributes">{`<ThemeProvider attribute={["class", "data-theme"]}>`}</Code>
         <h2>Change the material</h2>
-        <Code>{`:root,
+        <Code language="css" label="Override the tokens">{`:root,
 [data-theme] {
   --mizu-accent: #2763c4;
   --mizu-accent-fill: #2052a3;
@@ -214,7 +219,7 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           Foreground accent and filled-button accent are separate for
           legibility; check contrast when replacing colors.
         </p>
-        <Code>{`<Button className="brand">Publish</Button>
+        <Code language="tsx" label="Override one component">{`<Button className="brand">Publish</Button>
 
 .brand { --mizu-accent-fill: #2052a3; }
 
@@ -234,7 +239,7 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           import the stylesheet from your CSS instead of JavaScript, into the
           components layer, and plain utilities win:
         </p>
-        <Code>{`@import "tailwindcss";
+        <Code language="css" label="Import into the components layer">{`@import "tailwindcss";
 @import "mizu-ui/styles.css" layer(components);`}</Code>
         <p>
           Copied components are yours to change: edit their source and
@@ -250,7 +255,7 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           upload them.
         </p>
         <h2>Motion and keyboard</h2>
-        <Code>{`<MotionPreferences reduced={true}>
+        <Code language="tsx" label="Reduce motion locally">{`<MotionPreferences reduced={true}>
   <YourInterface />
 </MotionPreferences>`}</Code>
         <p>
@@ -260,7 +265,7 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           platform keyboard behavior. Read each component’s notes for its
           particular interactions and limits.
         </p>
-        <Code>{`npx shadcn@latest add 0xuser64bit/mizu/motion-preferences`}</Code>
+        <Code language="sh" label="Add MotionPreferences">{`npx shadcn@latest add 0xuser64bit/mizu/motion-preferences`}</Code>
         <p>
           From the registry, the provider is its own item. Import it from{" "}
           <code>@/components/ui/mizu/motion-preferences</code>; it governs every
@@ -276,7 +281,7 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           replaces your edits to those files, so commit first and review the
           diff:
         </p>
-        <Code>{`npx shadcn@latest add --overwrite $(ls components/ui/mizu/*.tsx | sed -E 's#.*/(.*)\\.tsx$#0xuser64bit/mizu/\\1#')`}</Code>
+        <Code language="sh" label="Update copied components">{`npx shadcn@latest add --overwrite $(ls components/ui/mizu/*.tsx | sed -E 's#.*/(.*)\\.tsx$#0xuser64bit/mizu/\\1#')`}</Code>
         <p>
           Use your UI directory’s path, such as{" "}
           <code>src/components/ui/mizu</code>. The{" "}
