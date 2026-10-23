@@ -65,13 +65,12 @@ export function Cursor() {
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[95] flex items-center justify-center rounded-full border"
+        data-label={label ? "" : undefined}
+        className="mizu-cursor-ring pointer-events-none fixed left-0 top-0 z-[95] flex items-center justify-center rounded-full border"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
         animate={{
           width: label ? 58 : 30,
           height: label ? 58 : 30,
-          borderColor: label ? "rgba(255,77,28,0.9)" : "rgba(244,240,232,0.35)",
-          backgroundColor: label ? "rgba(255,77,28,0.14)" : "rgba(244,240,232,0)",
           scale: pressed ? 0.82 : 1,
         }}
         transition={{ type: "spring", stiffness: 320, damping: 22 }}
