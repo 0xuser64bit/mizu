@@ -289,6 +289,18 @@ describe("CopyButton", () => {
     expect(writeText).toHaveBeenCalledWith("#ff4d1c");
     expect(await screen.findByText("Copied")).toBeTruthy();
   });
+  it("is named by what it says, not by the text it copies", () => {
+    render(
+      <>
+        <CopyButton text={"const long = true;\n".repeat(40)}>Copy</CopyButton>
+        <CopyButton text="npm install mizu-ui" />
+      </>,
+    );
+    expect(
+      screen.getAllByRole("button").map((b) => b.getAttribute("aria-label") ?? b.textContent),
+    ).toEqual(["Copy", "Copy"]);
+    expect(screen.getAllByRole("button", { name: "Copy" })).toHaveLength(2);
+  });
 });
 
 describe("Toast", () => {

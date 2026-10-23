@@ -1,5 +1,6 @@
 
 .mizu-copy-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -12,6 +13,11 @@
   color: var(--mizu-muted);
   cursor: pointer;
   transition: color 250ms ease;
+}
+.mizu-copy-button::before {
+  content: "";
+  position: absolute;
+  inset: -8px -6px;
 }
 .mizu-copy-button[data-copied] {
   color: var(--mizu-accent);

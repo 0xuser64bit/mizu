@@ -69,9 +69,7 @@ export const CopyButton = forwardRef<
         onClick?.(e);
         if (!e.defaultPrevented) void onCopy();
       }}
-      aria-label={
-        copied ? feedback : failed ? "Copy failed. Try again." : `Copy ${text}`
-      }
+      aria-label={children ? undefined : "Copy"}
       className={`mizu-copy-button ${className}`}
       data-copied={copied || undefined}
       style={style}
@@ -86,7 +84,7 @@ export const CopyButton = forwardRef<
           />
         </svg>
       ) : (
-        <Mark size={5} tone={copied ? "accent" : "line"} />
+        <Mark size={5} tone="line" />
       )}
       <span aria-live="polite">
         {copied ? feedback : failed ? "Copy failed. Try again." : children}

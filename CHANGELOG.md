@@ -38,6 +38,11 @@
   the first enabled tab when the selected one is removed or disabled.
 - Combobox keeps the active option in view. Its list scrolls after about six
   options, but arrowing past them moved the highlight out of sight.
+- CopyButton is named by what it says. Its accessible name was "Copy"
+  followed by the whole text it copies, so a screen reader read out an entire
+  code sample as the button's name. A button with no label of its own is
+  named "Copy". Its pointer target grows to 33px tall without changing the
+  layout; it was 17px.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
