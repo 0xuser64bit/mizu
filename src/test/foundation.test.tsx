@@ -102,6 +102,7 @@ describe("primitives", () => {
   it("Spinner has role status and label", () => {
     render(<Spinner label="Working" />);
     expect(screen.getByRole("status")).toHaveAccessibleName("Working");
+    expect(screen.getByRole("status")).toHaveTextContent("Working");
   });
 
   it("Frame renders label plate and children", () => {

@@ -2925,7 +2925,7 @@
 .mizu-spinner {
   display: inline-flex;
 }
-.mizu-spinner > span {
+.mizu-spinner > span[aria-hidden] {
   display: block;
   transform: rotate(45deg);
   animation: mizu-spin 0.9s linear infinite;
@@ -2936,7 +2936,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mizu-spinner > span {
+  .mizu-spinner > span[aria-hidden] {
     animation: none;
   }
 }

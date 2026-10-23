@@ -28,6 +28,7 @@ export function Spinner({
             tone === "current" ? "currentColor" : `var(--mizu-${tone})`,
         }}
       />
+      <span className="mizu-sr-only">{label}</span>
     </span>
   );
 }
