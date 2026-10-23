@@ -1,0 +1,72 @@
+.mizu-otp-box {
+  position: relative;
+  justify-self: start;
+  max-width: 100%;
+}
+.mizu-otp-box input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font-size: 16px;
+  cursor: text;
+}
+.mizu-otp-box input::selection {
+  background: transparent;
+}
+.mizu-otp-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--mizu-otp-length, 6), minmax(0, 44px));
+  gap: 8px;
+}
+.mizu-otp-cells span {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  aspect-ratio: 44 / 52;
+  border: 1px solid var(--mizu-line-bright);
+  background: var(--mizu-ink);
+  color: var(--mizu-paper);
+  font: 500 22px var(--mizu-font-mono);
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color var(--mizu-duration-fast),
+    box-shadow var(--mizu-duration-fast);
+}
+.mizu-otp-cells span[data-active] {
+  border-color: var(--mizu-accent);
+  box-shadow: inset 0 0 0 1px var(--mizu-accent);
+}
+.mizu-otp-cells span[data-caret]::after {
+  content: "";
+  width: 1px;
+  height: 22px;
+  background: var(--mizu-accent);
+  animation: mizu-otp-caret 1s step-end infinite;
+}
+@keyframes mizu-otp-caret {
+  50% {
+    opacity: 0;
+  }
+}
+.mizu-otp-box[data-invalid] .mizu-otp-cells span:not([data-active]) {
+  border-color: var(--mizu-danger);
+}
+.mizu-otp-box[data-disabled] {
+  opacity: 0.45;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mizu-otp-cells span[data-caret]::after {
+    animation: none;
+  }
+}

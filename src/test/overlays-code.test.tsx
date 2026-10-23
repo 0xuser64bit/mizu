@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { DialogBody, DialogClose, DialogTitle, Drawer, Popover } from "@/mizu";
+import {
+  DialogBody,
+  DialogClose,
+  DialogTitle,
+  Drawer,
+  OneTimeCode,
+  Popover,
+} from "@/mizu";
 
 describe("Drawer", () => {
   it("is a labelled modal dialog on its side that closes like one", async () => {
@@ -49,5 +57,58 @@ describe("Popover", () => {
       panel.dispatchEvent(open);
     });
     expect(trigger).toHaveAttribute("aria-expanded", "true");
+  });
+});
+
+describe("OneTimeCode", () => {
+  it("keeps digits, fills the cells and completes once the code is whole", async () => {
+    const user = userEvent.setup(),
+      complete = vi.fn();
+    function Code() {
+      const [value, setValue] = useState("");
+      return (
+        <OneTimeCode
+          label="Sign-in code"
+          length={4}
+          value={value}
+          onValueChange={setValue}
+          onComplete={complete}
+        />
+      );
+    }
+    const { container } = render(<Code />);
+    const input = screen.getByLabelText("Sign-in code");
+    expect(input).toHaveAttribute("autocomplete", "one-time-code");
+    expect(input).toHaveAttribute("inputmode", "numeric");
+    await user.type(input, "1a2-3");
+    expect(input).toHaveValue("123");
+    expect(complete).not.toHaveBeenCalled();
+    await user.type(input, "45");
+    expect(input).toHaveValue("1234");
+    expect(complete).toHaveBeenCalledOnce();
+    expect(complete).toHaveBeenCalledWith("1234");
+    expect(
+      [...container.querySelectorAll(".mizu-otp-cells span")].map(
+        (s) => s.textContent,
+      ),
+    ).toEqual(["1", "2", "3", "4"]);
+  });
+
+  it("accepts a pasted code with separators and describes errors", async () => {
+    const user = userEvent.setup(),
+      complete = vi.fn();
+    render(
+      <OneTimeCode
+        label="Code"
+        onComplete={complete}
+        error="That code has expired."
+      />,
+    );
+    const input = screen.getByLabelText("Code");
+    await user.click(input);
+    await user.paste("482 913");
+    expect(complete).toHaveBeenCalledWith("482913");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAccessibleDescription("That code has expired.");
   });
 });

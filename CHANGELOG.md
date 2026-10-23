@@ -8,6 +8,11 @@
 - Add Popover: a non-modal panel beside its button on the native Popover
   API, so Escape and clicking away close it and focus returns to the button.
   It opens below or above and flips when there is no room.
+- Add OneTimeCode: a one-time code drawn as cells over one native input with
+  `autocomplete="one-time-code"`, so SMS and email autofill, paste and
+  screen readers work unchanged. It keeps digits only, which lets pasted
+  codes with spaces or dashes through, and calls `onComplete` at full
+  length.
 - Add DateRangeField: native start/end dates, supplied presets, date-only
   validation, form names, bounds, clear/reset and controlled state.
 - Add Dock: two tabbed panes with resizing, collapse/restore, keyboard and
