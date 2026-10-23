@@ -4,6 +4,7 @@ import { useState, type ComponentType } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
 import { useReducedMotion } from "../../../packages/mizu/src/motion/Preferences";
 import { SectionTag, Reveal, EASE_EXPO } from "@/mizu";
+import { NavigatorLink } from "@/components/shell/Navigator";
 import { Bloom, SignalDrift, SoftType, TransitionStudy } from "./previews";
 
 type Piece = {
@@ -59,45 +60,42 @@ export function Index() {
             <article
               data-cursor="View"
               onMouseEnter={() => setActive(i)}
-              onClick={() => setOpen(open === i ? null : i)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setOpen(open === i ? null : i);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-expanded={open === i}
-              aria-label={`${piece.title} — toggle preview`}
-              className="group relative cursor-pointer border-t border-line"
+              className="group relative border-t border-line"
             >
               <div
                 aria-hidden
                 className="absolute inset-0 origin-bottom scale-y-0 bg-accent-fill transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"
               />
-              <div className="relative z-10 flex flex-wrap items-center gap-x-5 gap-y-3 px-1 py-7 md:grid md:grid-cols-12 md:gap-4 md:py-9">
-                <span className="font-mono text-[11px] tracking-[0.2em] text-faint transition-colors duration-300 group-hover:text-ink/70 md:col-span-2">
+              <div className="relative z-10 grid grid-cols-[4.5rem_minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 px-1 py-7 md:grid-cols-12 md:gap-4 md:py-9">
+                <span className="font-mono text-[11px] tracking-[0.2em] text-faint transition-colors duration-300 group-hover:text-on-fill md:col-span-2">
                   {piece.id}
                 </span>
-                <h3 className="flex-1 font-display text-2xl font-bold font-wide tracking-tight transition-colors duration-300 group-hover:text-ink md:col-span-6 md:flex-none md:text-4xl">
-                  {piece.title}
+                <h3 className="font-display text-2xl font-bold font-wide tracking-tight transition-colors duration-300 group-hover:text-on-fill md:col-span-6 md:text-4xl">
+                  <button
+                    type="button"
+                    aria-expanded={open === i}
+                    aria-controls={`piece-${i}`}
+                    onClick={() => setOpen(open === i ? null : i)}
+                    className="cursor-pointer text-left after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-accent"
+                  >
+                    {piece.title}
+                  </button>
                 </h3>
-                <div className="ml-auto md:col-span-3 md:ml-0">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint transition-colors duration-300 group-hover:text-paper/85">
+                <div className="col-start-2 md:col-span-3 md:col-start-auto">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint transition-colors duration-300 group-hover:text-on-fill">
                     {piece.cat}
                   </p>
-                  <p className="mt-1.5 font-mono text-[10px] tracking-[0.2em] text-faint/60 transition-colors duration-300 group-hover:text-paper/60">
+                  <p className="mt-1.5 font-mono text-[10px] tracking-[0.2em] text-faint transition-colors duration-300 group-hover:text-on-fill">
                     {piece.year}
                   </p>
                 </div>
-                <span className="flex justify-end md:col-span-1">
+                <span className="col-start-3 row-span-2 row-start-1 flex justify-end md:col-span-1 md:col-start-auto md:row-span-1 md:row-start-auto">
                   <svg
                     width="20"
                     height="20"
                     viewBox="0 0 12 12"
                     fill="none"
-                    className="text-faint transition-all duration-300 group-hover:rotate-45 group-hover:text-ink"
+                    className={`text-faint transition-all duration-300 group-hover:text-on-fill ${open === i ? "rotate-90" : "group-hover:rotate-45"}`}
                     aria-hidden
                   >
                     <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4M10.5 1.5V8" stroke="currentColor" strokeWidth="1.4" />
@@ -108,13 +106,14 @@ export function Index() {
               <AnimatePresence>
                 {open === i && (
                   <motion.div
+                    id={`piece-${i}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: EASE_EXPO }}
+                    transition={{ duration: reduce ? 0 : 0.5, ease: EASE_EXPO }}
                     className="relative z-10 overflow-hidden"
                   >
-                    <div className="mb-7 ml-10 h-44 w-72 max-w-full border border-line-bright bg-ink md:ml-[16.67%] md:h-52">
+                    <div className="mb-7 ml-[5.5rem] h-44 w-72 max-w-[calc(100%-5.5rem)] border border-line-bright bg-ink md:ml-[16.67%] md:h-52">
                       <piece.Preview />
                     </div>
                   </motion.div>
@@ -127,7 +126,15 @@ export function Index() {
 
       <Reveal delay={0.15}>
         <p className="mt-10 font-mono text-[10px] uppercase leading-loose tracking-[0.25em] text-faint">
-          Hover to preview — click to expand. More pieces are in the workshop.
+          Open a piece to see it running. More live work is in{" "}
+          <NavigatorLink
+            href="/lab"
+            label="The lab"
+            className="text-paper underline underline-offset-4"
+          >
+            the lab
+          </NavigatorLink>
+          .
         </p>
       </Reveal>
 

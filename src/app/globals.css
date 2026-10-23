@@ -11,6 +11,7 @@
   --color-faint: var(--mizu-faint);
   --color-accent: var(--mizu-accent);
   --color-accent-fill: var(--mizu-accent-fill);
+  --color-on-fill: #fffaf4;
   --color-line: var(--mizu-line);
   --color-line-bright: var(--mizu-line-bright);
 
