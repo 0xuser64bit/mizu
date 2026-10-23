@@ -3,6 +3,7 @@ import usage from "./usage.json";
 import { CodeBlock, Kbd } from "@/mizu";
 import { COMPONENTS, type ComponentMeta } from "./registry";
 import { PreviewStage } from "./PreviewStage";
+import { PageActions } from "./PageActions";
 import { JsonLd } from "@/components/shell/JsonLd";
 import { PACKAGE, REPO_URL, SITE_URL } from "@/lib/site";
 import { DemoLabel } from "./demos/shared";
@@ -150,6 +151,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
           {meta.tagline}
         </p>
+        <PageActions slug={meta.slug} />
 
         <section className="mt-14">
           <DemoLabel as="h2">Live — this one is real</DemoLabel>

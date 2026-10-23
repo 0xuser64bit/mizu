@@ -129,6 +129,9 @@ body {
 .mizu-docs-nav-family a { display: block; padding: 8px 10px; font-size: 12px; color: var(--mizu-muted); border-radius: var(--mizu-radius); }
 .mizu-docs-nav-family a:hover { color: var(--mizu-paper); background: var(--mizu-ink-2); }
 .mizu-docs-nav-family a[aria-current="page"] { color: var(--mizu-paper); background: var(--mizu-ink-3); box-shadow: inset 1px 0 var(--mizu-accent); }
+.mizu-page-actions { display: flex; flex-wrap: wrap; gap: 4px 28px; margin: 20px 0 0; }
+.mizu-page-actions .mizu-copy-button { min-height: 44px; text-decoration: none; }
+.mizu-page-actions a.mizu-copy-button:hover, .mizu-page-actions button.mizu-copy-button:hover { color: var(--mizu-paper); }
 .mizu-docs-guide { font-size: 12px; color: var(--mizu-accent); padding: 12px 0; display: block; }
 .mizu-docs-mobile-index { display: none; }
 .mizu-docs-content { min-width: 0; }
