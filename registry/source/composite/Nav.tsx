@@ -88,9 +88,12 @@ export function Nav({
 
             <div
               style={{
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
+                flex: "1 1 0",
+                minWidth: 0,
+                paddingInline: "var(--mizu-space-5)",
+                overflow: "hidden",
+                textAlign: "center",
+                whiteSpace: "nowrap",
               }}
               className="mizu-nav-chapter"
             >
@@ -128,6 +131,7 @@ export function Nav({
                       display: "inline-flex",
                       alignItems: "center",
                       columnGap: 10,
+                      minHeight: 44,
                       fontFamily: "var(--mizu-font-mono)",
                       fontSize: 11,
                       letterSpacing: "0.22em",
@@ -165,6 +169,9 @@ export function Nav({
               className="mizu-nav-burger"
               type="button"
               style={{
+                minWidth: 44,
+                minHeight: 44,
+                justifyContent: "center",
                 background: "transparent",
                 border: "none",
                 fontFamily: "var(--mizu-font-mono)",
@@ -255,8 +262,11 @@ export function Nav({
           >
             {brand}
             <button
+              type="button"
               onClick={() => setOpen(false)}
               style={{
+                minWidth: 44,
+                minHeight: 44,
                 background: "transparent",
                 border: "none",
                 fontFamily: "var(--mizu-font-mono)",
@@ -303,7 +313,7 @@ export function Nav({
                     color: "var(--mizu-accent)",
                   }}
                 >
-                  0{i + 1}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
                 <span
                   style={{

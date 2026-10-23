@@ -67,6 +67,12 @@
   The text now sits in a visually hidden span beside the letters.
 - SectionTag takes `as` (`"p"`, `"h2"`, `"h3"` or `"h4"`) for sections
   whose tag is their only title, so the page outline doesn't skip a level.
+- Nav's chapter label sits between the brand and the links instead of at
+  the centre of the window, so it can no longer run into a long set of
+  links (with seven, it covered the first one between 1360 and 1600px). The
+  Menu and Close buttons are 44px square; they were 36 by 17. Links keep
+  their look but take a 44px-tall target, and the overlay numbers past nine
+  read 10, not 010.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
