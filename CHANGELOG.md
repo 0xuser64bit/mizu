@@ -25,6 +25,10 @@
   old number straight back. What you type now stays as typed, and reaches
   `onValueChange` as soon as it is a number in range; leaving the field or
   pressing Enter settles anything else into range.
+- SearchField's Clear button hands focus back to the input. The button
+  disappears once the field is empty, so focus fell to the page and a
+  keyboard user had to find the field again. Browsers' own clear button no
+  longer sits beside it.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

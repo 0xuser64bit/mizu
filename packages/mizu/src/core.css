@@ -1090,6 +1090,9 @@
 .mizu-password .mizu-input {
   padding-right: 72px;
 }
+.mizu-search .mizu-input::-webkit-search-cancel-button {
+  appearance: none;
+}
 .mizu-field-action {
   position: absolute;
   right: 4px;

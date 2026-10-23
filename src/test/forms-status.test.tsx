@@ -4,6 +4,7 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   TextField,
+  SearchField,
   PasswordField,
   Switch,
   RadioGroup,
@@ -117,6 +118,18 @@ describe("form and status contracts", () => {
     await user.tab();
     expect(input).toHaveValue(10);
     expect(change).toHaveBeenLastCalledWith(10);
+  });
+  it("hands focus back to the search input after clearing it", async () => {
+    const user = userEvent.setup();
+    function Search() {
+      const [value, setValue] = useState("");
+      return <SearchField value={value} onValueChange={setValue} />;
+    }
+    render(<Search />);
+    await user.type(screen.getByLabelText("Search"), "dock");
+    await user.click(screen.getByRole("button", { name: "Clear search" }));
+    expect(screen.getByLabelText("Search")).toHaveValue("");
+    expect(screen.getByLabelText("Search")).toHaveFocus();
   });
   it("rejects duplicate tags and reports capacity", async () => {
     const user = userEvent.setup(),

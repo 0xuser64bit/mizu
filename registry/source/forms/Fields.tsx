@@ -4,6 +4,7 @@ import {
   cloneElement,
   forwardRef,
   useId,
+  useRef,
   useState,
   type InputHTMLAttributes,
   type TextareaHTMLAttributes,
@@ -150,9 +151,11 @@ export function SearchField({
   value: string;
   onValueChange: (value: string) => void;
 }) {
+  const input = useRef<HTMLInputElement>(null);
   return (
     <div className={`mizu-search ${className}`}>
       <TextField
+        ref={input}
         label={label}
         type="search"
         value={value}
@@ -164,7 +167,10 @@ export function SearchField({
           type="button"
           className="mizu-field-action"
           aria-label={`Clear ${label.toLowerCase()}`}
-          onClick={() => onValueChange("")}
+          onClick={() => {
+            onValueChange("");
+            input.current?.focus();
+          }}
         >
           Clear
         </button>
