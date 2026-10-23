@@ -66,6 +66,12 @@ person who made the archive. There are no account managers or handoffs.
 - `/workshop`: a theme editor with CSS export and contrast checks, a working
   props playground, and links to installable `/blocks`. DateRangeField and Dock
   extend the Forms and Layout families. User-approved additions, 2026-10-21.
+- Drawer, Popover and OneTimeCode extend Composites and Forms, and
+  LinkProvider sends Mizu's links through an app's router. The site gained
+  ⌘K search over every page and component, a theme switch in the bar, URL-
+  kept collection filters and copy-as-Markdown on component pages. Chosen
+  by Claude on the user's delegation ("take decisions and do
+  implementation"), 2026-10-23.
 - `/studio`: the manifesto.
 - **No client work, testimonials, logos or case studies exist.** Never invent
   them, nor numbers of clients, years, or delivered projects.

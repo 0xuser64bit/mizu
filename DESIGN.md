@@ -68,7 +68,12 @@ an explicit local override that otherwise follows the OS setting.
   behavior.
 - **Overlays**: native `<dialog>` modality — Escape handling, focus
   containment and restoration, background inertness — with coordinated scroll
-  locks.
+  locks. A Drawer is that dialog sliding in from an edge. A Popover is
+  non-modal, on the native Popover API (light dismiss, Escape, focus back to
+  its button), and carries the one soft shadow because it is lifted.
+- **Links**: components that render links (Nav, Breadcrumbs, SideNav,
+  BottomNav, ButtonLink) go through `LinkProvider` when an app gives it its
+  router's link, and stay plain anchors otherwise.
 - **Content patterns** (link rows, code blocks, frames) are distinct editorial
   treatments, not one universal card.
 
@@ -122,6 +127,9 @@ Patterns the site's own pages use beyond the package, from `/work`
 - **Working-surface frame**: a form someone fills in sits in the same accent
   corner brackets as the stage, on a `div` with Frame's classes, since a form
   is not a figure.
+- **Bar actions**: search (the ⌘K CommandPalette over pages and
+  components) and the theme switch sit at the right of the bar on every
+  page, after the links or beside Menu. Nothing else goes there.
 - **Bench page** (`/workshop`, `/blocks`): the examples container and header,
   with the kicker line as the local navigation and the current page in
   accent. A bench is a control column beside its live result in one hairline
