@@ -198,7 +198,6 @@ export const PasswordField = forwardRef<
         type="button"
         className="mizu-field-action"
         aria-label={`${visible ? "Hide" : "Show"} ${label.toLowerCase()}`}
-        aria-pressed={visible}
         onClick={() => setVisible(!visible)}
       >
         {visible ? "Hide" : "Show"}

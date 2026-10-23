@@ -37,6 +37,9 @@ describe("form and status contracts", () => {
     await user.click(screen.getByRole("button", { name: "Show secret" }));
     expect(screen.getByLabelText("Secret")).toHaveAttribute("type", "text");
     expect(screen.getByLabelText("Secret")).toHaveValue("mizu");
+    expect(
+      screen.getByRole("button", { name: "Hide secret" }),
+    ).not.toHaveAttribute("aria-pressed");
   });
   it("uses native toggle and radio semantics", async () => {
     const user = userEvent.setup(),

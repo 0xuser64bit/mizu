@@ -29,6 +29,9 @@
   disappears once the field is empty, so focus fell to the page and a
   keyboard user had to find the field again. Browsers' own clear button no
   longer sits beside it.
+- PasswordField's toggle says what it will do and nothing more. It was
+  also a pressed toggle, so a screen reader heard "Hide password, pressed",
+  which reads as the opposite state.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
