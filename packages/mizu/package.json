@@ -1,6 +1,6 @@
 {
   "name": "mizu-ui",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Accessible React component systems for interface craft: timelines, charts, editors, flows, forms and data, with purposeful motion. No Tailwind required.",
   "type": "module",
   "license": "MIT",

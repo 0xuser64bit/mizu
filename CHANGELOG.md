@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.3.0 — 2026-10-23
 
 - Add Drawer: a Dialog that slides in from the right, left or bottom, for
   filters, details and quick edits, with the same focus, Escape and scroll
@@ -368,6 +368,20 @@
   once: 1.4 s on all three. Instrument Serif and JetBrains Mono are preloaded,
   as text that appears earlier would otherwise reflow when they arrive. Under
   reduced motion the first screen no longer sits 32px low, as Reveal left it.
+
+### Migration considerations
+
+GhostWord sets its font size inline from `size` (`clamp(4rem, 12vw, 9rem)` by
+default), so a font-size class on it no longer applies: pass the size as
+`size`, or `size="inherit"` to take its parent's. Marquee spaces its items by
+`--mizu-marquee-gap` (56px); drop padding added to space them, or set the
+token. `.mizu-root` sets a 1.5 line height, which your own content inside it
+inherits unless it sets one. Tabs without `defaultValue` select their first
+tab. Registry installs: the eight renamed items exist only under their
+kebab-case names (`copy-button`, not `copybutton`), so re-add them and import
+the new files; a component that came through a sibling's file is imported
+from its own item. The npm package keeps every export and entry point of
+0.2.1.
 
 ## 0.2.1 — 2026-09-28
 
