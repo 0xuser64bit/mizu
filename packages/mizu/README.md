@@ -1,6 +1,6 @@
 # mizu-ui
 
-Mizu's interface language for React: **128 systems across 14 families**, from
+Mizu's interface language for React: **131 systems across 14 families**, from
 signature instruments — timelines, charts, editors, readers, flows and
 controls — to labelled forms, asynchronous actions, data inspection, bounded
 history and variable type. Warm ink and paper, hairline rules,
@@ -62,8 +62,8 @@ The root exports everything; each family has a focused ESM entry point.
 | `mizu-ui/type` | Specimen, SoftType, WaveText, GhostWord |
 | `mizu-ui/lab` | Pinfield, Signal, RippleSurface |
 | `mizu-ui/feedback` | CountUp, CopyButton, Toast |
-| `mizu-ui/composite` | Accordion, Tabs, Dialog, Nav and compound parts |
-| `mizu-ui/forms` | FormField, TextField, TextArea, SelectField, Checkbox, Switch, SearchField, PasswordField, RadioGroup, SegmentedControl, NumberField, Rating, ColorPicker, TagInput, FileDropzone, AsyncForm, DateRangeField |
+| `mizu-ui/composite` | Accordion, Tabs, Dialog, Nav, Drawer, Popover and compound parts |
+| `mizu-ui/forms` | FormField, TextField, TextArea, SelectField, Checkbox, Switch, SearchField, PasswordField, RadioGroup, SegmentedControl, NumberField, Rating, ColorPicker, TagInput, FileDropzone, AsyncForm, DateRangeField, OneTimeCode |
 | `mizu-ui/status` | Status, Alert, Progress, Meter, Skeleton, EmptyState, ErrorState, ConnectionStatus, SaveIndicator, AsyncBoundary, TaskProgress, AsyncButton |
 | `mizu-ui/data` | DataTable, DescriptionList, Stat, BarChart, Sparkline, Heatmap, Timeline, ActivityFeed, DiffView, DataInspector, TreeView, ComparisonTable |
 | `mizu-ui/navigation` | Breadcrumbs, Pagination, Stepper, AnchorNav, SideNav, BottomNav, ActionMenu, CommandPalette |

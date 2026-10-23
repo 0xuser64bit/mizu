@@ -1,14 +1,4 @@
 
-.mizu-form-fields {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  min-width: 0;
-}
-.mizu-form-fields {
-  display: grid;
-  gap: 20px;
-}
 .mizu-async-form > p {
   margin-top: 12px;
   min-height: 20px;

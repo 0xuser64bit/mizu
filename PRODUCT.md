@@ -18,7 +18,7 @@ web
 
 ## Product Purpose
 
-Mizu is an archive of interface craft: 128 React component systems across 14
+Mizu is an archive of interface craft: 131 React component systems across 14
 families, led by 22 signature systems (timelines, charts, editors, readers,
 flows, instrument controls), with a lab of instruments and four whole-
 workflow examples. It is MIT-licensed and free.
@@ -61,7 +61,7 @@ person who made the archive. There are no account managers or handoffs.
 
 ## Evidence on Hand
 
-- The archive itself: `/components` (128 systems), `/examples` (incident
+- The archive itself: `/components` (131 systems), `/examples` (incident
   review, design review, automation builder, audio workbench), `/lab`.
 - `/workshop`: a theme editor with CSS export and contrast checks, a working
   props playground, and links to installable `/blocks`. DateRangeField and Dock

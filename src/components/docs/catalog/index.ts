@@ -8,6 +8,7 @@ import { LAYOUT } from "./layout";
 import { INTERACTION } from "./interaction";
 import { MOTION } from "./motion";
 import { SIGNATURE } from "./signature";
+import { COMPOSITES } from "./composite";
 export const CATALOG = [
   ...SIGNATURE,
   ...FOUNDATION,
@@ -19,4 +20,5 @@ export const CATALOG = [
   ...LAYOUT,
   ...INTERACTION,
   ...MOTION,
+  ...COMPOSITES,
 ];

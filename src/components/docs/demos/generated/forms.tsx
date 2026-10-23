@@ -2,6 +2,7 @@
 import { useState } from "react";
 import {
   DateRangeField,
+  OneTimeCode,
   FormField,
   TextField,
   TextArea,
@@ -45,6 +46,31 @@ export function DateRangeFieldDemo() {
         },
       ]}
     />
+  );
+}
+
+export function OneTimeCodeDemo() {
+  const [code, setCode] = useState("");
+  const wrong = code.length === 6 && code !== "424242";
+  return (
+    <>
+      <OneTimeCode
+        label="Sign-in code"
+        hint="This demo accepts 424242."
+        value={code}
+        onValueChange={setCode}
+        error={
+          wrong
+            ? "That code doesn’t match. Check the email and try again."
+            : undefined
+        }
+      />
+      {code === "424242" && (
+        <p role="status" className="mizu-field-hint">
+          Signed in.
+        </p>
+      )}
+    </>
   );
 }
 

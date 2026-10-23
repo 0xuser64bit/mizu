@@ -2612,6 +2612,88 @@
       ]
     },
     {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A panel that slides in from an edge for filters, details and quick edits, with all of Dialog's modal care.",
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/drawer.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/drawer.tsx"
+        },
+        {
+          "path": "registry/source/composite/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/source/composite/Drawer.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Drawer.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/source/composite/Dialog.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Dialog.css"
+        },
+        {
+          "path": "registry/source/composite/Drawer.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Drawer.css"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A small panel that opens beside its button for settings and filters, closing when you look away.",
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/popover.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/popover.tsx"
+        },
+        {
+          "path": "registry/source/composite/Popover.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/composite/Popover.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/form-fields.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/form-fields.css"
+        },
+        {
+          "path": "registry/source/composite/Popover.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/composite/Popover.css"
+        }
+      ]
+    },
+    {
       "name": "date-range-field",
       "type": "registry:ui",
       "title": "DateRangeField",
@@ -2669,6 +2751,52 @@
           "path": "registry/source/forms/DateRangeField.css",
           "type": "registry:file",
           "target": "@ui/mizu/source/forms/DateRangeField.css"
+        }
+      ]
+    },
+    {
+      "name": "one-time-code",
+      "type": "registry:ui",
+      "title": "OneTimeCode",
+      "description": "A one-time code, one digit to a cell, that fills itself from the message it came in.",
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/one-time-code.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/one-time-code.tsx"
+        },
+        {
+          "path": "registry/source/forms/OneTimeCode.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/forms/OneTimeCode.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        },
+        {
+          "path": "registry/shared/field.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field.css"
+        },
+        {
+          "path": "registry/shared/field-label.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-label.css"
+        },
+        {
+          "path": "registry/shared/field-error.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
+          "path": "registry/source/forms/OneTimeCode.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/source/forms/OneTimeCode.css"
         }
       ]
     },
@@ -3425,6 +3553,11 @@
           "path": "registry/shared/field-error.css",
           "type": "registry:file",
           "target": "@ui/mizu/shared/field-error.css"
+        },
+        {
+          "path": "registry/shared/form-fields.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/shared/form-fields.css"
         },
         {
           "path": "registry/shared/text-button.css",

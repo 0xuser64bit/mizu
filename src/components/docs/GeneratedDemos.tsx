@@ -94,6 +94,9 @@ export const GENERATED_DEMOS = {
   "date-range-field": dynamic(() =>
     import("./demos/generated/forms").then((m) => m.DateRangeFieldDemo),
   ),
+  "one-time-code": dynamic(() =>
+    import("./demos/generated/forms").then((m) => m.OneTimeCodeDemo),
+  ),
   "form-field": dynamic(() =>
     import("./demos/generated/forms").then((m) => m.FormFieldDemo),
   ),
@@ -322,5 +325,11 @@ export const GENERATED_DEMOS = {
   ),
   "scroll-progress": dynamic(() =>
     import("./demos/generated/motion").then((m) => m.ScrollProgressDemo),
+  ),
+  drawer: dynamic(() =>
+    import("./demos/generated/composites").then((m) => m.DrawerDemo),
+  ),
+  popover: dynamic(() =>
+    import("./demos/generated/composites").then((m) => m.PopoverDemo),
   ),
 };

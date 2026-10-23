@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CodeBlock } from "@/mizu";
+import { SYSTEMS } from "@/components/docs/registry";
 export const metadata: Metadata = {
   title: "Getting started: install mizu-ui",
   description:
@@ -24,7 +25,7 @@ export default function GettingStarted() {
       <article className="mizu-guide">
         <h1>Make a surface.</h1>
         <p>
-          128 systems for React 18.3 and 19. One stylesheet, optional fonts,
+          {SYSTEMS.length} systems for React 18.3 and 19. One stylesheet, optional fonts,
           native controls and purposeful motion. Mizu needs no Tailwind
           configuration and no provider for ordinary components.
         </p>

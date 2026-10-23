@@ -43,6 +43,38 @@ export const FORMS = [
     "Native date picking and immediate value changes; no forced travel.",
   ),
   d(
+    "OneTimeCode",
+    "Forms",
+    "forms/OneTimeCode.tsx",
+    "A one-time code, one digit to a cell, that fills itself from the message it came in.",
+    '  const [code, setCode] = useState("");\n  const wrong = code.length === 6 && code !== "424242";\n  return (\n    <>\n      <OneTimeCode label="Sign-in code" hint="This demo accepts 424242." value={code} onValueChange={setCode} error={wrong ? "That code doesn’t match. Check the email and try again." : undefined} />\n      {code === "424242" && <p role="status" className="mizu-field-hint">Signed in.</p>}\n    </>\n  );',
+    [
+      p(
+        "label / hint / error",
+        "string",
+        "Visible label, help text and validation feedback, linked to the input.",
+      ),
+      p(
+        "value / defaultValue / onValueChange",
+        "string / string / (code: string) => void",
+        "Controlled or initial code. Anything that isn't a digit is dropped, so pasted codes with spaces or dashes arrive clean.",
+      ),
+      p(
+        "onComplete",
+        "(code: string) => void",
+        "Called whenever the code reaches its full length, typed, pasted or filled in by the platform.",
+      ),
+      p("length", "number", "How many digits, from 1 to 12.", "6"),
+      p(
+        "name / required / disabled / autoFocus",
+        "string / boolean",
+        "Native form name, validation and states. A partial code fails native validation.",
+      ),
+    ],
+    "One real text input with autocomplete=one-time-code and a numeric keyboard, so SMS and email autofill, paste and assistive technology work as they do anywhere. The cells are drawn for sight only; the input is labelled, described and reads as the whole code.",
+    "The active cell takes the accent; the caret blinks there unless motion is reduced.",
+  ),
+  d(
     "FormField",
     "Forms",
     "forms/Fields.tsx",
