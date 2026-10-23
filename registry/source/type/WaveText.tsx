@@ -81,7 +81,6 @@ export function WaveText({
   return (
     <Tag
       className={`mizu-wave-text ${className}`}
-      aria-label={text}
       style={
         {
           ...(colorFrom && { "--mizu-wave-from": colorFrom }),
@@ -92,6 +91,7 @@ export function WaveText({
       onPointerMove={reduce ? undefined : onMove}
       onPointerLeave={reduce ? undefined : onLeave}
     >
+      <span className="mizu-sr-only">{text}</span>
       {chars.map((c, i) => (
         <span
           key={i}

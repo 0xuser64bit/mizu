@@ -61,6 +61,10 @@
   was a region named "tsx code" or "sh code", so a page with several gave
   screen-reader users a list of identical landmarks. It still falls back to
   the filename, then the language.
+- WaveText reads as its whole text. Its letters are hidden from assistive
+  technology and the word was given as an `aria-label` on a span, which
+  screen readers ignore, so a WaveText that wasn't a heading said nothing.
+  The text now sits in a visually hidden span beside the letters.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

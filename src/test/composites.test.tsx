@@ -379,9 +379,18 @@ describe("Specimen", () => {
 });
 
 describe("type systems", () => {
-  it("WaveText exposes the full word as its accessible name", () => {
-    render(<WaveText text="Mizu" />);
-    expect(screen.getByLabelText("Mizu")).toBeTruthy();
+  it("WaveText reads as the whole word, not letter by letter", () => {
+    const { container } = render(
+      <>
+        <WaveText text="Mizu" />
+        <WaveText as="h2" text="Ink and paper" />
+      </>,
+    );
+    expect(screen.getByText("Mizu")).toHaveClass("mizu-sr-only");
+    expect(
+      screen.getByRole("heading", { name: "Ink and paper" }),
+    ).toBeTruthy();
+    expect(container.querySelector("[aria-label]")).toBeNull();
   });
 
   it("WaveText leaves color to CSS, so a theme switch reaches its letters", () => {
