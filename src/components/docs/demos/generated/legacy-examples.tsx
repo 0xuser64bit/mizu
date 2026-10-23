@@ -56,9 +56,7 @@ export function ButtonUsage_Actions() {
         Cancel
       </Button>
       <Button loading>Saving</Button>
-      <ButtonLink href="/next" label="Next page">
-        Next page
-      </ButtonLink>
+      <ButtonLink href="/next">Next page</ButtonLink>
     </div>
   );
 }

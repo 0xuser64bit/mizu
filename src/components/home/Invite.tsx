@@ -31,7 +31,6 @@ export function Invite() {
             <Magnetic>
               <ButtonLink
                 href="/lab"
-                label="The lab"
                 onClick={(e) => {
                   e.preventDefault();
                   navigate("/lab", "The lab");

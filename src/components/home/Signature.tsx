@@ -60,7 +60,7 @@ export function Signature() {
 
       <Reveal delay={0.15}>
         <div className="mt-14 flex flex-wrap items-center gap-6">
-          <ButtonLink href="/examples" label="Examples">
+          <ButtonLink href="/examples">
             See them working together
           </ButtonLink>
           <ButtonLink href="/components" variant="ghost">

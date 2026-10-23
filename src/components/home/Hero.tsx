@@ -63,7 +63,6 @@ export function Hero() {
                   <Magnetic>
                     <ButtonLink
                       href="/lab"
-                      label="The lab"
                       onClick={(e) => {
                         e.preventDefault();
                         navigate("/lab", "The lab");
@@ -75,7 +74,6 @@ export function Hero() {
                   <Magnetic>
                     <ButtonLink
                       href="/studio"
-                      label="The standpoint"
                       variant="ghost"
                       onClick={(e) => {
                         e.preventDefault();

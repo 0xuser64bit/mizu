@@ -144,7 +144,7 @@ export default function StudioPage() {
                 <ButtonLink href="/work">Have something made</ButtonLink>
               </Magnetic>
               <Magnetic>
-                <ButtonLink href="/" label="Home" variant="ghost">
+                <ButtonLink href="/" variant="ghost">
                   Back to the archive
                 </ButtonLink>
               </Magnetic>

@@ -24,14 +24,12 @@ export function ThemeToggle() {
     } catch {}
   };
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      className="mizu-theme-toggle"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-    >
+    <button type="button" onClick={toggle} className="mizu-theme-toggle">
       <span aria-hidden="true" className="mizu-status-node" />
       {theme === "dark" ? "Dark" : "Light"}
+      <span className="mizu-sr-only">
+        {` theme, switch to ${theme === "dark" ? "light" : "dark"}`}
+      </span>
     </button>
   );
 }

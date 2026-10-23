@@ -68,9 +68,7 @@ export function Actions() {
       <Button variant="solid">Continue</Button>
       <Button variant="ghost" size="sm">Cancel</Button>
       <Button loading>Saving</Button>
-      <ButtonLink href="/next" label="Next page">
-        Next page
-      </ButtonLink>
+      <ButtonLink href="/next">Next page</ButtonLink>
     </div>
   );
 }`,
@@ -102,7 +100,7 @@ export function Actions() {
       {
         name: "label",
         type: "string",
-        desc: "ButtonLink only — sets aria-label for icon-only links.",
+        desc: "ButtonLink only — sets aria-label. Use it only when the link has no text of its own; a label that differs from the visible text hides that text from speech input and screen readers.",
       },
     ],
     a11y: "Renders a real <button> / <a>. Disabled states use the disabled attribute; loading is conveyed through role=status on the spinner.",

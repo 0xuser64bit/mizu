@@ -22,7 +22,7 @@ export default function NotFound() {
           </p>
           <div className="mt-12">
             <Magnetic>
-              <ButtonLink href="/" label="Back to the archive">
+              <ButtonLink href="/">
                 Back to the archive
               </ButtonLink>
             </Magnetic>

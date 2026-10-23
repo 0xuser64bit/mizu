@@ -58,7 +58,7 @@ export default function LabPage() {
         </p>
         <div className="mt-7 flex justify-center">
           <Magnetic>
-            <ButtonLink href="/" label="Home" variant="ghost">
+            <ButtonLink href="/" variant="ghost">
               Back to the archive
             </ButtonLink>
           </Magnetic>
