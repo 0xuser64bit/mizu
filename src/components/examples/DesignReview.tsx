@@ -150,7 +150,7 @@ export function DesignReview() {
         }
       />
 
-      <section aria-label="All submissions" className="mizu-review-sheet">
+      <section className="mizu-review-sheet">
         <p className="mizu-incident-label">
           Contact sheet · open any to compare
         </p>
