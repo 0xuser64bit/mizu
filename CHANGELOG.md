@@ -86,6 +86,9 @@
 - CommandPalette matches every word you type, in any order, so "range
   date" finds DateRangeField; it matched the query as one phrase. It also
   opens empty each time instead of keeping a query typed before it closed.
+- CommandPalette opens near the top of the window rather than in the
+  middle, so its field stays put while results narrow; centred, the dialog
+  shrank around the field and moved it with every keystroke.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

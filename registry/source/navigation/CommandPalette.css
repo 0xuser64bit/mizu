@@ -1,5 +1,6 @@
 
 .mizu-command-palette {
+  margin-top: min(14vh, 120px);
   padding: 16px;
 }
 .mizu-command-list {
