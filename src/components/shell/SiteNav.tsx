@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import { Nav } from "@/mizu";
 import { Wordmark } from "@/components/ui/Wordmark";
+import { ThemeToggle } from "@/components/docs/ThemeToggle";
+import { SiteSearch } from "./SiteSearch";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -20,6 +22,12 @@ export function SiteNav({ trackChapters = true }: { trackChapters?: boolean }) {
     <Nav
       brand={<Wordmark />}
       links={LINKS}
+      actions={
+        <>
+          <SiteSearch />
+          <ThemeToggle />
+        </>
+      }
       currentPath={pathname}
       trackChapters={trackChapters}
     />

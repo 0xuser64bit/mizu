@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteNav } from "@/components/shell/SiteNav";
-import { ThemeToggle } from "@/components/docs/ThemeToggle";
 import "./workshop.css";
 
 const links = [
@@ -41,7 +40,6 @@ export function WorkshopShell({
                 </Link>
               ))}
             </nav>
-            <ThemeToggle />
           </div>
           <h1>{title}</h1>
           <div className="mizu-example-lede">

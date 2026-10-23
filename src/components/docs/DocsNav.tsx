@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./ThemeToggle";
 import type { ComponentSummary } from "./ComponentBrowser";
 
 export function DocsNav({
@@ -22,7 +21,6 @@ export function DocsNav({
     <>
       <div className="mizu-docs-nav-top">
         <Link href="/components">The collection</Link>
-        <ThemeToggle />
       </div>
       <label className="mizu-docs-search">
         <span className="mizu-sr-only">Search navigation</span>

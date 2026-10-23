@@ -18,9 +18,6 @@
 .mizu-workshop-navigation nav a[aria-current] {
   color: var(--mizu-accent);
 }
-.mizu-workshop-navigation .mizu-theme-toggle {
-  margin-right: -8px;
-}
 .mizu-workshop .mizu-example-head h1 {
   text-wrap: balance;
 }
@@ -473,9 +470,6 @@
   }
   .mizu-workshop-navigation nav {
     column-gap: 16px;
-  }
-  .mizu-workshop-navigation .mizu-theme-toggle {
-    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
