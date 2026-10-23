@@ -11,6 +11,7 @@ import {
 } from "motion/react";
 
 import { Dialog } from "./Dialog.tsx";
+import { Anchor } from "../ui/Link.tsx";
 
 export type NavLink = { href: string; label: string };
 
@@ -123,7 +124,7 @@ export function Nav({
               {links.map((l) => {
                 const active = path === l.href;
                 return (
-                  <a
+                  <Anchor
                     key={l.href}
                     href={l.href}
                     aria-current={active ? "page" : undefined}
@@ -157,7 +158,7 @@ export function Nav({
                       }}
                     />
                     {l.label}
-                  </a>
+                  </Anchor>
                 );
               })}
             </nav>
@@ -290,7 +291,7 @@ export function Nav({
             }}
           >
             {links.map((l, i) => (
-              <a
+              <Anchor
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
@@ -326,7 +327,7 @@ export function Nav({
                 >
                   {l.label}
                 </span>
-              </a>
+              </Anchor>
             ))}
           </nav>
           <p

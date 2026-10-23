@@ -147,6 +147,14 @@ const supporting = [
       "An explicit motion preference for everything inside it — Motion, CSS and canvas — or the operating system’s when omitted.",
     usage: "",
   },
+  {
+    slug: "link-provider",
+    name: "LinkProvider",
+    source: "ui/Link.tsx",
+    tagline:
+      "Your router's link component, used by every Mizu link inside it so navigation stays in the app.",
+    usage: "",
+  },
 ];
 const catalog = [...SYSTEMS, ...supporting];
 const closureOf = (source: string) =>

@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { Spinner } from "./Spinner";
+import { Anchor } from "./Link";
 
 export type ButtonVariant = "solid" | "ghost" | "inverse";
 export type ButtonSize = "md" | "sm";
@@ -93,13 +94,14 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps) {
   return (
-    <a
+    <Anchor
       aria-label={label}
       className={buttonClass(variant, size, className)}
       {...props}
+      href={props.href!}
     >
       {children}
       {arrow && <Arrow />}
-    </a>
+    </Anchor>
   );
 }

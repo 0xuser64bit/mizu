@@ -6,6 +6,7 @@ export { Spinner } from "./Spinner.tsx";
 export { Frame } from "./Frame.tsx";
 export { Slider } from "./Slider.tsx";
 export { Tooltip } from "./Tooltip.tsx";
+export { LinkProvider, type LinkComponent } from "./Link.tsx";
 export {
   Button,
   ButtonLink,

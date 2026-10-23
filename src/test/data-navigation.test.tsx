@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import type { AnchorHTMLAttributes } from "react";
 import {
   DataTable,
   DataInspector,
@@ -10,9 +11,36 @@ import {
   BarChart,
   Heatmap,
   ActionMenu,
+  LinkProvider,
+  Nav,
+  Breadcrumbs,
+  SideNav,
+  BottomNav,
+  ButtonLink,
 } from "@/mizu";
 
 describe("data and navigation contracts", () => {
+  it("routes every link through the app's own link component", () => {
+    function RouterLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
+      return <a data-router="" {...props} />;
+    }
+    const { container } = render(
+      <LinkProvider component={RouterLink}>
+        <Nav brand="Mizu" links={[{ href: "/docs", label: "Docs" }]} />
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Docs" }]} />
+        <SideNav groups={[{ label: "Guides", items: [{ href: "/a", label: "A" }] }]} />
+        <BottomNav items={[{ href: "/b", label: "B" }]} />
+        <ButtonLink href="/start">Start</ButtonLink>
+      </LinkProvider>,
+    );
+    const links = [...container.querySelectorAll("a")];
+    expect(links.length).toBe(5);
+    expect(links.every((a) => a.hasAttribute("data-router"))).toBe(true);
+    expect(screen.getByRole("link", { name: /Start/ })).toHaveAttribute(
+      "href",
+      "/start",
+    );
+  });
   it("sorts numeric values and keeps null readings last in both directions", async () => {
     const user = userEvent.setup();
     const rows = [

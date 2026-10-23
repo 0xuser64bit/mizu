@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
+import { Anchor } from "../ui/Link.tsx";
 export type NavigationItem = { href: string; label: string; icon?: ReactNode };
 export function Breadcrumbs({
   items,
@@ -18,7 +19,7 @@ export function Breadcrumbs({
           <li key={i}>
             {i > 0 && <span aria-hidden="true">/</span>}
             {item.href && i < items.length - 1 ? (
-              <a href={item.href}>{item.label}</a>
+              <Anchor href={item.href}>{item.label}</Anchor>
             ) : (
               <span aria-current={i === items.length - 1 ? "page" : undefined}>
                 {item.label}
@@ -198,14 +199,14 @@ export function SideNav({
         <section key={group.label}>
           <h2>{group.label}</h2>
           {group.items.map((item) => (
-            <a
+            <Anchor
               key={item.href}
               href={item.href}
               aria-current={currentPath === item.href ? "page" : undefined}
             >
               {item.icon && <span aria-hidden="true">{item.icon}</span>}
               {item.label}
-            </a>
+            </Anchor>
           ))}
         </section>
       ))}
@@ -226,14 +227,14 @@ export function BottomNav({
   return (
     <nav className={`mizu-bottom-nav ${className}`} aria-label={label}>
       {items.map((item) => (
-        <a
+        <Anchor
           key={item.href}
           href={item.href}
           aria-current={currentPath === item.href ? "page" : undefined}
         >
           {item.icon && <span aria-hidden="true">{item.icon}</span>}
           <span>{item.label}</span>
-        </a>
+        </Anchor>
       ))}
     </nav>
   );

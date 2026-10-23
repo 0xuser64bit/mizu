@@ -245,6 +245,25 @@ import { MotionPreferences } from "mizu-ui/motion";`}</Code>
           Copied components are yours to change: edit their source and
           stylesheets directly.
         </p>
+        <h2>Use your router’s links</h2>
+        <p>
+          Nav, Breadcrumbs, SideNav, BottomNav and ButtonLink render plain
+          anchors, so each click loads a new document. Hand your router’s link
+          component to <code>LinkProvider</code> once, near the root, and they
+          navigate with it instead:
+        </p>
+        <Code language="tsx" label="Route links through Next.js">{`"use client";
+import Link from "next/link";
+import { LinkProvider } from "mizu-ui";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <LinkProvider component={Link}>{children}</LinkProvider>;
+}`}</Code>
+        <p>
+          The component receives anchor props with a string <code>href</code>.
+          React Router’s <code>Link</code> takes <code>to</code>, so wrap it:{" "}
+          <code>{`(props) => <Link to={props.href} {...props} />`}</code>.
+        </p>
         <h2>Use real states</h2>
         <p>
           Native fields accept standard form attributes and controlled or

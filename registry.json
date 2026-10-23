@@ -592,6 +592,11 @@
           "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/ui/Button.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Button.tsx"
@@ -671,6 +676,11 @@
           "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/ui/Button.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Button.tsx"
@@ -743,6 +753,11 @@
           "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/source/ui/Button.tsx",
@@ -1346,6 +1361,11 @@
           "path": "registry/source/ui/Spinner.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Spinner.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/source/ui/Button.tsx",
@@ -2563,6 +2583,11 @@
           "path": "registry/source/composite/Dialog.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/composite/Dialog.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/source/composite/Nav.tsx",
@@ -3829,6 +3854,11 @@
           "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/ui/Button.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Button.tsx"
@@ -4402,6 +4432,11 @@
           "target": "@ui/mizu/breadcrumbs.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/navigation/Navigation.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/navigation/Navigation.tsx"
@@ -4431,6 +4466,11 @@
           "path": "registry/pagination.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/pagination.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/source/navigation/Navigation.tsx",
@@ -4464,6 +4504,11 @@
           "target": "@ui/mizu/stepper.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/navigation/Navigation.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/navigation/Navigation.tsx"
@@ -4493,6 +4538,11 @@
           "path": "registry/anchor-nav.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/anchor-nav.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/source/navigation/Navigation.tsx",
@@ -4526,6 +4576,11 @@
           "target": "@ui/mizu/side-nav.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/navigation/Navigation.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/navigation/Navigation.tsx"
@@ -4555,6 +4610,11 @@
           "path": "registry/bottom-nav.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/bottom-nav.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/source/navigation/Navigation.tsx",
@@ -5667,6 +5727,11 @@
           "target": "@ui/mizu/source/ui/Spinner.tsx"
         },
         {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
+        },
+        {
           "path": "registry/source/ui/Button.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/ui/Button.tsx"
@@ -5729,6 +5794,32 @@
           "path": "registry/source/motion/Preferences.tsx",
           "type": "registry:ui",
           "target": "@ui/mizu/source/motion/Preferences.tsx"
+        },
+        {
+          "path": "registry/styles/base.css",
+          "type": "registry:file",
+          "target": "@ui/mizu/base.css"
+        }
+      ]
+    },
+    {
+      "name": "link-provider",
+      "type": "registry:ui",
+      "title": "LinkProvider",
+      "description": "Your router's link component, used by every Mizu link inside it so navigation stays in the app.",
+      "meta": {
+        "client": true
+      },
+      "files": [
+        {
+          "path": "registry/link-provider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/link-provider.tsx"
+        },
+        {
+          "path": "registry/source/ui/Link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mizu/source/ui/Link.tsx"
         },
         {
           "path": "registry/styles/base.css",

@@ -16,6 +16,11 @@
   include their source dependencies and CSS; `/r/[slug].json` serves installable
   JSON for the current origin. `bun run test:blocks` installs all three through
   the actual shadcn CLI and checks the copied source.
+- Add LinkProvider. Nav, Breadcrumbs, SideNav, BottomNav and ButtonLink
+  render through the link component you give it, such as Next.js's `Link`,
+  so their navigation stays inside your router instead of loading a new
+  document. Without a provider they render anchors as before. The registry
+  adds it as `link-provider`.
 - Add `/examples/audio-workbench`: real synthetic speech with measured peaks,
   transcript seek, excerpt playback and timestamped outline notes with Markdown
   export. Notes remain in the current tab; no backend is implied.

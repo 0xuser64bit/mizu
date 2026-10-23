@@ -57,7 +57,7 @@ The root exports everything; each family has a focused ESM entry point.
 | Path | Systems |
 | --- | --- |
 | `mizu-ui/signature` | Chronicle, TrendChart, Waveform, Plane / PlaneItem, FlowGraph, Treemap, Board, Outliner, QueryBuilder, Annotator, Tour, Interview, TransferQueue, TriageDeck, Gallery, Folio / Sidenote, SplitFlap, ColumnBrowser, LogStream, Knob, Fader, XYPad; layout and query helpers (tidyFlow, squarify, justifyRows, flapPath, moveCard, describeQuery, matchesQuery) |
-| `mizu-ui/ui` | Button / ButtonLink, Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip |
+| `mizu-ui/ui` | Button / ButtonLink, Mark, SectionTag, Rule, Badge, Spinner, Frame, Slider, Tooltip; LinkProvider |
 | `mizu-ui/motion` | MaskLine, Reveal, Magnetic, Marquee, PageWipe, Presence, Tilt, Parallax, ScrollProgress; MotionPreferences |
 | `mizu-ui/type` | Specimen, SoftType, WaveText, GhostWord |
 | `mizu-ui/lab` | Pinfield, Signal, RippleSurface |
@@ -142,6 +142,25 @@ import { MotionPreferences } from "mizu-ui/motion";
 Omit `reduced` to follow the operating system. Continuous marquees include
 pause controls. Canvas instruments stop their loops off screen, when hidden or
 with reduced motion, and render a static useful frame.
+
+## Links and your router
+
+Nav, Breadcrumbs, SideNav, BottomNav and ButtonLink render plain anchors, so a
+click loads a new document. To navigate with your router instead, give
+`LinkProvider` its link component once, near the root:
+
+```tsx
+"use client";
+import Link from "next/link";
+import { LinkProvider } from "mizu-ui";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <LinkProvider component={Link}>{children}</LinkProvider>;
+}
+```
+
+The component receives anchor props with a string `href`. React Router's
+`Link` takes `to`, so wrap it: `(props) => <Link to={props.href} {...props} />`.
 
 ## Real state and composition
 

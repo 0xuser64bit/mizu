@@ -72,7 +72,8 @@ MotionPreferences provider have no stylesheet of their own and need only
 `base.css`. Keep data your Server Components read out of `"use client"`
 modules: exported from one, an array reaches server code as a client
 reference, not an array. See each catalog page for its command; `motion-preferences` adds the MotionPreferences
-provider. Registry entries are generated from the catalog with
+provider, and `link-provider` adds LinkProvider, which sends Mizu's links
+through your router's link component. Registry entries are generated from the catalog with
 `bun run registry:sync`.
 
 ### Without Tailwind
