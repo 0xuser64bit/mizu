@@ -187,7 +187,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: opacity 260ms ease;
 }
 .mizu-chronicle-event:not([data-tone]) {
   --mizu-tone: var(--mizu-paper);
@@ -199,7 +198,8 @@
   flex-shrink: 0;
   transition:
     background var(--mizu-duration-fast),
-    box-shadow var(--mizu-duration-fast);
+    box-shadow var(--mizu-duration-fast),
+    opacity 260ms ease;
 }
 .mizu-chronicle-event[data-kind="span"] .mizu-chronicle-mark {
   position: absolute;
@@ -239,6 +239,7 @@
   line-height: 1;
   white-space: nowrap;
   pointer-events: none;
+  transition: color 260ms ease;
 }
 .mizu-chronicle-event[data-kind="instant"] .mizu-chronicle-label {
   margin-left: 6px;
@@ -258,8 +259,14 @@
   display: none;
 }
 .mizu-chronicle[data-selecting]
-  .mizu-chronicle-event:not([aria-selected="true"]) {
+  .mizu-chronicle-event:not([aria-selected="true"])
+  .mizu-chronicle-mark {
   opacity: 0.42;
+}
+.mizu-chronicle[data-selecting]
+  .mizu-chronicle-event:not([aria-selected="true"])
+  .mizu-chronicle-label {
+  color: var(--mizu-muted);
 }
 .mizu-chronicle[data-reveal] .mizu-chronicle-event {
   animation: mizu-chronicle-in 640ms var(--mizu-ease-expo) both;
