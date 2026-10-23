@@ -116,7 +116,7 @@ body {
 .mizu-docs-shell { display: grid; grid-template-columns: 230px minmax(0,1fr); padding-top: 64px; min-height: 100vh; }
 .mizu-docs-sidebar { border-right: 1px solid var(--mizu-line); position: sticky; top: 64px; height: calc(100dvh - 64px); overflow: auto; padding: 24px 20px; scrollbar-width: thin; scrollbar-color: var(--mizu-line-bright) transparent; }
 .mizu-docs-nav-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.mizu-docs-nav-top > a { font-size: 13px; font-weight: 700; }
+.mizu-docs-nav-top > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 700; }
 .mizu-theme-toggle { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px; color: var(--mizu-muted); background: transparent; border: 0; font: 10px var(--mizu-font-mono); cursor: pointer; }
 .mizu-docs-search { display: block; margin: 16px 0 24px; }
 .mizu-docs-search input { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--mizu-line-bright); background: var(--mizu-ink-2); color: var(--mizu-paper); padding: 10px; font-size: 12px; }

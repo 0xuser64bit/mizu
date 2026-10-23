@@ -290,7 +290,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
                 : "A Server Component: it renders on the server, with no client JavaScript of its own.")}
           </p>
           <details className="mt-5 border border-line p-4">
-            <summary className="cursor-pointer text-sm text-paper">
+            <summary className="-my-3 cursor-pointer py-3 text-sm text-paper">
               Inspect {meta.source}
             </summary>
             <p className="mt-3 text-sm text-muted">
@@ -298,7 +298,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
               <code>src/{meta.source}</code>.
             </p>
             <a
-              className="mt-3 inline-block text-sm text-accent underline underline-offset-4"
+              className="mt-1 inline-flex min-h-11 items-center text-sm text-accent underline underline-offset-4"
               href={`/api/source/${meta.slug}`}
               target="_blank"
               rel="noreferrer"
@@ -355,7 +355,7 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
           {prev ? (
             <Link
               href={`/components/${prev.slug}`}
-              className="group font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
+              className="group inline-flex min-h-11 items-center font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
             >
               ← {prev.name}
             </Link>
@@ -365,14 +365,14 @@ export function ComponentDoc({ meta }: { meta: ComponentMeta }) {
           {next ? (
             <Link
               href={`/components/${next.slug}`}
-              className="group font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
+              className="group inline-flex min-h-11 items-center font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
             >
               {next.name} →
             </Link>
           ) : (
             <Link
               href="/components"
-              className="group font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
+              className="group inline-flex min-h-11 items-center font-mono text-[11px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
             >
               All components →
             </Link>
