@@ -11,7 +11,12 @@ import {
 import { useRouter } from "next/navigation";
 import { CommandPalette } from "@/mizu";
 
-type Entry = { href: string; label: string; description: string };
+type Entry = {
+  href: string;
+  label: string;
+  description: string;
+  keywords?: string;
+};
 
 const PAGES: Entry[] = [
   { href: "/", label: "Home", description: "The archive" },
@@ -73,6 +78,7 @@ export function SiteSearch() {
         id: e.href,
         label: e.label,
         description: e.description,
+        keywords: e.keywords,
         onSelect: () => router.push(e.href),
       })),
     [systems, router],
