@@ -137,6 +137,7 @@ export function Skeleton({
       aria-label={label}
       style={style}
     >
+      <span className="mizu-sr-only">{label}</span>
       {Array.from({ length: Math.min(20, Math.max(1, lines)) }, (_, i) => (
         <span aria-hidden="true" key={i} />
       ))}

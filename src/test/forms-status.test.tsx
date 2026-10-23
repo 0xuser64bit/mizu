@@ -14,6 +14,7 @@ import {
   AsyncForm,
   AsyncButton,
   Progress,
+  Skeleton,
   AsyncBoundary,
   TaskProgress,
 } from "@/mizu";
@@ -133,6 +134,11 @@ describe("form and status contracts", () => {
     await user.click(screen.getByRole("button", { name: "Clear search" }));
     expect(screen.getByLabelText("Search")).toHaveValue("");
     expect(screen.getByLabelText("Search")).toHaveFocus();
+  });
+  it("puts the skeleton's loading label in its live text", () => {
+    render(<Skeleton label="Loading invoices" lines={2} />);
+    expect(screen.getByRole("status")).toHaveTextContent("Loading invoices");
+    expect(screen.getByRole("status").querySelectorAll("[aria-hidden]")).toHaveLength(2);
   });
   it("rejects duplicate tags and reports capacity", async () => {
     const user = userEvent.setup(),

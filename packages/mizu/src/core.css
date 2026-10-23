@@ -1379,13 +1379,13 @@
   display: grid;
   gap: 12px;
 }
-.mizu-skeleton span {
+.mizu-skeleton > span[aria-hidden] {
   display: block;
   height: 14px;
   background: var(--mizu-line-bright);
   animation: mizu-skeleton-pulse 1.8s ease-in-out infinite;
 }
-.mizu-skeleton span:last-child {
+.mizu-skeleton > span[aria-hidden]:last-child {
   width: 65%;
 }
 @keyframes mizu-skeleton-pulse {

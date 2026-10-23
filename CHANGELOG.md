@@ -100,6 +100,8 @@
 - CommandPalette opens near the top of the window rather than in the
   middle, so its field stays put while results narrow; centred, the dialog
   shrank around the field and moved it with every keystroke.
+- Skeleton's status holds its label as text, for the same reason as
+  Spinner's below.
 - Spinner's status holds its label as text. Live regions announce their
   content, and the label was only the region's name, so "Loading" was
   rarely spoken when a spinner appeared.
