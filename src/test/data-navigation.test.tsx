@@ -158,6 +158,7 @@ describe("data and navigation contracts", () => {
             commands={[
               { id: "a", label: "DateRangeField", description: "Forms", onSelect: () => {} },
               { id: "b", label: "RangeSelector", description: "Interaction", onSelect: () => {} },
+              { id: "c", label: "Drawer", keywords: "sheet slide-over", onSelect: () => {} },
             ]}
           />
         </>
@@ -168,13 +169,18 @@ describe("data and navigation contracts", () => {
     expect(screen.getAllByRole("option").map((o) => o.textContent)).toEqual([
       "DateRangeFieldForms",
     ]);
+    await user.clear(screen.getByRole("combobox"));
+    await user.type(screen.getByRole("combobox"), "sheet");
+    expect(screen.getAllByRole("option").map((o) => o.textContent)).toEqual([
+      "Drawer",
+    ]);
     fireEvent(
       document.querySelector("dialog")!,
       new Event("cancel", { cancelable: true }),
     );
     await user.click(screen.getByRole("button", { name: "Search" }));
     expect(screen.getByRole("combobox")).toHaveValue("");
-    expect(screen.getAllByRole("option")).toHaveLength(2);
+    expect(screen.getAllByRole("option")).toHaveLength(3);
   });
   it("exposes an empty command result", async () => {
     const user = userEvent.setup();

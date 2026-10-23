@@ -128,7 +128,7 @@ export const NAVIGATION = [
       p(
         "commands",
         "Command[]",
-        "Stable id, label, description, optional shortcut/disabled and onSelect.",
+        "Stable id, label, description, optional shortcut/disabled and onSelect. Optional keywords are matched but not shown, for other names people search by.",
       ),
       p("label / placeholder", "string", "Accessible name and search prompt."),
     ],

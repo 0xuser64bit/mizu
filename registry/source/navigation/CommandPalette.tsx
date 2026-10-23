@@ -6,6 +6,7 @@ export type Command = {
   id: string;
   label: string;
   description?: string;
+  keywords?: string;
   shortcut?: string;
   onSelect: () => void;
   disabled?: boolean;
@@ -31,7 +32,8 @@ export function CommandPalette({
     id = useId();
   const words = query.toLowerCase().split(/\s+/).filter(Boolean);
   const matches = commands.filter((c) => {
-    const text = `${c.label} ${c.description ?? ""}`.toLowerCase();
+    const text =
+      `${c.label} ${c.description ?? ""} ${c.keywords ?? ""}`.toLowerCase();
     return !c.disabled && words.every((w) => text.includes(w));
   });
   const active = Math.min(cursor, Math.max(0, matches.length - 1));

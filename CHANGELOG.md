@@ -94,6 +94,8 @@
 - Accordion takes `value`, `defaultValue` and `onValueChange` (the open
   items, controlled or not), so an item can start open or follow your
   state, and `level` for its headings, which were always h3.
+- CommandPalette commands take `keywords`: other names to match that are
+  never shown, such as "sheet" for a drawer.
 - CommandPalette matches every word you type, in any order, so "range
   date" finds DateRangeField; it matched the query as one phrase. It also
   opens empty each time instead of keeping a query typed before it closed.
