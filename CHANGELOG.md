@@ -81,6 +81,9 @@
 - Accordion takes `value`, `defaultValue` and `onValueChange` (the open
   items, controlled or not), so an item can start open or follow your
   state, and `level` for its headings, which were always h3.
+- CommandPalette matches every word you type, in any order, so "range
+  date" finds DateRangeField; it matched the query as one phrase. It also
+  opens empty each time instead of keeping a query typed before it closed.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

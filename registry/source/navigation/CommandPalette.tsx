@@ -29,24 +29,27 @@ export function CommandPalette({
     [cursor, setCursor] = useState(0);
   const list = useRef<HTMLDivElement>(null),
     id = useId();
-  const matches = commands.filter(
-    (c) =>
-      !c.disabled &&
-      `${c.label} ${c.description ?? ""}`
-        .toLowerCase()
-        .includes(query.toLowerCase()),
-  );
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const matches = commands.filter((c) => {
+    const text = `${c.label} ${c.description ?? ""}`.toLowerCase();
+    return !c.disabled && words.every((w) => text.includes(w));
+  });
   const active = Math.min(cursor, Math.max(0, matches.length - 1));
+  const change = (next: boolean) => {
+    if (!next) {
+      setQuery("");
+      setCursor(0);
+    }
+    onOpenChange(next);
+  };
   const select = (command: Command) => {
-    onOpenChange(false);
-    setQuery("");
-    setCursor(0);
+    change(false);
     command.onSelect();
   };
   return (
     <Dialog
       open={open}
-      onOpenChange={onOpenChange}
+      onOpenChange={change}
       label={label}
       className={`mizu-command-palette ${className}`}
     >

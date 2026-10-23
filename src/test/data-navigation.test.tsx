@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { AnchorHTMLAttributes } from "react";
+import { useState, type AnchorHTMLAttributes } from "react";
 import {
   DataTable,
   DataInspector,
@@ -142,6 +142,39 @@ describe("data and navigation contracts", () => {
     await user.keyboard("{Enter}");
     expect(execute).toHaveBeenCalledOnce();
     expect(close).toHaveBeenCalledWith(false);
+  });
+  it("matches every word in any order and opens fresh each time", async () => {
+    const user = userEvent.setup();
+    function Palette() {
+      const [open, setOpen] = useState(true);
+      return (
+        <>
+          <button type="button" onClick={() => setOpen(true)}>
+            Search
+          </button>
+          <CommandPalette
+            open={open}
+            onOpenChange={setOpen}
+            commands={[
+              { id: "a", label: "DateRangeField", description: "Forms", onSelect: () => {} },
+              { id: "b", label: "RangeSelector", description: "Interaction", onSelect: () => {} },
+            ]}
+          />
+        </>
+      );
+    }
+    render(<Palette />);
+    await user.type(screen.getByRole("combobox"), "range date");
+    expect(screen.getAllByRole("option").map((o) => o.textContent)).toEqual([
+      "DateRangeFieldForms",
+    ]);
+    fireEvent(
+      document.querySelector("dialog")!,
+      new Event("cancel", { cancelable: true }),
+    );
+    await user.click(screen.getByRole("button", { name: "Search" }));
+    expect(screen.getByRole("combobox")).toHaveValue("");
+    expect(screen.getAllByRole("option")).toHaveLength(2);
   });
   it("exposes an empty command result", async () => {
     const user = userEvent.setup();
