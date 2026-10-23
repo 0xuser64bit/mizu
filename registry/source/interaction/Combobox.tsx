@@ -20,6 +20,7 @@ export function Combobox({
 }) {
   const id = useId(),
     input = useRef<HTMLInputElement>(null),
+    list = useRef<HTMLDivElement>(null),
     [open, setOpen] = useState(false),
     [query, setQuery] = useState(""),
     [cursor, setCursor] = useState(0);
@@ -75,12 +76,12 @@ export function Combobox({
           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
             e.preventDefault();
             setOpen(true);
-            setCursor(
-              matches.length
-                ? (active + (e.key === "ArrowDown" ? 1 : -1) + matches.length) %
-                    matches.length
-                : 0,
-            );
+            const next = matches.length
+              ? (active + (e.key === "ArrowDown" ? 1 : -1) + matches.length) %
+                matches.length
+              : 0;
+            setCursor(next);
+            list.current?.children[next]?.scrollIntoView({ block: "nearest" });
           }
           if (e.key === "Enter" && open && matches[active]) {
             e.preventDefault();
@@ -96,6 +97,7 @@ export function Combobox({
       />
       {open && (
         <div
+          ref={list}
           id={`${id}-list`}
           role="listbox"
           aria-label={`${label} options`}

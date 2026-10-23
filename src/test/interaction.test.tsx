@@ -41,6 +41,30 @@ describe("editing and direct manipulation", () => {
     await user.keyboard("{Escape}");
     expect(change).toHaveBeenCalledTimes(1);
   });
+  it("keeps the active option in view while arrowing through a long list", async () => {
+    const user = userEvent.setup(),
+      scrolled: string[] = [];
+    const scroll = vi
+      .spyOn(Element.prototype, "scrollIntoView")
+      .mockImplementation(function (this: Element) {
+        scrolled.push(this.textContent ?? "");
+      });
+    render(
+      <Combobox
+        label="Typeface"
+        value=""
+        onValueChange={() => {}}
+        options={["Archivo", "Instrument", "JetBrains", "Inter"].map((l) => ({
+          value: l,
+          label: l,
+        }))}
+      />,
+    );
+    await user.click(screen.getByRole("combobox"));
+    await user.keyboard("{ArrowDown}{ArrowDown}");
+    expect(scrolled).toEqual(["Instrument", "JetBrains"]);
+    scroll.mockRestore();
+  });
   it("keeps selected items removable at multi-select capacity", async () => {
     const user = userEvent.setup(),
       change = vi.fn();

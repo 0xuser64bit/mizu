@@ -36,6 +36,8 @@
   selected, so no panel showed and every trigger was out of the tab order:
   the list could not be reached from the keyboard at all. Tabs also move to
   the first enabled tab when the selected one is removed or disabled.
+- Combobox keeps the active option in view. Its list scrolls after about six
+  options, but arrowing past them moved the highlight out of sight.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
