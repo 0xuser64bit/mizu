@@ -26,7 +26,7 @@ export function Manifesto() {
       <div className="grid gap-12 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-3">
           <div className="md:sticky md:top-28">
-            <SectionTag>01 — Manifesto</SectionTag>
+            <SectionTag as="h2">01 — Manifesto</SectionTag>
             <p className="mt-8 font-mono text-[11px] leading-loose tracking-[0.14em] text-faint">
               What Mizu is,
               <br />
