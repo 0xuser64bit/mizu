@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentSummary } from "./ComponentBrowser";
+import { matches } from "./match";
 
 export function DocsNav({
   components,
@@ -14,8 +15,8 @@ export function DocsNav({
 }) {
   const [query, setQuery] = useState("");
   const path = usePathname();
-  const matches = components.filter((c) =>
-    `${c.name} ${c.tagline}`.toLowerCase().includes(query.toLowerCase()),
+  const found = components.filter((c) =>
+    matches(`${c.name} ${c.tagline} ${c.category}`, query),
   );
   const index = (
     <>
@@ -39,7 +40,7 @@ export function DocsNav({
       </Link>
       <nav aria-label="Component families">
         {categories.map((cat) => {
-          const items = matches.filter((c) => c.category === cat);
+          const items = found.filter((c) => c.category === cat);
           return items.length ? (
             <div className="mizu-docs-nav-family" key={cat}>
               <h2>{cat}</h2>
@@ -57,7 +58,7 @@ export function DocsNav({
             </div>
           ) : null;
         })}
-        {!matches.length && (
+        {!found.length && (
           <p className="mizu-field-hint">No matching pieces.</p>
         )}
       </nav>

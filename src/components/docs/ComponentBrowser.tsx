@@ -1,8 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { SearchField } from "@/mizu";
+import { matches } from "./match";
+
+const PARAMS = "mizu:params";
+function subscribe(change: () => void) {
+  window.addEventListener("popstate", change);
+  window.addEventListener(PARAMS, change);
+  return () => {
+    window.removeEventListener("popstate", change);
+    window.removeEventListener(PARAMS, change);
+  };
+}
+function useParam(key: string, fallback: string) {
+  const value = useSyncExternalStore(
+    subscribe,
+    () => new URLSearchParams(location.search).get(key) ?? fallback,
+    () => fallback,
+  );
+  const set = (next: string) => {
+    const params = new URLSearchParams(location.search);
+    if (next && next !== fallback) params.set(key, next);
+    else params.delete(key);
+    const search = params.size ? `?${params}` : "";
+    window.history.replaceState(null, "", `${location.pathname}${search}`);
+    window.dispatchEvent(new Event(PARAMS));
+  };
+  return [value, set] as const;
+}
 
 export type ComponentSummary = {
   slug: string;
@@ -17,15 +44,13 @@ export function ComponentBrowser({
   components: ComponentSummary[];
   categories: string[];
 }) {
-  const [query, setQuery] = useState(""),
-    [category, setCategory] = useState("All");
-  const words = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  const [query, setQuery] = useParam("q", ""),
+    [family, setCategory] = useParam("family", "All"),
+    category = categories.includes(family) ? family : "All";
   const filtered = components.filter(
     (c) =>
       (category === "All" || c.category === category) &&
-      words.every((w) =>
-        `${c.name} ${c.tagline} ${c.category}`.toLowerCase().includes(w),
-      ),
+      matches(`${c.name} ${c.tagline} ${c.category}`, query),
   );
   return (
     <section className="mizu-browser" aria-label="Component collection">
