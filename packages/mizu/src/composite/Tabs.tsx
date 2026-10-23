@@ -4,7 +4,9 @@ import { useReducedMotion } from "../motion/Preferences.tsx";
 import {
   createContext,
   useContext,
+  useEffect,
   useId,
+  useRef,
   useState,
   type KeyboardEvent,
   type ReactNode,
@@ -67,6 +69,16 @@ export function TabsList({
   className?: string;
 }) {
   const ctx = useContext(TabsContext);
+  const list = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tabs = list.current?.querySelectorAll<HTMLButtonElement>(
+      "[role='tab']:not([disabled])",
+    );
+    if (!ctx || !tabs?.length) return;
+    if (![...tabs].some((tab) => tab.dataset.value === ctx.value))
+      ctx.setValue(tabs[0]!.dataset.value ?? "");
+  });
 
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (!ctx) return;
@@ -93,6 +105,7 @@ export function TabsList({
 
   return (
     <div
+      ref={list}
       role="tablist"
       aria-label={label}
       className={`mizu-tabs-list ${className}`}

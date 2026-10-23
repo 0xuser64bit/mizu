@@ -32,6 +32,10 @@
 - PasswordField's toggle says what it will do and nothing more. It was
   also a pressed toggle, so a screen reader heard "Hide password, pressed",
   which reads as the opposite state.
+- Tabs without a `defaultValue` open on their first tab. Nothing was
+  selected, so no panel showed and every trigger was out of the tab order:
+  the list could not be reached from the keyboard at all. Tabs also move to
+  the first enabled tab when the selected one is removed or disabled.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

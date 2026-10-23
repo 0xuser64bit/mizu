@@ -119,6 +119,27 @@ describe("Tabs", () => {
     expect(screen.queryByText("Panel A")).toBeNull();
   });
 
+  it("opens on the first tab when no value is given, so the list is reachable", async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <button type="button">Before</button>
+        <Tabs>
+          <TabsList label="Settings">
+            <TabsTrigger value="a">General</TabsTrigger>
+            <TabsTrigger value="b">Advanced</TabsTrigger>
+          </TabsList>
+          <TabsPanel value="a">Panel A</TabsPanel>
+          <TabsPanel value="b">Panel B</TabsPanel>
+        </Tabs>
+      </>,
+    );
+    expect(screen.getByText("Panel A")).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: "Before" }));
+    await user.tab();
+    expect(screen.getByRole("tab", { name: "General" })).toHaveFocus();
+  });
+
   it("supports controlled value", async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
