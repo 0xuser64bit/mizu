@@ -43,6 +43,8 @@
   code sample as the button's name. A button with no label of its own is
   named "Copy". Its pointer target grows to 33px tall without changing the
   layout; it was 17px.
+- Slider announces its value as it shows it. With `format`, the readout said
+  "40%" while a screen reader heard "40".
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

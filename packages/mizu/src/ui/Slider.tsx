@@ -51,6 +51,7 @@ export function Slider({
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value))}
         aria-label={label}
+        aria-valuetext={format?.(value)}
         style={{ width: "100%", minWidth: 0, minHeight: 44, margin: 0 }}
         className="mizu-slider-input"
       />

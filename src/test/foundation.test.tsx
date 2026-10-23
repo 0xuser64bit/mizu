@@ -117,6 +117,23 @@ describe("primitives", () => {
     expect(onChange).toHaveBeenCalledWith(75);
   });
 
+  it("Slider announces the value as it is shown", () => {
+    render(
+      <Slider
+        label="Opacity"
+        value={40}
+        min={0}
+        max={100}
+        onChange={() => {}}
+        format={(v) => `${v}%`}
+      />,
+    );
+    expect(screen.getByLabelText("Opacity")).toHaveAttribute(
+      "aria-valuetext",
+      "40%",
+    );
+  });
+
   it("renders a labelled tooltip bubble, hidden until hover/focus", () => {
     render(
       <Tooltip label="More info">
