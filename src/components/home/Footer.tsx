@@ -108,15 +108,18 @@ export function Footer() {
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-faint">
           Independent
         </p>
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="group flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
+        <a
+          href="#main"
+          className="group flex min-h-11 items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
         >
           Back to top
-          <span className="inline-block transition-transform duration-300 group-hover:-translate-y-1">
+          <span
+            aria-hidden
+            className="inline-block transition-transform duration-300 group-hover:-translate-y-1"
+          >
             ↑
           </span>
-        </button>
+        </a>
       </div>
     </footer>
   );
