@@ -19,6 +19,9 @@ export function ThemeToggle() {
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", next === "light" ? "#f4f0e8" : "#0f0e0c");
     try {
       localStorage.setItem("mizu-theme", next);
     } catch {}

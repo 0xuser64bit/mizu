@@ -14,7 +14,7 @@ import { preloadFonts } from "@/lib/fonts";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-Q3K0S22ZXL";
 
-const themeBootstrap = `try{var t=localStorage.getItem("mizu-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+const themeBootstrap = `try{var t=localStorage.getItem("mizu-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(t==="light")document.querySelector('meta[name="theme-color"]')?.setAttribute("content","#f4f0e8")}catch(e){}`;
 const previewImage = {
   url: "/images/mizu-preview.png",
   width: 1734,
