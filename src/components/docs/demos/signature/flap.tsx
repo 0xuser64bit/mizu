@@ -72,7 +72,12 @@ function Departures() {
   }, []);
   return (
     <>
-      <div className="mizu-demo-board-scroll">
+      <div
+        className="mizu-demo-board-scroll"
+        tabIndex={0}
+        role="region"
+        aria-label="Departures board"
+      >
         <table className="mizu-demo-board">
           <caption className="mizu-sr-only">Departures</caption>
           <thead>
