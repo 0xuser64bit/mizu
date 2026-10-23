@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { describe, it, expect, vi } from "vitest";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -86,6 +87,36 @@ describe("form and status contracts", () => {
     expect(
       screen.getByRole("button", { name: "Increase amount" }),
     ).toBeDisabled();
+  });
+  it("lets a number pass below the minimum while it is typed, then settles it", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    function Seats() {
+      const [value, setValue] = useState(20);
+      return (
+        <NumberField
+          label="Seats"
+          value={value}
+          onValueChange={(n) => {
+            change(n);
+            setValue(n);
+          }}
+          min={10}
+          max={100}
+        />
+      );
+    }
+    render(<Seats />);
+    const input = screen.getByLabelText("Seats");
+    await user.clear(input);
+    await user.type(input, "50");
+    expect(input).toHaveValue(50);
+    expect(change).toHaveBeenLastCalledWith(50);
+    await user.clear(input);
+    await user.type(input, "4");
+    await user.tab();
+    expect(input).toHaveValue(10);
+    expect(change).toHaveBeenLastCalledWith(10);
   });
   it("rejects duplicate tags and reports capacity", async () => {
     const user = userEvent.setup(),

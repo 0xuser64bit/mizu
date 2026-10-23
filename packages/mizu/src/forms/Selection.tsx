@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, type CSSProperties } from "react";
+import { useId, useState, type CSSProperties } from "react";
 
 export type Choice = {
   value: string;
@@ -98,8 +98,14 @@ export function NumberField({
   className?: string;
 }) {
   const id = useId();
+  const [draft, setDraft] = useState<string | null>(null);
   const update = (n: number) => {
     if (Number.isFinite(n)) onValueChange(Math.min(max, Math.max(min, n)));
+  };
+  const commit = () => {
+    if (draft === null) return;
+    if (draft.trim() !== "") update(Number(draft));
+    setDraft(null);
   };
   const increment = Math.max(Number.EPSILON, Math.abs(step));
   return (
@@ -124,8 +130,16 @@ export function NumberField({
           min={Number.isFinite(min) ? min : undefined}
           max={Number.isFinite(max) ? max : undefined}
           disabled={disabled}
-          value={value}
-          onChange={(e) => update(e.target.valueAsNumber)}
+          value={draft ?? value}
+          onChange={(e) => {
+            setDraft(e.target.value);
+            const n = e.target.valueAsNumber;
+            if (Number.isFinite(n) && n >= min && n <= max) onValueChange(n);
+          }}
+          onBlur={commit}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") commit();
+          }}
         />
         <button
           type="button"

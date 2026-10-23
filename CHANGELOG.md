@@ -20,6 +20,11 @@
   transcript seek, excerpt playback and timestamped outline notes with Markdown
   export. Notes remain in the current tab; no backend is implied.
 
+- NumberField can be typed into. It clamped every keystroke, so with a
+  minimum of 10, typing 50 became 10 at the 5, and clearing the field put the
+  old number straight back. What you type now stays as typed, and reaches
+  `onValueChange` as soon as it is a number in range; leaving the field or
+  pressing Enter settles anything else into range.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
