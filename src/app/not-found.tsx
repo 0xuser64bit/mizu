@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink, Magnetic, SectionTag } from "@/mizu";
 import { SiteNav } from "@/components/shell/SiteNav";
+import { NotFoundSuggestions } from "@/components/shell/NotFoundSuggestions";
 
 export const metadata: Metadata = {
   title: "Not found",
@@ -20,10 +21,16 @@ export default function NotFound() {
           <p className="mt-8 max-w-md leading-relaxed text-muted">
             The piece you were looking for was never filed — or it is still being made.
           </p>
-          <div className="mt-12">
+          <NotFoundSuggestions />
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Magnetic>
               <ButtonLink href="/">
                 Back to the archive
+              </ButtonLink>
+            </Magnetic>
+            <Magnetic>
+              <ButtonLink href="/components" variant="ghost">
+                Browse the collection
               </ButtonLink>
             </Magnetic>
           </div>
