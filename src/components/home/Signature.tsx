@@ -67,7 +67,7 @@ export function Signature() {
             Browse all {SYSTEMS.length} systems
           </ButtonLink>
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-            Incident review · Design review · Automation
+            Incident review · Design review · Automation · Audio
           </p>
         </div>
       </Reveal>
