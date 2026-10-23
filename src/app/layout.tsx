@@ -3,6 +3,7 @@ import { MotionConfig } from "motion/react";
 import Script from "next/script";
 import "./globals.css";
 import { NavigatorProvider } from "@/components/shell/Navigator";
+import { SiteLinks } from "@/components/shell/SiteLinks";
 import { Cursor } from "@/components/shell/Cursor";
 import { Noise } from "@/components/shell/Noise";
 import { PageWipeProvider } from "@/mizu";
@@ -41,7 +42,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   preloadFonts();
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="h-full antialiased"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body className="mizu-root flex min-h-full flex-col">
         <Script id="mizu-theme" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
         <a
@@ -53,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MotionConfig reducedMotion="user">
           <PageWipeProvider>
             <NavigatorProvider>
-              {children}
+              <SiteLinks>{children}</SiteLinks>
               <Cursor />
             </NavigatorProvider>
           </PageWipeProvider>
