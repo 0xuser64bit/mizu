@@ -5,6 +5,9 @@
 - Add Drawer: a Dialog that slides in from the right, left or bottom, for
   filters, details and quick edits, with the same focus, Escape and scroll
   handling.
+- Add Popover: a non-modal panel beside its button on the native Popover
+  API, so Escape and clicking away close it and focus returns to the button.
+  It opens below or above and flips when there is no room.
 - Add DateRangeField: native start/end dates, supplied presets, date-only
   validation, form names, bounds, clear/reset and controlled state.
 - Add Dock: two tabbed panes with resizing, collapse/restore, keyboard and
