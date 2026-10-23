@@ -21,7 +21,7 @@ export default function NavExample() {
         ]}
         currentPath="#first"
       />
-      <main style={{ padding: "100px 24px 48px" }}>
+      <main id="main" style={{ padding: "100px 24px 48px" }}>
         <section
           id="first"
           data-chapter="Overview"
