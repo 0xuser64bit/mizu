@@ -44,8 +44,14 @@ export const CONTENT = [
         "string",
         "Caption metadata; no syntax parser is loaded.",
       ),
+      p(
+        "label",
+        "string",
+        "Names the scrollable region. Give each block on a page its own, such as “Install command”.",
+        "filename, or “{language} code”",
+      ),
     ],
-    "Focus the preformatted region to scroll. CopyButton reports clipboard failure. Content is React-escaped, never injected HTML.",
+    "Focus the preformatted region to scroll. Each block is a named region, so give blocks on one page distinct labels. CopyButton reports clipboard failure. Content is React-escaped, never injected HTML.",
     "Static source display.",
   ),
   d(

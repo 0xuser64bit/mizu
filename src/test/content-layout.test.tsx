@@ -77,4 +77,16 @@ describe("content and layout contracts", () => {
       '<script>alert("x")</script>',
     );
   });
+  it("names each code region, falling back to its filename and language", () => {
+    render(
+      <>
+        <CodeBlock code="npm install mizu-ui" language="sh" label="Install command" />
+        <CodeBlock code="x" filename="app.tsx" language="tsx" />
+        <CodeBlock code="y" language="tsx" />
+      </>,
+    );
+    expect(
+      screen.getAllByRole("region").map((r) => r.getAttribute("aria-label")),
+    ).toEqual(["Install command", "app.tsx", "tsx code"]);
+  });
 });

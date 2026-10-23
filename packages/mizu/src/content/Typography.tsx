@@ -16,11 +16,13 @@ export function CodeBlock({
   code,
   language = "text",
   filename,
+  label,
   className = "",
 }: {
   code: string;
   language?: string;
   filename?: string;
+  label?: string;
   className?: string;
 }) {
   return (
@@ -34,7 +36,7 @@ export function CodeBlock({
       <pre
         tabIndex={0}
         role="region"
-        aria-label={filename ?? `${language} code`}
+        aria-label={label ?? filename ?? `${language} code`}
       >
         <code>{code}</code>
       </pre>

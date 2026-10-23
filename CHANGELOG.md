@@ -57,6 +57,10 @@
 - Treemap's nested previews label their children legibly. The 9.5px labels
   were set in the faint ink, which fell to 2.8–3.1:1 on hot blocks; they now
   take the paper ink at 78% and keep 4.5:1 on any heat in both themes.
+- CodeBlock takes a `label` that names its scrollable region. Every block
+  was a region named "tsx code" or "sh code", so a page with several gave
+  screen-reader users a list of identical landmarks. It still falls back to
+  the filename, then the language.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
