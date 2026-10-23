@@ -192,7 +192,7 @@ button.mizu-treemap-face:focus-visible .mizu-treemap-open {
   overflow: hidden;
   font: 9.5px var(--mizu-font-mono);
   letter-spacing: 0.06em;
-  color: var(--mizu-faint);
+  color: color-mix(in srgb, var(--mizu-paper) 78%, transparent);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
