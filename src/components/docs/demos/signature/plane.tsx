@@ -159,7 +159,7 @@ export function PlaneShowcase() {
             }
           >
             {c.kind === "heading" ? (
-              <h4>{c.text}</h4>
+              <h3>{c.text}</h3>
             ) : c.kind === "figure" ? (
               <figure>
                 <svg viewBox="0 0 200 80" aria-hidden="true">

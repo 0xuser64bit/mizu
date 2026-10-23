@@ -37,6 +37,7 @@ export function ExampleShell({
             ))}
           </ul>
         </header>
+        <h2 className="mizu-sr-only">The working example</h2>
         {children}
       </main>
     </>
