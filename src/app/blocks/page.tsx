@@ -38,12 +38,7 @@ export default function BlocksPage() {
       {BLOCKS.map((block) => {
         const Preview = previews[block.id];
         return (
-          <section
-            className="mizu-block-showcase"
-            key={block.id}
-            id={block.id}
-            aria-labelledby={`${block.id}-title`}
-          >
+          <section className="mizu-block-showcase" key={block.id} id={block.id}>
             <header>
               <div>
                 <h2 id={`${block.id}-title`}>{block.title}</h2>
