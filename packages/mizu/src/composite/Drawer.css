@@ -1,0 +1,58 @@
+.mizu-drawer {
+  position: fixed;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border-width: 0;
+}
+.mizu-drawer--right,
+.mizu-drawer--left {
+  top: 0;
+  bottom: 0;
+  width: min(440px, calc(100vw - 48px));
+  height: 100dvh;
+}
+.mizu-drawer--right {
+  right: 0;
+  left: auto;
+  border-left-width: 1px;
+}
+.mizu-drawer--left {
+  right: auto;
+  left: 0;
+  border-right-width: 1px;
+}
+.mizu-drawer--bottom {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 86dvh;
+  border-top-width: 1px;
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+}
+.mizu-dialog.mizu-drawer--right[open] {
+  animation-name: mizu-drawer-right;
+}
+.mizu-dialog.mizu-drawer--left[open] {
+  animation-name: mizu-drawer-left;
+}
+.mizu-dialog.mizu-drawer--bottom[open] {
+  animation-name: mizu-drawer-bottom;
+}
+@keyframes mizu-drawer-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes mizu-drawer-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@keyframes mizu-drawer-bottom {
+  from {
+    transform: translateY(100%);
+  }
+}

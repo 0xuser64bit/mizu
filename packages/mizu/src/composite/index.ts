@@ -8,3 +8,4 @@ export {
   DialogClose,
 } from "./Dialog.tsx";
 export { Nav, type NavLink } from "./Nav.tsx";
+export { Drawer, type DrawerSide } from "./Drawer.tsx";
