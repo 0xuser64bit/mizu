@@ -73,6 +73,9 @@
   Menu and Close buttons are 44px square; they were 36 by 17. Links keep
   their look but take a 44px-tall target, and the overlay numbers past nine
   read 10, not 010.
+- Accordion takes `value`, `defaultValue` and `onValueChange` (the open
+  items, controlled or not), so an item can start open or follow your
+  state, and `level` for its headings, which were always h3.
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds

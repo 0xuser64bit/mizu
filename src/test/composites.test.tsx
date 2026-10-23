@@ -51,6 +51,39 @@ describe("Accordion", () => {
     expect(first).toHaveAttribute("aria-expanded", "false");
   });
 
+  it("opens defaults, follows a controlled value and sets the heading level", async () => {
+    const user = userEvent.setup(),
+      change = vi.fn();
+    const { rerender } = render(
+      <Accordion defaultValue={["b"]} level={2}>
+        <AccordionItem value="a" title="First">
+          Body A
+        </AccordionItem>
+        <AccordionItem value="b" title="Second">
+          Body B
+        </AccordionItem>
+      </Accordion>,
+    );
+    expect(screen.getByText("Body B")).toBeTruthy();
+    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(2);
+    rerender(
+      <Accordion value={["a"]} onValueChange={change}>
+        <AccordionItem value="a" title="First">
+          Body A
+        </AccordionItem>
+        <AccordionItem value="b" title="Second">
+          Body B
+        </AccordionItem>
+      </Accordion>,
+    );
+    await user.click(screen.getByRole("button", { name: /second/i }));
+    expect(change).toHaveBeenCalledWith(["b"]);
+    expect(screen.getByRole("button", { name: /first/i })).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
+  });
+
   it("closes the previous item in single mode", async () => {
     const user = userEvent.setup();
     render(

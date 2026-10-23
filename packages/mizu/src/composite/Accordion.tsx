@@ -12,8 +12,9 @@ import { AnimatePresence, motion } from "motion/react";
 import { EASE_EXPO } from "../motion/easings.ts";
 
 type AccordionContextValue = {
-  open: Set<string>;
+  open: readonly string[];
   toggle: (value: string) => void;
+  level: 2 | 3 | 4 | 5 | 6;
 };
 
 const AccordionContext = createContext<AccordionContextValue | null>(null);
@@ -21,28 +22,35 @@ const AccordionContext = createContext<AccordionContextValue | null>(null);
 export function Accordion({
   children,
   allowMultiple = false,
+  value,
+  defaultValue = [],
+  onValueChange,
+  level = 3,
   className = "",
 }: {
   children: ReactNode;
   allowMultiple?: boolean;
+  value?: readonly string[];
+  defaultValue?: readonly string[];
+  onValueChange?: (value: string[]) => void;
+  level?: 2 | 3 | 4 | 5 | 6;
   className?: string;
 }) {
-  const [open, setOpen] = useState<Set<string>>(new Set());
+  const [internal, setInternal] = useState(defaultValue);
+  const open = value ?? internal;
 
-  const toggle = (value: string) => {
-    setOpen((prev) => {
-      const next = new Set(allowMultiple ? prev : []);
-      if (prev.has(value)) {
-        next.delete(value);
-      } else {
-        next.add(value);
-      }
-      return next;
-    });
+  const toggle = (item: string) => {
+    const next = open.includes(item)
+      ? open.filter((v) => v !== item)
+      : allowMultiple
+        ? [...open, item]
+        : [item];
+    if (value === undefined) setInternal(next);
+    onValueChange?.(next);
   };
 
   return (
-    <AccordionContext.Provider value={{ open, toggle }}>
+    <AccordionContext.Provider value={{ open, toggle, level }}>
       <div className={`mizu-accordion ${className}`}>{children}</div>
     </AccordionContext.Provider>
   );
@@ -64,13 +72,14 @@ export function AccordionItem({
   const ctx = useContext(AccordionContext);
   if (!ctx) throw new Error("AccordionItem must be used within <Accordion>");
 
-  const isOpen = ctx.open.has(value);
+  const isOpen = ctx.open.includes(value);
+  const Heading = `h${ctx.level}` as const;
   const buttonId = `mizu-acc-${id}-btn`;
   const panelId = `mizu-acc-${id}-panel`;
 
   return (
     <div className={`mizu-accordion-item ${className}`}>
-      <h3 className="mizu-accordion-heading">
+      <Heading className="mizu-accordion-heading">
         <button
           type="button"
           id={buttonId}
@@ -89,7 +98,7 @@ export function AccordionItem({
           />
           <span className="mizu-accordion-title">{title}</span>
         </button>
-      </h3>
+      </Heading>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
