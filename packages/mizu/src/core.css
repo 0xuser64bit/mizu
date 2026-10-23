@@ -717,13 +717,14 @@
   opacity: 0;
 }
 .mizu-toast-dismiss {
+  display: grid;
+  place-items: center;
   width: 32px;
   min-height: 44px;
   background: transparent;
   border: 0;
   color: inherit;
   cursor: pointer;
-  font-size: 20px;
 }
 .mizu-canvas-pointer,
 .mizu-canvas-drag {

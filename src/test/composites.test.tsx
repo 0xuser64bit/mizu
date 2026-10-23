@@ -330,6 +330,38 @@ describe("Toast", () => {
     });
     expect(screen.queryByText("Saved")).toBeNull();
   });
+
+  it("waits while a toast is pointed at or focused", async () => {
+    const wait = (ms: number) =>
+      act(() => new Promise((resolve) => setTimeout(resolve, ms)));
+    function Probe() {
+      const { toast } = useToast();
+      return (
+        <button onClick={() => toast("Draft saved", { duration: 200 })}>
+          save
+        </button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <Probe />
+      </ToastProvider>,
+    );
+    act(() => screen.getByRole("button", { name: "save" }).click());
+    const dismiss = screen.getByRole("button", { name: "Dismiss Draft saved" });
+    const toast = dismiss.parentElement!;
+    fireEvent.pointerEnter(toast);
+    await wait(900);
+    expect(screen.getByText("Draft saved")).toBeTruthy();
+    fireEvent.pointerLeave(toast);
+    act(() => dismiss.focus());
+    await wait(900);
+    expect(screen.getByText("Draft saved")).toBeTruthy();
+    act(() => dismiss.blur());
+    await waitFor(() => expect(screen.queryByText("Draft saved")).toBeNull(), {
+      timeout: 3000,
+    });
+  });
 });
 
 describe("Specimen", () => {

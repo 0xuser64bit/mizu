@@ -47,6 +47,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const idRef = useRef(0);
   const timers = useRef(new Map<number, number>());
+  const durations = useRef(new Map<number, number>());
   useEffect(
     () => () => {
       timers.current.forEach(window.clearTimeout);
@@ -56,25 +57,41 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   );
   const reduce = useReducedMotion();
 
-  const dismiss = useCallback((id: number) => {
+  const hold = useCallback((id: number) => {
     window.clearTimeout(timers.current.get(id));
     timers.current.delete(id);
-    setToasts((ts) => ts.filter((t) => t.id !== id));
   }, []);
 
-  const toast = useCallback(
-    (message: string, options?: { tone?: ToastTone; duration?: number }) => {
-      const id = ++idRef.current;
-      const item: ToastItem = { id, message, tone: options?.tone ?? "default" };
-      setToasts((ts) => [...ts.slice(-3), item]);
-      const duration = options?.duration ?? 3500;
-      if (duration > 0)
+  const dismiss = useCallback(
+    (id: number) => {
+      hold(id);
+      durations.current.delete(id);
+      setToasts((ts) => ts.filter((t) => t.id !== id));
+    },
+    [hold],
+  );
+
+  const schedule = useCallback(
+    (id: number) => {
+      const duration = durations.current.get(id) ?? 0;
+      if (duration > 0 && !timers.current.has(id))
         timers.current.set(
           id,
           window.setTimeout(() => dismiss(id), duration),
         );
     },
     [dismiss],
+  );
+
+  const toast = useCallback(
+    (message: string, options?: { tone?: ToastTone; duration?: number }) => {
+      const id = ++idRef.current;
+      const item: ToastItem = { id, message, tone: options?.tone ?? "default" };
+      setToasts((ts) => [...ts.slice(-3), item]);
+      durations.current.set(id, options?.duration ?? 3500);
+      schedule(id);
+    },
+    [schedule],
   );
 
   return (
@@ -110,6 +127,19 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               transition={
                 reduce ? { duration: 0 } : { duration: 0.4, ease: EASE_EXPO }
               }
+              onPointerEnter={() => hold(t.id)}
+              onPointerLeave={(e) => {
+                if (!e.currentTarget.contains(document.activeElement))
+                  schedule(t.id);
+              }}
+              onFocus={() => hold(t.id)}
+              onBlur={(e) => {
+                if (
+                  !e.currentTarget.contains(e.relatedTarget) &&
+                  !e.currentTarget.matches(":hover")
+                )
+                  schedule(t.id);
+              }}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -140,7 +170,19 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 onClick={() => dismiss(t.id)}
                 className="mizu-toast-dismiss"
               >
-                ×
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 2L10 10M10 2L2 10"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                </svg>
               </button>
               {t.tone === "success" && (
                 <svg

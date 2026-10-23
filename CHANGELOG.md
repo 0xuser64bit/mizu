@@ -45,6 +45,11 @@
   layout; it was 17px.
 - Slider announces its value as it shows it. With `format`, the readout said
   "40%" while a screen reader heard "40".
+- Toasts wait while you point at or focus them, and start their time again
+  when you leave. A message that dismissed itself after 3.5 seconds could
+  vanish while being read or while focus sat on its dismiss button. The
+  dismiss button draws the house cross instead of the × character, which
+  some screen readers read out as "times".
 - RangeSelector's two handles share one scale. Each handle's native bounds
   follow the other handle, so its slider's track used to stretch only from
   min to the other value, and a start of 17 on a 0–50 scale sat two thirds
